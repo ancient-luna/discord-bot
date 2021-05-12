@@ -1,16 +1,11 @@
 require('dotenv').config();
 
-const { Client } = require('discord.js');
-
+const { Client, MessageEmbed } = require('discord.js');
 // eslint-disable-next-line import/order
 const util = require('./utils');
-
 const client = new Client({});
-
 const { promisify } = require('util');
-
 const { resolve } = require('path');
-
 const readdir = promisify(require('fs').readdir);
 
 async function* getFiles(dir) {
@@ -60,10 +55,33 @@ client.on('message', async (message) => {
   cmd.run(client, message, args);
 });
 
+const gatewayChannelId = '839417251470901279'
+const rulesChannelId = `838751745815216129`
+const luxCastaId = `839210689917616218`
+
 client.on('guildMemberAdd', async (member) => {
-  client.channels.get('839417251470901279').send(`Welcome to the sanctuary of light, fellow seeker <@${member.id}> you are known as lux casta.`);
-});
+  console.log(member)
+
+  const role = member.guild.roles.cache.get(luxCastaId)
+  await member.roles.add(role.id).catch(err => console.log(err))
+
+  const channel = member.guild.channels.cache.get(gatewayChannelId)
+       
+  const embed = new MessageEmbed()
+    .setTitle(`Welcome to ${member.guild.name}`)
+    .setThumbnail(member.user.displayAvatarURL({dynamic: true, size: 512}))
+    .setDescription(`<@${member.user.id}> please understand our **wisdom of lleud** at ${member.guild.channels.cache.get(rulesChannelId).toString()} as you make your way through this warm sanctuary`)
+    .setFooter(`Fellow seeker ${member.user.username}#${member.user.discriminator}`,member.user.displayAvatarURL({dynamic: true, size: 512}))
+    .setColor('7289da')
+  channel.send(embed)
+})
 
 client.on('guildMemberRemove', async (member) => {
-  client.channels.get('839417251470901279').send(`<@${member.id}> leaving the sanctuary.`);
-});
+  
+  const channel = member.guild.channels.cache.get(gatewayChannelId)
+  
+  const embed = new MessageEmbed()
+    .setDescription(`The lights get dimmed! <@${member.user.id}> leaving the sanctuary`,member.user.displayAvatarURL({dynamic: true, size: 512}))
+    .setColor('RED')
+  channel.send(embed)
+})
