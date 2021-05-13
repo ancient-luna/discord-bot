@@ -14,7 +14,7 @@ module.exports.run = async (client, message, args) => {
         .setTimestamp()
         .addField("Status", "PENDING");
 
-        message.channel.send("Submitted suggestion at <#842069893113446410> !");
+        message.channel.send("Submitted suggestion is at <#842069893113446410> !");
         message.guild.channels.cache.get("842069893113446410").send(embed).then((msg) => {
             msg.react(`⬆️`);
             msg.react(`⬇️`);

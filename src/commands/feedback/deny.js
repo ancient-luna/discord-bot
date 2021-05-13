@@ -29,7 +29,7 @@ module.exports.run = async (client, message, args) => {
         const user = await client.users.cache.find(
             (u) => u.tag === data.author.name
         );
-        user.send("Your suggestion has been **DENIED** by the Elders. Thank you.");
+        user.send("Your suggestion has been **DENIED** by the Elders. Thank you");
     } catch (err) {
         console.log(err);
         message.channel.send(`That suggestion doesn't exist`);
