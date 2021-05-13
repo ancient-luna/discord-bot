@@ -32,7 +32,7 @@ module.exports.run = async (client, message, args) => {
         user.send("Your suggestion has been **DENIED** by the Elders. Thank you");
     } catch (err) {
         console.log(err);
-        message.channel.send(`That suggestion doesn't exist`);
+        message.channel.send(`That suggestion doesn't exist.`);
     }
 }
 
