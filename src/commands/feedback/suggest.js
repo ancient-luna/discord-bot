@@ -11,7 +11,6 @@ module.exports.run = async (client, message, args) => {
         )
         .setDescription(`**Suggestion**: ${suggestionQuery}`)
         .setColor(`ORANGE`)
-        .setTimestamp()
         .addField("Status", "PENDING");
 
         message.channel.send("Submitted suggestion is at <#842069893113446410> !");

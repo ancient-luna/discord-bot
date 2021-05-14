@@ -20,8 +20,7 @@ module.exports.run = async (client, message, args) => {
             .setAuthor(data.author.name, data.author.iconURL)
             .setDescription(data.description)
             .setColor(`RED`)
-            .addField("**Status**: **(DENIED)** ⛔", denyQuery)
-            .setTimestamp();
+            .addField("**Status**: **(DENIED)**", denyQuery);
         
         message.channel.send("Suggestion: **DENIED** ! `updated`");
         suggestedEmbed.edit(acceptEmbed);

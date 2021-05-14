@@ -20,8 +20,7 @@ module.exports.run = async (client, message, args) => {
             .setAuthor(data.author.name, data.author.iconURL)
             .setDescription(data.description)
             .setColor(`GREEN`)
-            .addField("**Status**: **(ACCEPTED)** ✅", acceptQuery)
-            .setTimestamp();
+            .addField("**Status**: **(ACCEPTED)**", acceptQuery);
         
         message.channel.send("Suggestion: **ACCEPTED** ! `updated`");
         suggestedEmbed.edit(acceptEmbed);
