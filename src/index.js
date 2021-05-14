@@ -9,6 +9,10 @@ const { promisify } = require('util');
 const { resolve } = require('path');
 const readdir = promisify(require('fs').readdir);
 
+const express = require('express');
+
+const app = express();
+
 async function* getFiles(dir) {
   const dirents = await readdir(dir, { withFileTypes: true });
   // eslint-disable-next-line no-restricted-syntax
@@ -21,6 +25,12 @@ async function* getFiles(dir) {
     }
   }
 }
+
+app.get('/', (req, res) => {
+  res.send('Hello world');
+});
+
+app.listen(8080);
 
 client.commands = new Map();
 
