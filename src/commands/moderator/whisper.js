@@ -1,7 +1,7 @@
 /* eslint-disable */
 module.exports.run = async (client, message, args) => {
   if (!message.member.permissions.has("MANAGE_MESSAGES")) return;
-  if (args.length === 0) return message.channel.send("Wrong usage. !whisper [userid] [message] `optional to remove id:[-noid]`");
+  if (args.length === 0) return message.channel.send("Wrong usage. !whisper [userid] [message] optional to remove id:[-noid]");
 
   const user =
     message.mentions.users.first() ||
