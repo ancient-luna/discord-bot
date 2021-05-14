@@ -1,0 +1,10 @@
+{
+  "server": {
+    "onJoinConfig": {
+      "joinRole": "",
+      "channelId": "",
+      "message": "I accept the rule",
+      "newRole": ""
+    }
+  }
+}

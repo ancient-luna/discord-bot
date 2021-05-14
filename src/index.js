@@ -1,8 +1,6 @@
 require('dotenv').config();
 
 const { Client, MessageEmbed } = require('discord.js');
-// eslint-disable-next-line import/order
-const util = require('./utils');
 
 const client = new Client({});
 const { promisify } = require('util');
@@ -11,7 +9,9 @@ const readdir = promisify(require('fs').readdir);
 
 const express = require('express');
 
-const app = express();
+const util = require('./utils');
+
+const config = require('./config/index');
 
 async function* getFiles(dir) {
   const dirents = await readdir(dir, { withFileTypes: true });
@@ -26,12 +26,6 @@ async function* getFiles(dir) {
   }
 }
 
-app.get('/', (req, res) => {
-  res.send('Hello world');
-});
-
-app.listen(8080);
-
 client.commands = new Map();
 
 client.login(process.env.TOKEN).then(() => {
@@ -40,6 +34,8 @@ client.login(process.env.TOKEN).then(() => {
 
 client.on('ready', async () => {
   util.printLog('info', `Logged in as ${client.user.tag}!`);
+  util.printLog('info', 'Loading configuration file...');
+  config.load();
   // eslint-disable-next-line no-restricted-syntax,no-unused-vars,no-use-before-define
   for await (const f of getFiles('./src/commands')) {
     // eslint-disable-next-line no-useless-catch
@@ -71,10 +67,8 @@ const rulesChannelId = '838751745815216129';
 const luxCastaId = '839210689917616218';
 
 client.on('guildMemberAdd', async (member) => {
-  console.log(member);
-
   const role = member.guild.roles.cache.get(luxCastaId);
-  await member.roles.add(role.id).catch((err) => console.log(err));
+  await member.roles.add(role.id).catch((err) => util.printLog('error', err));
 
   const channel = member.guild.channels.cache.get(gatewayChannelId);
 
@@ -95,3 +89,11 @@ client.on('guildMemberRemove', async (member) => {
     .setColor('RED');
   channel.send(embed);
 });
+
+const app = express();
+
+app.get('/', (req, res) => {
+  res.send('Hello world');
+});
+
+app.listen(8080);
