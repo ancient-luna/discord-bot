@@ -6,27 +6,30 @@ const util = require('../utils/index');
 const fileName = 'default.json';
 const file = fs.readFileSync(path.resolve(__dirname, fileName));
 
-let config;
-
 function load() {
   try {
-    config = JSON.parse(file);
+    const config = JSON.parse(file);
     util.printLog('info', JSON.stringify(config));
     util.printLog('info', 'Configuration file loaded successfully');
+
+    return config;
   } catch (err) {
     // eslint-disable-next-line no-console
     util.printLog('error', err);
+
+    return null;
   }
 }
 
-function save() {
-  fs.writeFile(fileName, config, (err) => {
+async function save(config) {
+  fs.writeFile(path.resolve(__dirname, fileName), JSON.stringify(config), (err) => {
     if (err) {
       util.printLog('error', 'Error while writing config file');
-      return;
+      throw err;
     }
 
-    util.printLog('error', 'Configuration file saved successfully');
+    util.printLog('info', 'Configuration file saved successfully');
+    return true;
   });
 }
 
