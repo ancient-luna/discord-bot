@@ -73,7 +73,7 @@ client.on('message', async (message) => {
     cmd.run(client, message, args, gConfig);
   }
 
-  if (message.channel.id === gConfig.server.ruleChannel && message.channel.id === gConfig.server.suggestionChannel) {
+  if (message.channel.id === gConfig.server.ruleChannel || message.channel.id === gConfig.server.suggestionChannel) {
     if (message.content === gConfig.server.onJoinConfig.preMemberTriggerMessage && !message.member.roles.cache.has(gConfig.server.onJoinConfig.preMemberRole)) {
       const ancientLunaEmoji = client.emojis.find((emoji) => emoji.name === gConfig.server.localEmoji);
       await message.member.roles.add(gConfig.server.memberRole);
