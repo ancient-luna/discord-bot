@@ -1,10 +1,12 @@
 {
   "server": {
     "onJoinConfig": {
-      "joinRole": "",
-      "channelId": "",
-      "message": "I accept the rule",
-      "newRole": ""
-    }
+      "preMemberRole": "843661888670662656",
+      "preMemberTriggerMessage": "I accept the rule"
+    },
+    "memberRole": "839210689917616218",
+    "ruleChannel": "838751745815216129",
+    "tempRuleChannel": "839206614007021668",
+    "gatewayChannel": "839417251470901279"
   }
 }
