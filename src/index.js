@@ -73,12 +73,17 @@ client.on('message', async (message) => {
     cmd.run(client, message, args, gConfig);
   }
 
-  if (!message.member.roles.cache.has(gConfig.memberRole)
-    && message.channel.id === gConfig.server.tempRuleChannel
+  if (!message.member.roles.cache.has(gConfig.server.onJoinConfig.preMemberRole)
+    && message.channel.id === gConfig.server.ruleChannel
   ) {
     if (message.content === gConfig.server.onJoinConfig.preMemberTriggerMessage) {
-      await message.reply('You have accepted the rule');
-      await message.member.roles.add(gConfig.server.onJoinConfig.preMemberRole);
+      const ancientLunaEmoji = client.emojis.find((emoji) => emoji.name === gConfig.server.localEmoji);
+
+      await message.delete();
+      await message.member.roles.add(gConfig.server.memberRole);
+      await client.channels.cache.get(gConfig.server.generalChannel).send(
+        `<@${message.author.id}> has passed the trial by understand our wisdom of lleud to reach this warm sanctuary deeper. The <@&${gConfig.server.elderRole}> welcome you as one of <@&${gConfig.server.memberRole}> ${ancientLunaEmoji}`,
+      );
     }
   }
 });
