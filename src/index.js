@@ -11,7 +11,12 @@ const express = require('express');
 
 const util = require('./utils');
 
-const config = require('./config/index');
+const configFile = require('./config/index');
+
+let gConfig = {};
+let gatewayChannelId = '';
+let rulesChannelId = '';
+let luxCastaId = '';
 
 async function* getFiles(dir) {
   const dirents = await readdir(dir, { withFileTypes: true });
@@ -35,7 +40,11 @@ client.login(process.env.TOKEN).then(() => {
 client.on('ready', async () => {
   util.printLog('info', `Logged in as ${client.user.tag}!`);
   util.printLog('info', 'Loading configuration file...');
-  config.load();
+  gConfig = configFile.load();
+  gatewayChannelId = gConfig.server.gatewayChannel;
+  rulesChannelId = gConfig.server.ruleChannel;
+  luxCastaId = gConfig.server.memberRole;
+
   // eslint-disable-next-line no-restricted-syntax,no-unused-vars,no-use-before-define
   for await (const f of getFiles('./src/commands')) {
     // eslint-disable-next-line no-useless-catch
@@ -54,17 +63,25 @@ client.on('message', async (message) => {
   if (message.author.bot) return;
 
   const prefix = process.env.COMMAND_PREFIX;
-  const args = message.content.slice(prefix.length).trim().split(' ');
-  const command = args.shift().toLowerCase();
 
-  const cmd = client.commands.get(command);
-  if (!cmd) return;
-  cmd.run(client, message, args);
+  if (message.content.charAt(0) === prefix) {
+    const args = message.content.slice(prefix.length).trim().split(' ');
+    const command = args.shift().toLowerCase();
+
+    const cmd = client.commands.get(command);
+    if (!cmd) return;
+    cmd.run(client, message, args, gConfig);
+  }
+
+  if (!message.member.roles.cache.has(gConfig.memberRole)
+    && message.channel.id === gConfig.server.tempRuleChannel
+  ) {
+    if (message.content === gConfig.server.onJoinConfig.preMemberTriggerMessage) {
+      await message.reply('You have accepted the rule');
+      await message.member.roles.add(gConfig.server.onJoinConfig.preMemberRole);
+    }
+  }
 });
-
-const gatewayChannelId = '839417251470901279';
-const rulesChannelId = '838751745815216129';
-const luxCastaId = '839210689917616218';
 
 client.on('guildMemberAdd', async (member) => {
   const role = member.guild.roles.cache.get(luxCastaId);
