@@ -13,6 +13,10 @@ const util = require('./utils');
 
 const configFile = require('./config/index');
 
+const fetch = require('node-fetch');
+
+require('discord-buttons')(client);
+
 let gConfig = {};
 let gatewayChannelId = '';
 let rulesChannelId = '';
@@ -61,6 +65,14 @@ client.on('ready', async () => {
 client.on('message', async (message) => {
   if (!message.guild) return;
   if (message.author.bot) return;
+
+  if (message.channel.id === '848248129346338856') {
+    fetch.default(`https://api.monkedev.com/fun/chat?msg=${message.content}&uid=${message.author.id}`)
+      .then(res => res.json())
+      .then(data => {
+        message.channel.send(data.response)
+      })
+  }
 
   const prefix = process.env.COMMAND_PREFIX;
 
