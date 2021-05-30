@@ -1,6 +1,7 @@
 /* eslint-disable */
 
 module.exports.run = async (client, message, args) => {
+  if (!message.member.permissions.has("MANAGE_MESSAGES")) return;
   if (args.length !== 1) return message.channel.send('Wrong usage. !clearwisdom [1-100]');
 
   const numberOfMessages = args[0];

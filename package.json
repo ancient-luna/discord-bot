@@ -12,11 +12,14 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@iamtraction/google-translate": "^1.1.2",
     "config": "^3.3.6",
     "dayjs": "^1.10.4",
+    "discord-buttons": "^2.4.1",
     "discord.js": "^12.5.3",
     "dotenv": "^8.2.0",
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "node-fetch": "^2.6.1"
   },
   "devDependencies": {
     "eslint": "^7.25.0",
