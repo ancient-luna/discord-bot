@@ -1,9 +1,10 @@
 const { MessageEmbed, Client } = require("discord.js");
+const { MessageButton } = require("discord-buttons");
 const fetch = require("node-fetch");
 
 module.exports.run = async (Client, message, member, args) => {
     let channel = message.member.voice.channel;
-    if(!channel) return message.channel.send(`You have to be in **watchmovie** voice channel`)
+    if(!channel) return message.channel.send(`You have to be in **watchmovie** or **chattime** voice channel`)
 
     fetch (`https://discord.com/api/v8/channels/${channel.id}/invites`, {
         method: "POST",
@@ -25,13 +26,23 @@ module.exports.run = async (Client, message, member, args) => {
     .then(invite => {
         if(!invite.code) return message.channel.send("Something wrong with YT-Together link. Don't blame me")
         const embed = new MessageEmbed()
-            .setTitle(`MOVIE TIME 🍿`)
+            .setTitle(`#movietime ♡`)
             .setDescription(`[YouTube Together](https://discord.com/invite/${invite.code}) in Ancient Luna`)
-            .setColor('ff0103')
-        message.channel.send(embed)
+            .setFooter(`Supported for PC ver. only`)
+            .setColor('7289da')
+
+        const buttonWatch = new MessageButton()
+            .setStyle("url")
+            .setLabel("Start watch together")
+            .setURL(`https://discord.com/invite/${invite.code}`)
+        
+        message.channel.send({
+            button: buttonWatch,
+            embed: embed
+        })
     })
 }
 
 module.exports.help = {
-    name: 'youtube'
+    name: 'movietime'
 }
