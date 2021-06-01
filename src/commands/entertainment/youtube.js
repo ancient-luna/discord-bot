@@ -1,7 +1,7 @@
 const { MessageEmbed, Client } = require("discord.js");
 const fetch = require("node-fetch");
 
-module.exports.run = async (Client, message, args) => {
+module.exports.run = async (Client, message, member, args) => {
     let channel = message.member.voice.channel;
     if(!channel) return message.channel.send(`You have to be in **watchmovie** voice channel`)
 
@@ -24,7 +24,11 @@ module.exports.run = async (Client, message, args) => {
     .then(res => res.json())
     .then(invite => {
         if(!invite.code) return message.channel.send("Something wrong with YT-Together link. Don't blame me")
-        message.channel.send(`https://discord.com/invite/${invite.code}`)
+        const embed = new MessageEmbed()
+            .setTitle(`MOVIE TIME 🍿`)
+            .setDescription(`[YouTube Together](https://discord.com/invite/${invite.code}) in Ancient Luna`)
+            .setColor('ff0103')
+        message.channel.send(embed)
     })
 }
 
