@@ -2,7 +2,7 @@ const { MessageEmbed, Client } = require("discord.js");
 const { MessageButton } = require("discord-buttons");
 const fetch = require("node-fetch");
 
-module.exports.run = async (Client, message, member, args) => {
+module.exports.run = async (Client, message) => {
     let channel = message.member.voice.channel;
     if(!channel) return message.channel.send(`You have to be in **watchmovie** or **chattime** voice channel`)
 
@@ -27,7 +27,7 @@ module.exports.run = async (Client, message, member, args) => {
         if(!invite.code) return message.channel.send("Something wrong with YT-Together link. Don't blame me")
         const embed = new MessageEmbed()
             .setTitle(`#movietime ♡`)
-            .setDescription(`[YouTube Together](https://discord.com/invite/${invite.code}) in Ancient Luna`)
+            .setDescription(`[YouTube Together](https://discord.com/invite/${invite.code}) in Ancient Luna\nonly **chattime** and **watchmovie** channel allowed`)
             .setFooter(`Supported for PC ver. only`)
             .setColor('7289da')
 
