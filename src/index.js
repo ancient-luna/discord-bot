@@ -9,11 +9,10 @@ const readdir = promisify(require('fs').readdir);
 
 const express = require('express');
 
+const fetch = require('node-fetch');
 const util = require('./utils');
 
 const configFile = require('./config/index');
-
-const fetch = require('node-fetch');
 
 require('discord-buttons')(client);
 
@@ -47,7 +46,7 @@ client.on('ready', async () => {
   gConfig = configFile.load();
   gatewayChannelId = gConfig.server.gatewayChannel;
   rulesChannelId = gConfig.server.ruleChannel;
-  luxCastaId = gConfig.server.memberRole;
+  luxCastaId = gConfig.server.onJoinConfig.preMemberRole;
 
   // eslint-disable-next-line no-restricted-syntax,no-unused-vars,no-use-before-define
   for await (const f of getFiles('./src/commands')) {
@@ -68,10 +67,10 @@ client.on('message', async (message) => {
 
   if (message.channel.id === '848248129346338856') {
     fetch.default(`https://api.monkedev.com/fun/chat?msg=${message.content}&uid=${message.author.id}`)
-      .then(res => res.json())
-      .then(data => {
-        message.channel.send(data.response)
-      })
+      .then((res) => res.json())
+      .then((data) => {
+        message.channel.send(data.response);
+      });
   }
 
   const prefix = process.env.COMMAND_PREFIX;
@@ -85,15 +84,18 @@ client.on('message', async (message) => {
     cmd.run(client, message, args, gConfig);
   }
 
-  if (message.channel.id === gConfig.server.ruleChannel && message.channel.id === gConfig.server.suggestionChannel) {
-    if (message.content === gConfig.server.onJoinConfig.preMemberTriggerMessage && !message.member.roles.cache.has(gConfig.server.onJoinConfig.preMemberRole)) {
-      const ancientLunaEmoji = client.emojis.find((emoji) => emoji.name === gConfig.server.localEmoji);
-      await message.member.roles.add(gConfig.server.memberRole);
+  if (message.channel.id === gConfig.server.ruleChannel) {
+    if (message.content === gConfig.server.onJoinConfig.preMemberTriggerMessage && message.member.roles.cache.has(gConfig.server.onJoinConfig.preMemberRole)) {
+      const ancientLunaEmoji = client.emojis.cache.find((emoji) => emoji.name === gConfig.server.localEmoji);
+      const memberRole = message.guild.roles.cache.get(gConfig.server.memberRole);
+      const preMemberRole = message.guild.roles.cache.get(gConfig.server.onJoinConfig.preMemberRole);
+      await message.member.roles.add(memberRole);
+      await message.member.roles.remove(preMemberRole);
       await client.channels.cache.get(gConfig.server.generalChannel).send(
         `<@${message.author.id}> has passed the trial by understand our wisdom of lleud to reach this warm sanctuary deeper. The <@&${gConfig.server.elderRole}> welcome you as one of <@&${gConfig.server.memberRole}> ${ancientLunaEmoji}`,
       );
+      await message.delete();
     }
-    await message.delete();
   }
 });
 

@@ -1,13 +1,13 @@
 {
   "server": {
     "onJoinConfig": {
-      "preMemberRole": "843849271707041812",
+      "preMemberRole": "839210689917616218",
       "preMemberTriggerMessage": "I understand the wisdom of lleud and sure my call as light seeker"
     },
-    "memberRole": "843523507621986335",
+    "memberRole": "839198215580811344",
     "elderRole": "843523544620335124",
-    "ruleChannel": "843793305069813760",
-    "generalChannel": "843793305069813760",
+    "ruleChannel": "849657792256409650",
+    "generalChannel": "452842830776369152",
     "gatewayChannel": "839417251470901279",
     "suggestionChannel": "842069549675184189",
     "localEmoji": "ancientluna_luna"
