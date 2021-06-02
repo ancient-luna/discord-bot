@@ -94,8 +94,8 @@ client.on('message', async (message) => {
       await client.channels.cache.get(gConfig.server.generalChannel).send(
         `<@${message.author.id}> has passed the trial by understand our wisdom of lleud to reach this warm sanctuary deeper. The <@&${gConfig.server.elderRole}> welcome you as one of <@&${gConfig.server.memberRole}> ${ancientLunaEmoji}`,
       );
-      await message.delete();
     }
+    await message.delete();
   }
 });
 
