@@ -2,7 +2,6 @@ const { MessageEmbed } = require("discord.js");
 const translate = require("@iamtraction/google-translate");
 const pagination = require("discord.js-pagination");
 
-
 module.exports.run = async (client, message, args) => {
     const translateQuery = args.join(" ");
     if (!translateQuery) return message.reply("Please specify a text to translate.");
