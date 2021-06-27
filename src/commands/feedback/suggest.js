@@ -5,13 +5,10 @@ module.exports.run = async (client, message, args) => {
   if (!suggestionQuery) return message.reply('Please specify a suggestion.');
 
   const embed = new MessageEmbed()
-    .setAuthor(
-      message.author.tag,
-      message.author.displayAvatarURL({ dynamic: true }),
-    )
+    .setAuthor(message.author.tag)
     .setDescription(`**Suggestion**: ${suggestionQuery}`)
-    .setColor('ORANGE')
-    .addField('Status', 'PENDING');
+    .setColor('4f545c')
+    .setFooter('⏱️ Status: PENDING');
 
   message.channel.send('Submitted suggestion is at <#842069893113446410> !');
   message.guild.channels.cache.get('842069893113446410').send(embed).then((msg) => {
