@@ -13,14 +13,16 @@ module.exports.run = async (client, message, args) => {
         const suggestionChannel = message.guild.channels.cache.get(
             "842069893113446410"
         );
+        const editor = message.author.tag;
         const suggestedEmbed = await suggestionChannel.messages.fetch(messageID);
-        console.log(suggestedEmbed);
         const data = suggestedEmbed.embeds[0];
         const acceptEmbed = new MessageEmbed()
-            .setAuthor(data.author.name, data.author.iconURL)
+            .setAuthor(data.author.name)
             .setDescription(data.description)
             .setColor(`GREEN`)
-            .addField("**Status**: **(ACCEPTED)**", acceptQuery);
+            .addField("**Note** ", acceptQuery)
+            .setTimestamp()
+            .setFooter(`✅ Status: ACCEPTED by ${editor}`);
         
         message.channel.send("Suggestion: **ACCEPTED** ! `updated`");
         suggestedEmbed.edit(acceptEmbed);
