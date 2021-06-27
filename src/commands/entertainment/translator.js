@@ -14,7 +14,7 @@ module.exports.run = async (client, message, args) => {
 
     const translatedRU = await translate(translateQuery, { to: 'ru' });
     const embedRU = new MessageEmbed()
-        .setDescription(`<:util_googletranslate:858727960693833739> **Россия**\n\n**Translation**: ${translatedRU.text}`)
+        .setDescription(`<:util_googletranslate:858727960693833739> **RUSSIAN**\n\n**Translation**: ${translatedRU.text}`)
         .setColor(`2f3136`);
 
     const translatedID = await translate(translateQuery, { to: 'id' });
@@ -34,12 +34,12 @@ module.exports.run = async (client, message, args) => {
 
     const translatedJA = await translate(translateQuery, { to: 'ja' });
     const embedJA = new MessageEmbed()
-        .setDescription(`<:util_googletranslate:858727960693833739> **日本**\n\n**Translation**: ${translatedJA.text}`)
+        .setDescription(`<:util_googletranslate:858727960693833739> **JAPANESE**\n\n**Translation**: ${translatedJA.text}`)
         .setColor(`2f3136`);
 
     const translatedKO = await translate(translateQuery, { to: 'ko' });
     const embedKO = new MessageEmbed()
-        .setDescription(`<:util_googletranslate:858727960693833739> **대한민국**\n\n**Translation**: ${translatedKO.text}`)
+        .setDescription(`<:util_googletranslate:858727960693833739> **KOREAN**\n\n**Translation**: ${translatedKO.text}`)
         .setColor(`2f3136`);
     
     const translatedTR = await translate(translateQuery, { to: 'tr' });
