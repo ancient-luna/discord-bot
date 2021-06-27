@@ -9,7 +9,7 @@ module.exports.run = async (client, message, args) => {
 
     const translated = await translate(translateQuery, { to: 'en' });
     const embedEN = new MessageEmbed()
-        .setDescription(`**EN**: ${translated.text}`)
+        .setDescription(`<:util_googletranslate:858727960693833739> **ENGLISH**\n\n**Translation**: ${translated.text}`)
         .setColor(`2f3136`);
 
     const translatedRU = await translate(translateQuery, { to: 'ru' });
