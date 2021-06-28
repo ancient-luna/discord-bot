@@ -116,7 +116,9 @@ client.on('guildMemberRemove', async (member) => {
   const channel = member.guild.channels.cache.get(gatewayChannelId);
 
   const embed = new MessageEmbed()
-    .setDescription(`The lights get dimmed! <@${member.user.id}> leaving the sanctuary`, member.user.displayAvatarURL({ dynamic: true, size: 512 }))
+    .setDescription(`The lights get dimmed! **${member.user.username}#${member.user.discriminator}** leaving the sanctuary`)
+    .setFooter(`ID: ${member.user.id} for the lux casta memoir`)
+    .setTimestamp()
     .setColor('RED');
   channel.send(embed);
 });
