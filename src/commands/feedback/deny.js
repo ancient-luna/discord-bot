@@ -17,12 +17,12 @@ module.exports.run = async (client, message, args) => {
         const suggestedEmbed = await suggestionChannel.messages.fetch(messageID);
         const data = suggestedEmbed.embeds[0];
         const acceptEmbed = new MessageEmbed()
-            .setAuthor(data.author.name)
+            .setAuthor(data.author.name, "https://i.imgur.com/oZvnuem.png")
+            .setTitle('Suggestion Denied')
             .setDescription(data.description)
             .setColor(`RED`)
-            .addField("<:vcon_vote_denied:859075142256951327> **DENIED**", `**Note**: ${denyQuery}`)
+            .addField(`Reason from ${editor}`, denyQuery)
             .setTimestamp()
-            .setFooter(`${editor}`);
         
         message.channel.send("Suggestion: **DENIED** ! `updated`");
         suggestedEmbed.edit(acceptEmbed);
@@ -38,5 +38,5 @@ module.exports.run = async (client, message, args) => {
 }
 
 module.exports.help = {
-    name: 'tdeny'
+    name: 'deny'
 }
