@@ -20,9 +20,9 @@ module.exports.run = async (client, message, args) => {
             .setAuthor(data.author.name)
             .setDescription(data.description)
             .setColor(`RED`)
-            .addField("**Note** ", denyQuery)
+            .addField("<:vcon_vote_denied:859075142256951327> **DENIED**", `**Note**: ${denyQuery}`)
             .setTimestamp()
-            .setFooter(`⛔ Status: DENIED by ${editor}`);
+            .setFooter(`${editor}`);
         
         message.channel.send("Suggestion: **DENIED** ! `updated`");
         suggestedEmbed.edit(acceptEmbed);
@@ -38,5 +38,5 @@ module.exports.run = async (client, message, args) => {
 }
 
 module.exports.help = {
-    name: 'deny'
+    name: 'tdeny'
 }

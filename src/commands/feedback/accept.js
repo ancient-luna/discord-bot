@@ -20,9 +20,9 @@ module.exports.run = async (client, message, args) => {
             .setAuthor(data.author.name)
             .setDescription(data.description)
             .setColor(`GREEN`)
-            .addField("**Note** ", acceptQuery)
+            .addField("<:vcon_vote_accepted:859075138329903114> **ACCEPTED**", `**Note**: ${acceptQuery}`)
             .setTimestamp()
-            .setFooter(`✅ Status: ACCEPTED by ${editor}`);
+            .setFooter(`${editor}`);
         
         message.channel.send("Suggestion: **ACCEPTED** ! `updated`");
         suggestedEmbed.edit(acceptEmbed);
@@ -38,5 +38,5 @@ module.exports.run = async (client, message, args) => {
 }
 
 module.exports.help = {
-    name: 'accept'
+    name: 'taccept'
 }
