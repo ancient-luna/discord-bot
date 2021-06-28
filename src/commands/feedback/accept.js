@@ -17,12 +17,12 @@ module.exports.run = async (client, message, args) => {
         const suggestedEmbed = await suggestionChannel.messages.fetch(messageID);
         const data = suggestedEmbed.embeds[0];
         const acceptEmbed = new MessageEmbed()
-            .setAuthor(data.author.name)
+            .setAuthor(data.author.name, "https://i.imgur.com/Kll2T98.png")
+            .setTitle('Suggestion Accepted')
             .setDescription(data.description)
             .setColor(`GREEN`)
-            .addField("<:vcon_vote_accepted:859075138329903114> **ACCEPTED**", `**Note**: ${acceptQuery}`)
+            .addField(`Reason from ${editor}`, acceptQuery)
             .setTimestamp()
-            .setFooter(`${editor}`);
         
         message.channel.send("Suggestion: **ACCEPTED** ! `updated`");
         suggestedEmbed.edit(acceptEmbed);
@@ -38,5 +38,5 @@ module.exports.run = async (client, message, args) => {
 }
 
 module.exports.help = {
-    name: 'taccept'
+    name: 'accept'
 }
