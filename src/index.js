@@ -2,7 +2,7 @@ require('dotenv').config();
 
 const { Client, MessageEmbed } = require('discord.js');
 
-const client = new Client({});
+const client = new Client({ partials: ['MESSAGE', 'CHANNEL', 'REACTION']});
 const { promisify } = require('util');
 const { resolve } = require('path');
 const readdir = promisify(require('fs').readdir);
