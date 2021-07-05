@@ -67,7 +67,7 @@ module.exports.run = async (client, message, args) => {
                 await reaction.message.guild.members.cache.get(user.id).roles.remove(BlackDesertOnlineRole);
                 const removeEmbed = new MessageEmbed()
                     .setAuthor("ROLE REMOVED", "https://i.imgur.com/etMSX3u.png")
-                    .setDescription(`Your **Agma** role were taken away from you since you unreacted and has no longer access to **Black Desert Online category** anymore`)
+                    .setDescription(`Your **Agma** role were taken away from you since you unreacted and has no longer access to **Black Desert Online** category anymore`)
                     .setTimestamp()
                     .setColor("RED")
                     .setFooter("Ancient Luna")
@@ -77,7 +77,7 @@ module.exports.run = async (client, message, args) => {
                 await reaction.message.guild.members.cache.get(user.id).roles.remove(ApexLegendsRole);
                 const removeEmbed = new MessageEmbed()
                     .setAuthor("ROLE REMOVED", "https://i.imgur.com/BbW7VAX.png")
-                    .setDescription(`Your **Apex** role were taken away from you since you unreacted and has no longer access to **Apex Legends** anymore`)
+                    .setDescription(`Your **Apex** role were taken away from you since you unreacted and has no longer access to **Apex Legends** category anymore`)
                     .setTimestamp()
                     .setColor("RED")
                     .setFooter("Ancient Luna")
