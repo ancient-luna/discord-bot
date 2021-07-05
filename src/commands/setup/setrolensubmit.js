@@ -3,7 +3,7 @@ const { MessageEmbed, ReactionManager } = require('discord.js');
 module.exports.run = async (client, message, args) => {
     if (!message.member.permissions.has("MANAGE_MESSAGES")) return;
     
-    const channel = '839206614007021668';
+    const channel = '842069549675184189';
     const BlackDesertOnlineRole = message.guild.roles.cache.find(role => role.name === 'Agma')
     const ApexLegendsRole = message.guild.roles.cache.find(role => role.name === 'Apex')
 
