@@ -30,7 +30,13 @@ module.exports.run = async (client, message, args) => {
         const user = await client.users.cache.find(
             (u) => u.tag === data.author.name
         );
-        user.send("Your suggestion has been **DENIED** by the Elders. Thank you");
+        const denyEmbed = new MessageEmbed()
+            .setAuthor("SUGGESTION DENIED", "https://i.imgur.com/oZvnuem.png")
+            .setDescription("Your suggestion has been denied by the Elders. Find out why in **[Ancient Luna Discord Server](https://discord.com/invite/Sbp2nt8QHe)**. Thank you for the suggestion!")
+            .setTimestamp()
+            .setColor("RED")
+            .setFooter("#feedback")
+        user.send(denyEmbed);
     } catch (err) {
         console.log(err);
         message.channel.send(`That suggestion doesn't exist.`);
