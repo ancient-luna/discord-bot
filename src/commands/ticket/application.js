@@ -34,7 +34,7 @@ module.exports.run = async (client, message, args) => {
     });
 
     const openTicket = new MessageEmbed()
-        .setAuthor(`${message.author.tag}: OPEN A TICKET`, message.author.displayAvatarURL({ dynamic: true }))
+        .setAuthor(`${message.author.tag}: A TICKET OPENED`, message.author.displayAvatarURL({ dynamic: true }))
         .setDescription(`Your application ticket is ready <#${channel.id}>`)
         .setFooter(`this message will be deleted in 30 seconds`)
         .setColor('4f545c')
@@ -56,5 +56,5 @@ module.exports.run = async (client, message, args) => {
 }
   
 module.exports.help = {
-    name: 'applyticket'
+    name: 'apply'
 }
