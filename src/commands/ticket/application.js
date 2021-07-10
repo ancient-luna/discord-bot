@@ -12,10 +12,8 @@ module.exports.run = async (client, message, args) => {
         ATTACH_FILES: true,
         READ_MESSAGE_HISTORY: true,
         USE_EXTERNAL_EMOJIS: true,
-        ADD_REACTIONS: false
+        ADD_REACTIONS: true
     });
-
-    const seekerID = await message.guild.roles.cache.get("853585853104390175");
 
     await channel.updateOverwrite(seekerID, {
         SEND_MESSAGES: true,
@@ -34,7 +32,7 @@ module.exports.run = async (client, message, args) => {
     });
 
     const openTicket = new MessageEmbed()
-        .setAuthor(`${message.author.tag}: APPLICATION TICKET`, message.author.displayAvatarURL({ dynamic: true }))
+        .setAuthor(`${message.author.tag}: A TICKET OPEN`, message.author.displayAvatarURL({ dynamic: true }))
         .setDescription(`Your application ticket is ready <#${channel.id}>`)
         .setFooter(`this message will be deleted in 30 seconds`)
         .setColor('4f545c')
@@ -47,7 +45,7 @@ module.exports.run = async (client, message, args) => {
     await message.delete();
 
     const mEmbed = new MessageEmbed()
-        .setAuthor(`${message.author.tag}: TICKET SUPPORT`, message.author.displayAvatarURL({ dynamic: true }))
+        .setAuthor(`${message.author.tag}: APPLICATION TICKET`, message.author.displayAvatarURL({ dynamic: true }))
         .setDescription(`Thank you for your application. The Ancestor will be here as soon as possible! If he still alive out there. Please take your time while waiting`)
         .setFooter(`note: Don't hesitate to mention him if need now `)
         .setColor("4f545c")
