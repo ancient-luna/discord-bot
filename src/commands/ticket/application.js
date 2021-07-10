@@ -36,11 +36,11 @@ module.exports.run = async (client, message, args) => {
     const openTicket = new MessageEmbed()
         .setAuthor(`${message.author.tag}: A TICKET OPENED`, message.author.displayAvatarURL({ dynamic: true }))
         .setDescription(`Your application ticket is ready <#${channel.id}>`)
-        .setFooter(`this message will be deleted in 30 seconds`)
+        .setFooter(`this message will be deleted in 10 seconds`)
         .setColor('4f545c')
 
     message.channel.send(openTicket).then((msg) => {
-        setTimeout(() => msg.delete(), 30000);
+        setTimeout(() => msg.delete(), 10000);
         setTimeout(() => message.delete());
     }).catch((err) => {
         throw err;
