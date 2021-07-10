@@ -53,8 +53,8 @@ module.exports.run = async (client, message, args) => {
         .setColor("4f545c")
 
     let m = await channel.send(mEmbed)
-  }
+}
   
-  module.exports.help = {
+module.exports.help = {
     name: 'applyticket'
-  }
+}
