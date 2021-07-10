@@ -12,16 +12,16 @@ module.exports.run = async (client, message, args) => {
         ATTACH_FILES: true,
         READ_MESSAGE_HISTORY: true,
         USE_EXTERNAL_EMOJIS: true,
-        ADD_REACTIONS: true
+        ADD_REACTIONS: false
     });
+
+    const seekerID = await message.guild.roles.cache.get("853585853104390175");
 
     await channel.updateOverwrite(seekerID, {
         SEND_MESSAGES: true,
         VIEW_CHANNEL: true,
         MANAGE_CHANNELS: true,
         MANAGE_MESSAGES: true,
-        MANAGE_GUILD: true,
-        CREATE_INSTANT_INVITE: true,
         EMBED_LINKS: true,
         ATTACH_FILES: true,
         READ_MESSAGE_HISTORY: true,
@@ -52,7 +52,7 @@ module.exports.run = async (client, message, args) => {
         .setFooter(`note: Don't hesitate to mention him if need now `)
         .setColor("4f545c")
 
-    let m = await channel.send(mEmbed)
+    await channel.send(mEmbed)
 }
   
 module.exports.help = {
