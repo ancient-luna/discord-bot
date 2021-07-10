@@ -20,6 +20,8 @@ module.exports.run = async (client, message, args) => {
         VIEW_CHANNEL: true,
         MANAGE_CHANNELS: true,
         MANAGE_MESSAGES: true,
+        MANAGE_GUILD: true,
+        CREATE_INSTANT_INVITE: true,
         EMBED_LINKS: true,
         ATTACH_FILES: true,
         READ_MESSAGE_HISTORY: true,
@@ -32,7 +34,7 @@ module.exports.run = async (client, message, args) => {
     });
 
     const openTicket = new MessageEmbed()
-        .setAuthor(`${message.author.tag}: A TICKET OPEN`, message.author.displayAvatarURL({ dynamic: true }))
+        .setAuthor(`${message.author.tag}: OPEN A TICKET`, message.author.displayAvatarURL({ dynamic: true }))
         .setDescription(`Your application ticket is ready <#${channel.id}>`)
         .setFooter(`this message will be deleted in 30 seconds`)
         .setColor('4f545c')
