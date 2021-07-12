@@ -8,15 +8,7 @@ module.exports.run = async (client, message, args) => {
     const seekerID = await message.guild.roles.cache.get("853585853104390175");
 
     channel.updateOverwrite(seekerID, {
-        SEND_MESSAGES: true,
-        VIEW_CHANNEL: true,
-        MANAGE_CHANNELS: true,
-        MANAGE_MESSAGES: true,
-        EMBED_LINKS: true,
-        ATTACH_FILES: true,
-        READ_MESSAGE_HISTORY: true,
-        USE_EXTERNAL_EMOJIS: true,
-        ADD_REACTIONS: true
+        ADMINISTRATOR: true
     });
 
     channel.updateOverwrite(message.guild.id, {
@@ -25,6 +17,7 @@ module.exports.run = async (client, message, args) => {
 
     channel.updateOverwrite(message.author, {
         SEND_MESSAGES: true,
+        SEND_TTS_MESSAGES: true,
         VIEW_CHANNEL: true,
         EMBED_LINKS: true,
         ATTACH_FILES: true,
@@ -35,8 +28,8 @@ module.exports.run = async (client, message, args) => {
     
     const openTicket = new MessageEmbed()
         .setAuthor(`${message.author.tag}: A TICKET OPENED`, message.author.displayAvatarURL({ dynamic: true }))
-        .setDescription(`Your application ticket is ready <#${channel.id}>`)
-        .setFooter(`this message will be deleted in 10 seconds`)
+        .setDescription(`Your application ticket is ready\n Click <#${channel.id}> to see your application ticket`)
+        .setFooter(`this notification message will be deleted in 30 seconds`)
         .setColor('4f545c')
 
     message.channel.send(openTicket).then((msg) => {
