@@ -49,8 +49,6 @@ client.on('ready', async () => {
   rulesChannelId = gConfig.server.ruleChannel;
   luxCastaId = gConfig.server.memberRole;
 
-  client.user.setActivity('back the memories', { type: "STREAMING", url: "https://www.youtube.com/watch?v=SJoqzhnqz3c" });
-
   // eslint-disable-next-line no-restricted-syntax,no-unused-vars,no-use-before-define
   for await (const f of getFiles('./src/commands')) {
     // eslint-disable-next-line no-useless-catch
