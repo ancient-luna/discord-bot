@@ -28,12 +28,12 @@ module.exports.run = async (client, message, args) => {
     
     const openTicket = new MessageEmbed()
         .setAuthor(`${message.author.tag}: A TICKET OPENED`, message.author.displayAvatarURL({ dynamic: true }))
-        .setDescription(`Your application ticket is ready\n Click <#${channel.id}> to see your application ticket`)
-        .setFooter(`this notification message will be deleted in 30 seconds`)
+        .setDescription(`Click <#${channel.id}> to see your application ticket`)
+        .setFooter(`this notification message will be deleted in 30 seconds`, `https://i.imgur.com/u31EKMh.png`)
         .setColor('4f545c')
 
     message.channel.send(openTicket).then((msg) => {
-        setTimeout(() => msg.delete(), 10000);
+        setTimeout(() => msg.delete(), 30000);
         setTimeout(() => message.delete());
     }).catch((err) => {
         throw err;
