@@ -1,26 +1,89 @@
 const { MessageEmbed, ReactionManager } = require('discord.js');
+const { MessageMenu, MessageMenuOption, MessageActionRow } = require('discord-buttons');
 
 module.exports.run = async (client, message, args) => {
     if (!message.member.permissions.has("MANAGE_MESSAGES")) return;
     
-    const channel = '842069549675184189';
-    const BlackDesertOnlineRole = message.guild.roles.cache.find(role => role.name === 'Agma')
-    const ApexLegendsRole = message.guild.roles.cache.find(role => role.name === 'Apex')
+    const ticketOption = new MessageMenuOption()
+        .setLabel("Application")
+        .setEmoji("🔓")
+        .setValue("select-ticket")
 
-    const BlackDesertOnlineEmoji = '<:game_logo_bdo:861579805660151818>';
-    const ApexLegendsEmoji = '<:game_logo_apex:861580082418417664>';
+    const suggestionOption = new MessageMenuOption()
+        .setLabel("Feedback")
+        .setEmoji("📝")
+        .setValue("select-suggestion")
+    
+    const rolesOption = new MessageMenuOption()
+        .setLabel("Roles")
+        .setEmoji("🎮")
+        .setValue("select-roles")
 
-    let embed = new MessageEmbed()
-        .setAuthor("DIVINARE DEITY")
-        .setDescription('**React** to any reaction that sutis you for the game you love. By this you will unlock the hidden category in this server to meet another fellow seeker in this sanctuary\n\n'
-            + `${BlackDesertOnlineEmoji} <@&856380073745186876> for **Black Desert Online** /`
-            + `${ApexLegendsEmoji} <@&861400119101095937> for **Apex Legends**\n⁣`)
-        .addField(`SUBMITTING YOUR SUGGESTION`, '⁣\n**Type** the command `!suggest` followed by the feedback you want to send\n**Example** `!suggest` `ancestor need awake 24/7` in <#842069549675184189>')
-        .setColor('2f3136')
+    const dropDownMenu = new MessageMenu()
+        .setID("dropdown-menu")
+        .setPlaceholder("How to submit and get ...")
+        .addOption(ticketOption)
+        .addOption(suggestionOption)
+        .addOption(rolesOption)
 
-    let messageEmbed = await message.channel.send(embed);
-    messageEmbed.react(BlackDesertOnlineEmoji);
-    messageEmbed.react(ApexLegendsEmoji);
+    const MenuActionRow = new MessageActionRow()
+        .addComponent(dropDownMenu)
+
+    const embedDDM = new MessageEmbed()
+        .setTitle("Ancient Luna Divinare Deity")
+        .setDescription("???")
+        .setFooter("ilove that i love")
+
+    message.channel.send(embedDDM, { components: [MenuActionRow] });
+    
+    message.delete()
+
+    client.on('clickMenu', async (menu) => {
+        if (!menu.channel || !menu.guild || menu.clicker.user.bot) return;
+
+        if (menu.values[0] === 'select-ticket') {
+            const embed = new MessageEmbed()
+                .setTitle("Open an application ticket")
+                .setDescription("**Type** the command `!applyticket` here in <#842069549675184189>")
+                .setColor('2f3136')
+
+            menu.reply.send(embed, true);
+        }
+        
+        if (menu.values[0] === 'select-suggestion') {
+            const embed = new MessageEmbed()
+                .setTitle("Give feedback and suggestion")
+                .setDescription("**Type** the command `!suggest` followed by the feedback you want to send\n**Example** `!suggest` `ancestor need awake 24/7` here in <#842069549675184189>")
+                .setColor('2f3136')
+
+            menu.reply.send(embed, true);
+        }
+        
+        if (menu.values[0] === 'select-roles') {
+            const channel = '842069549675184189';
+            const BlackDesertOnlineRole = message.guild.roles.cache.find(role => role.name === 'Agma')
+            const ApexLegendsRole = message.guild.roles.cache.find(role => role.name === 'Apex')
+
+            const BlackDesertOnlineEmoji = '<:game_logo_bdo:861579805660151818>';
+            const ApexLegendsEmoji = '<:game_logo_apex:861580082418417664>';
+
+            let embed = new MessageEmbed()
+                .setTitle('All claimable roles in server')
+                .setDescription('**React** to any reaction that suits you for the game you love. By this you will unlock the hidden category in this server to meet another fellow seeker in this sanctuary\n\n'
+                    + `${BlackDesertOnlineEmoji} <@&856380073745186876> for **Black Desert Online** `
+                    + `${ApexLegendsEmoji} <@&861400119101095937> for **Apex Legends**\n\nThe <:game_logo_df:861580085000798229> <@&856379808937410590> role only given to clan members and clan alliances in **Dead Frontier** game. You can apply to get this role by open your application ticket.`)
+                .setColor('2f3136')
+
+            const messageEmbed = await menu.channel.send(embed, true);
+
+            messageEmbed.react(BlackDesertOnlineEmoji);
+            messageEmbed.react(ApexLegendsEmoji);
+
+            setTimeout(() => {
+                message.delete()
+            }, 5000)
+        }
+    })
 
     client.on('messageReactionAdd', async (reaction, user) => {
         if (reaction.message) await reaction.message.fetch();
