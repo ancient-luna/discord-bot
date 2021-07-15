@@ -27,7 +27,7 @@ module.exports.run = async (Client, message) => {
         if(!invite.code) return message.channel.send("Something wrong with YT-Together link. Don't blame me")
         const embed = new MessageEmbed()
             .setTitle(`Get your snacks and relax 🍿`)
-            .setDescription(`Watch **[YouTube Together](https://discord.com/invite/${invite.code})** without ads in Ancient Luna\nonly **chattime** and **watchmovie** channel allowed`)
+            .setDescription(`Watch **[YouTube Together](https://discord.com/invite/${invite.code} 'YouTube Together')** without ads in Ancient Luna\nonly **chattime** and **watchmovie** channel allowed`)
             .setFooter(`Mobile ver. not supported`, "https://i.imgur.com/7WAJS44.png")
             .setColor('7289da')
 

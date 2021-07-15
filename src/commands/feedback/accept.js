@@ -32,7 +32,7 @@ module.exports.run = async (client, message, args) => {
         );
         const accEmbed = new MessageEmbed()
             .setAuthor("SUGGESTION ACCEPTED", "https://i.imgur.com/Kll2T98.png")
-            .setDescription("Your suggestion has been accepted by the Elders. See further detail in **[Ancient Luna Discord Server](https://discord.com/invite/Sbp2nt8QHe)**. Thank you for the suggestion!")
+            .setDescription("Your suggestion has been accepted by the Elders. See further detail in **[Ancient Luna Discord Server](https://discord.com/invite/Sbp2nt8QHe 'Ancient Luna Discord Server')**. Thank you for the suggestion!")
             .setTimestamp()
             .setColor("GREEN")
             .setFooter("#feedback")
