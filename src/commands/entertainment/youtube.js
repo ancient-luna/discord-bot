@@ -5,7 +5,7 @@ const fetch = require("node-fetch");
 module.exports.run = async (Client, message) => {
     let channel = message.member.voice.channel;
 
-    if(!channel) return message.reply(`You have to be in any **voice channel** first`)
+    if(!channel) return message.channel.send(`You have to be in any **voice channel** first in this server`)
 
     fetch (`https://discord.com/api/v8/channels/${channel.id}/invites`, {
         method: "POST",
