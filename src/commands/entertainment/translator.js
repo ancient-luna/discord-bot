@@ -18,7 +18,7 @@ module.exports.run = async (client, message, args) => {
 
     const translatedID = await translate(translateQuery, { to: 'id' });
     const embedID = new MessageEmbed()
-        .setDescription(`<:util_googletranslate:858727960693833739> **INDONESIAN**\n\n**Translation**:  ${translatedID.text}`)
+        .setDescription(`<:util_googletranslate:858727960693833739> **INDONESIAN**\n\n**Translation**: ${translatedID.text}`)
         .setColor(`2f3136`);
 
     const translatedTH = await translate(translateQuery, { to: 'th' });
