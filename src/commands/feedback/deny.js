@@ -32,7 +32,7 @@ module.exports.run = async (client, message, args) => {
         );
         const denyEmbed = new MessageEmbed()
             .setAuthor("SUGGESTION DENIED", "https://i.imgur.com/oZvnuem.png")
-            .setDescription("Your suggestion has been denied by the Elders. Find out why in **[Ancient Luna Discord Server](https://discord.com/invite/Sbp2nt8QHe)**. Thank you for the suggestion!")
+            .setDescription("Your suggestion has been denied by the Elders. Find out why in **[Ancient Luna Discord Server](https://discord.com/invite/Sbp2nt8QHe 'Ancient Luna Discord Server')**. Thank you for the suggestion!")
             .setTimestamp()
             .setColor("RED")
             .setFooter("#feedback")

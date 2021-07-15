@@ -6,17 +6,20 @@ module.exports.run = async (client, message, args) => {
     
     const ticketOption = new MessageMenuOption()
         .setLabel("Application")
-        .setEmoji("🔓")
+        .setDescription("Open an application ticket")
+        .setEmoji("864810269771300875")
         .setValue("select-ticket")
 
     const suggestionOption = new MessageMenuOption()
         .setLabel("Feedback")
-        .setEmoji("📝")
+        .setDescription("Give feedback and suggestion")
+        .setEmoji("864810269771300875")
         .setValue("select-suggestion")
     
     const rolesOption = new MessageMenuOption()
         .setLabel("Roles")
-        .setEmoji("🎮")
+        .setDescription("All claimable roles in server")
+        .setEmoji("864810269771300875")
         .setValue("select-role")
 
     const dropDownMenu = new MessageMenu()
@@ -42,7 +45,7 @@ module.exports.run = async (client, message, args) => {
         if (menu.values[0] === 'select-ticket') {
             const embedTicket = new MessageEmbed()
                 .setTitle("Open an application ticket")
-                .setDescription("**Type** the command `!applyticket` here in <#842069549675184189>")
+                .setDescription("**Type** the command `!applyticket` here in <#864556584818835456>")
                 .setColor('2f3136')
 
             menu.reply.send(embedTicket, true);
@@ -51,7 +54,7 @@ module.exports.run = async (client, message, args) => {
         if (menu.values[0] === 'select-suggestion') {
             const embedSuggestion = new MessageEmbed()
                 .setTitle("Give feedback and suggestion")
-                .setDescription("**Type** the command `!suggest` followed by the feedback you want to send\n**Example** `!suggest` `ancestor need awake 24/7` here in <#842069549675184189>")
+                .setDescription("**Type** the command `!suggest` followed by the feedback you want to send\n**Example** `!suggest` `ancestor need awake 24/7` here in <#864556584818835456>")
                 .setColor('2f3136')
 
             menu.reply.send(embedSuggestion, true);
