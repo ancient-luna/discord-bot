@@ -5,7 +5,9 @@ const fetch = require("node-fetch");
 module.exports.run = async (Client, message) => {
     let channel = message.member.voice.channel;
 
-    if(!channel) return message.reply(`You have to be in any **voice channel** first`)
+    message.delete()
+
+    if(!channel) return message.reply(`You have to be in any **voice channel** first`).then((msg) => { setTimeout(() => msg.delete(), 10000); });
 
     fetch (`https://discord.com/api/v8/channels/${channel.id}/invites`, {
         method: "POST",
@@ -30,7 +32,7 @@ module.exports.run = async (Client, message) => {
             .setTitle(`Get your snacks and relax 🍿`)
             .setDescription(`**${message.author.username}** has started **[YouTube Together](https://discord.com/invite/${invite.code})**\nWatch YouTube videos without ads in Ancient Luna`)
             .setFooter(`Mobile ver. not supported`, "https://i.imgur.com/7WAJS44.png")
-            .setColor('2f3136')
+            .setColor('ed0000')
 
         const buttonWatch = new MessageButton()
             .setStyle("url")
