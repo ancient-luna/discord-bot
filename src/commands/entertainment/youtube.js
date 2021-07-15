@@ -4,7 +4,10 @@ const fetch = require("node-fetch");
 
 module.exports.run = async (Client, message) => {
     let channel = message.member.voice.channel;
-    if(!channel) return message.channel.send(`You have to be in **watchmovie** or **chattime** voice channel`)
+
+    message.delete();
+
+    if(!channel) return message.reply(`You have to be in any **voice channel** first`).then((msg) => { setTimeout(() => { msg.delete() }, 10000) });
 
     fetch (`https://discord.com/api/v8/channels/${channel.id}/invites`, {
         method: "POST",
@@ -27,7 +30,7 @@ module.exports.run = async (Client, message) => {
         if(!invite.code) return message.channel.send("Something wrong with YT-Together link. Don't blame me")
         const embed = new MessageEmbed()
             .setTitle(`Get your snacks and relax 🍿`)
-            .setDescription(`Watch **[YouTube Together](https://discord.com/invite/${invite.code} 'YouTube Together')** without ads in Ancient Luna\nonly **chattime** and **watchmovie** channel allowed`)
+            .setDescription(`Click the button to join **${message.author.username}** watching any videos on **[YouTube](https://discord.com/invite/${invite.code} 'YouTube Together')** without ads in Ancient Luna`)
             .setFooter(`Mobile ver. not supported`, "https://i.imgur.com/7WAJS44.png")
             .setColor('7289da')
 
@@ -44,5 +47,5 @@ module.exports.run = async (Client, message) => {
 }
 
 module.exports.help = {
-    name: 'youtube'
+    name: 'yt'
 }
