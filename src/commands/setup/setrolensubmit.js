@@ -13,7 +13,7 @@ module.exports.run = async (client, message, args) => {
     let embed = new MessageEmbed()
         .setTitle("SUBMISSION GUIDELINES")
         .setDescription(`↳ **GIVE FEEDBACK** *( !suggest your_suggestion )*\n\nType the command !suggest followed by the feedback you want to send\nExample !suggest ancestor need to awake 24/7\n\n↳ **OPEN A TICKET** *( !applyticket )*\n\nType the command !applyticket and a room ticket will open for you\n\n↳ **ALL CLAIMABLE ROLES IN SERVER**\n\n⁣The <@&856379808937410590> role only given to clan members and clan alliances in Dead Frontier game. You can apply to get this role by open a ticket for application.\n\n⁣${BlackDesertOnlineEmoji} <@&856380073745186876> for Black Desert Online\n${ApexLegendsEmoji} <@&861400119101095937> for Apex Legends\n\nReact to any reaction that suits you for the game you love. By this you will unlock the hidden category in this server to meet another fellow seeker in this sanctuary`)
-        .setColor("cecece")
+        .setColor("4f545c")
 
     let messageEmbed = await message.channel.send(embed);
     messageEmbed.react(BlackDesertOnlineEmoji);
