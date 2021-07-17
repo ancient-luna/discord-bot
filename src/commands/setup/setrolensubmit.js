@@ -11,10 +11,9 @@ module.exports.run = async (client, message, args) => {
     const ApexLegendsEmoji = '<:game_logo_apex:861580082418417664>';
 
     let embed = new MessageEmbed()
-        .addField('**#** <a:_util_arrow:864810269771300875> **HOW TO SUBMIT A SUGGESTION AND TICKET**\n⁣', '**Type** the command `!suggest` followed by the feedback you want to send\nExample `!suggest` `ancestor need to awake 24/7`\n\n**Type** the command `!applyticket` and a room ticket will open for you\n⁣')
-        .addField('**#** <a:_util_arrow:864810269771300875> **ALL CLAIMABLE ROLES IN SERVER**\n⁣', 'The <:game_logo_df:861580085000798229> <@&856379808937410590> role only given to clan members and clan alliances in **Dead Frontier** game. You can apply to get this role by open a ticket for application.\n\n'
-            + `${BlackDesertOnlineEmoji} <@&856380073745186876> for **Black Desert Online** `
-            + `${ApexLegendsEmoji} <@&861400119101095937> for **Apex Legends**\n\n**React** to any reaction that suits you for the game you love. By this you will unlock the hidden category in this server to meet another fellow seeker in this sanctuary`)
+        .setTitle("SUBMISSION GUIDELINES")
+        .setDescription(`↳ **GIVE FEEDBACK** *( !suggest your_suggestion )*\n\nType the command !suggest followed by the feedback you want to send\nExample !suggest ancestor need to awake 24/7\n\n↳ **OPEN A TICKET** *( !applyticket )*\n\nType the command !applyticket and a room ticket will open for you\n\n↳ **ALL CLAIMABLE ROLES IN SERVER**\n\n⁣The <@&856379808937410590> role only given to clan members and clan alliances in Dead Frontier game. You can apply to get this role by open a ticket for application.\n\n⁣${BlackDesertOnlineEmoji} <@&856380073745186876> for Black Desert Online\n${ApexLegendsEmoji} <@&861400119101095937> for Apex Legends\n\nReact to any reaction that suits you for the game you love. By this you will unlock the hidden category in this server to meet another fellow seeker in this sanctuary`)
+        .setColor("cecece")
 
     let messageEmbed = await message.channel.send(embed);
     messageEmbed.react(BlackDesertOnlineEmoji);
@@ -37,6 +36,7 @@ module.exports.run = async (client, message, args) => {
                 user.send(addBDO)
                 const addBDOmsg = new MessageEmbed()
                     .setDescription('Role **<@&856380073745186876>** added!')
+                    .setColor("4f545c")
                 message.channel.send(addBDOmsg).then((msg) => {
                   setTimeout(() => { msg.delete() }, 5000)
                 });
@@ -52,6 +52,7 @@ module.exports.run = async (client, message, args) => {
                 user.send(addAPEX)
                 const addAPEXmsg = new MessageEmbed()
                     .setDescription('Role **<@&861400119101095937>** added!')
+                    .setColor("4f545c")
                 message.channel.send(addAPEXmsg).then((msg) => {
                   setTimeout(() => { msg.delete() }, 5000)
                 });
@@ -78,6 +79,7 @@ module.exports.run = async (client, message, args) => {
                 user.send(removeBDO)
                 const removeBDOmsg = new MessageEmbed()
                     .setDescription('Role **<@&856380073745186876>** removed!')
+                    .setColor("4f545c")
                 message.channel.send(removeBDOmsg).then((msg) => {
                   setTimeout(() => { msg.delete() }, 5000)
                 });
@@ -93,6 +95,7 @@ module.exports.run = async (client, message, args) => {
                 user.send(removeAPEX)
                 const removeAPEXmsg = new MessageEmbed()
                     .setDescription('Role **<@&861400119101095937>** removed!')
+                    .setColor("4f545c")
                 message.channel.send(removeAPEXmsg).then((msg) => {
                   setTimeout(() => { msg.delete() }, 5000)
                 });
