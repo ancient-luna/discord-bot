@@ -80,7 +80,7 @@ module.exports.run = async (Client, message, args) => {
             .setTitle(username)
             .setURL(`https://www.dfprofiler.com/profile/view/${survivorID}`)
             .setDescription(`
-                ${clan_weekly_ts}
+                **${clan_weekly_ts} EXP** gained while doing 200% event since joined the clan
             `)
             .setFooter(`Powered by Ancient Luna`)
             .setTimestamp()
