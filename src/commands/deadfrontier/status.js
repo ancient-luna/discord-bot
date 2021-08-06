@@ -68,7 +68,7 @@ module.exports.run = async (Client, message, args) => {
         var stat_accuracy = stat['stat_accuracy'].split(" ")
         var stat_critical_hit = stat['stat_critical_hit'].split(" ")
         var stat_reloading = stat['stat_reloading'].split(" ")
-    
+
         var prof_melee = stat['prof_melee']
         var prof_pistols = stat['prof_pistols']
         var prof_rifles = stat['prof_rifles']
@@ -76,15 +76,34 @@ module.exports.run = async (Client, message, args) => {
         var prof_machine_guns = stat['prof_machine_guns']
         var prof_explosives = stat['prof_explosives']
     
-        const embed = new MessageEmbed()
-            .setTitle(username)
-            .setURL(`https://www.dfprofiler.com/profile/view/${survivorID}`)
+        const embedEvent = new MessageEmbed()
             .setDescription(`
                 **${clan_weekly_ts} EXP** gained while doing 200% event since joined the clan
             `)
+    
+        const embed = new MessageEmbed()
+            .setTitle(`${username} (${profession_level})`)
+            .setURL(`https://www.dfprofiler.com/profile/view/${survivorID}`)
+            .addField(`**Account Creation**`, creation_date, true)
+            .addField(`**Last Online**`, last_online, true)
+            .addField(`**Gold Member**`, gold_member, true)
+            .addField(`**Cash**`, cash, true)
+            .addField(`**Bank**`, bank, true)
+            .addField(`**Trade Zone**`, tradezone, true)
+            .addField(`**Health**`, health, true)
+            .addField(`**Nourishment**`, nourishment, true)
+            .addField(`**Inventory**`, inventory, true)
+            .addField(`**Primary Weapon**`, `${weapon_name_1}\n${weapon_info_1}`, true)
+            .addField(`**Secondary Weapon**`, `${weapon_name_2}\n${weapon_info_2}`, true)
+            .addField(`**Tertiary Weapon**`, `${weapon_name_3}\n${weapon_info_3}`, true)
+            .addField(`**Stats**`, `Strength: ${stat_strength}\nEndurance: ${stat_endurance[0]}\nAgility: ${stat_agility[0]}\nAccuracy: ${stat_accuracy[0]}\nCritical: ${stat_critical_hit[0]}\nReloading: ${stat_reloading[0]}`, true)
+            .addField(`**Proficiencies**`, `Melee: ${prof_melee}\nPistols: ${prof_pistols}\nRifles: ${prof_rifles}\nShotguns: ${prof_shotguns}\nMachineguns: ${prof_machine_guns}\nExplosives: ${prof_explosives}`, true)
+            .addField(`**Armor**`, armor, true)
+            .setImage(`https://i.imgur.com/TMI3wTd.gif`)
             .setFooter(`Powered by Ancient Luna`)
             .setTimestamp()
-    
+
+        message.channel.send(embedEvent);
         message.channel.send(embed);
     })
 }
