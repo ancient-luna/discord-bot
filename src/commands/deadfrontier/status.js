@@ -45,6 +45,10 @@ module.exports.run = async (Client, message, args) => {
         var clan_weekly_ts = stat['clan_weekly_ts']
         var clan_weekly_tpk = stat['clan_weekly_tpk']
 
+        var daily_tpk = stat['daily_tpk']
+        var weekly_tpk = stat['weekly_tpk']
+        var pvp_last_hit = stat['pvp_last_hit']
+
         var cash = stat['cash']
         var bank = stat['bank']
     
@@ -77,10 +81,12 @@ module.exports.run = async (Client, message, args) => {
         var prof_explosives = stat['prof_explosives']
     
         const embedEvent = new MessageEmbed()
-            .setDescription(`
-                **${clan_weekly_ts} EXP** gained while doing 200% event since joined the clan
-            `)
-    
+            .setDescription(`**${clan_weekly_ts} EXP**\ngained while doing 200% event since joined the clan`)
+            .setThumbnail(`https://i.imgur.com/ulP4oAd.png`)
+            .addField(`**Daily TPK**`, daily_tpk, true)
+            .addField(`**Weekly TPK**`, weekly_tpk, true)
+            .addField(`**Last Hit By**`, pvp_last_hit, true)
+
         const embed = new MessageEmbed()
             .setTitle(`${username} (${profession_level})`)
             .setURL(`https://www.dfprofiler.com/profile/view/${survivorID}`)
