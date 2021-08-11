@@ -1,11 +1,8 @@
 const { MessageEmbed, Client } = require("discord.js");
 const { MessageButton } = require("discord-buttons");
-const Canvas = require('canvas');
 const jsdom = require("jsdom");
 
-var statCanvas = {};
-
-module.exports.run = async (Client, message, args) => {
+module.exports.run = async (client, message, args) => {
     const survivorID = args.join(" ");
     if (!survivorID) return message.channel.send("Please specify an ID");
 
@@ -23,9 +20,6 @@ module.exports.run = async (Client, message, args) => {
 
         const domUsername = new jsdom.JSDOM(stat['username']);
         var username = domUsername.window.document.querySelector("a").textContent;
-
-        const domClan = new jsdom.JSDOM(stat['clan']);
-        var clan = domClan.window.document.querySelector("a").textContent;
 
         const domHealth = new jsdom.JSDOM(stat['health']);
         var health = domHealth.window.document.querySelector("div").textContent;
@@ -79,17 +73,22 @@ module.exports.run = async (Client, message, args) => {
         var prof_shotguns = stat['prof_shotguns']
         var prof_machine_guns = stat['prof_machine_guns']
         var prof_explosives = stat['prof_explosives']
+
+        var exp_boost = stat['exp_boost'].split("<\/i> ")
+        var dmg_boost = stat['dmg_boost'].split("<\/i> ")
+        var speed_boost = stat['speed_boost'].split("<\/i> ")
     
         const embedEvent = new MessageEmbed()
-            .setDescription(`**${clan_weekly_ts} EXP**\ngained while doing 200% event since joined the clan`)
+            .setDescription(`**${clan_weekly_ts} EXP**\n↳ gained and counted while doing CTS on this week ⁣ ⁣`)
             .setThumbnail(`https://i.imgur.com/ulP4oAd.png`)
             .addField(`**Daily TPK**`, daily_tpk, true)
             .addField(`**Weekly TPK**`, weekly_tpk, true)
             .addField(`**Last Hit By**`, pvp_last_hit, true)
 
         const embed = new MessageEmbed()
-            .setTitle(`${username} (${profession_level})`)
+            .setTitle(`${username}`)
             .setURL(`https://www.dfprofiler.com/profile/view/${survivorID}`)
+            .setDescription(`**${profession_level}** ${experience}`)
             .addField(`**Account Creation**`, creation_date, true)
             .addField(`**Last Online**`, last_online, true)
             .addField(`**Gold Member**`, gold_member, true)
@@ -105,6 +104,9 @@ module.exports.run = async (Client, message, args) => {
             .addField(`**Stats**`, `Strength: ${stat_strength}\nEndurance: ${stat_endurance[0]}\nAgility: ${stat_agility[0]}\nAccuracy: ${stat_accuracy[0]}\nCritical: ${stat_critical_hit[0]}\nReloading: ${stat_reloading[0]}`, true)
             .addField(`**Proficiencies**`, `Melee: ${prof_melee}\nPistols: ${prof_pistols}\nRifles: ${prof_rifles}\nShotguns: ${prof_shotguns}\nMachineguns: ${prof_machine_guns}\nExplosives: ${prof_explosives}`, true)
             .addField(`**Armor**`, armor, true)
+            .addField(`**+50% Exp Boost**`, exp_boost[1], true)
+            .addField(`**+35% Damage Boost**`, dmg_boost[1], true)
+            .addField(`**+35% Speed Boost**`, speed_boost[1], true)
             .setImage(`https://i.imgur.com/TMI3wTd.gif`)
             .setFooter(`Powered by Ancient Luna`)
             .setTimestamp()
