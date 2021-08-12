@@ -125,7 +125,7 @@ module.exports.run = async (client, message, args) => {
 
         const buttonTrade = new MessageButton()
             .setStyle("url")
-            .setLabel("⁣ Trade ⁣")
+            .setLabel("Trade")
             .setURL(`https://fairview.deadfrontier.com/onlinezombiemmo/index.php?page=27&memto=${survivorID}`)
 
         message.channel.send({
