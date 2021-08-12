@@ -112,7 +112,26 @@ module.exports.run = async (client, message, args) => {
             .setTimestamp()
 
         message.channel.send(embedEvent);
-        message.channel.send(embed);
+
+        const buttonProfile = new MessageButton()
+            .setStyle("url")
+            .setLabel("Dead Frontier Profile")
+            .setURL(`https://fairview.deadfrontier.com/onlinezombiemmo/index.php?action=profile;u=${survivorID}`)
+
+        const buttonMessage = new MessageButton()
+            .setStyle("url")
+            .setLabel("Send Message")
+            .setURL(`https://fairview.deadfrontier.com/onlinezombiemmo/index.php?action=pm;sa=send;u=${survivorID}`)
+
+        const buttonTrade = new MessageButton()
+            .setStyle("url")
+            .setLabel("⁣ Trade ⁣")
+            .setURL(`https://fairview.deadfrontier.com/onlinezombiemmo/index.php?page=27&memto=${survivorID}`)
+
+        message.channel.send({
+            buttons: [buttonProfile, buttonMessage, buttonTrade],
+            embed: embed
+        })
     })
 }
 
