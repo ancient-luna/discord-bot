@@ -36,8 +36,7 @@ module.exports.run = async (client, message, args) => {
         var profession_level = stat['profession_level']
         var experience = stat['experience']
     
-        var clan_weekly_ts = stat['clan_weekly_ts']
-        var clan_weekly_tpk = stat['clan_weekly_tpk']
+        var weekly_ts = stat['weekly_ts']
 
         var daily_tpk = stat['daily_tpk']
         var weekly_tpk = stat['weekly_tpk']
@@ -46,7 +45,6 @@ module.exports.run = async (client, message, args) => {
         var cash = stat['cash']
         var bank = stat['bank']
     
-        var outpost = stat['outpost']
         var tradezone = stat['tradezone']
         var creation_date = stat['creation_date']
         var last_online = stat['last_spawn']
@@ -79,7 +77,7 @@ module.exports.run = async (client, message, args) => {
         var speed_boost = stat['speed_boost'].split("<\/i> ")
     
         const embedEvent = new MessageEmbed()
-            .setDescription(`**${clan_weekly_ts} EXP**\n↳ gained and counted while doing CTS on this week ⁣ ⁣`)
+            .setDescription(`**${weekly_ts} EXP**\n↳ gained and counted while doing TS on this week ⁣ ⁣ ⁣ ⁣ ⁣`)
             .setThumbnail(`https://i.imgur.com/ulP4oAd.png`)
             .addField(`**Daily TPK**`, daily_tpk, true)
             .addField(`**Weekly TPK**`, weekly_tpk, true)
