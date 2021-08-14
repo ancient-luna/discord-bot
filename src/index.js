@@ -48,6 +48,10 @@ client.on('ready', async () => {
   rulesChannelId = gConfig.server.ruleChannel;
   luxCastaId = gConfig.server.onJoinConfig.preMemberRole;
 
+  client.user.setActivity("around Inner City", {
+    type: "WATCHING"
+  })
+
   // eslint-disable-next-line no-restricted-syntax,no-unused-vars,no-use-before-define
   for await (const f of getFiles('./src/commands')) {
     // eslint-disable-next-line no-useless-catch
