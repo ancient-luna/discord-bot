@@ -11,7 +11,7 @@ module.exports.run = async (Client, message, args) => {
 
     if (!role) return message.reply('please mention a role after user')
 
-    message.guild.channels.cache.get('860531645916774401').send(`<@${target.user.id}> joining us as alliances from ${role}. Hope we can through this long journey together around Inner City as true <@&856379808937410590>`).then(target.roles.add(role));
+    message.guild.channels.cache.get('860531645916774401').send(`<@${target.user.id}> joining us as <@&873872221368647690> from ${role}. Hope we can through this long journey together around Inner City as true <@&856379808937410590>`).then(target.roles.add(role));
     
     await message.delete();
 
