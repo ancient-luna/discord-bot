@@ -96,7 +96,7 @@ client.on('message', async (message) => {
       await message.member.roles.add(memberRole);
       await message.member.roles.remove(preMemberRole);
       await client.channels.cache.get(gConfig.server.generalChannel).send(
-        `<@${message.author.id}> has passed the trial by understand our wisdom of lleud to reach this warm sanctuary deeper. The <@&${gConfig.server.elderRole}> welcome you as one of <@&${gConfig.server.memberRole}> ${ancientLunaEmoji}`,
+        `<@${message.author.id}> has passed the trial by understand our wisdom of lleud to reach this warm sanctuary deeper. The <@&${gConfig.server.elderRole}> welcome you as one of true light seekers. ${ancientLunaEmoji}`,
       );
     }
     await message.delete();
