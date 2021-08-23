@@ -17,7 +17,7 @@ module.exports.run = async (Client, message, args) => {
 
     const addDF = new MessageEmbed()
         .setAuthor("ROLE ADDED", "https://i.imgur.com/ulP4oAd.png")
-        .setDescription("You have been gived **Survivors** role and have access to **Dead Frontier** category")
+        .setDescription("You have been gived **Fellow Seekers** role and have access to **Dead Frontier** category")
         .setTimestamp()
         .setColor("GREEN")
         .setFooter("#Ancient Luna")
@@ -25,5 +25,5 @@ module.exports.run = async (Client, message, args) => {
 }
 
 module.exports.help = {
-    name: 'divinare'
+    name: 'member'
 }
