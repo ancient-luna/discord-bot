@@ -16,7 +16,7 @@ module.exports.run = async (Client, message, args) => {
     await message.delete();
 
     const addDF = new MessageEmbed()
-        .setAuthor("ROLE ADDED", "https://i.imgur.com/ulP4oAd.png")
+        .setAuthor("ROLE ADDED", "https://i.imgur.com/aLkmV4I.png")
         .setDescription("You have been gived **Fellow Seekers** role and have access to **Dead Frontier** category")
         .setTimestamp()
         .setColor("GREEN")

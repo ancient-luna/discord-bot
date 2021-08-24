@@ -9,7 +9,7 @@ module.exports.run = async (client, message, args) => {
     var request = require('request')
 
     var option = {
-        url: `https://www.dfprofiler.com/profile/json/${survivorID}`,
+        url: `https://www.test2.dfprofiler.com/profile/json/${survivorID}`,
         headers: {
             "X-Requested-With": "XMLHttpRequest"
         }
