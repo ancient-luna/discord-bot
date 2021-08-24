@@ -4,6 +4,15 @@ const axios = require('axios');
 
 module.exports.run = async (Client, message, args) => {
 
+    var errMessage = "This is not an NSFW Channel 💢";
+    if (!message.channel.nsfw) {
+        message.react("💢");
+
+        return message.reply(errMessage).then((msg) => {
+            setTimeout(() => msg.delete(), 5000);
+        });
+    }
+
     if (!args[0]) return message.reply(`no tags given\n
     \`anal\` \`bj\` \`blowjob\` \`boobs\` \`classic\` 
     \`cum\` \`cum_jpg\` \`erofeet\` \`erokemo\` \`erok\` 
@@ -13,15 +22,6 @@ module.exports.run = async (Client, message, args) => {
     \`lewdk\` \`solo\` \`solog\` \`tits\` \`yuri\`
 
 **example:** !hentai \`tag\``);
-
-    var errMessage = "This is not an NSFW Channel";
-    if (!message.channel.nsfw) {
-        message.react("💢");
-
-        return message.reply(errMessage).then((msg) => {
-            setTimeout(() => msg.delete(), 5000);
-        });
-    }
 
     try {
         const response = await axios.get(`https://nekos.life/api/v2/img/${args}`);
