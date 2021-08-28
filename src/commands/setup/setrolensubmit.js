@@ -2,7 +2,7 @@ const { MessageEmbed, ReactionManager } = require('discord.js');
 
 module.exports.run = async (client, message, args) => {
     if (!message.member.permissions.has("MANAGE_MESSAGES")) return;
-    
+
     const channel = '864556584818835456';
     const BlackDesertOnlineRole = message.guild.roles.cache.find(role => role.name === 'Agma')
     const ApexLegendsRole = message.guild.roles.cache.find(role => role.name === 'Apex')
@@ -26,6 +26,7 @@ module.exports.run = async (client, message, args) => {
 
         if (reaction.message.channel.id == channel) {
             if (reaction.emoji.name === 'game_logo_bdo') {
+                await reaction.users.remove(message.author)
                 await reaction.message.guild.members.cache.get(user.id).roles.add(BlackDesertOnlineRole);
                 const addBDO = new MessageEmbed()
                     .setAuthor("ROLE ADDED", "https://i.imgur.com/etMSX3u.png")
@@ -34,13 +35,14 @@ module.exports.run = async (client, message, args) => {
                     .setFooter("#Ancient Luna")
                 user.send(addBDO)
                 const addBDOmsg = new MessageEmbed()
-                    .setDescription('Role **<@&856380073745186876>** added!')
+                    .setDescription(`<@${message.author.id}>, role **<@&856380073745186876>** added!\nNow you can access **Black Desert Online** category in this server`)
                     .setColor("4f545c")
                 message.channel.send(addBDOmsg).then((msg) => {
-                  setTimeout(() => { msg.delete() }, 5000)
+                    setTimeout(() => { msg.delete() }, 5000)
                 });
             }
             if (reaction.emoji.name === 'game_logo_apex') {
+                await reaction.users.remove(message.author)
                 await reaction.message.guild.members.cache.get(user.id).roles.add(ApexLegendsRole);
                 const addAPEX = new MessageEmbed()
                     .setAuthor("ROLE ADDED", "https://i.imgur.com/BbW7VAX.png")
@@ -49,10 +51,10 @@ module.exports.run = async (client, message, args) => {
                     .setFooter("#Ancient Luna")
                 user.send(addAPEX)
                 const addAPEXmsg = new MessageEmbed()
-                    .setDescription('Role **<@&861400119101095937>** added!')
+                    .setDescription(`<@${message.author.id}>, role **<@&861400119101095937>** added!\nNow you can access **Apex Legends** category in this server`)
                     .setColor("4f545c")
                 message.channel.send(addAPEXmsg).then((msg) => {
-                  setTimeout(() => { msg.delete() }, 5000)
+                    setTimeout(() => { msg.delete() }, 5000)
                 });
             }
         } else {
@@ -67,6 +69,7 @@ module.exports.run = async (client, message, args) => {
 
         if (reaction.message.channel.id == channel) {
             if (reaction.emoji.name === 'game_logo_bdo') {
+                await reaction.users.remove(message.author)
                 await reaction.message.guild.members.cache.get(user.id).roles.remove(BlackDesertOnlineRole);
                 const removeBDO = new MessageEmbed()
                     .setAuthor("ROLE REMOVED", "https://i.imgur.com/etMSX3u.png")
@@ -75,13 +78,14 @@ module.exports.run = async (client, message, args) => {
                     .setFooter("#Ancient Luna")
                 user.send(removeBDO)
                 const removeBDOmsg = new MessageEmbed()
-                    .setDescription('Role **<@&856380073745186876>** removed!')
+                    .setDescription(`<@${message.author.id}>, role **<@&856380073745186876>** removed!\nYou have no longer access to **Black Desert Online** category in this server`)
                     .setColor("4f545c")
                 message.channel.send(removeBDOmsg).then((msg) => {
-                  setTimeout(() => { msg.delete() }, 5000)
+                    setTimeout(() => { msg.delete() }, 5000)
                 });
             }
             if (reaction.emoji.name === 'game_logo_apex') {
+                await reaction.users.remove(message.author)
                 await reaction.message.guild.members.cache.get(user.id).roles.remove(ApexLegendsRole);
                 const removeAPEX = new MessageEmbed()
                     .setAuthor("ROLE REMOVED", "https://i.imgur.com/BbW7VAX.png")
@@ -90,10 +94,10 @@ module.exports.run = async (client, message, args) => {
                     .setFooter("#Ancient Luna")
                 user.send(removeAPEX)
                 const removeAPEXmsg = new MessageEmbed()
-                    .setDescription('Role **<@&861400119101095937>** removed!')
+                    .setDescription(`<@${message.author.id}>, role **<@&861400119101095937>** removed!\nYou have no longer access to **Apex Legends** category in this server`)
                     .setColor("4f545c")
                 message.channel.send(removeAPEXmsg).then((msg) => {
-                  setTimeout(() => { msg.delete() }, 5000)
+                    setTimeout(() => { msg.delete() }, 5000)
                 });
             }
         } else {
