@@ -31,7 +31,6 @@ module.exports.run = async (client, message, args) => {
 
         if (reaction.message.channel.id == channel) {
             if (reaction.emoji.name === 'game_logo_bdo') {
-                await reaction.users.remove(message.author)
                 await reaction.message.guild.members.cache.get(user.id).roles.add(BlackDesertOnlineRole);
                 const addBDO = new MessageEmbed()
                     .setAuthor("ROLE ADDED", "https://i.imgur.com/etMSX3u.png")
@@ -47,7 +46,6 @@ module.exports.run = async (client, message, args) => {
                 });
             }
             if (reaction.emoji.name === 'game_logo_apex') {
-                await reaction.users.remove(message.author)
                 await reaction.message.guild.members.cache.get(user.id).roles.add(ApexLegendsRole);
                 const addAPEX = new MessageEmbed()
                     .setAuthor("ROLE ADDED", "https://i.imgur.com/BbW7VAX.png")
@@ -74,7 +72,6 @@ module.exports.run = async (client, message, args) => {
 
         if (reaction.message.channel.id == channel) {
             if (reaction.emoji.name === 'game_logo_bdo') {
-                await reaction.users.remove(message.author)
                 await reaction.message.guild.members.cache.get(user.id).roles.remove(BlackDesertOnlineRole);
                 const removeBDO = new MessageEmbed()
                     .setAuthor("ROLE REMOVED", "https://i.imgur.com/etMSX3u.png")
@@ -90,7 +87,6 @@ module.exports.run = async (client, message, args) => {
                 });
             }
             if (reaction.emoji.name === 'game_logo_apex') {
-                await reaction.users.remove(message.author)
                 await reaction.message.guild.members.cache.get(user.id).roles.remove(ApexLegendsRole);
                 const removeAPEX = new MessageEmbed()
                     .setAuthor("ROLE REMOVED", "https://i.imgur.com/BbW7VAX.png")

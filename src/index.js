@@ -94,7 +94,7 @@ client.on('message', async (message) => {
       const ancientLunaEmoji = client.emojis.find((emoji) => emoji.name === gConfig.server.localEmoji);
       await message.member.roles.add(gConfig.server.memberRole);
       await client.channels.cache.get(gConfig.server.generalChannel).send(
-        `<@${message.author.id}> has passed the trial by understand our wisdom of lleud to reach this warm sanctuary deeper. The <@&${gConfig.server.elderRole}> welcome you as one of true light seekers. ${ancientLunaEmoji}`,
+        `<@${message.author.id}> has passed the trial by understand our wisdom of lleud to reach this warm sanctuary deeper.\nWelcome, to the sanctuary of lights. The <@&${gConfig.server.elderRole}> welcome you as one of true light seekers. ${ancientLunaEmoji}`,
       );
     }
     await message.delete();
@@ -111,7 +111,7 @@ client.on('guildMemberAdd', async (member) => {
     .setTitle(`Welcome to ${member.guild.name}`)
     .setThumbnail(member.user.displayAvatarURL({ dynamic: true, size: 512 }))
     .setDescription(`<@${member.user.id}> please understand our **wisdom of lleud** at ${member.guild.channels.cache.get(rulesChannelId).toString()} as you make your way through this warm sanctuary`)
-    .setFooter(`Fellow seeker ${member.user.username}#${member.user.discriminator}`, member.user.displayAvatarURL({ dynamic: true, size: 512 }))
+    .setFooter(`${member.user.username}#${member.user.discriminator} visited the sanctuary`, member.user.displayAvatarURL({ dynamic: true, size: 512 }))
     .setColor('7289da');
   channel.send(embed);
 });
@@ -121,8 +121,6 @@ client.on('guildMemberRemove', async (member) => {
 
   const embed = new MessageEmbed()
     .setDescription(`The lights get dimmed! **${member.user.username}#${member.user.discriminator}** leaving the sanctuary`)
-    .setFooter(`ID: ${member.user.id} for the lux casta memoir`)
-    .setTimestamp()
     .setColor('RED');
   channel.send(embed);
 });
