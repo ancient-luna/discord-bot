@@ -3,7 +3,7 @@ const { MessageEmbed, ReactionManager } = require('discord.js');
 module.exports.run = async (client, message, args) => {
     if (!message.member.permissions.has("MANAGE_MESSAGES")) return;
 
-    const channel = '864556584818835456';
+    const channel = '839206614007021668';
     const BlackDesertOnlineRole = message.guild.roles.cache.find(role => role.name === 'Agma')
     const ApexLegendsRole = message.guild.roles.cache.find(role => role.name === 'Apex')
 
@@ -41,8 +41,12 @@ module.exports.run = async (client, message, args) => {
                 const addBDOmsg = new MessageEmbed()
                     .setDescription(`<@${message.author.id}>, role **<@&856380073745186876>** added!\nNow you can access **Black Desert Online** category in this server`)
                     .setColor("4f545c")
-                message.channel.send(addBDOmsg).then((msg) => {
-                    setTimeout(() => { msg.delete() }, 10000)
+                message.channel.send(addBDOmsg).then(() =>{
+                    reaction.remove(message.author.id).then((msg) => {
+                        setTimeout(function () {
+                            msg.delete()
+                        }, 4000)
+                    })
                 });
             }
             if (reaction.emoji.name === 'game_logo_apex') {
@@ -57,6 +61,7 @@ module.exports.run = async (client, message, args) => {
                     .setDescription(`<@${message.author.id}>, role **<@&861400119101095937>** added!\nNow you can access **Apex Legends** category in this server`)
                     .setColor("4f545c")
                 message.channel.send(addAPEXmsg).then((msg) => {
+                    reaction.users.remove(message.author), 5000
                     setTimeout(() => { msg.delete() }, 10000)
                 });
             }
@@ -110,5 +115,5 @@ module.exports.run = async (client, message, args) => {
 }
 
 module.exports.help = {
-    name: 'setrolensubmit'
+    name: 'a'
 }
