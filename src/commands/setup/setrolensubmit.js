@@ -40,7 +40,7 @@ module.exports.run = async (client, message, args) => {
                     .setDescription(`${reaction.message.guild.members.cache.get(user.id)}, role **<@&856380073745186876>** added!\nNow you can access **Black Desert Online** category in this server`)
                     .setColor("4f545c")
                 message.channel.send(addBDOmsg).then((msg) => {
-                    setTimeout(() => { msg.delete() }, 10000)
+                    setTimeout(() => { msg.delete() }, 5000)
                 });
             }
             if (reaction.emoji.name === 'game_logo_apex') {
@@ -49,7 +49,7 @@ module.exports.run = async (client, message, args) => {
                     .setDescription(`${reaction.message.guild.members.cache.get(user.id)}, role **<@&861400119101095937>** added!\nNow you can access **Apex Legends** category in this server`)
                     .setColor("4f545c")
                 message.channel.send(addAPEXmsg).then((msg) => {
-                    setTimeout(() => { msg.delete() }, 10000)
+                    setTimeout(() => { msg.delete() }, 5000)
                 });
             }
             if (reaction.emoji.name === 'ancientluna_divinare_s') {
@@ -58,7 +58,7 @@ module.exports.run = async (client, message, args) => {
                     .setDescription(`${reaction.message.guild.members.cache.get(user.id)}, **<@&882350441864777769>** role added\nLust awaits in NSWF channel <#468372462699282443>`)
                     .setColor("4f545c")
                 message.channel.send(addABYSSmsg).then((msg) => {
-                    setTimeout(() => { msg.delete() }, 10000)
+                    setTimeout(() => { msg.delete() }, 5000)
                 });
             }
         } else {
@@ -78,7 +78,7 @@ module.exports.run = async (client, message, args) => {
                     .setDescription(`${reaction.message.guild.members.cache.get(user.id)}, role **<@&856380073745186876>** removed!\nYou have no longer access to **Black Desert Online** category in this server`)
                     .setColor("4f545c")
                 message.channel.send(removeBDOmsg).then((msg) => {
-                    setTimeout(() => { msg.delete() }, 10000)
+                    setTimeout(() => { msg.delete() }, 5000)
                 });
             }
             if (reaction.emoji.name === 'game_logo_apex') {
@@ -87,7 +87,7 @@ module.exports.run = async (client, message, args) => {
                     .setDescription(`${reaction.message.guild.members.cache.get(user.id)}, role **<@&861400119101095937>** removed!\nYou have no longer access to **Apex Legends** category in this server`)
                     .setColor("4f545c")
                 message.channel.send(removeAPEXmsg).then((msg) => {
-                    setTimeout(() => { msg.delete() }, 10000)
+                    setTimeout(() => { msg.delete() }, 5000)
                 });
             }
             if (reaction.emoji.name === 'ancientluna_divinare_s') {
@@ -96,7 +96,7 @@ module.exports.run = async (client, message, args) => {
                     .setDescription(`${reaction.message.guild.members.cache.get(user.id)}, NSWF role **<@&882350441864777769>** removed\nYou are free from lusts from now on`)
                     .setColor("4f545c")
                 message.channel.send(removeABYSSmsg).then((msg) => {
-                    setTimeout(() => { msg.delete() }, 10000)
+                    setTimeout(() => { msg.delete() }, 5000)
                 });
             }
         } else {
