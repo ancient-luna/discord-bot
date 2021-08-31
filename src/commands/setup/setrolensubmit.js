@@ -37,7 +37,7 @@ module.exports.run = async (client, message, args) => {
             if (reaction.emoji.name === 'game_logo_bdo') {
                 await reaction.message.guild.members.cache.get(user.id).roles.add(BlackDesertOnlineRole);
                 const addBDOmsg = new MessageEmbed()
-                    .setDescription(`<@${message.author.id}>, role **<@&856380073745186876>** added!\nNow you can access **Black Desert Online** category in this server`)
+                    .setDescription(`${reaction.message.guild.members.cache.get(user.id)}, role **<@&856380073745186876>** added!\nNow you can access **Black Desert Online** category in this server`)
                     .setColor("4f545c")
                 message.channel.send(addBDOmsg).then((msg) => {
                     setTimeout(() => { msg.delete() }, 10000)
@@ -46,7 +46,7 @@ module.exports.run = async (client, message, args) => {
             if (reaction.emoji.name === 'game_logo_apex') {
                 await reaction.message.guild.members.cache.get(user.id).roles.add(ApexLegendsRole);
                 const addAPEXmsg = new MessageEmbed()
-                    .setDescription(`<@${message.author.id}>, role **<@&861400119101095937>** added!\nNow you can access **Apex Legends** category in this server`)
+                    .setDescription(`${reaction.message.guild.members.cache.get(user.id)}, role **<@&861400119101095937>** added!\nNow you can access **Apex Legends** category in this server`)
                     .setColor("4f545c")
                 message.channel.send(addAPEXmsg).then((msg) => {
                     setTimeout(() => { msg.delete() }, 10000)
@@ -55,7 +55,7 @@ module.exports.run = async (client, message, args) => {
             if (reaction.emoji.name === 'ancientluna_divinare_s') {
                 await reaction.message.guild.members.cache.get(user.id).roles.add(AdAstraAbyssosqueRole);
                 const addABYSSmsg = new MessageEmbed()
-                    .setDescription(`<@${message.author.id}>, **<@&882350441864777769>** role added\nLust awaits in NSWF channel <#468372462699282443>`)
+                    .setDescription(`${reaction.message.guild.members.cache.get(user.id)}, **<@&882350441864777769>** role added\nLust awaits in NSWF channel <#468372462699282443>`)
                     .setColor("4f545c")
                 message.channel.send(addABYSSmsg).then((msg) => {
                     setTimeout(() => { msg.delete() }, 10000)
@@ -75,7 +75,7 @@ module.exports.run = async (client, message, args) => {
             if (reaction.emoji.name === 'game_logo_bdo') {
                 await reaction.message.guild.members.cache.get(user.id).roles.remove(BlackDesertOnlineRole);
                 const removeBDOmsg = new MessageEmbed()
-                    .setDescription(`<@${message.author.id}>, role **<@&856380073745186876>** removed!\nYou have no longer access to **Black Desert Online** category in this server`)
+                    .setDescription(`${reaction.message.guild.members.cache.get(user.id)}, role **<@&856380073745186876>** removed!\nYou have no longer access to **Black Desert Online** category in this server`)
                     .setColor("4f545c")
                 message.channel.send(removeBDOmsg).then((msg) => {
                     setTimeout(() => { msg.delete() }, 10000)
@@ -84,7 +84,7 @@ module.exports.run = async (client, message, args) => {
             if (reaction.emoji.name === 'game_logo_apex') {
                 await reaction.message.guild.members.cache.get(user.id).roles.remove(ApexLegendsRole);
                 const removeAPEXmsg = new MessageEmbed()
-                    .setDescription(`<@${message.author.id}>, role **<@&861400119101095937>** removed!\nYou have no longer access to **Apex Legends** category in this server`)
+                    .setDescription(`${reaction.message.guild.members.cache.get(user.id)}, role **<@&861400119101095937>** removed!\nYou have no longer access to **Apex Legends** category in this server`)
                     .setColor("4f545c")
                 message.channel.send(removeAPEXmsg).then((msg) => {
                     setTimeout(() => { msg.delete() }, 10000)
@@ -93,7 +93,7 @@ module.exports.run = async (client, message, args) => {
             if (reaction.emoji.name === 'ancientluna_divinare_s') {
                 await reaction.message.guild.members.cache.get(user.id).roles.remove(AdAstraAbyssosqueRole);
                 const removeABYSSmsg = new MessageEmbed()
-                    .setDescription(`<@${message.author.id}>, NSWF role **<@&882350441864777769>** removed\nYou are free from lusts from now on`)
+                    .setDescription(`${reaction.message.guild.members.cache.get(user.id)}, NSWF role **<@&882350441864777769>** removed\nYou are free from lusts from now on`)
                     .setColor("4f545c")
                 message.channel.send(removeABYSSmsg).then((msg) => {
                     setTimeout(() => { msg.delete() }, 10000)
