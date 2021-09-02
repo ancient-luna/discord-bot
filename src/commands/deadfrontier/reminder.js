@@ -17,7 +17,7 @@ module.exports.run = async (client, message, args) => {
     const VLEmoji = '<:a_df_item_volatilehide:882951769993404416>';
 
     let embedRoles = new MessageEmbed()
-        .setDescription(`**REACT TO GET ALERT NOTIFICATION** <:game_logo_df:861580085000798229> **(DEAD FRONTIER)**\n\n${OAEmoji} <@&871062770387390505> for Outpost Attacks\n⁣⁣${MissionEmoji} <@&871061864459694101> for Missions\n${BanditEmoji} <@&871065063820234812> for Bandits\n${DHEmoji} <@&871061650868961310> for Devil Hounds\n ${VLEmoji} <@&871062384557568030> for Volatile Leapers`)
+        .setDescription(`**REACT TO GET ALERT NOTIFICATION** <:game_logo_df:861580085000798229> **(DEAD FRONTIER)**\n\n${OAEmoji} <@&871062770387390505> for Outpost Attacks\n⁣⁣${MissionEmoji} <@&871061864459694101> for Missions\n${BanditEmoji} <@&871065063820234812> for Bandits\n${DHEmoji} <@&871061650868961310> for Devil Hounds\n${VLEmoji} <@&871062384557568030> for Volatile Leapers`)
         .setColor("4f545c")
         .setImage("https://i.imgur.com/8TdP6Kl.gif")
 
