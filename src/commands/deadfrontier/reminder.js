@@ -93,8 +93,8 @@ module.exports.run = async (client, message, args) => {
             if (reaction.emoji.name === 'a_df_alert_oa') {
                 await reaction.message.guild.members.cache.get(user.id).roles.remove(OARole);
                 const addOAmsg = new MessageEmbed()
-                    .setDescription(`${reaction.message.guild.members.cache.get(user.id)}, role **<@&871062770387390505>** added as reminder in <#871057065383174184>`)
-                    .setColor("4f545c")
+                    .setDescription(`${reaction.message.guild.members.cache.get(user.id)}, role **<@&871062770387390505>** removed`)
+                    .setColor("RED")
                 message.channel.send(addOAmsg).then((msg) => {
                     setTimeout(() => { msg.delete() }, 5000)
                 });
@@ -102,8 +102,8 @@ module.exports.run = async (client, message, args) => {
             if (reaction.emoji.name === 'a_df_dirty_note') {
                 await reaction.message.guild.members.cache.get(user.id).roles.remove(MissionRole);
                 const addMISSIONmsg = new MessageEmbed()
-                    .setDescription(`${reaction.message.guild.members.cache.get(user.id)}, role **<@&871061864459694101>** added as reminder in <#871057489179840572>`)
-                    .setColor("4f545c")
+                    .setDescription(`${reaction.message.guild.members.cache.get(user.id)}, role **<@&871061864459694101>** removed`)
+                    .setColor("RED")
                 message.channel.send(addMISSIONmsg).then((msg) => {
                     setTimeout(() => { msg.delete() }, 5000)
                 });
@@ -111,8 +111,8 @@ module.exports.run = async (client, message, args) => {
             if (reaction.emoji.name === 'a_df_whiteghost') {
                 await reaction.message.guild.members.cache.get(user.id).roles.remove(BanditRole);
                 const addBANDITmsg = new MessageEmbed()
-                    .setDescription(`${reaction.message.guild.members.cache.get(user.id)}, role **<@&871065063820234812>** added as reminder in <#871056816153452594>`)
-                    .setColor("4f545c")
+                    .setDescription(`${reaction.message.guild.members.cache.get(user.id)}, role **<@&871065063820234812>** removed`)
+                    .setColor("RED")
                 message.channel.send(addBANDITmsg).then((msg) => {
                     setTimeout(() => { msg.delete() }, 5000)
                 });
@@ -120,8 +120,8 @@ module.exports.run = async (client, message, args) => {
             if (reaction.emoji.name === 'a_df_item_devilhound') {
                 await reaction.message.guild.members.cache.get(user.id).roles.remove(DHRole);
                 const addDHmsg = new MessageEmbed()
-                    .setDescription(`${reaction.message.guild.members.cache.get(user.id)}, role **<@&871061650868961310>** added as reminder in <#871056843823280158>`)
-                    .setColor("4f545c")
+                    .setDescription(`${reaction.message.guild.members.cache.get(user.id)}, role **<@&871061650868961310>** removed`)
+                    .setColor("RED")
                 message.channel.send(addDHmsg).then((msg) => {
                     setTimeout(() => { msg.delete() }, 5000)
                 });
@@ -129,8 +129,8 @@ module.exports.run = async (client, message, args) => {
             if (reaction.emoji.name === 'a_df_item_volatilehide') {
                 await reaction.message.guild.members.cache.get(user.id).roles.remove(VLRole);
                 const addVLmsg = new MessageEmbed()
-                    .setDescription(`${reaction.message.guild.members.cache.get(user.id)}, role **<@&871062384557568030>** added as reminder in <#871056843823280158>`)
-                    .setColor("4f545c")
+                    .setDescription(`${reaction.message.guild.members.cache.get(user.id)}, role **<@&871062384557568030>** removed`)
+                    .setColor("RED")
                 message.channel.send(addVLmsg).then((msg) => {
                     setTimeout(() => { msg.delete() }, 5000)
                 });

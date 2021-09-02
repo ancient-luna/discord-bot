@@ -76,7 +76,7 @@ module.exports.run = async (client, message, args) => {
                 await reaction.message.guild.members.cache.get(user.id).roles.remove(BlackDesertOnlineRole);
                 const removeBDOmsg = new MessageEmbed()
                     .setDescription(`${reaction.message.guild.members.cache.get(user.id)}, role **<@&856380073745186876>** removed!\nYou have no longer access to **Black Desert Online** category in this server`)
-                    .setColor("red")
+                    .setColor("RED")
                 message.channel.send(removeBDOmsg).then((msg) => {
                     setTimeout(() => { msg.delete() }, 5000)
                 });
@@ -85,7 +85,7 @@ module.exports.run = async (client, message, args) => {
                 await reaction.message.guild.members.cache.get(user.id).roles.remove(ApexLegendsRole);
                 const removeAPEXmsg = new MessageEmbed()
                     .setDescription(`${reaction.message.guild.members.cache.get(user.id)}, role **<@&861400119101095937>** removed!\nYou have no longer access to **Apex Legends** category in this server`)
-                    .setColor("red")
+                    .setColor("RED")
                 message.channel.send(removeAPEXmsg).then((msg) => {
                     setTimeout(() => { msg.delete() }, 5000)
                 });
@@ -94,7 +94,7 @@ module.exports.run = async (client, message, args) => {
                 await reaction.message.guild.members.cache.get(user.id).roles.remove(AdAstraAbyssosqueRole);
                 const removeABYSSmsg = new MessageEmbed()
                     .setDescription(`${reaction.message.guild.members.cache.get(user.id)}, NSWF role **<@&882350441864777769>** removed\nYou are free from lusts from now on`)
-                    .setColor("red")
+                    .setColor("RED")
                 message.channel.send(removeABYSSmsg).then((msg) => {
                     setTimeout(() => { msg.delete() }, 5000)
                 });
