@@ -3,7 +3,7 @@ const { MessageEmbed, ReactionManager } = require('discord.js');
 module.exports.run = async (client, message, args) => {
     if (!message.member.permissions.has("MANAGE_MESSAGES")) return;
 
-    const channel = '839206614007021668';
+    const channel = '871056365651652650';
     const OARole = message.guild.roles.cache.find(role => role.name === 'Bes')
     const MissionRole = message.guild.roles.cache.find(role => role.name === 'Manes')
     const BanditRole = message.guild.roles.cache.find(role => role.name === 'Hades')
