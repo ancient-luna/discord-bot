@@ -33,6 +33,7 @@ module.exports.run = async (client, message, args) => {
         var experience = stat['experience']
 
         var weekly_ts = stat['weekly_ts']
+        var exp_since_death = stat['exp_since_death']
 
         var daily_tpk = stat['daily_tpk']
         var weekly_tpk = stat['weekly_tpk']
@@ -78,7 +79,7 @@ module.exports.run = async (client, message, args) => {
             var stat_agility = stat['stat_agility'].split(" ")
             
             const embedEvent = new MessageEmbed()
-                .setDescription(`**${weekly_ts} EXP**\n↳ gained and counted while doing TS on this week ⁣ ⁣ ⁣ ⁣ ⁣`)
+                .setDescription(`**${weekly_ts} EXP**\n↳ gained and counted while doing TS on this week ⁣ ⁣ ⁣ ⁣ ⁣\n**EXP Since Death** : ${exp_since_death} EXP`)
                 .setThumbnail(`https://i.imgur.com/ulP4oAd.png`)
                 .addField(`**Daily TPK**`, daily_tpk, true)
                 .addField(`**Weekly TPK**`, weekly_tpk, true)
@@ -138,7 +139,7 @@ module.exports.run = async (client, message, args) => {
             var stat_noAgility = stat['stat_agility']
 
             const embedEvent = new MessageEmbed()
-                .setDescription(`**${weekly_ts} EXP**\n↳ gained and counted while doing TS on this week ⁣ ⁣ ⁣ ⁣ ⁣`)
+                .setDescription(`**${weekly_ts} EXP**\n↳ gained and counted while doing TS on this week ⁣ ⁣ ⁣ ⁣ ⁣\n**EXP Since Death** : ${exp_since_death} EXP`)
                 .setThumbnail(`https://i.imgur.com/ulP4oAd.png`)
                 .addField(`**Daily TPK**`, daily_tpk, true)
                 .addField(`**Weekly TPK**`, weekly_tpk, true)
