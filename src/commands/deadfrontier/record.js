@@ -33,7 +33,7 @@ module.exports.run = async (client, message, args) => {
         const embedRecord = new MessageEmbed()
             .setTitle(`${username}'s Weekly Record`)
             .setURL(`https://www.dfprofiler.com/profile/view/${survivorID}`)
-            .addField(`**Recovered EXP**`, `${exp_since_death} EXP`, true)
+            .addField(`**EXP Since Death**`, `${exp_since_death} EXP`, true)
             .addField(`**Weekly TS**`, `${weekly_ts} EXP`, true)
             .addField(`**Gold Member**`, gold_member, true)
             .addField(`**Daily TPK**`, daily_tpk, true)
