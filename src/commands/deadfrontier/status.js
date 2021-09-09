@@ -44,7 +44,7 @@ module.exports.run = async (client, message, args) => {
 
         var tradezone = stat['tradezone']
         var creation_date = stat['creation_date']
-        var last_online = stat['last_spawn']
+        var gm_end = stat['gm_end']
         var gold_member = stat['gold_member']
 
         var weapon_name_1 = stat['weapon_name_1']
@@ -77,7 +77,7 @@ module.exports.run = async (client, message, args) => {
 
             var stat_endurance = stat['stat_endurance'].split(" ")
             var stat_agility = stat['stat_agility'].split(" ")
-            
+
             const embedEvent = new MessageEmbed()
                 .setDescription(`**${weekly_ts} EXP**\n↳ gained and counted while doing TS on this week ⁣ ⁣ ⁣ ⁣ ⁣\n**EXP Since Death** : ${exp_since_death} EXP`)
                 .setThumbnail(`https://i.imgur.com/ulP4oAd.png`)
@@ -90,7 +90,7 @@ module.exports.run = async (client, message, args) => {
                 .setURL(`https://www.dfprofiler.com/profile/view/${survivorID}`)
                 .setDescription(`**${profession_level}** ${experience}`)
                 .addField(`**Account Creation**`, creation_date, true)
-                .addField(`**Last Online**`, last_online, true)
+                .addField(`**Last Online**`, gm_end, true)
                 .addField(`**Gold Member**`, gold_member, true)
                 .addField(`**Cash**`, cash, true)
                 .addField(`**Bank**`, bank, true)
@@ -150,7 +150,7 @@ module.exports.run = async (client, message, args) => {
                 .setURL(`https://www.dfprofiler.com/profile/view/${survivorID}`)
                 .setDescription(`**${profession_level}** ${experience}`)
                 .addField(`**Account Creation**`, creation_date, true)
-                .addField(`**Last Online**`, last_online, true)
+                .addField(`**Last Online**`, gm_end, true)
                 .addField(`**Gold Member**`, gold_member, true)
                 .addField(`**Cash**`, cash, true)
                 .addField(`**Bank**`, bank, true)
