@@ -39,7 +39,7 @@ module.exports.run = async (client, message, args) => {
             .addField(`**Daily TPK**`, daily_tpk, true)
             .addField(`**Weekly TPK**`, weekly_tpk, true)
             .addField(`**Last Hit By**`, pvp_last_hit, true)
-            .setImage(`https://www.dfprofiler.com/signaturereplicate.php?profile=${survivorID}&imgur=5q7hV6B.png`)
+            .setImage(`https://www.dfprofiler.com/signaturereplicate.php?profile=${survivorID}&imgur=5q7hV6B`)
 
         const buttonProfile = new MessageButton()
             .setStyle("url")
