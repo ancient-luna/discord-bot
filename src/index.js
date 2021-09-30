@@ -21,6 +21,7 @@ let gConfig = {};
 let gatewayChannelId = '';
 let rulesChannelId = '';
 let luxCastaId = '';
+let isPlayingAudio = false;
 
 async function* getFiles(dir) {
   const dirents = await readdir(dir, { withFileTypes: true });
@@ -65,7 +66,11 @@ client.on('ready', async () => {
     }
   }
 
-  schedule.scheduleJob('0 0 */1 * * *', async () => {
+  const rule = new schedule.RecurrenceRule();
+  rule.hour = 1;
+
+  schedule.scheduleJob(rule, async () => {
+    util.printLog('info', 'Running scheduled job');
     const channel = client.channels.cache.get(gConfig.server.voiceChannel);
     const voiceMessage = gConfig.server.voiceMessage;
     if (channel && voiceMessage) {
@@ -73,16 +78,20 @@ client.on('ready', async () => {
         const link = `https://texttospeech.responsivevoice.org/v1/text:synthesize?text=${encodeURIComponent(voiceMessage)}&lang=en-US&key=0POmS5Y2`;
 
         const connection = await channel.join();
-        const dispatcher = connection.play(link);
-        dispatcher.on('start', () => {
-          console.log('Playing voice');
-        });
+        if (!isPlayingAudio) {
+          const dispatcher = connection.play(link);
+          dispatcher.on('start', () => {
+            util.printLog('info', 'Playing voice');
+            isPlayingAudio = true;
+          });
 
-        dispatcher.on('finish', () => {
-          console.log('Voice playback stopped');
-          channel.leave();
-        });
-        dispatcher.on('error', console.error);
+          dispatcher.on('finish', () => {
+            util.printLog('info', 'Finished playing voice');
+            channel.leave();
+            isPlayingAudio = false;
+          });
+          dispatcher.on('error', console.error);
+        }
       }
     }
   });

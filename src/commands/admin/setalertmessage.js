@@ -1,7 +1,7 @@
 const { save } = require('../../config/index');
 
 module.exports.run = async (client, message, args, config) => {
-  if (!args || args.length === 0) return message.reply('Usage: !setautomaticnoticemessage <message>');
+  if (!args || args.length === 0) return message.reply('Usage: !setalertmessage <message>');
   const voiceMessage = args.join(' ');
   if (voiceMessage === config.server.voiceMessage) return message.reply('Please set a different message than what is currently set.');
 
@@ -16,5 +16,5 @@ module.exports.run = async (client, message, args, config) => {
 };
 
 module.exports.help = {
-  name: 'setautomaticnoticemessage',
+  name: 'setalertmessage',
 };
