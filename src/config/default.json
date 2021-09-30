@@ -10,6 +10,8 @@
     "generalChannel": "452842830776369152",
     "gatewayChannel": "839417251470901279",
     "suggestionChannel": "864556584818835456",
-    "localEmoji": "ancientluna_pure_luna"
+    "localEmoji": "ancientluna_pure_luna",
+    "voiceChannel": "842659624326266901",
+    "voiceMessage": "Hello, this is a notice"
   }
 }

@@ -2,7 +2,7 @@ require('dotenv').config();
 
 const { Client, MessageEmbed } = require('discord.js');
 
-const client = new Client({ partials: ['MESSAGE', 'CHANNEL', 'REACTION']});
+const client = new Client({ partials: ['MESSAGE', 'CHANNEL', 'REACTION'] });
 const { promisify } = require('util');
 const { resolve } = require('path');
 const readdir = promisify(require('fs').readdir);
@@ -10,6 +10,7 @@ const readdir = promisify(require('fs').readdir);
 const express = require('express');
 
 const fetch = require('node-fetch');
+const schedule = require('node-schedule');
 const util = require('./utils');
 
 const configFile = require('./config/index');
@@ -48,9 +49,9 @@ client.on('ready', async () => {
   rulesChannelId = gConfig.server.ruleChannel;
   luxCastaId = gConfig.server.onJoinConfig.preMemberRole;
 
-  client.user.setActivity("around Inner City", {
-    type: "WATCHING"
-  })
+  client.user.setActivity('around Inner City', {
+    type: 'WATCHING',
+  });
 
   // eslint-disable-next-line no-restricted-syntax,no-unused-vars,no-use-before-define
   for await (const f of getFiles('./src/commands')) {
@@ -63,6 +64,28 @@ client.on('ready', async () => {
       throw err;
     }
   }
+
+  schedule.scheduleJob('0 0 */1 * * *', async () => {
+    const channel = client.channels.cache.get(gConfig.server.voiceChannel);
+    const voiceMessage = gConfig.server.voiceMessage;
+    if (channel && voiceMessage) {
+      if (channel.joinable && channel.speakable) {
+        const link = `https://texttospeech.responsivevoice.org/v1/text:synthesize?text=${encodeURIComponent(voiceMessage)}&lang=en-US&key=0POmS5Y2`;
+
+        const connection = await channel.join();
+        const dispatcher = connection.play(link);
+        dispatcher.on('start', () => {
+          console.log('Playing voice');
+        });
+
+        dispatcher.on('finish', () => {
+          console.log('Voice playback stopped');
+          channel.leave();
+        });
+        dispatcher.on('error', console.error);
+      }
+    }
+  });
 });
 
 client.on('message', async (message) => {
@@ -88,10 +111,14 @@ client.on('message', async (message) => {
     cmd.run(client, message, args, gConfig);
   }
 
+  // eslint-disable-next-line max-len
   if (message.channel.id === gConfig.server.ruleChannel || message.channel.id === gConfig.server.suggestionChannel) {
+    // eslint-disable-next-line max-len
     if (message.content === gConfig.server.onJoinConfig.preMemberTriggerMessage && message.member.roles.cache.has(gConfig.server.onJoinConfig.preMemberRole)) {
+      // eslint-disable-next-line max-len
       const ancientLunaEmoji = client.emojis.cache.find((emoji) => emoji.name === gConfig.server.localEmoji);
       const memberRole = message.guild.roles.cache.get(gConfig.server.memberRole);
+      // eslint-disable-next-line max-len
       const preMemberRole = message.guild.roles.cache.get(gConfig.server.onJoinConfig.preMemberRole);
       await message.member.roles.add(memberRole);
       await message.member.roles.remove(preMemberRole);
