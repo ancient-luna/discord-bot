@@ -19,7 +19,6 @@ module.exports.run = async (Client, message, args) => {
         .setAuthor("ROLE ADDED", "https://i.imgur.com/aLkmV4I.png")
         .setDescription("You have been gived **Fellow Seekers** role and have access to **Dead Frontier** category")
         .setTimestamp()
-        .setColor("GREEN")
         .setFooter("#Ancient Luna")
     target.user.send(addDF)
 }

@@ -21,25 +21,24 @@ module.exports.run = async (client, message, args) => {
         const domUsername = new jsdom.JSDOM(stat['username']);
         var username = domUsername.window.document.querySelector("a").textContent;
 
-        var gold_member = stat['gold_member']
-
-        var weekly_ts = stat['weekly_ts']
         var exp_since_death = stat['exp_since_death']
+        var weekly_ts = stat['weekly_ts']
+        var all_time_ts = stat['all_time_ts']
 
         var daily_tpk = stat['daily_tpk']
         var weekly_tpk = stat['weekly_tpk']
-        var pvp_last_hit = stat['pvp_last_hit']
+        var all_time_tpk = stat['all_time_tpk']
 
         const embedRecord = new MessageEmbed()
-            .setTitle(`${username}'s Weekly Record`)
+            .setTitle(`${username}'s Record`)
             .setURL(`https://www.dfprofiler.com/profile/view/${survivorID}`)
             .addField(`**EXP Since Death**`, `${exp_since_death} EXP`, true)
             .addField(`**Weekly TS**`, `${weekly_ts} EXP`, true)
-            .addField(`**Gold Member**`, gold_member, true)
+            .addField(`**⭐ All Time TS**`, `${all_time_ts} EXP`, true)
             .addField(`**Daily TPK**`, daily_tpk, true)
             .addField(`**Weekly TPK**`, weekly_tpk, true)
-            .addField(`**Last Hit By**`, pvp_last_hit, true)
-            .setImage(`https://www.dfprofiler.com/signaturereplicate.php?profile=${survivorID}&imgur=5q7hV6B`)
+            .addField(`**⭐ All Time TPK**`, all_time_tpk, true)
+            .setImage(`http://www.dfprofiler.com/signaturereplicate.php?profile=${survivorID}&imgur=5q7hV6B`)
 
         const buttonProfile = new MessageButton()
             .setStyle("url")
