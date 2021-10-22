@@ -17,7 +17,7 @@ module.exports.run = async (Client, message, args) => {
 
     const addDF = new MessageEmbed()
         .setAuthor("ROLE ADDED", "https://i.imgur.com/aLkmV4I.png")
-        .setDescription(`You have been gived **Alliances** role and have access to **Dead Frontier** category`)
+        .setDescription(`You have been gived **Alliances** role and have access to several channels **Dead Frontier** category`)
         .setTimestamp()
         .setFooter("#Ancient Luna")
     target.user.send(addDF)
