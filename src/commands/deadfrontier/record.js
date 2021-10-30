@@ -39,14 +39,21 @@ module.exports.run = async (client, message, args) => {
             .addField(`**Weekly TPK**`, weekly_tpk, true)
             .addField(`**⭐ All Time TPK**`, all_time_tpk, true)
             .setImage(`https://www.dfprofiler.com/signaturereplicate.php?profile=${survivorID}&imgur=5q7hV6B.png`)
+            .setFooter(`Powered by Ancient Luna`)
+            .setTimestamp()
 
         const buttonProfile = new MessageButton()
             .setStyle("url")
-            .setLabel(`Visit ${username}'s DFProfiler`)
+            .setLabel(`See Profile Detail in DFProfiler`)
             .setURL(`https://www.dfprofiler.com/profile/view/${survivorID}`)
 
+        const buttonImage = new MessageButton()
+            .setStyle("url")
+            .setLabel(`Updated Profile Image ⁣`)
+            .setURL(`https://www.dfprofiler.com/signaturereplicate.php?profile=${survivorID}&imgur=5q7hV6B.png`)
+
         message.channel.send({
-            buttons: buttonProfile,
+            buttons: [buttonProfile, buttonImage],
             embed: embedRecord
         })
     })
