@@ -44,12 +44,12 @@ module.exports.run = async (client, message, args) => {
 
         const buttonProfile = new MessageButton()
             .setStyle("url")
-            .setLabel(`See Profile Detail in DFProfiler`)
+            .setLabel(`See Profile Detail in DF Profiler`)
             .setURL(`https://www.dfprofiler.com/profile/view/${survivorID}`)
 
         const buttonImage = new MessageButton()
             .setStyle("url")
-            .setLabel(`Updated Profile Image ⁣`)
+            .setLabel(`Updated Profile Image`)
             .setURL(`https://www.dfprofiler.com/signaturereplicate.php?profile=${survivorID}&imgur=5q7hV6B.png`)
 
         message.channel.send({
