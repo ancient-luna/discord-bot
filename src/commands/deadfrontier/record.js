@@ -38,7 +38,7 @@ module.exports.run = async (client, message, args) => {
             .addField(`**Daily TPK**`, daily_tpk, true)
             .addField(`**Weekly TPK**`, weekly_tpk, true)
             .addField(`**⭐ All Time TPK**`, all_time_tpk, true)
-            .setImage(`https://www.dfprofiler.com/signaturereplicate.php?profile=${survivorID}&imgur=5q7hV6B.png`)
+            .setImage(`https://www.dfprofiler.com/signaturereplicate.php?profile=${survivorID}&imgur=5q7hV6B`)
             .setFooter(`Powered by Ancient Luna`)
             .setTimestamp()
 
