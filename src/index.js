@@ -50,7 +50,7 @@ client.on('ready', async () => {
   rulesChannelId = gConfig.server.ruleChannel;
   luxCastaId = gConfig.server.onJoinConfig.preMemberRole;
 
-  client.user.setActivity('snows', {
+  client.user.setActivity('snows falling from cabin', {
     type: 'WATCHING',
   });
 
