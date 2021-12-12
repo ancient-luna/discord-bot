@@ -2,9 +2,10 @@ const { MessageEmbed } = require("discord.js");
 const { MessageButton } = require("discord-buttons");
 const axios = require("axios");
 
-module.exports.run = async (client, message, args, data) => {
-    let query = args.join(" ");
-    if (!query) return message.channel.send("By the moonlight, what you seeks for?");
+module.exports.run = async (client, message, args) => {
+    if (!args[0]) {
+        return message.channel.send(`By the moonlight, what you seeks for?`)
+    }
 
     let url, response, account, details;
     try {
@@ -13,7 +14,7 @@ module.exports.run = async (client, message, args, data) => {
         account = response.data
         details = account.graphql.user
     } catch (error) {
-        return message.channel.send(`Not A Account`)
+        return message.channel.send(`${args[0]} is an unregistered Instagram's username`)
     }
 
     const embed = new MessageEmbed()
@@ -50,5 +51,5 @@ module.exports.run = async (client, message, args, data) => {
 }
 
 module.exports.help = {
-    name: 'instagram'
+    name: 'ig'
 }
