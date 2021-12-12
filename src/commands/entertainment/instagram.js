@@ -19,7 +19,7 @@ module.exports.run = async (client, message, args, data) => {
     const embed = new MessageEmbed()
         .setTitle(`${details.is_verified ? `${details.username} <a:verified:727820439497211994>` : ` ${details.username}`} ${details.is_private ? '🔒' : ''} `)
         .setDescription(details.biography)
-        .setThumbnail(details.profile_pic_url)
+        .setThumbnail(details.profile_pic_url_hd)
         .addFields(
             {
                 name: "Total Posts:",
