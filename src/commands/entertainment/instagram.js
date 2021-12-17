@@ -1,48 +1,35 @@
 const { MessageEmbed } = require("discord.js");
 const { MessageButton } = require("discord-buttons");
-const axios = require("axios");
+const instaClient = require('scraper-instagram');
+const insta = new instaClient();
+const moment = require('moment');
+moment.locale('id');
 
 module.exports.run = async (client, message, args) => {
-    if (!args[0]) {
-        return message.channel.send(`By the moonlight, what you seeks for?`)
-    }
+        
+        let query = args.join(' ');
+        if (!query) return message.reply('By the moonlight, who you seeks for?');
+        if (query.includes('http')) query = query.split('/').pop();
 
-    let url, response, account, details;
-    try {
-        url = `https://instagram.com/${args[0]}/?__a=1`;
-        response = await axios.get(url)
-        account = response.data
-        details = account.graphql.user
-    } catch (error) {
-        return message.channel.send(`${args[0]} is an unregistered Instagram's username`)
-    }
+        const data = await insta.getProfile(query);
+        if (!data) return message.reply('No username found on the list');
 
     const embed = new MessageEmbed()
-        .setTitle(`${details.is_verified ? `${details.username} <a:verified:727820439497211994>` : ` ${details.username}`} ${details.is_private ? '🔒' : ''} `)
-        .setDescription(details.biography)
-        .setThumbnail(details.profile_pic_url_hd)
-        .addFields(
-            {
-                name: "Total Posts:",
-                value: details.edge_owner_to_timeline_media.count.toLocaleString(),
-                inline: true
-            },
-            {
-                name: "Followers:",
-                value: details.edge_followed_by.count.toLocaleString(),
-                inline: true
-            },
-            {
-                name: "Following:",
-                value: details.edge_follow.count.toLocaleString(),
-                inline: true
-            }
-        )
+        .setColor('#C13584')
+        .setAuthor(data.name, 'https://cdn.discordapp.com/emojis/335186186718937098.png', data.link)
+        .setDescription(`${data.bio}`)
+        .addField('Posts', `${data.posts}`, true)
+        .addField('Followers', `${data.followers}` ? `${data.followers}` : '-', true)
+        .addField('Following', `${data.following}` ? `${data.following}` : '-', true)
+        .addField('Private', data.private ? '`yes`' : '`no`', true)
+        .addField('Verified', data.verified ? '`yes`' : '`no`⁣', true)
+        .addField('Website', data.website, true)
+        .setImage(data.pic)
 
     const buttonProfile = new MessageButton()
         .setStyle("url")
         .setLabel("Redirect to Instagram")
-        .setURL(`https://instagram.com/${args[0]}`)
+        .setURL(data.link)
 
     await message.channel.send({
         button: buttonProfile,
