@@ -73,8 +73,8 @@ module.exports.run = async (client, message, args) => {
             if (reaction.emoji.name === 'ancientluna_divinare_s') {
                 await reaction.message.guild.members.cache.get(user.id).roles.add(AdAstraAbyssosqueRole);
                 const addABYSSmsg = new MessageEmbed()
-                    .setAuthor("ROLE ADDED", "https://i.imgur.com/KV3WQFN.png")
-                    .setDescription(`I felt like an animal, and animals don’t know sin, do they?`)
+                    .setAuthor("ROLE ADDED", "https://i.imgur.com/CAFo9qL.png")
+                    .setDescription(`I felt like an animal, and animals don’t know sin, do they?\nYour memory feels like home to me in <#468372462699282443>`)
                     .setFooter(`this notification message will be deleted in 5 seconds`, `https://i.imgur.com/26tcTpL.gif`)
                     .setColor("4f545c")
                 message.channel.send(addABYSSmsg).then((msg) => {
@@ -117,7 +117,7 @@ module.exports.run = async (client, message, args) => {
             if (reaction.emoji.name === 'game_logo_apex') {
                 await reaction.message.guild.members.cache.get(user.id).roles.remove(ApexLegendsRole);
                 const removeAPEXmsg = new MessageEmbed()
-                    .setAuthor("ROLE REMOVED", "https://i.imgur.com/BbW7VAX.png")
+                    .setAuthor("ROLE REMOVED", "https://i.imgur.com/CAFo9qL.png")
                     .setDescription(`Your **Apex** role were taken away from you since you unreacted and has no longer access to **Apex Legends** category anymore`)
                     .setFooter(`this notification message will be deleted in 5 seconds`, `https://i.imgur.com/26tcTpL.gif`)
                     .setColor("RED")
@@ -128,7 +128,7 @@ module.exports.run = async (client, message, args) => {
             if (reaction.emoji.name === 'ancientluna_divinare_s') {
                 await reaction.message.guild.members.cache.get(user.id).roles.remove(AdAstraAbyssosqueRole);
                 const removeABYSSmsg = new MessageEmbed()
-                    .setAuthor("ROLE REMOVED", "https://i.imgur.com/KV3WQFN.png")
+                    .setAuthor("ROLE REMOVED", "https://i.imgur.com/CAFo9qL.png")
                     .setDescription(`People wait around too long for love. I'm happy with all of your lusts!`)
                     .setFooter(`this notification message will be deleted in 5 seconds`, `https://i.imgur.com/26tcTpL.gif`)
                     .setColor("RED")
