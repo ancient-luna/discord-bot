@@ -50,7 +50,7 @@ client.on('ready', async () => {
   rulesChannelId = gConfig.server.ruleChannel;
   luxCastaId = gConfig.server.onJoinConfig.preMemberRole;
 
-  client.user.setActivity('us over the moon', {
+  client.user.setActivity('us from Toram World', {
     type: 'WATCHING',
   });
 
