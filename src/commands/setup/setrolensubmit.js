@@ -21,7 +21,7 @@ module.exports.run = async (client, message, args) => {
         .setThumbnail("https://i.imgur.com/beubYr6.gif")
 
     let embedRoles = new MessageEmbed()
-        .setDescription(`**ALL CLAIMABLE ROLES IN SERVER** <:ancientluna_pure_server:878526120914468924>\n\n⁣The <@&952237328045342771> role only given to guild members in Toram Online game. You can apply to get this role by open a ticket for application.\n\n${ToramOnlineEmoji} <@952241691228774460> for Toram Online\n\n⁣${BlackDesertOnlineEmoji} <@&856380073745186876> for Black Desert Online\n${ApexLegendsEmoji} <@&861400119101095937> for Apex Legends\n\n${AdAstraAbyssosqueEmoji} <@&882350441864777769> for unlocking mature contents\n\nReact to any reaction that suits you for the game you love. By this you will unlock the hidden category in this server to meet another light seekers in this sanctuary`)
+        .setDescription(`**ALL CLAIMABLE ROLES IN SERVER** <:ancientluna_pure_server:878526120914468924>\n\n⁣The <@&952147085447266364> role only given to guild members in Toram Online game. You can apply to get this role by open a ticket for application.\n\n${ToramOnlineEmoji} <@952241691228774460> for Toram Online\n\n⁣${BlackDesertOnlineEmoji} <@&856380073745186876> for Black Desert Online\n${ApexLegendsEmoji} <@&861400119101095937> for Apex Legends\n\n${AdAstraAbyssosqueEmoji} <@&882350441864777769> for unlocking mature contents\n\nReact to any reaction that suits you for the game you love. By this you will unlock the hidden category in this server to meet another light seekers in this sanctuary`)
         .setColor("4f545c")
 
     await message.channel.send(embedGuidelines);
