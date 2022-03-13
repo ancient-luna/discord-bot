@@ -26,9 +26,10 @@ module.exports.run = async (client, message, args) => {
     const STAFFemoji = '<:xnot_toram_wpn_staff:952256067407052810>';
 
     let embedRoles = new MessageEmbed()
-        .setDescription(`**REACT TO BE KNOWN AS THE WEAPON WIELDER**\n\n${BOWemoji} Bow wielder\n${CBemoji} Bowgun wielder\n${DSemoji} Dual Sword wielder\n${KNUCKemoji} Knuckle wielder\n${HBemoji} Halberd wielder\n${KTNemoji} Katana wielder\n${OHSemoji} One-handed Sword wielder\n${THSemoji} Two-Handed Sword wielder\n${STAFFemoji} Staff wielder`)
-        .setColor("4f545c")
-        .setThumbnail("https://i.imgur.com/tZCYzce.gif")
+        .setDescription(`**GET KNOWN AS THE WEAPON WIELDER**\n\n${BOWemoji} **Bow wielder** wind caller\n${CBemoji} As sneaky **Bowgun wielder**\n${DSemoji} **Dual Sword wielder** master\n${KNUCKemoji} Short **Knuckle wielder** operator \n${HBemoji} The **Halberd wielder** seeker\n${KTNemoji} Bloomy light **Katana wielder**\n${OHSemoji} **One-handed Sword wielder** saviour\n${THSemoji} **Two-Handed Sword wielder**'s heartless guard\n${STAFFemoji} Unstoppable **Staff wielder** magician`)
+        .setColor(`4f545c`)
+        .setThumbnail("https://i.imgur.com/QZ2gLgq.png")
+        .setImage("https://i.imgur.com/RNvs2Iq.gif")
 
     let messageEmbed = await message.channel.send(embedRoles);
     messageEmbed.react(BOWemoji);
