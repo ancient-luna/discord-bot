@@ -5,15 +5,15 @@ module.exports.run = async (client, message, args) => {
 
     const channel = '952170767947272303';
 
-    const BOWrole = message.guild.roles.cache.find(role => role.name === 'Bow')
-    const CBrole = message.guild.roles.cache.find(role => role.name === 'Bowgun')
-    const DSrole = message.guild.roles.cache.find(role => role.name === 'Dual Sword')
-    const KNUCKrole = message.guild.roles.cache.find(role => role.name === 'Knuckle')
-    const HBrole = message.guild.roles.cache.find(role => role.name === 'Halberd')
-    const KTNrole = message.guild.roles.cache.find(role => role.name === 'Katana')
-    const OHSrole = message.guild.roles.cache.find(role => role.name === 'One-Handed Sword')
-    const THSrole = message.guild.roles.cache.find(role => role.name === 'Two-Handed Sword')
-    const STAFFrole = message.guild.roles.cache.find(role => role.name === 'Staff')
+    const BOWrole = message.guild.roles.cache.find(role => role.name === 'Bow Wielder')
+    const CBrole = message.guild.roles.cache.find(role => role.name === 'Bowgun Wielder')
+    const DSrole = message.guild.roles.cache.find(role => role.name === 'Dual Sword Wielder')
+    const KNUCKrole = message.guild.roles.cache.find(role => role.name === 'Knuckle Wielder')
+    const HBrole = message.guild.roles.cache.find(role => role.name === 'Halberd Wielder')
+    const KTNrole = message.guild.roles.cache.find(role => role.name === 'Katana Wielder')
+    const OHSrole = message.guild.roles.cache.find(role => role.name === 'One-Handed Sword Wielder')
+    const THSrole = message.guild.roles.cache.find(role => role.name === 'Two-Handed Sword Wielder')
+    const STAFFrole = message.guild.roles.cache.find(role => role.name === 'Staff Wielder')
     
     const BOWemoji = '<:xnot_toram_wpn_bow:952256066824065105>';
     const CBemoji = '<:xnot_toram_wpn_cb:952256067264454718>';
