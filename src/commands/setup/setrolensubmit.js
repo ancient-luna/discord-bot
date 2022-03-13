@@ -47,7 +47,7 @@ module.exports.run = async (client, message, args) => {
                 message.channel.send(addTORAMmsg).then((msg) => {
                     setTimeout(() => { msg.delete() }, 5000)
                 });
-                message.guild.channels.cache.get('952164768217706496').send(`A legendary saviour known as ${reaction.message.guild.members.cache.get(user.id)} just departured from iruna to this ancient city of luna <:xpot_toram_potum_cute_chilling:952260990085500978>`);
+                message.guild.channels.cache.get('952164768217706496').send(`A legendary saviour known as ${reaction.message.guild.members.cache.get(user.id)} just departured from Iruna to this ancient city of luna <:xpot_toram_potum_cute_chilling:952260990085500978>`);
             }
             if (reaction.emoji.name === 'game_logo_bdo') {
                 await reaction.message.guild.members.cache.get(user.id).roles.add(BlackDesertOnlineRole);
@@ -103,6 +103,7 @@ module.exports.run = async (client, message, args) => {
                 message.channel.send(removeTORAMmsg).then((msg) => {
                     setTimeout(() => { msg.delete() }, 5000)
                 });
+                message.guild.channels.cache.get('952164768217706496').send(`<:xpot_toram_potum_sad:952260990337171467> ${reaction.message.guild.members.cache.get(user.id)} is leaving this city ...`);
             }
             if (reaction.emoji.name === 'game_logo_bdo') {
                 await reaction.message.guild.members.cache.get(user.id).roles.remove(BlackDesertOnlineRole);
