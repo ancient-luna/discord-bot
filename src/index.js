@@ -50,8 +50,8 @@ client.on('ready', async () => {
   rulesChannelId = gConfig.server.ruleChannel;
   luxCastaId = gConfig.server.onJoinConfig.preMemberRole;
 
-  client.user.setActivity('us from Toram World', {
-    type: 'WATCHING',
+  client.user.setActivity('with Pelulu ♥', {
+    type: 'PLAYING',
   });
 
   // eslint-disable-next-line no-restricted-syntax,no-unused-vars,no-use-before-define
