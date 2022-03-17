@@ -49,6 +49,7 @@ module.exports.run = async (client, message, args) => {
     
     try {
         await m.react("🔐");
+        await m.react("🗂️");
         await m.react("📛");
     } catch (err) {
         channel.send("Error sending emojis");
@@ -64,6 +65,9 @@ module.exports.run = async (client, message, args) => {
         switch (reaction.emoji.name){
             case "🔐":
                 channel.updateOverwrite(message.author, { SEND_MESSAGES: false });
+                break;
+            case "🗂️":
+                channel.updateOverwrite(message.author, { VIEW_CHANNEL: false });
                 break;
             case "📛":
                 channel.send('Closing ticket in 5 seconds <a:_util_loading:863317596551118858>');
