@@ -9,7 +9,7 @@ module.exports.run = async (Client, message, args) => {
         .setImage("https://i.imgur.com/dpYHOPq.png")
         .setFooter("Ancient Luna Guild  •  Partnership: Ray Miku")
         .setColor("#4f545c")
-    await message.channel.send(blacksmithLV);
+    await message.channel.send({ embeds: [blacksmithLV] });
 }
 
 module.exports.help = {

@@ -25,7 +25,7 @@ module.exports.run = async (client, message, args) => {
             .setTimestamp()
         
         message.channel.send("Suggestion: **DENIED** ! `updated`");
-        suggestedEmbed.edit(acceptEmbed);
+        suggestedEmbed.edit({ embeds: [acceptEmbed] });
 
         const user = await client.users.cache.find(
             (u) => u.tag === data.author.name
@@ -36,7 +36,7 @@ module.exports.run = async (client, message, args) => {
             .setTimestamp()
             .setColor("RED")
             .setFooter("#feedback")
-        user.send(denyEmbed);
+        user.send({ embeds: [denyEmbed] });
     } catch (err) {
         console.log(err);
         message.channel.send(`That suggestion doesn't exist.`);

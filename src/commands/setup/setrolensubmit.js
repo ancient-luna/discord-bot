@@ -24,8 +24,8 @@ module.exports.run = async (client, message, args) => {
         .setDescription(`**ALL CLAIMABLE ROLES IN SERVER** <:ancientluna_pure_server:878526120914468924>\n\n⁣The <@&907178060992876544> role only given to guild members in Toram Online game <:xot_toram_guild:952260952324202498>\nYou can apply to get this role by open a ticket for application\n\n${ToramOnlineEmoji} <@&952147085447266364> for Toram Online\n⁣${BlackDesertOnlineEmoji} <@&856380073745186876> for Black Desert Online\n${ApexLegendsEmoji} <@&861400119101095937> for Apex Legends\n\n${AdAstraAbyssosqueEmoji} <@&882350441864777769> for unlocking nsfw contents\n\nReact to any reaction that suits you for the game you love. By this you will unlock the hidden category in this server to meet another light seekers in this sanctuary`)
         .setColor("4f545c")
 
-    await message.channel.send(embedGuidelines);
-    let messageEmbed = await message.channel.send(embedRoles);
+    await message.channel.send({ embeds: [embedGuidelines] });
+    let messageEmbed = await message.channel.send({ embeds: [embedRoles] });
     messageEmbed.react(ToramOnlineEmoji);
     messageEmbed.react(BlackDesertOnlineEmoji);
     messageEmbed.react(ApexLegendsEmoji);
@@ -44,7 +44,7 @@ module.exports.run = async (client, message, args) => {
                     .setDescription(`You have been gived **Legendary Saviour** role and have access to **Departure from Iruna** category`)
                     .setFooter(`this notification message will be deleted in 5 seconds`, `https://i.imgur.com/26tcTpL.gif`)
                     .setColor("4f545c")
-                message.channel.send(addTORAMmsg).then((msg) => {
+                message.channel.send({embeds: [addTORAMmsg] }).then((msg) => {
                     setTimeout(() => { msg.delete() }, 5000)
                 });
                 message.guild.channels.cache.get('952164768217706496').send(`A legendary saviour known as ${reaction.message.guild.members.cache.get(user.id)} just departured from Iruna to this ancient city of luna <:xpot_toram_potum_cute_chilling:952260990085500978>`);
@@ -56,7 +56,7 @@ module.exports.run = async (client, message, args) => {
                     .setDescription(`You have been gived **Black Spirit** role and have access to **Black Desert Online** category`)
                     .setFooter(`this notification message will be deleted in 5 seconds`, `https://i.imgur.com/26tcTpL.gif`)
                     .setColor("4f545c")
-                message.channel.send(addBDOmsg).then((msg) => {
+                message.channel.send({ embeds: [addBDOmsg] }).then((msg) => {
                     setTimeout(() => { msg.delete() }, 5000)
                 });
             }
@@ -67,7 +67,7 @@ module.exports.run = async (client, message, args) => {
                     .setDescription(`You have been gived **Apex** role and have access to **Apex Legends** category`)
                     .setFooter(`this notification message will be deleted in 5 seconds`, `https://i.imgur.com/26tcTpL.gif`)
                     .setColor("4f545c")
-                message.channel.send(addAPEXmsg).then((msg) => {
+                message.channel.send({ embeds: [addAPEXmsg] }).then((msg) => {
                     setTimeout(() => { msg.delete() }, 5000)
                 });
             }
@@ -78,7 +78,7 @@ module.exports.run = async (client, message, args) => {
                     .setDescription(`I felt like an animal, and animals don’t know sin, do they?\nYour memory feels like home to me in <#468372462699282443>`)
                     .setFooter(`this notification message will be deleted in 5 seconds`, `https://i.imgur.com/26tcTpL.gif`)
                     .setColor("4f545c")
-                message.channel.send(addABYSSmsg).then((msg) => {
+                message.channel.send({ embeds: [addABYSSmsg] }).then((msg) => {
                     setTimeout(() => { msg.delete() }, 5000)
                 });
             }
@@ -100,7 +100,7 @@ module.exports.run = async (client, message, args) => {
                     .setDescription(`Your **Legendary Saviour** role were taken away from you since you unreacted and has no longer access to **Departure from Iruna** category anymore`)
                     .setFooter(`this notification message will be deleted in 5 seconds`, `https://i.imgur.com/26tcTpL.gif`)
                     .setColor("RED")
-                message.channel.send(removeTORAMmsg).then((msg) => {
+                message.channel.send({ embeds: [removeTORAMmsg] }).then((msg) => {
                     setTimeout(() => { msg.delete() }, 5000)
                 });
                 message.guild.channels.cache.get('952164768217706496').send(`<:xpot_toram_potum_sad:952260990337171467> ${reaction.message.guild.members.cache.get(user.id)} is leaving this city ...`);
@@ -112,7 +112,7 @@ module.exports.run = async (client, message, args) => {
                     .setDescription(`Your **Black Spirit** role were taken away from you since you unreacted and has no longer access to **Black Desert Online** category anymore`)
                     .setFooter(`this notification message will be deleted in 5 seconds`, `https://i.imgur.com/26tcTpL.gif`)
                     .setColor("RED")
-                message.channel.send(removeBDOmsg).then((msg) => {
+                message.channel.send({ embeds: [removeBDOmsg] }).then((msg) => {
                     setTimeout(() => { msg.delete() }, 5000)
                 });
             }
@@ -123,7 +123,7 @@ module.exports.run = async (client, message, args) => {
                     .setDescription(`Your **Apex** role were taken away from you since you unreacted and has no longer access to **Apex Legends** category anymore`)
                     .setFooter(`this notification message will be deleted in 5 seconds`, `https://i.imgur.com/26tcTpL.gif`)
                     .setColor("RED")
-                message.channel.send(removeAPEXmsg).then((msg) => {
+                message.channel.send({ embeds: [removeAPEXmsg] }).then((msg) => {
                     setTimeout(() => { msg.delete() }, 5000)
                 });
             }
@@ -134,7 +134,7 @@ module.exports.run = async (client, message, args) => {
                     .setDescription(`People wait around too long for love. I'm happy with all of your lusts!`)
                     .setFooter(`this notification message will be deleted in 5 seconds`, `https://i.imgur.com/26tcTpL.gif`)
                     .setColor("RED")
-                message.channel.send(removeABYSSmsg).then((msg) => {
+                message.channel.send({ embeds: [removeABYSSmsg] }).then((msg) => {
                     setTimeout(() => { msg.delete() }, 5000)
                 });
             }

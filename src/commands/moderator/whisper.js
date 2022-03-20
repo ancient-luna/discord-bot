@@ -28,7 +28,7 @@ module.exports.run = async (client, message, args) => {
 
   user.send(`${str}\n⁣`, {
     buttons: [btnServer, btnWeb],
-    embed: embed
+    embeds: [embed]
   });
 }
 

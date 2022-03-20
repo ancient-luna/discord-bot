@@ -9,7 +9,7 @@ module.exports.run = async (Client, message, args) => {
         .setImage("https://i.imgur.com/dpYHOPq.png")
         .setFooter("Ancient Luna Guild  •  Partnership: Ray Miku")
         .setColor("#4f545c")
-    await message.channel.send(alchemyLV)
+    await message.channel.send({ embeds: [alchemyLV] })
 }
 
 module.exports.help = {

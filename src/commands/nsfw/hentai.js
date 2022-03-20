@@ -35,7 +35,7 @@ module.exports.run = async (Client, message, args) => {
             .setColor('#985ce7')
             .setImage(url);
 
-        message.channel.send(embed);
+        message.channel.send({ embeds: [embed] });
     } catch (error) {
         return message.channel.send(`I know you are thirsty.. but i can't pleasure you with \`${args}\`\nTry available tag to make more lust`);
     }

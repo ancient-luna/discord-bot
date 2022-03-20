@@ -32,7 +32,7 @@ module.exports.run = async (client, message, args) => {
         .setFooter(`this notification message will be deleted in 30 seconds`, `https://i.imgur.com/26tcTpL.gif`)
         .setColor('4f545c')
 
-    message.channel.send(openTicket).then((msg) => {
+    message.channel.send({ embeds: [openTicket] }).then((msg) => {
         setTimeout(() => msg.delete(), 30000);
         setTimeout(() => message.delete());
     }).catch((err) => {
@@ -45,7 +45,7 @@ module.exports.run = async (client, message, args) => {
         .setFooter(`note: Don't hesitate to mention him if need now `)
         .setColor("4f545c")
     
-    const m = await channel.send(mEmbed)
+    const m = await channel.send({ embeds: [mEmbed] })
     
     try {
         await m.react("🔐");
