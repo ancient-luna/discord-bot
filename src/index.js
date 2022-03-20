@@ -1,8 +1,21 @@
 require('dotenv').config();
 
-const { Client, MessageEmbed } = require('discord.js');
+const { Client, MessageEmbed, Intents} = require('discord.js');
 
-const client = new Client({ partials: ['MESSAGE', 'CHANNEL', 'REACTION'] });
+const client = new Client({
+  partials: ['MESSAGE', 'CHANNEL', 'REACTION'],
+  intents: [
+    Intents.FLAGS.GUILDS,
+    Intents.FLAGS.GUILD_BANS,
+    Intents.FLAGS.GUILD_EMOJIS_AND_STICKERS,
+    Intents.FLAGS.GUILD_MESSAGE_REACTIONS,
+    Intents.FLAGS.GUILD_INVITES,
+    Intents.FLAGS.GUILD_MEMBERS,
+    Intents.FLAGS.GUILD_MESSAGE_TYPING,
+    Intents.FLAGS.GUILD_MESSAGES,
+    Intents.FLAGS.GUILD_PRESENCES
+  ]
+});
 const { promisify } = require('util');
 const { resolve } = require('path');
 const readdir = promisify(require('fs').readdir);
@@ -14,8 +27,6 @@ const schedule = require('node-schedule');
 const util = require('./utils');
 
 const configFile = require('./config/index');
-
-require('discord-buttons')(client);
 
 let gConfig = {};
 let gatewayChannelId = '';
