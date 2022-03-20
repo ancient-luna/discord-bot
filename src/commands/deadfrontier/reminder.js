@@ -21,7 +21,7 @@ module.exports.run = async (client, message, args) => {
         .setColor("4f545c")
         .setImage("https://i.imgur.com/8TdP6Kl.gif")
 
-    let messageEmbed = await message.channel.send(embedRoles);
+    let messageEmbed = await message.channel.send({ embeds: [embedRoles]});
     messageEmbed.react(OAEmoji);
     messageEmbed.react(MissionEmoji);
     messageEmbed.react(BanditEmoji);
@@ -39,7 +39,7 @@ module.exports.run = async (client, message, args) => {
                 const addOAmsg = new MessageEmbed()
                     .setDescription(`${reaction.message.guild.members.cache.get(user.id)}, role **<@&871062770387390505>** added as reminder in <#871057065383174184>`)
                     .setColor("4f545c")
-                message.channel.send(addOAmsg).then((msg) => {
+                message.channel.send({ embeds: [addOAmsg] }).then((msg) => {
                     setTimeout(() => { msg.delete() }, 5000)
                 });
             }
@@ -48,7 +48,7 @@ module.exports.run = async (client, message, args) => {
                 const addMISSIONmsg = new MessageEmbed()
                     .setDescription(`${reaction.message.guild.members.cache.get(user.id)}, role **<@&871061864459694101>** added as reminder in <#871057489179840572>`)
                     .setColor("4f545c")
-                message.channel.send(addMISSIONmsg).then((msg) => {
+                message.channel.send({ embeds: [addMISSIONmsg] }).then((msg) => {
                     setTimeout(() => { msg.delete() }, 5000)
                 });
             }
@@ -57,7 +57,7 @@ module.exports.run = async (client, message, args) => {
                 const addBANDITmsg = new MessageEmbed()
                     .setDescription(`${reaction.message.guild.members.cache.get(user.id)}, role **<@&871065063820234812>** added as reminder in <#871056816153452594>`)
                     .setColor("4f545c")
-                message.channel.send(addBANDITmsg).then((msg) => {
+                message.channel.send({ embeds: [addBANDITmsg] }).then((msg) => {
                     setTimeout(() => { msg.delete() }, 5000)
                 });
             }
@@ -66,7 +66,7 @@ module.exports.run = async (client, message, args) => {
                 const addDHmsg = new MessageEmbed()
                     .setDescription(`${reaction.message.guild.members.cache.get(user.id)}, role **<@&871061650868961310>** added as reminder in <#871056843823280158>`)
                     .setColor("4f545c")
-                message.channel.send(addDHmsg).then((msg) => {
+                message.channel.send({ embeds: [addDHmsg] }).then((msg) => {
                     setTimeout(() => { msg.delete() }, 5000)
                 });
             }
@@ -75,7 +75,7 @@ module.exports.run = async (client, message, args) => {
                 const addVLmsg = new MessageEmbed()
                     .setDescription(`${reaction.message.guild.members.cache.get(user.id)}, role **<@&871062384557568030>** added as reminder in <#871056843823280158>`)
                     .setColor("4f545c")
-                message.channel.send(addVLmsg).then((msg) => {
+                message.channel.send({ embeds: [addVLmsg] }).then((msg) => {
                     setTimeout(() => { msg.delete() }, 5000)
                 });
             }
@@ -95,7 +95,7 @@ module.exports.run = async (client, message, args) => {
                 const addOAmsg = new MessageEmbed()
                     .setDescription(`${reaction.message.guild.members.cache.get(user.id)}, role **<@&871062770387390505>** removed`)
                     .setColor("RED")
-                message.channel.send(addOAmsg).then((msg) => {
+                message.channel.send({ embeds: [addOAmsg] }).then((msg) => {
                     setTimeout(() => { msg.delete() }, 5000)
                 });
             }
@@ -104,7 +104,7 @@ module.exports.run = async (client, message, args) => {
                 const addMISSIONmsg = new MessageEmbed()
                     .setDescription(`${reaction.message.guild.members.cache.get(user.id)}, role **<@&871061864459694101>** removed`)
                     .setColor("RED")
-                message.channel.send(addMISSIONmsg).then((msg) => {
+                message.channel.send({ embeds: [addMISSIONmsg] }).then((msg) => {
                     setTimeout(() => { msg.delete() }, 5000)
                 });
             }
@@ -113,7 +113,7 @@ module.exports.run = async (client, message, args) => {
                 const addBANDITmsg = new MessageEmbed()
                     .setDescription(`${reaction.message.guild.members.cache.get(user.id)}, role **<@&871065063820234812>** removed`)
                     .setColor("RED")
-                message.channel.send(addBANDITmsg).then((msg) => {
+                message.channel.send({ embeds: [addBANDITmsg] }).then((msg) => {
                     setTimeout(() => { msg.delete() }, 5000)
                 });
             }
@@ -122,7 +122,7 @@ module.exports.run = async (client, message, args) => {
                 const addDHmsg = new MessageEmbed()
                     .setDescription(`${reaction.message.guild.members.cache.get(user.id)}, role **<@&871061650868961310>** removed`)
                     .setColor("RED")
-                message.channel.send(addDHmsg).then((msg) => {
+                message.channel.send({ embeds: [addDHmsg] }).then((msg) => {
                     setTimeout(() => { msg.delete() }, 5000)
                 });
             }
@@ -131,7 +131,7 @@ module.exports.run = async (client, message, args) => {
                 const addVLmsg = new MessageEmbed()
                     .setDescription(`${reaction.message.guild.members.cache.get(user.id)}, role **<@&871062384557568030>** removed`)
                     .setColor("RED")
-                message.channel.send(addVLmsg).then((msg) => {
+                message.channel.send({ embeds: [addVLmsg] }).then((msg) => {
                     setTimeout(() => { msg.delete() }, 5000)
                 });
             }

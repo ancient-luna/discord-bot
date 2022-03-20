@@ -6,9 +6,9 @@ module.exports.run = async (client, message, args) => {
     const survivorID = args.join(" ");
     if (!survivorID) return message.channel.send("Please specify an ID");
 
-    var request = require('request')
+    let request = require('request')
 
-    var option = {
+    let option = {
         url: `https://www.dfprofiler.com/profile/json/${survivorID}`,
         headers: {
             "X-Requested-With": "XMLHttpRequest"
@@ -16,18 +16,18 @@ module.exports.run = async (client, message, args) => {
     }
 
     request(option, function (err, responce, body) {
-        var stat = JSON.parse(body)
+        let stat = JSON.parse(body);
 
         const domUsername = new jsdom.JSDOM(stat['username']);
-        var username = domUsername.window.document.querySelector("a").textContent;
+        let username = domUsername.window.document.querySelector("a").textContent;
 
-        var exp_since_death = stat['exp_since_death']
-        var weekly_ts = stat['weekly_ts']
-        var all_time_ts = stat['all_time_ts']
+        let exp_since_death = stat['exp_since_death']
+        let weekly_ts = stat['weekly_ts']
+        let all_time_ts = stat['all_time_ts']
 
-        var daily_tpk = stat['daily_tpk']
-        var weekly_tpk = stat['weekly_tpk']
-        var all_time_tpk = stat['all_time_tpk']
+        let daily_tpk = stat['daily_tpk']
+        let weekly_tpk = stat['weekly_tpk']
+        let all_time_tpk = stat['all_time_tpk']
 
         const embedRecord = new MessageEmbed()
             .setTitle(`${username}'s Record`)
@@ -54,7 +54,7 @@ module.exports.run = async (client, message, args) => {
 
         message.channel.send({
             buttons: [buttonProfile, buttonImage],
-            embed: embedRecord
+            embeds: [embedRecord]
         })
     })
 }

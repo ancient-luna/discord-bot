@@ -20,7 +20,7 @@ module.exports.run = async (Client, message, args) => {
         .setDescription(`You have been gived **Alliances** role and have access to several channels in **Dead Frontier** category. Hope we can through this long journey together around Inner City`)
         .setTimestamp()
         .setFooter("#Ancient Luna")
-    target.user.send(addDF)
+    await target.user.send({ embeds: [addDF] })
 }
 
 module.exports.help = {

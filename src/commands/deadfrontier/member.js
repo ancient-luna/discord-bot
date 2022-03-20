@@ -20,7 +20,7 @@ module.exports.run = async (Client, message, args) => {
         .setDescription("You have been gived **Fellow Seekers** role and have access to all channels as an official member in **Dead Frontier** category. May the lights guide us, so we may bask in its light as true fellow seekers")
         .setTimestamp()
         .setFooter("#Ancient Luna")
-    target.user.send(addDF)
+    await target.user.send({ embeds: [addDF] })
 }
 
 module.exports.help = {
