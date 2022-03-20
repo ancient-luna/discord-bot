@@ -16,7 +16,6 @@
     "@discordjs/voice": "^0.8.0",
     "@iamtraction/google-translate": "^1.1.2",
     "axios": "^0.21.4",
-    "canvas": "^2.8.0",
     "config": "^3.3.6",
     "dayjs": "^1.10.4",
     "discord.js": "^13.6.0",
