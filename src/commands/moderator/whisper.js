@@ -1,5 +1,5 @@
 const { MessageEmbed } = require("discord.js");
-const { MessageButton } = require("discord-buttons");
+const { MessageButton } = require("discord.js");
 
 module.exports.run = async (client, message, args) => {
   if (!message.member.permissions.has("MANAGE_MESSAGES")) return;
