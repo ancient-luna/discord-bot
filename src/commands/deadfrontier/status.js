@@ -108,7 +108,7 @@ module.exports.run = async (client, message, args) => {
                 .addField(`**+35% Damage Boost**`, dmg_boost[1], true)
                 .addField(`**+35% Speed Boost**`, speed_boost[1], true)
                 .setImage(`https://i.imgur.com/TMI3wTd.gif`)
-                .setFooter(`Powered by Ancient Luna`)
+                .setFooter({ text: `Powered by Ancient Luna` })
                 .setTimestamp()
 
             message.channel.send({ embeds: [embedEvent] });
@@ -168,7 +168,7 @@ module.exports.run = async (client, message, args) => {
                 .addField(`**+35% Damage Boost**`, dmg_boost[1], true)
                 .addField(`**+35% Speed Boost**`, speed_boost[1], true)
                 .setImage(`https://i.imgur.com/TMI3wTd.gif`)
-                .setFooter(`Powered by Ancient Luna`)
+                .setFooter({ text: `Powered by Ancient Luna` })
                 .setTimestamp()
 
             message.channel.send({ embeds: [embedEvent] });

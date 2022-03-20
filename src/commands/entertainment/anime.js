@@ -9,7 +9,7 @@ module.exports.run = async (client, message, args) => {
     malScraper.getInfoFromName(search)
         .then((data) => {
             const malEmbed = new MessageEmbed()
-                .setAuthor(`My Anime List search result for ${args}`.split(',').join(' '))
+                .setAuthor({ name: `My Anime List search result for ${args}`.split(',').join(' ') })
                 .setThumbnail(data.picture)
                 .addField('Premiered', `\`${data.premiered}\``, true)
                 .addField('Broadcast', `\`${data.broadcast}\``, true)
@@ -34,7 +34,7 @@ module.exports.run = async (client, message, args) => {
                 .addField('Identifier', `\`${data.id}\``, true)
                 .addField('Link', data.url, true)
                 .setTimestamp()
-                .setFooter(`Requested ${message.member.displayName}`, message.author.displayAvatarURL({ dynamic: true }))
+                .setFooter({ text: `Requested ${message.member.displayName}` }, { text: message.author.displayAvatarURL({ dynamic: true }) })
 
             message.channel.send({ embeds: [malEmbed] });
         })

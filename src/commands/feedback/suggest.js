@@ -5,7 +5,7 @@ module.exports.run = async (client, message, args) => {
   if (!suggestionQuery) return message.reply('Please specify a suggestion.');
 
   const embed = new MessageEmbed()
-    .setAuthor(message.author.tag)
+    .setAuthor({ name: message.author.tag })
     .setDescription(`${suggestionQuery}`)
     .setColor('4f545c')
 

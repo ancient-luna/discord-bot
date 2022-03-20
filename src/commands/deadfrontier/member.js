@@ -16,10 +16,10 @@ module.exports.run = async (Client, message, args) => {
     await message.delete();
 
     const addDF = new MessageEmbed()
-        .setAuthor("ROLE ADDED", "https://i.imgur.com/aLkmV4I.png")
+        .setAuthor({ name: "ROLE ADDED" }, { name: "https://i.imgur.com/aLkmV4I.png" })
         .setDescription("You have been gived **Fellow Seekers** role and have access to all channels as an official member in **Dead Frontier** category. May the lights guide us, so we may bask in its light as true fellow seekers")
         .setTimestamp()
-        .setFooter("#Ancient Luna")
+        .setFooter({ text: "#Ancient Luna" })
     await target.user.send({ embeds: [addDF] })
 }
 

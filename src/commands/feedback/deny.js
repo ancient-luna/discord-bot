@@ -17,7 +17,7 @@ module.exports.run = async (client, message, args) => {
         const suggestedEmbed = await suggestionChannel.messages.fetch(messageID);
         const data = suggestedEmbed.embeds[0];
         const acceptEmbed = new MessageEmbed()
-            .setAuthor(data.author.name, "https://i.imgur.com/oZvnuem.png")
+            .setAuthor({ name: data.author.name }, { name: "https://i.imgur.com/oZvnuem.png" })
             .setTitle('Suggestion Denied')
             .setDescription(data.description)
             .setColor(`RED`)
@@ -31,11 +31,11 @@ module.exports.run = async (client, message, args) => {
             (u) => u.tag === data.author.name
         );
         const denyEmbed = new MessageEmbed()
-            .setAuthor("SUGGESTION DENIED", "https://i.imgur.com/oZvnuem.png")
+            .setAuthor({ name: "SUGGESTION DENIED" }, { name: "https://i.imgur.com/oZvnuem.png" })
             .setDescription("Your suggestion has been denied by the Elders. Find out why in **[Ancient Luna Discord Server](https://discord.com/invite/Sbp2nt8QHe)**. Thank you for the suggestion!")
             .setTimestamp()
             .setColor("RED")
-            .setFooter("#feedback")
+            .setFooter({ text: "#feedback" })
         user.send({ embeds: [denyEmbed] });
     } catch (err) {
         console.log(err);

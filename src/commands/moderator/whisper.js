@@ -13,7 +13,7 @@ module.exports.run = async (client, message, args) => {
   
   const embed = new MessageEmbed()
       .setDescription(`**Email**: daeva@ancientluna.org\n**Discord**: Dae#0090`)
-      .setFooter(`this bot won't read any of your replies`)
+      .setFooter({ text: `this bot won't read any of your replies` })
       .setColor('7289da')
 
   const btnServer = new MessageButton()
