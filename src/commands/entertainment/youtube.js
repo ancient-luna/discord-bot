@@ -34,7 +34,7 @@ module.exports.run = async (Client, message) => {
             .setColor('ed0000')
 
         const buttonWatch = new MessageButton()
-            .setStyle("url")
+            .setStyle("LINK")
             .setLabel("Join and start watch together")
             .setURL(`https://discord.com/invite/${invite.code}`)
         

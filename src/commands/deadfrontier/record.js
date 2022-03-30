@@ -43,12 +43,12 @@ module.exports.run = async (client, message, args) => {
             .setTimestamp()
 
         const buttonProfile = new MessageButton()
-            .setStyle("url")
+            .setStyle("LINK")
             .setLabel(`See Profile Detail in DF Profiler`)
             .setURL(`https://www.dfprofiler.com/profile/view/${survivorID}`)
 
         const buttonImage = new MessageButton()
-            .setStyle("url")
+            .setStyle("LINK")
             .setLabel(`Updated Profile Image`)
             .setURL(`https://www.dfprofiler.com/signaturereplicate.php?profile=${survivorID}&imgur=5q7hV6B.png`)
 

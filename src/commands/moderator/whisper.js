@@ -17,12 +17,12 @@ module.exports.run = async (client, message, args) => {
       .setColor('7289da')
 
   const btnServer = new MessageButton()
-      .setStyle("url")
+      .setStyle("LINK")
       .setLabel("Discord Server")
       .setURL(`https://discord.com/invite/Sbp2nt8QHe`)
 
   const btnWeb = new MessageButton()
-      .setStyle("url")
+      .setStyle("LINK")
       .setLabel("Website")
       .setURL(`https://ancientluna.org`)
 

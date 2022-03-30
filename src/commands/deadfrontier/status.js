@@ -114,17 +114,17 @@ module.exports.run = async (client, message, args) => {
             message.channel.send({ embeds: [embedEvent] });
 
             const buttonProfile = new MessageButton()
-                .setStyle("url")
+                .setStyle("LINK")
                 .setLabel("Dead Frontier Profile ⁣")
                 .setURL(`https://fairview.deadfrontier.com/onlinezombiemmo/index.php?action=profile;u=${survivorID}`)
 
             const buttonMessage = new MessageButton()
-                .setStyle("url")
+                .setStyle("LINK")
                 .setLabel("Send Message")
                 .setURL(`https://fairview.deadfrontier.com/onlinezombiemmo/index.php?action=pm;sa=send;u=${survivorID}`)
 
             const buttonTrade = new MessageButton()
-                .setStyle("url")
+                .setStyle("LINK")
                 .setLabel("Trade ⁣")
                 .setURL(`https://fairview.deadfrontier.com/onlinezombiemmo/index.php?page=27&memto=${survivorID}`)
 
@@ -174,17 +174,17 @@ module.exports.run = async (client, message, args) => {
             message.channel.send({ embeds: [embedEvent] });
 
             const buttonProfile = new MessageButton()
-                .setStyle("url")
+                .setStyle("LINK")
                 .setLabel("Dead Frontier Profile ⁣")
                 .setURL(`https://fairview.deadfrontier.com/onlinezombiemmo/index.php?action=profile;u=${survivorID}`)
 
             const buttonMessage = new MessageButton()
-                .setStyle("url")
+                .setStyle("LINK")
                 .setLabel("Send Message")
                 .setURL(`https://fairview.deadfrontier.com/onlinezombiemmo/index.php?action=pm;sa=send;u=${survivorID}`)
 
             const buttonTrade = new MessageButton()
-                .setStyle("url")
+                .setStyle("LINK")
                 .setLabel("Trade ⁣")
                 .setURL(`https://fairview.deadfrontier.com/onlinezombiemmo/index.php?page=27&memto=${survivorID}`)
 
