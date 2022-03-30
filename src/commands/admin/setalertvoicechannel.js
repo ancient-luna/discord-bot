@@ -4,7 +4,7 @@ module.exports.run = async (client, message, args, config) => {
   const member = message.member.voice.channel;
 
   if(!member) {
-    return message.reply('You need to be in a voice channel before using this command');
+    return message.reply({ content: 'You need to be in a voice channel before using this command' });
   }
 
   // eslint-disable-next-line no-param-reassign
@@ -13,8 +13,8 @@ module.exports.run = async (client, message, args, config) => {
   let channelName = message.member.voice.channel.name;
 
   save(config)
-    .then(() => message.reply(`New voice channel for automatic notice is set on ${channelName}`))
-    .catch(() => message.reply('There was an error in saving the new voice channel in config'));
+    .then(() => message.reply({ content: `New voice channel for automatic notice is set on ${channelName}` }))
+    .catch(() => message.reply({ content: 'There was an error in saving the new voice channel in config' }));
 
   return null;
 };

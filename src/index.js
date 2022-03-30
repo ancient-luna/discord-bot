@@ -108,7 +108,7 @@ client.on('ready', async () => {
   });
 });
 
-client.on('message', async (message) => {
+client.on('messageCreate', async (message) => {
   if (!message.guild) return;
   if (message.author.bot) return;
 
