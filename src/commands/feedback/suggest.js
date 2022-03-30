@@ -5,7 +5,7 @@ module.exports.run = async (client, message, args) => {
   if (!suggestionQuery) return message.reply('Please specify a suggestion.');
 
   const embed = new MessageEmbed()
-    .setAuthor(message.author.tag)
+    .setAuthor({ name: message.author.tag })
     .setDescription(`${suggestionQuery}`)
     .setColor('4f545c')
 
@@ -13,7 +13,7 @@ module.exports.run = async (client, message, args) => {
     setTimeout(() => { msg.delete() }, 5000)
   });
 
-  message.guild.channels.cache.get('842069893113446410').send(embed).then((msg) => {
+  message.guild.channels.cache.get('842069893113446410').send({ embeds: [embed] }).then((msg) => {
     msg.react('<:vcon_vote_upvote:859075141051613214>');
     msg.react('<:vcon_vote_disagree:859075141668700200>');
   });

@@ -1,5 +1,5 @@
 const { MessageEmbed, Client } = require("discord.js");
-const { MessageButton } = require("discord-buttons");
+const { MessageButton } = require("discord.js");
 
 module.exports.run = async (Client, message) => {
     

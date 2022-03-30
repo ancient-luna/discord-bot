@@ -31,7 +31,7 @@ module.exports.run = async (client, message, args) => {
         .setThumbnail("https://i.imgur.com/QZ2gLgq.png")
         .setImage("https://i.imgur.com/RNvs2Iq.gif")
 
-    let messageEmbed = await message.channel.send(embedRoles);
+    let messageEmbed = await message.channel.send({ embeds: [embedRoles] });
     messageEmbed.react(BOWemoji);
     messageEmbed.react(CBemoji);
     messageEmbed.react(DSemoji);

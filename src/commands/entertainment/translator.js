@@ -4,7 +4,7 @@ const pagination = require("discord.js-pagination");
 
 module.exports.run = async (client, message, args) => {
     const translateQuery = args.join(" ");
-    if (!translateQuery) return message.channel.send("Please specify a text to translate. Don't let it empty, like my heart.");
+    if (!translateQuery) return message.channel.send({ content: "Please specify a text to translate. Don't let it empty, like my heart." });
 
     const translated = await translate(translateQuery, { to: 'en' });
     const embedEN = new MessageEmbed()
@@ -40,7 +40,7 @@ module.exports.run = async (client, message, args) => {
     const embedKO = new MessageEmbed()
         .setDescription(`<:util_googletranslate:858727960693833739> **KOREAN**\n\n**Translation**: ${translatedKO.text}`)
         .setColor(`2f3136`);
-    
+
     const translatedTR = await translate(translateQuery, { to: 'tr' });
     const embedTR = new MessageEmbed()
         .setDescription(`<:util_googletranslate:858727960693833739> **TURKISH**\n\n**Translation**: ${translatedTR.text}`)
@@ -75,7 +75,7 @@ module.exports.run = async (client, message, args) => {
     const embedTL = new MessageEmbed()
         .setDescription(`<:util_googletranslate:858727960693833739> **FILIPINO**\n\n**Translation**: ${translatedTL.text}`)
         .setColor(`2f3136`);
-    
+
     const pages = [
         embedEN,
         embedJA,

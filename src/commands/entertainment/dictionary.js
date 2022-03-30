@@ -30,9 +30,9 @@ module.exports.run = async (client, message, args) => {
         .setColor(`2f3136`)
         .addField("Definition: ", definition)
         .addField("Example: ", example)
-        .setFooter(`rating 👍 ${thumbsUp} 👎 ${thumbsDown}`)
+        .setFooter({ text: `rating 👍 ${thumbsUp} 👎 ${thumbsDown}` })
 
-    return message.channel.send(embed)
+    return message.channel.send({ embeds: [embed] })
 }
 
 module.exports.help = {

@@ -17,7 +17,7 @@ module.exports.run = async (client, message, args) => {
         const suggestedEmbed = await suggestionChannel.messages.fetch(messageID);
         const data = suggestedEmbed.embeds[0];
         const acceptEmbed = new MessageEmbed()
-            .setAuthor(data.author.name, "https://i.imgur.com/Kll2T98.png")
+            .setAuthor({ name: data.author.name }, { name: "https://i.imgur.com/Kll2T98.png" })
             .setTitle('Suggestion Accepted')
             .setDescription(data.description)
             .setColor(`GREEN`)
@@ -25,18 +25,18 @@ module.exports.run = async (client, message, args) => {
             .setTimestamp()
         
         message.channel.send("Suggestion: **ACCEPTED** ! `updated`");
-        suggestedEmbed.edit(acceptEmbed);
+        suggestedEmbed.edit({ embeds: [acceptEmbed] });
 
         const user = await client.users.cache.find(
             (u) => u.tag === data.author.name
         );
         const accEmbed = new MessageEmbed()
-            .setAuthor("SUGGESTION ACCEPTED", "https://i.imgur.com/Kll2T98.png")
+            .setAuthor({ name: "SUGGESTION ACCEPTED" }, { name: "https://i.imgur.com/Kll2T98.png" })
             .setDescription("Your suggestion has been accepted by the Elders. See further detail in **[Ancient Luna Discord Server](https://discord.com/invite/Sbp2nt8QHe)**. Thank you for the suggestion!")
             .setTimestamp()
             .setColor("GREEN")
-            .setFooter("#feedback")
-        user.send(accEmbed);
+            .setFooter({ text: "#feedback" })
+        user.send({ embeds: [accEmbed] });
     } catch (err) {
         console.log(err);
         message.channel.send(`That suggestion doesn't exist.`);

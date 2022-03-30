@@ -1,10 +1,10 @@
 const { MessageEmbed, Client } = require("discord.js");
-const { MessageButton } = require("discord-buttons");
+const { MessageButton } = require("discord.js");
 const axios = require('axios');
 
 module.exports.run = async (Client, message, args) => {
 
-    var errMessage = "This is not an NSFW Channel 💢";
+    var errMessage = { content: "This is not an NSFW Channel 💢"  };
     if (!message.channel.nsfw) {
         message.react("💢");
 
@@ -27,7 +27,7 @@ module.exports.run = async (Client, message, args) => {
         const response = await axios.get(`https://nekos.life/api/v2/img/${args}`);
         const url = response.data.url;
 
-        if (!url[0]) return message.reply('Your query returned no results');
+        if (!url[0]) return message.reply({ content: 'Your query returned no results' });
 
         const embed = new MessageEmbed()
             .setTitle(`Feels hot now?`)
@@ -35,9 +35,9 @@ module.exports.run = async (Client, message, args) => {
             .setColor('#985ce7')
             .setImage(url);
 
-        message.channel.send(embed);
+        message.channel.send({ embeds: [embed] });
     } catch (error) {
-        return message.channel.send(`I know you are thirsty.. but i can't pleasure you with \`${args}\`\nTry available tag to make more lust`);
+        return message.channel.send({ content: `I know you are thirsty.. but i can't pleasure you with \`${args}\`\nTry available tag to make more lust` });
     }
 }
 
