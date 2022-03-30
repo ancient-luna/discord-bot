@@ -72,6 +72,11 @@ client.on('ready', async () => {
       // eslint-disable-next-line global-require,import/no-dynamic-require
       const properties = require(f);
       client.commands.set(properties.help.name, properties);
+      if(properties.help.aliases) {
+        for(let alias of properties.help.aliases) {
+          client.commands.set(alias, properties)
+        }
+      }
     } catch (err) {
       throw err;
     }

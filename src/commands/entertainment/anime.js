@@ -3,6 +3,8 @@ const malScraper = require('mal-scraper');
 
 module.exports.run = async (client, message, args) => {
     const search = `${args}`;
+    if (search === '-help')
+      return message.reply (`Usage: anime|${this.help.aliases.join('|')} <query>`)
     if (!search)
         return message.reply('Please add a search query!');
         
@@ -41,5 +43,6 @@ module.exports.run = async (client, message, args) => {
 }
 
 module.exports.help = {
-    name: 'anime'
+    name: 'anime',
+    aliases: ['carianime']
 }
