@@ -36,7 +36,7 @@ module.exports.run = async (Client, message) => {
         const buttonWatch = new MessageActionRow()
             .addComponents(
                 new MessageButton()
-                    .setStyle("url")
+                    .setStyle("LINK")
                     .setLabel("Join and start watch together")
                     .setURL(`https://discord.com/invite/${invite.code}`)
         )
