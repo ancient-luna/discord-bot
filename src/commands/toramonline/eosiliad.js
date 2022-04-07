@@ -16,7 +16,7 @@ module.exports.run = async (Client, message, args) => {
     await message.delete();
 
     const addEOS = new MessageEmbed()
-        .setAuthor({ name: "ROLE ADDED" }, { name: "https://i.imgur.com/tZCYzce.gif" })
+        .setAuthor({ name: "ROLE ADDED" }, { name: "https://i.imgur.com/ejkkWCB.png" })
         .setDescription("You have been gived **Eos's Iliad** role and have access to all channels as an official member in **[Departure from Iruna](https://discord.gg/hgjY95ZDQg)** category. May the lights guide us, so we may bask in its light as a true legendary saviour")
         .setTimestamp()
         .setFooter({ text: "Ancient Luna Guild: We ran as if to meet the moon" })
