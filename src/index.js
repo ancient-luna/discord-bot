@@ -156,22 +156,22 @@ client.on('guildMemberAdd', async (member) => {
 
   const channel = member.guild.channels.cache.get(gatewayChannelId);
 
-  const embed = new MessageEmbed()
+  const welcomeText = new MessageEmbed()
     .setTitle(`Welcome to ${member.guild.name}`)
     .setThumbnail(member.user.displayAvatarURL({ dynamic: true, size: 512 }))
     .setDescription(`<@${member.user.id}> please understand our **wisdom of lleud** at ${member.guild.channels.cache.get(rulesChannelId).toString()} as you make your way through this warm sanctuary`)
-    .setFooter(`${member.user.username}#${member.user.discriminator} visited the sanctuary`, member.user.displayAvatarURL({ dynamic: true, size: 512 }))
+    .setFooter({ text: `${member.user.username}#${member.user.discriminator} visited the sanctuary` }, { text: member.user.displayAvatarURL({ dynamic: true, size: 512 }) })
     .setColor('7289da');
-  channel.send(embed);
+  channel.send({ embeds: [welcomeText] });
 });
 
 client.on('guildMemberRemove', async (member) => {
   const channel = member.guild.channels.cache.get(gatewayChannelId);
 
-  const embed = new MessageEmbed()
+  const leavingText = new MessageEmbed()
     .setDescription(`The lights get dimmed! **${member.user.username}#${member.user.discriminator}** leaving the sanctuary`)
     .setColor('RED');
-  channel.send(embed);
+  channel.send({ embeds: [leavingText] });
 });
 
 const app = express();
