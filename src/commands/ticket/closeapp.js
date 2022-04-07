@@ -7,6 +7,7 @@ module.exports.run = async (client, message, args) => {
         message.channel.delete()
     }, 5000)
 }
+
 module.exports.help = {
     name: 'closeticket'
 }

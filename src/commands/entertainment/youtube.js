@@ -1,5 +1,4 @@
-const { MessageEmbed, Client } = require("discord.js");
-const { MessageButton } = require("discord.js");
+const { MessageEmbed, MessageActionRow, MessageButton } = require("discord.js");
 const fetch = require("node-fetch");
 
 module.exports.run = async (Client, message) => {
@@ -33,14 +32,18 @@ module.exports.run = async (Client, message) => {
             .setFooter(`Mobile ver. not supported`, "https://i.imgur.com/7WAJS44.png")
             .setColor('ed0000')
 
-        const buttonWatch = new MessageButton()
-            .setStyle("url")
-            .setLabel("Join and start watch together")
-            .setURL(`https://discord.com/invite/${invite.code}`)
+        
+        const buttonWatch = new MessageActionRow()
+            .addComponents(
+                new MessageButton()
+                    .setStyle("url")
+                    .setLabel("Join and start watch together")
+                    .setURL(`https://discord.com/invite/${invite.code}`)
+        )
         
         message.channel.send({
-            button: buttonWatch,
-            embed: embed
+            embeds: [embed],
+            components: [buttonWatch]
         })
     })
 }

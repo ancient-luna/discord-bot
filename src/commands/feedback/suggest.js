@@ -2,6 +2,7 @@ const { MessageEmbed } = require('discord.js');
 
 module.exports.run = async (client, message, args) => {
   const suggestionQuery = args.join(' ');
+  
   if (!suggestionQuery) return message.reply('Please specify a suggestion.');
 
   const embed = new MessageEmbed()

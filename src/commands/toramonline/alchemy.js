@@ -2,6 +2,7 @@ const { MessageEmbed } = require("discord.js");
 
 module.exports.run = async (Client, message, args) => {
     const ar = "<a:_util_arrow:864810269771300875>"
+
     let alchemyLV = new MessageEmbed()
         .setTitle("Alchemy Proficiency Leveling")
         .setURL("https://discord.com/invite/Sbp2nt8QHe")
@@ -9,6 +10,7 @@ module.exports.run = async (Client, message, args) => {
         .setImage("https://i.imgur.com/dpYHOPq.png")
         .setFooter({ text: "Ancient Luna Guild  •  Partnership: Ray Miku" })
         .setColor("#4f545c")
+
     await message.channel.send({ embeds: [alchemyLV] })
 }
 

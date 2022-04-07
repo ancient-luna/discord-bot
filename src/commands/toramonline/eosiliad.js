@@ -20,6 +20,7 @@ module.exports.run = async (Client, message, args) => {
         .setDescription("You have been gived **Eos's Iliad** role and have access to all channels as an official member in **[Departure from Iruna](https://discord.gg/hgjY95ZDQg)** category. May the lights guide us, so we may bask in its light as a true legendary saviour")
         .setTimestamp()
         .setFooter({ text: "Ancient Luna Guild: We ran as if to meet the moon" })
+        
     target.user.send({ embeds: [addEOS] })
 }
 

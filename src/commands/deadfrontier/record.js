@@ -1,5 +1,4 @@
-const { MessageEmbed, Client } = require("discord.js");
-const { MessageButton } = require("discord.js");
+const { MessageEmbed, MessageActionRow, MessageButton } = require("discord.js");
 const jsdom = require("jsdom");
 
 module.exports.run = async (client, message, args) => {
@@ -42,19 +41,23 @@ module.exports.run = async (client, message, args) => {
             .setFooter({ text: `Powered by Ancient Luna` })
             .setTimestamp()
 
-        const buttonProfile = new MessageButton()
-            .setStyle("url")
-            .setLabel(`See Profile Detail in DF Profiler`)
-            .setURL(`https://www.dfprofiler.com/profile/view/${survivorID}`)
-
-        const buttonImage = new MessageButton()
-            .setStyle("url")
-            .setLabel(`Updated Profile Image`)
-            .setURL(`https://www.dfprofiler.com/signaturereplicate.php?profile=${survivorID}&imgur=5q7hV6B.png`)
+        const btnProfile = new MessageActionRow()
+            .addComponents(
+                new MessageButton()
+                    .setStyle("url")
+                    .setLabel(`See Profile Detail in DF Profiler`)
+                    .setURL(`https://www.dfprofiler.com/profile/view/${survivorID}`)
+            )
+            .addComponents(
+                new MessageButton()
+                    .setStyle("url")
+                    .setLabel(`Updated Profile Image`)
+                    .setURL(`https://www.dfprofiler.com/signaturereplicate.php?profile=${survivorID}&imgur=5q7hV6B.png`)
+            )
 
         message.channel.send({
-            buttons: [buttonProfile, buttonImage],
-            embeds: [embedRecord]
+            embeds: [embedRecord],
+            components: [btnProfile],
         })
     })
 }

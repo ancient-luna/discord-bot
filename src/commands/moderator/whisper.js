@@ -1,5 +1,4 @@
-const { MessageEmbed } = require("discord.js");
-const { MessageButton } = require("discord.js");
+const { MessageEmbed, MessageActionRow, MessageButton } = require("discord.js");
 
 module.exports.run = async (client, message, args) => {
   if (!message.member.permissions.has("MANAGE_MESSAGES")) return;
@@ -16,19 +15,23 @@ module.exports.run = async (client, message, args) => {
       .setFooter({ text: `this bot won't read any of your replies` })
       .setColor('7289da')
 
-  const btnServer = new MessageButton()
-      .setStyle("url")
-      .setLabel("Discord Server")
-      .setURL(`https://discord.com/invite/Sbp2nt8QHe`)
-
-  const btnWeb = new MessageButton()
-      .setStyle("url")
-      .setLabel("Website")
-      .setURL(`https://ancientluna.org`)
+      const btnServer = new MessageActionRow()
+        .addComponents(
+          new MessageButton()
+          .setStyle("url")
+          .setLabel("Discord Server")
+          .setURL(`https://discord.com/invite/Sbp2nt8QHe`)
+       )
+        .addComponents(
+          new MessageButton()
+          .setStyle("url")
+          .setLabel("Website")
+          .setURL(`https://ancientluna.org`)
+        )
 
   user.send(`${str}\n⁣`, {
-    buttons: [btnServer, btnWeb],
-    embeds: [embed]
+    embeds: [embed],
+    components: [btnServer]
   });
 }
 

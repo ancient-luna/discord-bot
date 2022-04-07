@@ -20,6 +20,7 @@ module.exports.run = async (Client, message, args) => {
         .setDescription(`You have been gived **Alliances** role and have access to several channels in **[Departure from Iruna](https://discord.gg/hgjY95ZDQg)** category. Hope we can through this long journey together around Toram world`)
         .setTimestamp()
         .setFooter({ text: "Ancient Luna Guild: We ran as if to meet the moon" })
+        
     await target.user.send({ embeds: [addDF] })
 }
 
