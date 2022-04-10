@@ -117,8 +117,6 @@ module.exports.run = async (client, message, args) => {
             return;
         }
     });
-
-    message.delete()
 }
 
 module.exports.help = {
