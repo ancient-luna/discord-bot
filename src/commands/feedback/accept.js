@@ -17,11 +17,13 @@ module.exports.run = async (client, message, args) => {
         const suggestedEmbed = await suggestionChannel.messages.fetch(messageID);
         const data = suggestedEmbed.embeds[0];
         const acceptEmbed = new MessageEmbed()
-            .setAuthor({ name: data.author.name }, { name: "https://i.imgur.com/Kll2T98.png" })
+            .setAuthor({ name: data.author.name, iconURL: 'https://i.imgur.com/Kll2T98.png' })
             .setTitle('Suggestion Accepted')
             .setDescription(data.description)
             .setColor(`GREEN`)
-            .addField(`Reason from ${editor}`, acceptQuery)
+            .addFields(
+                { name: `Reason from ${editor}`, value: acceptQuery }
+            )
             .setTimestamp()
         
         message.channel.send("Suggestion: **ACCEPTED** ! `updated`");
@@ -31,7 +33,7 @@ module.exports.run = async (client, message, args) => {
             (u) => u.tag === data.author.name
         );
         const accEmbed = new MessageEmbed()
-            .setAuthor({ name: "SUGGESTION ACCEPTED" }, { name: "https://i.imgur.com/Kll2T98.png" })
+            .setAuthor({ name: "SUGGESTION ACCEPTED", iconURL: 'https://i.imgur.com/Kll2T98.png' })
             .setDescription("Your suggestion has been accepted by the Elders. See further detail in **[Ancient Luna Discord Server](https://discord.com/invite/Sbp2nt8QHe)**. Thank you for the suggestion!")
             .setTimestamp()
             .setColor("GREEN")

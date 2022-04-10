@@ -110,8 +110,6 @@ module.exports.run = async (client, message, args) => {
                 .setFooter({ text: `Powered by Ancient Luna` })
                 .setTimestamp()
 
-            message.channel.send({ embeds: [embedEvent] });
-
             const btnProfile = new MessageActionRow()
                 .addComponents(
                     new MessageButton()
@@ -132,8 +130,8 @@ module.exports.run = async (client, message, args) => {
                     .setURL(`https://fairview.deadfrontier.com/onlinezombiemmo/index.php?page=27&memto=${survivorID}`)
                 )
 
-            message.channel.send({
-                embeds: [embed],
+            message.reply({
+                embeds: [embedEvent, embed],
                 components: [btnProfile]
             })
         } catch (error) {
@@ -175,8 +173,6 @@ module.exports.run = async (client, message, args) => {
                 .setFooter({ text: `Powered by Ancient Luna` })
                 .setTimestamp()
 
-            message.channel.send({ embeds: [embedEvent] });
-
             const btnProfile = new MessageActionRow()
                 .addComponents(
                     new MessageButton()
@@ -197,8 +193,8 @@ module.exports.run = async (client, message, args) => {
                     .setURL(`https://fairview.deadfrontier.com/onlinezombiemmo/index.php?page=27&memto=${survivorID}`)
                 )
 
-            message.channel.send({
-                embeds: [embed],
+            message.reply({
+                embeds: [embedEvent, embed],
                 components: [btnProfile]
             })
         }
@@ -206,5 +202,5 @@ module.exports.run = async (client, message, args) => {
 }
 
 module.exports.help = {
-    name: 'stat'
+    name: 'status'
 }

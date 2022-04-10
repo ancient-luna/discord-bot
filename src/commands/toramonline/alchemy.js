@@ -8,12 +8,13 @@ module.exports.run = async (Client, message, args) => {
         .setURL("https://discord.com/invite/Sbp2nt8QHe")
         .setDescription(`Suggested materials:\n\n${ar} Lv. 0 - 10: Revita I\n${ar} Lv. 11 - 30: Revita II\n${ar} Lv. 30 - 55: Revita III\n${ar} Lv. 30 - 65: Regera III\n${ar} Lv. 56 - 70: Revita IV\n${ar} Lv. 66 - 100: Vaccine III\n${ar} Lv. 71 - 100: Revita V\n${ar} Lv. 100 - 154: Flower Nectar x 10\n${ar} Lv. 155 - 200: High-Purity Orcalcum`)
         .setImage("https://i.imgur.com/dpYHOPq.png")
+        .setTimestamp()
         .setFooter({ text: "Powered by Ancient Luna" })
         .setColor("#4f545c")
 
-    await message.channel.send({ embeds: [alchemyLV] })
+    await message.reply({ embeds: [alchemyLV] })
 }
 
 module.exports.help = {
-    name: 'alchemy'
+    name: 'a'
 }

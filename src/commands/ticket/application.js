@@ -27,9 +27,9 @@ module.exports.run = async (client, message, args) => {
     });
     
     const openTicket = new MessageEmbed()
-        .setAuthor(`${message.author.tag}: A TICKET OPENED`, message.author.displayAvatarURL({ dynamic: true }))
+        .setAuthor({ text: `${message.author.tag}: A TICKET OPENED`, iconURL: message.author.displayAvatarURL({ dynamic: true }) })
         .setDescription(`Click <#${channel.id}> to see your application ticket`)
-        .setFooter(`this notification message will be deleted in 30 seconds`, `https://i.imgur.com/26tcTpL.gif`)
+        .setFooter({ text: `this notification message will be deleted in 30 seconds`, iconURL: 'https://i.imgur.com/26tcTpL.gif' })
         .setColor('4f545c')
 
     message.channel.send({ embeds: [openTicket] }).then((msg) => {
@@ -40,7 +40,7 @@ module.exports.run = async (client, message, args) => {
     })
 
     const mEmbed = new MessageEmbed()
-        .setAuthor({ name: `${message.author.tag}: APPLICATION TICKET` }, { name: message.author.displayAvatarURL({ dynamic: true }) })
+        .setAuthor({ name: `${message.author.tag}: APPLICATION TICKET`, iconURL: message.author.displayAvatarURL({ dynamic: true }) })
         .setDescription(`Thank you for your application. The Ancestor will be here as soon as possible! If he still alive out there. Please take your time while waiting`)
         .setFooter({ text: `note: Don't hesitate to mention him if need now ` })
         .setColor("4f545c")

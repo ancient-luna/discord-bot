@@ -143,7 +143,7 @@ client.on('messageCreate', async (message) => {
       await message.member.roles.add(memberRole);
       await message.member.roles.remove(preMemberRole);
       await client.channels.cache.get(gConfig.server.generalChannel).send(
-        `<@${message.author.id}> has passed the trial by understand our wisdom of lleud to reach this warm sanctuary deeper.\nWelcome, to the sanctuary of lights. The <@&${gConfig.server.elderRole}> welcome you as one of true light seekers. ${ancientLunaEmoji}`,
+        `<@${message.author.id}> has passed the trial by understand our wisdom of lleud to reach this warm sanctuary deeper.\nWelcome, to the sanctuary of lights. The <@&${gConfig.server.elderRole}> welcome you as one of true light seekers. ${ancientLunaEmoji}\n<#864556584818835456> your role to give more access in this sanctuary.`,
       );
     }
     await message.delete();
@@ -160,7 +160,7 @@ client.on('guildMemberAdd', async (member) => {
     .setTitle(`Welcome to ${member.guild.name}`)
     .setThumbnail(member.user.displayAvatarURL({ dynamic: true, size: 512 }))
     .setDescription(`<@${member.user.id}> please understand our **wisdom of lleud** at ${member.guild.channels.cache.get(rulesChannelId).toString()} as you make your way through this warm sanctuary`)
-    .setFooter({ text: `${member.user.username}#${member.user.discriminator} visited the sanctuary` }, { text: member.user.displayAvatarURL({ dynamic: true, size: 512 }) })
+    .setFooter({ text: `${member.user.username}#${member.user.discriminator} visited the sanctuary`, iconURL: member.user.displayAvatarURL({ dynamic: true, size: 512 }) })
     .setColor('7289da');
   channel.send({ embeds: [welcomeText] });
 });

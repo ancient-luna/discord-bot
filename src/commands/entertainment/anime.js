@@ -11,7 +11,7 @@ module.exports.run = async (client, message, args) => {
             const malEmbed = new MessageEmbed()
                 .setAuthor({ name: `My Anime List search result for ${args}`.split(',').join(' ') })
                 .setThumbnail(data.picture)
-                .addField('Premiered', `\`${data.premiered}\``, true)
+                .addFields('Premiered', `\`${data.premiered}\``, true)
                 .addField('Broadcast', `\`${data.broadcast}\``, true)
                 .addField('Genres', `\`${data.genres}\``, true)
                 .addField('English Title', `\`${data.englishTitle}\``, true)
@@ -36,7 +36,7 @@ module.exports.run = async (client, message, args) => {
                 .setTimestamp()
                 .setFooter({ text: `Requested ${message.member.displayName}` }, { text: message.author.displayAvatarURL({ dynamic: true }) })
 
-            message.channel.send({ embeds: [malEmbed] });
+            message.reply({ embeds: [malEmbed] });
         })
 }
 

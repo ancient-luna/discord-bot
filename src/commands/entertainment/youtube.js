@@ -4,7 +4,7 @@ const fetch = require("node-fetch");
 module.exports.run = async (Client, message) => {
     let channel = message.member.voice.channel;
 
-    if(!channel) return message.channel.send(`You have to be in any **voice channel** first in this server`)
+    if(!channel) return message.reply(`You have to be in any **voice channel** first in this server`)
 
     fetch (`https://discord.com/api/v8/channels/${channel.id}/invites`, {
         method: "POST",
@@ -24,12 +24,12 @@ module.exports.run = async (Client, message) => {
 
     .then(res => res.json())
     .then(invite => {
-        if(!invite.code) return message.channel.send("Something wrong with YT-Together link. Don't blame me")
+        if(!invite.code) return message.reply("Something wrong with YT-Together link. Don't blame me")
 
         const embed = new MessageEmbed()
             .setTitle(`Get your snacks and relax 🍿`)
             .setDescription(`**${message.author.username}** has started **[YouTube Together](https://discord.com/invite/${invite.code})** in **${channel.name}**\nWatch YouTube videos without ads in Ancient Luna`)
-            .setFooter(`Mobile ver. not supported`, "https://i.imgur.com/7WAJS44.png")
+            .setFooter({ text: `Mobile ver. not supported`, iconURL: 'https://i.imgur.com/7WAJS44.png' })
             .setColor('ed0000')
 
         
@@ -41,7 +41,7 @@ module.exports.run = async (Client, message) => {
                     .setURL(`https://discord.com/invite/${invite.code}`)
         )
         
-        message.channel.send({
+        message.reply({
             embeds: [embed],
             components: [buttonWatch]
         })

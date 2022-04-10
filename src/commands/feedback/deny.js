@@ -10,18 +10,18 @@ module.exports.run = async (client, message, args) => {
     if(!denyQuery) return message.reply("`accept/deny` `messageid` `reason`");
 
     try {
-        const suggestionChannel = message.guild.channels.cache.get(
-            "842069893113446410"
-        );
+        const suggestionChannel = message.guild.channels.cache.get("842069893113446410");
         const editor = message.author.tag;
         const suggestedEmbed = await suggestionChannel.messages.fetch(messageID);
         const data = suggestedEmbed.embeds[0];
         const acceptEmbed = new MessageEmbed()
-            .setAuthor({ name: data.author.name }, { name: "https://i.imgur.com/oZvnuem.png" })
+            .setAuthor({ name: data.author.name, iconURL: 'https://i.imgur.com/oZvnuem.png' })
             .setTitle('Suggestion Denied')
             .setDescription(data.description)
             .setColor(`RED`)
-            .addField(`Reason from ${editor}`, denyQuery)
+            .addFields(
+                { name: `Reason from ${editor}`, value: denyQuery }
+            )
             .setTimestamp()
         
         message.channel.send("Suggestion: **DENIED** ! `updated`");
@@ -31,7 +31,7 @@ module.exports.run = async (client, message, args) => {
             (u) => u.tag === data.author.name
         );
         const denyEmbed = new MessageEmbed()
-            .setAuthor({ name: "SUGGESTION DENIED" }, { name: "https://i.imgur.com/oZvnuem.png" })
+            .setAuthor({ name: "SUGGESTION DENIED", iconURL: 'https://i.imgur.com/oZvnuem.png' })
             .setDescription("Your suggestion has been denied by the Elders. Find out why in **[Ancient Luna Discord Server](https://discord.com/invite/Sbp2nt8QHe)**. Thank you for the suggestion!")
             .setTimestamp()
             .setColor("RED")

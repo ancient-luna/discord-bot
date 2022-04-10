@@ -8,6 +8,7 @@ module.exports.run = async (Client, message, args) => {
         .setURL("https://discord.com/invite/Sbp2nt8QHe")
         .setDescription(`This is a simulator, it mimics what happen in game. You can use this tool for trying out statting formula. This simulator WILL NOT produce any formula. Please refer to **[Smithing Guide](https://coryn.club/guide.php?key=smith)** for complete explanation on how to produce a formula.`)
         .setImage("https://i.imgur.com/dpYHOPq.png")
+        .setTimestamp()
         .setFooter({ text: "Powered by Ancient Luna" })
         .setColor("#4f545c")
         
@@ -19,7 +20,7 @@ module.exports.run = async (Client, message, args) => {
                 .setURL('https://coryn.club/statting_simulator.php')
         )
 
-    await message.channel.send({
+    await message.reply({
         embeds: [fillstats],
         components: [stats]
     });

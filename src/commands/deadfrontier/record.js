@@ -55,7 +55,7 @@ module.exports.run = async (client, message, args) => {
                     .setURL(`https://www.dfprofiler.com/signaturereplicate.php?profile=${survivorID}&imgur=5q7hV6B.png`)
             )
 
-        message.channel.send({
+        message.reply({
             embeds: [embedRecord],
             components: [btnProfile],
         })
