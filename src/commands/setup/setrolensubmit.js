@@ -40,7 +40,7 @@ module.exports.run = async (client, message, args) => {
             if (reaction.emoji.name === 'game_logo_toram') {
                 await reaction.message.guild.members.cache.get(user.id).roles.add(ToramOnlineRole);
                 const addTORAMmsg = new MessageEmbed()
-                    .setAuthor({ name: "ROLE ADDED" }, { name: "https://i.imgur.com/tZCYzce.gif" })
+                    .setAuthor({ name: "ROLE ADDED" }, { name: "https://i.imgur.com/KV3WQFN.png" })
                     .setDescription(`You have been gived **Legendary Saviour** role and have access to **Departure from Iruna** category`)
                     .setFooter({ text: `this notification message will be deleted in 5 seconds` }, { text: `https://i.imgur.com/26tcTpL.gif` })
                     .setColor("4f545c")
@@ -96,7 +96,7 @@ module.exports.run = async (client, message, args) => {
             if (reaction.emoji.name === 'game_logo_toram') {
                 await reaction.message.guild.members.cache.get(user.id).roles.remove(ToramOnlineRole);
                 const removeTORAMmsg = new MessageEmbed()
-                    .setAuthor({ name: "ROLE REMOVED" }, { name: "https://i.imgur.com/MjbykvH.gif" })
+                    .setAuthor({ name: "ROLE REMOVED" }, { name: "https://i.imgur.com/KV3WQFN.png" })
                     .setDescription(`Your **Legendary Saviour** role were taken away from you since you unreacted and has no longer access to **Departure from Iruna** category anymore`)
                     .setFooter({ text: `this notification message will be deleted in 5 seconds` }, { text: `https://i.imgur.com/26tcTpL.gif` })
                     .setColor("RED")
