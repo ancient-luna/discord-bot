@@ -24,8 +24,7 @@ module.exports.run = async (client, message, args) => {
         .setDescription(`**ALL CLAIMABLE ROLES IN SERVER** <:ancientluna_pure_server:878526120914468924>\n\n⁣The <@&907178060992876544> role only given to guild members in Toram Online game <:xot_toram_guild:952260952324202498>\nYou can apply to get this role by open a ticket for application\n\n${ToramOnlineEmoji} <@&952147085447266364> for Toram Online\n⁣${BlackDesertOnlineEmoji} <@&856380073745186876> for Black Desert Online\n${ApexLegendsEmoji} <@&861400119101095937> for Apex Legends\n\n${AdAstraAbyssosqueEmoji} <@&882350441864777769> for unlocking nsfw contents\n\nReact to any reaction that suits you for the game you love. By this you will unlock the hidden category in this server to meet another light seekers in this sanctuary`)
         .setColor("4f545c")
 
-    await message.channel.send({ embeds: [embedGuidelines] });
-    let messageEmbed = await message.channel.send({ embeds: [embedRoles] });
+    let messageEmbed = await message.channel.send({ embeds: [embedGuidelines, embedRoles] });
     messageEmbed.react(ToramOnlineEmoji);
     messageEmbed.react(BlackDesertOnlineEmoji);
     messageEmbed.react(ApexLegendsEmoji);
