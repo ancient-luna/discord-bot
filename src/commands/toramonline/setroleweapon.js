@@ -3,7 +3,7 @@ const { MessageEmbed, ReactionManager } = require('discord.js');
 module.exports.run = async (client, message, args) => {
     if (!message.member.permissions.has("MANAGE_MESSAGES")) return;
 
-    const channel = '952170767947272303';
+    const channelToramWeapon = '952170767947272303';
 
     const BOWrole = message.guild.roles.cache.find(role => role.name === 'Bow Wielder')
     const CBrole = message.guild.roles.cache.find(role => role.name === 'Bowgun Wielder')
@@ -47,7 +47,7 @@ module.exports.run = async (client, message, args) => {
         if (reaction.partial) await reaction.fetch();
         if (user.bot) return;
 
-        if (reaction.message.channel.id == channel) {
+        if (reaction.message.channel.id == channelToramWeapon) {
             if (reaction.emoji.name === 'xnot_toram_wpn_bow') {
                 await reaction.message.guild.members.cache.get(user.id).roles.add(BOWrole);
             }
@@ -85,7 +85,7 @@ module.exports.run = async (client, message, args) => {
         if (reaction.partial) await reaction.fetch();
         if (user.bot) return;
 
-        if (reaction.message.channel.id == channel) {
+        if (reaction.message.channel.id == channelToramWeapon) {
             if (reaction.emoji.name === 'xnot_toram_wpn_bow') {
                 await reaction.message.guild.members.cache.get(user.id).roles.remove(BOWrole);
             }

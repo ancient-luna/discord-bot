@@ -3,7 +3,7 @@ const { MessageEmbed, ReactionManager } = require('discord.js');
 module.exports.run = async (client, message, args) => {
     if (!message.member.permissions.has("MANAGE_MESSAGES")) return;
 
-    const channel = '864556584818835456';
+    const channelServerRole = '864556584818835456';
     const ToramOnlineRole = message.guild.roles.cache.find(role => role.name === 'Legendary Saviour')
     const BlackDesertOnlineRole = message.guild.roles.cache.find(role => role.name === 'Black Spirit')
     const ApexLegendsRole = message.guild.roles.cache.find(role => role.name === 'Apex')
@@ -35,7 +35,7 @@ module.exports.run = async (client, message, args) => {
         if (reaction.partial) await reaction.fetch();
         if (user.bot) return;
 
-        if (reaction.message.channel.id == channel) {
+        if (reaction.message.channel.id == channelServerRole) {
             if (reaction.emoji.name === 'game_logo_toram') {
                 await reaction.message.guild.members.cache.get(user.id).roles.add(ToramOnlineRole);
                 const addTORAMmsg = new MessageEmbed()
@@ -91,7 +91,7 @@ module.exports.run = async (client, message, args) => {
         if (reaction.partial) await reaction.fetch();
         if (user.bot) return;
 
-        if (reaction.message.channel.id == channel) {
+        if (reaction.message.channel.id == channelServerRole) {
             if (reaction.emoji.name === 'game_logo_toram') {
                 await reaction.message.guild.members.cache.get(user.id).roles.remove(ToramOnlineRole);
                 const removeTORAMmsg = new MessageEmbed()
