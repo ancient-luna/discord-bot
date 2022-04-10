@@ -61,7 +61,7 @@ client.on('ready', async () => {
   rulesChannelId = gConfig.server.ruleChannel;
   luxCastaId = gConfig.server.onJoinConfig.preMemberRole;
 
-  client.user.setActivity('with cute colons ♡', {
+  client.user.setActivity('with cutie colons ♡', {
     type: 'PLAYING',
   });
 
@@ -143,7 +143,7 @@ client.on('messageCreate', async (message) => {
       await message.member.roles.add(memberRole);
       await message.member.roles.remove(preMemberRole);
       await client.channels.cache.get(gConfig.server.generalChannel).send(
-        `<@${message.author.id}> has passed the trial by understand our wisdom of lleud to reach this warm sanctuary deeper.\nWelcome, to the sanctuary of lights. The <@&${gConfig.server.elderRole}> welcome you as one of true light seekers. ${ancientLunaEmoji}\n<#864556584818835456> your role to give more access in this sanctuary.`,
+        `<@${message.author.id}> has passed the trial by understand our wisdom of lleud to reach this warm sanctuary deeper.\nWelcome, to the sanctuary of lights. The <@&${gConfig.server.elderRole}> welcome you as one of true light seekers. ${ancientLunaEmoji}\n<:ancientluna_divinare_s:859034096192978965> <#864556584818835456> your role to give more access in this sanctuary.`,
       );
     }
     await message.delete();
