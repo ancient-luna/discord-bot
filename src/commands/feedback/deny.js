@@ -35,7 +35,7 @@ module.exports.run = async (client, message, args) => {
             .setDescription("Your suggestion has been denied by the Elders. Find out why in **[Ancient Luna Discord Server](https://discord.com/invite/Sbp2nt8QHe)**. Thank you for the suggestion!")
             .setTimestamp()
             .setColor("RED")
-            .setFooter({ text: "#feedback" })
+            .setFooter({ text: "Your Suggestions Status" })
         user.send({ embeds: [denyEmbed] });
     } catch (err) {
         console.log(err);

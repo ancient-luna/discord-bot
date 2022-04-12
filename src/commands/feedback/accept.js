@@ -37,7 +37,7 @@ module.exports.run = async (client, message, args) => {
             .setDescription("Your suggestion has been accepted by the Elders. See further detail in **[Ancient Luna Discord Server](https://discord.com/invite/Sbp2nt8QHe)**. Thank you for the suggestion!")
             .setTimestamp()
             .setColor("GREEN")
-            .setFooter({ text: "#feedback" })
+            .setFooter({ text: "Your Suggestions Status" })
         user.send({ embeds: [accEmbed] });
     } catch (err) {
         console.log(err);
