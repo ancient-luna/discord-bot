@@ -3,29 +3,29 @@ const { MessageEmbed, MessageActionRow, MessageButton } = require("discord.js");
 module.exports.run = async (Client, message, args) => {
     const ar = "<a:_util_arrow:864810269771300875>"
 
-    let statscalc = new MessageEmbed()
-        .setTitle("Stat Calculator")
+    let dye = new MessageEmbed()
+        .setTitle("This Month Dye List")
         .setURL("https://discord.com/invite/Sbp2nt8QHe")
-        .setDescription(`Formula used on this calculator is based on the explanation at **[Toram Wiki's Status](https://www.dopr.net/toramonline-wiki/status)** page and **[Coryn Club](https://coryn.club/index.php)** findings.`)
+        .setDescription(`Monthly Dye is a feature where you can get item drop "weapon and colored shield" by defeating Boss Monsters, on difficulty Nightmare & Ultimate Mode. Every month on first date (1st day) "colored weapons and shields" always change or reset every Boss Monster.`)
         .setImage("https://i.imgur.com/dpYHOPq.png")
         .setTimestamp()
         .setFooter({ text: "Powered by Ancient Luna", iconURL: 'https://i.imgur.com/QZ2gLgq.png' })
         .setColor("#4f545c")
         
-    let stats = new MessageActionRow()
+    let table = new MessageActionRow()
         .addComponents(
             new MessageButton()
                 .setStyle('LINK')
-                .setLabel('Stat Calculator')
-                .setURL('https://coryn.club/stat_calculator.php')
+                .setLabel('Dye list for this month')
+                .setURL('https://toram-id.info/dye')
         )
 
     await message.reply({
-        embeds: [statscalc],
-        components: [stats]
+        embeds: [dye],
+        components: [table]
     });
 }
 
 module.exports.help = {
-    name: 'stat'
+    name: 'dye'
 }

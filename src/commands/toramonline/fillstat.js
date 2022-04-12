@@ -9,7 +9,7 @@ module.exports.run = async (Client, message, args) => {
         .setDescription(`This is a simulator, it mimics what happen in game. You can use this tool for trying out statting formula. This simulator WILL NOT produce any formula. Please refer to **[Smithing Guide](https://coryn.club/guide.php?key=smith)** for complete explanation on how to produce a formula.`)
         .setImage("https://i.imgur.com/dpYHOPq.png")
         .setTimestamp()
-        .setFooter({ text: "Powered by Ancient Luna" })
+        .setFooter({ text: "Powered by Ancient Luna", iconURL: 'https://i.imgur.com/QZ2gLgq.png' })
         .setColor("#4f545c")
         
     let stats = new MessageActionRow()
