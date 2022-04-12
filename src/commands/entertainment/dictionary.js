@@ -30,7 +30,7 @@ module.exports.run = async (client, message, args) => {
         .setColor(`2f3136`)
         .addFields(
             { name: "Definition: ", value: definition },
-            { name: "Example: ", example }
+            { name: "Example: ", value: example }
         )
         .setFooter({ text: `rating 👍 ${thumbsUp} 👎 ${thumbsDown}` })
 
@@ -38,5 +38,5 @@ module.exports.run = async (client, message, args) => {
 }
 
 module.exports.help = {
-    name: 'dictionary'
+    name: 'meaning'
 }

@@ -31,14 +31,16 @@ module.exports.run = async (client, message, args) => {
         const embedRecord = new MessageEmbed()
             .setTitle(`${username}'s Record`)
             .setURL(`https://www.dfprofiler.com/profile/view/${survivorID}`)
-            .addField(`**EXP Since Death**`, `${exp_since_death} EXP`, true)
-            .addField(`**Weekly TS**`, `${weekly_ts} EXP`, true)
-            .addField(`**⭐ All Time TS**`, `${all_time_ts} EXP`, true)
-            .addField(`**Daily TPK**`, daily_tpk, true)
-            .addField(`**Weekly TPK**`, weekly_tpk, true)
-            .addField(`**⭐ All Time TPK**`, all_time_tpk, true)
+            .addFields(
+                { name: `**EXP Since Death**`, value: `${exp_since_death} EXP`, inline: true },
+                { name: `**Weekly TS**`, value: `${weekly_ts} EXP`, inline: true },
+                { name: `**⭐ All Time TS**`, value: `${all_time_ts} EXP`, inline: true },
+                { name: `**Daily TPK**`, value: daily_tpk, inline: true },
+                { name: `**Weekly TPK**`, value: weekly_tpk, inline: true },
+                { name: `**⭐ All Time TPK**`, value: all_time_tpk, inline: true }
+            )
             .setImage(`https://www.dfprofiler.com/signaturereplicate.php?profile=${survivorID}&imgur=5q7hV6B`)
-            .setFooter({ text: `Powered by Ancient Luna` })
+            .setFooter({ text: `Powered by Ancient Luna`, iconURL: 'https://i.imgur.com/vKo3PJm.png' })
             .setTimestamp()
 
         const btnProfile = new MessageActionRow()
