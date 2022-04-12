@@ -10,7 +10,7 @@ module.exports.run = async (client, message, args) => {
     .setDescription(`${suggestionQuery}`)
     .setColor('4f545c')
 
-  message.reply('Submitted suggestion is at <#842069893113446410> !').then((msg) => {
+  message.channel.send('Submitted suggestion is at <#842069893113446410> !').then((msg) => {
     setTimeout(() => { msg.delete() }, 5000)
   });
 
