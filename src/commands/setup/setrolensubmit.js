@@ -1,5 +1,4 @@
 const { MessageEmbed, ReactionManager } = require('discord.js');
-const configFile = require('./config/index');
 
 module.exports.run = async (client, message, args) => {
     if (!message.member.permissions.has("MANAGE_MESSAGES")) return;
@@ -37,7 +36,7 @@ module.exports.run = async (client, message, args) => {
         if (reaction.partial) await reaction.fetch();
         if (user.bot) return;
 
-        if (reaction.message.channel.id == channelServerRole) {
+        if (reaction.message.channel.id === channelServerRole) {
             if (reaction.emoji.name === 'game_logo_toram') {
                 await reaction.message.guild.members.cache.get(user.id).roles.add(ToramOnlineRole);
                 const addTORAMmsg = new MessageEmbed()
@@ -93,7 +92,7 @@ module.exports.run = async (client, message, args) => {
         if (reaction.partial) await reaction.fetch();
         if (user.bot) return;
 
-        if (reaction.message.channel.id == channelServerRole) {
+        if (reaction.message.channel.id === channelServerRole) {
             if (reaction.emoji.name === 'game_logo_toram') {
                 await reaction.message.guild.members.cache.get(user.id).roles.remove(ToramOnlineRole);
                 const removeTORAMmsg = new MessageEmbed()
@@ -188,7 +187,7 @@ module.exports.run = async (client, message, args) => {
         if (reaction.partial) await reaction.fetch();
         if (user.bot) return;
 
-        if (reaction.message.channel.id == channelToramWeapon) {
+        if (reaction.message.channel.id === channelToramWeapon) {
             if (reaction.emoji.name === 'xnot_toram_wpn_bow') {
                 await reaction.message.guild.members.cache.get(user.id).roles.add(BOWrole);
             }
@@ -226,7 +225,7 @@ module.exports.run = async (client, message, args) => {
         if (reaction.partial) await reaction.fetch();
         if (user.bot) return;
 
-        if (reaction.message.channel.id == channelToramWeapon) {
+        if (reaction.message.channel.id === channelToramWeapon) {
             if (reaction.emoji.name === 'xnot_toram_wpn_bow') {
                 await reaction.message.guild.members.cache.get(user.id).roles.remove(BOWrole);
             }
@@ -261,5 +260,5 @@ module.exports.run = async (client, message, args) => {
 }
 
 module.exports.help = {
-    name: 'setrole'
+    name: 'setrolensubmit'
 }
