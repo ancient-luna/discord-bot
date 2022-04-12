@@ -39,48 +39,16 @@ module.exports.run = async (client, message, args) => {
         if (reaction.message.channel.id === channelServerRole) {
             if (reaction.emoji.name === 'game_logo_toram') {
                 await reaction.message.guild.members.cache.get(user.id).roles.add(ToramOnlineRole);
-                const addTORAMmsg = new MessageEmbed()
-                    .setAuthor({ name: "ROLE ADDED",  iconURL: 'https://i.imgur.com/KV3WQFN.png' })
-                    .setDescription(`You have been gived **Legendary Saviour** role and have access to **Departure from Iruna** category`)
-                    .setFooter({ text: `this notification message will be deleted in 5 seconds`,  iconURL: 'https://i.imgur.com/26tcTpL.gif' })
-                    .setColor("4f545c")
-                message.channel.send({embeds: [addTORAMmsg] }).then((msg) => {
-                    setTimeout(() => { msg.delete() }, 5000)
-                });
                 message.guild.channels.cache.get('952164768217706496').send(`A legendary saviour known as ${reaction.message.guild.members.cache.get(user.id)} just departured from Iruna to this ancient city of luna <:xpot_toram_potum_cute_chilling:952260990085500978>`);
             }
             if (reaction.emoji.name === 'game_logo_bdo') {
                 await reaction.message.guild.members.cache.get(user.id).roles.add(BlackDesertOnlineRole);
-                const addBDOmsg = new MessageEmbed()
-                    .setAuthor({ name: "ROLE ADDED",  iconURL: 'https://i.imgur.com/etMSX3u.png' })
-                    .setDescription(`You have been gived **Black Spirit** role and have access to **Black Desert Online** category`)
-                    .setFooter({ text: `this notification message will be deleted in 5 seconds`,  iconURL: 'https://i.imgur.com/26tcTpL.gif' })
-                    .setColor("4f545c")
-                message.channel.send({ embeds: [addBDOmsg] }).then((msg) => {
-                    setTimeout(() => { msg.delete() }, 5000)
-                });
             }
             if (reaction.emoji.name === 'game_logo_apex') {
                 await reaction.message.guild.members.cache.get(user.id).roles.add(ApexLegendsRole);
-                const addAPEXmsg = new MessageEmbed()
-                    .setAuthor({ name: "ROLE ADDED", iconURL: 'https://i.imgur.com/BbW7VAX.png' })
-                    .setDescription(`You have been gived **Apex** role and have access to **Apex Legends** category`)
-                    .setFooter({ text: `this notification message will be deleted in 5 seconds`,  iconURL: 'https://i.imgur.com/26tcTpL.gif' })
-                    .setColor("4f545c")
-                message.channel.send({ embeds: [addAPEXmsg] }).then((msg) => {
-                    setTimeout(() => { msg.delete() }, 5000)
-                });
             }
             if (reaction.emoji.name === 'ancientluna_divinare_s') {
                 await reaction.message.guild.members.cache.get(user.id).roles.add(AdAstraAbyssosqueRole);
-                const addABYSSmsg = new MessageEmbed()
-                    .setAuthor({ name: "ROLE ADDED", iconURL: 'https://i.imgur.com/CAFo9qL.png' })
-                    .setDescription(`I felt like an animal, and animals don’t know sin, do they?\nYour memory feels like home to me in <#468372462699282443>`)
-                    .setFooter({ text: `this notification message will be deleted in 5 seconds`, iconURL: 'https://i.imgur.com/26tcTpL.gif' })
-                    .setColor("4f545c")
-                message.channel.send({ embeds: [addABYSSmsg] }).then((msg) => {
-                    setTimeout(() => { msg.delete() }, 5000)
-                });
             }
         } else {
             return;
@@ -95,48 +63,16 @@ module.exports.run = async (client, message, args) => {
         if (reaction.message.channel.id === channelServerRole) {
             if (reaction.emoji.name === 'game_logo_toram') {
                 await reaction.message.guild.members.cache.get(user.id).roles.remove(ToramOnlineRole);
-                const removeTORAMmsg = new MessageEmbed()
-                    .setAuthor({ name: "ROLE REMOVED", iconURL: 'https://i.imgur.com/KV3WQFN.png' })
-                    .setDescription(`Your **Legendary Saviour** role were taken away from you since you unreacted and has no longer access to **Departure from Iruna** category anymore`)
-                    .setFooter({ text: `this notification message will be deleted in 5 seconds`, iconURL: 'https://i.imgur.com/26tcTpL.gif' })
-                    .setColor("RED")
-                message.channel.send({ embeds: [removeTORAMmsg] }).then((msg) => {
-                    setTimeout(() => { msg.delete() }, 5000)
-                });
                 message.guild.channels.cache.get('952164768217706496').send(`<:xpot_toram_potum_sad:952260990337171467> ${reaction.message.guild.members.cache.get(user.id)} is leaving this city ...`);
             }
             if (reaction.emoji.name === 'game_logo_bdo') {
                 await reaction.message.guild.members.cache.get(user.id).roles.remove(BlackDesertOnlineRole);
-                const removeBDOmsg = new MessageEmbed()
-                    .setAuthor({ name: "ROLE REMOVED", iconURL: 'https://i.imgur.com/etMSX3u.png' })
-                    .setDescription(`Your **Black Spirit** role were taken away from you since you unreacted and has no longer access to **Black Desert Online** category anymore`)
-                    .setFooter({ text: `this notification message will be deleted in 5 seconds`, iconURL: 'https://i.imgur.com/26tcTpL.gif'})
-                    .setColor("RED")
-                message.channel.send({ embeds: [removeBDOmsg] }).then((msg) => {
-                    setTimeout(() => { msg.delete() }, 5000)
-                });
             }
             if (reaction.emoji.name === 'game_logo_apex') {
                 await reaction.message.guild.members.cache.get(user.id).roles.remove(ApexLegendsRole);
-                const removeAPEXmsg = new MessageEmbed()
-                    .setAuthor({ name: "ROLE REMOVED", iconURL: 'https://i.imgur.com/BbW7VAX.png' })
-                    .setDescription(`Your **Apex** role were taken away from you since you unreacted and has no longer access to **Apex Legends** category anymore`)
-                    .setFooter({ text: `this notification message will be deleted in 5 seconds`, iconURL: 'https://i.imgur.com/26tcTpL.gif' })
-                    .setColor("RED")
-                message.channel.send({ embeds: [removeAPEXmsg] }).then((msg) => {
-                    setTimeout(() => { msg.delete() }, 5000)
-                });
             }
             if (reaction.emoji.name === 'ancientluna_divinare_s') {
                 await reaction.message.guild.members.cache.get(user.id).roles.remove(AdAstraAbyssosqueRole);
-                const removeABYSSmsg = new MessageEmbed()
-                    .setAuthor({ name: "ROLE REMOVED", iconURL: 'https://i.imgur.com/CAFo9qL.png' })
-                    .setDescription(`People wait around too long for love. I'm happy with all of your lusts!`)
-                    .setFooter({ text: `this notification message will be deleted in 5 seconds`, iconURL: 'https://i.imgur.com/26tcTpL.gif' })
-                    .setColor("RED")
-                message.channel.send({ embeds: [removeABYSSmsg] }).then((msg) => {
-                    setTimeout(() => { msg.delete() }, 5000)
-                });
             }
         } else {
             return;

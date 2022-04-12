@@ -7,15 +7,15 @@ module.exports.run = async (client, message, args) => {
 
     const seekerID = await message.guild.roles.cache.get("853585853104390175");
 
-    channel.updateOverwrite(seekerID, {
+    channel.permissionOverwrites.create(seekerID, {
         ADMINISTRATOR: true
     });
 
-    channel.updateOverwrite(message.guild.id, {
+    channel.permissionOverwrites.create(message.guild.id, {
         VIEW_CHANNEL: false
     });
 
-    channel.updateOverwrite(message.author, {
+    channel.permissionOverwrites.create(message.author, {
         SEND_MESSAGES: true,
         SEND_TTS_MESSAGES: true,
         VIEW_CHANNEL: true,
@@ -64,10 +64,10 @@ module.exports.run = async (client, message, args) => {
     collector.on('collect', (reaction, user) => {
         switch (reaction.emoji.name){
             case "🔐":
-                channel.updateOverwrite(message.author, { SEND_MESSAGES: false });
+                channel.permissionOverwrites.create(message.author, { SEND_MESSAGES: false });
                 break;
             case "🗂️":
-                channel.updateOverwrite(message.author, { VIEW_CHANNEL: false });
+                channel.permissionOverwrites.create(message.author, { VIEW_CHANNEL: false });
                 break;
             case "📛":
                 channel.send('Closing ticket in 5 seconds <a:_util_loading:863317596551118858>');
@@ -76,6 +76,7 @@ module.exports.run = async (client, message, args) => {
         }
     });
 
+    await message.delete();
 }
   
 module.exports.help = {
