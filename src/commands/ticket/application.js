@@ -57,7 +57,7 @@ module.exports.run = async (client, message, args) => {
     }
     
     const collector = m.createReactionCollector(
-        (reaction, user) => message.guild.members.cache.find((member) => member.id === user.id).hasPermission("MANAGE_MESSAGES"),
+        (reaction, user) => message.guild.members.cache.find((member) => member.id === user.id).perminssions.has("MANAGE_MESSAGES"),
         { dispose:true }
     );
 
@@ -80,5 +80,5 @@ module.exports.run = async (client, message, args) => {
 }
   
 module.exports.help = {
-    name: 'applyticket'
+    name: 'ti'
 }
