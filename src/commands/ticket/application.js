@@ -27,7 +27,7 @@ module.exports.run = async (client, message, args) => {
     });
     
     const openTicket = new MessageEmbed()
-        .setAuthor({ text: `${message.author.tag}: A TICKET OPENED`, iconURL: message.author.displayAvatarURL({ dynamic: true }) })
+        .setAuthor({ name: `${message.author.tag}: A TICKET OPENED`, iconURL: message.author.displayAvatarURL({ dynamic: true }) })
         .setDescription(`Click <#${channel.id}> to see your application ticket`)
         .setFooter({ text: `this notification message will be deleted in 30 seconds`, iconURL: 'https://i.imgur.com/26tcTpL.gif' })
         .setColor('4f545c')
@@ -80,5 +80,5 @@ module.exports.run = async (client, message, args) => {
 }
   
 module.exports.help = {
-    name: 'applyticket'
+    name: 'tict'
 }
