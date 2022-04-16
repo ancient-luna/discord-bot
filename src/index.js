@@ -61,7 +61,7 @@ client.on('ready', async () => {
   rulesChannelId = gConfig.server.ruleChannel;
   luxCastaId = gConfig.server.onJoinConfig.preMemberRole;
 
-  client.user.setActivity('with cutie colons ♡', {
+  client.user.setActivity('with jamet rakau ♡', {
     type: 'PLAYING',
   });
 
