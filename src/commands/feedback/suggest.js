@@ -19,7 +19,7 @@ module.exports.run = async (client, message, args) => {
     msg.react('<:vcon_vote_disagree:859075141668700200>');
   });
 
-  await message.delete();
+  await message.delete().catch((e) => {});
 };
 
 module.exports.help = {

@@ -17,13 +17,26 @@ module.exports.run = async (client, message, args) => {
     const DeadFrontierEmoji = '<:game_logo_df:861580085000798229>';
     const AdAstraAbyssosqueEmoji = '<:ancientluna_divinare_s:859034096192978965>';
 
+    const IMGguide = new MessageAttachment("src/assets/guidelines.png")
+    const IMGticket = new MessageAttachment("src/assets/ticketopen.png")
     const IMGroles = new MessageAttachment("src/assets/roleserver.png")
+
+    let embedGuide = new MessageEmbed()
+        .setTitle("Feedback / Suggestion")
+        .setDescription(`Type !suggest followed by your feedbacks, thoughts, or suggestions⁣\nExample !suggest ancestor need to awake 24/7\n\n*!suggest your_suggestion*`)
+        .setColor("#2f3136")
+
+    let embedTicket = new MessageEmbed()
+        .setDescription(`Type the command **!applyticket** and a room ticket will open for you`)
+        .setColor("#2f3136")
 
     let embedRoles = new MessageEmbed()
         .setDescription(`You can apply to get this role by open a ticket for application:\n\n⁣The <@&907178060992876544> role only given to guild members in Toram Online game,\nwhile <@&873872221368647690> role given to guild alliances members\n\nReact to any reaction that suits you for the game you love:\n\n${ToramOnlineEmoji} <@&952147085447266364> for Toram Online\n⁣${BlackDesertOnlineEmoji} <@&856380073745186876> for Black Desert Online\n${ApexLegendsEmoji} <@&861400119101095937> for Apex Legends\n${DeadFrontierEmoji} <@&874680389459906580> for Dead Frontier\n\n${AdAstraAbyssosqueEmoji} <@&882350441864777769> for unlocking nsfw contents\n\nBy this you will unlock the hidden category in this server to meet another light seekers in this sanctuary`)
         .setColor("#2f3136")
 
-    let messageEmbed = await message.guild.channels.cache.get('864556584818835456').send({ files: [IMGroles], embeds: [embedRoles] });
+    await message.channel.send({ files: [IMGguide], embeds: [embedGuide] });
+    await message.channel.send({ files: [IMGticket], embeds: [embedTicket] });
+    let messageEmbed = await message.channel.send({ files: [IMGroles], embeds: [embedRoles] });
     messageEmbed.react(ToramOnlineEmoji);
     messageEmbed.react(BlackDesertOnlineEmoji);
     messageEmbed.react(ApexLegendsEmoji);
@@ -86,5 +99,5 @@ module.exports.run = async (client, message, args) => {
 }
 
 module.exports.help = {
-    name: 'setroleserver'
+    name: 'setguide'
 }

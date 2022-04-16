@@ -13,7 +13,7 @@ module.exports.run = async (Client, message, args) => {
 
     message.guild.channels.cache.get('952167473023692850').send(`Please welcome our new departured legendary saviour, <@${target.user.id}>\nMay the lights guide us, within ${role} bond for the unseen journey <:xot_toram_guild:952260952324202498>`).then(target.roles.add(role));
     
-    await message.delete();
+    await message.delete().catch((e) => {});
 
     const addEOS = new MessageEmbed()
         .setAuthor({ name: "ROLE ADDED" }, { name: "https://i.imgur.com/ejkkWCB.png" })

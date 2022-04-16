@@ -13,7 +13,7 @@ module.exports.run = async (Client, message, args) => {
 
     message.guild.channels.cache.get('952164768217706496').send(`<@${target.user.id}> joining us as alliance from ${role},\nHope we can through this long journey together around Toram world as a beauty growing White Dandelions.`).then(target.roles.add(role));
     
-    await message.delete();
+    await message.delete().catch((e) => {});
 
     const whiteDandelion = new MessageEmbed()
         .setAuthor({ name: "ROLE ADDED", iconURL: 'https://i.imgur.com/ejkkWCB.png' })

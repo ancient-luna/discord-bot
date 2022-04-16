@@ -132,7 +132,7 @@ client.on('messageCreate', async (message) => {
   }
 
   // eslint-disable-next-line max-len
-  if (message.channel.id === gConfig.server.ruleChannel || message.channel.id === gConfig.server.suggestionChannel) {
+  if (message.channel.id === gConfig.server.ruleChannel || message.channel.id === gConfig.server.guidelinesChannel) {
     // eslint-disable-next-line max-len
     if (message.content === gConfig.server.onJoinConfig.preMemberTriggerMessage && message.member.roles.cache.has(gConfig.server.onJoinConfig.preMemberRole)) {
       // eslint-disable-next-line max-len
@@ -146,7 +146,7 @@ client.on('messageCreate', async (message) => {
         `<@${message.author.id}> has passed the trial by understand our wisdom of lleud to reach this warm sanctuary deeper.\nWelcome, to the sanctuary of lights. The <@&${gConfig.server.elderRole}> welcome you as one of true light seekers. ${ancientLunaEmoji}\n<:ancientluna_divinare_s:859034096192978965> <#864556584818835456> your role to give more access in this sanctuary.`,
       );
     }
-    await message.delete();
+    await message.delete().catch((e) => {});
   }
 });
 

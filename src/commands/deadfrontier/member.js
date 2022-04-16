@@ -13,7 +13,7 @@ module.exports.run = async (Client, message, args) => {
 
     message.guild.channels.cache.get('860531645916774401').send(`Please welcome our new member, <@${target.user.id}>\nMay the lights guide us, so we may bask in its light as true ${role}`).then(target.roles.add(role));
     
-    await message.delete();
+    await message.delete().catch((e) => {});
 
     const addDF = new MessageEmbed()
         .setAuthor({ name: "ROLE ADDED", iconURL: 'https://i.imgur.com/aLkmV4I.png' })

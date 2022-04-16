@@ -76,7 +76,7 @@ module.exports.run = async (client, message, args) => {
         }
     });
 
-    await message.delete();
+    await message.delete().catch((e) => {});
 }
   
 module.exports.help = {
