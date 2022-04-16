@@ -140,7 +140,7 @@ module.exports.run = async (client, message, args) => {
         }
     });
 
-    message.delete()
+    await message.delete().catch((e) => {});
 }
 
 module.exports.help = {
