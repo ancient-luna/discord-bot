@@ -7,15 +7,15 @@ module.exports.run = async (client, message, args) => {
 
     const seekerID = await message.guild.roles.cache.get("853585853104390175");
 
-    channel.permissionOverwrites.create(seekerID, {
+    channel.updateOverwrite(seekerID, {
         ADMINISTRATOR: true
     });
 
-    channel.permissionOverwrites.create(message.guild.id, {
+    channel.updateOverwrite(message.guild.id, {
         VIEW_CHANNEL: false
     });
 
-    channel.permissionOverwrites.create(message.author, {
+    channel.updateOverwrite(message.author, {
         SEND_MESSAGES: true,
         SEND_TTS_MESSAGES: true,
         VIEW_CHANNEL: true,
