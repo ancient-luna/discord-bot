@@ -61,8 +61,13 @@ client.on('ready', async () => {
   rulesChannelId = gConfig.server.ruleChannel;
   luxCastaId = gConfig.server.onJoinConfig.preMemberRole;
 
-  client.user.setActivity('with jamet rakau ♡', {
-    type: 'PLAYING',
+  client.user.setPresence({
+    activities: [{
+      name: `with Jamet Rakau ♡`,
+      type: `PLAYING`,
+      url: `https://discord.com/invite/Sbp2nt8QHe`
+    }],
+    status: `dnd`
   });
 
   // eslint-disable-next-line no-restricted-syntax,no-unused-vars,no-use-before-define
