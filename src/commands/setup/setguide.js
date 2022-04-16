@@ -35,7 +35,7 @@ module.exports.run = async (client, message, args) => {
         .setColor("#2f3136")
 
     await message.channel.send({ files: [IMGguide], embeds: [embedGuide] });
-    await message.channel.send({ files: [IMGticket], Texts: ["Closing ticket in 5 seconds <a:_util_loading:863317596551118858>"] });
+    await message.channel.send({ files: [IMGticket], embeds: [embedTicket] });
     let messageEmbed = await message.channel.send({ files: [IMGroles], embeds: [embedRoles] });
     messageEmbed.react(ToramOnlineEmoji);
     messageEmbed.react(BlackDesertOnlineEmoji);
