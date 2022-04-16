@@ -48,7 +48,6 @@ module.exports.run = async (client, message, args) => {
     const m = await channel.send({ embeds: [mEmbed] })
     
     try {
-        await m.react("🔐");
         await m.react("🗂️");
         await m.react("📛");
     } catch (err) {
@@ -57,16 +56,14 @@ module.exports.run = async (client, message, args) => {
     }
     
     const collector = m.createReactionCollector(
-        (reaction, user) => message.guild.members.cache.find((member) => member.id === user.id).perminssions.has("MANAGE_MESSAGES"),
+        (reaction, user) => message.guild.members.cache.find((member) => member.id === user.id).permissions.has("MANAGE_MESSAGES"),
         { dispose:true }
     );
 
     collector.on('collect', (reaction, user) => {
         if(user.bot) return
+        if(user.id !== message.author.id)
         switch (reaction.emoji.name){
-            case "🔐":
-                channel.permissionOverwrites.create(message.author, { SEND_MESSAGES: false });
-                break;
             case "🗂️":
                 channel.permissionOverwrites.create(message.author, { VIEW_CHANNEL: false });
                 break;
@@ -81,5 +78,5 @@ module.exports.run = async (client, message, args) => {
 }
   
 module.exports.help = {
-    name: 'applyticket'
+    name: 'ticket'
 }
