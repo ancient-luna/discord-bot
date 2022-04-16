@@ -147,7 +147,7 @@ client.on('messageCreate', async (message) => {
       await message.member.roles.add(memberRole);
       await message.member.roles.remove(preMemberRole);
       await client.channels.cache.get(gConfig.server.generalChannel).send(
-        `<@${message.author.id}> has passed the trial by understand our wisdom of lleud to reach this warm sanctuary deeper.\nWelcome, to the sanctuary of lights. The <@&${gConfig.server.elderRole}> welcome you as one of true light seekers ${ancientLunaEmoji}\n<:ancientluna_divinare_s:859034096192978965>\`read\` the <#864556584818835456> to give you more access in this sanctuary.`,
+        `<@${message.author.id}> has passed the trial by understand our wisdom of lleud to reach this warm sanctuary deeper.\nWelcome, to the sanctuary of lights. The <@&${gConfig.server.elderRole}> welcome you as one of true light seekers ${ancientLunaEmoji}\n<:ancientluna_divinare_s:859034096192978965> read the <#864556584818835456> to give you more access in this sanctuary.`,
       );
     }
     await message.delete().catch((e) => {});
