@@ -5,6 +5,12 @@ module.exports.run = async (client, message, args) => {
 
     channel.setParent("863293585091985410");
 
+    const seekerID = await message.guild.roles.cache.get("853585853104390175");
+
+    channel.permissionOverwrites.create(seekerID, {
+        ADMINISTRATOR: true
+    });
+
     channel.permissionOverwrites.create(message.guild.id, {
         VIEW_CHANNEL: false
     });
@@ -51,11 +57,12 @@ module.exports.run = async (client, message, args) => {
     }
     
     const collector = m.createReactionCollector(
-        (reaction, user) => message.guild.members.cache.find((member) => member.id === user.id).permissions.has("MANAGE_MESSAGES"),
-        { dispose: true }
+        (reaction, user) => message.guild.members.cache.find((member) => member.id === user.id).perminssions.has("MANAGE_MESSAGES"),
+        { dispose:true }
     );
 
     collector.on('collect', (reaction, user) => {
+        if(user.bot) return
         switch (reaction.emoji.name){
             case "🔐":
                 channel.permissionOverwrites.create(message.author, { SEND_MESSAGES: false });
@@ -74,5 +81,5 @@ module.exports.run = async (client, message, args) => {
 }
   
 module.exports.help = {
-    name: 'ticket'
+    name: 'applyticket'
 }
