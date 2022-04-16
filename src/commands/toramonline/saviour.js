@@ -1,6 +1,7 @@
 const { MessageEmbed, MessageAttachment } = require("discord.js");
 
 module.exports.run = async (Client, message, args) => {
+    if (!message.member.permissions.has("MANAGE_MESSAGES")) return;
 
     await message.delete().catch((e) => {});
 
