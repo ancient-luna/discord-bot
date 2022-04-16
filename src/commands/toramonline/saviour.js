@@ -40,11 +40,11 @@ module.exports.run = async (Client, message, args) => {
         .setColor("#2f3136")
 
     let embedJourney = new MessageEmbed()
-        .setDescription(`${STOODIEemoji} - **Stoodie's Dungeon** Experiment and Regislets\n${HUNTemoji} - Hunting the world **Treasures** with Pelulu Keys\n${MATSemoji} - Farming **Materials** in any. Just anything`)
+        .setDescription(`${STOODIEemoji} - **Stoodie's Experiment** Dungeon and Regislets\n${HUNTemoji} - Companions from all over the world as **Treasures Hunter** with Pelulu Keys\n${MATSemoji} - **Restless Farm Materials** night. Any materials will do, just anything`)
         .setColor("#2f3136")
 
     let embedMemoir = new MessageEmbed()
-        .setDescription(`${TIMEemoji} - **Reminder** for food buffland to water, harvest, and cook\n${NOTEemoji} - A humble **Librarian** that how knowledges help other lost saviours`)
+        .setDescription(`${TIMEemoji} - Reminder for food buffland to water, harvest, and cook. **Daydreamer**'s dream\n${NOTEemoji} - A humble **Librarian** that know how knowledges help other lost saviours`)
         .setColor("#2f3136")
 
     await message.channel.send({ files: [IMGwielder], embeds: [embedWielder] });
