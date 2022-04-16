@@ -63,8 +63,8 @@ client.on('ready', async () => {
 
   client.user.setPresence({
     activities: [{
-      name: `around Sofya City ♡`,
-      type: `PLAYING`,
+      name: `around Sofya City`,
+      type: `WATCHING`,
     }],
     status: `online`
   });
