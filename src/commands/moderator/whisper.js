@@ -2,7 +2,7 @@ const { MessageEmbed, MessageActionRow, MessageButton } = require("discord.js");
 
 module.exports.run = async (client, message, args) => {
   if (!message.member.permissions.has("MANAGE_MESSAGES")) return;
-  if (args.length === 0) return message.channel.send("Do: !whisper [userid] [message]");
+  if (args.length === 0) return message.channel.send("Do: !whisper `userid` `message`");
 
   const user =
     message.mentions.users.first() ||
@@ -11,25 +11,20 @@ module.exports.run = async (client, message, args) => {
   const str = args.slice(1).join(" ");
   
   const embed = new MessageEmbed()
-      .setDescription(`**Email**: daeva@ancientluna.org\n**Discord**: Dae#0090`)
-      .setFooter({ text: `this bot won't read any of your replies` })
+      .setDescription(`**Email**: daeva@ancientluna.org\n**Discord**: Dae#0090\n**Instagram**: [imsoondae_](https://instagram.com/imsoondae_)`)
+      .setFooter({ text: `this bot won't read any messages of your replies` })
       .setColor('7289da')
 
       const btnServer = new MessageActionRow()
         .addComponents(
           new MessageButton()
           .setStyle("LINK")
-          .setLabel("Discord Server")
-          .setURL(`https://discord.com/invite/Sbp2nt8QHe`)
+          .setLabel("Retake your role now here")
+          .setURL(`https://discord.com/channels/447069790150852609/864556584818835456`)
        )
-        .addComponents(
-          new MessageButton()
-          .setStyle("LINK")
-          .setLabel("Website")
-          .setURL(`https://ancientluna.org`)
-        )
 
-  user.send(`${str}\n⁣`, {
+  user.send({
+    content: `${str}\n⁣`,
     embeds: [embed],
     components: [btnServer]
   });
