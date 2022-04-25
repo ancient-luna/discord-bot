@@ -7,10 +7,9 @@ module.exports.run = async (Client, message, args) => {
         .setTitle("Stat Calculator")
         .setURL("https://discord.com/invite/Sbp2nt8QHe")
         .setDescription(`Formula used on this calculator is based on the explanation at **[Toram Wiki's Status](https://www.dopr.net/toramonline-wiki/status)** page and **[Coryn Club](https://coryn.club/index.php)** findings.`)
-        .setImage("https://i.imgur.com/dpYHOPq.png")
         .setTimestamp()
         .setFooter({ text: "Powered by Ancient Luna", iconURL: 'https://i.imgur.com/QZ2gLgq.png' })
-        .setColor("#4f545c")
+        .setColor("#2f3136")
         
     let stats = new MessageActionRow()
         .addComponents(
@@ -27,5 +26,6 @@ module.exports.run = async (Client, message, args) => {
 }
 
 module.exports.help = {
-    name: 'stat'
+    name: 'stat',
+    aliases: ['playerstat']
 }

@@ -6,26 +6,33 @@ module.exports.run = async (Client, message, args) => {
     let fillstats = new MessageEmbed()
         .setTitle("Auto Fill Statting (Weapon/Armor)")
         .setURL("https://discord.com/invite/Sbp2nt8QHe")
-        .setDescription(`This is a simulator, it mimics what happen in game. You can use this tool for trying out statting formula. This simulator WILL NOT produce any formula. Please refer to **[Smithing Guide](https://coryn.club/guide.php?key=smith)** for complete explanation on how to produce a formula.`)
-        .setImage("https://i.imgur.com/dpYHOPq.png")
+        .setDescription(`This is an automatic statting simulator of Weapon and Armor. It automatically calculate steps, success rate and material cost of gear statting you want. Initial setting is to simulate statting of the latest level cap.`)
         .setTimestamp()
         .setFooter({ text: "Powered by Ancient Luna", iconURL: 'https://i.imgur.com/QZ2gLgq.png' })
-        .setColor("#4f545c")
+        .setColor("#2f3136")
         
-    let stats = new MessageActionRow()
+    let statsWeaponArmor = new MessageActionRow()
         .addComponents(
             new MessageButton()
                 .setStyle('LINK')
-                .setLabel('Fill Statting Simulator')
-                .setURL('https://coryn.club/statting_simulator.php')
+                .setLabel('Fill Statting Weapon')
+                .setURL('http://tanaka0.work/en/BukiProper')
+        )
+
+        .addComponents(
+            new MessageButton()
+                .setStyle('LINK')
+                .setLabel('Fill Statting Armor')
+                .setURL('http://tanaka0.work/en/BouguProper')
         )
 
     await message.reply({
         embeds: [fillstats],
-        components: [stats]
+        components: [statsWeaponArmor]
     });
 }
 
 module.exports.help = {
-    name: 'fillstat'
+    name: 'fillstat',
+    aliases: ['autofill']
 }

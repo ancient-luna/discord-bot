@@ -7,10 +7,9 @@ module.exports.run = async (Client, message, args) => {
         .setTitle("This Month Dye List")
         .setURL("https://discord.com/invite/Sbp2nt8QHe")
         .setDescription(`Monthly Dye is a feature where you can get item drop "weapon and colored shield" by defeating Boss Monsters, on difficulty Nightmare & Ultimate Mode. Every month on first date (1st day) "colored weapons and shields" always change or reset every Boss Monster.`)
-        .setImage("https://i.imgur.com/dpYHOPq.png")
         .setTimestamp()
         .setFooter({ text: "Powered by Ancient Luna", iconURL: 'https://i.imgur.com/QZ2gLgq.png' })
-        .setColor("#4f545c")
+        .setColor("#2f3136")
         
     let table = new MessageActionRow()
         .addComponents(
