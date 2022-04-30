@@ -63,7 +63,7 @@ client.on('ready', async () => {
 
   client.user.setPresence({
     activities: [{
-      name: `with cutie colons`,
+      name: `with pelulu`,
       type: `PLAYING`,
     }],
     status: `online`
