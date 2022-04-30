@@ -82,7 +82,7 @@ module.exports.run = async (client, message, args) => {
         } else {
             return;
         }
-    }).catch((e) => {});
+    })
 
     client.on('messageReactionRemove', async (reaction, user) => {
         if (reaction.message) await reaction.message.fetch().catch((e) => {});
@@ -138,7 +138,7 @@ module.exports.run = async (client, message, args) => {
         } else {
             return;
         }
-    }).catch((e) => {});
+    })
 
     await message.delete().catch((e) => {});
 }
