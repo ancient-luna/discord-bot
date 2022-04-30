@@ -48,10 +48,10 @@ module.exports.run = async (Client, message, args) => {
         .setDescription(`${TIMEemoji} - Reminder for food buffland to water, harvest, and cook. **Daydreamer**'s dream\n${NOTEemoji} - A humble **Librarian** that know how knowledges help other lost saviours`)
         .setColor("#2f3136")
 
-    await message.channel.send({ files: [IMGwielder], embeds: [embedWielder] });
-    await message.channel.send({ files: [IMGsaviour], embeds: [embedSaviour] });
-    await message.channel.send({ files: [IMGjourney], embeds: [embedJourney] });
-    await message.channel.send({ files: [IMGmemoir], embeds: [embedMemoir] });
+    await message.channel.send({ files: [IMGwielder], embeds: [embedWielder] }).catch(e => {});
+    await message.channel.send({ files: [IMGsaviour], embeds: [embedSaviour] }).catch(e => {});
+    await message.channel.send({ files: [IMGjourney], embeds: [embedJourney] }).catch(e => {});
+    await message.channel.send({ files: [IMGmemoir], embeds: [embedMemoir] }).catch(e => {});
 }
 
 module.exports.help = {

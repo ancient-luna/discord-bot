@@ -22,9 +22,10 @@ module.exports.run = async (Client, message, args) => {
     await message.reply({
         embeds: [dye],
         components: [table]
-    });
+    }).catch(e => {});
 }
 
 module.exports.help = {
-    name: 'dye'
+    name: 'dye',
+    aliases: ['monthlydye']
 }

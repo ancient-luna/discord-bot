@@ -29,7 +29,7 @@ module.exports.run = async (Client, message, args) => {
     await message.reply({
         embeds: [fillstats],
         components: [statsWeaponArmor]
-    });
+    }).catch(e => {});
 }
 
 module.exports.help = {

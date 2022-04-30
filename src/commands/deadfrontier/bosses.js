@@ -21,124 +21,124 @@ module.exports.run = async (client, message, args) => {
         .setColor("4f545c")
         .setImage("https://i.imgur.com/8TdP6Kl.gif")
 
-    let messageEmbed = await message.channel.send({ embeds: [embedRoles]});
-    messageEmbed.react(OAEmoji);
-    messageEmbed.react(MissionEmoji);
-    messageEmbed.react(BanditEmoji);
-    messageEmbed.react(DHEmoji);
-    messageEmbed.react(VLEmoji);
+    let messageEmbed = await message.channel.send({ embeds: [embedRoles]}).catch((e) => {});
+    messageEmbed.react(OAEmoji).catch((e) => {});
+    messageEmbed.react(MissionEmoji).catch((e) => {});
+    messageEmbed.react(BanditEmoji).catch((e) => {});
+    messageEmbed.react(DHEmoji).catch((e) => {});
+    messageEmbed.react(VLEmoji).catch((e) => {});
 
     client.on('messageReactionAdd', async (reaction, user) => {
-        if (reaction.message) await reaction.message.fetch();
-        if (reaction.partial) await reaction.fetch();
+        if (reaction.message) await reaction.message.fetch().catch((e) => {});
+        if (reaction.partial) await reaction.fetch().catch((e) => {});
         if (user.bot) return;
 
         if (reaction.message.channel.id == channel) {
             if (reaction.emoji.name === 'a_df_alert_oa') {
-                await reaction.message.guild.members.cache.get(user.id).roles.add(OARole);
+                await reaction.message.guild.members.cache.get(user.id).roles.add(OARole).catch((e) => {});
                 const addOAmsg = new MessageEmbed()
                     .setDescription(`${reaction.message.guild.members.cache.get(user.id)}, role **<@&871062770387390505>** added as reminder in <#871057065383174184>`)
                     .setColor("4f545c")
                 message.channel.send({ embeds: [addOAmsg] }).then((msg) => {
-                    setTimeout(() => { msg.delete() }, 5000)
+                    setTimeout(() => { msg.delete().catch((e) => {}) }, 5000)
                 });
             }
             if (reaction.emoji.name === 'a_df_dirty_note') {
-                await reaction.message.guild.members.cache.get(user.id).roles.add(MissionRole);
+                await reaction.message.guild.members.cache.get(user.id).roles.add(MissionRole).catch((e) => {});
                 const addMISSIONmsg = new MessageEmbed()
                     .setDescription(`${reaction.message.guild.members.cache.get(user.id)}, role **<@&871061864459694101>** added as reminder in <#871057489179840572>`)
                     .setColor("4f545c")
                 message.channel.send({ embeds: [addMISSIONmsg] }).then((msg) => {
-                    setTimeout(() => { msg.delete() }, 5000)
+                    setTimeout(() => { msg.delete().catch((e) => {}) }, 5000)
                 });
             }
             if (reaction.emoji.name === 'a_df_whiteghost') {
-                await reaction.message.guild.members.cache.get(user.id).roles.add(BanditRole);
+                await reaction.message.guild.members.cache.get(user.id).roles.add(BanditRole).catch((e) => {});
                 const addBANDITmsg = new MessageEmbed()
                     .setDescription(`${reaction.message.guild.members.cache.get(user.id)}, role **<@&871065063820234812>** added as reminder in <#871056816153452594>`)
                     .setColor("4f545c")
                 message.channel.send({ embeds: [addBANDITmsg] }).then((msg) => {
-                    setTimeout(() => { msg.delete() }, 5000)
+                    setTimeout(() => { msg.delete().catch((e) => {}) }, 5000)
                 });
             }
             if (reaction.emoji.name === 'a_df_item_devilhound') {
-                await reaction.message.guild.members.cache.get(user.id).roles.add(DHRole);
+                await reaction.message.guild.members.cache.get(user.id).roles.add(DHRole).catch((e) => {});
                 const addDHmsg = new MessageEmbed()
                     .setDescription(`${reaction.message.guild.members.cache.get(user.id)}, role **<@&871061650868961310>** added as reminder in <#871056843823280158>`)
                     .setColor("4f545c")
                 message.channel.send({ embeds: [addDHmsg] }).then((msg) => {
-                    setTimeout(() => { msg.delete() }, 5000)
+                    setTimeout(() => { msg.delete().catch((e) => {}) }, 5000)
                 });
             }
             if (reaction.emoji.name === 'a_df_item_volatilehide') {
-                await reaction.message.guild.members.cache.get(user.id).roles.add(VLRole);
+                await reaction.message.guild.members.cache.get(user.id).roles.add(VLRole).catch((e) => {});
                 const addVLmsg = new MessageEmbed()
                     .setDescription(`${reaction.message.guild.members.cache.get(user.id)}, role **<@&871062384557568030>** added as reminder in <#871056843823280158>`)
                     .setColor("4f545c")
                 message.channel.send({ embeds: [addVLmsg] }).then((msg) => {
-                    setTimeout(() => { msg.delete() }, 5000)
+                    setTimeout(() => { msg.delete().catch((e) => {}) }, 5000)
                 });
             }
         } else {
             return;
         }
-    });
+    }).catch((e) => {});
 
     client.on('messageReactionRemove', async (reaction, user) => {
-        if (reaction.message) await reaction.message.fetch();
-        if (reaction.partial) await reaction.fetch();
+        if (reaction.message) await reaction.message.fetch().catch((e) => {});
+        if (reaction.partial) await reaction.fetch().catch((e) => {});
         if (user.bot) return;
 
         if (reaction.message.channel.id == channel) {
             if (reaction.emoji.name === 'a_df_alert_oa') {
-                await reaction.message.guild.members.cache.get(user.id).roles.remove(OARole);
+                await reaction.message.guild.members.cache.get(user.id).roles.remove(OARole).catch((e) => {});
                 const addOAmsg = new MessageEmbed()
                     .setDescription(`${reaction.message.guild.members.cache.get(user.id)}, role **<@&871062770387390505>** removed`)
                     .setColor("RED")
                 message.channel.send({ embeds: [addOAmsg] }).then((msg) => {
-                    setTimeout(() => { msg.delete() }, 5000)
+                    setTimeout(() => { msg.delete().catch((e) => {}) }, 5000)
                 });
             }
             if (reaction.emoji.name === 'a_df_dirty_note') {
-                await reaction.message.guild.members.cache.get(user.id).roles.remove(MissionRole);
+                await reaction.message.guild.members.cache.get(user.id).roles.remove(MissionRole).catch((e) => {});
                 const addMISSIONmsg = new MessageEmbed()
                     .setDescription(`${reaction.message.guild.members.cache.get(user.id)}, role **<@&871061864459694101>** removed`)
                     .setColor("RED")
                 message.channel.send({ embeds: [addMISSIONmsg] }).then((msg) => {
-                    setTimeout(() => { msg.delete() }, 5000)
+                    setTimeout(() => { msg.delete().catch((e) => {}) }, 5000)
                 });
             }
             if (reaction.emoji.name === 'a_df_whiteghost') {
-                await reaction.message.guild.members.cache.get(user.id).roles.remove(BanditRole);
+                await reaction.message.guild.members.cache.get(user.id).roles.remove(BanditRole).catch((e) => {});
                 const addBANDITmsg = new MessageEmbed()
                     .setDescription(`${reaction.message.guild.members.cache.get(user.id)}, role **<@&871065063820234812>** removed`)
                     .setColor("RED")
                 message.channel.send({ embeds: [addBANDITmsg] }).then((msg) => {
-                    setTimeout(() => { msg.delete() }, 5000)
+                    setTimeout(() => { msg.delete().catch((e) => {}) }, 5000)
                 });
             }
             if (reaction.emoji.name === 'a_df_item_devilhound') {
-                await reaction.message.guild.members.cache.get(user.id).roles.remove(DHRole);
+                await reaction.message.guild.members.cache.get(user.id).roles.remove(DHRole).catch((e) => {});
                 const addDHmsg = new MessageEmbed()
                     .setDescription(`${reaction.message.guild.members.cache.get(user.id)}, role **<@&871061650868961310>** removed`)
                     .setColor("RED")
                 message.channel.send({ embeds: [addDHmsg] }).then((msg) => {
-                    setTimeout(() => { msg.delete() }, 5000)
+                    setTimeout(() => { msg.delete().catch((e) => {}) }, 5000)
                 });
             }
             if (reaction.emoji.name === 'a_df_item_volatilehide') {
-                await reaction.message.guild.members.cache.get(user.id).roles.remove(VLRole);
+                await reaction.message.guild.members.cache.get(user.id).roles.remove(VLRole).catch((e) => {});
                 const addVLmsg = new MessageEmbed()
                     .setDescription(`${reaction.message.guild.members.cache.get(user.id)}, role **<@&871062384557568030>** removed`)
                     .setColor("RED")
                 message.channel.send({ embeds: [addVLmsg] }).then((msg) => {
-                    setTimeout(() => { msg.delete() }, 5000)
+                    setTimeout(() => { msg.delete().catch((e) => {}) }, 5000)
                 });
             }
         } else {
             return;
         }
-    });
+    }).catch((e) => {});
 
     await message.delete().catch((e) => {});
 }

@@ -2,7 +2,7 @@ const { MessageEmbed, MessageActionRow, MessageButton } = require("discord.js");
 
 module.exports.run = async (client, message, args) => {
   if (!message.member.permissions.has("MANAGE_MESSAGES")) return;
-  if (args.length === 0) return message.channel.send("Do: !whisper `userid` `message`");
+  if (args.length === 0) return message.channel.send("Do: !whisper `userid` `message`").catch((e) => {});
 
   const user =
     message.mentions.users.first() ||
@@ -27,7 +27,7 @@ module.exports.run = async (client, message, args) => {
     content: `${str}\n⁣`,
     embeds: [embed],
     components: [btnServer]
-  });
+  }).catch((e) => {});
 }
 
 module.exports.help = {

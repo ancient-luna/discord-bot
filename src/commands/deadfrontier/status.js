@@ -3,7 +3,7 @@ const jsdom = require("jsdom");
 
 module.exports.run = async (client, message, args) => {
     const survivorID = args.join(" ");
-    if (!survivorID) return message.channel.send("Please specify an ID");
+    if (!survivorID) return message.channel.send("Please specify an ID").catch((e) => {});
 
     let request = require('request')
 
@@ -137,7 +137,7 @@ module.exports.run = async (client, message, args) => {
             message.reply({
                 embeds: [embedEvent, embed],
                 components: [btnProfile]
-            })
+            }).catch((e) => {})
         } catch (error) {
             let noArmor = stat['armor']
 
@@ -202,7 +202,7 @@ module.exports.run = async (client, message, args) => {
             message.reply({
                 embeds: [embedEvent, embed],
                 components: [btnProfile]
-            })
+            }).catch((e) => {});
         }
     })
 }

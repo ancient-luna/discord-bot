@@ -6,8 +6,8 @@ module.exports.run = async (client, message, args) => {
     const messageID = args[0];
     const denyQuery = args.slice(1).join(" ");
 
-    if(!messageID) return message.reply("`accept/deny` `messageid` `reason`");
-    if(!denyQuery) return message.reply("`accept/deny` `messageid` `reason`");
+    if(!messageID) return message.reply("`accept/deny` `messageid` `reason`").catch((e) => {});
+    if(!denyQuery) return message.reply("`accept/deny` `messageid` `reason`").catch((e) => {});
 
     try {
         const suggestionChannel = message.guild.channels.cache.get("842069893113446410");
@@ -24,8 +24,8 @@ module.exports.run = async (client, message, args) => {
             )
             .setTimestamp()
         
-        message.channel.send("Suggestion: **DENIED** ! `updated`");
-        suggestedEmbed.edit({ embeds: [acceptEmbed] });
+        message.channel.send("Suggestion: **DENIED** ! `updated`").catch((e) => {});
+        suggestedEmbed.edit({ embeds: [acceptEmbed] }).catch((e) => {});
 
         const user = await client.users.cache.find(
             (u) => u.tag === data.author.name
@@ -36,10 +36,10 @@ module.exports.run = async (client, message, args) => {
             .setTimestamp()
             .setColor("RED")
             .setFooter({ text: "Your Suggestions Status" })
-        user.send({ embeds: [denyEmbed] });
+        user.send({ embeds: [denyEmbed] }).catch((e) => {});
     } catch (err) {
         console.log(err);
-        message.channel.send(`That suggestion doesn't exist.`);
+        message.channel.send(`That suggestion doesn't exist.`).catch((e) => {});
     }
 }
 

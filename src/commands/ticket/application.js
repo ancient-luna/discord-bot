@@ -33,7 +33,7 @@ module.exports.run = async (client, message, args) => {
         .setColor('4f545c')
 
     message.channel.send({ embeds: [openTicket] }).then((msg) => {
-        setTimeout(() => msg.delete(), 10000);
+        setTimeout(() => msg.delete().catch((e) => {}), 10000);
         setTimeout(() => message.delete().catch((e) => {}));
     }).catch((err) => {
         throw err;
@@ -45,13 +45,13 @@ module.exports.run = async (client, message, args) => {
         .setFooter({ text: `note: Don't hesitate to mention him if need now ` })
         .setColor("4f545c")
     
-    const m = await channel.send({ embeds: [mEmbed] })
+    const m = await channel.send({ embeds: [mEmbed] }).catch((e) => {});
     
     try {
         await m.react("🗂️");
         await m.react("📛");
     } catch (err) {
-        channel.send("Error sending emojis");
+        channel.send("Error sending emojis").catch((e) => {});
         throw err;
     }
     
@@ -65,14 +65,14 @@ module.exports.run = async (client, message, args) => {
         if(user.id !== message.author.id)
         switch (reaction.emoji.name){
             case "🗂️":
-                channel.permissionOverwrites.create(message.author, { VIEW_CHANNEL: false });
+                channel.permissionOverwrites.create(message.author, { VIEW_CHANNEL: false }).catch((e) => {});
                 break;
             case "📛":
-                channel.send('Closing ticket in 5 seconds <a:_util_loading:863317596551118858>');
-                setTimeout(() => channel.delete(), 5000);
+                channel.send('Closing ticket in 5 seconds <a:_util_loading:863317596551118858>').catch((e) => {});
+                setTimeout(() => channel.delete().catch((e) => {}), 5000);
                 break;
         }
-    });
+    }).catch((e) => {});
 
     await message.delete().catch((e) => {});
 }

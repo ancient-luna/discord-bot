@@ -3,14 +3,14 @@ const axios = require("axios");
 
 module.exports.run = async (client, message, args) => {
     let query = args.join(" ");
-    if (!query) return message.reply("By the moonlight, what you seeks for?");
+    if (!query) return message.reply("By the moonlight, what you seeks for?").catch((e) => {});
 
     let link = "https://api.urbandictionary.com/v0/define?term="
     let fetch = await axios(link + encodeURI(query));
     fetch = fetch.data.list;
 
     if (fetch.length === 0) {
-        return message.reply("My knowledge can't define the word further, try seek another wisdom")
+        return message.reply("My knowledge can't define the word further, try seek another wisdom").catch((e) => {});
     }
 
     let data = fetch[0]
@@ -34,7 +34,7 @@ module.exports.run = async (client, message, args) => {
         )
         .setFooter({ text: `rating 👍 ${thumbsUp} 👎 ${thumbsDown}` })
 
-    return message.reply({ embeds: [embed] })
+    return message.reply({ embeds: [embed] }).catch((e) => {});
 }
 
 module.exports.help = {

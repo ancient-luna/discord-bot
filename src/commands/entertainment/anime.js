@@ -4,7 +4,7 @@ const malScraper = require('mal-scraper');
 module.exports.run = async (client, message, args) => {
     const search = `${args}`;
     if (!search)
-        return message.reply('Please add a search query!');
+        return message.reply("Please add the anime title that you're looking for").catch((e) => {});;
         
     malScraper.getInfoFromName(search)
         .then((data) => {
@@ -50,11 +50,11 @@ module.exports.run = async (client, message, args) => {
             message.reply({
                 embeds: [malEmbed],
                 components: [link]
-            });
-        })
+            }).catch((e) => {});
+        }).catch((e) => {});
 }
 
 module.exports.help = {
     name: 'anime',
-    aliases: ['searchanime']
+    aliases: ['searchanime', 'animesearch']
 }

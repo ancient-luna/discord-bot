@@ -1,10 +1,10 @@
 module.exports.run = async (client, message, args) => {
   if (!message.member.permissions.has("MANAGE_MESSAGES")) return;
-  if (args.length !== 1) return message.channel.send('Wrong usage. !clearwisdom [1-100]');
+  if (args.length !== 1) return message.channel.send('Wrong usage. !clearwisdom [1-100]').catch((e) => {});
 
   const numberOfMessages = args[0];
 
-  if (numberOfMessages > 100 || numberOfMessages < 0) return message.channel.send('Invalid number of messages. !clearwisdom [1-100]');
+  if (numberOfMessages > 100 || numberOfMessages < 0) return message.channel.send('Invalid number of messages. !clearwisdom [1-100]').catch((e) => {});
 
   await message.channel.bulkDelete(numberOfMessages)
     .then((messages) => {

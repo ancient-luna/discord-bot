@@ -31,7 +31,7 @@ module.exports.run = async (Client, message, args) => {
     await message.reply({
         embeds: [dye],
         components: [iruna, toram]
-    });
+    }).catch(e => {});
 }
 
 module.exports.help = {

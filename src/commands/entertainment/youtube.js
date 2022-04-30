@@ -4,7 +4,7 @@ const fetch = require("node-fetch");
 module.exports.run = async (Client, message) => {
     let channel = message.member.voice.channel;
 
-    if(!channel) return message.reply(`You have to be in any **voice channel** first in this server`)
+    if(!channel) return message.reply(`You have to be in any **voice channel** first in this server`).catch((e) => {});
 
     fetch (`https://discord.com/api/v8/channels/${channel.id}/invites`, {
         method: "POST",
@@ -24,7 +24,7 @@ module.exports.run = async (Client, message) => {
 
     .then(res => res.json())
     .then(invite => {
-        if(!invite.code) return message.reply("Something wrong with YT-Together link. Don't blame me")
+        if(!invite.code) return message.reply("Something wrong with YT-Together link. Don't blame me").catch((e) => {});
 
         const embed = new MessageEmbed()
             .setTitle(`Get your snacks and relax 🍿`)
@@ -44,8 +44,8 @@ module.exports.run = async (Client, message) => {
         message.reply({
             embeds: [embed],
             components: [buttonWatch]
-        })
-    })
+        }).catch((e) => {});
+    }).catch((e) => {});
 }
 
 module.exports.help = {

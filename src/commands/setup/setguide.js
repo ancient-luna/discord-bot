@@ -34,68 +34,68 @@ module.exports.run = async (client, message, args) => {
         .setDescription(`You can apply to get this role by open a ticket for application:\n\n⁣The <@&907178060992876544> role only given to guild members in Toram Online game,\nwhile <@&873872221368647690> role given to guild alliances members\n\nReact to any reaction that suits you for the game you love:\n\n${ToramOnlineEmoji} <@&952147085447266364> for Toram Online\n⁣${BlackDesertOnlineEmoji} <@&856380073745186876> for Black Desert Online\n${ApexLegendsEmoji} <@&861400119101095937> for Apex Legends\n${DeadFrontierEmoji} <@&874680389459906580> for Dead Frontier\n\n${AdAstraAbyssosqueEmoji} <@&882350441864777769> for unlocking nsfw contents\n\nBy this you will unlock the hidden category in this server to meet another light seekers in this sanctuary`)
         .setColor("#2f3136")
 
-    await message.channel.send({ files: [IMGguide], embeds: [embedGuide] });
-    await message.channel.send({ files: [IMGticket], embeds: [embedTicket] });
-    let messageEmbed = await message.channel.send({ files: [IMGroles], embeds: [embedRoles] });
-    messageEmbed.react(ToramOnlineEmoji);
-    messageEmbed.react(BlackDesertOnlineEmoji);
-    messageEmbed.react(ApexLegendsEmoji);
-    messageEmbed.react(DeadFrontierEmoji);
-    messageEmbed.react(AdAstraAbyssosqueEmoji);
+    await message.channel.send({ files: [IMGguide], embeds: [embedGuide] }).catch((e) => {});
+    await message.channel.send({ files: [IMGticket], embeds: [embedTicket] }).catch((e) => {});
+    let messageEmbed = await message.channel.send({ files: [IMGroles], embeds: [embedRoles] }).catch((e) => {});
+    messageEmbed.react(ToramOnlineEmoji).catch((e) => {});
+    messageEmbed.react(BlackDesertOnlineEmoji).catch((e) => {});
+    messageEmbed.react(ApexLegendsEmoji).catch((e) => {});
+    messageEmbed.react(DeadFrontierEmoji).catch((e) => {});
+    messageEmbed.react(AdAstraAbyssosqueEmoji).catch((e) => {});
 
     client.on('messageReactionAdd', async (reaction, user) => {
-        if (reaction.message) await reaction.message.fetch();
-        if (reaction.partial) await reaction.fetch();
+        if (reaction.message) await reaction.message.fetch().catch((e) => {});
+        if (reaction.partial) await reaction.fetch().catch((e) => {});
         if (user.bot) return;
 
         if (reaction.message.channel.id === channelServerRole) {
             if (reaction.emoji.name === 'game_logo_toram') {
-                await reaction.message.guild.members.cache.get(user.id).roles.add(ToramOnlineRole);
-                message.guild.channels.cache.get('952164768217706496').send(`A legendary saviour known as ${reaction.message.guild.members.cache.get(user.id)} just departured from Iruna to this ancient city of luna <:xpot_toram_potum_cute_chilling:952260990085500978>`);
+                await reaction.message.guild.members.cache.get(user.id).roles.add(ToramOnlineRole).catch((e) => {});
+                message.guild.channels.cache.get('952164768217706496').send(`A legendary saviour known as ${reaction.message.guild.members.cache.get(user.id)} just departured from Iruna to this ancient city of luna <:xpot_toram_potum_cute_chilling:952260990085500978>`).catch((e) => {});
             }
             if (reaction.emoji.name === 'game_logo_bdo') {
-                await reaction.message.guild.members.cache.get(user.id).roles.add(BlackDesertOnlineRole);
+                await reaction.message.guild.members.cache.get(user.id).roles.add(BlackDesertOnlineRole).catch((e) => {});
             }
             if (reaction.emoji.name === 'game_logo_apex') {
-                await reaction.message.guild.members.cache.get(user.id).roles.add(ApexLegendsRole);
+                await reaction.message.guild.members.cache.get(user.id).roles.add(ApexLegendsRole).catch((e) => {});
             }
             if (reaction.emoji.name === 'game_logo_df') {
-                await reaction.message.guild.members.cache.get(user.id).roles.add(DeadFrontierRole);
+                await reaction.message.guild.members.cache.get(user.id).roles.add(DeadFrontierRole).catch((e) => {});
             }
             if (reaction.emoji.name === 'ancientluna_divinare_s') {
-                await reaction.message.guild.members.cache.get(user.id).roles.add(AdAstraAbyssosqueRole);
+                await reaction.message.guild.members.cache.get(user.id).roles.add(AdAstraAbyssosqueRole).catch((e) => {});
             }
         } else {
             return;
         }
-    });
+    }).catch((e) => {});
 
     client.on('messageReactionRemove', async (reaction, user) => {
-        if (reaction.message) await reaction.message.fetch();
-        if (reaction.partial) await reaction.fetch();
+        if (reaction.message) await reaction.message.fetch().catch((e) => {});
+        if (reaction.partial) await reaction.fetch().catch((e) => {});
         if (user.bot) return;
 
         if (reaction.message.channel.id === channelServerRole) {
             if (reaction.emoji.name === 'game_logo_toram') {
-                await reaction.message.guild.members.cache.get(user.id).roles.remove(ToramOnlineRole);
-                message.guild.channels.cache.get('952164768217706496').send(`<:xpot_toram_potum_sad:952260990337171467> ${reaction.message.guild.members.cache.get(user.id)} is leaving this city ...`);
+                await reaction.message.guild.members.cache.get(user.id).roles.remove(ToramOnlineRole).catch((e) => {});
+                message.guild.channels.cache.get('952164768217706496').send(`<:xpot_toram_potum_sad:952260990337171467> ${reaction.message.guild.members.cache.get(user.id)} is leaving this city ...`).catch((e) => {});
             }
             if (reaction.emoji.name === 'game_logo_bdo') {
-                await reaction.message.guild.members.cache.get(user.id).roles.remove(BlackDesertOnlineRole);
+                await reaction.message.guild.members.cache.get(user.id).roles.remove(BlackDesertOnlineRole).catch((e) => {});
             }
             if (reaction.emoji.name === 'game_logo_apex') {
-                await reaction.message.guild.members.cache.get(user.id).roles.remove(ApexLegendsRole);
+                await reaction.message.guild.members.cache.get(user.id).roles.remove(ApexLegendsRole).catch((e) => {});
             }
             if (reaction.emoji.name === 'game_logo_df') {
-                await reaction.message.guild.members.cache.get(user.id).roles.remove(DeadFrontierRole);
+                await reaction.message.guild.members.cache.get(user.id).roles.remove(DeadFrontierRole).catch((e) => {});
             }
             if (reaction.emoji.name === 'ancientluna_divinare_s') {
-                await reaction.message.guild.members.cache.get(user.id).roles.remove(AdAstraAbyssosqueRole);
+                await reaction.message.guild.members.cache.get(user.id).roles.remove(AdAstraAbyssosqueRole).catch((e) => {});
             }
         } else {
             return;
         }
-    });
+    }).catch((e) => {});
 }
 
 module.exports.help = {

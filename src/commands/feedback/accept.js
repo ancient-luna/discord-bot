@@ -6,8 +6,8 @@ module.exports.run = async (client, message, args) => {
     const messageID = args[0];
     const acceptQuery = args.slice(1).join(" ");
 
-    if(!messageID) return message.reply("`accept/deny` `messageid` `reason`");
-    if(!acceptQuery) return message.reply("`accept/deny` `messageid` `reason`");
+    if(!messageID) return message.reply("`accept/deny` `messageid` `reason`").catch((e) => {});
+    if(!acceptQuery) return message.reply("`accept/deny` `messageid` `reason`").catch((e) => {});
 
     try {
         const suggestionChannel = message.guild.channels.cache.get(
@@ -26,8 +26,8 @@ module.exports.run = async (client, message, args) => {
             )
             .setTimestamp()
         
-        message.channel.send("Suggestion: **ACCEPTED** ! `updated`");
-        suggestedEmbed.edit({ embeds: [acceptEmbed] });
+        message.channel.send("Suggestion: **ACCEPTED** ! `updated`").catch((e) => {});
+        suggestedEmbed.edit({ embeds: [acceptEmbed] }).catch((e) => {});
 
         const user = await client.users.cache.find(
             (u) => u.tag === data.author.name
@@ -38,10 +38,10 @@ module.exports.run = async (client, message, args) => {
             .setTimestamp()
             .setColor("GREEN")
             .setFooter({ text: "Your Suggestions Status" })
-        user.send({ embeds: [accEmbed] });
+        user.send({ embeds: [accEmbed] }).catch((e) => {});
     } catch (err) {
         console.log(err);
-        message.channel.send(`That suggestion doesn't exist.`);
+        message.channel.send(`That suggestion doesn't exist.`).catch((e) => {});
     }
 }
 

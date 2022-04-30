@@ -4,7 +4,7 @@ const pagination = require("discord.js-pagination");
 
 module.exports.run = async (client, message, args) => {
     const translateQuery = args.join(" ");
-    if (!translateQuery) return message.channel.send({ content: "Please specify a text to translate. Don't let it empty, like my heart." });
+    if (!translateQuery) return message.channel.send({ content: "Please specify a text to translate. Don't let it empty, like my heart." }).catch((e) => {});
 
     const translated = await translate(translateQuery, { to: 'en' });
     const embedEN = new MessageEmbed()
