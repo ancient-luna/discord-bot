@@ -1,7 +1,7 @@
 const { MessageEmbed } = require("discord.js");
 
 module.exports.run = async (client, message, args) => {
-    const channel = await message.guild.channels.create(`ticket-${message.author.username}`).catch((err) => message.channel.send("I do not have permission to create a channel!"))
+    const channel = await message.guild.channels.create(`ticket-${message.author.username}`).catch((err) => message.channel.send("I do not have permission to create a channel!").catch((e) => {}))
 
     channel.setParent("863293585091985410");
 
@@ -72,11 +72,11 @@ module.exports.run = async (client, message, args) => {
                 setTimeout(() => channel.delete().catch((e) => {}), 5000);
                 break;
         }
-    }).catch((e) => {});
+    })
 
     await message.delete().catch((e) => {});
 }
   
 module.exports.help = {
-    name: 'applyticket'
+    name: 'ati'
 }
