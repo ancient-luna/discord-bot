@@ -1,8 +1,8 @@
 const fs = require("fs");
 const { createCanvas, loadImage, registerFont } = require("canvas")
 const { MessageAttachment } = require("discord.js")
-registerFont('assets/usercard/PaybAck.ttf', { family: 'PaybAck' })
-registerFont('assets/usercard/FRAHV.TTF', { family: 'FRAHV' })
+registerFont('src/assets/usercard/PaybAck.ttf', { family: 'PaybAck' })
+registerFont('src/assets/usercard/FRAHV.TTF', { family: 'FRAHV' })
 
 function roundRect(ctx, x, y, width, height, radius, fill, stroke) {
   if (typeof stroke === 'undefined') {
@@ -51,7 +51,7 @@ module.exports.run = async (client, message, args, config) => {
     '856379808937410590'
   ]
 
-  fs.readFile('assets/usercard/template.png', (err, data) => {
+  fs.readFile('src/assets/usercard/template.png', (err, data) => {
     if(err) throw err;
 
     let fontSize = 33;
