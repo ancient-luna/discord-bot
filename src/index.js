@@ -1,6 +1,6 @@
 require('dotenv').config();
 
-const { Client, MessageEmbed, Intents} = require('discord.js');
+const { Client, MessageEmbed, Intents, MessageActionRow, MessageButton} = require('discord.js');
 
 const client = new Client({
   partials: ['MESSAGE', 'CHANNEL', 'REACTION'],
@@ -149,11 +149,19 @@ client.on('messageCreate', async (message) => {
       const memberRole = message.guild.roles.cache.get(gConfig.server.memberRole);
       // eslint-disable-next-line max-len
       const preMemberRole = message.guild.roles.cache.get(gConfig.server.onJoinConfig.preMemberRole);
+      const welcomeButton = new MessageActionRow()
+        .addComponents(
+          new MessageButton()
+            .setStyle("LINK")
+            .setLabel("Get more access")
+            .setURL("https://discord.com/channels/447069790150852609/864556584818835456")
+        )
       await message.member.roles.add(memberRole);
       await message.member.roles.remove(preMemberRole);
-      await client.channels.cache.get(gConfig.server.generalChannel).send(
-        `<@${message.author.id}> has passed the trial by understand our wisdom of lleud to reach this warm sanctuary deeper.\nWelcome, to the sanctuary of lights. The <@&${gConfig.server.elderRole}> welcome you as one of true light seekers ${ancientLunaEmoji}\n<:ancientluna_divinare_s:859034096192978965> read the <#864556584818835456> to give you more access in this sanctuary.`,
-      );
+      await client.channels.cache.get(gConfig.server.generalChannel).send({
+        content: `<@${message.author.id}> has passed the trial by understand our wisdom of lleud to reach this warm sanctuary deeper.\nWelcome, to the sanctuary of lights. The <@&${gConfig.server.elderRole}> welcome you as one of true light seekers ${ancientLunaEmoji}`,
+        components: [welcomeButton]
+      });
     }
     await message.delete().catch((e) => {});
   }

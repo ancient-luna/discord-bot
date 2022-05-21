@@ -15,13 +15,13 @@ module.exports.run = async (client, message, args) => {
       .setFooter({ text: `this bot won't read any messages of your replies` })
       .setColor('7289da')
 
-      const btnServer = new MessageActionRow()
-        .addComponents(
-          new MessageButton()
-          .setStyle("LINK")
-          .setLabel("Retake your role now here")
-          .setURL(`https://discord.com/channels/447069790150852609/864556584818835456`)
-       )
+  const btnServer = new MessageActionRow()
+    .addComponents(
+      new MessageButton()
+      .setStyle("LINK")
+      .setLabel("Visit Ancient Luna")
+      .setURL(`https://discord.com/invite/Sbp2nt8QHe`)
+    )
 
   user.send({
     content: `${str}\n⁣`,
