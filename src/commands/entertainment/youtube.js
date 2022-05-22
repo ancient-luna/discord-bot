@@ -49,5 +49,5 @@ module.exports.run = async (Client, message) => {
 }
 
 module.exports.help = {
-    name: 'youtube'
+    name: 'archived_youtube'
 }
