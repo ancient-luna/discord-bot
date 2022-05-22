@@ -1,9 +1,9 @@
-const { MessageEmbed, ReactionManager, MessageAttachment, MessageActionRow, MessageButton } = require('discord.js');
+const { MessageEmbed, MessageAttachment, MessageActionRow } = require('discord.js');
 
 module.exports.run = async (client, message, args) => {
     if (!message.member.permissions.has("MANAGE_MESSAGES")) return;
 
-    const channelServerRole = '843793305069813760';
+    const channelServerRole = '864556584818835456';
     
     const ToramOnlineRole = message.guild.roles.cache.find(role => role.name === 'Legendary Saviour')
     const BlackDesertOnlineRole = message.guild.roles.cache.find(role => role.name === 'Black Spirit')
@@ -51,17 +51,7 @@ module.exports.run = async (client, message, args) => {
         if (reaction.message.channel.id === channelServerRole) {
             if (reaction.emoji.name === 'game_logo_toram') {
                 await reaction.message.guild.members.cache.get(user.id).roles.add(ToramOnlineRole).catch((e) => {});
-                const saviourEmblem = new MessageActionRow()
-                    .addComponents(
-                    new MessageButton()
-                        .setStyle("LINK")
-                        .setLabel("Claim your saviour's emblems")
-                        .setURL("https://discord.com/channels/447069790150852609/952170767947272303")
-                    )
-                message.guild.channels.cache.get('952164768217706496').send({
-                    content: `A legendary saviour known as ${reaction.message.guild.members.cache.get(user.id)} just departured from Iruna to this ancient city of luna <:xpot_toram_potum_cute_chilling:952260990085500978>`,
-                    components: [saviourEmblem]
-                }).catch((e) => {});
+                message.guild.channels.cache.get('952164768217706496').send(`A legendary saviour known as ${reaction.message.guild.members.cache.get(user.id)} just departured from Iruna to this ancient city of luna\nHow about to check out your <#952170767947272303> before go further <:xpot_toram_potum_cute_chilling:952260990085500978>`).catch((e) => {});
             }
             if (reaction.emoji.name === 'game_logo_bdo') {
                 await reaction.message.guild.members.cache.get(user.id).roles.add(BlackDesertOnlineRole).catch((e) => {});
