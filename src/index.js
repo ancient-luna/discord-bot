@@ -63,7 +63,7 @@ client.on('ready', async () => {
 
   client.user.setPresence({
     activities: [{
-      name: `along around moonlight`,
+      name: `under moonlight`,
       type: `PLAYING`,
     }],
     status: `online`
