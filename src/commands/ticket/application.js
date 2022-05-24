@@ -7,8 +7,21 @@ module.exports.run = async (client, message, args) => {
 
     const seekerID = await message.guild.roles.cache.get("853585853104390175");
 
+    const lunariaID = await message.guild.roles.cache.get("839170815932891197");
+
     channel.permissionOverwrites.create(seekerID, {
         ADMINISTRATOR: true
+    });
+
+    channel.permissionOverwrites.create(lunariaID, {
+        SEND_MESSAGES: true,
+        SEND_TTS_MESSAGES: true,
+        VIEW_CHANNEL: true,
+        EMBED_LINKS: true,
+        ATTACH_FILES: true,
+        READ_MESSAGE_HISTORY: true,
+        USE_EXTERNAL_EMOJIS: true,
+        ADD_REACTIONS: false
     });
 
     channel.permissionOverwrites.create(message.guild.id, {
@@ -68,7 +81,7 @@ module.exports.run = async (client, message, args) => {
                 channel.permissionOverwrites.create(message.author, { VIEW_CHANNEL: false }).catch((e) => {});
                 break;
             case "📛":
-                channel.send('Closing ticket in 5 seconds <a:_util_loading:863317596551118858>').catch((e) => {});
+                channel.send({ content: 'Closing ticket in 5 seconds <a:_util_loading:863317596551118858>' }).catch((e) => {});
                 setTimeout(() => channel.delete().catch((e) => {}), 5000);
                 break;
         }
