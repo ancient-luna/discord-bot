@@ -16,6 +16,9 @@ const client = new Client({
     Intents.FLAGS.GUILD_PRESENCES
   ]
 });
+
+module.exports = client;
+
 const { promisify } = require('util');
 const { resolve } = require('path');
 const readdir = promisify(require('fs').readdir);
@@ -63,7 +66,7 @@ client.on('ready', async () => {
 
   client.user.setPresence({
     activities: [{
-      name: `under moonlight`,
+      name: `in Toram World`,
       type: `PLAYING`,
     }],
     status: `online`
@@ -153,7 +156,7 @@ client.on('messageCreate', async (message) => {
         .addComponents(
           new MessageButton()
             .setStyle("LINK")
-            .setLabel("Get more access")
+            .setLabel("Get more roles here")
             .setURL("https://discord.com/channels/447069790150852609/864556584818835456")
         )
       await message.member.roles.add(memberRole);
