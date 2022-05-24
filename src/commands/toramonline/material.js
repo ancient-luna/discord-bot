@@ -46,6 +46,7 @@ module.exports.run = async (Client, message, args) => {
         .setImage("https://i.imgur.com/V0UhnF9.png")
         .setThumbnail("https://i.imgur.com/J3N1EF7.png")
         .setColor("#2f3136")
+        .setFooter({ text: "Powered by Ancient Luna", iconURL: 'https://i.imgur.com/QZ2gLgq.png' })
 
     message.reply({ embeds: [matsMetal] }).catch((e) => {});
     message.channel.send({ embeds: [matsCloth, matsBeast] }).catch((e) => {});
@@ -55,5 +56,5 @@ module.exports.run = async (Client, message, args) => {
 
 module.exports.help = {
     name: 'material',
-    aliases: ['mats']
+    aliases: ['mats', 'materials']
 }
