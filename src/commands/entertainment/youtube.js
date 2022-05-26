@@ -1,5 +1,5 @@
 const { MessageEmbed, MessageActionRow, MessageButton } = require("discord.js");
-const discordTogether = require("../../utils/activity")
+const discordTogether = require("src/utils/activity.js")
 
 module.exports.run = async (Client, message, args) => {
     let channel = message.member.voice.channel;
