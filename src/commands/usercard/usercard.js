@@ -147,7 +147,7 @@ module.exports.run = async (client, message, args, config) => {
 
       let sfBuffer = new Buffer.from(canvas.toDataURL().split(",")[1], "base64")
       message.reply({
-        content: "Here's your usercard: `still under development\n⁣`",
+        content: "Here's your usercard `wip` : \n⁣",
         files: [
           {
             attachment: sfBuffer
@@ -162,4 +162,5 @@ module.exports.run = async (client, message, args, config) => {
 
 module.exports.help = {
   name: 'usercard',
+  aliases: 'fellowcard'
 };
