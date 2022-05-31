@@ -4,7 +4,7 @@ module.exports.run = async (Client, message, args) => {
     const ar = "<a:_util_arrow:864810269771300875>"
 
     let pet = new MessageEmbed()
-        .setTitle("Pet List")
+        .setTitle("Tameable Monsters List")
         .setURL("https://discord.com/invite/Sbp2nt8QHe")
         .setDescription(`All documents are all from **[さるびあのトーラムメモ](https://slv-memo.space/)**`)
         .setTimestamp()
@@ -35,5 +35,5 @@ module.exports.run = async (Client, message, args) => {
 
 module.exports.help = {
     name: 'pet',
-    aliases: ['pets']
+    aliases: ['pets', 'slave']
 }
