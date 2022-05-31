@@ -66,7 +66,7 @@ client.on('ready', async () => {
 
   client.user.setPresence({
     activities: [{
-      name: `in Toram World`,
+      name: `as mercenary`,
       type: `PLAYING`,
     }],
     status: `online`
