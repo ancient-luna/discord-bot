@@ -15,10 +15,11 @@ module.exports.run = async (client, message, args) => {
     const DeadFrontierEmoji = '<:game_logo_df:861580085000798229>';
     const AdAstraAbyssosqueEmoji = '<:ancientluna_divinare_s:859034096192978965>';
     const MooncraftEmoji = '<:game_logo_mc:981470249792712774>';
+    const ValorEmoji = '<:game_logo_valor:981481044874252338>';
 
     try {
         const guideChannel = message.guild.channels.cache.get(
-            "978753708294803487"
+            "864556584818835456"
         );
 
         const guideEmbed = await guideChannel.messages.fetch(messageID);
@@ -35,6 +36,7 @@ module.exports.run = async (client, message, args) => {
         reactedEmbed.react(DeadFrontierEmoji).catch((e) => {});
         reactedEmbed.react(AdAstraAbyssosqueEmoji).catch((e) => {});
         reactedEmbed.react(MooncraftEmoji).catch((e) => {});
+        reactedEmbed.react(ValorEmoji).catch((e) => {});
 
     } catch (err) {
         console.log(err);
