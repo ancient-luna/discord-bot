@@ -66,7 +66,7 @@ client.on('ready', async () => {
 
   client.user.setPresence({
     activities: [{
-      name: `on Eos's Iliad journey`,
+      name: `on Eos's Iliad`,
       type: `WATCHING`,
     }],
     status: `online`
