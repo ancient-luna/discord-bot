@@ -5,7 +5,7 @@ module.exports.run = async (client, message, args) => {
 
     const response = await axios.get('https://api.adviceslip.com/advice');
 
-    let IMGlife = new MessageAttachment("src/assets/dduckdaegood.png")
+    let IMGlife = new MessageAttachment("src/assets/react/lifeisgood.png")
 
     await message.channel.send({
         content: `${response.data.slip.advice}\n⁣`,
