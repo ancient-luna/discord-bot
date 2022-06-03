@@ -66,8 +66,8 @@ client.on('ready', async () => {
 
   client.user.setPresence({
     activities: [{
-      name: `Nightsky`,
-      type: `WATCHING`,
+      name: `in Smol Lazy Cats`,
+      type: `PLAYING`,
     }],
     status: `online`
   });
