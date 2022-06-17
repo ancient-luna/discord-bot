@@ -86,7 +86,7 @@ module.exports.run = async (client, message, args) => {
             new MessageSelectMenu()
                 .setCustomId('translator-menu')
                 .setPlaceholder('Translate to ... ')
-                .setDisabled('true')
+                .setDisabled('false')
                 .addOptions([
                     {
                         value: 'russian',
