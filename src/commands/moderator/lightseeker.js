@@ -20,7 +20,7 @@ module.exports.run = async (Client, message, args) => {
     )
 
     message.guild.channels.cache.get('452842830776369152').send({
-        content: `<@${message.author.id}> has passed the trial by understand our wisdom of lleud to reach this warm sanctuary deeper.\nWelcome, to the sanctuary of lights. The <@&843523544620335124> welcome you as one of true light seekers ${ancientLunaEmoji}`,
+        content: `<@${target.user.id}> has passed the trial by understand our wisdom of lleud to reach this warm sanctuary deeper.\nWelcome, to the sanctuary of lights. The <@&843523544620335124> welcome you as one of true light seekers <:ancientluna_pure_luna:866781517312688178>`,
         components: [welcomeButton]
     }).catch((e) => {});
     
