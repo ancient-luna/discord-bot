@@ -11,13 +11,13 @@ module.exports.run = async (Client, message, args) => {
 
     if (!role) return message.reply('please mention a role after user').catch(e => {});
 
-    message.guild.channels.cache.get('952167473023692850').send(`Please welcome our new departured legendary saviour, <@${target.user.id}>\nMay the lights guide us, within ${role} bond for the unseen journey <:xot_toram_guild:952260952324202498>`).then(target.roles.add(role)).catch(e => {});
+    message.guild.channels.cache.get('952167473023692850').send(`Please welcome our new departured legendary saviour, <@${target.user.id}>\nMay the lights guide us, within ${role} bond for the unseen journey <:ancientluna_pure_luna:866781517312688178>`).then(target.roles.add(role)).catch(e => {});
     
     await message.delete().catch((e) => {});
 
     const addEOS = new MessageEmbed()
         .setAuthor({ name: "ROLE ADDED", iconURL: "https://i.imgur.com/ejkkWCB.png" })
-        .setDescription("You have been gived **Eos's Iliad** role and have access to all channels as an official member in **[Departure from Iruna](https://discord.gg/hgjY95ZDQg)** category. May the lights guide us, so we may bask in its light as a true legendary saviour")
+        .setDescription("You have been gived **Eos's Iliad** role and have access to all channels as an official member in **[Luna's Reliquiae Ruin](https://discord.com/channels/447069790150852609/952167473023692850)** category. May the lights guide us, so we may bask in its light as a true legendary saviour")
         .setTimestamp()
         .setColor("2f3136")
         .setFooter({ text: "Ancient Luna Guild: We ran as if to meet the moon" })
