@@ -1,1 +1,17 @@
-{"server":{"onJoinConfig":{"preMemberRole":"839210689917616218","preMemberTriggerMessage":"I understand the wisdom of lleud and sure my call as light seeker"},"memberRole":"839198215580811344","elderRole":"843523544620335124","ruleChannel":"838751745815216129","generalChannel":"452842830776369152","gatewayChannel":"839417251470901279","guidelinesChannel":"864556584818835456","localEmoji":"ancientluna_pure_luna","voiceChannel":"893054665632133121","voiceMessage":"boss cycle updated"}}
+{
+    "server": {
+        "onJoinConfig": {
+            "preMemberRole": "839210689917616218",
+            "preMemberTriggerMessage": "I understand the wisdom of lleud and sure my call as light seeker"
+        },
+        "memberRole": "839198215580811344",
+        "elderRole": "843523544620335124",
+        "ruleChannel": "838751745815216129",
+        "generalChannel": "452842830776369152",
+        "gatewayChannel": "839417251470901279",
+        "guidelinesChannel": "864556584818835456",
+        "localEmoji": "ancientluna_pure_luna",
+        "voiceChannel": "893054665632133121",
+        "voiceMessage": "boss cycle updated"
+    }
+}
