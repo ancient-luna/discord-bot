@@ -5,6 +5,8 @@ module.exports.run = async (client, message, args) => {
     const survivorID = args.join(" ");
     if (!survivorID) return message.channel.send("Please specify an ID").catch((e) => {});
 
+    const loadingTxt = await message.reply(`Getting player status <a:_util_loading:863317596551118858>`);
+
     let request = require('request')
 
     let option = {
@@ -112,6 +114,7 @@ module.exports.run = async (client, message, args) => {
                 )
                 .setImage(`https://i.imgur.com/TMI3wTd.gif`)
                 .setFooter({ text: `Powered by Ancient Luna`, iconURL: 'https://i.imgur.com/vKo3PJm.png' })
+                .setColor('202225')
                 .setTimestamp()
 
             const btnProfile = new MessageActionRow()
@@ -134,7 +137,8 @@ module.exports.run = async (client, message, args) => {
                     .setURL(`https://fairview.deadfrontier.com/onlinezombiemmo/index.php?page=27&memto=${survivorID}`)
                 )
 
-            message.reply({
+            loadingTxt.edit({
+                content: '⁣',
                 embeds: [embedEvent, embed],
                 components: [btnProfile]
             }).catch((e) => {})
@@ -177,6 +181,7 @@ module.exports.run = async (client, message, args) => {
                 )
                 .setImage(`https://i.imgur.com/TMI3wTd.gif`)
                 .setFooter({ text: `Powered by Ancient Luna`, iconURL: 'https://i.imgur.com/vKo3PJm.png' })
+                .setColor('202225')
                 .setTimestamp()
 
             const btnProfile = new MessageActionRow()
@@ -199,7 +204,8 @@ module.exports.run = async (client, message, args) => {
                     .setURL(`https://fairview.deadfrontier.com/onlinezombiemmo/index.php?page=27&memto=${survivorID}`)
                 )
 
-            message.reply({
+            loadingTxt.edit({
+                content: '⁣',
                 embeds: [embedEvent, embed],
                 components: [btnProfile]
             }).catch((e) => {});

@@ -4,7 +4,9 @@ const malScraper = require('mal-scraper');
 module.exports.run = async (client, message, args) => {
     const search = `${args}`;
     if (!search)
-        return message.reply("Please add the anime title that you're looking for").catch((e) => {});;
+        return message.reply("Please add the anime title that you're looking for").catch((e) => {});
+
+    const loadingTxt = await message.reply(`<a:_util_loading_bump:965778537225281616> Searching on MyAnimeList`);
         
     malScraper.getInfoFromName(search)
         .then((data) => {
@@ -26,8 +28,8 @@ module.exports.run = async (client, message, args) => {
                     { name: 'Ranked', value: `*${data.ranked}*`, inline: true },
                     { name: 'Duration', value: `*${data.duration}*`, inline: true },
                     { name: 'Studios', value: `*${data.studios}*`, inline: true },
-                    { name: 'Popularity', value: `*${data.popularity}*`, inline:  true },
-                    { name: 'Members', value: `*${data.members}*`, inline: true},
+                    { name: 'Popularity', value: `*${data.popularity}*`, inline: true },
+                    { name: 'Members', value: `*${data.members}*`, inline: true },
                     { name: 'Score Stats', value: `*${data.scoreStats}*`, inline: true },
                     { name: 'Source', value: `*${data.source}*`, inline: true },
                     { name: 'Synonyms', value: `*${data.synonyms}*`, inline: true },
@@ -38,7 +40,7 @@ module.exports.run = async (client, message, args) => {
                 .setColor("2f3136")
                 .setTimestamp()
                 .setFooter({ text: `${message.member.displayName} searched for ${args}`.split(',').join(' '), iconURL: message.author.displayAvatarURL({ dynamic: true }) })
-        
+
             let link = new MessageActionRow()
                 .addComponents(
                     new MessageButton()
@@ -47,7 +49,8 @@ module.exports.run = async (client, message, args) => {
                         .setURL(data.url)
                 )
 
-            message.reply({
+            loadingTxt.edit({
+                content: '⁣',
                 embeds: [malEmbed],
                 components: [link]
             }).catch((e) => {});
@@ -56,5 +59,5 @@ module.exports.run = async (client, message, args) => {
 
 module.exports.help = {
     name: 'anime',
-    aliases: ['myanimelist']
+    aliases: ['myanimelist', 'search']
 }

@@ -5,6 +5,8 @@ module.exports.run = async (client, message, args) => {
     const survivorID = args.join(" ");
     if (!survivorID) return message.channel.send("Please specify an ID").catch((e) => {});
 
+    const loadingTxt = await message.reply(`Getting player status <a:_util_loading:863317596551118858>`);
+
     let request = require('request')
 
     let option = {
@@ -41,6 +43,7 @@ module.exports.run = async (client, message, args) => {
             )
             .setImage(`https://www.dfprofiler.com/signaturereplicate.php?profile=${survivorID}&imgur=5q7hV6B`)
             .setFooter({ text: `Powered by Ancient Luna`, iconURL: 'https://i.imgur.com/vKo3PJm.png' })
+            .setColor('202225')
             .setTimestamp()
 
         const btnProfile = new MessageActionRow()
@@ -57,7 +60,8 @@ module.exports.run = async (client, message, args) => {
                     .setURL(`https://www.dfprofiler.com/signaturereplicate.php?profile=${survivorID}&imgur=5q7hV6B.png`)
             )
 
-        message.reply({
+        loadingTxt.edit({
+            content: '⁣',
             embeds: [embedRecord],
             components: [btnProfile],
         }).catch((e) => {});
