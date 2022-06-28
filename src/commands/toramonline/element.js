@@ -10,7 +10,7 @@ module.exports.run = async (Client, message, args) => {
         .setTimestamp()
         .setImage("https://i.imgur.com/bFivP6Q.png")
         .setFooter({ text: "Powered by Ancient Luna", iconURL: 'https://i.imgur.com/QZ2gLgq.png' })
-        .setColor("#2f3136")
+        .setColor("202225")
 
     await message.reply({ embeds: [element] }).catch(e => {});
 }

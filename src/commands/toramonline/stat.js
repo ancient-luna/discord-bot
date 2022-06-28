@@ -9,7 +9,7 @@ module.exports.run = async (Client, message, args) => {
         .setDescription(`Formula used on this calculator is based on the explanation at **[Toram Wiki's Status](https://www.dopr.net/toramonline-wiki/status)** page and **[Coryn Club](https://coryn.club/index.php)** findings.`)
         .setTimestamp()
         .setFooter({ text: "Powered by Ancient Luna", iconURL: 'https://i.imgur.com/QZ2gLgq.png' })
-        .setColor("#2f3136")
+        .setColor("202225")
         
     let stats = new MessageActionRow()
         .addComponents(
