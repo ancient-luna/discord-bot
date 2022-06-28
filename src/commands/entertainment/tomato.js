@@ -2,13 +2,11 @@ const { MessageAttachment } = require('discord.js');
 
 module.exports.run = async (client, message, args) => {
 
-    message.channel.send({ content: "<:xwota_spray:991166260341637140> spraying o wo' ooh bo' ooh ..." }).then(msg => {
-        setTimeout(() => msg.delete(), 3000)
-    });
+    let loadingTxt = await message.channel.send(`<:xwota_spray:991166260341637140> *spraying o wo' ooh bo' ooh ...*`);
 
     let SRCtomato = new MessageAttachment("src/assets/react/tomatooo.mp4")
 
-    await message.channel.send({
+    await loadingTxt.edit({
         content: "+9999999 destruction from <@737703309707706431>",
         files: [SRCtomato]
     }).then((msg) => {
@@ -17,6 +15,6 @@ module.exports.run = async (client, message, args) => {
 }
 
 module.exports.help = {
-    name: 'spray',
-    aliases: ['tomato', 'wotah', 'destruct']
+    name: 'tomato',
+    aliases: ['spray', 'destruct']
 }
