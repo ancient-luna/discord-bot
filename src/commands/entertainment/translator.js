@@ -5,9 +5,7 @@ module.exports.run = async (client, message, args) => {
     const translateQuery = args.join(" ");
     if (!translateQuery) return message.channel.send({ content: "Please specify a text to translate. Don't let it empty, like my heart." }).catch((e) => {});
 
-    message.channel.send({content: "Translating <a:_util_loading:863317596551118858>"}).then(msg => {
-        setTimeout(() => msg.delete(), 8000)
-      });
+    let loadingTxt = await message.reply(`Translating to 14 different languages <a:_util_loading:863317596551118858>`);
 
     const translated = await translate(translateQuery, { to: 'en' });
     const embedEN = new MessageEmbed()
@@ -204,7 +202,8 @@ module.exports.run = async (client, message, args) => {
         }
     })
 
-    message.reply({
+    loadingTxt.edit({
+        content: '⁣',
         embeds: [embedEN],
         components: [row]
     })
