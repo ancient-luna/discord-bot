@@ -13,7 +13,7 @@ module.exports.run = async (client, message, args) => {
         account = response.data
         details = account.graphql.user
     } catch (error) {
-        return message.channel.send(`I um.. so sorry.. i couldn't find it, blame ancestor`)
+        return message.channel.send(`I um.. so sorry.. i couldn't get the data due to error, blame ancestor`)
     }
 
     const igDetail = new MessageEmbed()
@@ -25,20 +25,20 @@ module.exports.run = async (client, message, args) => {
             { name: "Followers:", value: details.edge_followed_by.count.toLocaleString(), inline: true },
             { name: "Following:", value: details.edge_follow.count.toLocaleString(), inline: true }
         )
-        .setColor('#2f3136')
+        .setColor('2f3136')
         
     let igButton = new MessageActionRow()
         .addComponents(
             new MessageButton()
                 .setStyle('LINK')
-                .setLabel('Go to profile')
+                .setLabel('Instagram profile')
                 .setURL(`https://instagram.com/${args[0]}`)
         )
         
     await message.reply({
         embeds: [igDetail],
         components: [igButton]
-    }).catch((e) => {});
+    })
 }
 
 module.exports.help = {
