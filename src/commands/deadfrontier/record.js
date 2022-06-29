@@ -3,7 +3,7 @@ const jsdom = require("jsdom");
 
 module.exports.run = async (client, message, args) => {
     const survivorID = args.join(" ");
-    if (!survivorID) return message.channel.send("Do `!status` `id`").catch((e) => {});
+    if (!survivorID) return message.channel.send("Do `!record` `id`").catch((e) => {});
 
     const loadingTxt = await message.reply(`Getting player status <a:_util_loading:863317596551118858>`);
 
