@@ -59,5 +59,5 @@ module.exports.run = async (client, message, args) => {
 
 module.exports.help = {
     name: 'anime',
-    aliases: ['myanimelist', 'search']
+    aliases: ['myanimelist']
 }
