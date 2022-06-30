@@ -30,7 +30,7 @@ module.exports.run = async (Client, message, args) => {
         };
     }
 
-    const MCMessage = await message.reply('<a:_minecraft:991722270080897105> Loading terrain ...');
+    const MCMessage = await message.reply('<a:_minecraft:991722270080897105> Loading terrain <a:_util_loading:863317596551118858>');
 
     let json = null;
 
@@ -54,7 +54,7 @@ module.exports.run = async (Client, message, args) => {
             .setTitle('Server is unavailable')
             .setDescription('This server either doesn\'t exist, is offline or blocking access!')
             .setColor('2f3136')
-            .setFooter({ text: 'Join discord server to know on what is happening', iconURL: 'https://i.imgur.com/lvlx71J.png' });
+            .setFooter({ text: 'Join discord server to know on what is happening', iconURL: 'https://i.imgur.com/7JDP7JR.png' });
         let serverErrButton = new MessageActionRow()
             .addComponents(
                 new MessageButton()
@@ -82,9 +82,7 @@ module.exports.run = async (Client, message, args) => {
         .setDescription(`A friendly sanctuary of Minecraft Java and Bedrock players that want to create an amazing community for everyone to join. There’s a **[Discord Server](https://discord.com/invite/Sbp2nt8QHe)** where you mayplay games and speak with others, along with make new friends!`)
         .setImage(images[Math.floor(Math.random() * images.length)])
         .setColor('2f3136')
-        .setFooter({
-            text: `mc.ancientluna.org`
-        });
+        .setFooter({ text: `mc.ancientluna.org` });
     
     let serverButton = new MessageActionRow()
         .addComponents(
