@@ -9,7 +9,7 @@ module.exports.run = async (Client, message, args) => {
         .setDescription(`Monthly Dye is a feature where you can get item drop "weapon and colored shield" by defeating Boss Monsters, on difficulty Nightmare & Ultimate Mode. Every month on first date (1st day) "colored weapons and shields" always change or reset every Boss Monster.`)
         .setTimestamp()
         .setFooter({ text: "Powered by Ancient Luna", iconURL: 'https://i.imgur.com/QZ2gLgq.png' })
-        .setColor("202225")
+        .setColor("2f3136")
         
     let table = new MessageActionRow()
         .addComponents(

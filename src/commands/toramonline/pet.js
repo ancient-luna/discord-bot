@@ -6,10 +6,10 @@ module.exports.run = async (Client, message, args) => {
     let pet = new MessageEmbed()
         .setTitle("Tameable Monsters List")
         .setURL("https://discord.com/invite/Sbp2nt8QHe")
-        .setDescription(`All documents are all from **[さるびあのトーラムメモ](https://slv-memo.space/)**`)
+        .setDescription(`All documents are from **[さるびあのトーラムメモ](https://slv-memo.space/)**`)
         .setTimestamp()
         .setFooter({ text: "Powered by Ancient Luna", iconURL: 'https://i.imgur.com/QZ2gLgq.png' })
-        .setColor("202225")
+        .setColor("2f3136")
 
     
     const petlist = new MessageActionRow()
