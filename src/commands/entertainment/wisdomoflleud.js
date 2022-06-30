@@ -27,7 +27,7 @@ module.exports.run = async (Client, message, args) => {
     const descBonus = new MessageEmbed()
         .setDescription(`**What is this?**\n\n\`!rawr\` : what does it do?\n\`!tomato\` : what does it do either?\n\`!spit\` : what does it do either after?`)
         .setImage("https://i.imgur.com/V0UhnF9.png")
-        .setFooter({ text: "✨ discord.gg/ancientluna" })
+        .setFooter({ text: "discord.gg/ancientluna", iconURL: 'https://i.imgur.com/1ooFs6C.gif' })
         .setColor("2f3136")
 
     let serverButton = new MessageActionRow()
@@ -50,7 +50,7 @@ module.exports.run = async (Client, message, args) => {
                 .setURL('https://ancientluna.org')
         )
 
-    message.channel.send({
+    message.reply({
         files: [IMGwisdom],
         embeds: [descGeneral, descMinecraft, descToram, descDeadFrontier, descBonus],
         components: [serverButton]
