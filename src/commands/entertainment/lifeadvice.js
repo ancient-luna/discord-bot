@@ -6,9 +6,9 @@ module.exports.run = async (client, message, args) => {
     const response = await axios.get('https://api.adviceslip.com/advice');
 
     let advice = new MessageEmbed()
-        .setAuthor({ name: `${message.author.username} might need this advice 🗒️`, iconURL: message.author.displayAvatarURL({ dynamic: true }) })
+        .setAuthor({ name: `${message.author.username} might need this advice 🗒️` })
         .setDescription(`${response.data.slip.advice}`)
-        .setColor("7289da")
+        .setColor("2f3136")
 
     await message.reply({ embeds: [advice] }).catch((e) => {});
 }
