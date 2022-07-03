@@ -2,7 +2,7 @@ const { MessageAttachment } = require('discord.js');
 
 module.exports.run = async (client, message, args) => {
 
-    let loadingTxt = await message.channel.send(`<:xwota_spray:991166260341637140> *spraying o wo' ooh bo' ooh ...*`);
+    let loadingTxt = await message.channel.send(`<:xmot_spray:991166260341637140> *spraying o wo' ooh bo' ooh ...*`);
 
     let SRCtomato = new MessageAttachment("src/assets/react/tomatooo.mp4")
 
