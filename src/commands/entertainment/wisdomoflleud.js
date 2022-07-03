@@ -5,7 +5,7 @@ module.exports.run = async (Client, message, args) => {
     const IMGwisdom = new MessageAttachment("src/assets/ancientluna.png")
 
     const descGeneral = new MessageEmbed()
-        .setDescription(`**General**\n\n\`!anime\` : search for anime through myanimelist\n\`!dictionary\` : search by word through urban dictionary\n\`!instagram\` : show instagram profile\n\`!lifeadvice\` : give you an advice\n\`!reminder\` : set timer for your activity\n\`!translate\` : translator. support 14 languages\n\`!wikipedia\` : search by word through wikipedia\n\`!youtube\` : watch youtube together`)
+        .setDescription(`**General**\n\n\`!anime\` : search for anime through myanimelist\n\`!dictionary\` : search by word through urban dictionary\n\`!inspire\` : give you an inspiring quotes\n\`!instagram\` : show instagram profile\n\`!lifeadvice\` : give you an advice\n\`!reminder\` : set timer for your activity\n\`!translate\` : translator. support 14 languages\n\`!wikipedia\` : search by word through wikipedia\n\`!youtube\` : watch youtube together`)
         .setImage("https://i.imgur.com/V0UhnF9.png")
         .setColor("2f3136")
 
