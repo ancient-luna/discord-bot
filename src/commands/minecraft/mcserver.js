@@ -69,7 +69,7 @@ module.exports.run = async (Client, message, args) => {
         });
     }
 
-    const ImageResponse = await fetch(`https://minecraftskinstealer.com/achievement/1/mc.ancientluna.org/51.79.178.39:25630`);
+    const ImageResponse = await fetch(`https://minecraftskinstealer.com/achievement/1/ip:mc.ancientluna.org/port:25565`);
     const ImageAttachment = new MessageAttachment(await ImageResponse.buffer(), 'ancientlunacraft.png');
 
     const MinecraftEmbed = new MessageEmbed()
