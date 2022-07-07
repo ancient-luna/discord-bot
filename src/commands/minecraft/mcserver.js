@@ -69,7 +69,7 @@ module.exports.run = async (Client, message, args) => {
         });
     }
 
-    const ImageResponse = await fetch(`https://minecraftskinstealer.com/achievement/1/ip:mc.ancientluna.org/port:25565`);
+    const ImageResponse = await fetch(`https://minecraftskinstealer.com/achievement/1/mc.ancientluna.org/vanilla | survival`);
     const ImageAttachment = new MessageAttachment(await ImageResponse.buffer(), 'ancientlunacraft.png');
 
     const MinecraftEmbed = new MessageEmbed()
@@ -82,7 +82,7 @@ module.exports.run = async (Client, message, args) => {
         .setDescription(`A friendly sanctuary of Minecraft Java and Bedrock players that want to create an amazing community for everyone to join. There’s a **[Discord Server](https://discord.com/invite/Sbp2nt8QHe)** where you mayplay games and speak with others, along with make new friends!`)
         .setImage(images[Math.floor(Math.random() * images.length)])
         .setColor('2f3136')
-        .setFooter({ text: `mc.ancientluna.org` });
+        .setFooter({ text: `ip: mc.ancientluna.org • port: 25565` });
     
     let serverButton = new MessageActionRow()
         .addComponents(
