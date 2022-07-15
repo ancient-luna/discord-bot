@@ -12,14 +12,18 @@ module.exports.run = async (client, message, args) => {
     const AdAstraAbyssosqueRole = message.guild.roles.cache.find(role => role.name === 'Ad Astra Abyssosque')
     const MinecraftRole = message.guild.roles.cache.find(role => role.name === 'Mooncraft')
     const ValorRole = message.guild.roles.cache.find(role => role.name === 'Valor')
+    const ServerBoostRole = message.guild.roles.cache.find(role => role.name === 'Radiance')
+    const GiveawayRole = message.guild.roles.cache.find(role => role.name === 'Candescence')
 
     const ToramOnlineEmoji = '<:game_logo_toram:952247863075823666>';
     const BlackDesertOnlineEmoji = '<:game_logo_bdo:861579805660151818>';
     const ApexLegendsEmoji = '<:game_logo_apex:861580082418417664>';
     const DeadFrontierEmoji = '<:game_logo_df:861580085000798229>';
-    const AdAstraAbyssosqueEmoji = '<:ancientluna_divinare_s:859034096192978965>';
     const MooncraftEmoji = '<:game_logo_mc:981470249792712774>';
     const ValorEmoji = '<:game_logo_valor:981481044874252338>';
+    const ServerBoostEmoji = '<:ancientluna_divinare:841754250949820416>';
+    const GiveawayEmoji = '<:ancientluna_divinare_s:859034096192978965>';
+    const AdAstraAbyssosqueEmoji = '<:vcon_warning:992917967660654663>';
 
     const IMGguide = new MessageAttachment("src/assets/guidelines.png")
     const IMGticket = new MessageAttachment("src/assets/ticketopen.png")
@@ -45,9 +49,11 @@ module.exports.run = async (client, message, args) => {
     messageEmbed.react(BlackDesertOnlineEmoji).catch((e) => {});
     messageEmbed.react(ApexLegendsEmoji).catch((e) => {});
     messageEmbed.react(DeadFrontierEmoji).catch((e) => {});
-    messageEmbed.react(AdAstraAbyssosqueEmoji).catch((e) => {});
     messageEmbed.react(MooncraftEmoji).catch((e) => {});
     messageEmbed.react(ValorEmoji).catch((e) => {});
+    reactedEmbed.react(ServerBoostEmoji).catch((e) => {});
+    reactedEmbed.react(GiveawayEmoji).catch((e) => {});
+    messageEmbed.react(AdAstraAbyssosqueEmoji).catch((e) => {});
 
     client.on('messageReactionAdd', async (reaction, user) => {
         if (reaction.message) await reaction.message.fetch().catch((e) => {});
@@ -70,14 +76,20 @@ module.exports.run = async (client, message, args) => {
             if (reaction.emoji.name === 'game_logo_df') {
                 await reaction.message.guild.members.cache.get(user.id).roles.add(DeadFrontierRole).catch((e) => {});
             }
-            if (reaction.emoji.name === 'ancientluna_divinare_s') {
-                await reaction.message.guild.members.cache.get(user.id).roles.add(AdAstraAbyssosqueRole).catch((e) => {});
-            }
             if (reaction.emoji.name === 'game_logo_mc') {
                 await reaction.message.guild.members.cache.get(user.id).roles.add(MinecraftRole).catch((e) => {});
             }
             if (reaction.emoji.name === 'game_logo_valor') {
                 await reaction.message.guild.members.cache.get(user.id).roles.add(ValorRole).catch((e) => {});
+            }
+            if (reaction.emoji.name === 'ancientluna_divinare') {
+                await reaction.message.guild.members.cache.get(user.id).roles.add(ServerBoostRole).catch((e) => {});
+            }
+            if (reaction.emoji.name === 'ancientluna_divinare_s') {
+                await reaction.message.guild.members.cache.get(user.id).roles.add(GiveawayRole).catch((e) => {});
+            }
+            if (reaction.emoji.name === 'vcon_warning') {
+                await reaction.message.guild.members.cache.get(user.id).roles.add(AdAstraAbyssosqueRole).catch((e) => {});
             }
         } else {
             return;
@@ -103,14 +115,20 @@ module.exports.run = async (client, message, args) => {
             if (reaction.emoji.name === 'game_logo_df') {
                 await reaction.message.guild.members.cache.get(user.id).roles.remove(DeadFrontierRole).catch((e) => {});
             }
-            if (reaction.emoji.name === 'ancientluna_divinare_s') {
-                await reaction.message.guild.members.cache.get(user.id).roles.remove(AdAstraAbyssosqueRole).catch((e) => {});
-            }
             if (reaction.emoji.name === 'game_logo_mc') {
                 await reaction.message.guild.members.cache.get(user.id).roles.remove(MinecraftRole).catch((e) => {});
             }
             if (reaction.emoji.name === 'game_logo_valor') {
                 await reaction.message.guild.members.cache.get(user.id).roles.remove(ValorRole).catch((e) => {});
+            }
+            if (reaction.emoji.name === 'ancientluna_divinare') {
+                await reaction.message.guild.members.cache.get(user.id).roles.remove(ServerBoostRole).catch((e) => {});
+            }
+            if (reaction.emoji.name === 'ancientluna_divinare_s') {
+                await reaction.message.guild.members.cache.get(user.id).roles.remove(GiveawayRole).catch((e) => {});
+            }
+            if (reaction.emoji.name === 'vcon_warning') {
+                await reaction.message.guild.members.cache.get(user.id).roles.remove(AdAstraAbyssosqueRole).catch((e) => {});
             }
         } else {
             return;

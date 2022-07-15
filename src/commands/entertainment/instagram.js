@@ -1,5 +1,5 @@
 const { MessageEmbed, MessageActionRow, MessageButton } = require('discord.js');
-const axios = require("axios");
+const fetch = require("node-fetch");
 
 module.exports.run = async (client, message, args) => {
 
@@ -9,7 +9,7 @@ module.exports.run = async (client, message, args) => {
     let url, response, account, details;
     try {
         url = `https://instagram.com/${args[0]}/?__a=1`;
-        response = await axios.get(url)
+        response = await fetch(url).then(res => res.json())
         account = response.data
         details = account.graphql.user
     } catch (error) {
