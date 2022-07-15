@@ -13,10 +13,10 @@ module.exports.run = async (client, message, args) => {
     const BlackDesertOnlineEmoji = '<:game_logo_bdo:861579805660151818>';
     const ApexLegendsEmoji = '<:game_logo_apex:861580082418417664>';
     const DeadFrontierEmoji = '<:game_logo_df:861580085000798229>';
+    const GiveawayEmoji = '<:ancientluna_divinare_s:859034096192978965>';
     const MooncraftEmoji = '<:game_logo_mc:981470249792712774>';
     const ValorEmoji = '<:game_logo_valor:981481044874252338>';
     const ServerBoostEmoji = '<:ancientluna_divinare:841754250949820416>';
-    const GiveawayEmoji = '<:ancientluna_divinare_s:859034096192978965>';
     const AdAstraAbyssosqueEmoji = '<:vcon_warning:992917967660654663>';
 
     try {
@@ -36,10 +36,10 @@ module.exports.run = async (client, message, args) => {
         reactedEmbed.react(BlackDesertOnlineEmoji).catch((e) => {});
         reactedEmbed.react(ApexLegendsEmoji).catch((e) => {});
         reactedEmbed.react(DeadFrontierEmoji).catch((e) => {});
-        reactedEmbed.react(AdAstraAbyssosqueEmoji).catch((e) => {});
-        reactedEmbed.react(MooncraftEmoji).catch((e) => {});
-        reactedEmbed.react(ValorEmoji).catch((e) => {});
         reactedEmbed.react(GiveawayEmoji).catch((e) => {});
+        reactedEmbed.react(MooncraftEmoji).catch((e) => {});
+        reactedEmbed.react(AdAstraAbyssosqueEmoji).catch((e) => {});
+        reactedEmbed.react(ValorEmoji).catch((e) => {});
         reactedEmbed.react(ServerBoostEmoji).catch((e) => {});
 
     } catch (err) {
