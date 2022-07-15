@@ -49,11 +49,11 @@ module.exports.run = async (client, message, args) => {
     messageEmbed.react(BlackDesertOnlineEmoji).catch((e) => {});
     messageEmbed.react(ApexLegendsEmoji).catch((e) => {});
     messageEmbed.react(DeadFrontierEmoji).catch((e) => {});
-    reactedEmbed.react(GiveawayEmoji).catch((e) => {});
+    messageEmbed.react(GiveawayEmoji).catch((e) => {});
     messageEmbed.react(MooncraftEmoji).catch((e) => {});
     messageEmbed.react(ValorEmoji).catch((e) => {});
     messageEmbed.react(AdAstraAbyssosqueEmoji).catch((e) => {});
-    reactedEmbed.react(ServerBoostEmoji).catch((e) => {});
+    messageEmbed.react(ServerBoostEmoji).catch((e) => {});
 
     client.on('messageReactionAdd', async (reaction, user) => {
         if (reaction.message) await reaction.message.fetch().catch((e) => {});
