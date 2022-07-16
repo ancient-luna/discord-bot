@@ -61,7 +61,7 @@ module.exports.run = async (Client, message, args) => {
             content: `_ _`,
             embeds: [wordGryffindor]
         }).catch((e) => {});
-        message.channel.send(`*The letter has been delivered anonumously to <#997467514818797649> by your owl letter*`).then((msg) => {
+        message.channel.send(`*The letter has been delivered anonymously to <#997467514818797649> by your owl letter*`).then((msg) => {
             setTimeout(() => msg.delete().catch((e) => {}), 5000);
             setTimeout(() => message.delete().catch((e) => {}));
         }).catch((err) => {
@@ -72,7 +72,7 @@ module.exports.run = async (Client, message, args) => {
             content: `_ _`,
             embeds: [wordHufflepuff]
         }).catch((e) => {});
-        message.channel.send(`*The letter has been delivered anonumously to <#997467514818797649> by your owl letter*`).then((msg) => {
+        message.channel.send(`*The letter has been delivered anonymously to <#997467514818797649> by your owl letter*`).then((msg) => {
             setTimeout(() => msg.delete().catch((e) => {}), 5000);
             setTimeout(() => message.delete().catch((e) => {}));
         }).catch((err) => {
@@ -83,7 +83,7 @@ module.exports.run = async (Client, message, args) => {
             content: `_ _`,
             embeds: [wordRavenclaw]
         }).catch((e) => {});
-        message.channel.send(`*The letter has been delivered anonumously to <#997467514818797649> by your owl letter*`).then((msg) => {
+        message.channel.send(`*The letter has been delivered anonymously to <#997467514818797649> by your owl letter*`).then((msg) => {
             setTimeout(() => msg.delete().catch((e) => {}), 5000);
             setTimeout(() => message.delete().catch((e) => {}));
         }).catch((err) => {
@@ -94,7 +94,7 @@ module.exports.run = async (Client, message, args) => {
             content: `_ _`,
             embeds: [wordSlytherin]
         }).catch((e) => {});
-        message.channel.send(`*The letter has been delivered anonumously to <#997467514818797649> by your owl letter*`).then((msg) => {
+        message.channel.send(`*The letter has been delivered anonymously to <#997467514818797649> by your owl letter*`).then((msg) => {
             setTimeout(() => msg.delete().catch((e) => {}), 5000);
             setTimeout(() => message.delete().catch((e) => {}));
         }).catch((err) => {
