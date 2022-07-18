@@ -64,13 +64,13 @@ client.on('ready', async () => {
   rulesChannelId = gConfig.server.ruleChannel;
   luxCastaId = gConfig.server.onJoinConfig.preMemberRole;
 
-  // client.user.setPresence({
-  //   activities: [{
-  //     name: `ᵎᵎ ₍ᐢ. .⑅ᐢ₎♡🧸`,
-  //     type: `PLAYING`,
-  //   }],
-  //   status: `online`
-  // });
+  client.user.setPresence({
+    activities: [{
+      name: `around Hogwarts in Toram World`,
+      type: `PLAYING`,
+    }],
+    status: `online`
+  });
 
   // eslint-disable-next-line no-restricted-syntax,no-unused-vars,no-use-before-define
   for await (const f of getFiles('./src/commands')) {
