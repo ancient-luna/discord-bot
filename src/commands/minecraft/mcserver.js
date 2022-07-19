@@ -30,7 +30,7 @@ module.exports.run = async (Client, message, args) => {
         };
     }
 
-    const MCMessage = await message.reply('<a:_minecraft:992925186292727969> Loading terrain <a:_util_loading:863317596551118858>');
+    const MCMessage = await message.reply('Loading terrain <a:_util_loading:863317596551118858>');
 
     let json = null;
 
