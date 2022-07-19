@@ -41,14 +41,28 @@ function roundRect(ctx, x, y, width, height, radius, fill, stroke) {
 module.exports.run = async (client, message, args, config) => {
   const canvas = createCanvas(500, 800);
   const ctx = canvas.getContext("2d");
+
+  const ancestorID = '590848319111299093';
+  const lunariaID = '839170815932891197';
+  const lightseekerID = '839198215580811344';
+  const eldersID = '843523544620335124';
+  const eosID = '907178060992876544';
+
+  const gryffindorID = '997454797156384829';
+  const hufflepuffID = '997455047799611422';
+  const ravenclawID = '997455288741417001';
+  const slytherinID = '997455304243564607';
+
   const limitRoles = [
-    '590848319111299093',
-    '620709364247822338',
-    '907178060992876544',
-    '843523544620335124',
-    '839170815932891197',
-    '839198215580811344',
-    '856379808937410590'
+    ancestorID,
+    lunariaID,
+    lightseekerID,
+    eldersID,
+    eosID,
+    gryffindorID,
+    hufflepuffID,
+    ravenclawID,
+    slytherinID
   ]
 
   fs.readFile('src/assets/usercard/template.png', (err, data) => {
@@ -144,10 +158,8 @@ module.exports.run = async (client, message, args, config) => {
         ctx.drawImage(avatarCanvas, 100, 139);
       })
 
-
       let sfBuffer = new Buffer.from(canvas.toDataURL().split(",")[1], "base64")
       message.reply({
-        content: "Here's your usercard `wip` : \n⁣",
         files: [
           {
             attachment: sfBuffer
@@ -161,6 +173,5 @@ module.exports.run = async (client, message, args, config) => {
 };
 
 module.exports.help = {
-  name: 'usercard',
-  aliases: ['fellowcard']
+  name: 'fellowcard'
 };
