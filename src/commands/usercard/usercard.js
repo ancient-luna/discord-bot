@@ -44,6 +44,7 @@ module.exports.run = async (client, message, args, config) => {
 
   const ancestorID = '590848319111299093';
   const lunariaID = '839170815932891197';
+  const luminanceID = '620709364247822338';
   const lightseekerID = '839198215580811344';
   const eldersID = '843523544620335124';
   const eosID = '907178060992876544';
@@ -56,6 +57,7 @@ module.exports.run = async (client, message, args, config) => {
   const limitRoles = [
     ancestorID,
     lunariaID,
+    luminanceID,
     lightseekerID,
     eldersID,
     eosID,
