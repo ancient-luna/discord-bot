@@ -227,6 +227,5 @@ module.exports.run = async (client, message, args, config) => {
 };
 
 module.exports.help = {
-  name: 'fellowcard',
-  aliases: ['usercard']
+  name: 'fellowcard'
 };
