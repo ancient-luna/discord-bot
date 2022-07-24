@@ -1,6 +1,6 @@
 require('dotenv').config();
 
-const { Client, MessageEmbed, Intents, MessageActionRow, MessageButton} = require('discord.js');
+const { Client, MessageEmbed, Intents, MessageActionRow, MessageButton, Collection} = require('discord.js');
 
 const client = new Client({
   partials: ['MESSAGE', 'CHANNEL', 'REACTION'],
@@ -25,7 +25,7 @@ const readdir = promisify(require('fs').readdir);
 
 const express = require('express');
 
-const fetch = require('node-fetch');
+const fs = require('fs');
 const schedule = require('node-schedule');
 const util = require('./utils');
 
@@ -52,6 +52,12 @@ async function* getFiles(dir) {
 
 client.commands = new Map();
 
+client.slashcommands = new Collection();
+
+const functions = fs.readdirSync("./src/functions").filter(file => file.endsWith(".js"));
+const eventFiles = fs.readdirSync("./src/events").filter(file => file.endsWith(".js"));
+const sCommandFolders = fs.readdirSync("./src/commapps");
+
 client.login(process.env.TOKEN).then(() => {
   util.printLog('info', 'Logging in');
 });
@@ -71,6 +77,13 @@ client.on('ready', async () => {
   //   }],
   //   status: `online`
   // });
+
+  // slash-command-handler
+  for (file of functions) {
+    require(`./functions/${file}`)(client);
+  }
+  client.handleEvents(eventFiles, "./src/events");
+  client.handleCommands(sCommandFolders, "./src/commapps");
 
   // eslint-disable-next-line no-restricted-syntax,no-unused-vars,no-use-before-define
   for await (const f of getFiles('./src/commands')) {
@@ -123,14 +136,6 @@ client.on('ready', async () => {
 client.on('messageCreate', async (message) => {
   if (!message.guild) return;
   if (message.author.bot) return;
-
-  if (message.channel.id === '848248129346338856') {
-    fetch.default(`https://api.monkedev.com/fun/chat?msg=${message.content}&uid=${message.author.id}`)
-      .then((res) => res.json())
-      .then((data) => {
-        message.channel.send(data.response);
-      });
-  }
 
   const prefix = process.env.COMMAND_PREFIX;
 
