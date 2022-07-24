@@ -51,5 +51,5 @@ module.exports.run = async (Client, message, args) => {
 }
 
 module.exports.help = {
-    name: 'mcuser'
+    name: 'archived-mcuser'
 }   
