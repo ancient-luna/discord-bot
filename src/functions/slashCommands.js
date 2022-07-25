@@ -2,9 +2,6 @@ const { REST } = require("@discordjs/rest");
 const { Routes } = require('discord-api-types/v9');
 const fs = require('fs');
 
-const clientID = '839380589508558910';
-const devGuildID = '447069790150852609';
-
 module.exports = (client) => {
     client.handleCommands = async (commandFolders, path) => {
         client.commandArray = [];
@@ -17,6 +14,8 @@ module.exports = (client) => {
             }
         }
 
+        const CLIENT_ID = client.user.id;
+
         const rest = new REST({
             version: '9'
         }).setToken(process.env.token);
@@ -26,9 +25,9 @@ module.exports = (client) => {
                 console.log('Started refreshing application (/) commands.');
 
                 await rest.put(
-                    Routes.applicationCommands(clientID), {
-                        body: client.commandArray
-                    },
+                    Routes.applicationCommands(CLIENT_ID), {
+                    body: client.commandArray
+                }
                 );
 
                 console.log('Successfully reloaded application (/) commands.');
