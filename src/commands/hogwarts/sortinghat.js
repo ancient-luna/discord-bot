@@ -5,6 +5,12 @@ module.exports.run = async (client, message, args) => {
 
     channel.setParent("997475898687238214");
 
+    const seekerID = await message.guild.roles.cache.get("1000932479043125312");
+
+    channel.permissionOverwrites.create(seekerID, {
+        ADMINISTRATOR: true
+    });
+
     channel.permissionOverwrites.create(message.guild.id, {
         VIEW_CHANNEL: false
     });
