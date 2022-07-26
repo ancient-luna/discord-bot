@@ -5,7 +5,7 @@ module.exports.run = async (client, message, args) => {
 
     channel.setParent("863293585091985410");
 
-    const seekerID = await message.guild.roles.cache.get("853585853104390175");
+    const seekerID = await message.guild.roles.cache.get("1000932479043125312");
 
     const lunariaID = await message.guild.roles.cache.get("839170815932891197");
 
