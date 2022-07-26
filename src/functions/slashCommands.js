@@ -22,8 +22,10 @@ module.exports = (client) => {
             try {
                 console.log('Started refreshing application (/) commands.');
 
+                const appID = '839380589508558910'
+
                 await rest.put(
-                    Routes.applicationCommands(client.application.id), {
+                    Routes.applicationCommands(appID), {
                     body: client.commandArray
                 }
                 );
