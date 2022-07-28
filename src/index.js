@@ -54,9 +54,12 @@ client.commands = new Map();
 
 client.slashcommands = new Collection();
 
+client.buttons = new Collection();
+
 const functions = fs.readdirSync("./src/functions").filter(file => file.endsWith(".js"));
 const eventFiles = fs.readdirSync("./src/events").filter(file => file.endsWith(".js"));
 const sCommandFolders = fs.readdirSync("./src/commapps");
+const buttonFolders = fs.readdirSync("./src/buttons");
 
 client.login(process.env.TOKEN).then(() => {
   util.printLog('info', 'Logging in');
@@ -78,12 +81,14 @@ client.on('ready', async () => {
   //   status: `online`
   // });
 
-  // slash-command-handler
+  // handlers
   for (file of functions) {
     require(`./functions/${file}`)(client);
   }
+
   client.handleEvents(eventFiles, "./src/events");
   client.handleCommands(sCommandFolders, "./src/commapps");
+  client.handleButtons(buttonFolders, "./src/buttons");
 
   // eslint-disable-next-line no-restricted-syntax,no-unused-vars,no-use-before-define
   for await (const f of getFiles('./src/commands')) {
