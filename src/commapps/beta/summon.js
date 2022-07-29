@@ -10,7 +10,6 @@ module.exports = {
         let dewIT = new MessageActionRow()
         .addComponents(
             new MessageButton()
-            .setCustomId("role-843661888670662656")
             .setStyle("PRIMARY")
             .setLabel("cunt")
         )
