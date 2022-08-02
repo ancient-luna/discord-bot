@@ -15,7 +15,7 @@ module.exports.run = async (Client, message, args) => {
         .setColor("2f3136")
 
     const descMinecraft = new MessageEmbed()
-        .setDescription(`**Minecraft**\n\n\`!mcserver\` : show luna craft server information`)
+        .setDescription(`**Minecraft**\n\n\`!mcserver\` : show luna craft server information\n\`!mcserver\` : show detail of mc players`)
         .setImage("https://i.imgur.com/V0UhnF9.png")
         .setColor("2f3136")
 

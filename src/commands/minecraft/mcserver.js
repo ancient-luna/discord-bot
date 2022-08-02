@@ -4,7 +4,7 @@ const fetch = require('node-fetch');
 const gamedig = require('gamedig');
 
 module.exports.run = async (Client, message, args) => {
-    const ip = "51.79.178.39:25630";
+    const ip = "139.99.24.66:25565";
 
     const images = [
         'https://i.imgur.com/8fuPt3d.gif',

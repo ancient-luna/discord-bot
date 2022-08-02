@@ -29,9 +29,9 @@ module.exports.run = async (Client, message, args) => {
                 const mcUser = new MessageEmbed()
                 .setTitle(body.name)
                 .setURL(`https://namemc.com/profile/${body.name}`)
-                .setImage(`https://visage.surgeplay.com/bust/${body.id}`)
+                .setDescription(`UUID: ${body.id}\n<a:_util_arrow:864810269771300875> **mc.ancientluna.org**`)
+                .setThumbnail(`https://visage.surgeplay.com/bust/${body.id}`)
                 .setColor('2f3136')
-                .setFooter({ text: `UUID ${body.id}` })
 
                 const previewUser = new MessageActionRow()
                     .addComponents(
@@ -39,6 +39,13 @@ module.exports.run = async (Client, message, args) => {
                             .setStyle('LINK')
                             .setLabel('Detail Info')
                             .setURL(`https://namemc.com/profile/${body.name}`)
+                    )
+                    .addComponents(
+                        new MessageButton()
+                            .setStyle('LINK')
+                            .setLabel('Join Server')
+                            .setURL(`https://discord.com/invite/Sbp2nt8QHe`)
+                    
                     )
 
                 getInfo.edit({
@@ -51,5 +58,5 @@ module.exports.run = async (Client, message, args) => {
 }
 
 module.exports.help = {
-    name: 'archived-mcuser'
+    name: 'mcuser'
 }   
