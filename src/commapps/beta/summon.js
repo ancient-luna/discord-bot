@@ -7,16 +7,8 @@ module.exports = {
     .setDescription('call out my name, im yours to tame'),
     async execute(interaction, client) {
         
-        let dewIT = new MessageActionRow()
-        .addComponents(
-            new MessageButton()
-            .setStyle("PRIMARY")
-            .setLabel("cunt")
-        )
-        
         await interaction.reply({
-            content: 'select this shit now, just click it. i dare you',
-            components: [dewIT]
+            content: 'i summoned, wow!'
         }).catch((e) => {});
     }
 }
