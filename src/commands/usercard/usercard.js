@@ -64,6 +64,8 @@ module.exports.run = async (client, message, args, config) => {
   //   lightseekerID,
   //   eldersID,
   //   eosID,
+  //   dandelionID,
+  //   partnerID,
   //   gryffindorID,
   //   hufflepuffID,
   //   ravenclawID,
