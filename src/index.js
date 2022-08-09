@@ -75,13 +75,13 @@ client.on('ready', async () => {
   rulesChannelId = gConfig.server.ruleChannel;
   luxCastaId = gConfig.server.onJoinConfig.preMemberRole;
 
-  // client.user.setPresence({
-  //   activities: [{
-  //     name: `around Hogwarts in Toram World`,
-  //     type: `PLAYING`,
-  //   }],
-  //   status: `online`
-  // });
+  client.user.setPresence({
+    activities: [{
+      name: `around sanctuary`,
+      type: `WATCHING`,
+    }],
+    status: `online`
+  });
 
   // handlers
   for (file of functions) {
@@ -211,7 +211,6 @@ client.on('messageReactionAdd', async (reaction, user) => {
   if (reaction.partial) await reaction.fetch();
   if (user.bot) return;
   if (!reaction.message.guild) return;
-
 
   if (reaction.message.channel.id === '864556584818835456') {
     if (reaction.emoji.name === 'game_logo_toram') {
