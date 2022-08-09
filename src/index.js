@@ -32,6 +32,7 @@ const util = require('./utils');
 const configFile = require('./config/index');
 
 let gConfig = {};
+let toramChannelId = '';
 let gatewayChannelId = '';
 let rulesChannelId = '';
 let luxCastaId = '';
@@ -70,6 +71,7 @@ client.on('ready', async () => {
   util.printLog('info', 'Loading configuration file...');
   gConfig = configFile.load();
   gatewayChannelId = gConfig.server.gatewayChannel;
+  toramChannelId = gConfig.server.toramChannel;
   rulesChannelId = gConfig.server.ruleChannel;
   luxCastaId = gConfig.server.onJoinConfig.preMemberRole;
 
@@ -203,6 +205,91 @@ client.on('guildMemberRemove', async (member) => {
     .setColor('RED');
   channel.send({ embeds: [leavingText] });
 });
+
+client.on('messageReactionAdd', async (reaction, user) => {
+  if (reaction.message.partial) await reaction.message.fetch();
+  if (reaction.partial) await reaction.fetch();
+  if (user.bot) return;
+  if (!reaction.message.guild) return;
+
+
+  if (reaction.message.channel.id === '864556584818835456') {
+    if (reaction.emoji.name === 'game_logo_toram') {
+      await reaction.message.guild.members.cache.get(user.id).roles.add('952147085447266364')
+      const channelCity = reaction.message.guild.channels.cache.get(toramChannelId);
+      channelCity.send({
+        content: `Welcome to ancient city of luna ${reaction.message.guild.members.cache.get(user.id)}, here get your <#952170767947272303> and start the journey with others <:xpot_toram_potum_cute_chilling:952260990085500978>`
+      })
+    }
+    if (reaction.emoji.name === 'game_logo_bdo') {
+      await reaction.message.guild.members.cache.get(user.id).roles.add('856380073745186876')
+    }
+    if (reaction.emoji.name === 'game_logo_apex') {
+      await reaction.message.guild.members.cache.get(user.id).roles.add('861400119101095937')
+    }
+    if (reaction.emoji.name === 'game_logo_df') {
+      await reaction.message.guild.members.cache.get(user.id).roles.add('874680389459906580')
+    }
+    if (reaction.emoji.name === 'ancientluna_divinare_s') {
+      await reaction.message.guild.members.cache.get(user.id).roles.add('979164243049975868')
+    }
+    if (reaction.emoji.name === 'game_logo_mc') {
+      await reaction.message.guild.members.cache.get(user.id).roles.add('981470521470382090')
+    }
+    if (reaction.emoji.name === 'game_logo_valor') {
+      await reaction.message.guild.members.cache.get(user.id).roles.add('981479474531024958')
+    }
+    if (reaction.emoji.name === 'vcon_warning') {
+      await reaction.message.guild.members.cache.get(user.id).roles.add('882350441864777769')
+    }
+    if (reaction.emoji.name === 'ancientluna_divinare') {
+      await reaction.message.guild.members.cache.get(user.id).roles.add('989457483531714591')
+    }
+  } else {
+    return;
+  }
+})
+
+client.on('messageReactionRemove', async (reaction, user) => {
+  if (reaction.message.partial) await reaction.message.fetch();
+  if (reaction.partial) await reaction.fetch();
+  if (user.bot) return;
+  if (!reaction.message.guild) return;
+
+  if (reaction.message.channel.id === '864556584818835456') {
+    if (reaction.emoji.name === 'game_logo_toram') {
+      await reaction.message.guild.members.cache.get(user.id).roles.remove('952147085447266364')
+      const channelCity = reaction.message.guild.channels.cache.get(toramChannelId);
+      channelCity.send(`<:xpot_toram_potum_sad:952260990337171467> ${reaction.message.guild.members.cache.get(user.id)} is leaving this city ...`)
+    }
+    if (reaction.emoji.name === 'game_logo_bdo') {
+      await reaction.message.guild.members.cache.get(user.id).roles.remove('856380073745186876')
+    }
+    if (reaction.emoji.name === 'game_logo_apex') {
+      await reaction.message.guild.members.cache.get(user.id).roles.remove('861400119101095937')
+    }
+    if (reaction.emoji.name === 'game_logo_df') {
+      await reaction.message.guild.members.cache.get(user.id).roles.remove('874680389459906580')
+    }
+    if (reaction.emoji.name === 'game_logo_mc') {
+      await reaction.message.guild.members.cache.get(user.id).roles.remove('981470521470382090')
+    }
+    if (reaction.emoji.name === 'ancientluna_divinare_s') {
+      await reaction.message.guild.members.cache.get(user.id).roles.remove('979164243049975868')
+    }
+    if (reaction.emoji.name === 'game_logo_valor') {
+      await reaction.message.guild.members.cache.get(user.id).roles.remove('981479474531024958')
+    }
+    if (reaction.emoji.name === 'vcon_warning') {
+      await reaction.message.guild.members.cache.get(user.id).roles.remove('882350441864777769')
+    }
+    if (reaction.emoji.name === 'ancientluna_divinare') {
+      await reaction.message.guild.members.cache.get(user.id).roles.remove('989457483531714591')
+    }
+  } else {
+    return;
+  }
+})
 
 const app = express();
 
