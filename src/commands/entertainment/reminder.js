@@ -11,10 +11,10 @@ module.exports.run = async (client, message, args) => {
     .setColor('#2f3136')
     .setFooter({ text: `Reminder was set for ${args[0]}`})
 
-    message.reply({ content: `I keep it safe under the moon's name and will remind you back in ${args[0]}!` }).catch(e => {})
+    message.reply({ content: `<a:_util_loading:863317596551118858> I keep it safe under the moon's name and will remind you back in ${args[0]}!` }).catch(e => {})
 
     setTimeout(async () => {
-        message.channel.send({ content: `<:ancientluna_divinare:841754250949820416><@${message.author.id}>`, embeds: [embed2] }).catch(e => {})
+        message.channel.send({ content: `<:ancientluna_divinare:841754250949820416><@${message.author.id}>╮`, embeds: [embed2] }).catch(e => {})
     }, ms(args[0]));
 
 }
