@@ -290,7 +290,50 @@ client.on('messageReactionRemove', async (reaction, user) => {
   }
 })
 
+//Calling out modules
 const app = express();
+const http = require('http');
+const bodyParser = require('body-parser');
+const { Webhook, MessageBuilder } = require('discord-webhook-node');
+const config = require('./config/ihook.json');
+
+if(!config) {
+    console.error('Config file not found.');
+    process.exit(1);
+};
+if(!config.webhook_link) {
+    console.error('Config file missing items. Please regenerate');
+    process.exit(1);
+};
+
+const webhook = new Webhook(config.webhook_link); //Declaring the Webhook here
+
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+
+app.post('/post', async function(req, res) {
+    const data = req.body.data;
+    if (!data) return;
+
+    try {
+        const obj = JSON.parse(data);
+        const embed = new MessageBuilder();
+        embed.setTitle(`${obj.from_name} supporting as ${obj.type} for ${obj.amount} ${obj.currency}`);
+        embed.setColor('2f3136');
+        embed.setDescription(`${obj.message}`)
+        embed.setFooter(`support on ko-fi.com/daekid`)
+        await webhook.send(embed);
+    } catch (err) {
+        console.error(err);
+        return res.json({success: false, error: err});
+    }
+    return res.json({success: true});
+});
+
+app.use('/', async function(req, res) { //Handiling requests to the main endpoint
+    res.json({message: "Ko-Fi Server is online!"});
+    return;
+});
 
 app.get('/', (req, res) => {
   res.send('Hello world');
