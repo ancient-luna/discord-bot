@@ -53,7 +53,7 @@ module.exports.run = async (client, message, args) => {
     })
 
     const mEmbed = new MessageEmbed()
-        .setAuthor({ name: `${message.author.tag}: APPLICATION TICKET`, iconURL: message.author.displayAvatarURL({ dynamic: true }) })
+        .setAuthor({ name: `${message.author.username}'s ticket`, iconURL: message.author.displayAvatarURL({ dynamic: true }) })
         .setDescription(`Thank you for your application. The Ancestor will be here as soon as possible! If he still alive out there. Please take your time while waiting`)
         .setFooter({ text: `note: Don't hesitate to mention him if need now ` })
         .setColor('2f3136')
