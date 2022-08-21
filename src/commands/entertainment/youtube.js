@@ -7,7 +7,7 @@ module.exports.run = async (Client, message, args) => {
     if(!channel) return message.reply(`You have to be in any **voice channel** first in this server`).catch((e) => {});
 
     discordTogether
-        .createTogetherCode(channel.id, 'youtubeDev')
+        .createTogetherCode(channel.id, 'youtube')
         .then((invite) => 
         
             message.reply({
