@@ -27,7 +27,7 @@ module.exports.run = async (Client, message, args) => {
 
     let embed = new MessageEmbed()
         .setAuthor({ name: `ID ${target.id}` })
-        .setDescription(`**${target} get kicked from the sanctuary**\nReason: *${reason}*`)
+        .setDescription(`**${target.username}#${target.discriminator} get kicked from the sanctuary**\nReason: *${reason}*`)
         .setThumbnail("https://i.imgur.com/sm8OXMp.png")
         .setFooter({ text: `Kicked by ${message.member.displayName}` })
         .setColor("2f3136")

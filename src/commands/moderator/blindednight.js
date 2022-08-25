@@ -27,7 +27,7 @@ module.exports.run = async (Client, message, args) => {
 
     let embed = new MessageEmbed()
         .setAuthor({ name: `ID ${target.id}`, iconURL: 'https://i.imgur.com/oZvnuem.png' })
-        .setDescription(`**${target} get BANNED from the sanctuary**\nReason: *${reason}*`)
+        .setDescription(`**${target.username}#${target.discriminator}  get BANNED from the sanctuary**\nReason: *${reason}*`)
         .setImage("https://i.imgur.com/rG7qwId.gif")
         .setFooter({ text: `Banned by ${message.member.displayName}` })
         .setColor("2f3136")
