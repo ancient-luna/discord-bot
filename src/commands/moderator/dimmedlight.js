@@ -35,6 +35,8 @@ module.exports.run = async (Client, message, args) => {
     message.guild.channels.cache.get('839417251470901279').send({ embeds: [embed] }).catch((e) => { });
 
     target.kick(args[0]);
+
+    message.react("✅").catch((e) => {});
 }
 
 module.exports.help = {
