@@ -11,7 +11,7 @@ module.exports.run = async (client, message, args) => {
   const str = args.slice(1).join(" ");
   
   const embed = new MessageEmbed()
-      .setDescription(`**Email**: daeva@ancientluna.org\n**Discord**: Dae#0090\n**Instagram**: [imsoondae_](https://instagram.com/imsoondae_)`)
+      .setDescription(`**Email**: daeva@ancientluna.org\n**Discord**: Dae#0090\n**Instagram**: ~~[imsoondae_](https://instagram.com/imsoondae_)~~`)
       .setFooter({ text: `this bot won't read any messages of your replies` })
       .setColor('7289da')
 
@@ -19,8 +19,8 @@ module.exports.run = async (client, message, args) => {
     .addComponents(
       new MessageButton()
       .setStyle("LINK")
-      .setLabel("Visit Ancient Luna")
-      .setURL(`https://discord.com/invite/Sbp2nt8QHe`)
+      .setLabel("See announcement")
+      .setURL(`https://discord.com/channels/447069790150852609/839200933291622450`)
     )
 
   user.send({
