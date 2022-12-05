@@ -6,7 +6,7 @@ module.exports.run = async (client, message, args) => {
     const channelServerRole = '864556584818835456';
     
     const ToramOnlineRole = message.guild.roles.cache.find(role => role.name === 'Legendary Saviour')
-    const BlackDesertOnlineRole = message.guild.roles.cache.find(role => role.name === 'Black Spirit')
+    const BlackDesertOnlineRole = message.guild.roles.cache.find(role => role.name === 'Ancient Civilizations')
     const ApexLegendsRole = message.guild.roles.cache.find(role => role.name === 'Apex')
     const DeadFrontierRole = message.guild.roles.cache.find(role => role.name === 'Survivors')
     const GiveawayRole = message.guild.roles.cache.find(role => role.name === 'Candescence')
@@ -69,6 +69,9 @@ module.exports.run = async (client, message, args) => {
             }
             if (reaction.emoji.name === 'game_logo_bdo') {
                 await reaction.message.guild.members.cache.get(user.id).roles.add(BlackDesertOnlineRole);
+                message.guild.channels.cache.get('1049228301807407156').send({
+                    content: `Welcome to the hidden secrets of the ancient civilizations ${reaction.message.guild.members.cache.get(user.id)}, A journey to seek the true face of the ancient civilization around the Black Desert awaits you!`
+                });
             }
             if (reaction.emoji.name === 'game_logo_apex') {
                 await reaction.message.guild.members.cache.get(user.id).roles.add(ApexLegendsRole);
@@ -108,6 +111,9 @@ module.exports.run = async (client, message, args) => {
             }
             if (reaction.emoji.name === 'game_logo_bdo') {
                 await reaction.message.guild.members.cache.get(user.id).roles.remove(BlackDesertOnlineRole);
+                message.guild.channels.cache.get('1049228301807407156').send({
+                    content: `A source of power so great they are said to have corrupted the minds of ${reaction.message.guild.members.cache.get(user.id)} caused the fall of a great civilization ...`
+                });
             }
             if (reaction.emoji.name === 'game_logo_apex') {
                 await reaction.message.guild.members.cache.get(user.id).roles.remove(ApexLegendsRole);
