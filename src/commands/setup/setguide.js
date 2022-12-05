@@ -70,7 +70,7 @@ module.exports.run = async (client, message, args) => {
             if (reaction.emoji.name === 'game_logo_bdo') {
                 await reaction.message.guild.members.cache.get(user.id).roles.add(BlackDesertOnlineRole);
                 message.guild.channels.cache.get('1049228301807407156').send({
-                    content: `Welcome to the hidden secrets of the ancient civilizations ${reaction.message.guild.members.cache.get(user.id)}, A journey to seek the true face of the ancient civilization around the Black Desert awaits you!`
+                    content: `Welcome to the hidden secrets of the ancient civilizations ${reaction.message.guild.members.cache.get(user.id)},\nA journey to seek the true face of the ancient civilization around the Black Desert awaits you!`
                 });
             }
             if (reaction.emoji.name === 'game_logo_apex') {
@@ -107,7 +107,9 @@ module.exports.run = async (client, message, args) => {
         if (reaction.message.channel.id === channelServerRole) {
             if (reaction.emoji.name === 'game_logo_toram') {
                 await reaction.message.guild.members.cache.get(user.id).roles.remove(ToramOnlineRole);
-                message.guild.channels.cache.get('952164768217706496').send(`<:xpot_toram_potum_sad:952260990337171467> ${reaction.message.guild.members.cache.get(user.id)} is leaving this city ...`);
+                message.guild.channels.cache.get('952164768217706496').send({
+                    content: `<:xpot_toram_potum_sad:952260990337171467> ${reaction.message.guild.members.cache.get(user.id)} is leaving this city ...`
+                });
             }
             if (reaction.emoji.name === 'game_logo_bdo') {
                 await reaction.message.guild.members.cache.get(user.id).roles.remove(BlackDesertOnlineRole);
