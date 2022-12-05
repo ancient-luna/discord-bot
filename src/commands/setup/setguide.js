@@ -22,7 +22,7 @@ module.exports.run = async (client, message, args) => {
     const GiveawayEmoji = '<:ancientluna_divinare_s:859034096192978965>';
     const MooncraftEmoji = '<:game_logo_mc:981470249792712774>';
     const ValorEmoji = '<:game_logo_valor:981481044874252338>';
-    const AdAstraAbyssosqueEmoji = '<:vcon_warning:992917967660654663>';
+    const AdAstraAbyssosqueEmoji = '<a:_util_warning:965778540022878249>';
     const ServerBoostEmoji = '<:ancientluna_divinare:841754250949820416>';
 
     const IMGguide = new MessageAttachment("src/assets/guidelines.png")
@@ -88,7 +88,7 @@ module.exports.run = async (client, message, args) => {
             if (reaction.emoji.name === 'game_logo_valor') {
                 await reaction.message.guild.members.cache.get(user.id).roles.add(ValorRole);
             }
-            if (reaction.emoji.name === 'vcon_warning') {
+            if (reaction.emoji.name === '_util_warning') {
                 await reaction.message.guild.members.cache.get(user.id).roles.add(AdAstraAbyssosqueRole);
             }
             if (reaction.emoji.name === 'ancientluna_divinare') {
@@ -130,7 +130,7 @@ module.exports.run = async (client, message, args) => {
             if (reaction.emoji.name === 'game_logo_valor') {
                 await reaction.message.guild.members.cache.get(user.id).roles.remove(ValorRole);
             }
-            if (reaction.emoji.name === 'vcon_warning') {
+            if (reaction.emoji.name === '_util_warning') {
                 await reaction.message.guild.members.cache.get(user.id).roles.remove(AdAstraAbyssosqueRole);
             }
             if (reaction.emoji.name === 'ancientluna_divinare') {
@@ -143,5 +143,5 @@ module.exports.run = async (client, message, args) => {
 }
 
 module.exports.help = {
-    name: 'archived-setguide'
+    name: 'archived-test'
 }
