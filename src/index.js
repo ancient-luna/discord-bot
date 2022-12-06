@@ -33,6 +33,7 @@ const configFile = require('./config/index');
 
 let gConfig = {};
 let toramChannelId = '';
+let bdoChannelId = '';
 let gatewayChannelId = '';
 let rulesChannelId = '';
 let luxCastaId = '';
@@ -72,6 +73,7 @@ client.on('ready', async () => {
   gConfig = configFile.load();
   gatewayChannelId = gConfig.server.gatewayChannel;
   toramChannelId = gConfig.server.toramChannel;
+  bdoChannelId = gConfig.server.bdoChannel;
   rulesChannelId = gConfig.server.ruleChannel;
   luxCastaId = gConfig.server.onJoinConfig.preMemberRole;
 
@@ -215,13 +217,17 @@ client.on('messageReactionAdd', async (reaction, user) => {
   if (reaction.message.channel.id === '864556584818835456') {
     if (reaction.emoji.name === 'game_logo_toram') {
       await reaction.message.guild.members.cache.get(user.id).roles.add('952147085447266364')
-      const channelCity = reaction.message.guild.channels.cache.get(toramChannelId);
-      channelCity.send({
-        content: `Welcome to ancient city of luna ${reaction.message.guild.members.cache.get(user.id)}, here get your <#952170767947272303> and start the journey with others <:xpot_toram_potum_cute_chilling:952260990085500978>`
+      const channelRuin = reaction.message.guild.channels.cache.get(toramChannelId);
+      channelRuin.send({
+        content: `Welcome to city ruin of luna ${reaction.message.guild.members.cache.get(user.id)}, here get your <#952170767947272303> and start the journey with others <:xpot_toram_potum_cute_chilling:952260990085500978>`
       })
     }
     if (reaction.emoji.name === 'game_logo_bdo') {
       await reaction.message.guild.members.cache.get(user.id).roles.add('856380073745186876')
+      const channelCity = reaction.message.guild.channels.cache.get(bdoChannelId);
+      channelCity.send({
+        content: `Welcome to the hidden secrets of the ancient civilizations ${reaction.message.guild.members.cache.get(user.id)} ,\nA journey to seek the true face of the ancient civilization around the Black Desert awaits you!`
+      })
     }
     if (reaction.emoji.name === 'game_logo_apex') {
       await reaction.message.guild.members.cache.get(user.id).roles.add('861400119101095937')
@@ -258,11 +264,13 @@ client.on('messageReactionRemove', async (reaction, user) => {
   if (reaction.message.channel.id === '864556584818835456') {
     if (reaction.emoji.name === 'game_logo_toram') {
       await reaction.message.guild.members.cache.get(user.id).roles.remove('952147085447266364')
-      const channelCity = reaction.message.guild.channels.cache.get(toramChannelId);
-      channelCity.send(`<:xpot_toram_potum_sad:952260990337171467> ${reaction.message.guild.members.cache.get(user.id)} is leaving this city ...`)
+      const channelRuin = reaction.message.guild.channels.cache.get(toramChannelId);
+      channelRuin.send(`<:xpot_toram_potum_sad:952260990337171467> ${reaction.message.guild.members.cache.get(user.id)} is leaving this ruin ...`)
     }
     if (reaction.emoji.name === 'game_logo_bdo') {
       await reaction.message.guild.members.cache.get(user.id).roles.remove('856380073745186876')
+      const channelCity = reaction.message.guild.channels.cache.get(bdoChannelId);
+      channelCity.send(`A source of power so great they are said to have corrupted the minds of ${reaction.message.guild.members.cache.get(user.id)}. Caused the fall of a great civilization ...`)
     }
     if (reaction.emoji.name === 'game_logo_apex') {
       await reaction.message.guild.members.cache.get(user.id).roles.remove('861400119101095937')
