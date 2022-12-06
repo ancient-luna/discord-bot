@@ -244,7 +244,7 @@ client.on('messageReactionAdd', async (reaction, user) => {
     if (reaction.emoji.name === 'game_logo_valor') {
       await reaction.message.guild.members.cache.get(user.id).roles.add('981479474531024958')
     }
-    if (reaction.emoji.name === '_util_warning') {
+    if (reaction.emoji.name === 'vcon_warning_18') {
       await reaction.message.guild.members.cache.get(user.id).roles.add('882350441864777769')
     }
     if (reaction.emoji.name === 'ancientluna_divinare') {
@@ -287,7 +287,7 @@ client.on('messageReactionRemove', async (reaction, user) => {
     if (reaction.emoji.name === 'game_logo_valor') {
       await reaction.message.guild.members.cache.get(user.id).roles.remove('981479474531024958')
     }
-    if (reaction.emoji.name === '_util_warning') {
+    if (reaction.emoji.name === 'vcon_warning_18') {
       await reaction.message.guild.members.cache.get(user.id).roles.remove('882350441864777769')
     }
     if (reaction.emoji.name === 'ancientluna_divinare') {
