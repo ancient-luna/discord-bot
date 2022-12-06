@@ -226,7 +226,7 @@ client.on('messageReactionAdd', async (reaction, user) => {
       await reaction.message.guild.members.cache.get(user.id).roles.add('856380073745186876')
       const channelCity = reaction.message.guild.channels.cache.get(bdoChannelId);
       channelCity.send({
-        content: `Welcome to the hidden secrets of the ancient civilizations ${reaction.message.guild.members.cache.get(user.id)} <:game_logo_bdo:861579805660151818>\nA journey to seek the true face of the ancient civilization around the Black Desert awaits you!`
+        content: `Welcome to the hidden secrets of the ancient civilizations ${reaction.message.guild.members.cache.get(user.id)} ,\nA journey to seek the true face of the ancient civilization around the Black Desert awaits you!`
       })
     }
     if (reaction.emoji.name === 'game_logo_apex') {
