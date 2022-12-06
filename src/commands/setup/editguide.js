@@ -17,7 +17,7 @@ module.exports.run = async (client, message, args) => {
     const MooncraftEmoji = '<:game_logo_mc:981470249792712774>';
     const ValorEmoji = '<:game_logo_valor:981481044874252338>';
     const ServerBoostEmoji = '<:ancientluna_divinare:841754250949820416>';
-    const AdAstraAbyssosqueEmoji = '<:vcon_warning_18:1049835165964312606>';
+    const AdAstraAbyssosqueEmoji = '<:vcon_warning:992917967660654663>';
 
     try {
         const guideChannel = message.guild.channels.cache.get(
