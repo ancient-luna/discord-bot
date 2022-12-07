@@ -257,7 +257,7 @@ client.on('messageReactionAdd', async (reaction, user) => {
 
   if (reaction.message.channel.id === '1049815440198733895') {
     if (reaction.emoji.name === 'xu_bdo_class_warrior') {
-      await reaction.message.guild.members.cache.get(user.id).roles.add('1050023329072947200')
+      // await reaction.message.guild.members.cache.get(user.id).roles.add('1050023329072947200')
       const channelArtifact = reaction.message.guild.channels.cache.get(artifactChannelId);
       const quoteText = [
         '𝔄 𝔰𝔱𝔲𝔯𝔡𝔶 𝔰𝔥𝔦𝔢𝔩𝔡, 𝔞 𝔰𝔥𝔞𝔯𝔭 𝔰𝔴𝔬𝔯𝔡, 𝔞𝔫𝔡 𝔲𝔫𝔴𝔞𝔳𝔢𝔯𝔦𝔫𝔤 𝔠𝔬𝔫𝔳𝔦𝔠𝔱𝔦𝔬𝔫.',
@@ -272,7 +272,7 @@ client.on('messageReactionAdd', async (reaction, user) => {
       channelArtifact.send({ embeds: [classText] });
     }
     if (reaction.emoji.name === 'xu_bdo_class_ranger') {
-      await reaction.message.guild.members.cache.get(user.id).roles.add('1050023589199495168')
+      // await reaction.message.guild.members.cache.get(user.id).roles.add('1050023589199495168')
       const channelArtifact = reaction.message.guild.channels.cache.get(artifactChannelId);
       const quoteText = [
         '𝔗𝔥𝔢 𝔡𝔞𝔲𝔤𝔥𝔱𝔢𝔯 𝔬𝔣 𝔱𝔥𝔢 𝔤𝔬𝔡𝔡𝔢𝔰𝔰 𝔖𝔶𝔩𝔳𝔦𝔞, 𝔱𝔥𝔢 𝔤𝔲𝔞𝔯𝔡𝔦𝔞𝔫 𝔬𝔣 𝔎𝔞𝔪𝔞𝔰𝔶𝔩𝔳𝔦𝔞.',
@@ -287,7 +287,7 @@ client.on('messageReactionAdd', async (reaction, user) => {
       channelArtifact.send({ embeds: [classText] });
     }
     if (reaction.emoji.name === 'xu_bdo_class_sorceress') {
-      await reaction.message.guild.members.cache.get(user.id).roles.add('1050023599324540939')
+      // await reaction.message.guild.members.cache.get(user.id).roles.add('1050023599324540939')
       const channelArtifact = reaction.message.guild.channels.cache.get(artifactChannelId);
       const quoteText = [
         '𝔗𝔥𝔢 𝔬𝔫𝔢 𝔴𝔥𝔬 𝔟𝔯𝔦𝔫𝔤𝔰 𝔡𝔢𝔰𝔱𝔯𝔲𝔠𝔱𝔦𝔬𝔫 𝔱𝔬 𝔞𝔩𝔩 𝔴𝔦𝔱𝔥 𝔡𝔞𝔯𝔨 𝔪𝔞𝔤𝔦𝔠.',
@@ -302,7 +302,7 @@ client.on('messageReactionAdd', async (reaction, user) => {
       channelArtifact.send({ embeds: [classText] });
     }
     if (reaction.emoji.name === 'xu_bdo_class_berserker') {
-      await reaction.message.guild.members.cache.get(user.id).roles.add('1050023814664302713')
+      // await reaction.message.guild.members.cache.get(user.id).roles.add('1050023814664302713')
       const channelArtifact = reaction.message.guild.channels.cache.get(artifactChannelId);
       const quoteText = [
         '𝔗𝔬𝔲𝔤𝔥 𝔟𝔬𝔡𝔶, 𝔬𝔳𝔢𝔯𝔭𝔬𝔴𝔢𝔯𝔦𝔫𝔤 𝔴𝔦𝔩𝔩.',
@@ -317,7 +317,7 @@ client.on('messageReactionAdd', async (reaction, user) => {
       channelArtifact.send({ embeds: [classText] });
     }
     if (reaction.emoji.name === 'xu_bdo_class_tamer') {
-      await reaction.message.guild.members.cache.get(user.id).roles.add('1050023856993226804')
+      // await reaction.message.guild.members.cache.get(user.id).roles.add('1050023856993226804')
       const channelArtifact = reaction.message.guild.channels.cache.get(artifactChannelId);
       const quoteText = [
         '𝔗𝔥𝔢 𝔭𝔯𝔦𝔫𝔠𝔢𝔰𝔰 𝔬𝔣 𝔞 𝔣𝔞𝔩𝔩𝔢𝔫 𝔨𝔦𝔫𝔤𝔡𝔬𝔪 𝔱𝔥𝔞𝔱 𝔣𝔬𝔲𝔫𝔡 𝔣𝔞𝔪𝔦𝔩𝔶 𝔦𝔫 𝔞 𝔪𝔶𝔰𝔱𝔦𝔠𝔞𝔩 𝔟𝔢𝔞𝔰𝔱.',
@@ -332,7 +332,7 @@ client.on('messageReactionAdd', async (reaction, user) => {
       channelArtifact.send({ embeds: [classText] });
     }
     if (reaction.emoji.name === 'xu_bdo_class_musa') {
-      await reaction.message.guild.members.cache.get(user.id).roles.add('1050023861820850196')
+      // await reaction.message.guild.members.cache.get(user.id).roles.add('1050023861820850196')
       const channelArtifact = reaction.message.guild.channels.cache.get(artifactChannelId);
       const quoteText = [
         '𝔗𝔥𝔢 𝔭𝔞𝔱𝔥 𝔬𝔣 𝔱𝔥𝔢 𝔟𝔩𝔞𝔡𝔢 𝔱𝔥𝔞𝔱 𝔠𝔲𝔱𝔰 𝔱𝔥𝔯𝔬𝔲𝔤𝔥 𝔱𝔥𝔢 𝔴𝔦𝔫𝔡.',
@@ -347,7 +347,7 @@ client.on('messageReactionAdd', async (reaction, user) => {
       channelArtifact.send({ embeds: [classText] });
     }
     if (reaction.emoji.name === 'xu_bdo_class_maehwa') {
-      await reaction.message.guild.members.cache.get(user.id).roles.add('1050023865629298688')
+      // await reaction.message.guild.members.cache.get(user.id).roles.add('1050023865629298688')
       const channelArtifact = reaction.message.guild.channels.cache.get(artifactChannelId);
       const quoteText = [
         '𝔄 𝔰𝔥𝔦𝔫𝔦𝔫𝔤 𝔟𝔩𝔞𝔡𝔢 𝔞𝔪𝔬𝔫𝔤 𝔱𝔥𝔢 𝔣𝔞𝔩𝔩𝔦𝔫𝔤 𝔭𝔢𝔱𝔞𝔩𝔰.',
@@ -362,7 +362,7 @@ client.on('messageReactionAdd', async (reaction, user) => {
       channelArtifact.send({ embeds: [classText] });
     }
     if (reaction.emoji.name === 'xu_bdo_class_valkyrie') {
-      await reaction.message.guild.members.cache.get(user.id).roles.add('1050023868833734666')
+      // await reaction.message.guild.members.cache.get(user.id).roles.add('1050023868833734666')
       const channelArtifact = reaction.message.guild.channels.cache.get(artifactChannelId);
       const quoteText = [
         '𝔗𝔥𝔢 𝔨𝔫𝔦𝔤𝔥𝔱 𝔬𝔣 𝔈𝔩𝔦𝔬𝔫 𝔲𝔫𝔡𝔢𝔯 ℌ𝔦𝔰 𝔭𝔯𝔬𝔱𝔢𝔠𝔱𝔦𝔬𝔫.',
@@ -377,22 +377,7 @@ client.on('messageReactionAdd', async (reaction, user) => {
       channelArtifact.send({ embeds: [classText] });
     }
     if (reaction.emoji.name === 'xu_bdo_class_kunoichi') {
-      await reaction.message.guild.members.cache.get(user.id).roles.add('1050023872814121000')
-      const channelArtifact = reaction.message.guild.channels.cache.get(artifactChannelId);
-      const quoteText = [
-        '𝔗𝔥𝔢 𝔨𝔫𝔦𝔤𝔥𝔱 𝔬𝔣 𝔈𝔩𝔦𝔬𝔫 𝔲𝔫𝔡𝔢𝔯 ℌ𝔦𝔰 𝔭𝔯𝔬𝔱𝔢𝔠𝔱𝔦𝔬𝔫.',
-        '𝔚𝔦𝔱𝔥 𝔧𝔲𝔰𝔱𝔦𝔠𝔢 𝔦𝔫 𝔶𝔬𝔲𝔯 𝔪𝔦𝔫𝔡, 𝔈𝔩𝔦𝔬𝔫 𝔦𝔫 𝔶𝔬𝔲𝔯 𝔥𝔢𝔞𝔯𝔱, 𝔞𝔫𝔡 𝔳𝔦𝔯𝔱𝔲𝔢𝔰 𝔯𝔢𝔰𝔱𝔦𝔫𝔤 𝔬𝔫 𝔱𝔥𝔢 𝔱𝔦𝔭 𝔬𝔣 𝔶𝔬𝔲𝔯 𝔩𝔞𝔫𝔠𝔦𝔞.',
-        '𝔘𝔫𝔟𝔯𝔢𝔞𝔨𝔞𝔟𝔩𝔢 𝔠𝔬𝔫𝔳𝔦𝔠𝔱𝔦𝔬𝔫 𝔣𝔬𝔯𝔤𝔢𝔡 𝔞𝔱 𝔱𝔥𝔢 𝔢𝔫𝔡 𝔬𝔣 𝔞 𝔰𝔥𝔞𝔯𝔭 𝔟𝔩𝔞𝔡𝔢.'
-      ]
-      const classText = new MessageEmbed()
-        .setTitle(`${reaction.message.guild.members.cache.get(user.username)} Has Chosen Kunoichi`)
-        .setThumbnail('https://i.imgur.com/3KNQdke.png')
-        .setDescription(`${quoteText}\n\nAncient Civilizations Name: ${reaction.message.guild.members.cache.get(user.id)}\nChosen Main Class: **Kunoichi** <:xu_bdo_class_kunoichi:1049949246603935775>`)
-        .setColor('7289da');
-      channelArtifact.send({ embeds: [classText] });
-    }
-    if (reaction.emoji.name === 'xu_bdo_class_kunoichi') {
-      await reaction.message.guild.members.cache.get(user.id).roles.add('1050023872814121000')
+      // await reaction.message.guild.members.cache.get(user.id).roles.add('1050023872814121000')
       const channelArtifact = reaction.message.guild.channels.cache.get(artifactChannelId);
       const quoteText = [
         '𝔗𝔥𝔢 𝔞𝔰𝔰𝔞𝔰𝔰𝔦𝔫 𝔣𝔯𝔬𝔪 𝔱𝔥𝔢 𝔰𝔥𝔞𝔡𝔬𝔴𝔰.',
@@ -407,7 +392,7 @@ client.on('messageReactionAdd', async (reaction, user) => {
       channelArtifact.send({ embeds: [classText] });
     }
     if (reaction.emoji.name === 'xu_bdo_class_ninja') {
-      await reaction.message.guild.members.cache.get(user.id).roles.add('1050024007006699520')
+      // await reaction.message.guild.members.cache.get(user.id).roles.add('1050024007006699520')
       const channelArtifact = reaction.message.guild.channels.cache.get(artifactChannelId);
       const quoteText = [
         '𝔗𝔥𝔢 𝔞𝔰𝔰𝔞𝔰𝔰𝔦𝔫 𝔴𝔦𝔱𝔥 𝔞 𝔱𝔞𝔯𝔤𝔢𝔱 𝔬𝔫 𝔱𝔥𝔢 𝔟𝔞𝔠𝔨 𝔬𝔣 𝔢𝔳𝔢𝔯𝔶 𝔢𝔫𝔢𝔪𝔶.',
@@ -422,7 +407,7 @@ client.on('messageReactionAdd', async (reaction, user) => {
       channelArtifact.send({ embeds: [classText] });
     }
     if (reaction.emoji.name === 'xu_bdo_class_wizard') {
-      await reaction.message.guild.members.cache.get(user.id).roles.add('1050024032881344633')
+      // await reaction.message.guild.members.cache.get(user.id).roles.add('1050024032881344633')
       const channelArtifact = reaction.message.guild.channels.cache.get(artifactChannelId);
       const quoteText = [
         '𝔗𝔥𝔢 𝔞𝔭𝔢𝔵 𝔬𝔣 𝔪𝔞𝔤𝔦𝔠𝔞𝔩 𝔞𝔟𝔦𝔩𝔦𝔱𝔶.',
@@ -437,7 +422,7 @@ client.on('messageReactionAdd', async (reaction, user) => {
       channelArtifact.send({ embeds: [classText] });
     }
     if (reaction.emoji.name === 'xu_bdo_class_witch') {
-      await reaction.message.guild.members.cache.get(user.id).roles.add('1050024041613885452')
+      // await reaction.message.guild.members.cache.get(user.id).roles.add('1050024041613885452')
       const channelArtifact = reaction.message.guild.channels.cache.get(artifactChannelId);
       const quoteText = [
         '𝔗𝔥𝔢 𝔤𝔦𝔯𝔩 𝔱𝔥𝔞𝔱 𝔴𝔦𝔢𝔩𝔡𝔰 𝔱𝔥𝔢 𝔭𝔬𝔴𝔢𝔯 𝔬𝔣 𝔱𝔥𝔢 𝔢𝔩𝔢𝔪𝔢𝔫𝔱𝔰.',
@@ -452,7 +437,7 @@ client.on('messageReactionAdd', async (reaction, user) => {
       channelArtifact.send({ embeds: [classText] });
     }
     if (reaction.emoji.name === 'xu_bdo_class_darkknight') {
-      await reaction.message.guild.members.cache.get(user.id).roles.add('1050024056293969930')
+      // await reaction.message.guild.members.cache.get(user.id).roles.add('1050024056293969930')
       const channelArtifact = reaction.message.guild.channels.cache.get(artifactChannelId);
       const quoteText = [
         '𝔗𝔥𝔢 𝔣𝔩𝔞𝔪𝔢𝔰 𝔟𝔲𝔯𝔫𝔦𝔫𝔤 𝔲𝔫𝔡𝔢𝔯 𝔱𝔥𝔢 𝔪𝔬𝔬𝔫𝔩𝔦𝔤𝔥𝔱.',
@@ -467,7 +452,7 @@ client.on('messageReactionAdd', async (reaction, user) => {
       channelArtifact.send({ embeds: [classText] });
     }
     if (reaction.emoji.name === 'xu_bdo_class_striker') {
-      await reaction.message.guild.members.cache.get(user.id).roles.add('1050024063575273532')
+      // await reaction.message.guild.members.cache.get(user.id).roles.add('1050024063575273532')
       const channelArtifact = reaction.message.guild.channels.cache.get(artifactChannelId);
       const quoteText = [
         '𝔖𝔲𝔯𝔭𝔞𝔰𝔰𝔦𝔫𝔤 𝔭𝔥𝔶𝔰𝔦𝔠𝔞𝔩 𝔩𝔦𝔪𝔦𝔱𝔞𝔱𝔦𝔬𝔫𝔰.',
@@ -482,7 +467,7 @@ client.on('messageReactionAdd', async (reaction, user) => {
       channelArtifact.send({ embeds: [classText] });
     }
     if (reaction.emoji.name === 'xu_bdo_class_mystic') {
-      await reaction.message.guild.members.cache.get(user.id).roles.add('1050024207637024779')
+      // await reaction.message.guild.members.cache.get(user.id).roles.add('1050024207637024779')
       const channelArtifact = reaction.message.guild.channels.cache.get(artifactChannelId);
       const quoteText = [
         '𝔗𝔥𝔢 𝔪𝔞𝔰𝔱𝔢𝔯 𝔬𝔣 𝔪𝔞𝔯𝔱𝔦𝔞𝔩 𝔞𝔯𝔱𝔰 𝔱𝔥𝔞𝔱 𝔰𝔥𝔬𝔬𝔨 𝔱𝔥𝔢 𝔢𝔞𝔯𝔱𝔥 ℑ𝔱𝔰𝔢𝔩𝔣.',
@@ -497,7 +482,7 @@ client.on('messageReactionAdd', async (reaction, user) => {
       channelArtifact.send({ embeds: [classText] });
     }
     if (reaction.emoji.name === 'xu_bdo_class_archer') {
-      await reaction.message.guild.members.cache.get(user.id).roles.add('1050024223416012900')
+      // await reaction.message.guild.members.cache.get(user.id).roles.add('1050024223416012900')
       const channelArtifact = reaction.message.guild.channels.cache.get(artifactChannelId);
       const quoteText = [
         '𝔗𝔥𝔢 𝔣𝔬𝔯𝔤𝔬𝔱𝔱𝔢𝔫 𝔰𝔬𝔫 𝔬𝔣 𝔖𝔶𝔩𝔳𝔦𝔞, 𝔭𝔯𝔬𝔱𝔢𝔠𝔱𝔬𝔯 𝔬𝔣 𝔱𝔥𝔢 𝔯𝔢𝔞𝔩𝔪.',
@@ -511,7 +496,7 @@ client.on('messageReactionAdd', async (reaction, user) => {
       channelArtifact.send({ embeds: [classText] });
     }
     if (reaction.emoji.name === 'xu_bdo_class_lahn') {
-      await reaction.message.guild.members.cache.get(user.id).roles.add('1050024215144841297')
+      // await reaction.message.guild.members.cache.get(user.id).roles.add('1050024215144841297')
       const channelArtifact = reaction.message.guild.channels.cache.get(artifactChannelId);
       const quoteText = [
         '𝔗𝔥𝔢 𝔡𝔞𝔫𝔠𝔢 𝔬𝔣 𝔡𝔢𝔞𝔱𝔥 𝔣𝔦𝔩𝔩𝔰 𝔱𝔥𝔢 𝔰𝔨𝔶 𝔴𝔦𝔱𝔥 𝔯𝔢𝔡.',
@@ -526,7 +511,7 @@ client.on('messageReactionAdd', async (reaction, user) => {
       channelArtifact.send({ embeds: [classText] });
     }
     if (reaction.emoji.name === 'xu_bdo_class_shai') {
-      await reaction.message.guild.members.cache.get(user.id).roles.add('1050024230789586944')
+      // await reaction.message.guild.members.cache.get(user.id).roles.add('1050024230789586944')
       const channelArtifact = reaction.message.guild.channels.cache.get(artifactChannelId);
       const quoteText = [
         '𝔖𝔱𝔬𝔭 𝔱𝔥𝔦𝔫𝔨𝔦𝔫𝔤 𝔰𝔬 𝔪𝔲𝔠𝔥. 𝔏𝔢𝔱’𝔰 𝔤𝔬 𝔥𝔞𝔳𝔢 𝔣𝔲𝔫!',
@@ -540,7 +525,7 @@ client.on('messageReactionAdd', async (reaction, user) => {
       channelArtifact.send({ embeds: [classText] });
     }
     if (reaction.emoji.name === 'xu_bdo_class_guardian') {
-      await reaction.message.guild.members.cache.get(user.id).roles.add('1050024235403313162')
+      // await reaction.message.guild.members.cache.get(user.id).roles.add('1050024235403313162')
       const channelArtifact = reaction.message.guild.channels.cache.get(artifactChannelId);
       const quoteText = [
         '𝔗𝔥𝔢 𝔲𝔫𝔣𝔬𝔯𝔤𝔦𝔳𝔦𝔫𝔤 𝔧𝔲𝔡𝔦𝔠𝔞𝔱𝔬𝔯 𝔴𝔯𝔞𝔭𝔭𝔢𝔡 𝔦𝔫 𝔱𝔥𝔢 𝔠𝔥𝔦𝔩𝔩 𝔬𝔣 𝔢𝔱𝔢𝔯𝔫𝔞𝔩 𝔴𝔦𝔫𝔱𝔢𝔯.',
@@ -555,7 +540,7 @@ client.on('messageReactionAdd', async (reaction, user) => {
       channelArtifact.send({ embeds: [classText] });
     }
     if (reaction.emoji.name === 'xu_bdo_class_hashashin') {
-      await reaction.message.guild.members.cache.get(user.id).roles.add('1050024239173992458')
+      // await reaction.message.guild.members.cache.get(user.id).roles.add('1050024239173992458')
       const channelArtifact = reaction.message.guild.channels.cache.get(artifactChannelId);
       const quoteText = [
         "𝔗𝔥𝔢 𝔡𝔦𝔳𝔦𝔫𝔢 𝔭𝔲𝔫𝔦𝔰𝔥𝔢𝔯 𝔩𝔢𝔞𝔡𝔦𝔫𝔤 𝔅𝔩𝔞𝔠𝔨𝔰𝔱𝔞𝔯'𝔰 𝔭𝔞𝔯𝔞𝔡𝔦𝔰𝔢.",
@@ -570,7 +555,7 @@ client.on('messageReactionAdd', async (reaction, user) => {
       channelArtifact.send({ embeds: [classText] });
     }
     if (reaction.emoji.name === 'xu_bdo_class_nova') {
-      await reaction.message.guild.members.cache.get(user.id).roles.add('1050024242323927062')
+      // await reaction.message.guild.members.cache.get(user.id).roles.add('1050024242323927062')
       const channelArtifact = reaction.message.guild.channels.cache.get(artifactChannelId);
       const quoteText = [
         "𝔗𝔥𝔢 𝔨𝔦𝔫𝔤𝔡𝔬𝔪 𝔬𝔣 ℭ𝔞𝔩𝔭𝔥𝔢𝔬𝔫'𝔰 𝔩𝔞𝔰𝔱 𝔰𝔱𝔞𝔯 𝔴𝔥𝔬 𝔢𝔪𝔟𝔯𝔞𝔠𝔢𝔰 𝔱𝔥𝔞𝔱 𝔡𝔞𝔯𝔨𝔫𝔢𝔰𝔰 𝔬𝔣 𝔱𝔥𝔢 𝔇𝔦𝔰𝔱𝔬𝔯𝔱𝔢𝔡 𝔊𝔬𝔡𝔡𝔢𝔰𝔰.",
@@ -585,7 +570,7 @@ client.on('messageReactionAdd', async (reaction, user) => {
       channelArtifact.send({ embeds: [classText] });
     }
     if (reaction.emoji.name === 'xu_bdo_class_sage') {
-      await reaction.message.guild.members.cache.get(user.id).roles.add('1050024246442721300')
+      // await reaction.message.guild.members.cache.get(user.id).roles.add('1050024246442721300')
       const channelArtifact = reaction.message.guild.channels.cache.get(artifactChannelId);
       const quoteText = [
         '𝔗𝔥𝔢 𝔄𝔫𝔠𝔦𝔢𝔫𝔱 𝔴𝔥𝔬 𝔞𝔴𝔞𝔦𝔱𝔢𝔡 𝔱𝔥𝔢 𝔢𝔫𝔡 𝔱𝔦𝔪𝔢𝔰 𝔞𝔴𝔞𝔨𝔢𝔫𝔢𝔡 𝔣𝔯𝔬𝔪 𝔱𝔥𝔢 𝔳𝔬𝔦𝔡 𝔬𝔣 𝔢𝔱𝔢𝔯𝔫𝔦𝔱𝔶.',
@@ -600,7 +585,7 @@ client.on('messageReactionAdd', async (reaction, user) => {
       channelArtifact.send({ embeds: [classText] });
     }
     if (reaction.emoji.name === 'xu_bdo_class_corsair') {
-      await reaction.message.guild.members.cache.get(user.id).roles.add('1050024464345219073')
+      // await reaction.message.guild.members.cache.get(user.id).roles.add('1050024464345219073')
       const channelArtifact = reaction.message.guild.channels.cache.get(artifactChannelId);
       const quoteText = [
         '𝔚𝔞𝔦𝔱 𝔣𝔬𝔯 𝔪𝔢, 𝔴𝔬𝔯𝔩𝔡! 𝔉𝔬𝔯 ℑ 𝔠𝔩𝔞𝔦𝔪 𝔶𝔢 𝔞𝔰 𝔪𝔢 𝔬𝔴𝔫! ℌ𝔞𝔥𝔞!',
@@ -615,7 +600,7 @@ client.on('messageReactionAdd', async (reaction, user) => {
       channelArtifact.send({ embeds: [classText] });
     }
     if (reaction.emoji.name === 'xu_bdo_class_drakania') {
-      await reaction.message.guild.members.cache.get(user.id).roles.add('1050024471060283402')
+      // await reaction.message.guild.members.cache.get(user.id).roles.add('1050024471060283402')
       const channelArtifact = reaction.message.guild.channels.cache.get(artifactChannelId);
       const quoteText = [
         '𝔒𝔫𝔩𝔶 𝔱𝔥𝔢 𝔡𝔢𝔰𝔱𝔯𝔲𝔠𝔱𝔦𝔬𝔫 𝔬𝔣 𝔱𝔥𝔢 𝔤𝔬𝔡-𝔠𝔬𝔫𝔰𝔲𝔪𝔦𝔫𝔤 𝔣𝔩𝔞𝔪𝔢 𝔴𝔦𝔩𝔩 𝔯𝔢𝔰𝔱𝔬𝔯𝔢 𝔱𝔥𝔢 𝔩𝔬𝔫𝔤-𝔩𝔬𝔰𝔱 𝔭𝔞𝔯𝔞𝔡𝔦𝔰𝔢 𝔬𝔣 𝔡𝔯𝔞𝔤𝔬𝔫𝔰.',
