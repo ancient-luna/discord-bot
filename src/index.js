@@ -74,6 +74,7 @@ client.on('ready', async () => {
   gConfig = configFile.load();
   gatewayChannelId = gConfig.server.gatewayChannel;
   toramChannelId = gConfig.server.toramChannel;
+  bdoChannelId = gConfig.server.bdoChannel;
   artifactChannelId = gConfig.server.artifactChannel;
   rulesChannelId = gConfig.server.ruleChannel;
   luxCastaId = gConfig.server.onJoinConfig.preMemberRole;
@@ -251,6 +252,8 @@ client.on('messageReactionAdd', async (reaction, user) => {
     if (reaction.emoji.name === 'ancientluna_divinare') {
       await reaction.message.guild.members.cache.get(user.id).roles.add('989457483531714591')
     }
+  } else {
+    return;
   }
 
   if (reaction.message.channel.id === '1049815440198733895') {
@@ -612,6 +615,8 @@ client.on('messageReactionAdd', async (reaction, user) => {
         .setColor('2f3136');
       channelArtifact.send({ embeds: [classText] });
     }
+  } else {
+    return;
   }
 })
 
