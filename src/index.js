@@ -252,11 +252,9 @@ client.on('messageReactionAdd', async (reaction, user) => {
     if (reaction.emoji.name === 'ancientluna_divinare') {
       await reaction.message.guild.members.cache.get(user.id).roles.add('989457483531714591')
     }
-  } else {
-    return;
   }
-
-  if (reaction.message.channel.id === '1049815440198733895') {
+  
+  else if (reaction.message.channel.id === '1049815440198733895') {
     if (reaction.emoji.name === 'xu_bdo_class_warrior') {
       // await reaction.message.guild.members.cache.get(user.id).roles.add('1050023329072947200')
       const channelArtifact = reaction.message.guild.channels.cache.get(artifactChannelId);
