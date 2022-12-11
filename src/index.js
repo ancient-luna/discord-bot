@@ -265,7 +265,7 @@ client.on('messageReactionAdd', async (reaction, user) => {
       ]
       const classText = new MessageEmbed()
         .setAuthor({ name: "CHOSEN MAIN CLASS", iconURL: "https://i.imgur.com/Sjc6F8x.png" })
-        .setFooter({ text: 'Elionian Year:' })
+        .setFooter({ text: 'Elionian Year' })
         .setTimestamp()
         .setThumbnail('https://i.imgur.com/8mhq47l.png')
         .setDescription(`${quoteText[Math.floor(Math.random() * quoteText.length)]}\n\nAncient Civilizations Name: ${reaction.message.guild.members.cache.get(user.id)}\nChosen Main Class: **Warrior** <:xu_bdo_class_warrior:1049947516529020989>`)
@@ -282,7 +282,7 @@ client.on('messageReactionAdd', async (reaction, user) => {
       ]
       const classText = new MessageEmbed()
         .setAuthor({ name: "CHOSEN MAIN CLASS", iconURL: "https://i.imgur.com/Sjc6F8x.png" })
-        .setFooter({ text: 'Elionian Year:' })
+        .setFooter({ text: 'Elionian Year' })
         .setTimestamp()
         .setThumbnail('https://i.imgur.com/jLhX7dM.png')
         .setDescription(`${quoteText[Math.floor(Math.random() * quoteText.length)]}\n\nAncient Civilizations Name: ${reaction.message.guild.members.cache.get(user.id)}\nChosen Main Class: **Ranger** <:xu_bdo_class_ranger:1049947590378135572>`)
@@ -299,7 +299,7 @@ client.on('messageReactionAdd', async (reaction, user) => {
       ]
       const classText = new MessageEmbed()
         .setAuthor({ name: "CHOSEN MAIN CLASS", iconURL: "https://i.imgur.com/Sjc6F8x.png" })
-        .setFooter({ text: 'Elionian Year:' })
+        .setFooter({ text: 'Elionian Year' })
         .setTimestamp()
         .setThumbnail('https://i.imgur.com/49Nq37M.png')
         .setDescription(`${quoteText[Math.floor(Math.random() * quoteText.length)]}\n\nAncient Civilizations Name: ${reaction.message.guild.members.cache.get(user.id)}\nChosen Main Class: **Sorceress** <:xu_bdo_class_sorceress:1049947619029426176>`)
@@ -316,7 +316,7 @@ client.on('messageReactionAdd', async (reaction, user) => {
       ]
       const classText = new MessageEmbed()
         .setAuthor({ name: "CHOSEN MAIN CLASS", iconURL: "https://i.imgur.com/Sjc6F8x.png" })
-        .setFooter({ text: 'Elionian Year:' })
+        .setFooter({ text: 'Elionian Year' })
         .setTimestamp()
         .setThumbnail('https://i.imgur.com/MwWEQML.png')
         .setDescription(`${quoteText[Math.floor(Math.random() * quoteText.length)]}\n\nAncient Civilizations Name: ${reaction.message.guild.members.cache.get(user.id)}\nChosen Main Class: **Berserker** <:xu_bdo_class_berserker:1049947648754458715>`)
@@ -333,7 +333,7 @@ client.on('messageReactionAdd', async (reaction, user) => {
       ]
       const classText = new MessageEmbed()
         .setAuthor({ name: "CHOSEN MAIN CLASS", iconURL: "https://i.imgur.com/Sjc6F8x.png" })
-        .setFooter({ text: 'Elionian Year:' })
+        .setFooter({ text: 'Elionian Year' })
         .setTimestamp()
         .setThumbnail('https://i.imgur.com/iJRr8ym.png')
         .setDescription(`${quoteText[Math.floor(Math.random() * quoteText.length)]}\n\nAncient Civilizations Name: ${reaction.message.guild.members.cache.get(user.id)}\nChosen Main Class: **Tamer** <:xu_bdo_class_tamer:1049949113300570142>`)
@@ -350,7 +350,7 @@ client.on('messageReactionAdd', async (reaction, user) => {
       ]
       const classText = new MessageEmbed()
         .setAuthor({ name: "CHOSEN MAIN CLASS", iconURL: "https://i.imgur.com/Sjc6F8x.png" })
-        .setFooter({ text: 'Elionian Year:' })
+        .setFooter({ text: 'Elionian Year' })
         .setTimestamp()
         .setThumbnail('https://i.imgur.com/rv1Ynri.png')
         .setDescription(`${quoteText[Math.floor(Math.random() * quoteText.length)]}\n\nAncient Civilizations Name: ${reaction.message.guild.members.cache.get(user.id)}\nChosen Main Class: **Musa** <:xu_bdo_class_musa:1049949132376248421>`)
@@ -367,7 +367,7 @@ client.on('messageReactionAdd', async (reaction, user) => {
       ]
       const classText = new MessageEmbed()
         .setAuthor({ name: "CHOSEN MAIN CLASS", iconURL: "https://i.imgur.com/Sjc6F8x.png" })
-        .setFooter({ text: 'Elionian Year:' })
+        .setFooter({ text: 'Elionian Year' })
         .setTimestamp()
         .setThumbnail('https://i.imgur.com/6HZDRtx.png')
         .setDescription(`${quoteText[Math.floor(Math.random() * quoteText.length)]}\n\nAncient Civilizations Name: ${reaction.message.guild.members.cache.get(user.id)}\nChosen Main Class: **Maehwa** <:xu_bdo_class_maehwa:1049949154455068672>`)
@@ -384,7 +384,7 @@ client.on('messageReactionAdd', async (reaction, user) => {
       ]
       const classText = new MessageEmbed()
         .setAuthor({ name: "CHOSEN MAIN CLASS", iconURL: "https://i.imgur.com/Sjc6F8x.png" })
-        .setFooter({ text: 'Elionian Year:' })
+        .setFooter({ text: 'Elionian Year' })
         .setTimestamp()
         .setThumbnail('https://i.imgur.com/GyGTUxc.png')
         .setDescription(`${quoteText[Math.floor(Math.random() * quoteText.length)]}\n\nAncient Civilizations Name: ${reaction.message.guild.members.cache.get(user.id)}\nChosen Main Class: **Valkyrie** <:xu_bdo_class_valkyrie:1049949201431285831>`)
@@ -401,7 +401,7 @@ client.on('messageReactionAdd', async (reaction, user) => {
       ]
       const classText = new MessageEmbed()
         .setAuthor({ name: "CHOSEN MAIN CLASS", iconURL: "https://i.imgur.com/Sjc6F8x.png" })
-        .setFooter({ text: 'Elionian Year:' })
+        .setFooter({ text: 'Elionian Year' })
         .setTimestamp()
         .setThumbnail('')
         .setDescription(`${quoteText[Math.floor(Math.random() * quoteText.length)]}\n\nAncient Civilizations Name: ${reaction.message.guild.members.cache.get(user.id)}\nChosen Main Class: **Kunoichi** <:xu_bdo_class_kunoichi:1049949246603935775>`)
@@ -418,7 +418,7 @@ client.on('messageReactionAdd', async (reaction, user) => {
       ]
       const classText = new MessageEmbed()
         .setAuthor({ name: "CHOSEN MAIN CLASS", iconURL: "https://i.imgur.com/Sjc6F8x.png" })
-        .setFooter({ text: 'Elionian Year:' })
+        .setFooter({ text: 'Elionian Year' })
         .setTimestamp()
         .setThumbnail('https://i.imgur.com/dLd7J9d.png')
         .setDescription(`${quoteText[Math.floor(Math.random() * quoteText.length)]}\n\nAncient Civilizations Name: ${reaction.message.guild.members.cache.get(user.id)}\nChosen Main Class: **Ninja** <:xu_bdo_class_ninja:1049949280699432990>`)
@@ -435,7 +435,7 @@ client.on('messageReactionAdd', async (reaction, user) => {
       ]
       const classText = new MessageEmbed()
         .setAuthor({ name: "CHOSEN MAIN CLASS", iconURL: "https://i.imgur.com/Sjc6F8x.png" })
-        .setFooter({ text: 'Elionian Year:' })
+        .setFooter({ text: 'Elionian Year' })
         .setTimestamp()
         .setThumbnail('https://i.imgur.com/MX2acTM.png')
         .setDescription(`${quoteText[Math.floor(Math.random() * quoteText.length)]}\n\nAncient Civilizations Name: ${reaction.message.guild.members.cache.get(user.id)}\nChosen Main Class: **Wizard** <:xu_bdo_class_wizard:1049949303210258472>`)
@@ -452,7 +452,7 @@ client.on('messageReactionAdd', async (reaction, user) => {
       ]
       const classText = new MessageEmbed()
         .setAuthor({ name: "CHOSEN MAIN CLASS", iconURL: "https://i.imgur.com/Sjc6F8x.png" })
-        .setFooter({ text: 'Elionian Year:' })
+        .setFooter({ text: 'Elionian Year' })
         .setTimestamp()
         .setThumbnail('https://i.imgur.com/5mtNcAc.png')
         .setDescription(`${quoteText[Math.floor(Math.random() * quoteText.length)]}\n\nAncient Civilizations Name: ${reaction.message.guild.members.cache.get(user.id)}\nChosen Main Class: **Witch** <:xu_bdo_class_witch:1049949358738657340>`)
@@ -469,7 +469,7 @@ client.on('messageReactionAdd', async (reaction, user) => {
       ]
       const classText = new MessageEmbed()
         .setAuthor({ name: "CHOSEN MAIN CLASS", iconURL: "https://i.imgur.com/Sjc6F8x.png" })
-        .setFooter({ text: 'Elionian Year:' })
+        .setFooter({ text: 'Elionian Year' })
         .setTimestamp()
         .setThumbnail('https://i.imgur.com/LvGgoHJ.png')
         .setDescription(`${quoteText[Math.floor(Math.random() * quoteText.length)]}\n\nAncient Civilizations Name: ${reaction.message.guild.members.cache.get(user.id)}\nChosen Main Class: **Dark Knight** <:xu_bdo_class_darkknight:1049950571903324170>`)
@@ -486,7 +486,7 @@ client.on('messageReactionAdd', async (reaction, user) => {
       ]
       const classText = new MessageEmbed()
         .setAuthor({ name: "CHOSEN MAIN CLASS", iconURL: "https://i.imgur.com/Sjc6F8x.png" })
-        .setFooter({ text: 'Elionian Year:' })
+        .setFooter({ text: 'Elionian Year' })
         .setTimestamp()
         .setThumbnail('https://i.imgur.com/gFcFm1y.png')
         .setDescription(`${quoteText[Math.floor(Math.random() * quoteText.length)]}\n\nAncient Civilizations Name: ${reaction.message.guild.members.cache.get(user.id)}\nChosen Main Class: **Striker** <:xu_bdo_class_striker:1049950590253412442>`)
@@ -503,7 +503,7 @@ client.on('messageReactionAdd', async (reaction, user) => {
       ]
       const classText = new MessageEmbed()
         .setAuthor({ name: "CHOSEN MAIN CLASS", iconURL: "https://i.imgur.com/Sjc6F8x.png" })
-        .setFooter({ text: 'Elionian Year:' })
+        .setFooter({ text: 'Elionian Year' })
         .setTimestamp()
         .setThumbnail('https://i.imgur.com/Xyh2bS8.png')
         .setDescription(`${quoteText[Math.floor(Math.random() * quoteText.length)]}\n\nAncient Civilizations Name: ${reaction.message.guild.members.cache.get(user.id)}\nChosen Main Class: **Mystic** <:xu_bdo_class_mystic:1049950610281201704>`)
@@ -519,7 +519,7 @@ client.on('messageReactionAdd', async (reaction, user) => {
       ]
       const classText = new MessageEmbed()
         .setAuthor({ name: "CHOSEN MAIN CLASS", iconURL: "https://i.imgur.com/Sjc6F8x.png" })
-        .setFooter({ text: 'Elionian Year:' })
+        .setFooter({ text: 'Elionian Year' })
         .setTimestamp()
         .setThumbnail('https://i.imgur.com/FqkNHuN.png')
         .setDescription(`${quoteText[Math.floor(Math.random() * quoteText.length)]}\n\nAncient Civilizations Name: ${reaction.message.guild.members.cache.get(user.id)}\nChosen Main Class: **Archer** <:xu_bdo_class_archer:1049950676798681138>`)
@@ -536,7 +536,7 @@ client.on('messageReactionAdd', async (reaction, user) => {
       ]
       const classText = new MessageEmbed()
         .setAuthor({ name: "CHOSEN MAIN CLASS", iconURL: "https://i.imgur.com/Sjc6F8x.png" })
-        .setFooter({ text: 'Elionian Year:' })
+        .setFooter({ text: 'Elionian Year' })
         .setTimestamp()
         .setThumbnail('https://i.imgur.com/sD0JgWc.png')
         .setDescription(`${quoteText[Math.floor(Math.random() * quoteText.length)]}\n\nAncient Civilizations Name: ${reaction.message.guild.members.cache.get(user.id)}\nChosen Main Class: **Lahn** <:xu_bdo_class_lahn:1049950659245518878>`)
@@ -552,7 +552,7 @@ client.on('messageReactionAdd', async (reaction, user) => {
       ]
       const classText = new MessageEmbed()
         .setAuthor({ name: "CHOSEN MAIN CLASS", iconURL: "https://i.imgur.com/Sjc6F8x.png" })
-        .setFooter({ text: 'Elionian Year:' })
+        .setFooter({ text: 'Elionian Year' })
         .setTimestamp()
         .setThumbnail('https://i.imgur.com/GErJhhL.png')
         .setDescription(`${quoteText[Math.floor(Math.random() * quoteText.length)]}\n\nAncient Civilizations Name: ${reaction.message.guild.members.cache.get(user.id)}\nChosen Main Class: **Shai** <:xu_bdo_class_shai:1049950694699962448>`)
@@ -569,7 +569,7 @@ client.on('messageReactionAdd', async (reaction, user) => {
       ]
       const classText = new MessageEmbed()
         .setAuthor({ name: "CHOSEN MAIN CLASS", iconURL: "https://i.imgur.com/Sjc6F8x.png" })
-        .setFooter({ text: 'Elionian Year:' })
+        .setFooter({ text: 'Elionian Year' })
         .setTimestamp()
         .setThumbnail('https://i.imgur.com/EWbbpT8.png')
         .setDescription(`${quoteText[Math.floor(Math.random() * quoteText.length)]}\n\nAncient Civilizations Name: ${reaction.message.guild.members.cache.get(user.id)}\nChosen Main Class: **Guardian** <:xu_bdo_class_guardian:1049950710432804935>`)
@@ -586,7 +586,7 @@ client.on('messageReactionAdd', async (reaction, user) => {
       ]
       const classText = new MessageEmbed()
         .setAuthor({ name: "CHOSEN MAIN CLASS", iconURL: "https://i.imgur.com/Sjc6F8x.png" })
-        .setFooter({ text: 'Elionian Year:' })
+        .setFooter({ text: 'Elionian Year' })
         .setTimestamp()
         .setThumbnail('https://i.imgur.com/uMXMYAE.png')
         .setDescription(`${quoteText[Math.floor(Math.random() * quoteText.length)]}\n\nAncient Civilizations Name: ${reaction.message.guild.members.cache.get(user.id)}\nChosen Main Class: **Hashashin** <:xu_bdo_class_hashashin:1049950741785227344>`)
@@ -603,7 +603,7 @@ client.on('messageReactionAdd', async (reaction, user) => {
       ]
       const classText = new MessageEmbed()
         .setAuthor({ name: "CHOSEN MAIN CLASS", iconURL: "https://i.imgur.com/Sjc6F8x.png" })
-        .setFooter({ text: 'Elionian Year:' })
+        .setFooter({ text: 'Elionian Year' })
         .setTimestamp()
         .setThumbnail('https://i.imgur.com/ZKyiFHl.png')
         .setDescription(`${quoteText[Math.floor(Math.random() * quoteText.length)]}\n\nAncient Civilizations Name: ${reaction.message.guild.members.cache.get(user.id)}\nChosen Main Class: **Nova** <:xu_bdo_class_nova:1049950759225151519>`)
@@ -620,7 +620,7 @@ client.on('messageReactionAdd', async (reaction, user) => {
       ]
       const classText = new MessageEmbed()
         .setAuthor({ name: "CHOSEN MAIN CLASS", iconURL: "https://i.imgur.com/Sjc6F8x.png" })
-        .setFooter({ text: 'Elionian Year:' })
+        .setFooter({ text: 'Elionian Year' })
         .setTimestamp()
         .setThumbnail('https://i.imgur.com/53UDmDL.png')
         .setDescription(`${quoteText[Math.floor(Math.random() * quoteText.length)]}\n\nAncient Civilizations Name: ${reaction.message.guild.members.cache.get(user.id)}\nChosen Main Class: **Sage** <:xu_bdo_class_sage:1049950787968704512>`)
@@ -637,7 +637,7 @@ client.on('messageReactionAdd', async (reaction, user) => {
       ]
       const classText = new MessageEmbed()
         .setAuthor({ name: "CHOSEN MAIN CLASS", iconURL: "https://i.imgur.com/Sjc6F8x.png" })
-        .setFooter({ text: 'Elionian Year:' })
+        .setFooter({ text: 'Elionian Year' })
         .setTimestamp()
         .setThumbnail('https://i.imgur.com/zbsHwAB.png')
         .setDescription(`${quoteText[Math.floor(Math.random() * quoteText.length)]}\n\nAncient Civilizations Name: ${reaction.message.guild.members.cache.get(user.id)}\nChosen Main Class: **Corsair** <:xu_bdo_class_corsair:1049950807581261876>`)
@@ -654,7 +654,7 @@ client.on('messageReactionAdd', async (reaction, user) => {
       ]
       const classText = new MessageEmbed()
         .setAuthor({ name: "CHOSEN MAIN CLASS", iconURL: "https://i.imgur.com/Sjc6F8x.png" })
-        .setFooter({ text: 'Elionian Year:' })
+        .setFooter({ text: 'Elionian Year' })
         .setTimestamp()
         .setThumbnail('https://i.imgur.com/NzvTRJf.png')
         .setDescription(`${quoteText[Math.floor(Math.random() * quoteText.length)]}\n\nAncient Civilizations Name: ${reaction.message.guild.members.cache.get(user.id)}\nChosen Main Class: **Drakania** <:xu_bdo_class_drakania:1049951657632464927>`)
