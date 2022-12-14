@@ -661,6 +661,22 @@ client.on('messageReactionAdd', async (reaction, user) => {
         .setColor('2f3136');
       channelArtifact.send({ embeds: [classText] });
     }
+    if (reaction.emoji.name === 'xu_bdo_class_woosa') {
+      // await reaction.message.guild.members.cache.get(user.id).roles.add('1050024471060283402')
+      const channelArtifact = reaction.message.guild.channels.cache.get(artifactChannelId);
+      const quoteText = [
+        '𝔚𝔦𝔱𝔥 𝔢𝔩𝔢𝔤𝔞𝔫𝔱, 𝔣𝔩𝔲𝔱𝔱𝔢𝔯𝔦𝔫𝔤 𝔟𝔲𝔱𝔱𝔢𝔯𝔣𝔩𝔶 𝔴𝔦𝔫𝔤𝔰, 𝔱𝔥𝔢 𝔚𝔬𝔬𝔡𝔬 𝔖𝔠𝔥𝔬𝔬𝔩’𝔰 𝔇𝔬 𝔴𝔦𝔢𝔩𝔡𝔢𝔯 𝔟𝔯𝔦𝔫𝔤𝔰 𝔣𝔬𝔯𝔱𝔥 𝔱𝔥𝔢 𝔰𝔱𝔬𝔯𝔪𝔰.',
+        '𝔗𝔥𝔢 𝔅𝔲𝔱𝔱𝔢𝔯𝔣𝔩𝔶 𝔬𝔫 𝔱𝔥𝔢 𝔓𝔞𝔱𝔥 𝔱𝔬 𝔈𝔫𝔩𝔦𝔤𝔥𝔱𝔢𝔫𝔪𝔢𝔫𝔱'
+      ]
+      const classText = new MessageEmbed()
+        .setAuthor({ name: "CHOSEN MAIN CLASS", iconURL: "https://i.imgur.com/Sjc6F8x.png" })
+        .setFooter({ text: 'Elionian Year' })
+        .setTimestamp()
+        .setThumbnail('https://i.imgur.com/fQc6gVq.png')
+        .setDescription(`${quoteText[Math.floor(Math.random() * quoteText.length)]}\n\nAncient Civilizations Name: ${reaction.message.guild.members.cache.get(user.id)}\nChosen Main Class: **Woosa** <:xu_bdo_class_woosa:1052507345135083540>`)
+        .setColor('2f3136');
+      channelArtifact.send({ embeds: [classText] });
+    }
   } else {
     return;
   }
