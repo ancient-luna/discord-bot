@@ -11,19 +11,19 @@ module.exports.run = async (Client, message, args) => {
 
     if (!role) return message.reply('please mention a role after user').catch((e) => {});
 
-    message.guild.channels.cache.get('860531645916774401').send(`Please welcome our new member, <@${target.user.id}>\nMay the lights guide us, so we may bask in its light as true ${role}`).then(target.roles.add(role)).catch((e) => {});
+    message.guild.channels.cache.get('860531645916774401').send(`An luna lux vanitas, <@${target.user.id}>\nMay the lights guide us, so we may bask in its light as true ${role}`).then(target.roles.add(role)).catch((e) => {});
     
     await message.delete().catch((e) => {});
 
     const addDF = new MessageEmbed()
         .setAuthor({ name: "ROLE ADDED", iconURL: 'https://i.imgur.com/aLkmV4I.png' })
-        .setDescription("You have been gived **Fellow Seekers** role and have access to all channels as an official member in **Dead Frontier** category. May the lights guide us, so we may bask in its light as true fellow seekers")
+        .setDescription("You have been gived **Levatio** role and have access to all channels as an official member in **Dead Frontier** category. May the lights guide us, so we may bask in its light as true levatios")
         .setTimestamp()
         .setColor("2f3136")
-        .setFooter({ text: "Ancient Luna Guild: We ran as if to meet the moon" })
+        .setFooter({ text: "Ancient Luna: We ran as if to meet the moon" })
     await target.user.send({ embeds: [addDF] }).catch((e) => {});
 }
 
 module.exports.help = {
-    name: 'member'
+    name: 'levatio'
 }
