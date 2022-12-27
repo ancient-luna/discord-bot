@@ -42,84 +42,24 @@ module.exports.run = async (client, message, args, config) => {
   const canvas = createCanvas(500, 800);
   const ctx = canvas.getContext("2d");
 
-  // const ancestorID = '590848319111299093';
-  // const lunariaID = '839170815932891197';
-  // const luminanceID = '620709364247822338';
-  // const lightseekerID = '839198215580811344';
-  // const eldersID = '843523544620335124';
-  // const eosID = '907178060992876544';
+  const ancestorID = '590848319111299093';
+  const lunariaID = '839170815932891197';
+  const lightseekerID = '839198215580811344';
+  
+  const luminanceID = '620709364247822338';
+  const etendueID = '888736428069105674';
+  const partnerID = '955668899351912459';
 
-  // const dandelionID = '873872221368647690';
-  // const partnerID = '955668899351912459';
-
-  // const gryffindorID = '997454797156384829';
-  // const hufflepuffID = '997455047799611422';
-  // const ravenclawID = '997455288741417001';
-  // const slytherinID = '997455304243564607';
-
-  // const limitRoles = [
-  //   ancestorID,
-  //   lunariaID,
-  //   luminanceID,
-  //   lightseekerID,
-  //   eldersID,
-  //   eosID,
-  //   dandelionID,
-  //   partnerID,
-  //   gryffindorID,
-  //   hufflepuffID,
-  //   ravenclawID,
-  //   slytherinID
-  // ]
-
-  const exceptionRoles = [
-    '907179349973815337',
-    '980387271087890442',
-    '888736428069105674',
-    '967037258660200478',
-    '990357079640375306',
-    '854695964546433084',
-    '959980530672218144',
-    '980384800349245491',
-    '854697282468577300',
-    '974666517050445824',
-    '988096100357529620',
-    '839210689917616218',
-    '989457483531714591',
-    '979164243049975868',
-    '952147085447266364',
-    '856379808937410590',
-    '874680389459906580',
-    '856380073745186876',
-    '861400119101095937',
-    '981479474531024958',
-    '981470521470382090',
-    '882350441864777769',
-    '959771728429604874',
-    '952538746144829500',
-    '952538892135956490',
-    '952539060805726248',
-    '952539186504826910',
-    '952539368449515600',
-    '952539499404095508',
-    '952540596319432724',
-    '952540750246203432',
-    '952540869267963914',
-    '965011358062084107',
-    '965012883601760338',
-    '965012998957699163',
-    '965013399601827930',
-    '965013575531905104',
-    '965013710370394183',
-    '965014043335213056',
-    '965014106690179112',
-    '974680375811010591',
-    '873872577217568768',
-    '873873137127813160',
-    '884307780276727819',
-    '876850078860607518',
-    '997456163547402240'
+  const limitRoles = [
+    ancestorID,
+    lunariaID,
+    lightseekerID,
+    luminanceID,
+    etendueID,
+    partnerID
   ]
+
+  // this the dumbest sh*t ever..
 
   fs.readFile('src/assets/usercard/template.png', (err, data) => {
     if(err) throw err;
@@ -161,7 +101,7 @@ module.exports.run = async (client, message, args, config) => {
       ctx.font = '16pt FRAHV';
       let length = 0;
       message.member.roles.cache.forEach((role, index) => {
-        if (!exceptionRoles.includes(role.id) && role.name !== '@everyone') {
+        if (limitRoles.includes(role.id) && role.name !== '@everyone') {
           length += ctx.measureText(role.name.toUpperCase()).width+(padding*2);
           if(length >= 480-(padding*2)){
             length = ctx.measureText(role.name.toUpperCase()).width+(padding*2);
@@ -229,5 +169,5 @@ module.exports.run = async (client, message, args, config) => {
 };
 
 module.exports.help = {
-  name: 'fellowcard'
+  name: 'test'
 };
