@@ -683,7 +683,7 @@ client.on('messageReactionAdd', async (reaction, user) => {
         .setFooter({ text: 'Elionian Year' })
         .setTimestamp()
         .setThumbnail('https://i.imgur.com/fQc6gVq.png')
-        .setDescription(`${quoteText[Math.floor(Math.random() * quoteText.length)]}\n\nAncient Civilizations Name: ${reaction.message.guild.members.cache.get(user.id)}\nChosen Main Class: **Maegu** <:xu_bdo_class_woosa:1052507345135083540>`)
+        .setDescription(`${quoteText[Math.floor(Math.random() * quoteText.length)]}\n\nAncient Civilizations Name: ${reaction.message.guild.members.cache.get(user.id)}\nChosen Main Class: **Maegu** <:xu_bdo_class_maegu:1065107815552782418>`)
         .setColor('2f3136');
       channelArtifact.send({ embeds: [classText] });
     }
