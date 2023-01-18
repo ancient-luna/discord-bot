@@ -679,10 +679,10 @@ client.on('messageReactionAdd', async (reaction, user) => {
         '𝔉𝔬𝔵 𝔪𝔞𝔡𝔢 𝔠𝔬𝔪𝔭𝔩𝔢𝔱𝔢 𝔱𝔥𝔯𝔬𝔲𝔤𝔥 𝔞 𝔫𝔢𝔴 𝔭𝔞𝔠𝔱'
       ]
       const classText = new MessageEmbed()
-        .setAuthor({ name: "CHOSEN MAIN CLASS", iconURL: "https://i.imgur.com/oB319WT.png" })
+        .setAuthor({ name: "CHOSEN MAIN CLASS", iconURL: "https://i.imgur.com/Sjc6F8x.png" })
         .setFooter({ text: 'Elionian Year' })
         .setTimestamp()
-        .setThumbnail('https://i.imgur.com/fQc6gVq.png')
+        .setThumbnail('https://i.imgur.com/oB319WT.png')
         .setDescription(`${quoteText[Math.floor(Math.random() * quoteText.length)]}\n\nAncient Civilizations Name: ${reaction.message.guild.members.cache.get(user.id)}\nChosen Main Class: **Maegu** <:xu_bdo_class_maegu:1065107815552782418>`)
         .setColor('2f3136');
       channelArtifact.send({ embeds: [classText] });
