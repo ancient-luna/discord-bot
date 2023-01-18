@@ -671,6 +671,22 @@ client.on('messageReactionAdd', async (reaction, user) => {
         .setColor('2f3136');
       channelArtifact.send({ embeds: [classText] });
     }
+    if (reaction.emoji.name === 'xu_bdo_class_maegu') {
+      // await reaction.message.guild.members.cache.get(user.id).roles.add('1050024471060283402')
+      const channelArtifact = reaction.message.guild.channels.cache.get(artifactChannelId);
+      const quoteText = [
+        '𝔇𝔞𝔯𝔢 𝔫𝔬𝔱 𝔣𝔞𝔩𝔩 𝔦𝔫𝔱𝔬 𝔱𝔥𝔢 𝔱𝔯𝔞𝔭 𝔬𝔣 𝔱𝔥𝔢 𝔞𝔩𝔩𝔲𝔯𝔦𝔫𝔤 𝔣𝔬𝔵 𝔰𝔭𝔦𝔯𝔦𝔱𝔰 𝔠𝔞𝔩𝔩𝔢𝔡 𝔣𝔬𝔯𝔱𝔥 𝔟𝔶 𝔱𝔥𝔢 𝔇𝔬 𝔴𝔦𝔢𝔩𝔡𝔢𝔯 𝔬𝔣 𝔱𝔥𝔢 𝔍𝔴𝔞𝔡𝔬 𝔖𝔠𝔥𝔬𝔬𝔩',
+        '𝔉𝔬𝔵 𝔪𝔞𝔡𝔢 𝔠𝔬𝔪𝔭𝔩𝔢𝔱𝔢 𝔱𝔥𝔯𝔬𝔲𝔤𝔥 𝔞 𝔫𝔢𝔴 𝔭𝔞𝔠𝔱'
+      ]
+      const classText = new MessageEmbed()
+        .setAuthor({ name: "CHOSEN MAIN CLASS", iconURL: "https://i.imgur.com/oB319WT.png" })
+        .setFooter({ text: 'Elionian Year' })
+        .setTimestamp()
+        .setThumbnail('https://i.imgur.com/fQc6gVq.png')
+        .setDescription(`${quoteText[Math.floor(Math.random() * quoteText.length)]}\n\nAncient Civilizations Name: ${reaction.message.guild.members.cache.get(user.id)}\nChosen Main Class: **Maegu** <:xu_bdo_class_woosa:1052507345135083540>`)
+        .setColor('2f3136');
+      channelArtifact.send({ embeds: [classText] });
+    }
   } else {
     return;
   }
