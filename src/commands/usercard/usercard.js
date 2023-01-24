@@ -48,7 +48,8 @@ module.exports.run = async (client, message, args, config) => {
   
   const luminanceID = '620709364247822338';
   const etendueID = '888736428069105674';
-  const partnerID = '955668899351912459';
+  
+  const discipleID = '1060982357538119850';
 
   const limitRoles = [
     ancestorID,
@@ -56,10 +57,8 @@ module.exports.run = async (client, message, args, config) => {
     lightseekerID,
     luminanceID,
     etendueID,
-    partnerID
+    discipleID
   ]
-
-  // this the dumbest sh*t ever..
 
   fs.readFile('src/assets/usercard/template.png', (err, data) => {
     if(err) throw err;
