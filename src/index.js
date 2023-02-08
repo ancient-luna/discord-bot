@@ -246,6 +246,9 @@ client.on('messageReactionAdd', async (reaction, user) => {
     if (reaction.emoji.name === 'ancientluna_divinare') {
       await reaction.message.guild.members.cache.get(user.id).roles.add('989457483531714591')
     }
+    if (reaction.emoji.name === 'game_logo_hl') {
+      await reaction.message.guild.members.cache.get(user.id).roles.add('997456163547402240')
+    }
   }
   
   else if (reaction.message.channel.id === '1049815440198733895') {
@@ -727,6 +730,9 @@ client.on('messageReactionRemove', async (reaction, user) => {
     }
     if (reaction.emoji.name === 'ancientluna_divinare') {
       await reaction.message.guild.members.cache.get(user.id).roles.remove('989457483531714591')
+    }
+    if (reaction.emoji.name === 'game_logo_hl') {
+      await reaction.message.guild.members.cache.get(user.id).roles.remove('997456163547402240')
     }
   } else {
     return;
