@@ -3,7 +3,7 @@ const { MessageEmbed, MessageActionRow, MessageButton } = require("discord.js");
 module.exports.run = async (client, message, args) => {
     const channel = await message.guild.channels.create(`sorting-${message.author.username}`).catch((err) => message.channel.send("I do not have permission to create a channel!").catch((e) => {}))
 
-    channel.setParent("997475898687238214");
+    channel.setParent("1072782886211698758");
 
     const seekerID = await message.guild.roles.cache.get("1000932479043125312");
 
