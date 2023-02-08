@@ -18,6 +18,7 @@ module.exports.run = async (client, message, args) => {
     const ValorEmoji = '<:game_logo_valor:981481044874252338>';
     const ServerBoostEmoji = '<:ancientluna_divinare:841754250949820416>';
     const AdAstraAbyssosqueEmoji = '<:vcon_warning:992917967660654663>';
+    const HogwartsLegacyEmoji = '<:game_logo_hl:1072775481964900453>';
 
     try {
         const guideChannel = message.guild.channels.cache.get(
@@ -41,6 +42,7 @@ module.exports.run = async (client, message, args) => {
         reactedEmbed.react(AdAstraAbyssosqueEmoji).catch((e) => {});
         reactedEmbed.react(ValorEmoji).catch((e) => {});
         reactedEmbed.react(ServerBoostEmoji).catch((e) => {});
+        reactedEmbed.react(HogwartsLegacyEmoji).catch((e) => {});
 
     } catch (err) {
         console.log(err);
