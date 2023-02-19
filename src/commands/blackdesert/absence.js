@@ -24,7 +24,7 @@ module.exports.run = async (Client, message, args) => {
 
     const absenceNote = new MessageEmbed()
         .setAuthor({ name: "Vacancy Letter" })
-        .setDescription(`*Dear Elders,\n\n${words}\n\nYours sincerely,\n${message.member.displayName}*`)
+        .setDescription(`*Dear Elders,\n\n${words}\n\nYours sincerely,*\n***${message.member.displayName}***`)
         .setColor('2f3136')
         .setThumbnail('https://i.imgur.com/EpDcu9d.png')
 
