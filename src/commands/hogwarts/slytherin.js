@@ -12,14 +12,14 @@ module.exports.run = async (Client, message, args) => {
     const welcomeHall = new MessageEmbed()
         .setAuthor({ name: "𝐖𝐞𝐥𝐜𝐨𝐦𝐞 𝐭𝐨 𝐇𝐨𝐠𝐰𝐚𝐫𝐭𝐬", iconURL: "https://i.imgur.com/c2u3J0G.png" })
         .setTitle('𝔓𝔯𝔦𝔡𝔢, 𝔄𝔪𝔟𝔦𝔱𝔦𝔬𝔫, ℭ𝔲𝔫𝔫𝔦𝔫𝔤')
-        .setDescription(`You probably know that some of Slytherin’s most renowned members include Severus Snape and Bellatrix Lestrange. But did you know Merlin himself was a Slytherin, or that according to legend, the ribbon of a First Class Order of Merlin is green to reflect his Hogwarts house?\n\nRegistered Name: __**${target.user.username}**__\nHouse Pride: **${role}**`)
+        .setDescription(`You probably know that some of Slytherin’s most renowned members include Severus Snape and Bellatrix Lestrange. But did you know Merlin himself was a Slytherin, or that according to legend, the ribbon of a First Class Order of Merlin is green to reflect his Hogwarts house?\n\nRegistered Name: __**${target.user.username}**__\nHouse Pride: **<@&${role}>**`)
         .setColor("2f3136")
         .setFooter({ text: "Year"})
         .setTimestamp()
         .setThumbnail('https://i.imgur.com/fpPc0n1.gif')
 
     message.guild.channels.cache.get('997467514818797649').send({
-        content: `*<@${target.user.id}> sorted as ${role}!*\n_ _`,
+        content: `*<@${target.user.id}> sorted as <@&${role}>!*\n_ _`,
         embeds: [welcomeHall],
     }).then(target.roles.add(role)).catch(e => {});
     

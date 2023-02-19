@@ -12,14 +12,14 @@ module.exports.run = async (Client, message, args) => {
     const welcomeHall = new MessageEmbed()
         .setAuthor({ name: "𝐖𝐞𝐥𝐜𝐨𝐦𝐞 𝐭𝐨 𝐇𝐨𝐠𝐰𝐚𝐫𝐭𝐬", iconURL: "https://i.imgur.com/c2u3J0G.png" })
         .setTitle('𝔇𝔢𝔡𝔦𝔠𝔞𝔱𝔦𝔬𝔫, 𝔓𝔞𝔱𝔦𝔢𝔫𝔠𝔢, 𝔏𝔬𝔶𝔞𝔩𝔱𝔶')
-        .setDescription(`You probably know that some of Hufflepuff’s most renowned members include Nymphadora Tonks and Cedric Diggory. But did you know that Hufflepuff’s house ghost, the Fat Friar, still resents the fact he was never made a cardinal? Or that Hufflepuff has produced the fewest Dark wizards of any house at Hogwarts?\n\nRegistered Name: __**${target.user.username}**__\nHouse Pride: **${role}**`)
+        .setDescription(`You probably know that some of Hufflepuff’s most renowned members include Nymphadora Tonks and Cedric Diggory. But did you know that Hufflepuff’s house ghost, the Fat Friar, still resents the fact he was never made a cardinal? Or that Hufflepuff has produced the fewest Dark wizards of any house at Hogwarts?\n\nRegistered Name: __**${target.user.username}**__\nHouse Pride: **<@&${role}>**`)
         .setColor("2f3136")
         .setFooter({ text: "Year"})
         .setTimestamp()
         .setThumbnail('https://i.imgur.com/bPyeawa.gif')
 
     message.guild.channels.cache.get('997467514818797649').send({
-        content: `*<@${target.user.id}> sorted as ${role}!*\n_ _`,
+        content: `*<@${target.user.id}> sorted as <@&${role}>!*\n_ _`,
         embeds: [welcomeHall],
     }).then(target.roles.add(role)).catch(e => {});
     
