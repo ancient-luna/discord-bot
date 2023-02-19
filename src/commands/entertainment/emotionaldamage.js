@@ -15,6 +15,6 @@ module.exports.run = async (client, message, args) => {
 }
 
 module.exports.help = {
-    name: 'tomato',
-    aliases: ['spray', 'destruct']
+    name: 'emotionaldamage',
+    aliases: ['spray', 'destruction', 'boom']
 }
