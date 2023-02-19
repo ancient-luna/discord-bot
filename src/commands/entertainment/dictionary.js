@@ -39,5 +39,5 @@ module.exports.run = async (client, message, args) => {
 
 module.exports.help = {
     name: 'dictionary',
-    aliases: ['whatis', 'urban', 'meaning']
+    aliases: ['whatis', 'urban', 'meaning', 'meaningof']
 }

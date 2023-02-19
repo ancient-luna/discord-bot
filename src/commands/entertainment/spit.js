@@ -13,7 +13,7 @@ module.exports.run = async (client, message, args) => {
     
     await message.react("💢").catch((e) => {});
 
-    await message.channel.send({ content: `<@468656533522350090> spits on <@${target.user.id}> 💦` }).catch((e) => {});
+    await message.channel.send({ content: `<@259774240687915008> spits on <@${target.user.id}> 💦` }).catch((e) => {});
 }
 
 module.exports.help = {

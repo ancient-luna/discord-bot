@@ -6,7 +6,7 @@ module.exports.run = async (client, message, args) => {
     if (!search)
         return message.reply("Please add the anime title that you're looking for").catch((e) => {});
 
-    const loadingTxt = await message.reply(`<a:_util_loading_bump:965778537225281616> Searching on MyAnimeList`);
+    const loadingTxt = await message.reply(`<a:_util_loading:863317596551118858> Searching on MyAnimeList`);
         
     malScraper.getInfoFromName(search)
         .then((data) => {

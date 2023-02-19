@@ -7,10 +7,10 @@ module.exports.run = async (client, message, args) => {
     let SRCtomato = new MessageAttachment("src/assets/react/tomatooo.mp4")
 
     await loadingTxt.edit({
-        content: "+9999999 destruction from <@737703309707706431>",
+        content: "+9999999 destruction by flying smol piece of toma'o <:xemot_meow_fine_fire:1063723426155606067>",
         files: [SRCtomato]
     }).then((msg) => {
-        msg.react('<:xemot_bib_elmo_burn_fire:984026957039665182>').catch((e) => {});
+        msg.react('🔥').catch((e) => {});
     }).catch((e) => {});
 }
 
