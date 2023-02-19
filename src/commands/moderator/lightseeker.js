@@ -7,9 +7,7 @@ module.exports.run = async (Client, message, args) => {
 
     if (!target) return message.reply('please mention a user').catch((e) => {});
 
-    let role = message.mentions.roles.first();
-
-    if (!role) return message.reply('please mention a role after user').catch((e) => {});
+    let role = '839198215580811344';
 
     await message.delete().catch((e) => {});
 

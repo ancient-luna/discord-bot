@@ -5,11 +5,9 @@ module.exports.run = async (Client, message, args) => {
 
     let target = message.mentions.members.first();
 
-    if (!target) return message.reply('please mention a user').catch((e) => {});
+    if (!target) return message.reply('Please mention them, the one who is about to be a Levatio').catch((e) => {});
 
-    let role = message.mentions.roles.first();
-
-    if (!role) return message.reply('please mention a role after user').catch((e) => {});
+    let role = '1052973235710464040';
 
     message.guild.channels.cache.get('860531645916774401').send(`An luna lux vanitas, <@${target.user.id}>\nMay the lights guide us, so we may bask in its light as true ${role}`).then(target.roles.add(role)).catch((e) => {});
     

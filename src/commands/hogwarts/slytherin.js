@@ -7,9 +7,7 @@ module.exports.run = async (Client, message, args) => {
 
     if (!target) return message.reply('To whom you short to?').catch((e) => {});
 
-    let role = message.mentions.roles.first();
-
-    if (!role) return message.reply(`They're chosen but to which house they belong to?`).catch((e) => {});
+    let role = '997455304243564607';
 
     const welcomeHall = new MessageEmbed()
         .setAuthor({ name: "𝐖𝐞𝐥𝐜𝐨𝐦𝐞 𝐭𝐨 𝐇𝐨𝐠𝐰𝐚𝐫𝐭𝐬", iconURL: "https://i.imgur.com/c2u3J0G.png" })
