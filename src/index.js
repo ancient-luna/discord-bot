@@ -291,7 +291,7 @@ client.on('messageReactionAdd', async (reaction, user) => {
         .setAuthor({ name: "WAR HERO", iconURL: "https://i.imgur.com/Sjc6F8x.png" })
         .setFooter({ text: 'Elionian Year' })
         .setTimestamp()
-        .setImage(heroIMG[Math.floor(Math.random() * heroIMG.length)])
+        .setImage(`${heroIMG[Math.floor(Math.random() * heroIMG.length)]}`)
         .setDescription(`Registered Name: ${reaction.message.guild.members.cache.get(user.id)}\n\n${quoteText[Math.floor(Math.random() * quoteText.length)]}`)
         .setColor('2f3136');
       channelArtifact.send({ embeds: [heroText] });
