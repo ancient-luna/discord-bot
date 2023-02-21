@@ -7,7 +7,7 @@ module.exports.run = async (client, message, args) => {
     let SRCtomato = new MessageAttachment("src/assets/react/tomatooo.mp4")
 
     await loadingTxt.edit({
-        content: "+9999999 destruction by flying smol piece of <@946058733954433085> <:xemot_meow_fine_fire:1063723426155606067>",
+        content: "+9999999 peanut destruction by flying smol piece of <@946058733954433085> <:xemot_meow_fine_fire:1063723426155606067>",
         files: [SRCtomato]
     }).then((msg) => {
         msg.react('🔥').catch((e) => {});
@@ -16,5 +16,5 @@ module.exports.run = async (client, message, args) => {
 
 module.exports.help = {
     name: 'emotionaldamage',
-    aliases: ['spray', 'destruction', 'boom']
+    aliases: ['spray', 'destruction', 'boom', 'peanut']
 }
