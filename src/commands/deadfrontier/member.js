@@ -9,7 +9,7 @@ module.exports.run = async (Client, message, args) => {
 
     let role = '1052973235710464040';
 
-    message.guild.channels.cache.get('860531645916774401').send(`An luna lux vanitas, <@${target.user.id}>\nMay the lights guide us, so we may bask in its light as true ${role}`).then(target.roles.add(role)).catch((e) => {});
+    message.guild.channels.cache.get('860531645916774401').send(`An luna lux vanitas, <@${target.user.id}>\nMay the lights guide us, so we may bask in its light as true <@&${role}>`).then(target.roles.add(role)).catch((e) => {});
     
     await message.delete().catch((e) => {});
 
