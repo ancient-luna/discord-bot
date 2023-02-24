@@ -11,7 +11,7 @@ module.exports.run = async (client, message, args) => {
   const str = args.slice(1).join(" ");
   
   const embed = new MessageEmbed()
-      .setDescription(`**Email**: daeva@ancientluna.org\n**Discord**: Dae#0090\n**Instagram**: ~~[imsoondae_](https://instagram.com/imsoondae_)~~`)
+      .setDescription(`**Contacts**\n\nDiscord Username: Dae#0100\nEmail: daeva@ancientluna.org\nInsta: [@imsoondae_](https://instagram.com/imsoondae_)`)
       .setFooter({ text: `this bot won't read any messages of your replies` })
       .setColor('7289da')
 
@@ -19,12 +19,12 @@ module.exports.run = async (client, message, args) => {
     .addComponents(
       new MessageButton()
       .setStyle("LINK")
-      .setLabel("See announcement")
-      .setURL(`https://discord.com/channels/447069790150852609/839200933291622450`)
+      .setLabel("Comment On Guild Forum Now")
+      .setURL(`https://www.sea.playblackdesert.com/en-US/Forum/ForumTopic/Detail?_topicNo=42709&_page=1&_opinionNo=69067`)
     )
 
   user.send({
-    content: `${str}\n⁣`,
+    content: `Dear Light Seekers,\n\n${str}\n\nLove,\nDae Soon\n⁣`,
     embeds: [embed],
     components: [btnServer]
   }).catch((e) => {});
