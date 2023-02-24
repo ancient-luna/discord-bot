@@ -25,11 +25,10 @@ module.exports.run = async (client, message, args) => {
 
   user.send({
     content: `Dear Light Seekers,\n\n${str}\n\nLove,\nDae Soon\n⁣`,
-    embeds: [embed],
     components: [btnServer]
   }).catch((e) => {});
 }
 
 module.exports.help = {
-  name: 'whisper'
+  name: 'pwe'
 }
