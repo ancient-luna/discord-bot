@@ -30,7 +30,7 @@ module.exports.run = async (client, message, args) => {
     )
 
   user.send({
-    content: `Dear Lunar Disciples,\n\n${str}\n\nLove,\n**Aevoa**\n⁣`,
+    content: `Dear Lunar Disciples,\n${str}\n\nLove,\n**Aevoa**\n⁣`,
     components: [btnServer]
   }).catch((e) => {});
 }
