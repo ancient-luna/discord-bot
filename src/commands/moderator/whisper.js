@@ -19,12 +19,18 @@ module.exports.run = async (client, message, args) => {
     .addComponents(
       new MessageButton()
       .setStyle("LINK")
-      .setLabel("Comment On Guild Forum Now")
+      .setLabel("Guild Forum")
       .setURL(`https://www.sea.playblackdesert.com/en-US/Forum/ForumTopic/Detail?_topicNo=42709&_page=1&_opinionNo=69067`)
+    )
+    .addComponents(
+      new MessageButton()
+      .setStyle("LINK")
+      .setLabel("Visit Sanctum")
+      .setURL(`https://discord.com/channels/447069790150852609/1060992670035619931`)
     )
 
   user.send({
-    content: `Dear Light Seekers,\n\n${str}\n\nLove,\nDae Soon\n⁣`,
+    content: `Dear Lunar Disciples,\n\n${str}\n\nLove,\n**Aevoa**\n⁣`,
     components: [btnServer]
   }).catch((e) => {});
 }
