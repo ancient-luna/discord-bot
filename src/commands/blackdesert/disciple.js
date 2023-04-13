@@ -33,6 +33,12 @@ module.exports.run = async (Client, message, args) => {
                 .setLabel(`Guild Video`)
                 .setURL(`https://youtu.be/3S8HVfHYJ5k`)
         )
+        .addComponents(
+            new MessageButton()
+                .setStyle("LINK")
+                .setLabel(`Get More Roles`)
+                .setURL(`https://discord.com/channels/447069790150852609/1049815440198733895`)
+        )
 
     message.guild.channels.cache.get('1060992670035619931').send({
         content: `A seeker named <@${target.user.id}> become a part of <@&1060982357538119850>`,
