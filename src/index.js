@@ -161,16 +161,21 @@ client.on('messageCreate', async (message) => {
 
   if(stickyChannelId.includes(message.channel.id)) {
     const fetchedMessages = await message.channel.messages.fetch();
-    const stickyMessage = fetchedMessages.find(m => m.author.id === bot.user.id && stickyChannelId.includes(m.channel.id));
+    const stickyMessage = fetchedMessages.find(m => m.author.id === client.user.id && stickyChannelId.includes(m.channel.id));
+
+    const stickyText = new MessageEmbed()
+      .setTitle(`Commands to Play Music`)
+      .setDescription(`**YouTube + All Platform Link Support**\n\n<@724047481561809007> \`/play\`\n\n**All Platform Link Support** but ~~YouTube~~\n\n<@584213384409382953> \`/play\`\n<@489076647727857685> \`/play\`\n<@547905866255433758> \`h!play\`\n<@239631525350604801> \`p!play\``)
+      .setFooter({ text: `where words fail, music speaks 🎵` })
+      .setColor('2f3136');
 
     if(stickyMessage) {
         stickyMessage.delete().then(() => {
-            message.channel.send("__📌 Sticky message__");
-
+            message.channel.send({ embeds: [stickyText] });
         }).catch(() => {});
     } else {
         // Force send a new message.
-        message.channel.send("__📌 Sticky message__");
+        message.channel.send({ embeds: [stickyText] });
     }
 }
 
