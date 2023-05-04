@@ -146,6 +146,7 @@ client.on('ready', async () => {
 
 client.on('messageCreate', async (message) => {
   if (!message.guild) return;
+  if (message.author.bot) return;
 
   if(stickyChannelId.includes(message.channel.id)) {
     const fetchedMessages = await message.channel.messages.fetch();
@@ -165,8 +166,6 @@ client.on('messageCreate', async (message) => {
         // Force send a new message.
         message.channel.send({ embeds: [stickyText] });
     }
-    
-  if (message.author.bot) return;
 
   const prefix = process.env.COMMAND_PREFIX;
 
