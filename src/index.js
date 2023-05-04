@@ -148,6 +148,17 @@ client.on('messageCreate', async (message) => {
   if (!message.guild) return;
   if (message.author.bot) return;
 
+  const prefix = process.env.COMMAND_PREFIX;
+
+  if (message.content.charAt(0) === prefix) {
+    const args = message.content.slice(prefix.length).trim().split(' ');
+    const command = args.shift().toLowerCase();
+
+    const cmd = client.commands.get(command);
+    if (!cmd) return;
+    cmd.run(client, message, args, gConfig);
+  }
+
   if(stickyChannelId.includes(message.channel.id)) {
     const fetchedMessages = await message.channel.messages.fetch();
     const stickyMessage = fetchedMessages.find(m => m.author.id === client.user.id && stickyChannelId.includes(m.channel.id));
@@ -166,17 +177,6 @@ client.on('messageCreate', async (message) => {
         // Force send a new message.
         message.channel.send({ embeds: [stickyText] });
     }
-
-  const prefix = process.env.COMMAND_PREFIX;
-
-  if (message.content.charAt(0) === prefix) {
-    const args = message.content.slice(prefix.length).trim().split(' ');
-    const command = args.shift().toLowerCase();
-
-    const cmd = client.commands.get(command);
-    if (!cmd) return;
-    cmd.run(client, message, args, gConfig);
-  }
 }
 
   // eslint-disable-next-line max-len
