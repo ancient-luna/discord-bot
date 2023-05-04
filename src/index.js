@@ -33,6 +33,7 @@ const configFile = require('./config/index');
 
 let gConfig = {};
 let bdoChannelId = '';
+let stickyChannelId = '';
 let artifactChannelId = '';
 let gatewayChannelId = '';
 let rulesChannelId = '';
@@ -73,6 +74,7 @@ client.on('ready', async () => {
   gConfig = configFile.load();
   gatewayChannelId = gConfig.server.gatewayChannel;
   bdoChannelId = gConfig.server.bdoChannel;
+  stickyChannelId = gConfig.server.stickyChannel;
   artifactChannelId = gConfig.server.artifactChannel;
   rulesChannelId = gConfig.server.ruleChannel;
   luxCastaId = gConfig.server.onJoinConfig.preMemberRole;
@@ -156,6 +158,21 @@ client.on('messageCreate', async (message) => {
     if (!cmd) return;
     cmd.run(client, message, args, gConfig);
   }
+
+  if(stickyChannelId.includes(message.channel.id)) {
+    const fetchedMessages = await message.channel.messages.fetch();
+    const stickyMessage = fetchedMessages.find(m => m.author.id === bot.user.id && stickyChannelId.includes(m.channel.id));
+
+    if(stickyMessage) {
+        stickyMessage.delete().then(() => {
+            message.channel.send("__📌 Sticky message__");
+
+        }).catch(() => {});
+    } else {
+        // Force send a new message.
+        message.channel.send("__📌 Sticky message__");
+    }
+}
 
   // eslint-disable-next-line max-len
   if (message.channel.id === gConfig.server.ruleChannel || message.channel.id === gConfig.server.guidelinesChannel) {
