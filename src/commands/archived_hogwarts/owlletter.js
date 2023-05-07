@@ -35,25 +35,25 @@ module.exports.run = async (Client, message, args) => {
     const wordGryffindor = new MessageEmbed()
         .setAuthor({ name: "𝐀 𝐥𝐞𝐭𝐭𝐞𝐫 𝐟𝐫𝐨𝐦 𝐆𝐫𝐲𝐟𝐟𝐢𝐧𝐝𝐨𝐫 𝐝𝐨𝐫𝐦𝐢𝐭𝐨𝐫𝐲", iconURL: "https://i.imgur.com/wo6MjsY.png" })
         .setDescription(`*Dear Witchcraft and Wizardry,\n\n${words}\n\nYours sincerely,\n𝒜𝓃 𝒰𝓃𝓀𝓃𝑜𝓌𝓃 𝒮𝓉𝓊𝒹𝑒𝓃𝓉*`)
-        .setColor('2f3136')
+        .setColor('2b2d31')
         .setThumbnail('https://cdn.shopify.com/s/files/1/0514/6332/3817/products/PL00010246_7_ab9687c6-efa5-4ed1-9453-b909f980acfe_grande.png?v=1624519742')
 
     const wordHufflepuff = new MessageEmbed()
         .setAuthor({ name: "𝐀 𝐥𝐞𝐭𝐭𝐞𝐫 𝐟𝐫𝐨𝐦 𝐇𝐮𝐟𝐟𝐥𝐞𝐩𝐮𝐟𝐟 𝐝𝐨𝐫𝐦𝐢𝐭𝐨𝐫𝐲", iconURL: "https://i.imgur.com/1Ejfiqy.png" })
         .setDescription(`*Dear Witchcraft and Wizardry,\n\n${words}\n\nYours sincerely,\n𝒜𝓃 𝒰𝓃𝓀𝓃𝑜𝓌𝓃 𝒮𝓉𝓊𝒹𝑒𝓃𝓉*`)
-        .setColor('2f3136')
+        .setColor('2b2d31')
         .setThumbnail('https://cdn.shopify.com/s/files/1/0514/6332/3817/products/PL00010246_7_ab9687c6-efa5-4ed1-9453-b909f980acfe_grande.png?v=1624519742')
 
     const wordRavenclaw = new MessageEmbed()
         .setAuthor({ name: "𝐀 𝐥𝐞𝐭𝐭𝐞𝐫 𝐟𝐫𝐨𝐦 𝐑𝐚𝐯𝐞𝐧𝐜𝐥𝐚𝐰 𝐝𝐨𝐫𝐦𝐢𝐭𝐨𝐫𝐲", iconURL: "https://i.imgur.com/mRbAezD.png" })
         .setDescription(`*Dear Witchcraft and Wizardry,\n\n${words}\n\nYours sincerely,\n𝒜𝓃 𝒰𝓃𝓀𝓃𝑜𝓌𝓃 𝒮𝓉𝓊𝒹𝑒𝓃𝓉*`)
-        .setColor('2f3136')
+        .setColor('2b2d31')
         .setThumbnail('https://cdn.shopify.com/s/files/1/0514/6332/3817/products/PL00010246_7_ab9687c6-efa5-4ed1-9453-b909f980acfe_grande.png?v=1624519742')
 
     const wordSlytherin = new MessageEmbed()
         .setAuthor({ name: "𝐀 𝐥𝐞𝐭𝐭𝐞𝐫 𝐟𝐫𝐨𝐦 𝐒𝐥𝐲𝐭𝐡𝐞𝐫𝐢𝐧 𝐝𝐨𝐫𝐦𝐢𝐭𝐨𝐫𝐲", iconURL: "https://i.imgur.com/dTDdlod.png" })
         .setDescription(`*Dear Witchcraft and Wizardry,\n\n${words}\n\nYours sincerely,\n𝒜𝓃 𝒰𝓃𝓀𝓃𝑜𝓌𝓃 𝒮𝓉𝓊𝒹𝑒𝓃𝓉*`)
-        .setColor('2f3136')
+        .setColor('2b2d31')
         .setThumbnail('https://cdn.shopify.com/s/files/1/0514/6332/3817/products/PL00010246_7_ab9687c6-efa5-4ed1-9453-b909f980acfe_grande.png?v=1624519742')
 
     if (message.channel.id === letterGryffindor) {

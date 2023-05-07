@@ -10,74 +10,74 @@ module.exports.run = async (client, message, args) => {
     const translated = await translate(translateQuery, { to: 'en' });
     const embedEN = new MessageEmbed()
         .setDescription(`<:util_googletranslate:858727960693833739> **ENGLISH**\n\n**Translation**: ${translated.text}`)
-        .setColor(`2f3136`)
+        .setColor(`2b2d31`)
         .setImage("https://i.imgur.com/77n1x09.png")
         .setFooter({ text: `Translation request by ${message.member.displayName}`, iconURL: message.author.displayAvatarURL({ dynamic: true }) });
 
     const translatedRU = await translate(translateQuery, { to: 'ru' });
     const embedRU = new MessageEmbed()
         .setDescription(`<:util_googletranslate:858727960693833739> **RUSSIAN**\n\n**Translation**: ${translatedRU.text}`)
-        .setColor(`2f3136`);
+        .setColor(`2b2d31`);
 
     const translatedID = await translate(translateQuery, { to: 'id' });
     const embedID = new MessageEmbed()
         .setDescription(`<:util_googletranslate:858727960693833739> **INDONESIAN**\n\n**Translation**: ${translatedID.text}`)
-        .setColor(`2f3136`);
+        .setColor(`2b2d31`);
 
     const translatedTH = await translate(translateQuery, { to: 'th' });
     const embedTH = new MessageEmbed()
         .setDescription(`<:util_googletranslate:858727960693833739> **THAI**\n\n**Translation**: ${translatedTH.text}`)
-        .setColor(`2f3136`);
+        .setColor(`2b2d31`);
 
     const translatedFR = await translate(translateQuery, { to: 'fr' });
     const embedFR = new MessageEmbed()
         .setDescription(`<:util_googletranslate:858727960693833739> **FRENCH**\n\n**Translation**: ${translatedFR.text}`)
-        .setColor(`2f3136`);
+        .setColor(`2b2d31`);
 
     const translatedJA = await translate(translateQuery, { to: 'ja' });
     const embedJA = new MessageEmbed()
         .setDescription(`<:util_googletranslate:858727960693833739> **JAPANESE**\n\n**Translation**: ${translatedJA.text}`)
-        .setColor(`2f3136`);
+        .setColor(`2b2d31`);
 
     const translatedKO = await translate(translateQuery, { to: 'ko' });
     const embedKO = new MessageEmbed()
         .setDescription(`<:util_googletranslate:858727960693833739> **KOREAN**\n\n**Translation**: ${translatedKO.text}`)
-        .setColor(`2f3136`);
+        .setColor(`2b2d31`);
 
     const translatedTR = await translate(translateQuery, { to: 'tr' });
     const embedTR = new MessageEmbed()
         .setDescription(`<:util_googletranslate:858727960693833739> **TURKISH**\n\n**Translation**: ${translatedTR.text}`)
-        .setColor(`2f3136`);
+        .setColor(`2b2d31`);
 
     const translatedAR = await translate(translateQuery, { to: 'ar' });
     const embedAR = new MessageEmbed()
         .setDescription(`<:util_googletranslate:858727960693833739> **ARABIC**\n\n**Translation**: ${translatedAR.text}`)
-        .setColor(`2f3136`);
+        .setColor(`2b2d31`);
 
     const translatedHI = await translate(translateQuery, { to: 'hi' });
     const embedHI = new MessageEmbed()
         .setDescription(`<:util_googletranslate:858727960693833739> **HINDI**\n\n**Translation**: ${translatedHI.text}`)
-        .setColor(`2f3136`);
+        .setColor(`2b2d31`);
 
     const translatedDE = await translate(translateQuery, { to: 'de' });
     const embedDE = new MessageEmbed()
         .setDescription(`<:util_googletranslate:858727960693833739> **GERMAN**\n\n**Translation**: ${translatedDE.text}`)
-        .setColor(`2f3136`);
+        .setColor(`2b2d31`);
 
     const translatedMS = await translate(translateQuery, { to: 'ms' });
     const embedMS = new MessageEmbed()
         .setDescription(`<:util_googletranslate:858727960693833739> **MALAY**\n\n**Translation**: ${translatedMS.text}`)
-        .setColor(`2f3136`);
+        .setColor(`2b2d31`);
 
     const translatedIT = await translate(translateQuery, { to: 'it' });
     const embedIT = new MessageEmbed()
         .setDescription(`<:util_googletranslate:858727960693833739> **ITALIAN**\n\n**Translation**: ${translatedIT.text}`)
-        .setColor(`2f3136`);
+        .setColor(`2b2d31`);
 
     const translatedTL = await translate(translateQuery, { to: 'tl' });
     const embedTL = new MessageEmbed()
         .setDescription(`<:util_googletranslate:858727960693833739> **FILIPINO**\n\n**Translation**: ${translatedTL.text}`)
-        .setColor(`2f3136`);
+        .setColor(`2b2d31`);
 
     const row = new MessageActionRow()
         .addComponents(

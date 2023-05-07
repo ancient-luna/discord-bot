@@ -25,7 +25,7 @@ module.exports.run = async (client, message, args) => {
             { name: "Followers:", value: details.edge_followed_by.count.toLocaleString(), inline: true },
             { name: "Following:", value: details.edge_follow.count.toLocaleString(), inline: true }
         )
-        .setColor('2f3136')
+        .setColor('2b2d31')
         
     let igButton = new MessageActionRow()
         .addComponents(

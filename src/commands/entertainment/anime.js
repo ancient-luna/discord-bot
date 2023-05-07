@@ -37,7 +37,7 @@ module.exports.run = async (client, message, args) => {
                     { name: 'Identifier', value: `*${data.id}*`, inline: true }
                 )
                 .setImage(data.picture)
-                .setColor("2f3136")
+                .setColor("2b2d31")
                 .setTimestamp()
                 .setFooter({ text: `${message.member.displayName} searched for ${args}`.split(',').join(' '), iconURL: message.author.displayAvatarURL({ dynamic: true }) })
 

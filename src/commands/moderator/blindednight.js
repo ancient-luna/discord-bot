@@ -30,7 +30,7 @@ module.exports.run = async (Client, message, args) => {
         .setDescription(`**${target.displayName} get BANNED from the sanctuary**\nReason: *${reason}*`)
         .setImage("https://i.imgur.com/rG7qwId.gif")
         .setFooter({ text: `Banned by ${message.member.displayName}` })
-        .setColor("2f3136")
+        .setColor("2b2d31")
 
     await message.guild.bans.create(target, {
         reason: reason

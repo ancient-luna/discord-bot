@@ -17,7 +17,7 @@ module.exports.run = async (Client, message, args) => {
             { name: `**Guild Quests**`, value: `<:_1:1075437107704778943> Guild Quests only can be taken for (Large) size only\n<:_2:1075437110183604355> SMH and Combat GQs can be taken around time 00.00 - 00.00 GMT+8\n<:_3:1075437114721837157> Life GQs can be taken around time 19.00 - 00.00 GMT+8`, inline: false },
             { name: `**Vacation / Day-Off**`, value: `If you are unable to login for 7 days straight it is  a must to let know so we may not kick you out from the guild.\n\n> Do \`!absence days reason\` in <#1060992670035619931>\n> ex: !absence 14 im going to buy milk`, inline: false }
         )
-        .setColor("2f3136")
+        .setColor("2b2d31")
         .setFooter({ text: "We ran as if to meet the moon ✨" })
 
     const btnGuild = new MessageActionRow()
@@ -46,7 +46,8 @@ module.exports.run = async (Client, message, args) => {
         .setAuthor({ name: "ROLE ADDED", iconURL: "https://i.imgur.com/ejkkWCB.png" })
         .setDescription("You have been gived **Lunar Disciples** role and have access to all channels as an official guild member in **[Ecplise Boarder Hall](https://discord.com/channels/447069790150852609/1060992670035619931)** category. May the lights guide us, so we may bask in its light as a true ancient civilizations")
         .setTimestamp()
-        .setColor("2f3136")
+        .setColor("2b2d31")
+        .setImage("https://i.imgur.com/cNGckVu.png")
         .setFooter({ text: "Ancient Luna Guild: We ran as if to meet the moon" })
         
     await target.user.send({ embeds: [addLD] }).catch(e => {});

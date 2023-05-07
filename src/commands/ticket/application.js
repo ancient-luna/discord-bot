@@ -43,7 +43,7 @@ module.exports.run = async (client, message, args) => {
         .setAuthor({ name: `${message.author.tag}: A TICKET OPENED`, iconURL: message.author.displayAvatarURL({ dynamic: true }) })
         .setDescription(`Click <#${channel.id}> to see your application ticket`)
         .setFooter({ text: `this notification message will be deleted in 10 seconds`, iconURL: 'https://i.imgur.com/26tcTpL.gif' })
-        .setColor('2f3136')
+        .setColor('2b2d31')
 
     message.channel.send({ embeds: [openTicket] }).then((msg) => {
         setTimeout(() => msg.delete().catch((e) => {}), 10000);
@@ -56,7 +56,7 @@ module.exports.run = async (client, message, args) => {
         .setAuthor({ name: `${message.author.username}'s ticket`, iconURL: message.author.displayAvatarURL({ dynamic: true }) })
         .setDescription(`Thank you for your application. The Ancestor will be here as soon as possible! If he still alive out there. Please take your time while waiting`)
         .setFooter({ text: `note: Don't hesitate to mention him if need now ` })
-        .setColor('2f3136')
+        .setColor('2b2d31')
     
     const m = await channel.send({ embeds: [mEmbed] }).catch((e) => {});
     

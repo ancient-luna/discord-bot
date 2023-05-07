@@ -21,7 +21,7 @@ module.exports.run = async (client, message, args) => {
                 .setTitle(response.title)
                 .setURL(response.content_urls.desktop.page)
                 .setDescription([`\n${response.extract}\n[Links for topic you searched](${response.content_urls.desktop.page})`])
-                .setColor(`2f3136`)
+                .setColor(`2b2d31`)
                 .setFooter({ text: `Wikipedia`, iconURL:'https://i.imgur.com/OX1OJcd.png' })
             message.reply({ embeds: [embed] }).catch((e) => {});
         }
@@ -31,7 +31,7 @@ module.exports.run = async (client, message, args) => {
                 .setURL(response.content_urls.desktop.page)
                 .setThumbnail(response.thumbnail.source)
                 .setDescription(response.extract)
-                .setColor(`2f3136`)
+                .setColor(`2b2d31`)
                 .setFooter({ text: `Wikipedia`, iconURL:'https://i.imgur.com/OX1OJcd.png' })
             message.reply({ embeds: [embed] }).catch((e) => {});
         }

@@ -9,7 +9,7 @@ module.exports.run = async (Client, message, args) => {
         .setDescription(`All documents are from **[さるびあのトーラムメモ](https://slv-memo.space/)**`)
         .setTimestamp()
         .setFooter({ text: "Powered by Ancient Luna", iconURL: 'https://i.imgur.com/QZ2gLgq.png' })
-        .setColor("2f3136")
+        .setColor("2b2d31")
 
     
     const petlist = new MessageActionRow()

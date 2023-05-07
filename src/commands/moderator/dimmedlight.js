@@ -30,7 +30,7 @@ module.exports.run = async (Client, message, args) => {
         .setDescription(`**${target.displayName} get kicked from the sanctuary**\nReason: *${reason}*`)
         .setThumbnail("https://i.imgur.com/sm8OXMp.png")
         .setFooter({ text: `Kicked by ${message.member.displayName}` })
-        .setColor("2f3136")
+        .setColor("2b2d31")
 
     message.guild.channels.cache.get('839417251470901279').send({ embeds: [embed] }).catch((e) => { });
 

@@ -17,7 +17,7 @@ module.exports.run = async (Client, message, args) => {
         .setAuthor({ name: "ROLE ADDED", iconURL: 'https://i.imgur.com/aLkmV4I.png' })
         .setDescription("You have been gived **Levatio** role and have access to all channels as an official member in **Dead Frontier** category. May the lights guide us, so we may bask in its light as true levatios")
         .setTimestamp()
-        .setColor("2f3136")
+        .setColor("2b2d31")
         .setFooter({ text: "Ancient Luna: We ran as if to meet the moon" })
     await target.user.send({ embeds: [addDF] }).catch((e) => {});
 }

@@ -8,7 +8,7 @@ module.exports.run = async (client, message, args) => {
     let embed2 = new MessageEmbed()
     .setAuthor({ name: `${message.author.username}'s Reminder`, iconURL: message.author.displayAvatarURL() })
     .setDescription(`*" ${args.slice(1).join(" ")} "*`)
-    .setColor('#2f3136')
+    .setColor('#2b2d31')
     .setFooter({ text: `Reminder was set for ${args[0]}`})
 
     message.reply({ content: `<a:_util_loading:863317596551118858> I keep it safe under the moon's name and will remind you back in ${args[0]}!` }).catch(e => {})

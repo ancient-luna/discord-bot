@@ -31,7 +31,7 @@ module.exports.run = async (Client, message, args) => {
                 .setURL(`https://namemc.com/profile/${body.name}`)
                 .setDescription(`UUID: ${body.id}\n<a:_util_arrow:864810269771300875> **mc.ancientluna.org**`)
                 .setThumbnail(`https://visage.surgeplay.com/bust/${body.id}`)
-                .setColor('2f3136')
+                .setColor('2b2d31')
 
                 const previewUser = new MessageActionRow()
                     .addComponents(

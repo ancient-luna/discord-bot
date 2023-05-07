@@ -17,7 +17,7 @@ module.exports.run = async (client, message, args) => {
         const guideEmbed = await emblemChannel.messages.fetch(messageID);
         const editEmbed = new MessageEmbed()
             .setDescription(editQuery)
-            .setColor(`#2f3136`)
+            .setColor(`#2b2d31`)
         
         message.channel.send("Emblems: **EDITED** ! `updated`").catch((e) => {});
         guideEmbed.edit({ embeds: [editEmbed] }).catch((e) => {});

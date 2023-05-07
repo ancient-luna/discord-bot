@@ -53,7 +53,7 @@ module.exports.run = async (Client, message, args) => {
         const ErrorEmbed = new MessageEmbed()
             .setTitle('Server is unavailable')
             .setDescription('This server either doesn\'t exist, is offline or blocking access!')
-            .setColor('2f3136')
+            .setColor('2b2d31')
             .setFooter({ text: 'Join discord server to know on what is happening', iconURL: 'https://i.imgur.com/7JDP7JR.png' });
         let serverErrButton = new MessageActionRow()
             .addComponents(
@@ -81,7 +81,7 @@ module.exports.run = async (Client, message, args) => {
         )
         .setDescription(`A friendly sanctuary of Minecraft Java and Bedrock players that want to create an amazing community for everyone to join. There’s a **[Discord Server](https://discord.com/invite/Sbp2nt8QHe)** where you mayplay games and speak with others, along with make new friends!`)
         .setImage(images[Math.floor(Math.random() * images.length)])
-        .setColor('2f3136')
+        .setColor('2b2d31')
         .setFooter({ text: `ip: mc.ancientluna.org • port: 25565` });
     
     let serverButton = new MessageActionRow()

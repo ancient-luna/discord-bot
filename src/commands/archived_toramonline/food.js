@@ -26,7 +26,7 @@ module.exports.run = async (Client, message, args) => {
             { name: 'MaxHP', value: `*Golden Stir Fry*`, inline: true }
         )
         .setImage("https://i.imgur.com/V0UhnF9.png")
-        .setColor("2f3136")
+        .setColor("2b2d31")
 
     const food2 = new MessageEmbed()
         .addFields(
@@ -41,7 +41,7 @@ module.exports.run = async (Client, message, args) => {
             { name: 'DTE Neutral', value: `*Peperoncio*`, inline: true }
         )
         .setImage("https://i.imgur.com/V0UhnF9.png")
-        .setColor("2f3136")
+        .setColor("2b2d31")
 
     const food3 = new MessageEmbed()
         .addFields(
@@ -60,7 +60,7 @@ module.exports.run = async (Client, message, args) => {
         )
         .setImage("https://i.imgur.com/V0UhnF9.png")
         .setTimestamp()
-        .setColor("2f3136")
+        .setColor("2b2d31")
         .setFooter({ text: "Powered by Ancient Luna", iconURL: 'https://i.imgur.com/QZ2gLgq.png' })
 
     let detailFood = new MessageActionRow()

@@ -29,7 +29,7 @@ module.exports.run = async (client, message, args) => {
         const data = guideEmbed.embeds[0];
         const editEmbed = new MessageEmbed()
             .setDescription(editQuery)
-            .setColor(`#2f3136`)
+            .setColor(`#2b2d31`)
         
         message.channel.send("Guidelines: **EDITED** ! `updated`").catch((e) => {});
         let reactedEmbed = await guideEmbed.edit({ embeds: [editEmbed] }).catch((e) => {});

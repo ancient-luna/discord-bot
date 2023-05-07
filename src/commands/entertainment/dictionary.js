@@ -27,7 +27,7 @@ module.exports.run = async (client, message, args) => {
     const embed = new MessageEmbed()
         .setTitle(title)
         .setURL(permalink)
-        .setColor(`2f3136`)
+        .setColor(`2b2d31`)
         .addFields(
             { name: "Definition: ", value: definition },
             { name: "Example: ", value: example }

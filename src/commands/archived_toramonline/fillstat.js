@@ -9,7 +9,7 @@ module.exports.run = async (Client, message, args) => {
         .setDescription(`This is an automatic statting simulator of Weapon and Armor. It automatically calculate steps, success rate and material cost of gear statting you want. Initial setting is to simulate statting of the latest level cap.`)
         .setTimestamp()
         .setFooter({ text: "Powered by Ancient Luna", iconURL: 'https://i.imgur.com/QZ2gLgq.png' })
-        .setColor("2f3136")
+        .setColor("2b2d31")
         
     let statsWeaponArmor = new MessageActionRow()
         .addComponents(

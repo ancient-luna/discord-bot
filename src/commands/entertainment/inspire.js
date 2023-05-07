@@ -8,7 +8,7 @@ module.exports.run = async (client, message, args) => {
     let advice = new MessageEmbed()
         .setAuthor({ name: `Quote from ${response.data.author}` })
         .setDescription(`${response.data.content}`)
-        .setColor("2f3136")
+        .setColor("2b2d31")
 
     await message.reply({ embeds: [advice] }).catch((e) => {});
 }
