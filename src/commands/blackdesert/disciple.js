@@ -13,12 +13,12 @@ module.exports.run = async (Client, message, args) => {
         .setAuthor({ name: "Ancient Luna Guild Terms", iconURL: "https://i.imgur.com/SOCuup9.png" })
         .setDescription("Welcome to the sanctuary of lights\nA home for the light seekers!")
         .addFields(
-            { name: `**Street Fight / PVP**`, value: `<:_1:1075437107704778943> Killing is OK __**only** in arsha__ 😦 ~~wanted free kill but- but..~~\n<:_2:1075437110183604355> Avoid bad manner and dont ever trash talking in any servers\n<:_3:1075437114721837157> For spots \`normal server\` you can kill but ask for DFS first \`arsha server\` you can kill without DFS of course`, inline: false },
+            { name: `**Street Fight / PVP**`, value: `<:_1:1075437107704778943> Killing is OK __**only** in arsha__ ||😦 wanted free kill but- but..||\n<:_2:1075437110183604355> Avoid bad manner and dont ever trash talking in any servers\n<:_3:1075437114721837157> For spots \`normal server\` can kill **but** ask for DFS first \`arsha server\` free kill`, inline: false },
             { name: `**Guild Quests**`, value: `<:_1:1075437107704778943> Guild Quests only can be taken for (Large) size only\n<:_2:1075437110183604355> SMH and Combat GQs can be taken around time 00.00 - 00.00 GMT+8\n<:_3:1075437114721837157> Life GQs can be taken around time 19.00 - 00.00 GMT+8`, inline: false },
             { name: `**Vacation / Day-Off**`, value: `If you are unable to login for 7 days straight it is  a must to let know so we may not kick you out from the guild.\n\n> Do \`!absence days reason\` in <#1060992670035619931>\n> ex: !absence 14 im going to buy milk`, inline: false }
         )
         .setColor("2b2d31")
-        .setFooter({ text: "We ran as if to meet the moon ✨" })
+        .setFooter({ text: "우리는 마치 달을 만난 것처럼 달렸다 🗒️" })
 
     const btnGuild = new MessageActionRow()
         .addComponents(
@@ -49,8 +49,19 @@ module.exports.run = async (Client, message, args) => {
         .setColor("2b2d31")
         .setImage("https://i.imgur.com/cNGckVu.png")
         .setFooter({ text: "Ancient Luna Guild: We ran as if to meet the moon" })
+
+    const btnAccess = new MessageActionRow()
+        .addComponents(
+            new MessageButton()
+                .setStyle("LINK")
+                .setLabel(`Go to Sanctum (Guild Member Only Access)`)
+                .setURL(`https://discord.com/channels/447069790150852609/1060992670035619931`)
+        )
         
-    await target.user.send({ embeds: [addLD] }).catch(e => {});
+    await target.user.send({
+        embeds: [addLD],
+        components: [btnAccess]
+    }).catch(e => {});
 }
 
 module.exports.help = {
