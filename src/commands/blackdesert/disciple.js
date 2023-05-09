@@ -18,7 +18,8 @@ module.exports.run = async (Client, message, args) => {
             { name: `**Vacation / Day-Off**`, value: `If you are unable to login for 7 days straight it is  a must to let know so we may not kick you out from the guild.\n\n> Do \`!absence days reason\` in <#1060992670035619931>\n> ex: !absence 14 im going to buy milk`, inline: false }
         )
         .setColor("2b2d31")
-        .setFooter({ text: "우리는 마치 달을 만난 것처럼 달렸다 🗒️" })
+        .setTimestamp()
+        .setFooter({ text: "Ancient Luna Guild: We ran as if to meet the moon" })
 
     const btnGuild = new MessageActionRow()
         .addComponents(
@@ -32,6 +33,12 @@ module.exports.run = async (Client, message, args) => {
                 .setStyle("LINK")
                 .setLabel(`Guild Video`)
                 .setURL(`https://youtu.be/3S8HVfHYJ5k`)
+        )
+        .addComponents(
+            new MessageButton()
+                .setStyle("LINK")
+                .setLabel(`Guild Payout Sheet`)
+                .setURL(`https://bdo.ancientluna.org/quest`)
         )
 
     message.guild.channels.cache.get('1060992670035619931').send({

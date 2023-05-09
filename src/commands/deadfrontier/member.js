@@ -1,4 +1,4 @@
-const { MessageEmbed } = require("discord.js");
+const { MessageEmbed, MessageActionRow, MessageButton } = require("discord.js");
 
 module.exports.run = async (Client, message, args) => {
     if (!message.member.permissions.has("MANAGE_MESSAGES")) return;
@@ -15,11 +15,23 @@ module.exports.run = async (Client, message, args) => {
 
     const addDF = new MessageEmbed()
         .setAuthor({ name: "ROLE ADDED", iconURL: 'https://i.imgur.com/aLkmV4I.png' })
-        .setDescription("You have been gived **Levatio** role and have access to all channels as an official member in **Dead Frontier** category. May the lights guide us, so we may bask in its light as true levatios")
+        .setDescription("You have been gived **Levatio** role and have access to all channels ( **[#clan-knowledge](https://discord.com/channels/447069790150852609/884345319389810778) [#clan-vault](https://discord.com/channels/447069790150852609/875904001340764190) [#cts-ctl](https://discord.com/channels/447069790150852609/881836063398723585)** ) as an official member in **Dead Frontier** category. May the lights guide us, so we may bask in its light as true levatios")
         .setTimestamp()
         .setColor("2b2d31")
         .setFooter({ text: "Ancient Luna: We ran as if to meet the moon" })
-    await target.user.send({ embeds: [addDF] }).catch((e) => {});
+
+    const btnAccess = new MessageActionRow()
+    .addComponents(
+        new MessageButton()
+            .setStyle("LINK")
+            .setLabel(`Go to Meeting Hall`)
+            .setURL(`https://discord.com/channels/447069790150852609/1060992670035619931`)
+    )
+
+    await target.user.send({
+        embeds: [addDF],
+        components: [btnAccess]
+    }).catch((e) => {});
 }
 
 module.exports.help = {
