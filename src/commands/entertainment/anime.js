@@ -36,7 +36,7 @@ module.exports.run = async (client, message, args) => {
                     { name: 'Status', value: `*${data.status}*`, inline: true },
                     { name: 'Identifier', value: `*${data.id}*`, inline: true }
                 )
-                .setImage(data.picture)
+                .setThumbnail(data.picture)
                 .setColor("2b2d31")
                 .setTimestamp()
                 .setFooter({ text: `${message.member.displayName} searched for ${args}`.split(',').join(' '), iconURL: message.author.displayAvatarURL({ dynamic: true }) })
