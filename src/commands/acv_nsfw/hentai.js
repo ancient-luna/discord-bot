@@ -41,5 +41,5 @@ module.exports.run = async (Client, message, args) => {
 }
 
 module.exports.help = {
-    name: 'archived_hentai'
+    name: 'hentai'
 }
