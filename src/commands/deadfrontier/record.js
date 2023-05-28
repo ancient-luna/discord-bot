@@ -76,7 +76,7 @@ module.exports.run = async (client, message, args) => {
             }).catch((e) => {});
         } else {
             loadingTxt.edit({
-                content: `Something wrong happened..\n**unable to send the record now**`
+                content: `Something wrong happened...\n**unable to send the record now**`
             }).catch((e) => {});
         }
     })

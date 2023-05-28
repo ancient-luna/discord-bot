@@ -220,7 +220,7 @@ module.exports.run = async (client, message, args) => {
             }
         } else {
             loadingTxt.edit({
-                content: `Something wrong happened..\n**unable to send the status now**`
+                content: `Something wrong happened...\n**unable to send the status now**`
             }).catch((e) => {});
         }
     })
