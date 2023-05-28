@@ -11,6 +11,37 @@ module.exports = new Object({
         */
     async execute(client, message) {
 
+        // Setup Role And Rules
+        const text = client.config.preMemberTriggerMessage
+        function hasMixedCase(text) {
+            return /[a-z]/.test(text) && /[A-Z]/.test(text);
+        }
+        
+        if (message.channel.id === client.config.ruleChannel || message.channel.id === client.config.guidelinesChannel) {
+            if (message.content?.toLowerCase() === text.toLowerCase() && message.member.roles.cache.has(client.config.preMemberRole)) {
+
+                const ancientLunaEmoji = client.emojis.cache.find((emoji) => emoji.name === client.config.localEmoji);
+                const memberRole = message.guild.roles.cache.get(client.config.memberRole);
+
+                const preMemberRole = message.guild.roles.cache.get(client.config.preMemberRole);
+                const welcomeButton = new ActionRowBuilder()
+                    .addComponents(
+                        new ButtonBuilder()
+                            .setStyle(ButtonStyle.Link)
+                            .setLabel("Get more roles here")
+                            .setURL("https://discord.com/channels/447069790150852609/864556584818835456")
+                    )
+                await message.member.roles.add(memberRole);
+                await message.member.roles.remove(preMemberRole);
+                const channel = message.member.guild.channels.cache.get(client.config.generalChannel)
+                await channel.send({
+                    content: `<@${message.author.id}> has passed the trial by understand our wisdom of lleud to reach this warm sanctuary deeper.\nWelcome, to the sanctuary of lights. The <@&${client.config.elderRole}> welcome you as one of true light seekers ${ancientLunaEmoji}`,
+                    components: [welcomeButton]
+                });
+            }
+            await message.delete();
+        }
+
         if (message.author.bot || message.webhookId || !message.guild || !message.channel) return;
         if (message.channel.type == ChannelType.DM || message.channel.type == ChannelType.GuildForum) return;
         if (message.partial) await message.fetch();
@@ -102,6 +133,7 @@ module.exports = new Object({
             console.error(error);
         };
 
+        // StickyNote
         // if (client.config.stickyChannel.includes(message.channel.id)) {
         //     const fetchedMessages = await message.channel.messages.fetch();
         //     const stickyMessage = fetchedMessages.find(m => m.author.id === client.user.id && client.config.stickyChannel.includes(m.channel.id));
@@ -119,37 +151,7 @@ module.exports = new Object({
         //         // Force send a new message.
         //         message.channel.send({ embeds: [stickyText] });
         //     }
-        // }
-
-        const text = client.config.preMemberTriggerMessage
-        function hasMixedCase(text) {
-            return /[a-z]/.test(text) && /[A-Z]/.test(text);
-        }
-        
-        if (message.channel.id === client.config.ruleChannel || message.channel.id === client.config.guidelinesChannel) {
-            if (message.content === hasMixedCase(text) && message.member.roles.cache.has(client.config.preMemberRole)) {
-
-                const ancientLunaEmoji = client.emojis.cache.find((emoji) => emoji.name === client.config.localEmoji);
-                const memberRole = message.guild.roles.cache.get(client.config.memberRole);
-
-                const preMemberRole = message.guild.roles.cache.get(client.config.preMemberRole);
-                const welcomeButton = new ActionRowBuilder()
-                    .addComponents(
-                        new ButtonBuilder()
-                            .setStyle(ButtonStyle.Link)
-                            .setLabel("Get more roles here")
-                            .setURL("https://discord.com/channels/447069790150852609/864556584818835456")
-                    )
-                await message.member.roles.add(memberRole);
-                await message.member.roles.remove(preMemberRole);
-                const channel = member.guild.channels.cache.get(client.config.generalChannel)
-                await channel.send({
-                    content: `<@${message.author.id}> has passed the trial by understand our wisdom of lleud to reach this warm sanctuary deeper.\nWelcome, to the sanctuary of lights. The <@&${client.config.elderRole}> welcome you as one of true light seekers ${ancientLunaEmoji}`,
-                    components: [welcomeButton]
-                });
-            }
-            await message.delete().catch((e) => { });
-        }
+        // };
     }
 
 })
