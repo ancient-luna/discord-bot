@@ -52,13 +52,14 @@ module.exports = new Object({
                 let weekly_loot = stat['weekly_loot']
                 let all_time_loot = stat['all_time_loot']
 
-                let position = stat['gpscoords']
-
                 let daily_tpk = stat['daily_tpk']
                 let weekly_tpk = stat['weekly_tpk']
                 let all_time_tpk = stat['all_time_tpk']
 
-                const embedRecord = new EmbedBuilder()
+                try {
+                    let position = stat['gpscoords']
+
+                    const embedRecord = new EmbedBuilder()
                     .setTitle(`${username}'s Record`)
                     .setURL(`https://www.dfprofiler.com/profile/view/${survivorID}`)
                     .addFields(
@@ -66,6 +67,45 @@ module.exports = new Object({
                         { name: `**Weekly TS**`, value: `${weekly_ts} EXP`, inline: true },
                         { name: `**⭐ All Time TS**`, value: `${all_time_ts} EXP`, inline: true },
                         { name: `**Position**`, value: position, inline: true },
+                        { name: `**Weekly Loot**`, value: `${weekly_loot} Loot Points`, inline: true },
+                        { name: `**⭐ All Time Loot**`, value: `${all_time_loot} Loot Points`, inline: true },
+                        { name: `**Daily TPK**`, value: `${daily_tpk} Kill`, inline: true },
+                        { name: `**Weekly TPK**`, value: `${weekly_tpk} Kill`, inline: true },
+                        { name: `**⭐ All Time TPK**`, value: `${all_time_tpk} Kill`, inline: true }
+                    )
+                    .setImage(`https://www.dfprofiler.com/signaturereplicate.php?profile=${survivorID}&imgur=5q7hV6B`)
+                    .setFooter({ text: `Powered by Ancient Luna`, iconURL: 'https://i.imgur.com/vKo3PJm.png' })
+                    .setColor('202225')
+                    .setTimestamp()
+
+                    const btnProfile = new ActionRowBuilder()
+                        .addComponents(
+                            new ButtonBuilder()
+                                .setStyle(ButtonStyle.Link)
+                                .setLabel(`DFP Profile`)
+                                .setURL(`https://www.dfprofiler.com/profile/view/${survivorID}`)
+                        )
+                        .addComponents(
+                            new ButtonBuilder()
+                                .setStyle(ButtonStyle.Link)
+                                .setLabel(`Updated Profile Image`)
+                                .setURL(`https://www.dfprofiler.com/signaturereplicate.php?profile=${survivorID}&imgur=5q7hV6B.png`)
+                        )
+
+                    loadingTxt.edit({
+                        content: '⁣',
+                        embeds: [embedRecord],
+                        components: [btnProfile],
+                    }).catch((e) => { });
+                } catch (error) {
+                    const embedRecord = new EmbedBuilder()
+                    .setTitle(`${username}'s Record`)
+                    .setURL(`https://www.dfprofiler.com/profile/view/${survivorID}`)
+                    .addFields(
+                        { name: `**EXP Since Death**`, value: `${exp_since_death} EXP`, inline: true },
+                        { name: `**Weekly TS**`, value: `${weekly_ts} EXP`, inline: true },
+                        { name: `**⭐ All Time TS**`, value: `${all_time_ts} EXP`, inline: true },
+                        { name: `**Position**`, value: `Nowhere`, inline: true },
                         { name: `**Weekly Loot**`, value: `${weekly_loot} Loot Points`, inline: true },
                         { name: `**⭐ All Time Loot**`, value: `${all_time_loot} Loot Points`, inline: true },
                         { name: `**Daily TPK**`, value: `${daily_tpk} Kill`, inline: true },
@@ -96,6 +136,7 @@ module.exports = new Object({
                     embeds: [embedRecord],
                     components: [btnProfile],
                 }).catch((e) => { });
+                }
             } else {
                 loadingTxt.edit({
                     content: `Something wrong happened..\n**unable to send the record now**`
