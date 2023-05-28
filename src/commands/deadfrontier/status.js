@@ -37,12 +37,17 @@ module.exports.run = async (client, message, args) => {
             let weekly_ts = stat['weekly_ts']
             let exp_since_death = stat['exp_since_death']
 
+            let weekly_loot = stat['weekly_loot']
+            let all_time_loot = stat['all_time_loot']
+
             let daily_tpk = stat['daily_tpk']
             let weekly_tpk = stat['weekly_tpk']
             let pvp_last_hit = stat['pvp_last_hit']
 
             let cash = stat['cash']
             let bank = stat['bank']
+
+            let position = stat['gpscoords']
 
             let tradezone = stat['tradezone']
             let creation_date = stat['creation_date']
@@ -92,7 +97,7 @@ module.exports.run = async (client, message, args) => {
                 const embed = new MessageEmbed()
                     .setTitle(`${username}`)
                     .setURL(`https://www.dfprofiler.com/profile/view/${survivorID}`)
-                    .setDescription(`**${profession_level}** ${experience}`)
+                    .setDescription(`**${profession_level}** (${experience})\nPosition ${position} ▾`)
                     .addFields(
                         { name: `**Account Creation**`, value: creation_date, inline: true },
                         { name: `**GM End Date**`, value: gm_end, inline: true },
@@ -152,14 +157,16 @@ module.exports.run = async (client, message, args) => {
                 const embedEvent = new MessageEmbed()
                     .setDescription(`**${weekly_ts} EXP**\n↳ gained and counted while doing TS on this week ⁣ ⁣ ⁣\n**EXP Since Death** : ${exp_since_death} EXP`)
                     .setThumbnail(`https://i.imgur.com/ulP4oAd.png`)
-                    .addField(`**Daily TPK**`, daily_tpk, true)
-                    .addField(`**Weekly TPK**`, weekly_tpk, true)
-                    .addField(`**Last Hit By**`, pvp_last_hit, true)
+                    .addFields(
+                        { name: `**Daily TPK**`, value: daily_tpk, inline: true },
+                        { name: `**Weekly TPK**`, value: weekly_tpk, inline: true },
+                        { name: `**Last Hit By**`, value: pvp_last_hit, inline: true }
+                    )
 
                 const embed = new MessageEmbed()
                     .setTitle(`${username}`)
                     .setURL(`https://www.dfprofiler.com/profile/view/${survivorID}`)
-                    .setDescription(`**${profession_level}** ${experience}`)
+                    .setDescription(`**${profession_level}** (${experience})\nPosition ${position} ▾`)
                     .addFields(
                         { name: `**Account Creation**`, value: creation_date, inline: true },
                         { name: `**GM End Date**`, value: gm_end, inline: true },
