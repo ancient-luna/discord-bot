@@ -92,28 +92,30 @@ module.exports = new Object({
             console.error(error);
         };
 
-        if (client.config.stickyChannel.includes(message.channel.id)) {
-            const fetchedMessages = await message.channel.messages.fetch();
-            const stickyMessage = fetchedMessages.find(m => m.author.id === client.user.id && client.config.stickyChannel.includes(m.channel.id));
-            const stickyText = new EmbedBuilder()
-                .setTitle(`Commands to Play Music`)
-                .setDescription(`**YouTube + All Platform Link Support**\n\n<@724047481561809007> \`/play\`\n\n**All Platform Link Support** but ~~YouTube~~\n\n<@584213384409382953> \`/play\`\n<@489076647727857685> \`/play\`\n<@547905866255433758> \`h!play\`\n<@239631525350604801> \`p!play\``)
-                .setFooter({ text: `where words fail, music speaks 🎵` })
-                .setColor('#2b2d31');
+        // if (client.config.stickyChannel.includes(message.channel.id)) {
+        //     const fetchedMessages = await message.channel.messages.fetch();
+        //     const stickyMessage = fetchedMessages.find(m => m.author.id === client.user.id && client.config.stickyChannel.includes(m.channel.id));
+        //     const stickyText = new EmbedBuilder()
+        //         .setTitle(`Commands to Play Music`)
+        //         .setDescription(`**YouTube + All Platform Link Support**\n\n<@724047481561809007> \`/play\`\n\n**All Platform Link Support** but ~~YouTube~~\n\n<@584213384409382953> \`/play\`\n<@489076647727857685> \`/play\`\n<@547905866255433758> \`h!play\`\n<@239631525350604801> \`p!play\``)
+        //         .setFooter({ text: `where words fail, music speaks 🎵` })
+        //         .setColor('#2b2d31');
 
-            if (stickyMessage) {
-                stickyMessage.delete().then(() => {
-                    message.channel.send({ embeds: [stickyText] });
-                }).catch(() => { });
-            } else {
-                // Force send a new message.
-                message.channel.send({ embeds: [stickyText] });
-            }
-        }
+        //     if (stickyMessage) {
+        //         stickyMessage.delete().then(() => {
+        //             message.channel.send({ embeds: [stickyText] });
+        //         }).catch(() => { });
+        //     } else {
+        //         // Force send a new message.
+        //         message.channel.send({ embeds: [stickyText] });
+        //     }
+        // }
+
         const text = client.config.preMemberTriggerMessage
         function hasMixedCase(text) {
             return /[a-z]/.test(text) && /[A-Z]/.test(text);
         }
+        
         if (message.channel.id === client.config.ruleChannel || message.channel.id === client.config.guidelinesChannel) {
             if (message.content === hasMixedCase(text) && message.member.roles.cache.has(client.config.preMemberRole)) {
 
