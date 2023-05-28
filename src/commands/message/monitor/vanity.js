@@ -1,4 +1,4 @@
-const { EmbedBuilder } = require("discord.js");
+const { EmbedBuilder, AttachmentBuilder } = require("discord.js");
 module.exports = new Object({
     name: "vanity",
     description: "vanity.",

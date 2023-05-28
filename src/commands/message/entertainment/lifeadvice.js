@@ -25,9 +25,20 @@ module.exports = new Object({
     async execute(client, message, args) {
         const response = await axios.get('https://api.adviceslip.com/advice');
 
+        let target = message.mentions.members.first();
+
+        var errMessage = { content: "How can I give an advice when theres none. Mention one" };
+        if (!target) {
+            message.react("❓").catch((e) => { });
+
+            return message.reply(errMessage).then((msg) => {
+                setTimeout(() => msg.delete().catch((e) => { }), 5000);
+            });
+        }
+
+        await message.react("🗒️").catch((e) => { });
         let advice = new EmbedBuilder()
-            .setAuthor({ name: `${message.author.username} might need this advice 🗒️` })
-            .setDescription(`${response.data.slip.advice}`)
+            .setDescription(`**${target.user.username} might need this advice,**\n${response.data.slip.advice}`)
             .setColor("2b2d31")
         await message.reply({ embeds: [advice] }).catch((e) => { });
     }

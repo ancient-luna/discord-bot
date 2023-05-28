@@ -3,7 +3,7 @@ const { EmbedBuilder } = require("discord.js");
 module.exports = new Object({
     name: "accept",
     description: "accept.",
-    category: "FeedBack",
+    category: "Suggestion",
     usage: "",
     cooldown: 0,
     aliases: [],

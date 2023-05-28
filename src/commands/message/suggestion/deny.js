@@ -4,7 +4,7 @@ const { EmbedBuilder } = require("discord.js");
 module.exports = new Object({
     name: "deny",
     description: "deny.",
-    category: "FeedBack",
+    category: "Suggestion",
     usage: "",
     cooldown: 0,
     aliases: [],
