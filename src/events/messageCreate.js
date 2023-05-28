@@ -88,7 +88,17 @@ module.exports = new Object({
         try {
             await command.execute(client, message, args, prefix);
         } catch (error) {
-            await message.reply({ content: `An unexpected error occured, Please contact devs for reset setup` }).catch(() => { });
+            const errorButton = new ActionRowBuilder()
+                .addComponents(
+                    new ButtonBuilder()
+                        .setStyle(ButtonStyle.Link)
+                        .setLabel("Devs Contact")
+                        .setURL("https://discord.com/invite/Sbp2nt8QHe")
+                )
+            await message.reply({
+                content: `An unexpected error occured..\n**Please contact devs if it still occurred**`,
+                components: [errorButton]
+            }).catch(() => { });
             console.error(error);
         };
 

@@ -28,7 +28,7 @@ module.exports = async (client) => {
 
             // The put method is used to fully refresh all commands in the guild with the current set
             const data = await rest.put(
-                Routes.applicationGuildCommands(client.config.AppID, client.config.INTERACTIONS.GUILD_ID),
+                Routes.applicationGuildCommands(client.config.AppID),
                 { body: commands },
             );
 

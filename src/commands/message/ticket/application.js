@@ -1,17 +1,17 @@
 const { EmbedBuilder } = require("discord.js");
 module.exports = new Object({
-    name: "applyticket",
+    name: "ticket",
     description: "applyticket.",
     category: "Ticket",
     usage: "",
     cooldown: 0,
-    aliases: [],
+    aliases: ['applyticket'],
     examples: [''],
     sub_commands: [],
     args: false,
     permissions: {
         client: ['ManageGuild'],
-        user: ['ManageChannels'],
+        user: ['ManageMessages'],
         dev: false,
     },
     player: { voice: false, active: false, dj: false, },

@@ -20,7 +20,7 @@ module.exports = {
 
     INTERACTIONS: {
         SLASH: true, // Should the interactions be enabled
-        GUILD_ID: "447069790150852609", // Guild ID where the interactions should be registered. [** Test you commands here first **]
+        // GUILD_ID: "447069790150852609", // Guild ID where the interactions should be registered. [** Test you commands here first **]
     },
 
     PRESENCE: {
