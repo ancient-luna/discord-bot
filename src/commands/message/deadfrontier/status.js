@@ -52,6 +52,7 @@ module.exports = new Object({
                 let nourishment = domNourishment.window.document.querySelector("div").textContent;
 
                 let outpost = stat['outpost']
+                let position = stat['gpscoords']
 
                 let profession_level = stat['profession_level']
                 let experience = stat['experience']
@@ -114,7 +115,7 @@ module.exports = new Object({
                     const embed = new EmbedBuilder()
                         .setTitle(`${username}`)
                         .setURL(`https://www.dfprofiler.com/profile/view/${survivorID}`)
-                        .setDescription(`**${profession_level}** ${experience}`)
+                        .setDescription(`**${profession_level}** (${experience})\nPosition ${position} ▾`)
                         .addFields(
                             { name: `**Account Creation**`, value: creation_date, inline: true },
                             { name: `**GM End Date**`, value: gm_end, inline: true },
@@ -181,7 +182,7 @@ module.exports = new Object({
                     const embed = new EmbedBuilder()
                         .setTitle(`${username}`)
                         .setURL(`https://www.dfprofiler.com/profile/view/${survivorID}`)
-                        .setDescription(`**${profession_level}** ${experience}`)
+                        .setDescription(`**${profession_level}** (${experience})\nPosition ${position} ▾`)
                         .addFields(
                             { name: `**Account Creation**`, value: creation_date, inline: true },
                             { name: `**GM End Date**`, value: gm_end, inline: true },

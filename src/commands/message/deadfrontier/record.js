@@ -49,6 +49,11 @@ module.exports = new Object({
                 let weekly_ts = stat['weekly_ts']
                 let all_time_ts = stat['all_time_ts']
 
+                let weekly_loot = stat['weekly_loot']
+                let all_time_loot = stat['all_time_loot']
+
+                let position = stat['gpscoords']
+
                 let daily_tpk = stat['daily_tpk']
                 let weekly_tpk = stat['weekly_tpk']
                 let all_time_tpk = stat['all_time_tpk']
@@ -60,9 +65,12 @@ module.exports = new Object({
                         { name: `**EXP Since Death**`, value: `${exp_since_death} EXP`, inline: true },
                         { name: `**Weekly TS**`, value: `${weekly_ts} EXP`, inline: true },
                         { name: `**⭐ All Time TS**`, value: `${all_time_ts} EXP`, inline: true },
-                        { name: `**Daily TPK**`, value: daily_tpk, inline: true },
-                        { name: `**Weekly TPK**`, value: weekly_tpk, inline: true },
-                        { name: `**⭐ All Time TPK**`, value: all_time_tpk, inline: true }
+                        { name: `**Position**`, value: position, inline: true },
+                        { name: `**Weekly Loot**`, value: `${weekly_loot} Loot Points`, inline: true },
+                        { name: `**⭐ All Time Loot**`, value: `${all_time_loot} Loot Points`, inline: true },
+                        { name: `**Daily TPK**`, value: `${daily_tpk} Kill`, inline: true },
+                        { name: `**Weekly TPK**`, value: `${weekly_tpk} Kill`, inline: true },
+                        { name: `**⭐ All Time TPK**`, value: `${all_time_tpk} Kill`, inline: true }
                     )
                     .setImage(`https://www.dfprofiler.com/signaturereplicate.php?profile=${survivorID}&imgur=5q7hV6B`)
                     .setFooter({ text: `Powered by Ancient Luna`, iconURL: 'https://i.imgur.com/vKo3PJm.png' })
