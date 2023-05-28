@@ -40,7 +40,7 @@ module.exports = new Object({
                 .setAuthor({ name: data.author.name, iconURL: 'https://i.imgur.com/Kll2T98.png' })
                 .setTitle('Suggestion Accepted')
                 .setDescription(data.description)
-                .setColor(`GREEN`)
+                .setColor(`43b581`)
                 .addFields(
                     { name: `Reason from ${editor}`, value: acceptQuery }
                 )
@@ -54,9 +54,9 @@ module.exports = new Object({
             );
             const accEmbed = new EmbedBuilder()
                 .setAuthor({ name: "SUGGESTION ACCEPTED", iconURL: 'https://i.imgur.com/Kll2T98.png' })
-                .setDescription("Your suggestion has been accepted by the Elders. See further detail in **[Ancient Luna Discord Server](https://discord.com/invite/Sbp2nt8QHe)**. Thank you for the suggestion!")
+                .setDescription("Your suggestion has been accepted by the Elders. See further detail in **[#suggestions](https://discord.com/channels/447069790150852609/842069893113446410)**. Thank you for the suggestion!")
                 .setTimestamp()
-                .setColor("GREEN")
+                .setColor("43b581")
                 .setFooter({ text: "Your Suggestions Status" })
             user.send({ embeds: [accEmbed] }).catch((e) => { });
         } catch (err) {

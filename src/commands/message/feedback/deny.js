@@ -39,7 +39,7 @@ module.exports = new Object({
                 .setAuthor({ name: data.author.name, iconURL: 'https://i.imgur.com/oZvnuem.png' })
                 .setTitle('Suggestion Denied')
                 .setDescription(data.description)
-                .setColor(`RED`)
+                .setColor(`f04947`)
                 .addFields(
                     { name: `Reason from ${editor}`, value: denyQuery }
                 )
@@ -53,9 +53,9 @@ module.exports = new Object({
             );
             const denyEmbed = new EmbedBuilder()
                 .setAuthor({ name: "SUGGESTION DENIED", iconURL: 'https://i.imgur.com/oZvnuem.png' })
-                .setDescription("Your suggestion has been denied by the Elders. Find out why in **[Ancient Luna Discord Server](https://discord.com/invite/Sbp2nt8QHe)**. Thank you for the suggestion!")
+                .setDescription("Your suggestion has been denied by the Elders. Find out why in **[#suggestions](https://discord.com/channels/447069790150852609/842069893113446410)**. Thank you for the suggestion!")
                 .setTimestamp()
-                .setColor('Red')
+                .setColor('f04947')
                 .setFooter({ text: "Your Suggestions Status" })
             user.send({ embeds: [denyEmbed] }).catch((e) => { });
         } catch (err) {
