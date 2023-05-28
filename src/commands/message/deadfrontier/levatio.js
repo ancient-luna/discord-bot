@@ -12,7 +12,7 @@ module.exports = new Object({
     args: false,
     permissions: {
         client: [],
-        user: ['ManageMessages'],
+        user: ['ManageRoles'],
         dev: false,
     },
     player: { voice: false, active: false, dj: false, },
