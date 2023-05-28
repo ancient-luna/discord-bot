@@ -1,0 +1,102 @@
+const { EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle } = require("discord.js");
+const jsdom = require("jsdom");
+module.exports = new Object({
+    name: "record",
+    description: "record.",
+    category: "Deadfrontier",
+    usage: "",
+    cooldown: 0,
+    aliases: ['record'],
+    examples: [''],
+    sub_commands: [],
+    args: false,
+    permissions: {
+        client: [],
+        user: [],
+        dev: false,
+    },
+    player: { voice: false, active: false, dj: false, },
+    /**
+     * 
+     * @param {import("../../../index")} client 
+     * @param {import("discord.js").Message} message
+     * @param {String[]} args
+     */
+    async execute(client, message, args) {
+
+        const survivorID = args.join(" ");
+        if (!survivorID) return message.channel.send("Do `!record` `id`").catch((e) => { });
+
+        const loadingTxt = await message.reply(`Getting player status <a:_util_loading:863317596551118858>`);
+
+        let request = require('request')
+
+        let option = {
+            url: `https://www.dfprofiler.com/profile/json/${survivorID}`,
+            headers: {
+                "X-Requested-With": "XMLHttpRequest"
+            }
+        }
+
+        request(option, function (err, responce, body) {
+            if (typeof body !== 'undefined' && body) {
+                let stat = JSON.parse(body);
+
+                const domUsername = new jsdom.JSDOM(stat['username']);
+                let username = domUsername.window.document.querySelector("a").textContent;
+
+                let exp_since_death = stat['exp_since_death']
+                let weekly_ts = stat['weekly_ts']
+                let all_time_ts = stat['all_time_ts']
+
+                let daily_tpk = stat['daily_tpk']
+                let weekly_tpk = stat['weekly_tpk']
+                let all_time_tpk = stat['all_time_tpk']
+
+                const embedRecord = new EmbedBuilder()
+                    .setTitle(`${username}'s Record`)
+                    .setURL(`https://www.dfprofiler.com/profile/view/${survivorID}`)
+                    .addFields(
+                        { name: `**EXP Since Death**`, value: `${exp_since_death} EXP`, inline: true },
+                        { name: `**Weekly TS**`, value: `${weekly_ts} EXP`, inline: true },
+                        { name: `**⭐ All Time TS**`, value: `${all_time_ts} EXP`, inline: true },
+                        { name: `**Daily TPK**`, value: daily_tpk, inline: true },
+                        { name: `**Weekly TPK**`, value: weekly_tpk, inline: true },
+                        { name: `**⭐ All Time TPK**`, value: all_time_tpk, inline: true }
+                    )
+                    .setImage(`https://www.dfprofiler.com/signaturereplicate.php?profile=${survivorID}&imgur=5q7hV6B`)
+                    .setFooter({ text: `Powered by Ancient Luna`, iconURL: 'https://i.imgur.com/vKo3PJm.png' })
+                    .setColor('202225')
+                    .setTimestamp()
+
+                const btnProfile = new ActionRowBuilder()
+                    .addComponents(
+                        new ButtonBuilder()
+                            .setStyle(ButtonStyle.Link)
+                            .setLabel(`DFP Profile`)
+                            .setURL(`https://www.dfprofiler.com/profile/view/${survivorID}`)
+                    )
+                    .addComponents(
+                        new ButtonBuilder()
+                            .setStyle(ButtonStyle.Link)
+                            .setLabel(`Updated Profile Image`)
+                            .setURL(`https://www.dfprofiler.com/signaturereplicate.php?profile=${survivorID}&imgur=5q7hV6B.png`)
+                    )
+
+                loadingTxt.edit({
+                    content: '⁣',
+                    embeds: [embedRecord],
+                    components: [btnProfile],
+                }).catch((e) => { });
+            } else {
+                loadingTxt.edit({
+                    content: `Something wrong happened..\n**unable to send the record now**`
+                }).catch((e) => { });
+            }
+        })
+    }
+})
+
+
+
+

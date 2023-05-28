@@ -1,0 +1,42 @@
+const { EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle } = require("discord.js");
+module.exports = new Object({
+    name: "lightseeker",
+    description: "lightseeker.",
+    category: "Moderator",
+    usage: "",
+    cooldown: 0,
+    aliases: [],
+    examples: [''],
+    sub_commands: [],
+    args: false,
+    permissions: {
+        client: ['ManageGuild'],
+        user: ['ManageMessages'],
+        dev: false,
+    },
+    player: { voice: false, active: false, dj: false, },
+    /**
+     * 
+     * @param {import("../../../index")} client 
+     * @param {import("discord.js").Message} message
+     * @param {String[]} args
+     */
+    async execute(client, message, args) {
+        let target = message.mentions.members.first();
+        if (!target) return message.reply('please mention a user').catch((e) => { });
+        let role = '839198215580811344';
+        await message.delete().catch((e) => { });
+        const welcomeButton = new ActionRowBuilder()
+            .addComponents(
+                new ButtonBuilder()
+                    .setStyle(ButtonStyle.Link)
+                    .setLabel("Get more roles here")
+                    .setURL("https://discord.com/channels/447069790150852609/864556584818835456")
+            )
+
+        message.guild.channels.cache.get('452842830776369152').send({
+            content: `<@${target.user.id}> has passed the trial by understand our wisdom of lleud to reach this warm sanctuary deeper.\nWelcome, to the sanctuary of lights. The <@&843523544620335124> welcome you as one of true light seekers <:ancientluna_pure_luna:866781517312688178>`,
+            components: [welcomeButton]
+        }).then(target.roles.add(role)).catch((e) => { });
+    }
+});
