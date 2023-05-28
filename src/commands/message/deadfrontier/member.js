@@ -1,0 +1,59 @@
+
+const { EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle } = require("discord.js");
+module.exports = new Object({
+    name: "levatio",
+    description: "levatio.",
+    category: "Deadfrontier",
+    usage: "",
+    cooldown: 0,
+    aliases: ['levatio'],
+    examples: [''],
+    sub_commands: [],
+    args: false,
+    permissions: {
+        client: [],
+        user: ['ManageMessages'],
+        dev: false,
+    },
+    player: { voice: false, active: false, dj: false, },
+    /**
+     * 
+     * @param {import("../../../index")} client 
+     * @param {import("discord.js").Message} message
+     * @param {String[]} args
+     */
+    async execute(client, message, args) {
+
+        let target = message.mentions.members.first();
+
+        if (!target) return message.reply('Please mention them, the one who is about to be a Levatio').catch((e) => { });
+
+        let role = '1052973235710464040';
+
+        message.guild.channels.cache.get('860531645916774401').send(`An luna lux vanitas, <@${target.user.id}>\nMay the lights guide us, so we may bask in its light as true <@&${role}>`).then(target.roles.add(role)).catch((e) => { });
+
+        await message.delete().catch((e) => { });
+
+        const addDF = new EmbedBuilder()
+            .setAuthor({ name: "ROLE ADDED", iconURL: 'https://i.imgur.com/aLkmV4I.png' })
+            .setDescription("You have been gived **Levatio** role and have access to all channels ( **[#clan-knowledge](https://discord.com/channels/447069790150852609/884345319389810778) [#clan-vault](https://discord.com/channels/447069790150852609/875904001340764190) [#cts-ctl](https://discord.com/channels/447069790150852609/881836063398723585)** ) as an official member in **Dead Frontier** category. May the lights guide us, so we may bask in its light as true levatios")
+            .setTimestamp()
+            .setColor("2b2d31")
+            .setFooter({ text: "Ancient Luna: We ran as if to meet the moon" })
+
+        const btnAccess = new ActionRowBuilder()
+            .addComponents(
+                new ButtonBuilder()
+                    .setStyle(ButtonStyle.Link)
+                    .setLabel(`Go to Meeting Hall`)
+                    .setURL(`https://discord.com/channels/447069790150852609/1060992670035619931`)
+            )
+
+        await target.user.send({
+            embeds: [addDF],
+            components: [btnAccess]
+        }).catch((e) => { });
+    }
+})
+
+

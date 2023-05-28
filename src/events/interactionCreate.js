@@ -1,47 +1,23 @@
-module.exports = {
-    name: 'interactionCreate',
-    async execute(interaction, client) {
-        if (interaction.isCommand()) handleSlashCommand(interaction, client);
-        else if (interaction.isButton()) handleButton(interaction, client);
-    },
-}
+const { Events } = require('discord.js');
 
-const handleButton = (interaction, client) => {
-    
-    const [name, ...params] = interaction.customId.split("-")
+module.exports = new Object({
+    name: Events.InteractionCreate,
 
-    const button = client.buttons.get(name)
+    async execute(interaction) {
 
-    if (!button) return
+        if (interaction.isChatInputCommand()) {
+            const command = interaction.client.commands.get(interaction.commandName);
+            if (!command) {
+                console.error(`No command matching ${interaction.commandName} was found.`);
+                return;
+            }
 
-    (async () => {
-        try {
-            await button.run(interaction, client, params);
-        } catch (error) {
-            console.log(error);
-            await interaction.reply({
-                content: 'There was an error while executing this button!',
-                ephemeral: true
-            });
+            try {
+                await command.execute(interaction);
+            } catch (error) {
+                console.error(`Error executing ${interaction.commandName}`);
+                console.error(error);
+            }
         }
-    })();
-}
-
-const handleSlashCommand = (interaction, client) => {
-
-    const command = client.commands.get(interaction.commandName);
-
-    if (!command) return
-
-    (async () => {
-        try {
-            await command.execute(interaction, client);
-        } catch (error) {
-            console.log(error);
-            await interaction.reply({
-                content: 'There was an error while executing this command!',
-                ephemeral: true
-            });
-        }
-    })();
-}
+    }
+})
