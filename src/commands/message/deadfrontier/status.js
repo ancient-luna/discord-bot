@@ -52,7 +52,6 @@ module.exports = new Object({
                 let nourishment = domNourishment.window.document.querySelector("div").textContent;
 
                 let outpost = stat['outpost']
-                let position = stat['gpscoords']
 
                 let profession_level = stat['profession_level']
                 let experience = stat['experience']
@@ -99,6 +98,8 @@ module.exports = new Object({
                 try {
                     const domArmor = new jsdom.JSDOM(stat['armor']);
                     let armor = domArmor.window.document.querySelector("div").textContent;
+
+                    let position = stat['gpscoords']
 
                     let stat_endurance = stat['stat_endurance'].split(" ")
                     let stat_agility = stat['stat_agility'].split(" ")
@@ -182,7 +183,7 @@ module.exports = new Object({
                     const embed = new EmbedBuilder()
                         .setTitle(`${username}`)
                         .setURL(`https://www.dfprofiler.com/profile/view/${survivorID}`)
-                        .setDescription(`**${profession_level}** (${experience})\nPosition ${position} ▾`)
+                        .setDescription(`**${profession_level}** (${experience})\nPosition Nowhere ▾`)
                         .addFields(
                             { name: `**Account Creation**`, value: creation_date, inline: true },
                             { name: `**GM End Date**`, value: gm_end, inline: true },
