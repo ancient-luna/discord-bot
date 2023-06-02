@@ -1,23 +1,22 @@
-const { Events } = require('discord.js');
+const { InteractionType } = require("discord.js");
+const { commandHandler } = require("../handlers/index");
 
 module.exports = new Object({
-    name: Events.InteractionCreate,
+  name: "interactionCreate",
 
-    async execute(interaction) {
+  /**
+   * @param {import("../")} client
+   * @param {import('discord.js').CommandInteraction} interaction
+   */
 
-        if (interaction.isChatInputCommand()) {
-            const command = interaction.client.commands.get(interaction.commandName);
-            if (!command) {
-                console.error(`No command matching ${interaction.commandName} was found.`);
-                return;
-            }
-
-            try {
-                await command.execute(interaction);
-            } catch (error) {
-                console.error(`Error executing ${interaction.commandName}`);
-                console.error(error);
-            }
-        }
+  async execute(client, interaction) {
+    if (interaction.isButton()) {
+      client.emit("ButtonInteraction", interaction);
     }
-})
+    if (interaction.isChatInputCommand()) {
+      await commandHandler.handleSlashCommand(interaction);
+    }
+    if (!interaction.isModalSubmit() && !interaction.isStringSelectMenu())
+      return;
+  },
+});
