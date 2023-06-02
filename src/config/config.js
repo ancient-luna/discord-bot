@@ -16,11 +16,11 @@ module.exports = {
     voiceMessage: "boss cycle updated",
 
     color: '#4277e8',
-    AppID: '843296546878521345',
+    AppID: '839380589508558910',
 
     INTERACTIONS: {
         SLASH: true, // Should the interactions be enabled
-        GUILD_ID: "447069790150852609", // Guild ID where the interactions should be registered. [** Test you commands here first **]
+        // GUILD_ID: "447069790150852609", // Guild ID where the interactions should be registered. [** Test you commands here first **]
     },
 
     PRESENCE: {
