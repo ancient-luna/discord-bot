@@ -30,7 +30,24 @@ module.exports = new Object({
 
         let role = '1052973235710464040';
 
-        message.guild.channels.cache.get('860531645916774401').send(`An luna lux vanitas, <@${target.user.id}>\nMay the lights guide us, so we may bask in its light as true <@&${role}>`).then(target.roles.add(role)).catch((e) => { });
+        const btnLink = new ActionRowBuilder()
+            .addComponents(
+                new ButtonBuilder()
+                    .setStyle(ButtonStyle.Link)
+                    .setLabel(`Clan Vault`)
+                    .setURL(`https://discord.com/channels/447069790150852609/875904001340764190`)
+            )
+            .addComponents(
+                new ButtonBuilder()
+                    .setStyle(ButtonStyle.Link)
+                    .setLabel(`CTS/CTL`)
+                    .setURL(`https://discord.com/channels/447069790150852609/881836063398723585`)
+            )
+
+        message.guild.channels.cache.get('860531645916774401').send({
+            content: `**An luna lux vanitas** <@${target.user.id}>,\nMay the lights guide us, so we may bask in its light as true <@&${role}>`,
+            components: [btnLink]
+        }).then(target.roles.add(role)).catch((e) => { });
 
         await message.delete().catch((e) => { });
 
