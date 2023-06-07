@@ -4,7 +4,7 @@ const {
 } = require("discord.js");
 /**
      * @param {import("discord.js").GuildMember} member
-     * @param {import("discord.js").MessageReaction} reaction
+     * @param {import("discord.js").messageReaction} reaction
      */
 module.exports = new Object({
     name: "messageReactionAdd",
@@ -12,9 +12,9 @@ module.exports = new Object({
      * @param {import("../../Eunha")} client 
      * @param {import("discord.js").Message} message
      * @param {import("discord.js").GuildMember} member
-     * @param {import("discord.js").MessageReaction} reaction
+     * @param {import("discord.js").messageReaction} reaction
      */
-    async execute(client, member, reaction, user) {
+    async execute(client, reaction, user) {
 
         if (reaction.message.partial) await reaction.message.fetch();
         if (reaction.partial) await reaction.fetch();

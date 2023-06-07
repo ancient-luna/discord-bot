@@ -21,6 +21,7 @@ const Intents = [
   GatewayIntentBits.GuildWebhooks,
   GatewayIntentBits.MessageContent,
   GatewayIntentBits.DirectMessages,
+  GatewayIntentBits.GuildMessageReactions,
 ];
 
 class BotClient extends Client {
@@ -40,6 +41,7 @@ class BotClient extends Client {
         GatewayIntentBits.GuildWebhooks,
         GatewayIntentBits.MessageContent,
         GatewayIntentBits.DirectMessages,
+        GatewayIntentBits.GuildMessageReactions,
       ],
       partials: [
         Partials.Channel,
