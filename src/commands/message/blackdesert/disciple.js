@@ -32,7 +32,6 @@ module.exports = new Object({
           new ButtonBuilder()
             .setCustomId("btn-guildterms")
             .setLabel("Read Guild Terms")
-            .setEmoji(":ancientluna_divinare_s:859034096192978965")
             .setStyle(ButtonStyle.Primary)
         );
 
