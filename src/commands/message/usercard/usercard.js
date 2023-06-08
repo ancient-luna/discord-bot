@@ -2,12 +2,12 @@ const fs = require("fs");
 const { createCanvas, loadImage, registerFont } = require("canvas")
 
 module.exports = new Object({
-  name: "fellowcard",
-  description: "fellowcard.",
+  name: "acvfellowcard",
+  description: "acvfellowcard.",
   category: "Usercard",
   usage: "",
   cooldown: 0,
-  aliases: [],
+  aliases: ['acvuesrcard'],
   examples: [''],
   sub_commands: [],
   args: false,

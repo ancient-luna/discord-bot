@@ -2,8 +2,8 @@ const { EmbedBuilder, AttachmentBuilder } = require('discord.js');
 const canvacord = require('canvacord');
 
 module.exports = new Object({
-    name: "spotify",
-    description: "spotify.",
+    name: "acvspotify",
+    description: "acvspotify.",
     category: "Entertainment",
     usage: "",
     cooldown: 0,
