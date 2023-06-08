@@ -31,9 +31,9 @@ module.exports = new Object({
         const btnTerms = new ActionRowBuilder().addComponents(
           new ButtonBuilder()
             .setCustomId("btn-guildterms")
-            .setLabel("Guild Terms and Guidelines")
+            .setLabel("Read Guild Terms")
             .setEmoji(":ancientluna_divinare_s:859034096192978965")
-            .setStyle(ButtonStyle.Secondary)
+            .setStyle(ButtonStyle.Primary)
         );
 
         message.guild.channels.cache.get('1060992670035619931').send({
