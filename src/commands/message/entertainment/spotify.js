@@ -7,7 +7,7 @@ module.exports = new Object({
     category: "Entertainment",
     usage: "",
     cooldown: 0,
-    aliases: [''],
+    aliases: ['spotify'],
     examples: [''],
     sub_commands: [],
     args: false,
@@ -37,8 +37,8 @@ module.exports = new Object({
         }
 
         let status;
-        if (target.presence.activities.length === 1) status = user.presence.activities[0];
-        else if (target.presence.activities.length > 1) status = user.presence.activities[1];
+        if (target.presence.activities.length === 1) status = target.presence.activities[0];
+        else if (target.presence.activities.length > 1) status = target.presence.activities[1];
 
         if (target.presence.activities.length === 0 || status.name !== "Spotify" && status.type !== "LISTENING") {
             return await message.reply({ content: `${target.user.username} is not listening spotify` })
@@ -59,16 +59,19 @@ module.exports = new Object({
             .setTitle(name)
 
             const Card = await card.build();
-            const attachments = new AttachmentBuilder(Card, { name: "Spotify.png" })
+            const attachments = new AttachmentBuilder(Card, { name: "spotify.png" })
 
             const embed = new EmbedBuilder()
-            .setTitle(`Spotify track`)
-            .setImage(`attachments://spotify.png`)
+            .setTitle(`Currently listening to`)
+            .setImage(`attachment://spotify.png`)
             .setTimestamp()
-            .setFooter({ text: `Spotify Tracker` })
+            .setColor(`1db954`)
+            .setFooter({ text: `Spotify Tracker`, iconURL: `https://i.imgur.com/o0RHwu2.png` })
+
+            // await message.react("🎧").catch((e) => { });
 
             await message.reply({
-                embed: [embed],
+                embeds: [embed],
                 files: [attachments]
             })
         }
