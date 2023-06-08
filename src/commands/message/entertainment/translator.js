@@ -1,12 +1,13 @@
-const translate = require("@iamtraction/google-translate");
 const { EmbedBuilder, ActionRowBuilder, StringSelectMenuBuilder } = require("discord.js");
+const translate = require("@iamtraction/google-translate");
+
 module.exports = new Object({
-    name: "translate",
-    description: "translate.",
+    name: "acvtranslate",
+    description: "acvtranslate.",
     category: "Entertainment",
     usage: "",
     cooldown: 0,
-    aliases: ['translate'],
+    aliases: [''],
     examples: [''],
     sub_commands: [],
     args: false,

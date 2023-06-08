@@ -22,12 +22,9 @@ module.exports = new Object({
      */
     async execute(client, message, args) {
         let target = message.mentions.members.first();
-
-        var errMessage = { content: "How can *She* spits when theres no one to spit on! Mention one 💢" };
         if (!target) {
             message.react("💢").catch((e) => { });
-
-            return message.reply(errMessage).then((msg) => {
+            return message.reply({ content: "How can *She* spits when theres no one to spit on! Mention one 💢" }).then((msg) => {
                 setTimeout(() => msg.delete().catch((e) => { }), 5000);
             });
         }

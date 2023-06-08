@@ -6,7 +6,7 @@ module.exports = new Object({
     category: "Entertainment",
     usage: "",
     cooldown: 0,
-    aliases: ['reminder'],
+    aliases: [''],
     examples: [''],
     sub_commands: [],
     args: false,
@@ -32,7 +32,7 @@ module.exports = new Object({
             .setColor('#2b2d31')
             .setFooter({ text: `Reminder was set for ${args[0]}` })
 
-        message.reply({ content: `<a:_util_loading:863317596551118858> I keep it safe under the moon's name and will remind you back in ${args[0]}!` }).catch(e => { })
+        message.reply({ content: `I keep it safe under the moon's name\nI will remind you back in **${args[0]}** <a:_util_loading:863317596551118858>` }).catch(e => { })
 
         setTimeout(async () => {
             message.channel.send({ content: `<:ancientluna_divinare:841754250949820416><@${message.author.id}>╮`, embeds: [embed2] }).catch(e => { })

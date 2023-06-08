@@ -5,7 +5,7 @@ module.exports = new Object({
     category: "Blackdesert",
     usage: "",
     cooldown: 0,
-    aliases: ['absence'],
+    aliases: ['vacation'],
     examples: [''],
     sub_commands: [],
     args: false,
@@ -32,8 +32,8 @@ module.exports = new Object({
             throw err;
         })
 
-        if (!args[0]) return message.channel.send(`*You can't let the vacancy letter be an empty-ink letter. Do write __days__ __reason__*`).then((msg) => {
-            setTimeout(() => msg.delete().catch((e) => { }), 5000);
+        if (!args[0]) return message.channel.send(`*You can't let the vacancy letter be an empty-ink letter. Do write __days__ __reason__\nex: \`!absence\` \`14\` \`going to buy milk\`*`).then((msg) => {
+            setTimeout(() => msg.delete().catch((e) => { }), 10000);
             setTimeout(() => message.delete().catch((e) => { }));
         }).catch((err) => {
             throw err;
@@ -41,8 +41,8 @@ module.exports = new Object({
 
         const days = args[0];
 
-        if (!days) return message.channel.send({ content: "You forgot to put days off. Do write __days__ __reason__" }).then((msg) => {
-            setTimeout(() => msg.delete().catch((e) => { }), 5000);
+        if (!days) return message.channel.send({ content: "You forgot to put days off for . Do write __days__ __reason__\nex: \`!absence\` \`14\` \`going to buy milk\`" }).then((msg) => {
+            setTimeout(() => msg.delete().catch((e) => { }), 10000);
             setTimeout(() => message.delete().catch((e) => { }));
         }).catch((err) => {
             throw err;
@@ -50,8 +50,8 @@ module.exports = new Object({
 
         const words = args.slice(1).join(" ");
 
-        if (!words) return message.channel.send({ content: "You forgot to put the reason for your days off. Do write __days__ __reason__" }).then((msg) => {
-            setTimeout(() => msg.delete().catch((e) => { }), 5000);
+        if (!words) return message.channel.send({ content: "You forgot to put the reason for your days off. Do write __days__ __reason__\nex: \`!absence\` \`14\` \`going to buy milk\`" }).then((msg) => {
+            setTimeout(() => msg.delete().catch((e) => { }), 10000);
             setTimeout(() => message.delete().catch((e) => { }));
         }).catch((err) => {
             throw err;
@@ -67,12 +67,8 @@ module.exports = new Object({
 
         if (message.channel.id === sanctumHall) {
             message.guild.channels.cache.get('1076767724224659526').send({ embeds: [absenceNote] }).catch((e) => { });
-            message.channel.send(`*The vacancy letter has been delivered to the Elders. All your privacy will be kept safe under them*`).then((msg) => {
-                setTimeout(() => msg.delete().catch((e) => { }), 5000);
-                setTimeout(() => message.delete().catch((e) => { }));
-            }).catch((err) => {
-                throw err;
-            })
+            message.channel.send(`*The vacancy letter has been delivered to the Elders, dear* ***${message.member.displayName}***\n*All your privacy will be kept safe under them*`)
+            message.delete().catch((e) => { });
         } else {
             return;
         }

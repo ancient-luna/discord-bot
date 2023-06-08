@@ -1,12 +1,11 @@
-const { EmbedBuilder } = require('discord.js');
-const axios = require('axios');
+const { AttachmentBuilder } = require("discord.js");
 module.exports = new Object({
-    name: "inspire",
-    description: "inspire.",
+    name: "rawr",
+    description: "rawr.",
     category: "Entertainment",
     usage: "",
     cooldown: 0,
-    aliases: ['quote'],
+    aliases: ['rawr'],
     examples: [''],
     sub_commands: [],
     args: false,
@@ -23,13 +22,10 @@ module.exports = new Object({
      * @param {String[]} args
      */
     async execute(client, message, args) {
-        const response = await axios.get('https://api.quotable.io/random');
-
-        let advice = new EmbedBuilder()
-            .setAuthor({ name: `Quote from ${response.data.author}` })
-            .setDescription(`${response.data.content}`)
-            .setColor("2b2d31")
-
-        await message.reply({ embeds: [advice] }).catch((e) => { });
+        let IMGrawr = new AttachmentBuilder("src/assets/react/rawrrr.png")
+        await message.channel.send({
+            content: "scawy <@213718304320126986> has been summoned,\n*RaawWwRrrRRrrrrRR~*\n⁣",
+            files: [IMGrawr]
+        }).catch((e) => { });
     }
 });

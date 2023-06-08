@@ -1,11 +1,11 @@
 const { EmbedBuilder } = require("discord.js");
 module.exports = new Object({
-    name: "editemblem",
-    description: "editemblem.",
-    category: "Setup",
+    name: "rewrite",
+    description: "rewrite.",
+    category: "Moderator",
     usage: "",
     cooldown: 0,
-    aliases: ['ee'],
+    aliases: ['editembed'],
     examples: [''],
     sub_commands: [],
     args: false,
@@ -22,28 +22,27 @@ module.exports = new Object({
      * @param {String[]} args
      */
     async execute(client, message, args) {
-        const messageID = args[0];
-        const editQuery = args.slice(1).join(" ");
+        const chID = args[0];
+        const messageID = args[1];
+        const editQuery = args.slice(2).join(" ");
 
         if (!messageID) return message.reply("`messageid` `reason`").catch((e) => { });
-        if (!editQuery) return message.reply("`messageid` `reason`").catch((e) => { });
+        if (!editQuery) return message.reply("set `reason`").catch((e) => { });
 
         try {
-            const emblemChannel = message.guild.channels.cache.get(
-                "952170767947272303"
-            );
+            const channelID = message.guild.channels.cache.get(chID);
 
-            const guideEmbed = await emblemChannel.messages.fetch(messageID);
+            const theEmbed = await channelID.messages.fetch(messageID);
             const editEmbed = new EmbedBuilder()
                 .setDescription(editQuery)
-                .setColor(`#2b2d31`)
+                .setColor(`2b2d31`)
 
-            message.channel.send("Emblems: **EDITED** ! `updated`").catch((e) => { });
-            guideEmbed.edit({ embeds: [editEmbed] }).catch((e) => { });
+            message.channel.send("Embed: **EDITED** ! `updated`").catch((e) => { });
+            theEmbed.edit({ embeds: [editEmbed] }).catch((e) => { });
 
         } catch (err) {
             console.log(err);
-            message.channel.send(`That emblem embed id doesn't exist.`).catch((e) => { });
+            message.channel.send(`That embed ID doesn't exist.`).catch((e) => { });
         }
     }
 });
