@@ -6,7 +6,7 @@ module.exports = {
     elderRole: "843523544620335124",
     ruleChannel: "838751745815216129",
     bdoChannelId: "1049228301807407156",
-    stickyChannel: "457908039266205708",
+    stickyChannel: "1090915653575258123",
     artifactChannel: "1050004761631531038",
     generalChannel: "452842830776369152",
     gatewayChannel: "839417251470901279",

@@ -76,6 +76,32 @@ module.exports = new Object({
     if (!message.guild) return;
     if (message.author.bot) return;
 
+    // StickyNote
+    if (client.config.stickyChannel.includes(message.channel.id)) {
+        const fetchedMessages = await message.channel.messages.fetch();
+        const stickyMessage = fetchedMessages.find(m => m.author.id === client.user.id && client.config.stickyChannel.includes(m.channel.id));
+        const stickyText = new EmbedBuilder()
+            .setTitle(`Ancient Luna Activity Tracker`)
+            .setDescription(`Thanks for the hardwork!\nClick on this button to update the payout sheet.`)
+            .setThumbnail(`https://i.imgur.com/JGmEtSL.png`)
+            .setColor('#2b2d31');
+        let linkSheet = new ActionRowBuilder()
+            .addComponents(
+                new ButtonBuilder()
+                    .setStyle(ButtonStyle.Link)
+                    .setLabel(`Payout sheet`)
+                    .setURL(`https://docs.google.com/spreadsheets/d/1hb-WK8921d0erv4zQ5vTpBzEsnMNW0VTLycHwyAW3_k`)
+            )
+        if (stickyMessage) {
+            stickyMessage.delete().then(() => {
+                message.channel.send({ embeds: [stickyText], components: [linkSheet] });
+            }).catch(() => { });
+        } else {
+            // Force send a new message.
+            message.channel.send({ embeds: [stickyText], components: [linkSheet] });
+        }
+    };
+
     const prefix = process.env.COMMAND_PREFIX;
 
     const mention = new RegExp(`^<@!?${client.user.id}>( |)$`);
@@ -247,25 +273,5 @@ module.exports = new Object({
         .catch(() => {});
       console.error(error);
     }
-
-    // StickyNote
-    // if (client.config.stickyChannel.includes(message.channel.id)) {
-    //     const fetchedMessages = await message.channel.messages.fetch();
-    //     const stickyMessage = fetchedMessages.find(m => m.author.id === client.user.id && client.config.stickyChannel.includes(m.channel.id));
-    //     const stickyText = new EmbedBuilder()
-    //         .setTitle(`Commands to Play Music`)
-    //         .setDescription(`**YouTube + All Platform Link Support**\n\n<@724047481561809007> \`/play\`\n\n**All Platform Link Support** but ~~YouTube~~\n\n<@584213384409382953> \`/play\`\n<@489076647727857685> \`/play\`\n<@547905866255433758> \`h!play\`\n<@239631525350604801> \`p!play\``)
-    //         .setFooter({ text: `where words fail, music speaks 🎵` })
-    //         .setColor('#2b2d31');
-
-    //     if (stickyMessage) {
-    //         stickyMessage.delete().then(() => {
-    //             message.channel.send({ embeds: [stickyText] });
-    //         }).catch(() => { });
-    //     } else {
-    //         // Force send a new message.
-    //         message.channel.send({ embeds: [stickyText] });
-    //     }
-    // };
   },
 });
