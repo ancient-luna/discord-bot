@@ -32,7 +32,7 @@ module.exports = {
             new ButtonBuilder()
                 .setStyle(ButtonStyle.Link)
                 .setLabel(`Guild Forum`)
-                .setURL(`https://ancientluna.org/bdo`)
+                .setURL(`https://www.sea.playblackdesert.com/en-US/Forum/ForumTopic/Detail?_topicNo=42709&_page=1&_opinionNo=69067`)
         )
         .addComponents(
             new ButtonBuilder()
@@ -44,7 +44,7 @@ module.exports = {
             new ButtonBuilder()
                 .setStyle(ButtonStyle.Link)
                 .setLabel(`Guild Payout Sheet`)
-                .setURL(`https://bdo.ancientluna.org/quest`)
+                .setURL(`https://docs.google.com/spreadsheets/d/1hb-WK8921d0erv4zQ5vTpBzEsnMNW0VTLycHwyAW3_k`)
         )
         
     return interaction.reply({

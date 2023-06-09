@@ -1,11 +1,11 @@
 const { AttachmentBuilder } = require('discord.js');
 module.exports = new Object({
-    name: "emotionaldamage",
-    description: "emotionaldamage.",
+    name: "peanut",
+    description: "peanut.",
     category: "Entertainment",
     usage: "",
     cooldown: 0,
-    aliases: ['spray', 'destruction', 'boom', 'peanut'],
+    aliases: ['spray', 'emotionaldamage'],
     examples: [''],
     sub_commands: [],
     args: false,

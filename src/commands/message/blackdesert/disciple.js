@@ -36,7 +36,7 @@ module.exports = new Object({
         );
 
         message.guild.channels.cache.get('1060992670035619931').send({
-            content: `**We ran as if to meet the moon**,\nA seeker named <@${target.user.id}> become a part of Lunar Disciples`,
+            content: `**We ran as if to meet the moon**,\nA seeker named <@${target.user.id}> become a part of **Lunar Disciples** <:ancientluna_pure_luna:866781517312688178>`,
             components: [btnTerms]
         }).then(target.roles.add(role)).catch(e => { });
 

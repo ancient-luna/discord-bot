@@ -30,27 +30,22 @@ module.exports = new Object({
 
     const str = args.slice(1).join(" ");
 
-    const embed = new EmbedBuilder()
-      .setDescription(`**Contacts**\n\nDiscord Username: Dae#0100\nEmail: daeva@ancientluna.org\nInsta: [@imsoondae_](https://instagram.com/imsoondae_)`)
+    const txtEmbed = new EmbedBuilder()
+      .setDescription(`\`\`\`Dev Contacts\`\`\`\nDiscord: Dae#9002\nEmail: daeva@ancientluna.org\nInstagram: [@imsoondae_](https://instagram.com/imsoondae_)`)
       .setFooter({ text: `this bot won't read any messages of your replies` })
-      .setColor('7289da')
+      .setColor("2b2d31")
 
     const btnServer = new ActionRowBuilder()
       .addComponents(
         new ButtonBuilder()
           .setStyle(ButtonStyle.Link)
-          .setLabel("Guild Forum")
-          .setURL(`https://www.sea.playBLACKDESERT.com/en-US/Forum/ForumTopic/Detail?_topicNo=42709&_page=1&_opinionNo=69067`)
-      )
-      .addComponents(
-        new ButtonBuilder()
-          .setStyle(ButtonStyle.Link)
-          .setLabel("Visit Sanctum")
-          .setURL(`https://discord.com/channels/447069790150852609/1060992670035619931`)
+          .setLabel("Go vote for GBR new time here now")
+          .setURL(`https://discord.com/channels/447069790150852609/1060992992523079800/1116643824970776576`)
       )
 
     user.send({
-      content: `Dear Lunar Disciples,\n${str}\n\nLove,\n**Aevoa**\n⁣`,
+      content: `Dear **Lunar Disciples**,\n\n${str}\n\nLove,\n**Aevoa**\n⁣`,
+      embeds: [txtEmbed],
       components: [btnServer]
     }).catch((e) => { });
   }
