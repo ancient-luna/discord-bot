@@ -45,7 +45,7 @@ module.exports = new Object({
             )
 
         message.guild.channels.cache.get('860531645916774401').send({
-            content: `**An luna lux vanitas** <@${target.user.id}>,\nMay the lights guide us, so we may bask in its light as true <@&${role}>`,
+            content: `**An luna lux vanitas** <@${target.user.id}>,\nMay the lights guide us, so we may bask in its light as true **Levatio**`,
             components: [btnLink]
         }).then(target.roles.add(role)).catch((e) => { });
 
