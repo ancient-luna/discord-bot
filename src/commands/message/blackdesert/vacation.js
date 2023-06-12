@@ -5,7 +5,7 @@ module.exports = new Object({
     category: "Blackdesert",
     usage: "",
     cooldown: 0,
-    aliases: ['absence', 'vacay'],
+    aliases: ['absence'],
     examples: [''],
     sub_commands: [],
     args: false,
