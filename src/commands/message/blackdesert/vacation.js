@@ -35,14 +35,14 @@ module.exports = new Object({
             );
 
             message.channel.send({
-                content: "Fill the form in **1 min** <a:_util_loading:863317596551118858>",
+                content: "Fill the form in **3 min** <a:_util_loading:863317596551118858>",
                 components: [btnLetter]
             }).then((msg) => {
-                setTimeout(() => msg.delete().catch((e) => { }), 60000);
+                setTimeout(() => msg.delete().catch((e) => { }), 180000);
                 setTimeout(() => message.delete().catch((e) => { }));
             }).catch((err) => { throw err; })
         } else {
-            return message.channel.send(`*You can't send a vacancy letter from here, go back to <#1060992670035619931> to send!*`).then((msg) => {
+            return message.channel.send(`*You can't send a vacation letter from here, go back to <#1060992670035619931> to send!*`).then((msg) => {
                 setTimeout(() => msg.delete().catch((e) => { }), 10000);
                 setTimeout(() => message.delete().catch((e) => { }));
             }).catch((err) => {

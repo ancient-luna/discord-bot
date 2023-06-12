@@ -49,18 +49,18 @@ module.exports = {
     const filter = (interaction) => interaction.customId === `vacLetter-${interaction.user.id}`;
 
     interaction
-        .awaitModalSubmit({ filter, time: 60_000 })
+        .awaitModalSubmit({ filter, time: 180_000 })
         .then((modalInteraction) => {
             const dayValue = modalInteraction.fields.getTextInputValue('dayInput');
             const reasonValue = modalInteraction.fields.getTextInputValue('reasonInput');
 
             const absenceNote = new EmbedBuilder()
-                .setAuthor({ name: "Vacancy Letter" })
+                .setAuthor({ name: "Vacation Letter" })
                 .setDescription(`*Dear Elders,\nRequested Day Off: __${dayValue} Day(s)__\n\n${reasonValue}\n\nYours sincerely,*\n***${interaction.member.displayName}***`)
                 .setColor('2b2d31')
-                .setThumbnail('https://i.imgur.com/EpDcu9d.png')
+                .setThumbnail('https://i.imgur.com/Zx4kMoA.png')
             modalInteraction.guild.channels.cache.get('1076767724224659526').send({ embeds: [absenceNote] })
-            modalInteraction.reply(`*The vacancy letter has been delivered to the Elders, dear* ***${interaction.member.displayName}***\n*All your privacy will be kept safe under them*`)
+            modalInteraction.reply(`*The vacation letter has been delivered to the Elders, dear* ***${interaction.member.displayName}***\n*All your privacy will be kept safe under them*`)
         })
         .catch((e)=> { console.log(e) })
   },
