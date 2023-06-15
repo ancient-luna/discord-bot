@@ -5,7 +5,7 @@ module.exports = new Object({
     category: "Entertainment",
     cooldown: 0,
     usage: "",
-    aliases: ['help', 'about', 'test'],
+    aliases: ['help', 'about'],
     examples: [''],
     sub_commands: [],
     args: false,
