@@ -35,7 +35,7 @@ module.exports = new Object({
             );
 
             message.channel.send({
-                content: "Fill the form in **3 min** <a:_util_loading:863317596551118858>",
+                content: "<a:_util_loading:863317596551118858> Fill the form in **3 minutes**",
                 components: [btnLetter]
             }).then((msg) => {
                 setTimeout(() => msg.delete().catch((e) => { }), 180000);
