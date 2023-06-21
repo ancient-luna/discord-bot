@@ -15,7 +15,7 @@ module.exports = new Object({
             .setTitle(`Welcome to ${member.guild.name}`)
             .setThumbnail(member.user.displayAvatarURL({ dynamic: true, size: 512 }))
             .setDescription(`<@${member.user.id}> please understand our **wisdom of lleud** at ${member.guild.channels.cache.get(client.config.ruleChannel).toString()} as you make your way through this warm sanctuary`)
-            .setFooter({ text: `${member.user.tag} visited the sanctuary`, iconURL: member.user.displayAvatarURL({ dynamic: true, size: 512 }) })
+            .setFooter({ text: `${member.user.displayName} visited the sanctuary` })
             .setColor('7289da');
         return channel.send({ embeds: [welcomeText] });
     
