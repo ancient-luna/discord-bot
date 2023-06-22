@@ -31,7 +31,7 @@ module.exports = new Object({
     const str = args.slice(1).join(" ");
 
     const txtEmbed = new EmbedBuilder()
-      .setDescription(`\`\`\`Dev Contacts\`\`\`\nDiscord: Dae#9002\nEmail: daeva@ancientluna.org\nInstagram: [@imsoondae_](https://instagram.com/imsoondae_)`)
+      .setDescription(`\`\`\`Dev. Contacts\`\`\`\nDiscord: imsoondae\nEmail: daeva@ancientluna.org\nInstagram: [@imsoondae_](https://instagram.com/imsoondae_)`)
       .setFooter({ text: `this bot won't read any messages of your replies` })
       .setColor("2b2d31")
 
@@ -39,12 +39,12 @@ module.exports = new Object({
       .addComponents(
         new ButtonBuilder()
           .setStyle(ButtonStyle.Link)
-          .setLabel("Go vote for GBR new time here now")
-          .setURL(`https://discord.com/channels/447069790150852609/1060992992523079800/1116643824970776576`)
+          .setLabel("Go visit Sanctum")
+          .setURL(`https://discord.com/channels/447069790150852609/1060992670035619931`)
       )
 
     user.send({
-      content: `Dear **Lunar Disciples**,\n\n${str}\n\nLove,\n**Aevoa**\n⁣`,
+      content: `Dear **Lunar Disciples**,\n\n${str}\n\nWarmest Love,\n**Aevoa**\n⁣`,
       embeds: [txtEmbed],
       components: [btnServer]
     }).catch((e) => { });
