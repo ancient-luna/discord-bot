@@ -1,7 +1,7 @@
 const { EmbedBuilder } = require("discord.js");
 module.exports = new Object({
-  name: "suggest",
-  description: "suggest.",
+  name: "acvsuggest",
+  description: "acvsuggest.",
   category: "Suggestion",
   usage: "",
   cooldown: 0,
@@ -27,7 +27,7 @@ module.exports = new Object({
     if (!suggestionQuery) return message.reply('Please specify a suggestion.').catch((e) => { });
 
     const embed = new EmbedBuilder()
-      .setAuthor({ name: message.author.tag })
+      .setAuthor({ name: message.author.username })
       .setDescription(`${suggestionQuery}`)
       .setColor('4f545c')
 

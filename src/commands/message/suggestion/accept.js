@@ -33,7 +33,7 @@ module.exports = new Object({
             const suggestionChannel = message.guild.channels.cache.get(
                 "842069893113446410"
             );
-            const editor = message.author.tag;
+            const editor = message.author.username;
             const suggestedEmbed = await suggestionChannel.messages.fetch(messageID);
             const data = suggestedEmbed.embeds[0];
             const acceptEmbed = new EmbedBuilder()
@@ -50,7 +50,7 @@ module.exports = new Object({
             suggestedEmbed.edit({ embeds: [acceptEmbed] }).catch((e) => { });
 
             const user = client.users.cache.find(
-                (u) => u.tag === data.author.name
+                (u) => u.username === data.author.name
             );
             const accEmbed = new EmbedBuilder()
                 .setAuthor({ name: "SUGGESTION ACCEPTED", iconURL: 'https://i.imgur.com/Kll2T98.png' })

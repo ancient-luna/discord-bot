@@ -1,11 +1,11 @@
-const { EmbedBuilder } = require("discord.js");
+const { EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle } = require("discord.js");
 module.exports = new Object({
     name: "rewrite",
     description: "rewrite.",
     category: "Moderator",
     usage: "",
     cooldown: 0,
-    aliases: ['editembed'],
+    aliases: ['editembed', 'test'],
     examples: [''],
     sub_commands: [],
     args: false,
@@ -26,6 +26,7 @@ module.exports = new Object({
         const messageID = args[1];
         const editQuery = args.slice(2).join(" ");
 
+        if (!chID) return message.reply("`channelid` `messageid` `reason`").catch((e) => { });
         if (!messageID) return message.reply("`messageid` `reason`").catch((e) => { });
         if (!editQuery) return message.reply("set `reason`").catch((e) => { });
 
@@ -37,8 +38,18 @@ module.exports = new Object({
                 .setDescription(editQuery)
                 .setColor(`2b2d31`)
 
+            const btnSuggestion = new ActionRowBuilder().addComponents(
+                new ButtonBuilder()
+                .setCustomId("btn-suggestion")
+                .setLabel("Give Suggestion")
+                .setStyle(ButtonStyle.Primary)
+            );
+
             message.channel.send("Embed: **EDITED** ! `updated`").catch((e) => { });
-            theEmbed.edit({ embeds: [editEmbed] }).catch((e) => { });
+            theEmbed.edit({
+                embeds: [editEmbed],
+                components: [btnSuggestion]
+            }).catch((e) => { });
 
         } catch (err) {
             console.log(err);
