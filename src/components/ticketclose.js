@@ -15,7 +15,7 @@ module.exports = {
    */
   execute: async (client, interaction) => {
     return interaction.reply({
-        content: `**work still on progress**, call Dae for this �`,
+        content: `**work still on progress**, call Dae for this :skull:`,
         ephemeral: true
     });
   },
