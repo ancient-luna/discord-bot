@@ -24,7 +24,7 @@ module.exports = new Object({
     async execute(client, message, args) {
         let IMGgrrr = new AttachmentBuilder("src/assets/react/gremlin.gif")
         await message.channel.send({
-            content: "Oh no! <@213718304320126986> the Gremlin is here\n*Why you steal my point?!* ***Gggrrrrr*** :anger:\n⁣",
+            content: "Oh no! <@200511009922744320> the Gremlin is here\n*Why you steal my point?!* ***Gggrrrrr*** :anger:\n⁣",
             files: [IMGgrrr]
         }).catch((e) => { });
     }
