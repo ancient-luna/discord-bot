@@ -87,7 +87,7 @@ module.exports = new Object({
 
             channel.send({ embeds: [mEmbed], components: [btnTicket] }).catch((e) => { });
         } else {
-            return message.channel.send(`*You can't apply a ticketfrom here, go back to <#864556584818835456> to send!*`).then((msg) => {
+            return message.channel.send(`*You can't apply a ticket from here, go back to <#864556584818835456> to send!*`).then((msg) => {
                 setTimeout(() => msg.delete().catch((e) => { }), 10000);
                 setTimeout(() => message.delete().catch((e) => { }));
             }).catch((err) => {
