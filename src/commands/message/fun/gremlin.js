@@ -1,11 +1,11 @@
 const { AttachmentBuilder } = require("discord.js");
 module.exports = new Object({
-    name: "rawr",
-    description: "rawr.",
+    name: "gremlin",
+    description: "gremlin.",
     category: "Fun",
     usage: "",
     cooldown: 0,
-    aliases: ['rawr'],
+    aliases: ['grrr'],
     examples: [''],
     sub_commands: [],
     args: false,
@@ -22,10 +22,10 @@ module.exports = new Object({
      * @param {String[]} args
      */
     async execute(client, message, args) {
-        let IMGrawr = new AttachmentBuilder("src/assets/react/rawrrr.png")
+        let IMGgrrr = new AttachmentBuilder("src/assets/react/gremlin.gif")
         await message.channel.send({
-            content: "scawy <@213718304320126986> has been summoned,\n***RaawWwRrrRRrrrrRR~*** *wanna fite?*\n⁣",
-            files: [IMGrawr]
+            content: "Oh no! <@213718304320126986> the Gremlin is here\n*Why you steal my point?!* ***Gggrrrrr*** :anger:\n⁣",
+            files: [IMGgrrr]
         }).catch((e) => { });
     }
 });

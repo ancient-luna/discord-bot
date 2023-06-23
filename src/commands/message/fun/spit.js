@@ -3,7 +3,7 @@ const { AttachmentBuilder } = require("discord.js");
 module.exports = new Object({
     name: "spit",
     description: "spit.",
-    category: "Entertainment",
+    category: "Fun",
     usage: "",
     cooldown: 0,
     aliases: ['spit'],
