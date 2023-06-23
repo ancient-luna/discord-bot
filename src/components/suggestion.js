@@ -50,9 +50,7 @@ module.exports = {
                 msg.react('<:vcon_vote_upvote:859075141051613214>').catch((e) => { });
                 msg.react('<:vcon_vote_disagree:859075141668700200>').catch((e) => { });
               }).catch((e) => { });
-            modalInteraction.reply(`Suggestion sent to <#842069893113446410>`).then((msg) => {
-                setTimeout(() => msg.delete().catch((e) => { }), 5000);
-            }).catch((err) => { throw err; })
+            modalInteraction.reply(`Suggestion sent to <#842069893113446410>`).catch((e) => { });
         })
         .catch((e)=> { console.log(e) })
   },

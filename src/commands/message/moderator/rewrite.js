@@ -5,7 +5,7 @@ module.exports = new Object({
     category: "Moderator",
     usage: "",
     cooldown: 0,
-    aliases: ['editembed', 'test'],
+    aliases: ['editembed'],
     examples: [''],
     sub_commands: [],
     args: false,
@@ -38,17 +38,17 @@ module.exports = new Object({
                 .setDescription(editQuery)
                 .setColor(`2b2d31`)
 
-            const btnSuggestion = new ActionRowBuilder().addComponents(
-                new ButtonBuilder()
-                .setCustomId("btn-suggestion")
-                .setLabel("Give Suggestion")
-                .setStyle(ButtonStyle.Primary)
-            );
+            // const btnSuggestion = new ActionRowBuilder().addComponents(
+            //     new ButtonBuilder()
+            //     .setCustomId("btn-suggestion")
+            //     .setLabel("Give Suggestion")
+            //     .setStyle(ButtonStyle.Primary)
+            // );
 
             message.channel.send("Embed: **EDITED** ! `updated`").catch((e) => { });
             theEmbed.edit({
                 embeds: [editEmbed],
-                components: [btnSuggestion]
+                // components: [btnSuggestion]
             }).catch((e) => { });
 
         } catch (err) {
