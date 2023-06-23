@@ -22,66 +22,78 @@ module.exports = new Object({
      * @param {String[]} args
      */
     async execute(client, message, args) {
-        const channel = await message.guild.channels.create({ name: `ticket-${message.author.username}` }).catch((err) => message.channel.send("Channel in category is full! Cant open more tickets").catch((e) => { }))
 
-        channel.setParent("1010531564586811453");
+        const guidelinesChannel = '864556584818835456'
 
-        const seekerID = message.guild.roles.cache.get("1000932479043125312");
-        const lunariaID = message.guild.roles.cache.get("839170815932891197");
+        if (message.channel.id === guidelinesChannel) {
+            const channel = await message.guild.channels.create({ name: `ticket-${message.author.username}` }).catch((err) => message.channel.send("Channel in category is full! Cant open more tickets").catch((e) => { }))
 
-        channel.permissionOverwrites.create(seekerID, {
-            Administrator: true
-        });
+            channel.setParent("1010531564586811453");
 
-        channel.permissionOverwrites.create(lunariaID, {
-            SendMessages: true,
-            SendTTSMessages: true,
-            ViewChannel: true,
-            EmbedLinks: true,
-            AttachFiles: true,
-            ReadMessageHistory: true,
-            UseExternalEmojis: true,
-            AddReactions: false
-        });
+            const seekerID = message.guild.roles.cache.get("1000932479043125312");
+            const lunariaID = message.guild.roles.cache.get("839170815932891197");
 
-        channel.permissionOverwrites.create(message.guild.id, {
-            ViewChannel: false
-        });
+            channel.permissionOverwrites.create(seekerID, {
+                Administrator: true
+            });
 
-        channel.permissionOverwrites.create(message.author, {
-            SendMessages: true,
-            SendTTSMessages: true,
-            ViewChannel: true,
-            EmbedLinks: true,
-            AttachFiles: true,
-            ReadMessageHistory: true,
-            UseExternalEmojis: true,
-            AddReactions: false
-        });
+            channel.permissionOverwrites.create(lunariaID, {
+                SendMessages: true,
+                SendTTSMessages: true,
+                ViewChannel: true,
+                EmbedLinks: true,
+                AttachFiles: true,
+                ReadMessageHistory: true,
+                UseExternalEmojis: true,
+                AddReactions: false
+            });
 
-        message.channel.send({ content: `your ticket opened in <#${channel.id}>` }).catch((e) => { })
+            channel.permissionOverwrites.create(message.guild.id, {
+                ViewChannel: false
+            });
 
-        const mEmbed = new EmbedBuilder()
-            .setAuthor({ name: `${message.author.username}'s ticket ♡`, iconURL: message.author.displayAvatarURL({ dynamic: true }) })
-            .setDescription(`**Thank you for your application.**\nThe Ancestor and the Elders will be here as soon as possible! If they are still alive out there. Please take your time while waiting`)
-            .setFooter({ text: `note: Don't hesitate to mention them if need now ` })
-            .setColor('2b2d31')
+            channel.permissionOverwrites.create(message.author, {
+                SendMessages: true,
+                SendTTSMessages: true,
+                ViewChannel: true,
+                EmbedLinks: true,
+                AttachFiles: true,
+                ReadMessageHistory: true,
+                UseExternalEmojis: true,
+                AddReactions: false
+            });
 
-        const btnTicket = new ActionRowBuilder()
-        .addComponents(
-            new ButtonBuilder()
-            .setCustomId("btn-ticketmention")
-            .setLabel("Mention Now")
-            .setStyle(ButtonStyle.Success)
-        )
-        .addComponents(
-            new ButtonBuilder()
-            .setCustomId("btn-ticketclose")
-            .setLabel("Close Ticket")
-            .setStyle(ButtonStyle.Danger)
-        );
+            message.channel.send({ content: `your ticket opened in <#${channel.id}>` }).catch((e) => { })
 
-        channel.send({ embeds: [mEmbed], components: [btnTicket] }).catch((e) => { });
+            const mEmbed = new EmbedBuilder()
+                .setAuthor({ name: `${message.author.username}'s ticket ♡`, iconURL: message.author.displayAvatarURL({ dynamic: true }) })
+                .setDescription(`**Thank you for your application.**\nThe Ancestor and the Elders will be here as soon as possible! If they are still alive out there. Please take your time while waiting`)
+                .setFooter({ text: `note: Don't hesitate to mention them if need now ` })
+                .setColor('2b2d31')
+
+            const btnTicket = new ActionRowBuilder()
+            .addComponents(
+                new ButtonBuilder()
+                .setCustomId("btn-ticketmention")
+                .setLabel("Mention Now")
+                .setStyle(ButtonStyle.Success)
+            )
+            .addComponents(
+                new ButtonBuilder()
+                .setCustomId("btn-ticketclose")
+                .setLabel("Close Ticket")
+                .setStyle(ButtonStyle.Danger)
+            );
+
+            channel.send({ embeds: [mEmbed], components: [btnTicket] }).catch((e) => { });
+        } else {
+            return message.channel.send(`*You can't apply a ticketfrom here, go back to <#864556584818835456> to send!*`).then((msg) => {
+                setTimeout(() => msg.delete().catch((e) => { }), 10000);
+                setTimeout(() => message.delete().catch((e) => { }));
+            }).catch((err) => {
+                throw err;
+            });
+        }
         
         // const m = await channel.send({ content: `<@${message.author.username}> ||<@&590848319111299093> <@&843523544620335124>||`, embeds: [mEmbed] }).catch((e) => { });
 
