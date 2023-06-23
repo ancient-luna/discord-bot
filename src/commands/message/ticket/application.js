@@ -1,4 +1,4 @@
-const { EmbedBuilder } = require("discord.js");
+const { EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle } = require("discord.js");
 module.exports = new Object({
     name: "ticket",
     description: "applyticket.",
@@ -22,7 +22,7 @@ module.exports = new Object({
      * @param {String[]} args
      */
     async execute(client, message, args) {
-        const channel = await message.guild.channels.create(`ticket-${message.author.username}`).catch((err) => message.channel.send("I do not have permission to create a channel!").catch((e) => { }))
+        const channel = await message.guild.channels.create({ name: `ticket-${message.author.username}` }).catch((err) => message.channel.send("Channel in category is full! Cant open more tickets").catch((e) => { }))
 
         channel.setParent("1010531564586811453");
 
@@ -59,54 +59,58 @@ module.exports = new Object({
             AddReactions: false
         });
 
-        const openTicket = new EmbedBuilder()
-            .setAuthor({ name: `${message.author.tag}: A TICKET OPENED`, iconURL: message.author.displayAvatarURL({ dynamic: true }) })
-            .setDescription(`Click <#${channel.id}> to see your application ticket`)
-            .setFooter({ text: `this notification message will be deleted in 10 seconds`, iconURL: 'https://i.imgur.com/26tcTpL.gif' })
-            .setColor('2b2d31')
-
-        message.channel.send({ embeds: [openTicket] }).then((msg) => {
-            setTimeout(() => msg.delete().catch((e) => { }), 10000);
-            setTimeout(() => message.delete().catch((e) => { }));
-        }).catch((err) => {
-            throw err;
-        })
+        message.channel.send({ content: `your ticket opened in <#${channel.id}>` }).catch((e) => { })
 
         const mEmbed = new EmbedBuilder()
-            .setAuthor({ name: `${message.author.username}'s ticket`, iconURL: message.author.displayAvatarURL({ dynamic: true }) })
-            .setDescription(`Thank you for your application. The Ancestor will be here as soon as possible! If he still alive out there. Please take your time while waiting`)
-            .setFooter({ text: `note: Don't hesitate to mention him if need now ` })
+            .setAuthor({ name: `${message.author.username}'s ticket ♡`, iconURL: message.author.displayAvatarURL({ dynamic: true }) })
+            .setDescription(`**Thank you for your application.**\nThe Ancestor and the Elders will be here as soon as possible! If they are still alive out there. Please take your time while waiting`)
+            .setFooter({ text: `note: Don't hesitate to mention them if need now ` })
             .setColor('2b2d31')
 
-        const m = await channel.send({ embeds: [mEmbed] }).catch((e) => { });
-
-        try {
-            await m.react("🗂️");
-            await m.react("📛");
-        } catch (err) {
-            channel.send("Error sending emojis").catch((e) => { });
-            throw err;
-        }
-
-        const collector = m.createReactionCollector(
-            (reaction, user) => message.guild.members.cache.find((member) => member.id === user.id).permissions.has("ManageMessages"),
-            { dispose: true }
+        const btnTicket = new ActionRowBuilder()
+        .addComponents(
+            new ButtonBuilder()
+            .setCustomId("btn-ticketmention")
+            .setLabel("Mention Now")
+            .setStyle(ButtonStyle.Success)
+        )
+        .addComponents(
+            new ButtonBuilder()
+            .setCustomId("btn-ticketclose")
+            .setLabel("Close Ticket")
+            .setStyle(ButtonStyle.Danger)
         );
-        collector.on('collect', (reaction, user) => {
-            if (user.bot) return
-            if (user.id !== message.author.id)
-                switch (reaction.emoji.name) {
-                    case "🗂️":
-                        channel.permissionOverwrites.create(message.author, { VIEW_CHANNEL: false }).catch((e) => { });
-                        break;
-                    case "📛":
-                        channel.send({ content: 'Closing ticket in 5 seconds <a:_util_loading:863317596551118858>' }).catch((e) => { });
-                        setTimeout(() => channel.delete().catch((e) => { }), 5000);
-                        break;
-                }
-        })
 
-        await message.delete().catch((e) => { });
+        channel.send({ embeds: [mEmbed], components: [btnTicket] }).catch((e) => { });
+        
+        // const m = await channel.send({ content: `<@${message.author.username}> ||<@&590848319111299093> <@&843523544620335124>||`, embeds: [mEmbed] }).catch((e) => { });
+
+        // try {
+        //     await m.react("🗂️");
+        //     await m.react("📛");
+        // } catch (err) {
+        //     channel.send("Error sending emojis").catch((e) => { });
+        //     throw err;
+        // }
+
+        // const collector = m.createReactionCollector(
+        //     (reaction, user) => message.guild.members.cache.find((member) => member.id === user.id).permissions.has("ManageMessages"),
+        //     { dispose: true }
+        // );
+
+        // collector.on('collect', (reaction, user) => {
+        //     if (user.bot) return
+        //     if (user.id !== message.author.id)
+        //         switch (reaction.emoji.name) {
+        //             case "🗂️":
+        //                 channel.permissionOverwrites.create(message.author, { VIEW_CHANNEL: false }).catch((e) => { });
+        //                 break;
+        //             case "📛":
+        //                 channel.send({ content: 'Closing ticket in 5 seconds <a:_util_loading:863317596551118858>' }).catch((e) => { });
+        //                 setTimeout(() => channel.delete().catch((e) => { }), 5000);
+        //                 break;
+        //         }
+        // })
     }
 });
 
