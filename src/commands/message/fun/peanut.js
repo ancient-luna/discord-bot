@@ -25,7 +25,7 @@ module.exports = new Object({
         let loadingTxt = await message.channel.send(`<:xmot_spray:991166260341637140> *spraying o wo' ooh bo' ooh ...*`);
         let SRCtomato = new AttachmentBuilder("src/assets/react/tomatooo.mp4")
         await loadingTxt.edit({
-            content: "+9999999 peanut destruction of <@946058733954433085> <:xemot_meow_fine_fire:1063723426155606067>",
+            content: "<@946058733954433085> throw peanut and dealt **+9999999 destruction damage** ...",
             files: [SRCtomato]
         }).then((msg) => {
             msg.react('🔥').catch((e) => { });

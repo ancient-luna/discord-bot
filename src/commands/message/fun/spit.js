@@ -1,3 +1,5 @@
+const { AttachmentBuilder } = require("discord.js");
+
 module.exports = new Object({
     name: "spit",
     description: "spit.",
@@ -21,6 +23,7 @@ module.exports = new Object({
      * @param {String[]} args
      */
     async execute(client, message, args) {
+        let IMGpuih = new AttachmentBuilder("src/assets/react/puihh.png")
         let target = message.mentions.members.first();
         if (!target) {
             message.react("💢").catch((e) => { });
@@ -29,7 +32,10 @@ module.exports = new Object({
             });
         }
         await message.react("💢").catch((e) => { });
-        await message.channel.send({ content: `<@259774240687915008> spits on <@${target.user.id}> 💦` }).catch((e) => { });
+        await message.channel.send({
+            content: `***Puih!!*** <@259774240687915008> spits on <@${target.user.id}> 💦`,
+            files: [IMGpuih]
+        }).catch((e) => { });
     }
 });
 
