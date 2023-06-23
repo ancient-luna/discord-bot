@@ -66,7 +66,7 @@ module.exports = new Object({
             message.channel.send({ content: `your ticket opened in <#${channel.id}>` }).catch((e) => { })
 
             const mEmbed = new EmbedBuilder()
-                .setAuthor({ name: `${message.author.username}'s ticket ♡`, iconURL: message.author.displayAvatarURL({ dynamic: true }) })
+                .setAuthor({ name: `✦ ${message.author.username}'s ticket ✦`, iconURL: message.author.displayAvatarURL({ dynamic: true }) })
                 .setDescription(`**Thank you for your application.**\nThe Ancestor and the Elders will be here as soon as possible! If they are still alive out there. Please take your time while waiting`)
                 .setFooter({ text: `note: Don't hesitate to mention them if need now ` })
                 .setColor('2b2d31')
