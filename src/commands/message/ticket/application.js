@@ -11,7 +11,7 @@ module.exports = new Object({
     args: false,
     permissions: {
         client: ['ManageGuild'],
-        user: ['ManageMessages'],
+        user: [],
         dev: false,
     },
     player: { voice: false, active: false, dj: false, },
