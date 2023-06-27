@@ -32,7 +32,7 @@ module.exports = new Object({
         );
 
         const embed = new EmbedBuilder()
-            .setDescription("Need to take a break from the game? **Click on the button to send a vacation letter**")
+            .setDescription("Need to take a break from the game? **Get a vacation now!**")
             .setColor("2b2d31")
 
         await message.channel.send({
