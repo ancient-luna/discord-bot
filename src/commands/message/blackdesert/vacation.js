@@ -1,7 +1,7 @@
 const { ActionRowBuilder, ButtonStyle, ButtonBuilder } = require("discord.js");
 module.exports = new Object({
-    name: "vacation",
-    description: "vacation.",
+    name: "acvvacation",
+    description: "acvvacation.",
     category: "Blackdesert",
     usage: "",
     cooldown: 0,
