@@ -1,6 +1,6 @@
 module.exports = new Object({
-    name: "closeticket",
-    description: "closeticket.",
+    name: "acvcloseticket",
+    description: "acvcloseticket.",
     category: "Ticket",
     usage: "",
     cooldown: 0,

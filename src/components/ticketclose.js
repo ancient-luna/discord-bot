@@ -6,7 +6,7 @@ module.exports = {
   id: "btn-ticketclose",
   permissions: {
     client: [],
-    user: [],
+    user: ['ManageMessages'],
     dev: false,
   },
   /**
@@ -14,9 +14,18 @@ module.exports = {
    * @param {import("discord.js").ButtonInteraction} interaction
    */
   execute: async (client, interaction) => {
-    return interaction.reply({
-        content: `**work still on progress**, call Dae for this :skull:`,
+    if (!interaction.channel.name.includes('ticket')) return interaction.reply({
+      content: `You are not allowed to delete a non-ticket channel`,
+      ephemeral: true
+    }).catch((e) => { });
+
+    interaction.reply({
+        content: `Closing ticket in 5 seconds <a:_util_loading:863317596551118858>`,
         ephemeral: true
     });
+
+    setTimeout(() => {
+      interaction.channel.delete().catch((e) => { });
+    }, 5000);
   },
 };

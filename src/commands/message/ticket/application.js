@@ -94,35 +94,6 @@ module.exports = new Object({
                 throw err;
             });
         }
-        
-        // const m = await channel.send({ content: `<@${message.author.username}> ||<@&590848319111299093> <@&843523544620335124>||`, embeds: [mEmbed] }).catch((e) => { });
-
-        // try {
-        //     await m.react("🗂️");
-        //     await m.react("📛");
-        // } catch (err) {
-        //     channel.send("Error sending emojis").catch((e) => { });
-        //     throw err;
-        // }
-
-        // const collector = m.createReactionCollector(
-        //     (reaction, user) => message.guild.members.cache.find((member) => member.id === user.id).permissions.has("ManageMessages"),
-        //     { dispose: true }
-        // );
-
-        // collector.on('collect', (reaction, user) => {
-        //     if (user.bot) return
-        //     if (user.id !== message.author.id)
-        //         switch (reaction.emoji.name) {
-        //             case "🗂️":
-        //                 channel.permissionOverwrites.create(message.author, { VIEW_CHANNEL: false }).catch((e) => { });
-        //                 break;
-        //             case "📛":
-        //                 channel.send({ content: 'Closing ticket in 5 seconds <a:_util_loading:863317596551118858>' }).catch((e) => { });
-        //                 setTimeout(() => channel.delete().catch((e) => { }), 5000);
-        //                 break;
-        //         }
-        // })
     }
 });
 

@@ -31,7 +31,8 @@ module.exports = new Object({
             .has(PermissionsBitField.resolve(button.permissions.user) || [])
         )
           return await interaction.reply({
-            content: `You don't have \`${button.permissions.user}\` permission to use this button.`,
+            // content: `You don't have \`${button.permissions.user}\` permission to use this button.`,
+            content: `You don't have permission to use this button.`,
             ephemeral: true,
           });
       }
