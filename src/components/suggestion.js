@@ -27,6 +27,7 @@ module.exports = {
         style: TextInputStyle.Paragraph,
         required: true,
         maxLength: 666,
+        placeholder: 'Maybe like.. the ancestor need to stay awake 24/7',
     })
 
     const firstRow = new ActionRowBuilder().addComponents(suggestInput)

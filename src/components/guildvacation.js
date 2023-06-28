@@ -27,6 +27,7 @@ module.exports = {
         style: TextInputStyle.Short,
         required: true,
         maxLength: 2,
+        placeholder: '30',
     })
 
     const reasonInput = new TextInputBuilder({
