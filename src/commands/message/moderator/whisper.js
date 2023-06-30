@@ -1,11 +1,11 @@
-const { EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle } = require("discord.js");
+const { EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle, AttachmentBuilder } = require("discord.js");
 module.exports = new Object({
   name: "whisper",
   description: "whisper.",
   category: "Moderator",
   usage: "",
   cooldown: 0,
-  aliases: [],
+  aliases: ['test'],
   examples: [''],
   sub_commands: [],
   args: false,
@@ -42,12 +42,23 @@ module.exports = new Object({
           .setLabel("Go visit Sanctum")
           .setURL(`https://discord.com/channels/447069790150852609/1060992670035619931`)
       )
+      .addComponents(
+        new ButtonBuilder()
+          .setStyle(ButtonStyle.Link)
+          .setLabel("Apply for Vacation")
+          .setURL(`https://discord.com/channels/447069790150852609/1123093540940029972`)
+      )
+
+    let fileAtch = new AttachmentBuilder("src/assets/thinkingaboutu.mp4")
 
     user.send({
       content: `Dear **Lunar Disciples**,\n\n${str}\n\nWarmest Love,\n**Aevoa**\n⁣`,
       embeds: [txtEmbed],
-      components: [btnServer]
-    }).catch((e) => { });
+      components: [btnServer],
+      files: [fileAtch]
+    }).catch((e) => { return message.reply(`Doesn't allowed to whisper them`) });
+
+    message.react("✉").catch((e) => { });
   }
 });
 
