@@ -1,4 +1,4 @@
-const { EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle } = require("discord.js");
+const { EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle, ChannelType } = require("discord.js");
 const { stripIndent } = require("common-tags");
 
 module.exports = {
@@ -18,6 +18,7 @@ module.exports = {
     const thread = await interaction.channel.threads.create({
         name: `${interaction.member.displayName} Guild Application`,
         autoArchiveDuration: 60,
+        type: ChannelType.PrivateThread,
     }).catch(err => {
         return;
     });
