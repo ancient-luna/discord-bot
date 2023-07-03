@@ -47,6 +47,7 @@ module.exports = {
       )
 
     ThreadSend.send({
+        content: `<@${interaction.user.id}> <@&1076513302970109985> <@&1076513338361643068> <@&1076513211391688735> <@&1076513403364966440> <@&1076513372461334530>`,
         embeds: [embedForm],
         components: [btnTerms]
     }).catch(err => {
