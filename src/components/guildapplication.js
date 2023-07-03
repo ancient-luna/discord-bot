@@ -28,9 +28,9 @@ module.exports = {
 
     const embedForm = new EmbedBuilder()
       .setAuthor({ name: "Ancient Luna Guild Application", iconURL: "https://i.imgur.com/SOCuup9.png" })
-      .setDescription(`- Family name in game\n- Name of your previous guild and why you left\n- Country where you stay\n- Any toxicity behaviors in the guild and outside guild are strongly prohibited. Action will be taken if it happens, are you able to comply with the rules?`)
+      .setDescription(`**Fill the form and post it here:**\n- Family name in game\n- Name of your previous guild and why you left\n- Country where you stay\n- Any toxicity behaviors in the guild and outside guild are strongly prohibited. Action will be taken if it happens, are you able to comply with the rules?`)
       .setColor("2b2d31")
-      .setFooter({ text: "Fill the form and post it here. Hopefully we can be one of the family!" })
+      .setFooter({ text: "Hopefully we can be one of the family!" })
 
     const btnTerms = new ActionRowBuilder()
       .addComponents(
