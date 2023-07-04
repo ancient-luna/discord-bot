@@ -1,5 +1,6 @@
-const { EmbedBuilder } = require('discord.js');
+const { EmbedBuilder, AttachmentBuilder } = require('discord.js');
 const axios = require('axios');
+
 module.exports = new Object({
     name: "lifeadvice",
     description: "lifeadvice.",
@@ -23,23 +24,35 @@ module.exports = new Object({
      * @param {String[]} args
      */
     async execute(client, message, args) {
-        const response = await axios.get('https://api.adviceslip.com/advice');
 
-        let target = message.mentions.members.first();
+        let user = message.mentions.members.first();
+        let tweet = await axios.get('https://api.adviceslip.com/advice');
 
-        var errMessage = { content: "How can I give an advice when theres none. Mention one" };
-        if (!target) {
+        // if (target.bot) return await message.reply({ content: "Well, it is a BOT. You cant track them" })
+
+        if (!user) {
             message.react("❓").catch((e) => { });
-
-            return message.reply(errMessage).then((msg) => {
+            return message.reply({ content: "How can I tweet them. Mention one" }).then((msg) => {
                 setTimeout(() => msg.delete().catch((e) => { }), 5000);
             });
         }
 
-        await message.react("🗒️").catch((e) => { });
+        let avatarUrl = user.displayAvatarURL({ extension: "jpg" }) || 'https://cdn.discordapp.com/attachments/1080219392337522718/1093224716875087892/twitter.png';
+
+        let canvas = `https://some-random-api.com/canvas/tweet?avatar=${avatarUrl}&displayname=${encodeURIComponent(user.displayName)}&username=${encodeURIComponent(user.user.username)}&comment=${encodeURIComponent(tweet.data.slip.advice)}`;
+
+        const tags = ['#advice #livingtoday', '#feelingcool', '#be4lose #getgood #skillissue']
+
         let advice = new EmbedBuilder()
-            .setDescription(`**${target.user.username} might need this advice,**\n${response.data.slip.advice}`)
+            .setAuthor({ name: `${tags[Math.floor(Math.random() * tags.length)]}`, iconURL: 'https://i.imgur.com/yUsOxlz.png' })
             .setColor("2b2d31")
-        await message.reply({ embeds: [advice] }).catch((e) => { });
+            .setImage(canvas)
+
+        // await message.react("<:util_social_twitter:859071787114430475>").catch((e) => { });
+
+        await message.reply({
+            // content: canvas,
+            embeds: [advice]
+        })
     }
 });
