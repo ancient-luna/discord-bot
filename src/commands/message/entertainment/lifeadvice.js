@@ -45,7 +45,7 @@ module.exports = new Object({
 
         let advice = new EmbedBuilder()
             .setAuthor({ name: `${tags[Math.floor(Math.random() * tags.length)]}`, iconURL: 'https://i.imgur.com/yUsOxlz.png' })
-            .setColor("2b2d31")
+            .setColor("1da1f2")
             .setImage(canvas)
 
         // await message.react("<:util_social_twitter:859071787114430475>").catch((e) => { });
