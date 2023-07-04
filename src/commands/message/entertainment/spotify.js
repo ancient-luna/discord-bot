@@ -41,7 +41,7 @@ module.exports = new Object({
         else if (target.presence.activities.length > 1) status = target.presence.activities[1];
 
         if (target.presence.activities.length === 0 || status.name !== "Spotify" && status.type !== "LISTENING") {
-            return await message.reply({ content: `${target.user.username} is not listening spotify` })
+            return await message.reply({ content: `${target.displayName} is not listening spotify` })
         }
 
         if (status !== null && status.name === "Spotify" && status.assets !== null) {
