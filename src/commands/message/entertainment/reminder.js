@@ -31,7 +31,7 @@ module.exports = new Object({
         let embedReminder = new EmbedBuilder()
             .setAuthor({ name: `${message.author.displayName}'s Reminder`, iconURL: message.author.displayAvatarURL() })
             .setDescription(`*" ${args.slice(1).join(" ")} "*`)
-            .setColor('#2b2d31')
+            .setColor('#1da1f2')
             .setFooter({ text: `Reminder was set for ${args[0]}` })
 
         setTimeout(async () => {
