@@ -17,7 +17,7 @@ module.exports = {
     
     const addLDrule = new EmbedBuilder()
     .setAuthor({ name: "Ancient Luna Guild Terms", iconURL: "https://i.imgur.com/SOCuup9.png" })
-    .setDescription("Welcome to the sanctuary of lights\nA home for the light seekers!")
+    .setDescription("A home for the light seekers!\n우리는 마치 달을 만난 것처럼 달렸다")
     .addFields(
         { name: `**Street Fight / PVP**`, value: `<:_1:1075437107704778943> Killing is OK __**only** in arsha__\n<:_2:1075437110183604355> Avoid bad manner and dont ever trash talking in any servers\n<:_3:1075437114721837157> For spots \`normal server\` can kill **but** ask for DFS first \`arsha server\` free kill\n<:_4:1075437119050354770> Any toxicity behaviors in the guild and outside guild are strongly prohibited.  Action will be taken if it happens.`, inline: false },
         { name: `**Guild Quests**`, value: `<:_1:1075437107704778943> Guild Quests only can be taken for (Large) size only\n<:_2:1075437110183604355> SMH and Combat GQs can be taken around time 00.00 - 00.00 GMT+8\n<:_3:1075437114721837157> Life GQs can be taken around time 19.00 - 00.00 GMT+8`, inline: false },
