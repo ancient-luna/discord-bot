@@ -43,7 +43,7 @@ module.exports = {
         style: TextInputStyle.Paragraph,
         required: true,
         maxLength: 666,
-        placeholder: 'Previous guild and reason of leaving',
+        placeholder: 'Previous guild name and reason of leaving',
     })
 
     const expectGuild = new TextInputBuilder({
