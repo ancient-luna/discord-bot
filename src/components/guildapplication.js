@@ -28,7 +28,7 @@ module.exports = {
 
     const embedForm = new EmbedBuilder()
       .setAuthor({ name: "Ancient Luna Guild Application", iconURL: "https://i.imgur.com/SOCuup9.png" })
-      .setDescription(`Welcome to the sanctuary of lights\n**To apply for guild, please answer these questions and post it here:**\n- Family name in game\n- Name of your previous guild and why you left\n- Your expectation from Ancient Luna guild (your needed)\n- Country where you stay\n- Are you able to comply with the guild rules?`)
+      .setDescription(`Welcome to the sanctuary of lights\n**To apply for guild, please fill the form by clicking the button below **\n- Family name in game\n- Name of your previous guild and why you left\n- Your expectation from Ancient Luna guild (your needed)\n- Country where you stay\n- Are you able to comply with the guild rules?`)
       .setColor("2b2d31")
       .setFooter({ text: "Hopefully we can be one of the family!" })
 
@@ -38,6 +38,12 @@ module.exports = {
           .setCustomId("btn-guildterms")
           .setLabel("Read Guild Terms")
           .setStyle(ButtonStyle.Primary)
+      )
+      .addComponents(
+        new ButtonBuilder()
+          .setCustomId("btn-guildform")
+          .setLabel("Fill Form")
+          .setStyle(ButtonStyle.Success)
       )
       .addComponents(
         new ButtonBuilder()
