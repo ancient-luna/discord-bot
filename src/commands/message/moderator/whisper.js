@@ -49,7 +49,7 @@ module.exports = new Object({
           .setURL(`https://discord.com/channels/447069790150852609/1123093540940029972`)
       )
 
-    let fileAtch = new AttachmentBuilder("src/assets/thinkingaboutu.mp4")
+    let fileAtch = new AttachmentBuilder("src/assets/al40mins.mp4")
 
     user.send({
       content: `Dear **Lunar Disciples**,\n\n${str}\n\nWarmest Love,\n**Aevoa**\n⁣`,
