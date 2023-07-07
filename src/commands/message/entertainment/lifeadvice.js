@@ -39,7 +39,7 @@ module.exports = new Object({
 
         let avatarUrl = user.displayAvatarURL({ extension: "jpg" }) || 'https://cdn.discordapp.com/attachments/1080219392337522718/1093224716875087892/twitter.png';
 
-        let canvas = `https://some-random-api.com/canvas/tweet?avatar=${avatarUrl}&displayname=${encodeURIComponent(user.displayName)}&username=${encodeURIComponent(user.user.username)}&comment=${encodeURIComponent(tweet.data.slip.advice)}`;
+        let canvas = `https://some-random-api.com/canvas/tweet?avatar=${avatarUrl}&displayname=${encodeURIComponent(user.displayName)}&username=${encodeURIComponent(user.user.username)}&comment=${encodeURIComponent(tweet.data.slip.advice)}&replies=${Math.floor(Math.random() * 333)}&retweets=${Math.floor(Math.random() * 666)}`;
 
         const tags = ['#advice #livingtoday', '#feelingcool', '#be4lose #getgood #skillissue']
 
