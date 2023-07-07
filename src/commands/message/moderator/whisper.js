@@ -31,7 +31,7 @@ module.exports = new Object({
     const str = args.slice(1).join(" ");
 
     const txtEmbed = new EmbedBuilder()
-      .setDescription(`\`\`\`Dev. Contacts\`\`\`\nDiscord: imsoondae\nEmail: daeva@ancientluna.org\nInstagram: [@imsoondae_](https://instagram.com/imsoondae_)`)
+      .setDescription(`\`\`\`Dev. Contacts\`\`\`\nDiscord: xoda.e\nEmail: daeva@ancientluna.org\nInstagram: [@imsoondae_](https://instagram.com/imsoondae_)`)
       .setFooter({ text: `this bot won't read any messages of your replies` })
       .setColor("2b2d31")
 
