@@ -60,6 +60,7 @@ class BotClient extends Client {
     this.Commands = new Collection();
     this.slashCommands = new Collection();
     this.prefix = process.env.COMMAND_PREFIX;
+    this.googleAPI = process.env.GOOGLE_API;
     this.color = this.config.color;
     this.ButtonInt = new Collection();
     this.Cooldown = new Collection();
