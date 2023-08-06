@@ -52,7 +52,7 @@ module.exports = new Object({
     let fileAtch = new AttachmentBuilder("src/assets/spooderman.mp4")
 
     user.send({
-      content: `# Happy Monday dear Lunars\nHab you enhanced something good today?\n**Yesnt**\n_ _`,
+      content: `# Happy Monday dear Lunars\nHab you enhanced something good today?\n_ _`,
       // content: `Dear **Lunar Disciples**,\n\n${str}\n\nWarmest Love,\n**Aevoa**\n⁣`,
       // embeds: [txtEmbed],
       components: [btnServer],
