@@ -28,7 +28,7 @@ module.exports = new Object({
       message.mentions.users.first() ||
       message.guild.members.cache.get(args[0]).user;
 
-    const str = args.slice(1).join(" ");
+    // const str = args.slice(1).join(" ");
 
     const txtEmbed = new EmbedBuilder()
       .setDescription(`\`\`\`Dev. Contacts\`\`\`\nDiscord: xoda.e\nEmail: daeva@ancientluna.org\nInstagram: [@imsoondae_](https://instagram.com/imsoondae_)`)
@@ -49,11 +49,12 @@ module.exports = new Object({
           .setURL(`https://discord.com/channels/447069790150852609/1123093540940029972`)
       )
 
-    let fileAtch = new AttachmentBuilder("src/assets/al40mins.mp4")
+    let fileAtch = new AttachmentBuilder("src/assets/spooderman.mp4")
 
     user.send({
-      content: `Dear **Lunar Disciples**,\n\n${str}\n\nWarmest Love,\n**Aevoa**\n⁣`,
-      embeds: [txtEmbed],
+      content: `# Happy Monday dear Lunars\nHab you enhanced something good today?\n**Yesnt**\n_ _`,
+      // content: `Dear **Lunar Disciples**,\n\n${str}\n\nWarmest Love,\n**Aevoa**\n⁣`,
+      // embeds: [txtEmbed],
       components: [btnServer],
       files: [fileAtch]
     }).catch((e) => { return message.reply(`Doesn't allowed to whisper them`) });
