@@ -28,6 +28,18 @@ module.exports = new Object({
                 content: `Welcome to the hidden secrets of the ancient civilizations ${reaction.message.guild.members.cache.get(user.id)} ,\nA journey to seek the true face of the <#1049815440198733895> around the Black Desert awaits you!`
             })
         }
+        if (reaction.emoji.name === 'game_logo_palia') {
+            const threadPalia = reaction.message.guild.channels.cache.get(client.config.paliaThreadId);
+            const welcomePalia = [
+                `Welcome to lunars village ${reaction.message.guild.members.cache.get(user.id)} ! Where are the palian elders gather!`,
+                `Hi ${reaction.message.guild.members.cache.get(user.id)} ! We are finally in the same village!`,
+                `Hmm.. your name is ${reaction.message.guild.members.cache.get(user.id)} right? It feels like i have seen you somewhere`,
+                `It could not be! It could not be you- You! You are the known-well ${reaction.message.guild.members.cache.get(user.id)} visit this village!`
+            ]
+            threadPalia.send({
+                content: `${welcomePalia[Math.floor(Math.random() * welcomePalia.length)]}`
+            })
+        }
     } else if (reaction.message.channel.id === '1049815440198733895') {
             if (reaction.emoji.name === 'xx_bdo_warhero') {
                 const channelArtifact = reaction.message.guild.channels.cache.get(client.config.artifactChannel);
