@@ -31,10 +31,10 @@ module.exports = new Object({
         if (reaction.emoji.name === 'game_logo_palia') {
             const threadPalia = reaction.message.guild.channels.cache.get(client.config.paliaThreadId);
             const welcomePalia = [
-                `Welcome to lunars village ${reaction.message.guild.members.cache.get(user.id)} ! Where are the palian elders gather!`,
-                `Hi ${reaction.message.guild.members.cache.get(user.id)} ! We are finally in the same village!`,
-                `Hmm.. your name is ${reaction.message.guild.members.cache.get(user.id)} right? It feels like i have seen you somewhere`,
-                `It could not be! It could not be you- You! You are the known-well ${reaction.message.guild.members.cache.get(user.id)} visit this village!`
+                `Welcome to lunars village ${reaction.message.guild.members.cache.get(user.id)} ! Where are the palian elders gather! ♡`,
+                `Hi ${reaction.message.guild.members.cache.get(user.id)} ! We are finally in the same village! ♡`,
+                `Hmm.. your name is ${reaction.message.guild.members.cache.get(user.id)} right? It feels like i have seen you somewhere ♡`,
+                `It could not be! It could not be you- You! You are the known-well ${reaction.message.guild.members.cache.get(user.id)} visit this village! ♡`
             ]
             threadPalia.send({
                 content: `${welcomePalia[Math.floor(Math.random() * welcomePalia.length)]}`
