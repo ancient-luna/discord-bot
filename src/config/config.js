@@ -8,7 +8,7 @@ module.exports = {
     bdoChannelId: "1049228301807407156",
     paliaThreadId: "1138989257378246656",
     stickyChannel: "1090915653575258123",
-    aiChatChannel: "1104747792947236934",
+    aiChatChannel: "1142344320708530306",
     artifactChannel: "1050004761631531038",
     generalChannel: "452842830776369152",
     gatewayChannel: "839417251470901279",
