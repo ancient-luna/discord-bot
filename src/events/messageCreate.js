@@ -102,6 +102,46 @@ module.exports = new Object({
         }
     };
 
+    // Chat AI
+    if (client.config.aiChatChannel.includes(message.channel.id)) {
+      const axios = require('axios');
+      // if (message.channel.type === ChannelType.DM) {
+        if (message.author.bot) return;
+        await message.channel.sendTyping();
+
+        let inputChat = {
+          method: 'GET',
+          url: 'https://google-bard1.p.rapidapi.com/',
+          headers: {
+            text: message.content,
+            'X-RapidAPI-Key': process.env.X_RAPID_API,
+            'X-RapidAPI-Host': 'google-bard1.p.rapidapi.com'
+          }
+        };
+        
+        try {
+          const outputChat = await axios.request(inputChat);
+          const responseChat = outputChat.data.response;
+          if (responseChat.length > 2000) {
+            const chunks = responseChat.match(/.{1,2000}/g);
+            for (let i=0; i < chunks.length; i++) {
+              await message.channel.send(chunks[i]).catch(err => {
+                console.log(err);
+                message.channel.send("I am having a hard time to feeling that request! Im an only living wisdom on Discord\n**I don't have time to process long requests**").catch(err => {});
+              });
+            }
+          } else {
+            await message.channel.send(responseChat).catch(err => {
+              console.log(err);
+              message.channel.send("I am having a hard time to feeling that request! Im an only living wisdom on Discord\n**I don't have time to process long requests**").catch(err => {});
+            });
+          }
+        } catch (e) {
+          console.log(e);
+          message.channel.send("I am having a hard time to feeling that request! Im an only living wisdom on Discord\n**I don't have time to process long requests**").catch(err => {});
+        }
+    }
+
     const prefix = process.env.COMMAND_PREFIX;
 
     const mention = new RegExp(`^<@!?${client.user.id}>( |)$`);
