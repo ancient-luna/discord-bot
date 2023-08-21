@@ -38,21 +38,21 @@ module.exports = new Object({
             }
         }
 
-        // const inputMP4 = {
-        //     method: 'GET',
-        //     url: 'https://youtube-video-download-info.p.rapidapi.com/dl',
-        //     params: {id: vidID},
-        //     headers: {
-        //         'X-RapidAPI-Key': process.env.X_RAPID_API,
-        //         'X-RapidAPI-Host': 'youtube-video-download-info.p.rapidapi.com'
-        //     }
-        // }
+        const inputMP4 = {
+            method: 'GET',
+            url: 'https://youtube-video-download-info.p.rapidapi.com/dl',
+            params: {id: vidID},
+            headers: {
+                'X-RapidAPI-Key': process.env.X_RAPID_API,
+                'X-RapidAPI-Host': 'youtube-video-download-info.p.rapidapi.com'
+            }
+        }
 
         try {
             const responseMP3 = await axios.request(inputMP3);
 
-            // const output = await axios.request(inputMP4)
-            // const responseMP4 = output.data.link[22]; 
+            const output = await axios.request(inputMP4)
+            const responseMP4 = output.data.link[22]; 
 
             const button = new ActionRowBuilder()
             .addComponents(
@@ -61,16 +61,16 @@ module.exports = new Object({
                 .setStyle(ButtonStyle.Link)
                 .setURL(responseMP3.data.link)
             )
-            // .addComponents(
-            //     new ButtonBuilder()
-            //     .setLabel('Download MP4')
-            //     .setStyle(ButtonStyle.Link)
-            //     .setURL(responseMP4[0])
-            // )
+            .addComponents(
+                new ButtonBuilder()
+                .setLabel('Download MP4')
+                .setStyle(ButtonStyle.Link)
+                .setURL(responseMP4[0])
+            )
 
             const embed = new EmbedBuilder()
                 .setColor('2b2d31')
-                .setDescription(`Click on button below to download the converted **${responseMP3.data.title}** video`)
+                .setDescription(`Click on button below to download the converted **${output.data.title}** video`)
 
             await loading.edit({
                 content: '⁣',
@@ -78,6 +78,7 @@ module.exports = new Object({
                 components:[button]
             })
         } catch (e) {
+            console.log (e);
             await loading.edit({ content: `The video ID does not exist!\n** Go to YouTube link, and copy the ID after the = or the /**` });
         }
     }
