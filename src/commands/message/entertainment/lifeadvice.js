@@ -44,8 +44,8 @@ module.exports = new Object({
         const tags = ['#advice #livingtoday', '#feelingcool', '#be4lose #getgood #skillissue']
 
         let advice = new EmbedBuilder()
-            .setAuthor({ name: `${tags[Math.floor(Math.random() * tags.length)]}`, iconURL: 'https://i.imgur.com/yUsOxlz.png' })
-            .setColor("1da1f2")
+            .setAuthor({ name: `${tags[Math.floor(Math.random() * tags.length)]}`, iconURL: 'https://i.imgur.com/nF8zpsB.png' })
+            .setColor("b8b9bd")
             .setImage(canvas)
 
         // await message.react("<:util_social_twitter:859071787114430475>").catch((e) => { });
