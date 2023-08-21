@@ -125,9 +125,9 @@ module.exports = new Object({
           if (responseChat.length > 2000) {
             const chunks = responseChat.match(/.{1,2000}/g);
             const confusedAI = [
-              "I am having a hard time to filling that request! Im an only living wisdom on Discord\n**I don't have time to process long requests \`Only 2000 max. per-reply\`**",
-              "Uh.... **Dae?** Are you here? I failed to answer their question.. I'm afraid..",
-              "Err- Error- Im having Error- **Unable to answer for moment** Beep- bee- please tell Him to fix m- me-"
+              "I am having a hard time to filling that request! Im an only living wisdom on Discord\n**I don't have time to process long requests** \`Only 2000 max. per-reply\` <:vcon_warning:992917967660654663>",
+              "<:vcon_warning:992917967660654663> Uh.... **Dae?** Are you here? I failed to answer their question.. I'm afraid..",
+              "Err- Error- Im having Error- <:vcon_warning:992917967660654663>\n**Unable to answer for moment** Beep- bee- please tell Him to fix m- me-"
             ]
             for (let i=0; i < chunks.length; i++) {
               await message.channel.send(chunks[i]).catch(err => {
