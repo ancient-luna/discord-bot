@@ -86,7 +86,7 @@ module.exports = {
             const termsAgreement = modalInteraction.fields.getTextInputValue('termsAgreement');
 
             const embedForm = new EmbedBuilder()
-                .setAuthor({ name: "Guild Application Form" })
+                .setAuthor({ name: `${interaction.member.displayName}'s Guild Application Form`, iconURL: "https://i.imgur.com/Kll2T98.png" })
                 .addFields(
                     { name: `Family Name`, value: `\`\`\`${famName}\`\`\``, inline: true },
                     { name: `Country`, value: `\`\`\`${countryLoct}\`\`\``, inline: true },
@@ -95,7 +95,6 @@ module.exports = {
                     { name: `Guild Expectation`, value: `> ${expectGuild}`, inline: false },
                 )
                 .setColor('2b2d31')
-                .setTimestamp()
             modalInteraction.reply({ embeds: [embedForm] })
         })
         .catch((e)=> { console.log(e) })
