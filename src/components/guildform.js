@@ -95,7 +95,7 @@ module.exports = {
                     { name: `Guild Expectation`, value: `> ${expectGuild}`, inline: false },
                 )
                 .setColor('2b2d31')
-                .setTimestamp()
+                // .setTimestamp()
             modalInteraction.reply({ embeds: [embedForm] })
         })
         .catch((e)=> { console.log(e) })
