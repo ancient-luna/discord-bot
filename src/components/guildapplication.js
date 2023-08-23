@@ -28,7 +28,7 @@ module.exports = {
 
     const embedForm = new EmbedBuilder()
       .setAuthor({ name: "Ancient Luna Guild Application", iconURL: "https://i.imgur.com/SOCuup9.png" })
-      .setDescription(`Welcome to the sanctuary of lights\nDon't hesitate to ask if there is any questions regarding the guild <:ancientluna_divinare_s:859034096192978965>\n**To apply for guild, please fill the form by clicking the button below**`)
+      .setDescription(`Welcome to the sanctuary of lights\n**To apply for guild, please fill the form by clicking the button below**\nDon't hesitate to ask if there is any questions regarding the guild <:ancientluna_divinare_s:859034096192978965>`)
       .setColor("2b2d31")
       .setFooter({ text: "Hopefully we can be one of the family!" })
 
