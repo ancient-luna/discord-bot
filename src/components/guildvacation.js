@@ -61,7 +61,10 @@ module.exports = {
                 .setColor('2b2d31')
                 .setThumbnail('https://i.imgur.com/Zx4kMoA.png')
             modalInteraction.guild.channels.cache.get('1076767724224659526').send({ embeds: [absenceNote] })
-            modalInteraction.reply(`*The vacation letter has been delivered to the Elders, dear* ***${interaction.member.displayName}***\n*All your privacy will be kept safe under them*`)
+            modalInteraction.reply({
+              content: `*The vacation letter has been delivered to the Elders, dear* ***${interaction.member.displayName}***\n*All your privacy will be kept safe under them*`,
+              ephemeral: true
+            })
         })
         .catch((e)=> { console.log(e) })
   },
