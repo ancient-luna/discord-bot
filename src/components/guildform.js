@@ -77,7 +77,7 @@ module.exports = {
     const filter = (interaction) => interaction.customId === `gForm-${interaction.user.id}`;
 
     interaction
-        .awaitModalSubmit({ filter, time: 180_000 })
+        .awaitModalSubmit({ filter, time: 300_000 })
         .then((modalInteraction) => {
             const famName = modalInteraction.fields.getTextInputValue('famName');
             const countryLoct = modalInteraction.fields.getTextInputValue('countryLoct');
