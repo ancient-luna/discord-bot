@@ -34,13 +34,14 @@ module.exports = new Object({
                 { name: `Help (Mention)`, value: `${cB}@AncientLuna${cB}`, inline: true },
             )
             .setColor("2b2d31")
+            .setImage("https://i.imgur.com/c8QnpbX.gif")
 
         let serverButton = new ActionRowBuilder()
             .addComponents(
                 new ButtonBuilder()
                 .setCustomId("btn-helpcmd")
                 .setLabel("Commands")
-                .setStyle(ButtonStyle.Success)
+                .setStyle(ButtonStyle.Primary)
             )
             .addComponents(
                 new ButtonBuilder()
