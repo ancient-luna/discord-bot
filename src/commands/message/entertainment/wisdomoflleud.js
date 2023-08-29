@@ -27,7 +27,7 @@ module.exports = new Object({
 
         const descGeneral = new EmbedBuilder()
             .setTitle(`About Ancient Luna Bot`)
-            .setDescription(`우리는 마치 달을 만난 것처럼 달렸다\nI'm a relic that born by [@imsoondae](https://www.instagram.com/imsoondae_/) to seek wisdom\nBlessed by [@biglebomb](https://discordapp.com/users/306545868054593537) to be alive while until now`)
+            .setDescription(`우리는 마치 달을 만난 것처럼 달렸다\nI'm a relic that born by [@imsoondae](https://www.instagram.com/everylttlething/) to seek wisdom\nBlessed by [@biglebomb](https://discordapp.com/users/306545868054593537) to be alive while until now`)
             .addFields(
                 { name: `Prefix`, value: `${cB}!${cB}`, inline: true },
                 { name: `Help (Prefix)`, value: `${cB}!help${cB}`, inline: true },
