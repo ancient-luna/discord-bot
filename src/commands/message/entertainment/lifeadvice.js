@@ -42,7 +42,7 @@ module.exports = new Object({
         let canvas = `https://some-random-api.com/canvas/tweet?avatar=${avatarUrl}&displayname=${encodeURIComponent(user.displayName)}&username=${encodeURIComponent(user.user.username)}&comment=${encodeURIComponent(tweet.data.slip.advice)}&replies=${Math.floor(Math.random() * 333)}&retweets=${Math.floor(Math.random() * 666)}`;
 
         let advice = new EmbedBuilder()
-            .setAuthor({ name: `𝔸𝕕𝕧𝕚𝕔𝕖`, iconURL: 'https://i.imgur.com/nF8zpsB.png' })
+            .setAuthor({ name: `𝔸𝕕𝕧𝕚𝕔𝕖 𝕠𝕗 𝕃𝕚𝕗𝕖`, iconURL: 'https://i.imgur.com/nF8zpsB.png' })
             .setColor("b8b9bd")
             .setImage(canvas)
 
