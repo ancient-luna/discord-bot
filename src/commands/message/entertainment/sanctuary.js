@@ -75,7 +75,7 @@ module.exports = new Object({
             )
             .setColor('2b2d31')
             .setTimestamp()
-            .setFooter({ text: `Requested by ${client.user.username}` })
+            .setFooter({ text: `Requested by ${message.member.displayName}` })
 
         await message.reply({ embeds: [serverInfo] });
 
