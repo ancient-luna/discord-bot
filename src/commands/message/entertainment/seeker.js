@@ -6,7 +6,7 @@ module.exports = new Object({
     category: "Entertainment",
     cooldown: 0,
     usage: "",
-    aliases: ['profile'],
+    aliases: ['test'],
     examples: [''],
     sub_commands: [],
     args: false,
@@ -29,6 +29,13 @@ module.exports = new Object({
         try {
             const member = message.mentions.members.first();
             const fetchedMembers = await message.guild.members.fetch();
+
+            if (!member) {
+                message.react("❓").catch((e) => { });
+                return loadingTxt.edit({ content: "Unable to find the member profile. Mention one" }).then((msg) => {
+                    setTimeout(() => msg.delete().catch((e) => { }), 5000);
+                });
+            }
         
             const profileBuffer = await profileImage(member.id);
             const imageAttachment = new AttachmentBuilder(profileBuffer, { name: 'profile.png' });
