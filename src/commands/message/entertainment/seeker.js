@@ -48,7 +48,7 @@ module.exports = new Object({
             const joinTime = parseInt(member.joinedTimestamp / 1000);
             const createdTime = parseInt(member.user.createdTimestamp / 1000);
         
-            // const Booster = member.premiumSince ? "<:discordboost:1136752072369377410>" : "✖";
+            const Booster = member.premiumSince ? "<a:_ab_discord_boost_spin:965778537334312970> active" : "none";
         
             const avatarButton = new ButtonBuilder()
                 .setLabel('Avatar')
@@ -71,12 +71,13 @@ module.exports = new Object({
                 .addFields([
                     { name: "Account Created", value: `<t:${createdTime}:R>`, inline: true },
                     { name: "Joined Since", value: `<t:${joinTime}:R>`, inline: true },
-                    { name: "User ID", value: `${member.id}`, inline: true },
+                    // { name: "User ID", value: `${member.id}`, inline: true },
                     // { name: "Badges", value: `${addBadges(userBadges).join("")}`, inline: true },
-                    // { name: "Booster", value: `${Booster}`, inline: true },
+                    { name: "Booster", value: `${Booster}`, inline: true },
                     { name: `Roles in ${message.guild.name}`, value: `${topRoles.join(" ").replace(`<@${message.guildId}>`)}`, inline: false },
                 ])
                 .setColor('2b2d31')
+                .setFooter({ text: `ID: ${member.id}` })
         
             loadingTxt.edit({ content: '⁣', embeds: [Embed], components: [row], files: [imageAttachment] });
         
