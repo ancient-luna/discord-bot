@@ -6,7 +6,7 @@ module.exports = new Object({
     category: "Entertainment",
     cooldown: 0,
     usage: "",
-    aliases: ['test'],
+    aliases: ['profile'],
     examples: [''],
     sub_commands: [],
     args: false,
