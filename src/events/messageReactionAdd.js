@@ -24,8 +24,22 @@ module.exports = new Object({
     if (reaction.message.channel.id === '864556584818835456') {
         if (reaction.emoji.name === 'game_logo_bdo') {
             const channelCity = reaction.message.guild.channels.cache.get(client.config.bdoChannelId);
+            const civilizationsButton = new ActionRowBuilder()
+                .addComponents(
+                    new ButtonBuilder()
+                        .setStyle(ButtonStyle.Link)
+                        .setLabel("Get more roles here")
+                        .setURL("https://discord.com/channels/447069790150852609/864556584818835456")
+                )
+                .addComponents(
+                    new ButtonBuilder()
+                        .setStyle(ButtonStyle.Link)
+                        .setLabel("Apply for Guild")
+                        .setURL("https://discord.com/channels/447069790150852609/864556584818835456")
+                )
             channelCity.send({
-                content: `Welcome to the hidden secrets of the ancient civilizations ${reaction.message.guild.members.cache.get(user.id)} ,\nA journey to seek the true face of the <#1049815440198733895> around the Black Desert awaits you!`
+                content: `Welcome to the hidden secrets of the ancient civilizations ${reaction.message.guild.members.cache.get(user.id)} ,\nA journey to seek the true face of the <#1049815440198733895> around the Black Desert awaits you!`,
+                components: [civilizationsButton]
             })
         }
         if (reaction.emoji.name === 'game_logo_palia') {
