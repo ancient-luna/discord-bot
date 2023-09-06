@@ -27,6 +27,15 @@ module.exports = new Object({
     });
     app.listen(8080);
 
+    // Deploying slash command
+    const getCommands = client.slashCommands.map((x) => x); try {
+      await client.application.commands.set(getCommands);
+      client.console.log(`Loaded ${getCommands.length} Slash Commands!`, "cmd")
+    } catch (err) {
+      client.console.log(err, "error");
+    }
+
+
     // let token = process.env.TOKEN;
     // const rest = new REST({ version: "10" }).setToken(token);
     // const slashCommands = [];

@@ -130,6 +130,7 @@ class BotClient extends Client {
     require("../scripts/Events")(this);
     require("../scripts/Message")(this);
     require("../scripts/Button")(this);
+    require("../scripts/slashCommand")(this);
   }
 }
 
