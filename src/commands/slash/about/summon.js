@@ -15,7 +15,7 @@ module.exports = {
     run: async (client, interaction) => {
         interaction.reply({
             content: `𝕀𝕞 𝕥𝕠𝕥𝕒𝕝𝕝𝕪 ℍ𝕚𝕤 𝕥𝕠 𝕥𝕒𝕞𝕖`, 
-            // ephemeral: true,
+            ephemeral: true,
         });
     },
 };
