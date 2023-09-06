@@ -9,7 +9,7 @@ module.exports = new Object({
    */
 
   async execute(client, interaction) {
-    if (interaction.isChatInputCommand() || interaction.isCommand() || interaction.isContextMenu()) {
+    if (interaction.isChatInputCommand() || interaction.isCommand()) {
       if (!interaction.guild) {
         return interaction.reply({ content: 'This command can only be run within a guild/server!', ephemeral: true }); // kalo bukan di guild
       }
