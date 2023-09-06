@@ -3,9 +3,9 @@ const moment = require('moment');
 require("moment-duration-format");
 
 module.exports = {
-	name: 'template',
-	description: 'Cuma template',
-	dir: 'template',
+	name: 'unknown',
+	description: 'it does nothing.',
+	dir: 'unknown',
     permissions: ['ADMINISTRATOR'],
 	cooldown: 5,
 	options: [
