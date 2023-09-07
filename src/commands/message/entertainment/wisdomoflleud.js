@@ -55,6 +55,12 @@ module.exports = new Object({
                     .setLabel('Support')
                     .setURL('https://ko-fi.com/daekid')
             )
+            .addComponents(
+                new ButtonBuilder()
+                .setStyle(ButtonStyle.Link)
+                .setLabel('YouTube')
+                .setURL('https://www.youtube.com/@ancientluna')
+            )
 
         message.reply({
             embeds: [descGeneral],
