@@ -47,11 +47,11 @@ module.exports = {
                 .setAuthor({ name: `${interaction.member.displayName}` })
                 .setDescription(`${suggestValue}`)
                 .setColor('4f545c')
-            modalInteraction.reply({ content: `Suggestion sent to <#842069893113446410>`, ephemeral: true }).catch((e) => { });
             modalInteraction.guild.channels.cache.get('842069893113446410').send({ embeds: [suggestNote] }).then((msg) => {
                 msg.react('<:vcon_vote_upvote:859075141051613214>')
                 msg.react('<:vcon_vote_disagree:859075141668700200>')
               }).catch((e) => { });
+            modalInteraction.reply({ content: `Suggestion sent to <#842069893113446410>`, ephemeral: true }).catch((e) => { });
         })
         .catch((e)=> { console.log(e) })
   },

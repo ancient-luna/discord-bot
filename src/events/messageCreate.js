@@ -57,7 +57,7 @@ module.exports = new Object({
           components: [welcomeButton],
         });
       }
-      await message.delete();
+      if (!message.author.bot) await message.delete().catch((e) => { });;
     }
 
     if (

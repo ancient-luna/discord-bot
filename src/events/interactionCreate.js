@@ -53,7 +53,7 @@ module.exports = new Object({
         }
 
         await command.run(client, interaction);
-        console.log("test interaction slash");
+        // console.log("test interaction slash");
       } catch (err) {
         client.console.log(err, "error");
         await interaction.reply({ content: 'An error has occured', ephemeral: true });
