@@ -63,7 +63,9 @@ module.exports = new Object({
                 AddReactions: false
             });
 
-            message.channel.send({ content: `your ticket opened in <#${channel.id}>` }).catch((e) => { })
+            message.channel.send({ content: `<a:_util_loading:863317596551118858> your ticket opened in <#${channel.id}>` }).then((msg) => {
+                setTimeout(() => msg.delete().catch((e) => { }), 5000);
+            });
 
             const mEmbed = new EmbedBuilder()
                 .setAuthor({ name: `✦ ${message.author.username}'s ticket ✦`, iconURL: message.author.displayAvatarURL({ dynamic: true }) })
