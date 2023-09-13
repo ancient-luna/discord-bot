@@ -29,7 +29,7 @@ module.exports = {
 		  },
 		],
     });
-    
-	await interaction.reply({ content: 'Channel is now locked.' });
+
+	await interaction.reply({ content: ':file_folder: ticket has been **archived**' });
   },
 };

@@ -64,7 +64,7 @@ module.exports = {
     .addComponents(
         new ButtonBuilder()
         .setCustomId("btn-ticketlock")
-        .setLabel("Lock Ticket")
+        .setLabel("Archive Ticket")
         .setStyle(ButtonStyle.Primary)
     )
     .addComponents(
