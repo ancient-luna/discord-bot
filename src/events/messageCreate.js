@@ -102,51 +102,51 @@ module.exports = new Object({
         }
     };
 
-    // Chat AI
-    if (client.config.aiChatChannel.includes(message.channel.id)) {
-      const axios = require('axios');
-      // if (message.channel.type === ChannelType.DM) {
-        if (message.author.bot) return;
-        await message.channel.sendTyping();
+    // // Chat AI
+    // if (client.config.aiChatChannel.includes(message.channel.id)) {
+    //   const axios = require('axios');
+    //   // if (message.channel.type === ChannelType.DM) {
+    //     if (message.author.bot) return;
+    //     await message.channel.sendTyping();
 
-        let inputChat = {
-          method: 'GET',
-          url: 'https://google-bard1.p.rapidapi.com/',
-          headers: {
-            text: message.content,
-            'X-RapidAPI-Key': process.env.X_RAPID_API,
-            'X-RapidAPI-Host': 'google-bard1.p.rapidapi.com'
-          }
-        };
+    //     let inputChat = {
+    //       method: 'GET',
+    //       url: 'https://google-bard1.p.rapidapi.com/',
+    //       headers: {
+    //         text: message.content,
+    //         'X-RapidAPI-Key': process.env.X_RAPID_API,
+    //         'X-RapidAPI-Host': 'google-bard1.p.rapidapi.com'
+    //       }
+    //     };
         
-        const confusedAI = [
-          "I am having a hard time to filling that request! Im an only living wisdom on Discord\n**I don't have time to process long requests** \`Only 2000 max. per-reply\` <:vcon_warning:992917967660654663>",
-          "<:vcon_warning:992917967660654663> Uh.... **Dae?** Are you here? I failed to answer their question.. I'm afraid..",
-          "Err- Error- Im having Error- <:vcon_warning:992917967660654663>\n**Unable to answer for moment** Beep- bee- please tell Him to fix m- me-"
-        ]
+    //     const confusedAI = [
+    //       "I am having a hard time to filling that request! Im an only living wisdom on Discord\n**I don't have time to process long requests** \`Only 2000 max. per-reply\` <:vcon_warning:992917967660654663>",
+    //       "<:vcon_warning:992917967660654663> Uh.... **Dae?** Are you here? I failed to answer their question.. I'm afraid..",
+    //       "Err- Error- Im having Error- <:vcon_warning:992917967660654663>\n**Unable to answer for moment** Beep- bee- please tell Him to fix m- me-"
+    //     ]
         
-        try {
-          const outputChat = await axios.request(inputChat);
-          const responseChat = outputChat.data.response;
-          if (responseChat.length > 2000) {
-            const chunks = responseChat.match(/.{1,2000}/g);
-            for (let i=0; i < chunks.length; i++) {
-              await message.channel.send(chunks[i]).catch(err => {
-                console.log(err);
-                message.channel.send(`${confusedAI[Math.floor(Math.random() * confusedAI.length)]}`).catch(err => {});
-              });
-            }
-          } else {
-            await message.channel.send(responseChat).catch(err => {
-              console.log(err);
-              message.channel.send(`${confusedAI[Math.floor(Math.random() * confusedAI.length)]}`).catch(err => {});
-            });
-          }
-        } catch (e) {
-          console.log(e);
-          message.channel.send(`${confusedAI[Math.floor(Math.random() * confusedAI.length)]}`).catch(err => {});
-        }
-    }
+    //     try {
+    //       const outputChat = await axios.request(inputChat);
+    //       const responseChat = outputChat.data.response;
+    //       if (responseChat.length > 2000) {
+    //         const chunks = responseChat.match(/.{1,2000}/g);
+    //         for (let i=0; i < chunks.length; i++) {
+    //           await message.channel.send(chunks[i]).catch(err => {
+    //             console.log(err);
+    //             message.channel.send(`${confusedAI[Math.floor(Math.random() * confusedAI.length)]}`).catch(err => {});
+    //           });
+    //         }
+    //       } else {
+    //         await message.channel.send(responseChat).catch(err => {
+    //           console.log(err);
+    //           message.channel.send(`${confusedAI[Math.floor(Math.random() * confusedAI.length)]}`).catch(err => {});
+    //         });
+    //       }
+    //     } catch (e) {
+    //       console.log(e);
+    //       message.channel.send(`${confusedAI[Math.floor(Math.random() * confusedAI.length)]}`).catch(err => {});
+    //     }
+    // }
 
     const prefix = process.env.COMMAND_PREFIX;
 

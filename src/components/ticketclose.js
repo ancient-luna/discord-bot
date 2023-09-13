@@ -1,4 +1,4 @@
-const { EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle } = require("discord.js");
+const { EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle, PermissionsBitField } = require("discord.js");
 const { stripIndent } = require("common-tags");
 
 module.exports = {
@@ -14,6 +14,7 @@ module.exports = {
    * @param {import("discord.js").ButtonInteraction} interaction
    */
   execute: async (client, interaction) => {
+    if (!interaction.member.permissions.has(PermissionsBitField.Flags.ManageMessages)) return await interaction.reply({ content: `Only the **Ancestor** and **Elders** can close this ticket`, ephemeral: true })
     if (!interaction.channel.name.includes('ticket')) return interaction.reply({
       content: `You are not allowed to delete a non-ticket channel`,
       ephemeral: true
