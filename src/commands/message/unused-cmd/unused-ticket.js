@@ -1,11 +1,11 @@
 const { EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle } = require("discord.js");
 module.exports = new Object({
-    name: "ticket",
-    description: "applyticket.",
+    name: "acvticket",
+    description: "acvticket.",
     category: "Ticket",
     usage: "",
     cooldown: 0,
-    aliases: ['applyticket'],
+    aliases: [''],
     examples: [''],
     sub_commands: [],
     args: false,
