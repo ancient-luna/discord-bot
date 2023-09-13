@@ -38,18 +38,18 @@ module.exports = new Object({
                 .setDescription(editQuery)
                 .setColor(`2b2d31`)
 
-            const editButton = new ActionRowBuilder()
-            .addComponents(
-                new ButtonBuilder()
-                .setCustomId("btn-ticketopen")
-                .setLabel("Open a Ticket")
-                .setStyle(ButtonStyle.Primary)
-            )
+            // const editButton = new ActionRowBuilder()
+            // .addComponents(
+            //     new ButtonBuilder()
+            //     .setCustomId("btn-ticketopen")
+            //     .setLabel("Open a Ticket")
+            //     .setStyle(ButtonStyle.Primary)
+            // )
 
             message.channel.send("Embed: **EDITED** ! `updated`").catch((e) => { });
             theEmbed.edit({
                 embeds: [editEmbed],
-                components: [editButton]
+                // components: [editButton]
             });
 
         } catch (err) {
