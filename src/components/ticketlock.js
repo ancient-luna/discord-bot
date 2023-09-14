@@ -30,6 +30,6 @@ module.exports = {
 		],
     });
 
-	await interaction.reply({ content: ':file_folder: ticket has been **archived**' });
+	await interaction.reply({ content: ':file_folder: ticket has been **archived**\n*this channel is hidden from the author of this ticket*', ephemeral: true });
   },
 };

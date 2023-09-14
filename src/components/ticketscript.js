@@ -16,7 +16,7 @@ module.exports = {
    */
   execute: async (client, interaction) => {
     if (!interaction.member.permissions.has(PermissionsBitField.Flags.ManageMessages)) return await interaction.reply({ content: `Only the **Ancestor** and **Elders** can save this ticket`, ephemeral: true })
-    // const channel = interaction.channel;
+    const channel = interaction.channel;
     const attachment = await discordTranscripts.createTranscript(channel);
     // interaction.channel.send({ files: [attachment] })
     interaction.reply({
