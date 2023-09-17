@@ -5,7 +5,7 @@ module.exports = new Object({
   category: "Moderator",
   usage: "",
   cooldown: 0,
-  aliases: [],
+  aliases: [''],
   examples: [''],
   sub_commands: [],
   args: false,
@@ -28,12 +28,13 @@ module.exports = new Object({
       message.mentions.users.first() ||
       message.guild.members.cache.get(args[0]).user;
 
-    // const str = args.slice(1).join(" ");
+    const str = args.slice(1).join(" ");
 
     const txtEmbed = new EmbedBuilder()
-      .setDescription(`\`\`\`Dev. Contacts\`\`\`\nDiscord: xoda.e\nEmail: daeva@ancientluna.org\nInstagram: [@imsoondae_](https://instagram.com/imsoondae_)`)
+      .setDescription(`\`\`\`Dev. Contacts\`\`\`\n> Discord: imxo.e - [ancientluna](https://discord.com/invite/Sbp2nt8QHe) server\n> Email: daeva@ancientluna.org\n> Instagram: [@everylttlething](https://instagram.com/everylttlething)`)
       .setFooter({ text: `this bot won't read any messages of your replies` })
       .setColor("2b2d31")
+      .setThumbnail('https://i.imgur.com/ik3A41k.png')
 
     const btnServer = new ActionRowBuilder()
       .addComponents(
@@ -49,12 +50,11 @@ module.exports = new Object({
           .setURL(`https://discord.com/channels/447069790150852609/1123093540940029972`)
       )
 
-    let fileAtch = new AttachmentBuilder("src/assets/spooderman.mp4")
+    let fileAtch = new AttachmentBuilder("src/assets/gluttony.mp4")
 
     user.send({
-      content: `# Happy Monday dear Lunars\nHab you enhanced something good today?\n_ _`,
-      // content: `Dear **Lunar Disciples**,\n\n${str}\n\nWarmest Love,\n**Aevoa**\n⁣`,
-      // embeds: [txtEmbed],
+      content: `Dear **Lunar Disciples**,\n\n${str}\n\nWarmest love,\n__**Aevoa**__\n_ _`,
+      embeds: [txtEmbed],
       components: [btnServer],
       files: [fileAtch]
     }).catch((e) => { return message.reply(`Doesn't allowed to whisper them`) });
