@@ -34,7 +34,7 @@ module.exports = new Object({
         }
         await message.react("💢").catch((e) => { });
         await message.channel.send({
-            content: `***Mmhmm~ SLuurRpP mmmhm slurp SLurpP*** ...\n<@260390499834265610> *starts licking <@${target.user.id}>'s ${mentionTxt[Math.floor(Math.random() * mentionTxt.length)]}* 💦`,
+            content: `***Mmhmm~ SLuurRpP mmmhm slurp SLurpP*** ...\n<@260390499834265610> *starts licking <@${target.user.id}>'s ${mentionTxt[Math.floor(Math.random() * mentionTxt.length)]}* 💦\n_ _`,
             files: [IMGpuih]
         }).catch((e) => { });
     }
