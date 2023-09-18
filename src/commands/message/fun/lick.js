@@ -27,12 +27,12 @@ module.exports = new Object({
         let IMGpuih = new AttachmentBuilder("src/assets/react/mlem.gif")
         let target = message.mentions.members.first();
         if (!target) {
-            message.react("💢").catch((e) => { });
+            message.react("❓").catch((e) => { });
             return message.reply({ content: "How can *He* licks when theres no one to lick on!\n *Hurry! Mention one, cause He cant wait to lick sumthin*" }).then((msg) => {
                 setTimeout(() => msg.delete().catch((e) => { }), 5000);
             });
         }
-        await message.react("💢").catch((e) => { });
+        await message.react("💦").catch((e) => { });
         await message.channel.send({
             content: `***Mmhmm~ SLuurRpP mmmhm slurp SLurpP*** ...\n<@260390499834265610> *starts licking <@${target.user.id}>'s ${mentionTxt[Math.floor(Math.random() * mentionTxt.length)]}* 💦\n_ _`,
             files: [IMGpuih]
