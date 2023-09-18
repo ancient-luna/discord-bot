@@ -13,7 +13,7 @@ module.exports = {
     artifactChannel: "1050004761631531038",
     generalChannel: "452842830776369152",
     gatewayChannel: "839417251470901279",
-    guidelinesChannel: "842069893113446410",
+    guidelinesChannel: "864556584818835456",
     localEmoji: "ancientluna_pure_luna",
     voiceChannel: "893054665632133121",
     voiceMessage: "boss cycle updated",
