@@ -34,7 +34,7 @@ module.exports = new Object({
       .setDescription(`\`\`\`Dev. Contacts\`\`\`\n> Discord: imxo.e - [ancientluna](https://discord.com/invite/Sbp2nt8QHe) server\n> Email: daeva@ancientluna.org\n> Instagram: [@everylttlething](https://instagram.com/everylttlething)`)
       .setFooter({ text: `this bot won't read any messages of your replies` })
       .setColor("2b2d31")
-      .setThumbnail('https://i.imgur.com/9792FbE.png')
+      .setThumbnail('https://i.imgur.com/bmwTPNn.png')
 
     const btnServer = new ActionRowBuilder()
       .addComponents(
