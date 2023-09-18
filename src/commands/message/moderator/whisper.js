@@ -46,8 +46,8 @@ module.exports = new Object({
       .addComponents(
         new ButtonBuilder()
           .setStyle(ButtonStyle.Link)
-          .setLabel("Apply for Vacation")
-          .setURL(`https://discord.com/channels/447069790150852609/1123093540940029972`)
+          .setLabel("More details")
+          .setURL(`https://discord.com/channels/447069790150852609/1060992992523079800`)
       )
 
     let fileAtch = new AttachmentBuilder("src/assets/gluttony.mp4")
