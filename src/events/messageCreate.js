@@ -80,10 +80,28 @@ module.exports = new Object({
     if (client.config.stickyChannel.includes(message.channel.id)) {
         const fetchedMessages = await message.channel.messages.fetch();
         const stickyMessage = fetchedMessages.find(m => m.author.id === client.user.id && client.config.stickyChannel.includes(m.channel.id));
+        const lunaThumbnail = [
+          'https://i.imgur.com/B6u2feA.png',
+          'https://i.imgur.com/DrmVtuP.png',
+          'https://i.imgur.com/Z5mq7OF.png',
+          'https://i.imgur.com/M0U4I56.png',
+          'https://i.imgur.com/jOGuk7s.png',
+          'https://i.imgur.com/tM9xIaq.png',
+          'https://i.imgur.com/hIBEDkM.png',
+          'https://i.imgur.com/GUYxDJF.png',
+          'https://i.imgur.com/MjADPRv.png',
+          'https://i.imgur.com/InURa9o.png',
+          'https://i.imgur.com/son6e07.png',
+          'https://i.imgur.com/0wE5Qyp.png',
+          'https://i.imgur.com/DHzUulL.png',
+          'https://i.imgur.com/bEIn9Ag.png',
+          'https://i.imgur.com/qkw8aXV.png',
+        ]
         const stickyText = new EmbedBuilder()
             .setTitle(`Ancient Luna Activity Tracker`)
             .setDescription(`Thanks for the hardwork!\nClick on this button to update the payout sheet.`)
-            .setThumbnail(`https://i.imgur.com/JGmEtSL.png`)
+            // .setThumbnail(`https://i.imgur.com/JGmEtSL.png`)
+            .setThumbnail(`${lunaThumbnail[Math.floor(Math.random() * lunaThumbnail.length)]}`)
             .setColor('#2b2d31');
         let linkSheet = new ActionRowBuilder()
             .addComponents(
