@@ -76,6 +76,33 @@ module.exports = new Object({
     if (!message.guild) return;
     if (message.author.bot) return;
 
+    // StickyNote Lucent Fountain
+    if (client.config.stickyGuildChannel.includes(message.channel.id)) {
+      const embedLucent = new EmbedBuilder()
+        .setTitle(`Ancient Luna Guild: The Lucent Fountain <:ancientluna_pure_luna:866781517312688178>`)
+        .setDescription(`𝔗𝔥𝔢 𝔪𝔬𝔬𝔫 𝔦𝔰 𝔞 𝔩𝔬𝔶𝔞𝔩 𝔠𝔬𝔪𝔭𝔞𝔫𝔦𝔬𝔫. 𝔗𝔥𝔢 𝔪𝔬𝔬𝔫 𝔲𝔫𝔡𝔢𝔯𝔰𝔱𝔞𝔫𝔡𝔰 𝔴𝔥𝔞𝔱 𝔦𝔱 𝔪𝔢𝔞𝔫𝔰 𝔱𝔬 𝔟𝔢 𝔥𝔲𝔪𝔞𝔫.`)
+        // .setFooter({ text: `this bot won't read any messages of your replies` })
+        .setColor("2b2d31")
+        // .setThumbnail(`${lunaThumbnail[Math.floor(Math.random() * lunaThumbnail.length)]}`)
+        const btnLucent = new ActionRowBuilder()
+        .addComponents(
+            new ButtonBuilder()
+            .setCustomId("btn-guildvacation")
+            .setLabel("Apply for Vacation")
+            .setStyle(ButtonStyle.Danger)
+        )
+        .addComponents(
+            new ButtonBuilder()
+            .setCustomId("btn-guildterms")
+            .setLabel("Read Guild Terms")
+            .setStyle(ButtonStyle.Secondary)
+        )
+        await message.channel.send({
+            embeds: [embedLucent],
+            components: [btnLucent]
+        });
+    };
+
     // StickyNote
     if (client.config.stickyChannel.includes(message.channel.id)) {
         const fetchedMessages = await message.channel.messages.fetch();
