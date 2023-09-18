@@ -79,7 +79,7 @@ module.exports = new Object({
     // StickyNote Lucent Fountain
     if (client.config.stickyGuildChannel.includes(message.channel.id)) {
       const fetchedLucentMessages = await message.channel.messages.fetch();
-      const stickyLucentMessage = fetchedLucentMessages.find(m => m.author.id === client.user.id && client.config.stickyChannel.includes(m.channel.id));
+      const stickyLucentMessage = fetchedLucentMessages.find(m => m.author.id === client.user.id && client.config.stickyGuildChannel.includes(m.channel.id));
       const embedLucent = new EmbedBuilder()
         .setTitle(`Ancient Luna Guild: The Lucent Fountain <:ancientluna_pure_luna:866781517312688178>`)
         .setDescription(`𝔗𝔥𝔢 𝔪𝔬𝔬𝔫 𝔦𝔰 𝔞 𝔩𝔬𝔶𝔞𝔩 𝔠𝔬𝔪𝔭𝔞𝔫𝔦𝔬𝔫. 𝔗𝔥𝔢 𝔪𝔬𝔬𝔫 𝔲𝔫𝔡𝔢𝔯𝔰𝔱𝔞𝔫𝔡𝔰 𝔴𝔥𝔞𝔱 𝔦𝔱 𝔪𝔢𝔞𝔫𝔰 𝔱𝔬 𝔟𝔢 𝔥𝔲𝔪𝔞𝔫.`)
