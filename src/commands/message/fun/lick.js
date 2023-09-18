@@ -1,12 +1,12 @@
 const { AttachmentBuilder } = require("discord.js");
 
 module.exports = new Object({
-    name: "spit",
-    description: "spit.",
+    name: "lick",
+    description: "lick.",
     category: "Fun",
     usage: "",
     cooldown: 0,
-    aliases: [''],
+    aliases: ['mlem'],
     examples: [''],
     sub_commands: [],
     args: false,
@@ -23,17 +23,18 @@ module.exports = new Object({
      * @param {String[]} args
      */
     async execute(client, message, args) {
-        let IMGpuih = new AttachmentBuilder("src/assets/react/puihh.png")
+        const mentionTxt = [ 'feet', 'arm', 'that kind of part', 'sickle', 'chin', 'cheek', 'ear' ]
+        let IMGpuih = new AttachmentBuilder("src/assets/react/mlem.gif")
         let target = message.mentions.members.first();
         if (!target) {
             message.react("💢").catch((e) => { });
-            return message.reply({ content: "How can *She* spits when theres no one to spit on! Mention one 💢" }).then((msg) => {
+            return message.reply({ content: "How can *He* licks when theres no one to lick on!\n *Hurry! Mention one, cause He cant wait to lick sumthin*" }).then((msg) => {
                 setTimeout(() => msg.delete().catch((e) => { }), 5000);
             });
         }
         await message.react("💢").catch((e) => { });
         await message.channel.send({
-            content: `***Puih!!*** <@643945264868098049> spits on <@${target.user.id}> 💦`,
+            content: `***Mmhmm~ SLuurRpP mmmhm slurp SLurpP*** ...\n<@260390499834265610> *starts licking <@${target.user.id}>'s ${mentionTxt[Math.floor(Math.random() * mentionTxt.length)]}* 💦`,
             files: [IMGpuih]
         }).catch((e) => { });
     }

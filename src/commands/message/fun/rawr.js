@@ -5,7 +5,7 @@ module.exports = new Object({
     category: "Fun",
     usage: "",
     cooldown: 0,
-    aliases: ['rawr'],
+    aliases: [''],
     examples: [''],
     sub_commands: [],
     args: false,
