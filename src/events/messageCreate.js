@@ -82,7 +82,7 @@ module.exports = new Object({
       const stickyLucentMessage = fetchedLucentMessages.find(m => m.author.id === client.user.id && client.config.stickyGuildChannel.includes(m.channel.id));
       const embedLucent = new EmbedBuilder()
         .setTitle(`The Lucent Fountain <:ancientluna_pure_luna:866781517312688178>`)
-        .setDescription(`𝔗𝔥𝔢 𝔪𝔬𝔬𝔫 𝔦𝔰 𝔞 𝔩𝔬𝔶𝔞𝔩 𝔠𝔬𝔪𝔭𝔞𝔫𝔦𝔬𝔫.`)
+        .setDescription(`𝔜𝔬𝔲𝔯𝔰 𝔦𝔰 𝔱𝔥𝔢 𝔩𝔦𝔤𝔥𝔱 𝔟𝔶 𝔴𝔥𝔦𝔠𝔥 𝔪𝔶 𝔰𝔭𝔦𝔯𝔦𝔱'𝔰 𝔟𝔬𝔯𝔫.`)
         .setColor("2b2d31")
         const btnLucent = new ActionRowBuilder()
         .addComponents(
