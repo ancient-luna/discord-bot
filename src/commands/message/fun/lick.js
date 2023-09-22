@@ -24,7 +24,6 @@ module.exports = new Object({
      */
     async execute(client, message, args) {
         const mentionTxt = [ 'feet', 'arm', 'that kind of part', 'sickle', 'chin', 'cheek', 'ear' ]
-        let IMGpuih = new AttachmentBuilder("src/assets/react/mlem.gif")
         let target = message.mentions.members.first();
         if (!target) {
             message.react("❓").catch((e) => { });
@@ -34,8 +33,7 @@ module.exports = new Object({
         }
         await message.react("💦").catch((e) => { });
         await message.channel.send({
-            content: `***Mmhmm~ SLuurRpP mmmhm slurp SLurpP*** ...\n<@260390499834265610> *starts licking <@${target.user.id}>'s ${mentionTxt[Math.floor(Math.random() * mentionTxt.length)]}* 💦\n_ _`,
-            files: [IMGpuih]
+            content: `***Mmhmm~ SLuurRpP mmmhm slurp SLurpP*** ...\n<@260390499834265610> *starts licking <@${target.user.id}>'s [${mentionTxt[Math.floor(Math.random() * mentionTxt.length)]}](https://i.imgur.com/HHnLLgP.gif)* 💦\n_ _`
         }).catch((e) => { });
     }
 });
