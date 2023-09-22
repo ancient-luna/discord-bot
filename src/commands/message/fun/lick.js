@@ -23,7 +23,7 @@ module.exports = new Object({
      * @param {String[]} args
      */
     async execute(client, message, args) {
-        const mentionTxt = [ 'feet', 'arm', 'that kind of part', 'sickle', 'chin', 'cheek', 'ear' ]
+        const mentionTxt = [ 'feet', 'arm', 'that kind of part', 'chin', 'cheek', 'ear', 'butt', 'tongue', 'neck' ]
         let target = message.mentions.members.first();
         if (!target) {
             message.react("❓").catch((e) => { });
