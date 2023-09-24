@@ -5,7 +5,7 @@ module.exports = new Object({
     category: "Blackdesert",
     usage: "",
     cooldown: 0,
-    aliases: ['undisciple'],
+    aliases: [''],
     examples: [''],
     sub_commands: [],
     args: false,
