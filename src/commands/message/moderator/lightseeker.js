@@ -5,7 +5,7 @@ module.exports = new Object({
     category: "Moderator",
     usage: "",
     cooldown: 0,
-    aliases: [],
+    aliases: [''],
     examples: [''],
     sub_commands: [],
     args: false,
@@ -24,8 +24,8 @@ module.exports = new Object({
     async execute(client, message, args) {
         let target = message.mentions.members.first();
         if (!target) return message.reply('please mention a user').catch((e) => { });
-        let role = '839198215580811344';
-        await message.delete().catch((e) => { });
+        let lightseekerRole = '839198215580811344';
+        let luxcastaRole = '839210689917616218';
         const welcomeButton = new ActionRowBuilder()
             .addComponents(
                 new ButtonBuilder()
@@ -33,10 +33,12 @@ module.exports = new Object({
                     .setLabel("Get more roles here")
                     .setURL("https://discord.com/channels/447069790150852609/864556584818835456")
             )
-
         message.guild.channels.cache.get('452842830776369152').send({
             content: `<@${target.user.id}> has passed the trial by understand our wisdom of lleud to reach this warm sanctuary deeper.\nWelcome, to the sanctuary of lights. The <@&843523544620335124> welcome you as one of true light seekers <:ancientluna_pure_luna:866781517312688178>`,
             components: [welcomeButton]
-        }).then(target.roles.add(role)).catch((e) => { });
+        });
+        await target.roles.remove(luxcastaRole);
+        await target.roles.add(lightseekerRole);
+        await message.delete().catch((e) => { });
     }
 });
