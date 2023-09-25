@@ -79,7 +79,7 @@ module.exports = new Object({
 
     // StickyNote Lucent Fountain
     if (client.config.stickyGuildChannel.includes(message.channel.id)) {
-      let IMGlucent = new AttachmentBuilder("src/assets/lucentfountain.png")
+      const IMGlucent = new AttachmentBuilder("src/assets/lucentfountain.png")
       const fetchedLucentMessages = await message.channel.messages.fetch();
       const stickyLucentMessage = fetchedLucentMessages.find(m => m.author.id === client.user.id && client.config.stickyGuildChannel.includes(m.channel.id));
       const embedLucent = new EmbedBuilder()
@@ -103,18 +103,18 @@ module.exports = new Object({
       await message.channel.sendTyping();
       if (stickyLucentMessage) {
         stickyLucentMessage.delete().then(() => {
-          await message.channel.send({
+          message.channel.send({
             // embeds: [embedLucent],
             components: [btnLucent],
-            files: [IMGlucent],
+            files: [IMGlucent]
           });
         }).catch(() => { });
       } else {
           // Force send a new message.
-          await message.channel.send({
+          message.channel.send({
             // embeds: [embedLucent],
             components: [btnLucent],
-            files: [IMGlucent],
+            files: [IMGlucent]
           });
       }
     };
