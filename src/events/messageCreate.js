@@ -6,6 +6,7 @@ const {
   ButtonStyle,
   PermissionsBitField,
   Collection,
+  AttachmentBuilder,
 } = require("discord.js");
 
 module.exports = new Object({
@@ -78,13 +79,15 @@ module.exports = new Object({
 
     // StickyNote Lucent Fountain
     if (client.config.stickyGuildChannel.includes(message.channel.id)) {
+      let IMGlucent = new AttachmentBuilder("src/assets/lucentfountain.png")
       const fetchedLucentMessages = await message.channel.messages.fetch();
       const stickyLucentMessage = fetchedLucentMessages.find(m => m.author.id === client.user.id && client.config.stickyGuildChannel.includes(m.channel.id));
       const embedLucent = new EmbedBuilder()
         .setTitle(`The Lucent Fountain <:ancientluna_pure_luna:866781517312688178>`)
         .setDescription(`𝔜𝔬𝔲𝔯𝔰 𝔦𝔰 𝔱𝔥𝔢 𝔩𝔦𝔤𝔥𝔱 𝔟𝔶 𝔴𝔥𝔦𝔠𝔥 𝔪𝔶 𝔰𝔭𝔦𝔯𝔦𝔱'𝔰 𝔟𝔬𝔯𝔫.`)
         .setColor("2b2d31")
-        const btnLucent = new ActionRowBuilder()
+        .setThumbnail('https://i.imgur.com/Mza9Zop.png')
+      const btnLucent = new ActionRowBuilder()
         .addComponents(
             new ButtonBuilder()
             .setCustomId("btn-guildvacation")
@@ -97,14 +100,23 @@ module.exports = new Object({
             .setLabel("Read Guild Terms")
             .setStyle(ButtonStyle.Secondary)
         )
-        if (stickyLucentMessage) {
-          stickyLucentMessage.delete().then(() => {
-              message.channel.send({ embeds: [embedLucent], components: [btnLucent] });
-          }).catch(() => { });
-        } else {
-            // Force send a new message.
-            message.channel.send({ embeds: [embedLucent], components: [btnLucent] });
-        }
+      await message.channel.sendTyping();
+      if (stickyLucentMessage) {
+        stickyLucentMessage.delete().then(() => {
+          await message.channel.send({
+            // embeds: [embedLucent],
+            components: [btnLucent],
+            files: [IMGlucent]
+          });
+        }).catch(() => { });
+      } else {
+          // Force send a new message.
+          await message.channel.send({
+            // embeds: [embedLucent],
+            components: [btnLucent],
+            files: [IMGlucent]
+          });
+      }
     };
 
     // StickyNote
