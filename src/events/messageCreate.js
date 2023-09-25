@@ -79,7 +79,7 @@ module.exports = new Object({
 
     // StickyNote Lucent Fountain
     if (client.config.stickyGuildChannel.includes(message.channel.id)) {
-      const IMGlucent = new AttachmentBuilder("src/assets/lucentfountain.png")
+      const IMGlucent = new AttachmentBuilder("src/assets/lucent.png")
       const fetchedLucentMessages = await message.channel.messages.fetch();
       const stickyLucentMessage = fetchedLucentMessages.find(m => m.author.id === client.user.id && client.config.stickyGuildChannel.includes(m.channel.id));
       const embedLucent = new EmbedBuilder()
