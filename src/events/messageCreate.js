@@ -114,7 +114,7 @@ module.exports = new Object({
           await message.channel.send({
             // embeds: [embedLucent],
             components: [btnLucent],
-            files: [IMGlucent]
+            files: [IMGlucent],
           });
       }
     };
