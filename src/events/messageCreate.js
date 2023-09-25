@@ -6,7 +6,6 @@ const {
   ButtonStyle,
   PermissionsBitField,
   Collection,
-  AttachmentBuilder,
 } = require("discord.js");
 
 module.exports = new Object({
@@ -79,7 +78,6 @@ module.exports = new Object({
 
     // StickyNote Lucent Fountain
     if (client.config.stickyGuildChannel.includes(message.channel.id)) {
-      const IMGlucent = new AttachmentBuilder("src/assets/lucent.png")
       const fetchedLucentMessages = await message.channel.messages.fetch();
       const stickyLucentMessage = fetchedLucentMessages.find(m => m.author.id === client.user.id && client.config.stickyGuildChannel.includes(m.channel.id));
       const embedLucent = new EmbedBuilder()
@@ -104,17 +102,15 @@ module.exports = new Object({
       if (stickyLucentMessage) {
         stickyLucentMessage.delete().then(() => {
           message.channel.send({
-            // embeds: [embedLucent],
-            components: [btnLucent],
-            files: [IMGlucent]
+            embeds: [embedLucent],
+            components: [btnLucent]
           });
         }).catch(() => { });
       } else {
           // Force send a new message.
           message.channel.send({
-            // embeds: [embedLucent],
-            components: [btnLucent],
-            files: [IMGlucent]
+            embeds: [embedLucent],
+            components: [btnLucent]
           });
       }
     };
