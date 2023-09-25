@@ -82,7 +82,7 @@ module.exports = new Object({
       const stickyLucentMessage = fetchedLucentMessages.find(m => m.author.id === client.user.id && client.config.stickyGuildChannel.includes(m.channel.id));
       const embedLucent = new EmbedBuilder()
         .setTitle(`The Lucent Fountain <:ancientluna_pure_luna:866781517312688178>`)
-        .setDescription(`𝔜𝔬𝔲𝔯𝔰 𝔦𝔰 𝔱𝔥𝔢 𝔩𝔦𝔤𝔥𝔱 𝔟𝔶 𝔴𝔥𝔦𝔠𝔥 𝔪𝔶 𝔰𝔭𝔦𝔯𝔦𝔱'𝔰 𝔟𝔬𝔯𝔫.`)
+        .setDescription(`𝑾𝒆 𝒓𝒂𝒏 𝒂𝒔 𝒊𝒇 𝒕𝒐 𝒎𝒆𝒆𝒕 𝒕𝒉𝒆 𝒎𝒐𝒐𝒏\n**[Be the true light seekers](https://youtu.be/_rJiY6y3a-A)** ✦`)
         .setColor("2b2d31")
         .setThumbnail('https://i.imgur.com/Mza9Zop.png')
       const btnLucent = new ActionRowBuilder()
@@ -90,6 +90,7 @@ module.exports = new Object({
             new ButtonBuilder()
             .setCustomId("btn-guildvacation")
             .setLabel("Apply for Vacation")
+            .setEmoji('<:game_logo_bdo:861579805660151818>')
             .setStyle(ButtonStyle.Danger)
         )
         .addComponents(
