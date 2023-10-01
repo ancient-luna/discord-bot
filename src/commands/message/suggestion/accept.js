@@ -32,7 +32,6 @@ module.exports = new Object({
         try {
             const suggestionChannel = message.guild.channels.cache.get("842069893113446410");
             const editor = message.member.displayName;
-            const uEditor = message.author.username;
             const suggestedEmbed = await suggestionChannel.messages.fetch(messageID);
             const data = suggestedEmbed.embeds[0];
             const acceptEmbed = new EmbedBuilder()
@@ -41,7 +40,7 @@ module.exports = new Object({
                 .setDescription(data.description)
                 .setColor(`43b581`)
                 .addFields(
-                    { name: `Reason from ${editor} (${uEditor})`, value: acceptQuery }
+                    { name: `Reason from ${editor}`, value: acceptQuery }
                 )
                 .setTimestamp()
 
