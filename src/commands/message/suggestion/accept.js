@@ -6,7 +6,7 @@ module.exports = new Object({
     category: "Suggestion",
     usage: "",
     cooldown: 0,
-    aliases: ['test'],
+    aliases: [],
     examples: [''],
     sub_commands: [],
     args: false,
@@ -50,14 +50,14 @@ module.exports = new Object({
             const suggester = client.users.cache.find(
                 (u) => u.username
             );
-            
+
             const accEmbed = new EmbedBuilder()
                 .setAuthor({ name: "SUGGESTION ACCEPTED", iconURL: 'https://i.imgur.com/Kll2T98.png' })
                 .setDescription("Your suggestion has been accepted by the Elders. See further detail in **[#suggestions](https://discord.com/channels/447069790150852609/842069893113446410)**. Thank you for the suggestion!")
                 .setTimestamp()
                 .setColor("43b581")
                 .setFooter({ text: "Your Suggestions Status" })
-            suggester.send({ embeds: [accEmbed] });
+            await suggester.send({ embeds: [accEmbed] });
         } catch (err) {
             console.log(err);
             message.channel.send(`\`\`\`${err}\`\`\``);

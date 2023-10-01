@@ -58,7 +58,7 @@ module.exports = new Object({
                 .setTimestamp()
                 .setColor('f04947')
                 .setFooter({ text: "Your Suggestions Status" })
-            suggester.send({ embeds: [denyEmbed] });
+            await suggester.send({ embeds: [denyEmbed] });
         } catch (err) {
             console.log(err);
             message.channel.send(`\`\`\`${err}\`\`\``);
