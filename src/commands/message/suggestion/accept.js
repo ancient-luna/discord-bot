@@ -37,7 +37,7 @@ module.exports = new Object({
             const suggestedEmbed = await suggestionChannel.messages.fetch(messageID);
             const data = suggestedEmbed.embeds[0];
             const acceptEmbed = new EmbedBuilder()
-                .setAuthor({ name: data.author.displayName, iconURL: 'https://i.imgur.com/Kll2T98.png' })
+                .setAuthor({ name: data.author.name, iconURL: 'https://i.imgur.com/Kll2T98.png' })
                 .setTitle('Suggestion Accepted')
                 .setDescription(data.description)
                 .setColor(`43b581`)
@@ -50,7 +50,7 @@ module.exports = new Object({
             suggestedEmbed.edit({ embeds: [acceptEmbed] }).catch((e) => { });
 
             const user = client.users.cache.find(
-                (u) => u.username === data.author.displayName
+                (u) => u.username === data.author.name
             );
             const accEmbed = new EmbedBuilder()
                 .setAuthor({ name: "SUGGESTION ACCEPTED", iconURL: 'https://i.imgur.com/Kll2T98.png' })
