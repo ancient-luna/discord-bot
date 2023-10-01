@@ -48,23 +48,20 @@ module.exports = new Object({
             message.channel.send("Suggestion: **DENIED** ! `updated`");
             suggestedEmbed.edit({ embeds: [acceptEmbed] });
 
-            let user = await client.users.cache.find(
-                (u) => u.username === data.author.name
+            const suggester = await client.users.cache.find(
+                (u) => u.username
             );
+            
             const denyEmbed = new EmbedBuilder()
                 .setAuthor({ name: "SUGGESTION DENIED", iconURL: 'https://i.imgur.com/oZvnuem.png' })
                 .setDescription("Your suggestion has been denied by the Elders. Find out why in **[#suggestions](https://discord.com/channels/447069790150852609/842069893113446410)**. Thank you for the suggestion!")
                 .setTimestamp()
                 .setColor('f04947')
                 .setFooter({ text: "Your Suggestions Status" })
-            await user.send({ embeds: [denyEmbed] });
+            suggester.send({ embeds: [denyEmbed] });
         } catch (err) {
             console.log(err);
-            message.channel.send(`That suggestion doesn't exist.`);
+            message.channel.send(`\`\`\`${err}\`\`\``);
         }
     }
 });
-
-
-
-
