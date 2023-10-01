@@ -32,7 +32,8 @@ module.exports = new Object({
 
         try {
             const suggestionChannel = message.guild.channels.cache.get("842069893113446410");
-            const editor = message.member.displayName;
+            const editor = message.author.name;
+            const uEditor = message.author.username;
             const suggestedEmbed = await suggestionChannel.messages.fetch(messageID);
             const data = suggestedEmbed.embeds[0];
             const acceptEmbed = new EmbedBuilder()
@@ -41,24 +42,24 @@ module.exports = new Object({
                 .setDescription(data.description)
                 .setColor(`f04947`)
                 .addFields(
-                    { name: `Reason from ${editor}`, value: denyQuery }
+                    { name: `Reason from ${editor} (${uEditor})`, value: denyQuery }
                 )
                 .setTimestamp()
 
             message.channel.send("Suggestion: **DENIED** ! `updated`");
             suggestedEmbed.edit({ embeds: [acceptEmbed] });
 
-            // const suggester = await client.users.cache.find(
-            //     (u) => u.username
-            // );
+            const suggester = await client.users.cache.find(
+                (u) => u.username === data.user.username
+            );
             
-            // const denyEmbed = new EmbedBuilder()
-            //     .setAuthor({ name: "SUGGESTION DENIED", iconURL: 'https://i.imgur.com/oZvnuem.png' })
-            //     .setDescription("Your suggestion has been denied by the Elders. Find out why in **[#suggestions](https://discord.com/channels/447069790150852609/842069893113446410)**. Thank you for the suggestion!")
-            //     .setTimestamp()
-            //     .setColor('f04947')
-            //     .setFooter({ text: "Your Suggestions Status" })
-            // await suggester.send({ embeds: [denyEmbed] });
+            const denyEmbed = new EmbedBuilder()
+                .setAuthor({ name: "SUGGESTION DENIED", iconURL: 'https://i.imgur.com/oZvnuem.png' })
+                .setDescription("Your suggestion has been denied by the Elders. Find out why in **[#suggestions](https://discord.com/channels/447069790150852609/842069893113446410)**. Thank you for the suggestion!")
+                .setTimestamp()
+                .setColor('f04947')
+                .setFooter({ text: "Your Suggestions Status" })
+            await suggester.send({ embeds: [denyEmbed] });
             
         } catch (err) {
             console.log(err);
