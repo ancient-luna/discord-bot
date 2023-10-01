@@ -45,10 +45,10 @@ module.exports = new Object({
                 )
                 .setTimestamp()
 
-            message.channel.send("Suggestion: **DENIED** ! `updated`").catch((e) => { });
-            suggestedEmbed.edit({ embeds: [acceptEmbed] }).catch((e) => { });
+            message.channel.send("Suggestion: **DENIED** ! `updated`");
+            suggestedEmbed.edit({ embeds: [acceptEmbed] });
 
-            const user = await client.users.cache.find(
+            let user = await client.users.cache.find(
                 (u) => u.username === data.author.name
             );
             const denyEmbed = new EmbedBuilder()
@@ -57,10 +57,10 @@ module.exports = new Object({
                 .setTimestamp()
                 .setColor('f04947')
                 .setFooter({ text: "Your Suggestions Status" })
-            user.send({ embeds: [denyEmbed] }).catch((e) => { });
+            await user.send({ embeds: [denyEmbed] });
         } catch (err) {
             console.log(err);
-            message.channel.send(`That suggestion doesn't exist.`).catch((e) => { });
+            message.channel.send(`That suggestion doesn't exist.`);
         }
     }
 });

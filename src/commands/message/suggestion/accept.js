@@ -47,7 +47,7 @@ module.exports = new Object({
             message.channel.send("Suggestion: **ACCEPTED** ! `updated`").catch((e) => { });
             suggestedEmbed.edit({ embeds: [acceptEmbed] }).catch((e) => { });
 
-            const user = client.users.cache.find(
+            let user = client.users.cache.find(
                 (u) => u.username === data.author.name
             );
             const accEmbed = new EmbedBuilder()
@@ -56,10 +56,10 @@ module.exports = new Object({
                 .setTimestamp()
                 .setColor("43b581")
                 .setFooter({ text: "Your Suggestions Status" })
-            user.send({ embeds: [accEmbed] }).catch((e) => { });
+            await user.send({ embeds: [accEmbed] });
         } catch (err) {
             console.log(err);
-            message.channel.send(`\`\`\`${err}\`\`\``).catch((e) => { });
+            message.channel.send(`\`\`\`${err}\`\`\``);
         }
     }
 });
