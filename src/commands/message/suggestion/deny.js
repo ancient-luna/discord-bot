@@ -32,7 +32,7 @@ module.exports = new Object({
 
         try {
             const suggestionChannel = message.guild.channels.cache.get("842069893113446410");
-            const editor = message.author.username;
+            const editor = message.member.displayName;
             const suggestedEmbed = await suggestionChannel.messages.fetch(messageID);
             const data = suggestedEmbed.embeds[0];
             const acceptEmbed = new EmbedBuilder()

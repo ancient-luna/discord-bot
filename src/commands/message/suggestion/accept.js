@@ -30,9 +30,7 @@ module.exports = new Object({
         if (!acceptQuery) return message.reply("`accept/deny` `messageid` `reason`").catch((e) => { });
 
         try {
-            const suggestionChannel = message.guild.channels.cache.get(
-                "842069893113446410"
-            );
+            const suggestionChannel = message.guild.channels.cache.get("842069893113446410");
             const editor = message.member.displayName;
             const suggestedEmbed = await suggestionChannel.messages.fetch(messageID);
             const data = suggestedEmbed.embeds[0];
@@ -61,7 +59,7 @@ module.exports = new Object({
             user.send({ embeds: [accEmbed] }).catch((e) => { });
         } catch (err) {
             console.log(err);
-            message.channel.send(`That suggestion doesn't exist.`).catch((e) => { });
+            message.channel.send(`\`\`\`${err}\`\`\``).catch((e) => { });
         }
     }
 });
