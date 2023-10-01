@@ -31,7 +31,7 @@ module.exports = new Object({
 
         try {
             const suggestionChannel = message.guild.channels.cache.get("842069893113446410");
-            const editor = message.author.name;
+            const editor = message.member.displayName;
             const uEditor = message.author.username;
             const suggestedEmbed = await suggestionChannel.messages.fetch(messageID);
             const data = suggestedEmbed.embeds[0];
@@ -48,17 +48,17 @@ module.exports = new Object({
             message.channel.send("Suggestion: **ACCEPTED** ! `updated`").catch((e) => { });
             suggestedEmbed.edit({ embeds: [acceptEmbed] }).catch((e) => { });
 
-            const suggester = client.users.cache.find(
-                (u) => u.username === data.author.name
-            );
+            // const suggester = client.users.cache.find(
+            //     (u) => u.username === data.author.name
+            // );
 
-            const accEmbed = new EmbedBuilder()
-                .setAuthor({ name: "SUGGESTION ACCEPTED", iconURL: 'https://i.imgur.com/Kll2T98.png' })
-                .setDescription("Your suggestion has been accepted by the Elders. See further detail in **[#suggestions](https://discord.com/channels/447069790150852609/842069893113446410)**. Thank you for the suggestion!")
-                .setTimestamp()
-                .setColor("43b581")
-                .setFooter({ text: "Your Suggestions Status" })
-            await suggester.send({ embeds: [accEmbed] });
+            // const accEmbed = new EmbedBuilder()
+            //     .setAuthor({ name: "SUGGESTION ACCEPTED", iconURL: 'https://i.imgur.com/Kll2T98.png' })
+            //     .setDescription("Your suggestion has been accepted by the Elders. See further detail in **[#suggestions](https://discord.com/channels/447069790150852609/842069893113446410)**. Thank you for the suggestion!")
+            //     .setTimestamp()
+            //     .setColor("43b581")
+            //     .setFooter({ text: "Your Suggestions Status" })
+            // await suggester.send({ embeds: [accEmbed] });
             
         } catch (err) {
             console.log(err);
