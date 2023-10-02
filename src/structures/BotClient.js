@@ -61,6 +61,7 @@ class BotClient extends Client {
     this.slashCommands = new Collection();
     this.prefix = process.env.COMMAND_PREFIX;
     this.googleAPI = process.env.GOOGLE_API;
+    this.xRapidAPI = process.env.GOOGLE_BARD_PSID;
     this.xRapidAPI = process.env.X_RAPID_API;
     this.color = this.config.color;
     this.ButtonInt = new Collection();
