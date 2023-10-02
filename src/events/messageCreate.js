@@ -165,6 +165,7 @@ module.exports = new Object({
       const axios = require('axios');
       if (message.author.bot) return;
       if (message.content.startsWith("!")) return;
+      await message.channel.sendTyping();
       let inputChat = {
         method: 'GET',
         url: 'https://google-bard1.p.rapidapi.com/',
@@ -184,7 +185,6 @@ module.exports = new Object({
       try {
         const outputChat = await axios.request(inputChat);
         const responseChat = outputChat.data.response;
-        await message.channel.sendTyping();
         // the bot can retrieve old messages and hold a conversation
         let prevMessages = await message.channel.messages.fetch({ limit: 15 });
         prevMessages.reverse();
