@@ -165,42 +165,78 @@ module.exports = new Object({
       const axios = require('axios');
       if (message.author.bot) return;
       if (message.content.startsWith("!")) return;
-      await message.channel.sendTyping();
-      let inputChat = {
-        method: 'GET',
-        url: 'https://google-bard1.p.rapidapi.com/',
-        headers: {
-          text: message.content,
-          lang: 'en',
-          psid: process.env.GOOGLE_BARD_PSID,
-          'X-RapidAPI-Key': process.env.X_RAPID_API,
-          'X-RapidAPI-Host': 'google-bard1.p.rapidapi.com'
-        }
-      };
+
       const noAnswer = [
-        "I am having a hard time to filling that request! Im an only living wisdom on Discord\n**I don't have time to process long requests** \`Only 2000 max. per-reply\` <:vcon_warning:992917967660654663>",
-        "<:vcon_warning:992917967660654663> Uh.... **Dae?** Are you here? I failed to answer their question.. I'm afraid..",
-      ]
+        "*There was an issue getting that AI response.* Try again sooner or later <:vcon_warning:992917967660654663>",
+        "<:vcon_warning:992917967660654663> Uh.... **Dae?** Are you here? *I am not able to answer their question.. I'm afraid..*",
+      ];
       const confuseAI = noAnswer[Math.floor(Math.random() * noAnswer.length)];
+      let conversationLog = [
+        {
+          role: "system",
+          content:
+            "You are a friendly discord Bot",
+        },
+      ];
       try {
-        const outputChat = await axios.request(inputChat);
-        const responseChat = outputChat.data.response;
+        await message.channel.sendTyping();
         // the bot can retrieve old messages and hold a conversation
         let prevMessages = await message.channel.messages.fetch({ limit: 15 });
         prevMessages.reverse();
-        if (responseChat.length > 2000) {
-          const chunks = responseChat.match(/.{1,2000}/g);
-          for (let i=0; i < chunks.length; i++) {
-            await message.channel.send(chunks[i]).catch(err => {
+        prevMessages.forEach((msg) => {
+          if (msg.content.startsWith("!")) return;
+          if (msg.author.id !== client.user.id && message.author.bot) return;
+          if (msg.author.id == client.user.id) {
+            conversationLog.push({
+              role: "assistant",
+              content: msg.content,
+              name: msg.author.username
+                .replace(/\s+/g, "_")
+                .replace(/[^\w\s]/gi, ""),
+            });
+          }
+          if (msg.author.id == message.author.id) {
+            conversationLog.push({
+              role: "user",
+              content: msg.content,
+              name: message.author.username
+                .replace(/\s+/g, "_")
+                .replace(/[^\w\s]/gi, ""),
+            });
+          }
+        });
+        // response handler
+        let inputChat = {
+          method: 'GET',
+          url: 'https://google-bard1.p.rapidapi.com/',
+          headers: {
+            text: message.content,
+            lang: 'en',
+            psid: process.env.GOOGLE_BARD_PSID,
+            'X-RapidAPI-Key': process.env.X_RAPID_API,
+            'X-RapidAPI-Host': 'google-bard1.p.rapidapi.com'
+          }
+        };
+        try {
+          const outputChat = await axios.request(inputChat);
+          const responseChat = outputChat.data.response;
+          if (responseChat.length > 2000) {
+            const chunks = responseChat.match(/.{1,2000}/g);
+            for (let i=0; i < chunks.length; i++) {
+              await message.channel.send(chunks[i]).catch(err => {
+                console.log(err);
+                message.channel.send("I am having a hard time to filling that request! Im an only living wisdom on Discord\n**I don't have time to process long requests** \`Only 2000 max. per-reply\` <:vcon_warning:992917967660654663>").catch(err => {});
+              });
+            }
+          } else {
+            await message.channel.send(responseChat).catch(err => {
               console.log(err);
               message.channel.send(`${confuseAI}`).catch(err => {});
             });
           }
-        } else {
-          await message.channel.send(responseChat).catch(err => {
-            console.log(err);
-            message.channel.send(`${confuseAI}`).catch(err => {});
-          });
+        } catch (e) {
+          console.error("Error:", e);
+          return await message.channel.send(`${confuseAI}`);
         }
       } catch (e) {
         console.log(e);
