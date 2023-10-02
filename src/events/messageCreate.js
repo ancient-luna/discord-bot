@@ -163,9 +163,6 @@ module.exports = new Object({
     // Chat AI
     if (client.config.aiChatChannel.includes(message.channel.id)) {
       const axios = require('axios');
-      if (message.author.bot) return;
-      if (message.content.startsWith("!")) return;
-
       const noAnswer = [
         "*There was an issue getting that AI response.* Try again sooner or later <:vcon_warning:992917967660654663>",
         "<:vcon_warning:992917967660654663> Uh.... **Dae?** Are you here? *I am not able to answer their question.. I'm afraid..*",
