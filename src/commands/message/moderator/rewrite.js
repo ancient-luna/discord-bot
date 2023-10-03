@@ -37,6 +37,7 @@ module.exports = new Object({
             const editEmbed = new EmbedBuilder()
                 .setDescription(editQuery)
                 .setColor(`2b2d31`)
+                .setFooter({ text: `*roles still claimable on closed game`})
 
             // const editButton = new ActionRowBuilder()
             // .addComponents(
