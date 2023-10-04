@@ -99,7 +99,6 @@ module.exports = new Object({
             .setLabel("Read Guild Terms")
             .setStyle(ButtonStyle.Secondary)
         )
-      await message.channel.sendTyping();
       if (stickyLucentMessage) {
         stickyLucentMessage.delete().then(() => {
           message.channel.send({
