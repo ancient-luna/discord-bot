@@ -31,7 +31,7 @@ module.exports = new Object({
     const str = args.slice(1).join(" ");
 
     const txtEmbed = new EmbedBuilder()
-      .setDescription(`\`\`\`Dev. Contacts\`\`\`\n> Discord: imxo.e - [ancientluna](https://discord.com/invite/Sbp2nt8QHe) server\n> Email: daeva@ancientluna.org\n> Instagram: [@everylttlething](https://instagram.com/everylttlething)`)
+      .setDescription(`\`\`\`Dev. Contacts\`\`\`\n> Discord: imxo.e - [ancientluna](https://discord.com/invite/Sbp2nt8QHe) server\n> Email: dae@ancientluna.org\n> Instagram: [@everylttlething](https://instagram.com/everylttlething)`)
       .setFooter({ text: `this bot won't read any messages of your replies` })
       .setColor("2b2d31")
       .setThumbnail('https://i.imgur.com/bmwTPNn.png')
@@ -50,7 +50,7 @@ module.exports = new Object({
           .setURL(`https://discord.com/channels/447069790150852609/1060992992523079800`)
       )
 
-    let fileAtch = new AttachmentBuilder("src/assets/gluttony.mp4")
+    let fileAtch = new AttachmentBuilder("src/assets/break.mp4")
 
     user.send({
       content: `Dear **Lunar Disciples**,\n\n${str}\n\nWarmest love,\n__**Aevoa**__\n_ _`,
