@@ -22,31 +22,31 @@ module.exports = new Object({
      * @param {String[]} args
      */
     async execute(client, message, args) {
-        let image = new AttachmentBuilder("src/assets/guidelines.png")
+        // let image = new AttachmentBuilder("src/assets/guidelines.png")
         const embed = new EmbedBuilder()
-                .setDescription(`**Just wondering if you've any thoughts, suggestions or feedbacks?**\nIf you have feedback on this community, we would love to hear it. Your kind words are valuable to the Elders and Light Seekers here.`)
+                .setDescription(`a`)
                 .setColor('2b2d31')
-        const button = new ActionRowBuilder()
-            .addComponents(
-                new ButtonBuilder()
-                .setCustomId("btn-suggestion")
-                .setLabel("Give Suggestion")
-                .setStyle(ButtonStyle.Primary)
-            )
-            .addComponents(
-                new ButtonBuilder()
-                .setCustomId("btn-ticketopen")
-                .setLabel("Open Ticket")
-                .setStyle(ButtonStyle.Primary)
-            )
-            .addComponents(
-                new ButtonBuilder()
-                .setCustomId("btn-confession")
-                .setLabel("Confession")
-                .setStyle(ButtonStyle.Primary)
-            )
+        // const button = new ActionRowBuilder()
+        //     .addComponents(
+        //         new ButtonBuilder()
+        //         .setCustomId("btn-suggestion")
+        //         .setLabel("Give Suggestion")
+        //         .setStyle(ButtonStyle.Primary)
+        //     )
+        //     .addComponents(
+        //         new ButtonBuilder()
+        //         .setCustomId("btn-ticketopen")
+        //         .setLabel("Open Ticket")
+        //         .setStyle(ButtonStyle.Primary)
+        //     )
+        //     .addComponents(
+        //         new ButtonBuilder()
+        //         .setCustomId("btn-confession")
+        //         .setLabel("Confession")
+        //         .setStyle(ButtonStyle.Primary)
+        //     )
         
-        await message.channel.send({ embeds: [embed], components: [button], files: [image]})
+        await message.channel.send({ embeds: [embed], components: [button] })
     }
 })
 
