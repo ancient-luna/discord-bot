@@ -24,7 +24,6 @@ module.exports = new Object({
     async execute(client, message, args) {
         let image = new AttachmentBuilder("src/assets/guidelines.png")
         const embed = new EmbedBuilder()
-                .setAuthor({ name: "confession" })
                 .setDescription(`**Just wondering if you've any thoughts, suggestions or feedbacks?**\nIf you have feedback on this community, we would love to hear it. Your kind words are valuable to the Elders and Light Seekers here.`)
                 .setColor('2b2d31')
         const button = new ActionRowBuilder()
