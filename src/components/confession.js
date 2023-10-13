@@ -27,7 +27,7 @@ module.exports = {
         style: TextInputStyle.Paragraph,
         required: true,
         maxLength: 666,
-        // placeholder: 'Your secret ',
+        placeholder: '(!) Just do not harass anyone',
     })
 
     const firstRow = new ActionRowBuilder().addComponents(confessionInput)
