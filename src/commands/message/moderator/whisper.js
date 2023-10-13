@@ -34,26 +34,26 @@ module.exports = new Object({
       .setDescription(`\`\`\`Dev. Contacts\`\`\`\n> Discord: imxo.e - [ancientluna](https://discord.com/invite/Sbp2nt8QHe) server\n> Email: dae@ancientluna.org\n> Instagram: [@everylttlething](https://instagram.com/everylttlething)`)
       .setFooter({ text: `this bot won't read any messages of your replies` })
       .setColor("2b2d31")
-      .setThumbnail('https://i.imgur.com/bmwTPNn.png')
+      .setThumbnail('https://i.imgur.com/veLhH04.png')
 
     const btnServer = new ActionRowBuilder()
       .addComponents(
         new ButtonBuilder()
           .setStyle(ButtonStyle.Link)
-          .setLabel("Go visit Sanctum")
-          .setURL(`https://discord.com/channels/447069790150852609/1060992670035619931`)
+          .setLabel("Take the new roles")
+          .setURL(`https://discord.com/channels/447069790150852609/864556584818835456`)
       )
       .addComponents(
         new ButtonBuilder()
           .setStyle(ButtonStyle.Link)
-          .setLabel("More details")
-          .setURL(`https://discord.com/channels/447069790150852609/1060992992523079800`)
+          .setLabel("Website")
+          .setURL(`https://ancientluna.org`)
       )
 
-    let fileAtch = new AttachmentBuilder("src/assets/break.mp4")
+    let fileAtch = new AttachmentBuilder("src/assets/brofist_fromluna.mp4")
 
     user.send({
-      content: `Dear **Lunar Disciples**,\n\n${str}\n\nWarmest love,\n__**Aevoa**__\n_ _`,
+      content: `Dear **Light Seekers**,\n\n${str}\n\nWarmest regards,\n**Dae**\n_ _`,
       embeds: [txtEmbed],
       components: [btnServer],
       files: [fileAtch]

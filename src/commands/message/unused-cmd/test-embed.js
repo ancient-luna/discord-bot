@@ -1,8 +1,8 @@
 const { EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle, AttachmentBuilder } = require("discord.js");
 module.exports = new Object({
-    name: "embeds",
-    description: "embeds.",
-    category: "Blackdesert",
+    name: "testemb",
+    description: "unused.",
+    category: "unused",
     usage: "",
     cooldown: 0,
     aliases: [''],
