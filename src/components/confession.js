@@ -56,12 +56,12 @@ module.exports = {
             //       .setLabel("Confess")
             //       .setStyle(ButtonStyle.Primary)
             //   )
-            const confessionEmbed = new EmbedBuilder()
+            const confessionLog = new EmbedBuilder()
                 .setDescription(`<@{${interaction.member.id}}> (***${interaction.member.displayName}***) just sent confession`)
                 .setColor('2b2d31')
                 .setTimestamp()
-            modalInteraction.guild.channels.cache.get('1162419484305391800').send({ embeds: [confessionEmbed] })
-            modalInteraction.channel.send({ embeds: [confessionTxt] })
+            modalInteraction.guild.channels.cache.get('1162419484305391800').send({ embeds: [confessionLog] })
+            modalInteraction.guild.channels.cache.get('1162416709265784882').send({ embeds: [confessionTxt] })
             modalInteraction.reply({
               content: `Your confession sent to <#1162416709265784882>`,
               ephemeral: true
