@@ -58,14 +58,14 @@ module.exports = {
     .addComponents(
         new ButtonBuilder()
         .setCustomId("btn-ticketclose")
-        .setLabel("Close Ticket")
+        .setLabel("Delete")
         .setStyle(ButtonStyle.Danger)
     )
     .addComponents(
         new ButtonBuilder()
         .setCustomId("btn-ticketlock")
-        .setLabel("Archive")
-        .setStyle(ButtonStyle.Primary)
+        .setLabel("Close")
+        .setStyle(ButtonStyle.Danger)
     )
     .addComponents(
         new ButtonBuilder()
