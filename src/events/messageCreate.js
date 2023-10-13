@@ -22,8 +22,7 @@ module.exports = new Object({
     }
 
     if (
-      message.channel.id === client.config.ruleChannel ||
-      message.channel.id === client.config.guidelinesChannel
+      message.channel.id === client.config.ruleChannel
     ) {
       if (
         message.content?.toLowerCase() === text.toLowerCase() &&
