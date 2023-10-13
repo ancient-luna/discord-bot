@@ -46,7 +46,7 @@ module.exports = new Object({
         //         .setStyle(ButtonStyle.Primary)
         //     )
         
-        await message.channel.send({ embeds: [embed], components: [button] })
+        await message.channel.send({ embeds: [embed] })
     }
 })
 
