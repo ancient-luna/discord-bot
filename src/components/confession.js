@@ -57,7 +57,7 @@ module.exports = {
             //       .setStyle(ButtonStyle.Primary)
             //   )
             const confessionLog = new EmbedBuilder()
-                .setDescription(`<@{${interaction.member.id}}> (***${interaction.member.displayName}***) just sent confession`)
+                .setDescription(`<@${interaction.member.id}> (**${interaction.member.displayName}**) just sent confession`)
                 .setColor('2b2d31')
                 .setTimestamp()
             modalInteraction.guild.channels.cache.get('1162419484305391800').send({ embeds: [confessionLog] })
