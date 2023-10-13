@@ -26,27 +26,15 @@ module.exports = new Object({
         const embed = new EmbedBuilder()
                 .setDescription(`a`)
                 .setColor('2b2d31')
-        // const button = new ActionRowBuilder()
-        //     .addComponents(
-        //         new ButtonBuilder()
-        //         .setCustomId("btn-suggestion")
-        //         .setLabel("Give Suggestion")
-        //         .setStyle(ButtonStyle.Primary)
-        //     )
-        //     .addComponents(
-        //         new ButtonBuilder()
-        //         .setCustomId("btn-ticketopen")
-        //         .setLabel("Open Ticket")
-        //         .setStyle(ButtonStyle.Primary)
-        //     )
-        //     .addComponents(
-        //         new ButtonBuilder()
-        //         .setCustomId("btn-confession")
-        //         .setLabel("Confession")
-        //         .setStyle(ButtonStyle.Primary)
-        //     )
+        const button = new ActionRowBuilder()
+            .addComponents(
+                new ButtonBuilder()
+                .setLabel("Support (Ko-Fi)")
+                .setStyle(ButtonStyle.Link)
+                .setURL(`https://ko-fi.com/axxae`)
+            )
         
-        await message.channel.send({ embeds: [embed] })
+        await message.channel.send({ embeds: [embed], components: [button] })
     }
 })
 
