@@ -48,7 +48,7 @@ module.exports = {
                 .setDescription(`${confessionValue}`)
                 .setColor('2b2d31')
                 .setTimestamp()
-                .setFooter({ text: 'from Anonymous' })
+                .setFooter({ text: 'from Anonymous (click on title to send)' })
             const btnConfess = new ActionRowBuilder()
               .addComponents(
                   new ButtonBuilder()
