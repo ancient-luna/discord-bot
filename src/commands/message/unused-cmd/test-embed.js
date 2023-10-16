@@ -22,19 +22,32 @@ module.exports = new Object({
      * @param {String[]} args
      */
     async execute(client, message, args) {
-        // let image = new AttachmentBuilder("src/assets/guidelines.png")
+        let image = new AttachmentBuilder("src/assets/guidelines.png")
         const embed = new EmbedBuilder()
                 .setDescription(`a`)
                 .setColor('2b2d31')
         const button = new ActionRowBuilder()
             .addComponents(
                 new ButtonBuilder()
-                .setLabel("Support (Ko-Fi)")
-                .setStyle(ButtonStyle.Link)
-                .setURL(`https://ko-fi.com/axxae`)
+                .setLabel("Give Suggestion")
+                .setStyle(ButtonStyle.Primary)
+                .setCustomId("btn-suggestion")
+            )
+            .addComponents(
+                new ButtonBuilder()
+                .setLabel("Open Ticket")
+                .setStyle(ButtonStyle.Primary)
+                .setCustomId("btn-ticketopen")
+            )
+            .addComponents(
+                new ButtonBuilder()
+                .setLabel("Confession")
+                .setStyle(ButtonStyle.Secondary)
+                .setEmoji("<:icons_edit:1163375500392153119>")
+                .setCustomId("btn-confession")
             )
         
-        await message.channel.send({ embeds: [embed], components: [button] })
+        await message.channel.send({ embeds: [embed], components: [button], files: [image] })
     }
 })
 
