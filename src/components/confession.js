@@ -44,8 +44,8 @@ module.exports = {
         .then((modalInteraction) => {
             const confessionValue = modalInteraction.fields.getTextInputValue('confessionInput');
             const confessionTxt = new EmbedBuilder()
-                .setAuthor({ name: "confession" })
-                .setDescription(`*" ${confessionValue} "*`)
+                .setAuthor({ name: "confession", iconURL: "https://i.imgur.com/oCVDNGq.png", url: "https://discord.com/channels/447069790150852609/1162410164356390912" })
+                .setDescription(`>>> ${confessionValue}`)
                 .setColor('2b2d31')
                 .setTimestamp()
                 .setFooter({ text: 'from Anonymous' })
