@@ -18,7 +18,7 @@ module.exports = {
 
     const txtModal = new ModalBuilder({
         customId: `confession-${interaction.user.id}`,
-        title: `Confession (Anonymously)`,
+        title: `Confession`,
     })
 
     const confessionInput = new TextInputBuilder({
@@ -60,7 +60,7 @@ module.exports = {
                 .setDescription(`<@${interaction.member.id}> just sent confession`)
                 .setColor('2b2d31')
                 .setTimestamp()
-                .setFooter({ text: `${interaction.member.displayName}` })
+                .setFooter({ text: `(u) ${interaction.user.username}` })
             modalInteraction.guild.channels.cache.get('1162419484305391800').send({ embeds: [confessionLog] })
             modalInteraction.guild.channels.cache.get('1162416709265784882').send({ embeds: [confessionTxt] })
             modalInteraction.reply({
