@@ -24,8 +24,7 @@ module.exports = new Object({
     async execute(client, message, args) {
         const chID = args[0];
         const messageID = args[1];
-        const editTitle = args.slice(2).join(" ");
-        const editQuery = args.slice(3).join(" ");
+        const editQuery = args.slice(2).join(" ");
 
         if (!chID) return message.reply("`channelid` `messageid` `reason`").catch((e) => { });
         if (!messageID) return message.reply("`messageid` `reason`").catch((e) => { });
@@ -36,7 +35,6 @@ module.exports = new Object({
 
             const theEmbed = await channelID.messages.fetch(messageID);
             const editEmbed = new EmbedBuilder()
-                .setTitle(editTitle)
                 .setDescription(editQuery)
                 .setColor(`2b2d31`)
                 // .setFooter({ text: `*roles still claimable on closed game` })
