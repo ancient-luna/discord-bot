@@ -205,6 +205,7 @@ module.exports = new Object({
           method: 'GET',
           url: 'https://google-bard1.p.rapidapi.com/',
           headers: {
+            model:'gchat',
             text: message.content,
             lang: 'en',
             psid: process.env.GOOGLE_BARD_PSID,
