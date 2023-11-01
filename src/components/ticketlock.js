@@ -15,7 +15,7 @@ module.exports = {
    */
   execute: async (client, interaction) => {
     if (!interaction.member.permissions.has(PermissionsBitField.Flags.ManageMessages)) return await interaction.reply({ content: `Only the **Ancestor** and **Elders** can lock this ticket`, ephemeral: true })
-    const lockUser = await interaction.member;
+    // const lockUser = await interaction.member;
     const lunariaID = '839170815932891197'
     const lunariaFlags = new PermissionsBitField([
       PermissionsBitField.Flags.ViewChannel,
@@ -32,7 +32,7 @@ module.exports = {
     await interaction.channel.edit({
 		permissionOverwrites: [
 		{
-			id: [lockUser, lunariaID],
+			id: lunariaID,
 			allow: lunariaFlags,
 		  },
 		  {
