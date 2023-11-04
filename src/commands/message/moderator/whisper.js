@@ -31,7 +31,7 @@ module.exports = new Object({
     const str = args.slice(1).join(" ");
 
     const txtEmbed = new EmbedBuilder()
-      .setDescription(`\`\`\`Dev. Contacts\`\`\`\n> Discord: imxo.e - [ancientluna](https://discord.com/invite/Sbp2nt8QHe) server\n> Email: dae@ancientluna.org\n> Instagram: [@everylttlething](https://instagram.com/everylttlething)`)
+      .setDescription(`\`\`\`Dev. Contacts\`\`\`\n> Discord: axxae - [ancientluna](https://discord.com/invite/Sbp2nt8QHe) server\n> Email: dae@ancientluna.org\n> Instagram: [@everylttlething](https://instagram.com/everylttlething)`)
       .setFooter({ text: `this bot won't read any messages of your replies` })
       .setColor("2b2d31")
       .setThumbnail('https://i.imgur.com/veLhH04.png')
@@ -39,9 +39,10 @@ module.exports = new Object({
     const btnServer = new ActionRowBuilder()
       .addComponents(
         new ButtonBuilder()
-          .setStyle(ButtonStyle.Link)
-          .setLabel("Take the new roles")
-          .setURL(`https://discord.com/channels/447069790150852609/864556584818835456`)
+        .setLabel("Apply for Vacation")
+        .setStyle(ButtonStyle.Danger)
+        .setEmoji("<:game_logo_bdo:861579805660151818>")
+        .setCustomId("btn-guildvacation")
       )
       .addComponents(
         new ButtonBuilder()
@@ -53,10 +54,10 @@ module.exports = new Object({
     let fileAtch = new AttachmentBuilder("src/assets/brofist_fromluna.mp4")
 
     user.send({
-      content: `Dear **Light Seekers**,\n\n${str}\n\nWarmest regards,\n**Dae**\n_ _`,
+      content: `Dear **Lunar Disciples**,\n\n${str}\n\nWarmest regards,\n**Aevoa**\n_ _`,
       embeds: [txtEmbed],
       components: [btnServer],
-      files: [fileAtch]
+      // files: [fileAtch]
     }).catch((e) => { return message.reply(`Doesn't allowed to whisper them`) });
 
     message.react("✉").catch((e) => { });
