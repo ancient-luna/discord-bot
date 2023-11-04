@@ -1,5 +1,6 @@
 const { EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle, PermissionsBitField } = require("discord.js");
 const { stripIndent } = require("common-tags");
+const discordTranscripts = require('discord-html-transcripts');
 
 module.exports = {
   name: "ticketclose",
@@ -20,6 +21,11 @@ module.exports = {
       ephemeral: true
     }).catch((e) => { });
 
+    const channel = interaction.channel;
+    const channelName = channel.name;
+    const attachment = await discordTranscripts.createTranscript(channel);
+    
+    interaction.guild.channels.cache.get('1162419484305391800').send({ content: `Transcripted chat from **# ${channelName}** <:tag:1170150772894351541>`, files: [attachment] })
     interaction.reply({
         content: `Closing ticket in 5 seconds <a:_util_loading:863317596551118858>`,
         ephemeral: true
