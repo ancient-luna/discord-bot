@@ -51,13 +51,13 @@ module.exports = new Object({
           .setURL(`https://ancientluna.org`)
       )
 
-    let fileAtch = new AttachmentBuilder("src/assets/brofist_fromluna.mp4")
+    let fileAtch = new AttachmentBuilder("src/assets/xmoonlight.mp4")
 
     user.send({
       content: `Dear **Lunar Disciples**,\n${str}\n\nWarmest regards,\n**Aevoa**\n_ _`,
       embeds: [txtEmbed],
       components: [btnServer],
-      // files: [fileAtch]
+      files: [fileAtch]
     }).catch((e) => { return message.reply(`Doesn't allowed to whisper them`) });
 
     message.react("✉").catch((e) => { });
