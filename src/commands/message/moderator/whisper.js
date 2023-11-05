@@ -39,10 +39,10 @@ module.exports = new Object({
     const btnServer = new ActionRowBuilder()
       .addComponents(
         new ButtonBuilder()
-        .setLabel("Apply for Vacation")
-        .setStyle(ButtonStyle.Danger)
-        .setEmoji("<:game_logo_bdo:861579805660151818>")
-        .setCustomId("btn-guildvacation")
+          .setStyle(ButtonStyle.Link)
+          .setLabel("Apply for Vacation")
+          .setEmoji('<:game_logo_bdo:861579805660151818>')
+          .setURL(`https://discord.com/channels/447069790150852609/1060992992523079800`)
       )
       .addComponents(
         new ButtonBuilder()
@@ -54,7 +54,7 @@ module.exports = new Object({
     let fileAtch = new AttachmentBuilder("src/assets/brofist_fromluna.mp4")
 
     user.send({
-      content: `Dear **Lunar Disciples**,\n\n${str}\n\nWarmest regards,\n**Aevoa**\n_ _`,
+      content: `Dear **Lunar Disciples**,\n${str}\n\nWarmest regards,\n**Aevoa**\n_ _`,
       embeds: [txtEmbed],
       components: [btnServer],
       // files: [fileAtch]
