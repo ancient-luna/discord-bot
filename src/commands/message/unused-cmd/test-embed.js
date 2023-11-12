@@ -25,7 +25,7 @@ module.exports = new Object({
         // let image = new AttachmentBuilder("src/assets/guidelines.png")
         const embed = new EmbedBuilder()
                 .setTitle(`EXCLUSIVE ROLES`)
-                .setDescription(`<@&620709364247822338> for the members who boost the server\n<@&888736428069105674> for the supporters through [Ko-Fi](https://ko-fi.com/xxdae) or [Saweria](https://saweria.co/ancientluna)\n<@&1148832046505009193> for the content creators, game master, huge game developers`)
+                .setDescription(`<@&620709364247822338> for the members who boost the server\n<@&888736428069105674> for the supporters through [Ko-Fi](https://ko-fi.com/xxdae) or [Saweria](https://saweria.co/ancientluna)\n<@&1148832046505009193> for the content creators and or huge game developers`)
                 .setColor('2b2d31')
                 .setImage('https://i.imgur.com/tRx8iKL.png')
         const button = new ActionRowBuilder()
