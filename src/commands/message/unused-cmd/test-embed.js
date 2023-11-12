@@ -22,32 +22,37 @@ module.exports = new Object({
      * @param {String[]} args
      */
     async execute(client, message, args) {
-        let image = new AttachmentBuilder("src/assets/guidelines.png")
+        // let image = new AttachmentBuilder("src/assets/guidelines.png")
         const embed = new EmbedBuilder()
                 .setDescription(`a`)
                 .setColor('2b2d31')
+                .setImage('https://i.imgur.com/xy0vnVG.png')
         const button = new ActionRowBuilder()
             .addComponents(
                 new ButtonBuilder()
-                .setLabel("Give Suggestion")
-                .setStyle(ButtonStyle.Primary)
-                .setCustomId("btn-suggestion")
+                .setStyle(ButtonStyle.Link)
+                .setLabel(`Support (Ko-Fi)`)
+                .setURL(`https://ko-fi.com/xxdae`)
             )
             .addComponents(
                 new ButtonBuilder()
-                .setLabel("Open Ticket")
-                .setStyle(ButtonStyle.Primary)
-                .setCustomId("btn-ticketopen")
+                .setStyle(ButtonStyle.Link)
+                .setLabel(`Support (Saweria)`)
+                .setURL(`https://saweria.co/ancientluna`)
             )
-            .addComponents(
-                new ButtonBuilder()
-                .setLabel("Confession")
-                .setStyle(ButtonStyle.Secondary)
-                .setEmoji("<:icons_edit:1163375500392153119>")
-                .setCustomId("btn-confession")
-            )
+            // .addComponents(
+            //     new ButtonBuilder()
+            //     .setLabel("Confession")
+            //     .setStyle(ButtonStyle.Secondary)
+            //     .setEmoji("<:icons_edit:1163375500392153119>")
+            //     .setCustomId("btn-confession")
+            // )
         
-        await message.channel.send({ embeds: [embed], components: [button], files: [image] })
+        await message.channel.send({
+            embeds: [embed],
+            components: [button],
+            // files: [image]
+        })
     }
 })
 
