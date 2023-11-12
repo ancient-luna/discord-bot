@@ -35,9 +35,10 @@ module.exports = new Object({
 
             const theEmbed = await channelID.messages.fetch(messageID);
             const editEmbed = new EmbedBuilder()
-                .setTitle('ACTIVITY ROLES')
+                .setTitle('EXCLUSIVE ROLES')
                 .setDescription(editQuery)
                 .setColor(`2b2d31`)
+                .setImage('https://i.imgur.com/tRx8iKL.png')
                 // .setFooter({ text: `*roles still claimable on closed game` })
 
             // const editButton = new ActionRowBuilder()
