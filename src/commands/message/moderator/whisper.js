@@ -40,9 +40,9 @@ module.exports = new Object({
       .addComponents(
         new ButtonBuilder()
           .setStyle(ButtonStyle.Link)
-          .setLabel("Apply for Vacation")
+          .setLabel("Chat with family")
           .setEmoji('<:game_logo_bdo:861579805660151818>')
-          .setURL(`https://discord.com/channels/447069790150852609/1060992992523079800`)
+          .setURL(`https://discord.com/channels/447069790150852609/1060992670035619931`)
       )
       .addComponents(
         new ButtonBuilder()
@@ -51,10 +51,10 @@ module.exports = new Object({
           .setURL(`https://ancientluna.org`)
       )
 
-    let fileAtch = new AttachmentBuilder("src/assets/xmoonlight.mp4")
+    let fileAtch = new AttachmentBuilder("src/assets/100dr.mp4")
 
     user.send({
-      content: `Dear **Lunar Disciples**,\n${str}\n\nWarmest regards,\n**Aevoa**\n_ _`,
+      content: `Dear **Lunar Disciples**,\n${str}\n\nPinjam dulu Seratus,\n**Aevoa**\n_ _`,
       embeds: [txtEmbed],
       components: [btnServer],
       files: [fileAtch]
