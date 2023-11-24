@@ -206,10 +206,11 @@ module.exports = new Object({
           url: 'https://google-bard1.p.rapidapi.com/',
           headers: {
             userid: process.env.GOOGLE_BARD_USERID,
+            message: message.content,
+            key: process.env.GOOGLE_BARD_KEY,
             // model:'gchat',
-            text: message.content,
-            lang: 'en',
-            psid: process.env.GOOGLE_BARD_PSID,
+            // lang: 'en',
+            // psid: process.env.GOOGLE_BARD_PSID,
             'X-RapidAPI-Key': process.env.X_RAPID_API,
             'X-RapidAPI-Host': 'google-bard1.p.rapidapi.com'
           }
