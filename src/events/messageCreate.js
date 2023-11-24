@@ -207,7 +207,7 @@ module.exports = new Object({
           headers: {
             userid: process.env.GOOGLE_BARD_USERID,
             message: message.content,
-            key: process.env.GOOGLE_BARD_KEY,
+            key: process.env.GOOGLE_MAKERSUITE_KEY,
             // model:'gchat',
             // lang: 'en',
             // psid: process.env.GOOGLE_BARD_PSID,
