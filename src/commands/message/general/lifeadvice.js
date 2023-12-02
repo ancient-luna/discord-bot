@@ -32,7 +32,7 @@ module.exports = new Object({
 
         if (!user) {
             message.react("❓").catch((e) => { });
-            return message.reply({ content: "How can I tweet them. Mention one" }).then((msg) => {
+            return message.reply({ content: "How can I gib advice to them. Mention one" }).then((msg) => {
                 setTimeout(() => msg.delete().catch((e) => { }), 5000);
             });
         }
