@@ -119,21 +119,7 @@ module.exports = new Object({
         const fetchedMessages = await message.channel.messages.fetch();
         const stickyMessage = fetchedMessages.find(m => m.author.id === client.user.id && client.config.stickyChannel.includes(m.channel.id));
         const lunaThumbnail = [
-          'https://i.imgur.com/B6u2feA.png',
-          'https://i.imgur.com/DrmVtuP.png',
-          'https://i.imgur.com/Z5mq7OF.png',
-          'https://i.imgur.com/M0U4I56.png',
-          'https://i.imgur.com/jOGuk7s.png',
-          'https://i.imgur.com/tM9xIaq.png',
-          'https://i.imgur.com/hIBEDkM.png',
-          'https://i.imgur.com/GUYxDJF.png',
-          'https://i.imgur.com/MjADPRv.png',
-          'https://i.imgur.com/InURa9o.png',
-          'https://i.imgur.com/son6e07.png',
-          'https://i.imgur.com/0wE5Qyp.png',
-          'https://i.imgur.com/DHzUulL.png',
-          'https://i.imgur.com/bEIn9Ag.png',
-          'https://i.imgur.com/qkw8aXV.png',
+          'https://i.imgur.com/B6u2feA.png', 'https://i.imgur.com/DrmVtuP.png', 'https://i.imgur.com/Z5mq7OF.png', 'https://i.imgur.com/M0U4I56.png', 'https://i.imgur.com/jOGuk7s.png', 'https://i.imgur.com/tM9xIaq.png', 'https://i.imgur.com/hIBEDkM.png', 'https://i.imgur.com/GUYxDJF.png', 'https://i.imgur.com/MjADPRv.png', 'https://i.imgur.com/InURa9o.png', 'https://i.imgur.com/son6e07.png', 'https://i.imgur.com/0wE5Qyp.png', 'https://i.imgur.com/DHzUulL.png', 'https://i.imgur.com/bEIn9Ag.png', 'https://i.imgur.com/qkw8aXV.png',
         ]
         const stickyText = new EmbedBuilder()
             .setTitle(`Ancient Luna Activity Tracker`)
@@ -160,7 +146,7 @@ module.exports = new Object({
 
     // Chat AI
     if (client.config.aiChatChannel.includes(message.channel.id)) {
-      const axios = require('axios');
+      const bard = require('@nishantapps/node-bard');
       const noAnswer = [
         "There was an issue getting that AI response. Try again sooner or later <:vcon_warning:992917967660654663>",
         "<:vcon_warning:992917967660654663> Uh.... **Dae?** Are you here? I am not able to answer their question.. I'm afraid..",
@@ -200,26 +186,37 @@ module.exports = new Object({
             });
           }
         });
-        // response handler
+        // response bard
         let inputChat = {
-          method: 'GET',
-          url: 'https://google-bard1.p.rapidapi.com/',
-          headers: {
-            userid: process.env.GOOGLE_BARD_USERID,
-            message: message.content,
-            key: process.env.GOOGLE_MAKERSUITE_KEY,
-            // model:'gchat',
-            // lang: 'en',
-            // psid: process.env.GOOGLE_BARD_PSID,
-            'X-RapidAPI-Key': process.env.X_RAPID_API,
-            'X-RapidAPI-Host': 'google-bard1.p.rapidapi.com'
-          }
-        };
+          userid: process.env.GOOGLE_BARD_USERID,
+          key: process.env.GOOGLE_MAKERSUITE_KEY,
+          apikey: process.env.X_RAPID_API
+        }
+        bard.setConfig(inputChat);
+
+        // response handler
+        // let inputChat = {
+        //   method: 'GET',
+        //   url: 'https://google-bard1.p.rapidapi.com/',
+        //   headers: {
+        //     userid: process.env.GOOGLE_BARD_USERID,
+        //     message: message.content,
+        //     key: process.env.GOOGLE_MAKERSUITE_KEY,
+        //     // model:'gchat',
+        //     // lang: 'en',
+        //     // psid: process.env.GOOGLE_BARD_PSID,
+        //     'X-RapidAPI-Key': process.env.X_RAPID_API,
+        //     'X-RapidAPI-Host': 'google-bard1.p.rapidapi.com'
+        //   }
+        // };
+        
         try {
-          const outputChat = await axios.request(inputChat);
-          const responseChat = outputChat.data.response;
-          if (responseChat.length > 2000) {
-            const chunks = responseChat.match(/.{1,2000}/g);
+          const promptChat = message.content;
+          const translatedChat = await bard.translateText(promptChat, 'en');
+          const outputChat = await bard.createText(translatedChat);
+          // const responseChat = outputChat.data.response;
+          if (outputChat.length > 2000) {
+            const chunks = outputChat.match(/.{1,2000}/g);
             for (let i=0; i < chunks.length; i++) {
               await message.channel.send(chunks[i]).catch(err => {
                 console.log(err);
@@ -227,7 +224,7 @@ module.exports = new Object({
               });
             }
           } else {
-            await message.channel.send(responseChat).catch(err => {
+            await message.channel.send(outputChat).catch(err => {
               console.log(err);
               message.channel.send(`${confuseAI}`).catch(err => {});
             });
@@ -241,6 +238,9 @@ module.exports = new Object({
         message.channel.send(`${confuseAI}`).catch(err => {});
       }
     }
+
+
+    // PREFIX COMMAND
 
     const prefix = process.env.COMMAND_PREFIX;
 
