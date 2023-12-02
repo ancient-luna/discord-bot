@@ -48,7 +48,7 @@ module.exports = new Object({
 
         // await message.react("<:util_social_twitter:859071787114430475>").catch((e) => { });
 
-        await message.reply({
+        await message.channel.send({
             // content: canvas,
             embeds: [advice]
         })
