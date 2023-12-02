@@ -51,6 +51,6 @@ module.exports = new Object({
         await message.channel.send({
             // content: canvas,
             embeds: [advice]
-        })
+        });
     }
 });
