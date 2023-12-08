@@ -54,7 +54,7 @@ module.exports = new Object({
                 { name: "Definition: ", value: definition },
                 { name: "Example: ", value: example }
             )
-            .setFooter({ text: `rating 👍 ${thumbsUp} 👎 ${thumbsDown}` })
+            .setFooter({ text: `rating ↑ ${thumbsUp} ↓ ${thumbsDown}` })
 
         return message.reply({ embeds: [embed] }).catch((e) => { });
     }
