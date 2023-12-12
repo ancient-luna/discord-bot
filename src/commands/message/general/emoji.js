@@ -49,7 +49,7 @@ module.exports = new Object({
             return await message.reply({ content: response });
         }
 
-        await message.reply({ content: output.body.results[0].url })
+        await message.channel.send({ content: output.body.results[0].url })
     }
 })
 
