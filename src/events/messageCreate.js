@@ -146,7 +146,6 @@ module.exports = new Object({
 
     // Chat AI
     if (client.config.aiChatChannel.includes(message.channel.id)) {
-      const bard = require('@nishantapps/node-bard');
       const noAnswer = [
         "There was an issue getting that AI response. Try again sooner or later <:vcon_warning:992917967660654663>",
         "<:vcon_warning:992917967660654663> Uh.... **Dae?** Are you here? I am not able to answer their question.. I'm afraid..",
@@ -162,6 +161,7 @@ module.exports = new Object({
       try {
         await message.channel.sendTyping();
         // the bot can retrieve old messages and hold a conversation
+        const axios = require('axios');
         let prevMessages = await message.channel.messages.fetch({ limit: 15 });
         prevMessages.reverse();
         prevMessages.forEach((msg) => {
@@ -188,39 +188,25 @@ module.exports = new Object({
         });
         // response bard
         let inputChat = {
-          userid: process.env.GOOGLE_BARD_USERID,
-          key: process.env.GOOGLE_MAKERSUITE_KEY,
-          apikey: process.env.X_RAPID_API
-        }
-        bard.setConfig(inputChat);
-
-        // response handler
-        // let inputChat = {
-        //   method: 'GET',
-        //   url: 'https://google-bard1.p.rapidapi.com/',
-        //   headers: {
-        //     userid: process.env.GOOGLE_BARD_USERID,
-        //     message: message.content,
-        //     key: process.env.GOOGLE_MAKERSUITE_KEY,
-        //     // model:'gchat',
-        //     // lang: 'en',
-        //     // psid: process.env.GOOGLE_BARD_PSID,
-        //     'X-RapidAPI-Key': process.env.X_RAPID_API,
-        //     'X-RapidAPI-Host': 'google-bard1.p.rapidapi.com'
-        //   }
-        // };
-        
+          method: 'GET',
+          url: 'https://google-bard1.p.rapidapi.com/',
+          headers: {
+            userid: process.env.GOOGLE_BARD_USERID,
+            message: message.content,
+            key: process.env.GOOGLE_MAKERSUITE_KEY,
+            'X-RapidAPI-Key': process.env.X_RAPID_API,
+            'X-RapidAPI-Host': 'google-bard1.p.rapidapi.com'
+          }
+        };
         try {
-          const promptChat = message.content;
-          const translatedChat = await bard.translateText(promptChat, 'en');
-          const outputChat = await bard.createText(translatedChat);
-          // const responseChat = outputChat.data.response;
+          const responseChat = await axios.request(inputChat);
+          const outputChat = responseChat.data.response;
           if (outputChat.length > 2000) {
             const chunks = outputChat.match(/.{1,2000}/g);
             for (let i=0; i < chunks.length; i++) {
               await message.channel.send(chunks[i]).catch(err => {
                 console.log(err);
-                message.channel.send("I am having a hard time to filling that request! Im an only living wisdom on Discord\n**I don't have time to process long requests** \`Only 2000 max. per-reply\` <:vcon_warning:992917967660654663>").catch(err => {});
+                message.channel.send("I am having a hard time to filling that request! Im an only living wisdom on Discord\nI don't have time to process long requests \`Only 2000 max. per-reply\` <:vcon_warning:992917967660654663>").catch(err => {});
               });
             }
           } else {
