@@ -189,11 +189,10 @@ module.exports = new Object({
         // response bard
         let inputChat = {
           method: 'GET',
-          url: 'https://google-bard1.p.rapidapi.com/',
+          url: 'https://google-bard1.p.rapidapi.com/v1/gemini/gemini-pro',
           headers: {
-            userid: process.env.GOOGLE_BARD_USERID,
-            message: message.content,
-            key: process.env.GOOGLE_MAKERSUITE_KEY,
+            'api-key': process.env.GOOGLE_MAKERSUITE_KEY,
+            text: message.content,
             'X-RapidAPI-Key': process.env.X_RAPID_API,
             'X-RapidAPI-Host': 'google-bard1.p.rapidapi.com'
           }
