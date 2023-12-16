@@ -90,7 +90,7 @@ module.exports = new Object({
             .setCustomId("btn-guildvacation")
             .setLabel("Vacation")
             .setEmoji('<:game_logo_bdo:861579805660151818>')
-            .setStyle(ButtonStyle.Danger)
+            .setStyle(ButtonStyle.Primary)
         )
         .addComponents(
             new ButtonBuilder()
