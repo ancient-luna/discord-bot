@@ -88,7 +88,7 @@ module.exports = new Object({
         .addComponents(
             new ButtonBuilder()
             .setCustomId("btn-guildvacation")
-            .setLabel("Apply for Vacation")
+            .setLabel("Vacation")
             .setEmoji('<:game_logo_bdo:861579805660151818>')
             .setStyle(ButtonStyle.Danger)
         )
@@ -146,11 +146,8 @@ module.exports = new Object({
 
     // Chat AI
     if (client.config.aiChatChannel.includes(message.channel.id)) {
-      const noAnswer = [
-        "There was an issue getting that AI response. Try again sooner or later <:vcon_warning:992917967660654663>",
-        "<:vcon_warning:992917967660654663> Uh.... **Dae?** Are you here? I am not able to answer their question.. I'm afraid..",
-      ];
-      const confuseAI = noAnswer[Math.floor(Math.random() * noAnswer.length)];
+      const noAnswer = "There was an issue getting that AI response. Try again sooner or later <:msg_error:1185521089766502400>";
+      // const confuseAI = noAnswer[Math.floor(Math.random() * noAnswer.length)];
       let conversationLog = [
         {
           role: "system",
@@ -205,22 +202,22 @@ module.exports = new Object({
             for (let i=0; i < chunks.length; i++) {
               await message.channel.send(chunks[i]).catch(err => {
                 console.log(err);
-                message.channel.send("I am having a hard time to filling that request! Im an only living wisdom on Discord\nI don't have time to process long requests \`Only 2000 max. per-reply\` <:vcon_warning:992917967660654663>").catch(err => {});
+                message.channel.send("I am having a hard time to filling that request! Im an only living wisdom on Discord\nI don't have time to process long requests \`Only 2000 max. per-reply\` <:msg_error:1185521089766502400>").catch(err => {});
               });
             }
           } else {
             await message.channel.send(outputChat).catch(err => {
               console.log(err);
-              message.channel.send(`${confuseAI}`).catch(err => {});
+              message.channel.send(`${noAnswer}`).catch(err => {});
             });
           }
         } catch (e) {
           console.error("Error:", e);
-          return await message.channel.send(`${confuseAI}`);
+          return await message.channel.send(`${noAnswer}`);
         }
       } catch (e) {
         console.log(e);
-        message.channel.send(`${confuseAI}`).catch(err => {});
+        message.channel.send(`${noAnswer}`).catch(err => {});
       }
     }
 
