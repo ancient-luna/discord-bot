@@ -506,10 +506,10 @@ module.exports = new Object({
                     '𝔄 𝔐𝔞𝔳𝔢𝔫 𝔬𝔣 𝔄𝔩𝔠𝔥𝔢𝔪𝔶 𝔱𝔯𝔞𝔫𝔰𝔠𝔢𝔫𝔡𝔦𝔫𝔤 𝔪𝔞𝔱𝔱𝔢𝔯 𝔱𝔥𝔯𝔬𝔲𝔤𝔥 𝔊𝔯𝔞𝔳𝔦𝔱𝔶 ℭ𝔬𝔯𝔢 𝔣𝔲𝔰𝔦𝔬𝔫'
                 ]
                 const classText = new EmbedBuilder()
-                    .setAuthor({ name: "CHOSEN MAIN CLASS", iconURL: "https://i.imgur.com/vdWEFoo.png" })
+                    .setAuthor({ name: "CHOSEN MAIN CLASS", iconURL: "https://i.imgur.com/Sjc6F8x.png" })
                     .setFooter({ text: 'Elionian Year' })
                     .setTimestamp()
-                    .setThumbnail('https://i.imgur.com/oB319WT.png')
+                    .setThumbnail('https://i.imgur.com/vdWEFoo.png')
                     .setDescription(`${quoteText[Math.floor(Math.random() * quoteText.length)]}\n\nAncient Civilizations Name: ${reaction.message.guild.members.cache.get(user.id)}\nChosen Main Class: **Scholar** <:xu_bdo_class_scholar:1186973610427027557>`)
                     .setColor('2b2d31');
                 return channelArtifact.send({ embeds: [classText] });
