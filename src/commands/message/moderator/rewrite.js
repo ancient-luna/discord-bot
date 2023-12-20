@@ -39,7 +39,7 @@ module.exports = new Object({
                 .setDescription(editQuery)
                 .setColor(`2b2d31`)
                 // .setImage('https://i.imgur.com/tRx8iKL.png')
-                .setFooter({ text: `*this is world boss alerts (ASIA region only) GMT+8` })
+                // .setFooter({ text: `*this is world boss alerts (ASIA region only) GMT+8` })
 
             // const editButton = new ActionRowBuilder()
             // .addComponents(
