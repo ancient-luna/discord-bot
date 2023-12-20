@@ -32,7 +32,7 @@ module.exports = new Object({
                     embeds: [
                         new EmbedBuilder()
                             .setTitle(`Get your snacks and relax 🍿`)
-                            .setDescription(`**${message.author.username}** has started **[YouTube Together](${invite.code})** in <#${channel.id}>\nWatch YouTube videos without ads in Ancient Luna`)
+                            .setDescription(`**${message.author.username}** has started **[YouTube Together](${invite.code})** in <#${channel.id}>\nWatch YouTube videos in ${message.guild.name}`)
                             .setFooter({ text: `Mobile ver. not supported`, iconURL: 'https://i.imgur.com/7WAJS44.png' })
                             .setColor('ed0000')
                     ],
