@@ -146,7 +146,7 @@ module.exports = new Object({
 
     // Chat AI
     if (client.config.aiChatChannel.includes(message.channel.id)) {
-      const noAnswer = "There was an issue getting that AI response. Try again sooner or later <:msg_error:1185521089766502400>";
+      const noAnswer = "There was an issue getting that AI response. Try again sooner or later :msg_error:";
       // const confuseAI = noAnswer[Math.floor(Math.random() * noAnswer.length)];
       let conversationLog = [
         {
@@ -156,9 +156,9 @@ module.exports = new Object({
         },
       ];
       try {
+        const { Gemini } = require('@nishantapps/node-gemini');
         await message.channel.sendTyping();
         // the bot can retrieve old messages and hold a conversation
-        const axios = require('axios');
         let prevMessages = await message.channel.messages.fetch({ limit: 15 });
         prevMessages.reverse();
         prevMessages.forEach((msg) => {
@@ -183,26 +183,26 @@ module.exports = new Object({
             });
           }
         });
-        // response bard
-        let inputChat = {
-          method: 'GET',
-          url: 'https://google-bard1.p.rapidapi.com/v1/gemini/gemini-pro',
-          headers: {
-            api_key: process.env.GOOGLE_MAKERSUITE_KEY,
-            text: message.content,
-            'X-RapidAPI-Key': process.env.X_RAPID_API,
-            'X-RapidAPI-Host': 'google-bard1.p.rapidapi.com'
-          }
-        };
+
+        const apiKey = process.env.X_RAPID_API;
+        const makersuiteKey = process.env.GOOGLE_MAKERSUITE_KEY;
+        const temperature = 0.7;
+        const topP = 0.8;
+        const topK = 10;
+        const maxOutputTokens = 50;
+
+        Gemini.initialize(apiKey, makersuiteKey, temperature, topP, topK, maxOutputTokens);
+
         try {
-          const responseChat = await axios.request(inputChat);
-          const outputChat = responseChat.data.response;
+          const questionChat = await Gemini.ask(message.content);
+          const outputChat = questionChat.response;
+          // const outputChat = responseChat.data.response;
           if (outputChat.length > 2000) {
             const chunks = outputChat.match(/.{1,2000}/g);
             for (let i=0; i < chunks.length; i++) {
               await message.channel.send(chunks[i]).catch(err => {
                 console.log(err);
-                message.channel.send("I am having a hard time to filling that request! Im an only living wisdom on Discord\nI don't have time to process long requests \`Only 2000 max. per-reply\` <:msg_error:1185521089766502400>").catch(err => {});
+                message.channel.send("I am having a hard time to filling that request! Im an only living wisdom on Discord\nI don't have time to process long requests \`Only 2000 max. per-reply\` :msg_error:").catch(err => {});
               });
             }
           } else {
