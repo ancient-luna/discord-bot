@@ -56,7 +56,7 @@ module.exports = new Object({
     let fileAtch = new AttachmentBuilder(filesBDO)
 
     user.send({
-      content: `Dear **Lunar Disciples**,\n${str}\n\nWarmest regards,\n**Aevoa**\n_ _`,
+      content: `Dear **Lunar Disciples**,\n${str}\n\nWarmest regards,\n[**Aevoa**](https://open.spotify.com/track/1ghCJLxbwXZpOoePi7pQBW?si=66948f8ba9b9456d)\n_ _`,
       embeds: [txtEmbed],
       components: [btnServer],
       files: [fileAtch]
