@@ -52,17 +52,16 @@ module.exports = new Object({
           .setURL(`https://ancientluna.org`)
       )
 
-    const filesBDO = ['src/assets/taebaek.png', 'src/assets/wonderland.png', 'src/assets/lovelyblossom.png']
-    let fileAtch = new AttachmentBuilder(filesBDO)
+    let fileAtch = new AttachmentBuilder('src/assets/bdo2023outfits.png')
 
     user.send({
       content: `Dear **Lunar Disciples**,\n${str}\n\nWarmest regards,\n[**Aevoa**](https://open.spotify.com/track/1ghCJLxbwXZpOoePi7pQBW?si=66948f8ba9b9456d)\n_ _`,
       embeds: [txtEmbed],
       components: [btnServer],
       files: [fileAtch]
-    }).catch((e) => { return message.reply(`Doesn't allowed to whisper them`) });
+    }).catch((e) => { return message.reply(`${e}`) });
 
-    message.react("✉").catch((e) => { });
+    message.react("✉").catch((e) => { console(e) });
   }
 });
 
