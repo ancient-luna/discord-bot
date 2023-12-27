@@ -35,6 +35,7 @@ module.exports = new Object({
       .setFooter({ text: `this bot won't read any messages of your replies` })
       .setColor("2b2d31")
       .setThumbnail('https://i.imgur.com/veLhH04.png')
+      .setImage('https://i.imgur.com/4uS7mor.png')
 
     const btnServer = new ActionRowBuilder()
       .addComponents(
@@ -47,14 +48,15 @@ module.exports = new Object({
       .addComponents(
         new ButtonBuilder()
           .setStyle(ButtonStyle.Link)
-          .setLabel("Website")
+          .setLabel("Guild Website")
           .setURL(`https://ancientluna.org`)
       )
 
-    let fileAtch = new AttachmentBuilder("src/assets/100dr.mp4")
+    const filesBDO = ['src/assets/taebaek.png', 'src/assets/wonderland.png', 'src/assets/lovelyblossom.png']
+    let fileAtch = new AttachmentBuilder(filesBDO)
 
     user.send({
-      content: `Dear **Lunar Disciples**,\n${str}\n\nPinjam dulu Seratus,\n**Aevoa**\n_ _`,
+      content: `Dear **Lunar Disciples**,\n${str}\n\nWarmest regards,\n**Aevoa**\n_ _`,
       embeds: [txtEmbed],
       components: [btnServer],
       files: [fileAtch]
