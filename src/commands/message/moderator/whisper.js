@@ -51,6 +51,12 @@ module.exports = new Object({
           .setLabel("Guild Website")
           .setURL(`https://ancientluna.org`)
       )
+      .addComponents(
+        new ButtonBuilder()
+          .setStyle(ButtonStyle.Link)
+          .setLabel("Videos")
+          .setURL(`https://www.youtube.com/@ancientluna/about`)
+      )
 
     let fileAtch = new AttachmentBuilder('src/assets/bdo2023outfits.png')
 
