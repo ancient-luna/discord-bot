@@ -6,7 +6,7 @@ module.exports = new Object({
     category: "Deadfrontier",
     usage: "",
     cooldown: 0,
-    aliases: [''],
+    aliases: ['testrecord'],
     examples: [''],
     sub_commands: [],
     args: false,
@@ -57,7 +57,7 @@ module.exports = new Object({
                 let all_time_tpk = stat['all_time_tpk']
 
                 try {
-                    let position = stat['gpscoords']
+                    let lastloot = stat['lastloot']
 
                     const embedRecord = new EmbedBuilder()
                     .setTitle(`${username}'s Record`)
@@ -66,7 +66,7 @@ module.exports = new Object({
                         { name: `**EXP Since Death**`, value: `${exp_since_death} EXP`, inline: true },
                         { name: `**Weekly TS**`, value: `${weekly_ts} EXP`, inline: true },
                         { name: `**⭐ All Time TS**`, value: `${all_time_ts} EXP`, inline: true },
-                        { name: `**Position**`, value: position, inline: true },
+                        { name: `**Last Loot Item**`, value: lastloot, inline: true },
                         { name: `**Weekly Loot**`, value: `${weekly_loot} Loot Points`, inline: true },
                         { name: `**⭐ All Time Loot**`, value: `${all_time_loot} Loot Points`, inline: true },
                         { name: `**Daily TPK**`, value: `${daily_tpk} Kill`, inline: true },
@@ -105,7 +105,7 @@ module.exports = new Object({
                         { name: `**EXP Since Death**`, value: `${exp_since_death} EXP`, inline: true },
                         { name: `**Weekly TS**`, value: `${weekly_ts} EXP`, inline: true },
                         { name: `**⭐ All Time TS**`, value: `${all_time_ts} EXP`, inline: true },
-                        { name: `**Position**`, value: `Nowhere`, inline: true },
+                        { name: `**Last Loot Item**`, value: `No track yet`, inline: true },
                         { name: `**Weekly Loot**`, value: `${weekly_loot} Loot Points`, inline: true },
                         { name: `**⭐ All Time Loot**`, value: `${all_time_loot} Loot Points`, inline: true },
                         { name: `**Daily TPK**`, value: `${daily_tpk} Kill`, inline: true },

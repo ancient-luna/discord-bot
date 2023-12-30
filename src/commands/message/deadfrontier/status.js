@@ -6,7 +6,7 @@ module.exports = new Object({
     category: "Deadfrontier",
     usage: "",
     cooldown: 0,
-    aliases: [''],
+    aliases: ['teststat'],
     examples: [''],
     sub_commands: [],
     args: false,
@@ -95,45 +95,51 @@ module.exports = new Object({
                 let dmg_boost = stat['dmg_boost'].split("<\/i> ")
                 let speed_boost = stat['speed_boost'].split("<\/i> ")
 
+                // let position = stat['gpscoords']
+
+                let implant_data = stat['implantslots'];
+
+                const embedEvent = new EmbedBuilder()
+                    .setDescription(`**${weekly_ts} EXP**\n↳ gained and counted while doing TS on this week ⁣ ⁣ ⁣\n**EXP Since Death** : ${exp_since_death} EXP`)
+                    .setThumbnail(`https://i.imgur.com/ulP4oAd.png`)
+                    .addFields(
+                        { name: `**Daily TPK**`, value: daily_tpk, inline: true },
+                        { name: `**Weekly TPK**`, value: weekly_tpk, inline: true },
+                        { name: `**Last Hit By**`, value: pvp_last_hit, inline: true }
+                    )
+                    .setImage(`https://www.dfprofiler.com/signaturereplicate.php?profile=${survivorID}&imgur=5q7hV6B`)
+
+                const btnProfile = new ActionRowBuilder()
+                    .addComponents(
+                        new ButtonBuilder()
+                            .setStyle(ButtonStyle.Link)
+                            .setLabel("Dead Frontier Profile")
+                            .setURL(`https://fairview.DEADFRONTIER.com/onlinezombiemmo/index.php?action=profile;u=${survivorID}`)
+                    )
+                    .addComponents(
+                        new ButtonBuilder()
+                            .setStyle(ButtonStyle.Link)
+                            .setLabel("Send Message")
+                            .setURL(`https://fairview.DEADFRONTIER.com/onlinezombiemmo/index.php?action=pm;sa=send;u=${survivorID}`)
+                    )
+                    .addComponents(
+                        new ButtonBuilder()
+                            .setStyle(ButtonStyle.Link)
+                            .setLabel("Trade")
+                            .setURL(`https://fairview.DEADFRONTIER.com/onlinezombiemmo/index.php?page=27&memto=${survivorID}`)
+                    )
+
                 try {
+
                     const domArmor = new jsdom.JSDOM(stat['armor']);
                     let armor = domArmor.window.document.querySelector("div").textContent;
-
-                    let position = stat['gpscoords']
-
+    
                     let stat_endurance = stat['stat_endurance'].split(" ")
                     let stat_agility = stat['stat_agility'].split(" ")
 
-                    const embedEvent = new EmbedBuilder()
-                        .setDescription(`**${weekly_ts} EXP**\n↳ gained and counted while doing TS on this week ⁣ ⁣ ⁣\n**EXP Since Death** : ${exp_since_death} EXP`)
-                        .setThumbnail(`https://i.imgur.com/ulP4oAd.png`)
-                        .addFields(
-                            { name: `**Daily TPK**`, value: daily_tpk, inline: true },
-                            { name: `**Weekly TPK**`, value: weekly_tpk, inline: true },
-                            { name: `**Last Hit By**`, value: pvp_last_hit, inline: true }
-                        )
-
-                    const btnProfile = new ActionRowBuilder()
-                        .addComponents(
-                            new ButtonBuilder()
-                                .setStyle(ButtonStyle.Link)
-                                .setLabel("Dead Frontier Profile")
-                                .setURL(`https://fairview.DEADFRONTIER.com/onlinezombiemmo/index.php?action=profile;u=${survivorID}`)
-                        )
-                        .addComponents(
-                            new ButtonBuilder()
-                                .setStyle(ButtonStyle.Link)
-                                .setLabel("Send Message")
-                                .setURL(`https://fairview.DEADFRONTIER.com/onlinezombiemmo/index.php?action=pm;sa=send;u=${survivorID}`)
-                        )
-                        .addComponents(
-                            new ButtonBuilder()
-                                .setStyle(ButtonStyle.Link)
-                                .setLabel("Trade")
-                                .setURL(`https://fairview.DEADFRONTIER.com/onlinezombiemmo/index.php?page=27&memto=${survivorID}`)
-                        )
-
-                    let implant_data = stat['implantslots'];
+                    // let noArmor = stat['armor']
+                    // let stat_noEndurance = stat['stat_endurance']
+                    // let stat_noAgility = stat['stat_agility']
 
                     if (implant_data.trim() !== "") {
                         const domImplant = new jsdom.JSDOM(implant_data);
@@ -146,7 +152,7 @@ module.exports = new Object({
                         const embed = new EmbedBuilder()
                             .setTitle(`${username}`)
                             .setURL(`https://www.dfprofiler.com/profile/view/${survivorID}`)
-                            .setDescription(`**${profession_level}** (${experience})\nPosition ${position} ▾`)
+                            .setDescription(`**${profession_level}** (${experience})`)
                             .addFields(
                                 { name: `**Account Creation**`, value: creation_date, inline: true },
                                 { name: `**GM End Date**`, value: gm_end, inline: true },
@@ -156,7 +162,7 @@ module.exports = new Object({
                                 { name: `**Trade Zone**`, value: tradezone, inline: true },
                                 { name: `**Health**`, value: health, inline: true },
                                 { name: `**Nourishment**`, value: nourishment, inline: true },
-                                { name: `**Outpost**`, value: outpost, inline: true },
+                                { name: `**Last Outpost**`, value: outpost, inline: true },
                                 { name: `**Primary Weapon**`, value: `${weapon_name_1}\n${weapon_info_1}`, inline: true },
                                 { name: `**Secondary Weapon**`, value: `${weapon_name_2}\n${weapon_info_2}`, inline: true },
                                 { name: `**Tertiary Weapon**`, value: `${weapon_name_3}\n${weapon_info_3}`, inline: true },
@@ -182,7 +188,7 @@ module.exports = new Object({
                         const embed = new EmbedBuilder()
                             .setTitle(`${username}`)
                             .setURL(`https://www.dfprofiler.com/profile/view/${survivorID}`)
-                            .setDescription(`**${profession_level}** (${experience})\nPosition ${position} ▾`)
+                            .setDescription(`**${profession_level}** (${experience})`)
                             .addFields(
                                 { name: `**Account Creation**`, value: creation_date, inline: true },
                                 { name: `**GM End Date**`, value: gm_end, inline: true },
@@ -192,7 +198,7 @@ module.exports = new Object({
                                 { name: `**Trade Zone**`, value: tradezone, inline: true },
                                 { name: `**Health**`, value: health, inline: true },
                                 { name: `**Nourishment**`, value: nourishment, inline: true },
-                                { name: `**Outpost**`, value: outpost, inline: true },
+                                { name: `**Last Outpost**`, value: outpost, inline: true },
                                 { name: `**Primary Weapon**`, value: `${weapon_name_1}\n${weapon_info_1}`, inline: true },
                                 { name: `**Secondary Weapon**`, value: `${weapon_name_2}\n${weapon_info_2}`, inline: true },
                                 { name: `**Tertiary Weapon**`, value: `${weapon_name_3}\n${weapon_info_3}`, inline: true },
@@ -216,120 +222,7 @@ module.exports = new Object({
                         }).catch((e) => { })
                     }
                 } catch (error) {
-                    let noArmor = stat['armor']
-
-                    let stat_noEndurance = stat['stat_endurance']
-                    let stat_noAgility = stat['stat_agility']
-
-                    const embedEvent = new EmbedBuilder()
-                        .setDescription(`**${weekly_ts} EXP**\n↳ gained and counted while doing TS on this week ⁣ ⁣ ⁣\n**EXP Since Death** : ${exp_since_death} EXP`)
-                        .setThumbnail(`https://i.imgur.com/ulP4oAd.png`)
-                        .addField(`**Daily TPK**`, daily_tpk, true)
-                        .addField(`**Weekly TPK**`, weekly_tpk, true)
-                        .addField(`**Last Hit By**`, pvp_last_hit, true)
-
-                    const btnProfile = new ActionRowBuilder()
-                        .addComponents(
-                            new ButtonBuilder()
-                                .setStyle(ButtonStyle.Link)
-                                .setLabel("Dead Frontier Profile")
-                                .setURL(`https://fairview.DEADFRONTIER.com/onlinezombiemmo/index.php?action=profile;u=${survivorID}`)
-                        )
-                        .addComponents(
-                            new ButtonBuilder()
-                                .setStyle(ButtonStyle.Link)
-                                .setLabel("Send Message")
-                                .setURL(`https://fairview.DEADFRONTIER.com/onlinezombiemmo/index.php?action=pm;sa=send;u=${survivorID}`)
-                        )
-                        .addComponents(
-                            new ButtonBuilder()
-                                .setStyle(ButtonStyle.Link)
-                                .setLabel("Trade")
-                                .setURL(`https://fairview.DEADFRONTIER.com/onlinezombiemmo/index.php?page=27&memto=${survivorID}`)
-                        )
-
-                    let implant_data = stat['implantslots'];
-
-                    if (implant_data.trim() !== "") {
-                        const domImplant = new jsdom.JSDOM(implant_data);
-                        const divElements = domImplant.window.document.querySelectorAll("div");
-                        const implant_slots = Array.from(divElements).map((divElement) => {
-                            const h4Element = divElement.querySelector("h4");
-                            return h4Element ? h4Element.textContent : null;
-                        }).filter(Boolean).join(', ');
-
-                        const embed = new EmbedBuilder()
-                            .setTitle(`${username}`)
-                            .setURL(`https://www.dfprofiler.com/profile/view/${survivorID}`)
-                            .setDescription(`**${profession_level}** (${experience})\nPosition Nowhere ▾`)
-                            .addFields(
-                                { name: `**Account Creation**`, value: creation_date, inline: true },
-                                { name: `**GM End Date**`, value: gm_end, inline: true },
-                                { name: `**Gold Member**`, value: gold_member, inline: true },
-                                { name: `**Cash**`, value: cash, inline: true },
-                                { name: `**Bank**`, value: bank, inline: true },
-                                { name: `**Trade Zone**`, value: tradezone, inline: true },
-                                { name: `**Health**`, value: health, inline: true },
-                                { name: `**Nourishment**`, value: nourishment, inline: true },
-                                { name: `**Outpost**`, value: outpost, inline: true },
-                                { name: `**Primary Weapon**`, value: `${weapon_name_1}\n${weapon_info_1}`, inline: true },
-                                { name: `**Secondary Weapon**`, value: `${weapon_name_2}\n${weapon_info_2}`, inline: true },
-                                { name: `**Tertiary Weapon**`, value: `${weapon_name_3}\n${weapon_info_3}`, inline: true },
-                                { name: `**Stats**`, value: `Strength: ${stat_strength}\nEndurance: ${stat_noEndurance}\nAgility: ${stat_noAgility}\nAccuracy: ${stat_accuracy[0]}\nCritical: ${stat_critical_hit[0]}\nReloading: ${stat_reloading[0]}`, inline: true },
-                                { name: `**Proficiencies**`, value: `Melee: ${prof_melee}\nPistols: ${prof_pistols}\nRifles: ${prof_rifles}\nShotguns: ${prof_shotguns}\nMachineguns: ${prof_machine_guns}\nExplosives: ${prof_explosives}`, inline: true },
-                                { name: `**Armor**`, value: noArmor, inline: true },
-                                { name: `**+50% Exp Boost**`, value: exp_boost[1], inline: true },
-                                { name: `**+35% Damage Boost**`, value: dmg_boost[1], inline: true },
-                                { name: `**+35% Speed Boost**`, value: speed_boost[1], inline: true },
-                                { name: `**Implants**`, value: `${implant_slots}`, inline: true }
-                            )
-                            .setImage(`https://i.imgur.com/TMI3wTd.gif`)
-                            .setFooter({ text: `Powered by Ancient Luna`, iconURL: 'https://i.imgur.com/vKo3PJm.png' })
-                            .setColor('202225')
-                            .setTimestamp()
-
-                        loadingTxt.edit({
-                            content: '⁣',
-                            embeds: [embedEvent, embed],
-                            components: [btnProfile]
-                        }).catch((e) => { });
-                    } else {
-                        const embed = new EmbedBuilder()
-                            .setTitle(`${username}`)
-                            .setURL(`https://www.dfprofiler.com/profile/view/${survivorID}`)
-                            .setDescription(`**${profession_level}** (${experience})\nPosition Nowhere ▾`)
-                            .addFields(
-                                { name: `**Account Creation**`, value: creation_date, inline: true },
-                                { name: `**GM End Date**`, value: gm_end, inline: true },
-                                { name: `**Gold Member**`, value: gold_member, inline: true },
-                                { name: `**Cash**`, value: cash, inline: true },
-                                { name: `**Bank**`, value: bank, inline: true },
-                                { name: `**Trade Zone**`, value: tradezone, inline: true },
-                                { name: `**Health**`, value: health, inline: true },
-                                { name: `**Nourishment**`, value: nourishment, inline: true },
-                                { name: `**Outpost**`, value: outpost, inline: true },
-                                { name: `**Primary Weapon**`, value: `${weapon_name_1}\n${weapon_info_1}`, inline: true },
-                                { name: `**Secondary Weapon**`, value: `${weapon_name_2}\n${weapon_info_2}`, inline: true },
-                                { name: `**Tertiary Weapon**`, value: `${weapon_name_3}\n${weapon_info_3}`, inline: true },
-                                { name: `**Stats**`, value: `Strength: ${stat_strength}\nEndurance: ${stat_noEndurance}\nAgility: ${stat_noAgility}\nAccuracy: ${stat_accuracy[0]}\nCritical: ${stat_critical_hit[0]}\nReloading: ${stat_reloading[0]}`, inline: true },
-                                { name: `**Proficiencies**`, value: `Melee: ${prof_melee}\nPistols: ${prof_pistols}\nRifles: ${prof_rifles}\nShotguns: ${prof_shotguns}\nMachineguns: ${prof_machine_guns}\nExplosives: ${prof_explosives}`, inline: true },
-                                { name: `**Armor**`, value: noArmor, inline: true },
-                                { name: `**+50% Exp Boost**`, value: exp_boost[1], inline: true },
-                                { name: `**+35% Damage Boost**`, value: dmg_boost[1], inline: true },
-                                { name: `**+35% Speed Boost**`, value: speed_boost[1], inline: true },
-                                { name: `**Implants**`, value: `No implants`, inline: true }
-                            )
-                            .setImage(`https://i.imgur.com/TMI3wTd.gif`)
-                            .setFooter({ text: `Powered by Ancient Luna`, iconURL: 'https://i.imgur.com/vKo3PJm.png' })
-                            .setColor('202225')
-                            .setTimestamp()
-
-                        loadingTxt.edit({
-                            content: '⁣',
-                            embeds: [embedEvent, embed],
-                            components: [btnProfile]
-                        }).catch((e) => { });
-                    }
+                    loadingTxt.edit({ content: `This player currently naked (please wear an armor)..\n**unable to send the status now**` })
                 }
             } else {
                 loadingTxt.edit({
