@@ -6,7 +6,7 @@ module.exports = new Object({
     category: "Deadfrontier",
     usage: "",
     cooldown: 0,
-    aliases: [''],
+    aliases: ['teststatus'],
     examples: [''],
     sub_commands: [],
     args: false,
@@ -100,13 +100,10 @@ module.exports = new Object({
                 let implant_data = stat['implantslots'];
 
                 const embedEvent = new EmbedBuilder()
-                    .setDescription(`**${weekly_ts} EXP**\n↳ gained and counted while doing TS on this week ⁣ ⁣ ⁣\n**EXP Since Death** : ${exp_since_death} EXP`)
+                    .setTitle(`${username}`)
+                    .setURL(`https://www.dfprofiler.com/profile/view/${survivorID}`)
                     .setThumbnail(`https://i.imgur.com/ulP4oAd.png`)
-                    .addFields(
-                        { name: `**Daily TPK**`, value: daily_tpk, inline: true },
-                        { name: `**Weekly TPK**`, value: weekly_tpk, inline: true },
-                        { name: `**Last Hit By**`, value: pvp_last_hit, inline: true }
-                    )
+                    .setDescription(`**${profession_level}**\n(${experience})`)
                     .setImage(`https://www.dfprofiler.com/signaturereplicate.php?profile=${survivorID}&imgur=5q7hV6B`)
 
                 const btnProfile = new ActionRowBuilder()
@@ -150,9 +147,6 @@ module.exports = new Object({
                         }).filter(Boolean).join(', ');
 
                         const embed = new EmbedBuilder()
-                            .setTitle(`${username}`)
-                            .setURL(`https://www.dfprofiler.com/profile/view/${survivorID}`)
-                            .setDescription(`**${profession_level}** (${experience})`)
                             .addFields(
                                 { name: `**Account Creation**`, value: creation_date, inline: true },
                                 { name: `**GM End Date**`, value: gm_end, inline: true },
@@ -186,9 +180,6 @@ module.exports = new Object({
                         }).catch((e) => { })
                     } else {
                         const embed = new EmbedBuilder()
-                            .setTitle(`${username}`)
-                            .setURL(`https://www.dfprofiler.com/profile/view/${survivorID}`)
-                            .setDescription(`**${profession_level}** (${experience})`)
                             .addFields(
                                 { name: `**Account Creation**`, value: creation_date, inline: true },
                                 { name: `**GM End Date**`, value: gm_end, inline: true },

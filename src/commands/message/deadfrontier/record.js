@@ -60,7 +60,7 @@ module.exports = new Object({
                     let lastloot = stat['lastloot']
 
                     const embedRecord = new EmbedBuilder()
-                    .setTitle(`${username}'s Record`)
+                    .setTitle(`${username}'s record`)
                     .setURL(`https://www.dfprofiler.com/profile/view/${survivorID}`)
                     .addFields(
                         { name: `**EXP Since Death**`, value: `${exp_since_death} EXP`, inline: true },
@@ -99,7 +99,7 @@ module.exports = new Object({
                     }).catch((e) => { });
                 } catch (error) {
                     const embedRecord = new EmbedBuilder()
-                    .setTitle(`${username}'s Record`)
+                    .setTitle(`${username}'s record`)
                     .setURL(`https://www.dfprofiler.com/profile/view/${survivorID}`)
                     .addFields(
                         { name: `**EXP Since Death**`, value: `${exp_since_death} EXP`, inline: true },
