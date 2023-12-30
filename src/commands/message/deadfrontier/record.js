@@ -105,7 +105,7 @@ module.exports = new Object({
                         { name: `**EXP Since Death**`, value: `${exp_since_death} EXP`, inline: true },
                         { name: `**Weekly TS**`, value: `${weekly_ts} EXP`, inline: true },
                         { name: `**⭐ All Time TS**`, value: `${all_time_ts} EXP`, inline: true },
-                        { name: `**Last Loot Item**`, value: `No track yet`, inline: true },
+                        { name: `**Last Loot Item**`, value: `Not looting in a while`, inline: true },
                         { name: `**Weekly Loot**`, value: `${weekly_loot} Loot Points`, inline: true },
                         { name: `**⭐ All Time Loot**`, value: `${all_time_loot} Loot Points`, inline: true },
                         { name: `**Daily TPK**`, value: `${daily_tpk} Kill`, inline: true },
