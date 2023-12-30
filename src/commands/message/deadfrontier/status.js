@@ -6,7 +6,7 @@ module.exports = new Object({
     category: "Deadfrontier",
     usage: "",
     cooldown: 0,
-    aliases: ['teststat'],
+    aliases: [''],
     examples: [''],
     sub_commands: [],
     args: false,
