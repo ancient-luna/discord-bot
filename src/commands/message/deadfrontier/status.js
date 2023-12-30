@@ -113,35 +113,6 @@ module.exports = new Object({
                             { name: `**Last Hit By**`, value: pvp_last_hit, inline: true }
                         )
 
-                    const embed = new EmbedBuilder()
-                        .setTitle(`${username}`)
-                        .setURL(`https://www.dfprofiler.com/profile/view/${survivorID}`)
-                        .setDescription(`**${profession_level}** (${experience})\nPosition ${position} ▾`)
-                        .addFields(
-                            { name: `**Account Creation**`, value: creation_date, inline: true },
-                            { name: `**GM End Date**`, value: gm_end, inline: true },
-                            { name: `**Gold Member**`, value: gold_member, inline: true },
-                            { name: `**Cash**`, value: cash, inline: true },
-                            { name: `**Bank**`, value: bank, inline: true },
-                            { name: `**Trade Zone**`, value: tradezone, inline: true },
-                            { name: `**Health**`, value: health, inline: true },
-                            { name: `**Nourishment**`, value: nourishment, inline: true },
-                            { name: `**Outpost**`, value: outpost, inline: true },
-                            { name: `**Primary Weapon**`, value: `${weapon_name_1}\n${weapon_info_1}`, inline: true },
-                            { name: `**Secondary Weapon**`, value: `${weapon_name_2}\n${weapon_info_2}`, inline: true },
-                            { name: `**Tertiary Weapon**`, value: `${weapon_name_3}\n${weapon_info_3}`, inline: true },
-                            { name: `**Stats**`, value: `Strength: ${stat_strength}\nEndurance: ${stat_endurance[0]}\nAgility: ${stat_agility[0]}\nAccuracy: ${stat_accuracy[0]}\nCritical: ${stat_critical_hit[0]}\nReloading: ${stat_reloading[0]}`, inline: true },
-                            { name: `**Proficiencies**`, value: `Melee: ${prof_melee}\nPistols: ${prof_pistols}\nRifles: ${prof_rifles}\nShotguns: ${prof_shotguns}\nMachineguns: ${prof_machine_guns}\nExplosives: ${prof_explosives}`, inline: true },
-                            { name: `**Armor**`, value: armor, inline: true },
-                            { name: `**+50% Exp Boost**`, value: exp_boost[1], inline: true },
-                            { name: `**+35% Damage Boost**`, value: dmg_boost[1], inline: true },
-                            { name: `**+35% Speed Boost**`, value: speed_boost[1], inline: true }
-                        )
-                        .setImage(`https://i.imgur.com/TMI3wTd.gif`)
-                        .setFooter({ text: `Powered by Ancient Luna`, iconURL: 'https://i.imgur.com/vKo3PJm.png' })
-                        .setColor('202225')
-                        .setTimestamp()
-
                     const btnProfile = new ActionRowBuilder()
                         .addComponents(
                             new ButtonBuilder()
@@ -162,11 +133,88 @@ module.exports = new Object({
                                 .setURL(`https://fairview.DEADFRONTIER.com/onlinezombiemmo/index.php?page=27&memto=${survivorID}`)
                         )
 
-                    loadingTxt.edit({
-                        content: '⁣',
-                        embeds: [embedEvent, embed],
-                        components: [btnProfile]
-                    }).catch((e) => { })
+                    let implant_data = stat['implantslots'];
+
+                    if (implant_data.trim() !== "") {
+                        const domImplant = new jsdom.JSDOM(implant_data);
+                        const divElements = domImplant.window.document.querySelectorAll("div");
+                        const implant_slots = Array.from(divElements).map((divElement) => {
+                            const h4Element = divElement.querySelector("h4");
+                            return h4Element ? h4Element.textContent : null;
+                        }).filter(Boolean).join(', ');
+
+                        const embed = new EmbedBuilder()
+                            .setTitle(`${username}`)
+                            .setURL(`https://www.dfprofiler.com/profile/view/${survivorID}`)
+                            .setDescription(`**${profession_level}** (${experience})\nPosition ${position} ▾`)
+                            .addFields(
+                                { name: `**Account Creation**`, value: creation_date, inline: true },
+                                { name: `**GM End Date**`, value: gm_end, inline: true },
+                                { name: `**Gold Member**`, value: gold_member, inline: true },
+                                { name: `**Cash**`, value: cash, inline: true },
+                                { name: `**Bank**`, value: bank, inline: true },
+                                { name: `**Trade Zone**`, value: tradezone, inline: true },
+                                { name: `**Health**`, value: health, inline: true },
+                                { name: `**Nourishment**`, value: nourishment, inline: true },
+                                { name: `**Outpost**`, value: outpost, inline: true },
+                                { name: `**Primary Weapon**`, value: `${weapon_name_1}\n${weapon_info_1}`, inline: true },
+                                { name: `**Secondary Weapon**`, value: `${weapon_name_2}\n${weapon_info_2}`, inline: true },
+                                { name: `**Tertiary Weapon**`, value: `${weapon_name_3}\n${weapon_info_3}`, inline: true },
+                                { name: `**Stats**`, value: `Strength: ${stat_strength}\nEndurance: ${stat_endurance[0]}\nAgility: ${stat_agility[0]}\nAccuracy: ${stat_accuracy[0]}\nCritical: ${stat_critical_hit[0]}\nReloading: ${stat_reloading[0]}`, inline: true },
+                                { name: `**Proficiencies**`, value: `Melee: ${prof_melee}\nPistols: ${prof_pistols}\nRifles: ${prof_rifles}\nShotguns: ${prof_shotguns}\nMachineguns: ${prof_machine_guns}\nExplosives: ${prof_explosives}`, inline: true },
+                                { name: `**Armor**`, value: armor, inline: true },
+                                { name: `**+50% Exp Boost**`, value: exp_boost[1], inline: true },
+                                { name: `**+35% Damage Boost**`, value: dmg_boost[1], inline: true },
+                                { name: `**+35% Speed Boost**`, value: speed_boost[1], inline: true },
+                                { name: `**Implants**`, value: `${implant_slots}`, inline: true }
+                            )
+                            .setImage(`https://i.imgur.com/TMI3wTd.gif`)
+                            .setFooter({ text: `Powered by Ancient Luna`, iconURL: 'https://i.imgur.com/vKo3PJm.png' })
+                            .setColor('202225')
+                            .setTimestamp()
+
+                        loadingTxt.edit({
+                            content: '⁣',
+                            embeds: [embedEvent, embed],
+                            components: [btnProfile]
+                        }).catch((e) => { })
+                    } else {
+                        const embed = new EmbedBuilder()
+                            .setTitle(`${username}`)
+                            .setURL(`https://www.dfprofiler.com/profile/view/${survivorID}`)
+                            .setDescription(`**${profession_level}** (${experience})\nPosition ${position} ▾`)
+                            .addFields(
+                                { name: `**Account Creation**`, value: creation_date, inline: true },
+                                { name: `**GM End Date**`, value: gm_end, inline: true },
+                                { name: `**Gold Member**`, value: gold_member, inline: true },
+                                { name: `**Cash**`, value: cash, inline: true },
+                                { name: `**Bank**`, value: bank, inline: true },
+                                { name: `**Trade Zone**`, value: tradezone, inline: true },
+                                { name: `**Health**`, value: health, inline: true },
+                                { name: `**Nourishment**`, value: nourishment, inline: true },
+                                { name: `**Outpost**`, value: outpost, inline: true },
+                                { name: `**Primary Weapon**`, value: `${weapon_name_1}\n${weapon_info_1}`, inline: true },
+                                { name: `**Secondary Weapon**`, value: `${weapon_name_2}\n${weapon_info_2}`, inline: true },
+                                { name: `**Tertiary Weapon**`, value: `${weapon_name_3}\n${weapon_info_3}`, inline: true },
+                                { name: `**Stats**`, value: `Strength: ${stat_strength}\nEndurance: ${stat_endurance[0]}\nAgility: ${stat_agility[0]}\nAccuracy: ${stat_accuracy[0]}\nCritical: ${stat_critical_hit[0]}\nReloading: ${stat_reloading[0]}`, inline: true },
+                                { name: `**Proficiencies**`, value: `Melee: ${prof_melee}\nPistols: ${prof_pistols}\nRifles: ${prof_rifles}\nShotguns: ${prof_shotguns}\nMachineguns: ${prof_machine_guns}\nExplosives: ${prof_explosives}`, inline: true },
+                                { name: `**Armor**`, value: armor, inline: true },
+                                { name: `**+50% Exp Boost**`, value: exp_boost[1], inline: true },
+                                { name: `**+35% Damage Boost**`, value: dmg_boost[1], inline: true },
+                                { name: `**+35% Speed Boost**`, value: speed_boost[1], inline: true },
+                                { name: `**Implants**`, value: `No Implants`, inline: true }
+                            )
+                            .setImage(`https://i.imgur.com/TMI3wTd.gif`)
+                            .setFooter({ text: `Powered by Ancient Luna`, iconURL: 'https://i.imgur.com/vKo3PJm.png' })
+                            .setColor('202225')
+                            .setTimestamp()
+
+                        loadingTxt.edit({
+                            content: '⁣',
+                            embeds: [embedEvent, embed],
+                            components: [btnProfile]
+                        }).catch((e) => { })
+                    }
                 } catch (error) {
                     let noArmor = stat['armor']
 
@@ -180,35 +228,6 @@ module.exports = new Object({
                         .addField(`**Weekly TPK**`, weekly_tpk, true)
                         .addField(`**Last Hit By**`, pvp_last_hit, true)
 
-                    const embed = new EmbedBuilder()
-                        .setTitle(`${username}`)
-                        .setURL(`https://www.dfprofiler.com/profile/view/${survivorID}`)
-                        .setDescription(`**${profession_level}** (${experience})\nPosition Nowhere ▾`)
-                        .addFields(
-                            { name: `**Account Creation**`, value: creation_date, inline: true },
-                            { name: `**GM End Date**`, value: gm_end, inline: true },
-                            { name: `**Gold Member**`, value: gold_member, inline: true },
-                            { name: `**Cash**`, value: cash, inline: true },
-                            { name: `**Bank**`, value: bank, inline: true },
-                            { name: `**Trade Zone**`, value: tradezone, inline: true },
-                            { name: `**Health**`, value: health, inline: true },
-                            { name: `**Nourishment**`, value: nourishment, inline: true },
-                            { name: `**Outpost**`, value: outpost, inline: true },
-                            { name: `**Primary Weapon**`, value: `${weapon_name_1}\n${weapon_info_1}`, inline: true },
-                            { name: `**Secondary Weapon**`, value: `${weapon_name_2}\n${weapon_info_2}`, inline: true },
-                            { name: `**Tertiary Weapon**`, value: `${weapon_name_3}\n${weapon_info_3}`, inline: true },
-                            { name: `**Stats**`, value: `Strength: ${stat_strength}\nEndurance: ${stat_noEndurance}\nAgility: ${stat_noAgility}\nAccuracy: ${stat_accuracy[0]}\nCritical: ${stat_critical_hit[0]}\nReloading: ${stat_reloading[0]}`, inline: true },
-                            { name: `**Proficiencies**`, value: `Melee: ${prof_melee}\nPistols: ${prof_pistols}\nRifles: ${prof_rifles}\nShotguns: ${prof_shotguns}\nMachineguns: ${prof_machine_guns}\nExplosives: ${prof_explosives}`, inline: true },
-                            { name: `**Armor**`, value: noArmor, inline: true },
-                            { name: `**+50% Exp Boost**`, value: exp_boost[1], inline: true },
-                            { name: `**+35% Damage Boost**`, value: dmg_boost[1], inline: true },
-                            { name: `**+35% Speed Boost**`, value: speed_boost[1], inline: true }
-                        )
-                        .setImage(`https://i.imgur.com/TMI3wTd.gif`)
-                        .setFooter({ text: `Powered by Ancient Luna`, iconURL: 'https://i.imgur.com/vKo3PJm.png' })
-                        .setColor('202225')
-                        .setTimestamp()
-
                     const btnProfile = new ActionRowBuilder()
                         .addComponents(
                             new ButtonBuilder()
@@ -229,11 +248,88 @@ module.exports = new Object({
                                 .setURL(`https://fairview.DEADFRONTIER.com/onlinezombiemmo/index.php?page=27&memto=${survivorID}`)
                         )
 
-                    loadingTxt.edit({
-                        content: '⁣',
-                        embeds: [embedEvent, embed],
-                        components: [btnProfile]
-                    }).catch((e) => { });
+                    let implant_data = stat['implantslots'];
+
+                    if (implant_data.trim() !== "") {
+                        const domImplant = new jsdom.JSDOM(implant_data);
+                        const divElements = domImplant.window.document.querySelectorAll("div");
+                        const implant_slots = Array.from(divElements).map((divElement) => {
+                            const h4Element = divElement.querySelector("h4");
+                            return h4Element ? h4Element.textContent : null;
+                        }).filter(Boolean).join(', ');
+
+                        const embed = new EmbedBuilder()
+                            .setTitle(`${username}`)
+                            .setURL(`https://www.dfprofiler.com/profile/view/${survivorID}`)
+                            .setDescription(`**${profession_level}** (${experience})\nPosition Nowhere ▾`)
+                            .addFields(
+                                { name: `**Account Creation**`, value: creation_date, inline: true },
+                                { name: `**GM End Date**`, value: gm_end, inline: true },
+                                { name: `**Gold Member**`, value: gold_member, inline: true },
+                                { name: `**Cash**`, value: cash, inline: true },
+                                { name: `**Bank**`, value: bank, inline: true },
+                                { name: `**Trade Zone**`, value: tradezone, inline: true },
+                                { name: `**Health**`, value: health, inline: true },
+                                { name: `**Nourishment**`, value: nourishment, inline: true },
+                                { name: `**Outpost**`, value: outpost, inline: true },
+                                { name: `**Primary Weapon**`, value: `${weapon_name_1}\n${weapon_info_1}`, inline: true },
+                                { name: `**Secondary Weapon**`, value: `${weapon_name_2}\n${weapon_info_2}`, inline: true },
+                                { name: `**Tertiary Weapon**`, value: `${weapon_name_3}\n${weapon_info_3}`, inline: true },
+                                { name: `**Stats**`, value: `Strength: ${stat_strength}\nEndurance: ${stat_noEndurance}\nAgility: ${stat_noAgility}\nAccuracy: ${stat_accuracy[0]}\nCritical: ${stat_critical_hit[0]}\nReloading: ${stat_reloading[0]}`, inline: true },
+                                { name: `**Proficiencies**`, value: `Melee: ${prof_melee}\nPistols: ${prof_pistols}\nRifles: ${prof_rifles}\nShotguns: ${prof_shotguns}\nMachineguns: ${prof_machine_guns}\nExplosives: ${prof_explosives}`, inline: true },
+                                { name: `**Armor**`, value: noArmor, inline: true },
+                                { name: `**+50% Exp Boost**`, value: exp_boost[1], inline: true },
+                                { name: `**+35% Damage Boost**`, value: dmg_boost[1], inline: true },
+                                { name: `**+35% Speed Boost**`, value: speed_boost[1], inline: true },
+                                { name: `**Implants**`, value: `${implant_slots}`, inline: true }
+                            )
+                            .setImage(`https://i.imgur.com/TMI3wTd.gif`)
+                            .setFooter({ text: `Powered by Ancient Luna`, iconURL: 'https://i.imgur.com/vKo3PJm.png' })
+                            .setColor('202225')
+                            .setTimestamp()
+
+                        loadingTxt.edit({
+                            content: '⁣',
+                            embeds: [embedEvent, embed],
+                            components: [btnProfile]
+                        }).catch((e) => { });
+                    } else {
+                        const embed = new EmbedBuilder()
+                            .setTitle(`${username}`)
+                            .setURL(`https://www.dfprofiler.com/profile/view/${survivorID}`)
+                            .setDescription(`**${profession_level}** (${experience})\nPosition Nowhere ▾`)
+                            .addFields(
+                                { name: `**Account Creation**`, value: creation_date, inline: true },
+                                { name: `**GM End Date**`, value: gm_end, inline: true },
+                                { name: `**Gold Member**`, value: gold_member, inline: true },
+                                { name: `**Cash**`, value: cash, inline: true },
+                                { name: `**Bank**`, value: bank, inline: true },
+                                { name: `**Trade Zone**`, value: tradezone, inline: true },
+                                { name: `**Health**`, value: health, inline: true },
+                                { name: `**Nourishment**`, value: nourishment, inline: true },
+                                { name: `**Outpost**`, value: outpost, inline: true },
+                                { name: `**Primary Weapon**`, value: `${weapon_name_1}\n${weapon_info_1}`, inline: true },
+                                { name: `**Secondary Weapon**`, value: `${weapon_name_2}\n${weapon_info_2}`, inline: true },
+                                { name: `**Tertiary Weapon**`, value: `${weapon_name_3}\n${weapon_info_3}`, inline: true },
+                                { name: `**Stats**`, value: `Strength: ${stat_strength}\nEndurance: ${stat_noEndurance}\nAgility: ${stat_noAgility}\nAccuracy: ${stat_accuracy[0]}\nCritical: ${stat_critical_hit[0]}\nReloading: ${stat_reloading[0]}`, inline: true },
+                                { name: `**Proficiencies**`, value: `Melee: ${prof_melee}\nPistols: ${prof_pistols}\nRifles: ${prof_rifles}\nShotguns: ${prof_shotguns}\nMachineguns: ${prof_machine_guns}\nExplosives: ${prof_explosives}`, inline: true },
+                                { name: `**Armor**`, value: noArmor, inline: true },
+                                { name: `**+50% Exp Boost**`, value: exp_boost[1], inline: true },
+                                { name: `**+35% Damage Boost**`, value: dmg_boost[1], inline: true },
+                                { name: `**+35% Speed Boost**`, value: speed_boost[1], inline: true },
+                                { name: `**Implants**`, value: `No implants`, inline: true }
+                            )
+                            .setImage(`https://i.imgur.com/TMI3wTd.gif`)
+                            .setFooter({ text: `Powered by Ancient Luna`, iconURL: 'https://i.imgur.com/vKo3PJm.png' })
+                            .setColor('202225')
+                            .setTimestamp()
+
+                        loadingTxt.edit({
+                            content: '⁣',
+                            embeds: [embedEvent, embed],
+                            components: [btnProfile]
+                        }).catch((e) => { });
+                    }
                 }
             } else {
                 loadingTxt.edit({
@@ -243,9 +339,3 @@ module.exports = new Object({
         })
     }
 })
-
-
-
-
-
-
