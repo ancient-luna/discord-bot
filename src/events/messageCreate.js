@@ -146,7 +146,7 @@ module.exports = new Object({
 
     // Chat AI
     if (client.config.aiChatChannel.includes(message.channel.id)) {
-      const noAnswer = "There was an issue getting that AI response. Try again sooner or later :msg_error:";
+      const noAnswer = "There was an issue getting that AI response. Try again sooner or later <:msg_error:1185521089766502400>";
       // const confuseAI = noAnswer[Math.floor(Math.random() * noAnswer.length)];
       let conversationLog = [
         {
@@ -202,7 +202,7 @@ module.exports = new Object({
             for (let i=0; i < chunks.length; i++) {
               await message.channel.send(chunks[i]).catch(err => {
                 console.log(err);
-                message.channel.send("I am having a hard time to filling that request! Im an only living wisdom on Discord\nI don't have time to process long requests \`Only 2000 max. per-reply\` :msg_error:").catch(err => {});
+                message.channel.send("I am having a hard time to filling that request! Im an only living wisdom on Discord\nI don't have time to process long requests \`Only 2000 max. per-reply\` <:msg_error:1185521089766502400>").catch(err => {});
               });
             }
           } else {
