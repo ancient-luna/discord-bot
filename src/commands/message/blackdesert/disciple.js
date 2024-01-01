@@ -1,4 +1,3 @@
-
 const { EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle } = require("discord.js");
 module.exports = new Object({
     name: "disciple",
@@ -28,12 +27,19 @@ module.exports = new Object({
         if (!target) return message.reply('Please mention them, the one who is about to be the **Lunar Disciple** <:ancientluna_pure_luna:866781517312688178>').catch(e => { });
         let role = '1060982357538119850';
 
-        const btnTerms = new ActionRowBuilder().addComponents(
-          new ButtonBuilder()
-            .setCustomId("btn-guildterms")
-            .setLabel("Read Guild Terms")
-            .setStyle(ButtonStyle.Primary)
-        );
+        const btnTerms = new ActionRowBuilder()
+            .addComponents(
+                new ButtonBuilder()
+                    .setCustomId("btn-guildterms")
+                    .setLabel("Read Guild Terms")
+                    .setStyle(ButtonStyle.Secondary)
+            )
+            .addComponents(
+                new ButtonBuilder()
+                    .setStyle(ButtonStyle.Link)
+                    .setLabel("Get Roles")
+                    .setURL("https://discord.com/channels/447069790150852609/1049815440198733895")
+            )
 
         message.guild.channels.cache.get('1060992670035619931').send({
             content: `**We ran as if to meet the moon**,\nA seeker named <@${target.user.id}> become a part of **Lunar Disciples** <:ancientluna_pure_luna:866781517312688178>`,

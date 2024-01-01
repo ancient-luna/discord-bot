@@ -28,7 +28,7 @@ module.exports = new Object({
                 .addComponents(
                     new ButtonBuilder()
                         .setStyle(ButtonStyle.Link)
-                        .setLabel("Get roles")
+                        .setLabel("Get Roles")
                         .setURL("https://discord.com/channels/447069790150852609/1049815440198733895")
                 )
                 .addComponents(
@@ -517,9 +517,3 @@ module.exports = new Object({
         }
     }
 })
-
-
-
-
-
-
