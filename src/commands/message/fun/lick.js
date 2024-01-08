@@ -6,7 +6,7 @@ module.exports = new Object({
     category: "Fun",
     usage: "",
     cooldown: 0,
-    aliases: ['mlem'],
+    aliases: ['testlick'],
     examples: [''],
     sub_commands: [],
     args: false,
@@ -23,18 +23,30 @@ module.exports = new Object({
      * @param {String[]} args
      */
     async execute(client, message, args) {
-        const mentionTxt = [ 'feet', 'hand', 'that kind of part', 'chin', 'cheek', 'ear', 'butt', 'tongue', 'neck' ]
-        const mlemGIF = [ 'https://i.imgur.com/HHnLLgP.gif', 'https://i.imgur.com/jLsV7Lb.gif' ]
         let target = message.mentions.members.first();
+        
         if (!target) {
             message.react("❓").catch((e) => { });
-            return message.reply({ content: "How can *He* licks when theres no one to lick on!\n *Hurry! Mention one, cause He cant wait to lick sumthin*" }).then((msg) => {
+            return message.reply({ content: "How can *He* licks when theres no one to lick on!\n **Hurry! Mention one, cause He cant wait to lick sumthin**" }).then((msg) => {
                 setTimeout(() => msg.delete().catch((e) => { }), 5000);
             });
         }
+
+        const cntnTxt = [ 'feet to toe', 'that kind of part', 'ear to whimper', 'tongue deeply', 'neck softly' ]
+        const rndmMlem = cntnTxt[Math.floor(Math.random() * cntnTxt.length)];
+        const mlemIMG = 'https://i.imgur.com/HHnLLgP.gif';
+        const mlemTxt = `***Mmhmm~ SLuurRpP mmmhm slurp SLurpP*** ...\n<@260390499834265610> *starts [licking](${mlemIMG}) <@${target.user.id}>'s ${rndmMlem}* 💦\n_ _`
+
+        const smileIMG = 'https://i.imgur.com/0XVrYTH.jpg';
+        const smileTxt = `this time <@260390499834265610> had enough\nand just [smiling](${smileIMG}) instead of mlemming\n_ _`;
+
+        const rndmNumber = Math.random();
+        const mlemProbability = 0.8;
+        const rndmMlemTxt = rndmNumber <= mlemProbability ? mlemTxt : smileTxt;
+
         await message.react("💦").catch((e) => { });
         await message.channel.send({
-            content: `***Mmhmm~ SLuurRpP mmmhm slurp SLurpP*** ...\n<@260390499834265610> *starts licking <@${target.user.id}>'s [${mentionTxt[Math.floor(Math.random() * mentionTxt.length)]}](${mlemGIF[Math.floor(Math.random() * mlemGIF.length)]})* 💦\n_ _`
+            content: `${rndmMlemTxt}`
         }).catch((e) => { });
     }
 });
