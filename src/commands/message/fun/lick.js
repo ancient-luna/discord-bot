@@ -6,7 +6,7 @@ module.exports = new Object({
     category: "Fun",
     usage: "",
     cooldown: 0,
-    aliases: ['testlick'],
+    aliases: ['mlem'],
     examples: [''],
     sub_commands: [],
     args: false,
