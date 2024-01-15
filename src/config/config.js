@@ -12,7 +12,7 @@ module.exports = {
     // stickyConfessChannel: "1162416709265784882",
     aiChatChannel: "1142344320708530306",
     artifactChannel: "1050004761631531038",
-    lucentChannel: "1060992992523079800",
+    sanctumChannel: "1060992670035619931",
     generalChannel: "452842830776369152",
     gatewayChannel: "839417251470901279",
     // guidelinesChannel: "864556584818835456",
