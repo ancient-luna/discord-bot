@@ -91,8 +91,8 @@ module.exports = {
                     { name: `Family Name`, value: `\`\`\`${famName}\`\`\``, inline: true },
                     { name: `Country`, value: `\`\`\`${countryLoct}\`\`\``, inline: true },
                     { name: `Rules Agreement`, value: `\`\`\`${termsAgreement}\`\`\``, inline: true },
-                    { name: `Previous Guild History`, value: `> ${prevGuild}`, inline: false },
-                    { name: `Guild Expectation`, value: `> ${expectGuild}`, inline: false },
+                    { name: `Previous Guild History`, value: `>>> ${prevGuild}`, inline: false },
+                    { name: `Guild Expectation`, value: `>>> ${expectGuild}`, inline: false },
                 )
                 .setColor('2b2d31')
                 // .setTimestamp()
