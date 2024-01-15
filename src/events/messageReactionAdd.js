@@ -514,6 +514,11 @@ module.exports = new Object({
                     .setColor('2b2d31');
                 return channelArtifact.send({ embeds: [classText] });
             }
+        } else if (reaction.message.channel.id === '1060992992523079800') {
+            if (reaction.emoji.name === 'ancientluna_divinare') {
+                const channelLucent = reaction.message.guild.channels.cache.get(client.config.lucentChannel);
+                return channelLucent.send({ content: `<:ancientluna_divinare:841754250949820416> ${reaction.message.guild.members.cache.get(user.id)} applying for **Guild Mission Specialist** position this week.` })
+            }
         }
     }
 })
