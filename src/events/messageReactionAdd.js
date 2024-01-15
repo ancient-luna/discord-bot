@@ -517,7 +517,7 @@ module.exports = new Object({
         } else if (reaction.message.channel.id === '1060992992523079800') {
             if (reaction.emoji.name === 'ancientluna_divinare') {
                 const channelSanctum = reaction.message.guild.channels.cache.get(client.config.sanctumChannel);
-                return channelSanctum.send({ content: `<:ancientluna_divinare:841754250949820416> ${reaction.message.guild.members.cache.get(user.id)} applying for **Guild Mission Specialist** position this week.` })
+                return channelSanctum.send({ content: `<:ancientluna_divinare:841754250949820416> ${reaction.message.guild.members.cache.get(user.id)} just applied for **Guild Mission Specialist** position this week.` })
             }
         }
     }
