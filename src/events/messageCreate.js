@@ -86,17 +86,17 @@ module.exports = new Object({
         .setThumbnail('https://i.imgur.com/Mza9Zop.png')
       const btnLucent = new ActionRowBuilder()
         .addComponents(
-            new ButtonBuilder()
+          new ButtonBuilder()
+            .setCustomId("btn-guildterms")
+            .setLabel("Read Guild Terms")
+            .setStyle(ButtonStyle.Secondary)
+        )
+        .addComponents(
+          new ButtonBuilder()
             .setCustomId("btn-guildvacation")
             .setLabel("Vacation")
             .setEmoji('<:game_logo_bdo:861579805660151818>')
             .setStyle(ButtonStyle.Primary)
-        )
-        .addComponents(
-            new ButtonBuilder()
-            .setCustomId("btn-guildterms")
-            .setLabel("Read Guild Terms")
-            .setStyle(ButtonStyle.Secondary)
         )
       if (stickyLucentMessage) {
         stickyLucentMessage.delete().then(() => {
