@@ -5,6 +5,7 @@ module.exports = {
     memberRole: "839198215580811344",
     elderRole: "843523544620335124",
     ruleChannel: "838751745815216129",
+    confessionChannel: "1162416709265784882",
     bdoChannelId: "1049228301807407156",
     // paliaThreadId: "1138989257378246656",
     stickyChannel: "1090915653575258123",
