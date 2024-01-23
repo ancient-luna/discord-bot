@@ -22,7 +22,7 @@ module.exports = new Object({
     }
 
     if (
-      message.channel.id === client.config.ruleChannel || client.config.confessionChannel
+      message.channel.id === client.config.ruleChannel
     ) {
       if (
         message.content?.toLowerCase() === text.toLowerCase() &&
