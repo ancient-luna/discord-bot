@@ -55,7 +55,7 @@ module.exports = {
                 .setTimestamp()
                 .setFooter({ text: `(r) ${interaction.user.username}` })
             modalInteraction.guild.channels.cache.get('1162419484305391800').send({ embeds: [confessionLog] })
-            modalInteraction.reply({ embeds: [confessionTxt] })
+            modalInteraction.reply({ embeds: [confessionTxt], ephemeral: false })
         })
         .catch((e)=> { console.log(e) })
   },
