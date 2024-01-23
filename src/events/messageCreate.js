@@ -21,9 +21,7 @@ module.exports = new Object({
       return /[a-z]/.test(text) && /[A-Z]/.test(text);
     }
 
-    if (
-      message.channel.id === client.config.ruleChannel
-    ) {
+    if (message.channel.id === client.config.ruleChannel || message.channel.id === client.config.confessionChannel) {
       if (
         message.content?.toLowerCase() === text.toLowerCase() &&
         message.member.roles.cache.has(client.config.preMemberRole)
