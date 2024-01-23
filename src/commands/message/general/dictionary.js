@@ -59,10 +59,3 @@ module.exports = new Object({
         return message.reply({ embeds: [embed] }).catch((e) => { });
     }
 })
-
-
-
-
-
-
-

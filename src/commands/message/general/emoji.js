@@ -52,10 +52,3 @@ module.exports = new Object({
         await message.channel.send({ content: output.body.results[0].url })
     }
 })
-
-
-
-
-
-
-

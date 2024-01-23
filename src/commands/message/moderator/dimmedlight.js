@@ -54,4 +54,3 @@ module.exports = new Object({
         message.react("✅").catch((e) => { });
     }
 });
-

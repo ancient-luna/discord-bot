@@ -33,4 +33,3 @@ module.exports = new Object({
       .catch(console.error);
   }
 });
-
