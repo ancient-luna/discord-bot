@@ -32,7 +32,7 @@ module.exports = new Object({
 
     const txtEmbed = new EmbedBuilder()
       .setTitle(`Dev. Contacts <:verified:1204724590950228008>`)
-      .setDescription(`> Discord: axxae - [ancientluna](https://discord.com/invite/Sbp2nt8QHe)\n> <:snd:1204725584681500724> dae@ancientluna.org\n> <:ins:1204725582852788256> [everylttlething](https://instagram.com/everylttlething)`)
+      .setDescription(`> Discord: axxae - [ancientluna](https://discord.com/invite/Sbp2nt8QHe)\n> <:snd:1204725584681500724> dae@ancientluna.org <:ins:1204725582852788256> [everylttlething](https://instagram.com/everylttlething)`)
       .setFooter({ text: `this bot won't read any messages of your replies` })
       .setColor("2b2d31")
       .setThumbnail('https://i.imgur.com/veLhH04.png')
