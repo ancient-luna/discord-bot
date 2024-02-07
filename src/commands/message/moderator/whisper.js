@@ -31,7 +31,8 @@ module.exports = new Object({
     const str = args.slice(1).join(" ");
 
     const txtEmbed = new EmbedBuilder()
-      .setDescription(`\`\`\`Dev. Contacts\`\`\`\n> Discord: axxae - [ancientluna](https://discord.com/invite/Sbp2nt8QHe)\n> Email: dae@ancientluna.org\n> Instagram: [@everylttlething](https://instagram.com/everylttlething)`)
+      .setTitle(`Dev. Contacts <:verified:1204724590950228008>`)
+      .setDescription(`> Discord: axxae - [ancientluna](https://discord.com/invite/Sbp2nt8QHe)\n> <:snd:1204725584681500724> dae@ancientluna.org\n> <:ins:1204725582852788256> [everylttlething](https://instagram.com/everylttlething)`)
       .setFooter({ text: `this bot won't read any messages of your replies` })
       .setColor("2b2d31")
       .setThumbnail('https://i.imgur.com/veLhH04.png')
@@ -58,10 +59,10 @@ module.exports = new Object({
           .setURL(`https://www.youtube.com/@ancientluna/about`)
       )
 
-    let fileAtch = new AttachmentBuilder('src/assets/bdo2023outfits.png')
+    let fileAtch = new AttachmentBuilder('src/assets/wheelingdapho.png')
 
     user.send({
-      content: `Dear **Lunar Disciples**,\n${str}\n\nWarmest regards,\n[**Aevoa**](https://open.spotify.com/track/1ghCJLxbwXZpOoePi7pQBW?si=66948f8ba9b9456d)\n_ _`,
+      content: `Dear **Lunar Disciples**,\n${str}\n\nWarmest regards,\n[**Aevoa**](https://open.spotify.com/track/1gqocOVO4Lp86OJ7hD9gSZ?si=380aa9cdec454856)\n_ _`,
       embeds: [txtEmbed],
       components: [btnServer],
       files: [fileAtch]
