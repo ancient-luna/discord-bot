@@ -38,7 +38,7 @@ module.exports = new Object({
                 new ButtonBuilder()
                     .setStyle(ButtonStyle.Link)
                     .setLabel("Get Roles")
-                    .setURL("https://discord.com/channels/447069790150852609/1049815440198733895")
+                    .setURL("https://discord.com/channels/447069790150852609/1049815440198733895/1050097064459120680")
             )
 
         message.guild.channels.cache.get('1060992670035619931').send({
