@@ -35,7 +35,6 @@ module.exports = new Object({
       client.console.log(err, "error");
     }
 
-
     // let token = process.env.TOKEN;
     // const rest = new REST({ version: "10" }).setToken(token);
     // const slashCommands = [];
@@ -55,6 +54,7 @@ module.exports = new Object({
     //   console.error(error);
     // }
     //  client.console.log(`Slash loaded`, "Scmd");
+    
     client.console.log(`Logged in as ${client.user.tag}`, "api");
   },
 });
