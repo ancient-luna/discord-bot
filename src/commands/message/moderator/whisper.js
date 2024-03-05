@@ -32,7 +32,7 @@ module.exports = new Object({
 
     const txtEmbed = new EmbedBuilder()
       .setTitle(`Dev. Contacts <:verified:1204724590950228008>`)
-      .setDescription(`> Discord: axxae - [ancientluna](https://discord.com/invite/Sbp2nt8QHe)\n> <:snd:1204725584681500724> dae@ancientluna.org <:ins:1204725582852788256> [everylttlething](https://instagram.com/everylttlething)`)
+      .setDescription(`> Discord: axxae - [ancientluna](https://discord.com/invite/Sbp2nt8QHe)\n> dae@ancientluna.org <:ins:1204725582852788256> [everylttlething](https://instagram.com/everylttlething)`)
       .setFooter({ text: `this bot won't read any messages of your replies` })
       .setColor("2b2d31")
       .setThumbnail('https://i.imgur.com/veLhH04.png')
@@ -59,13 +59,13 @@ module.exports = new Object({
           .setURL(`https://www.youtube.com/@ancientluna/about`)
       )
 
-    let fileAtch = new AttachmentBuilder('src/assets/wheelingdapho.png')
+    // let fileAtch = new AttachmentBuilder('src/assets/wheelingdapho.png')
 
     user.send({
       content: `Dear **Lunar Disciples**,\n${str}\n\nWarmest regards,\n[**Aevoa**](https://open.spotify.com/track/1gqocOVO4Lp86OJ7hD9gSZ?si=380aa9cdec454856)\n_ _`,
       embeds: [txtEmbed],
       components: [btnServer],
-      files: [fileAtch]
+      // files: [fileAtch]
     }).catch((e) => { return message.reply(`${e}`) });
 
     message.react("✉").catch((e) => { console(e) });
