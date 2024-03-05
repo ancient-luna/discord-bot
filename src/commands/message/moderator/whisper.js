@@ -36,7 +36,7 @@ module.exports = new Object({
       .setFooter({ text: `this bot won't read any messages of your replies` })
       .setColor("2b2d31")
       .setThumbnail('https://i.imgur.com/veLhH04.png')
-      .setImage('https://i.imgur.com/4uS7mor.png')
+      // .setImage('https://i.imgur.com/4uS7mor.png')
 
     const btnServer = new ActionRowBuilder()
       .addComponents(
