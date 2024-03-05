@@ -62,7 +62,7 @@ module.exports = new Object({
     // let fileAtch = new AttachmentBuilder('src/assets/wheelingdapho.png')
 
     user.send({
-      content: `Dear **Lunar Disciples**,\n${str}\n\nWarmest regards,\n[**Aevoa**](https://open.spotify.com/track/1gqocOVO4Lp86OJ7hD9gSZ?si=380aa9cdec454856)\n_ _`,
+      content: `Dear **Lunar Disciples**,\n${str}\n\nWarmest regards,\n[**Aevoa**](https://steamcommunity.com/id/axxae/)\n_ _`,
       embeds: [txtEmbed],
       components: [btnServer],
       // files: [fileAtch]
