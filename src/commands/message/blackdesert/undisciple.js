@@ -31,7 +31,7 @@ module.exports = new Object({
 
         const addLD = new EmbedBuilder()
             .setAuthor({ name: "ROLE REMOVED", iconURL: "https://i.imgur.com/hSlBkoj.png" })
-            .setDescription("Your **Lunar Disciples** role has been removed and no longer have access to guild only channels in **[Ecplise Boarder Hall](https://discord.com/channels/447069790150852609/1060992670035619931)** category. If have any questions regarding this dont hesitate to reach and mention the Ancestor and the Elders in **[#city](https://discord.com/channels/447069790150852609/1049228301807407156)**")
+            .setDescription("Your **Lunar Disciples** role has been removed and no longer have access to guild only channels in **[Ecplise Boarder Hall](https://discord.com/channels/447069790150852609/1060992670035619931)** category. If have any questions regarding this dont hesitate to reach and mention the Ancestor and the Elders in **[#city](https://discord.com/channels/447069790150852609/1049228301807407156)**\n\n> We always welcome you back to the guild when decide to be active again")
             .setTimestamp()
             .setColor("2b2d31")
             .setFooter({ text: "Ancient Luna Guild: We ran as if to meet the moon" })
