@@ -49,7 +49,7 @@ module.exports = new Object({
       .addComponents(
         new ButtonBuilder()
           .setStyle(ButtonStyle.Link)
-          .setLabel("Guild Website")
+          .setLabel("Web")
           .setURL(`https://ancientluna.org`)
       )
       .addComponents(
