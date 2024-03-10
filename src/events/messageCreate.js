@@ -185,7 +185,7 @@ module.exports = new Object({
 
         const aiChat = {
           method: 'GET',
-          url: 'https://google-bard1.p.rapidapi.com/v3/chat/gemini-1.0-pro',
+          url: 'https://google-bard1.p.rapidapi.com/v3/chat/gemini-1.0-pro-001',
           headers: {
             'api-key': process.env.GOOGLE_MAKERSUITE_KEY,
             message: message.content,
