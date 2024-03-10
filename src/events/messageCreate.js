@@ -154,7 +154,8 @@ module.exports = new Object({
         },
       ];
       try {
-        const { Gemini } = require('@nishantapps/node-gemini');
+        const axios = require('axios');
+        // const { Gemini } = require('@nishantapps/node-gemini');
         await message.channel.sendTyping();
         // the bot can retrieve old messages and hold a conversation
         let prevMessages = await message.channel.messages.fetch({ limit: 15 });
@@ -182,18 +183,33 @@ module.exports = new Object({
           }
         });
 
-        const apiKey = process.env.X_RAPID_API;
-        const makersuiteKey = process.env.GOOGLE_MAKERSUITE_KEY;
-        const temperature = 0.7;
-        const topP = 0.8;
-        const topK = 10;
-        const maxOutputTokens = 50;
+        const aiChat = {
+          method: 'GET',
+          url: 'https://google-bard1.p.rapidapi.com/v3/chat/gemini-1.0-pro',
+          headers: {
+            'api-key': process.env.GOOGLE_MAKERSUITE_KEY,
+            message: message.content,
+            'harm-category-harassment': 'BLOCK_NONE',
+            'harm-category-hate-speech': 'BLOCK_NONE',
+            'harm-category-sexually-explicit': 'BLOCK_NONE',
+            'harm-category-dangerous-content': 'BLOCK_NONE',
+            'X-RapidAPI-Key': process.env.X_RAPID_API,
+            'X-RapidAPI-Host': 'google-bard1.p.rapidapi.com'
+          }
+        };
 
-        Gemini.initialize(apiKey, makersuiteKey, temperature, topP, topK, maxOutputTokens);
+        // const apiKey = process.env.X_RAPID_API;
+        // const makersuiteKey = process.env.GOOGLE_MAKERSUITE_KEY;
+        // const temperature = 0.7;
+        // const topP = 0.8;
+        // const topK = 10;
+        // const maxOutputTokens = 50;
+
+        // Gemini.initialize(apiKey, makersuiteKey, temperature, topP, topK, maxOutputTokens);
 
         try {
-          const questionChat = await Gemini.ask(message.content);
-          const outputChat = questionChat.response;
+          const questionChat = await axios.request(aiChat)
+          const outputChat = questionChat.data;
           // const outputChat = responseChat.data.response;
           if (outputChat.length > 2000) {
             const chunks = outputChat.match(/.{1,2000}/g);
