@@ -145,7 +145,6 @@ module.exports = new Object({
     // Chat AI
     if (client.config.aiChatChannel.includes(message.channel.id)) {
       const noAnswer = "There was an issue getting that AI response. Try again sooner or later <:msg_error:1185521089766502400>";
-      // const confuseAI = noAnswer[Math.floor(Math.random() * noAnswer.length)];
       let conversationLog = [
         {
           role: "system",
@@ -234,7 +233,6 @@ module.exports = new Object({
         message.channel.send(`${noAnswer}`).catch(err => {});
       }
     }
-
 
     // PREFIX COMMAND
 
