@@ -27,7 +27,7 @@ module.exports = new Object({
 
         if (!target) return message.reply('Please mention them, the one who is about to lose theirs').catch(e => { });
 
-        let role = '1060982357538119850';
+        let role = '1052973235710464040';
 
         const addLD = new EmbedBuilder()
             .setAuthor({ name: "ROLE REMOVED", iconURL: "https://i.imgur.com/aLkmV4I.png" })
