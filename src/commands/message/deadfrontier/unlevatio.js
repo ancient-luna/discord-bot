@@ -1,0 +1,46 @@
+const { EmbedBuilder } = require("discord.js");
+module.exports = new Object({
+    name: "unlevatio",
+    description: "unlevatio.",
+    category: "Deadfrontier",
+    usage: "",
+    cooldown: 0,
+    aliases: [''],
+    examples: [''],
+    sub_commands: [],
+    args: false,
+    permissions: {
+        client: [],
+        user: ['ManageMessages'],
+        dev: false,
+    },
+    player: { voice: false, active: false, dj: false, },
+    /**
+     * 
+     * @param {import("../../../index")} client 
+     * @param {import("discord.js").Message} message
+     * @param {String[]} args
+     */
+    async execute(client, message, args) {
+
+        let target = message.mentions.members.first();
+
+        if (!target) return message.reply('Please mention them, the one who is about to lose theirs').catch(e => { });
+
+        let role = '1060982357538119850';
+
+        const addLD = new EmbedBuilder()
+            .setAuthor({ name: "ROLE REMOVED", iconURL: "https://i.imgur.com/aLkmV4I.png" })
+            .setDescription("Your **Leavtio** role has been removed and no longer have access to clan only channels in **[Survivors Homeland](https://discord.com/channels/447069790150852609/860531645916774401)** category. If have any questions regarding this dont hesitate to reach and mention the Levatios in **[#meeting-hall](https://discord.com/channels/447069790150852609/860531645916774401)**")
+            .setTimestamp()
+            .setColor("2b2d31")
+            .setFooter({ text: "Ancient Luna Guild: We ran as if to meet the moon" })
+
+        await target.user.send({ embeds: [addLD] }).then(target.roles.remove(role)).catch((e) => { });
+
+        await message.react("✅").then(setTimeout(() => message.delete().catch((e) => { }), 5000)).catch((err) => {
+            throw err;
+        })
+    }
+})
+
