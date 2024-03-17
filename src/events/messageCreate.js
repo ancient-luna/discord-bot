@@ -181,12 +181,14 @@ module.exports = new Object({
           }
         });
 
+        const encodedMessage = encodeURIComponent(message.content);
+
         const options = {
           method: 'GET',
           url: 'https://google-bard1.p.rapidapi.com/v3/chat/gemini-1.0-pro',
           headers: {
             'api-key': process.env.GOOGLE_MAKERSUITE_KEY,
-            message: message.content,
+            message: encodedMessage,
             'harm-category-harassment': 'BLOCK_NONE',
             'harm-category-hate-speech': 'BLOCK_NONE',
             'harm-category-sexually-explicit': 'BLOCK_NONE',
@@ -199,7 +201,6 @@ module.exports = new Object({
         try {
           const aiChat = await axios.request(options)
           const outputChat = aiChat.data.response;
-          // const outputChat = responseChat.data.response;
           if (outputChat.length > 2000) {
             const chunks = outputChat.match(/.{1,2000}/g);
             for (let i=0; i < chunks.length; i++) {
