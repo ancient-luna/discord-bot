@@ -57,7 +57,14 @@ module.exports = new Object({
                 .setTimestamp()
                 .setColor("43b581")
                 .setFooter({ text: "Your Suggestions Status" })
-            await suggester.send({ embeds: [accEmbed] });
+
+            const errorEmbed = new EmbedBuilder()
+                .setDescription("The user unable to receive DMs.")
+                .setColor("43b581")
+
+            await suggester.send({ embeds: [accEmbed] }).catch((e) => {
+                message.channel.send({ content: "Suggestion: **ACCEPTED** ! `updated`", embeds: [errorEmbed] })
+            });
 
             message.channel.send("Suggestion: **ACCEPTED** ! `updated`").catch((e) => { });
             

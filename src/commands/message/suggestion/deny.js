@@ -35,7 +35,8 @@ module.exports = new Object({
             const editor = message.member.displayName;
             const suggestedEmbed = await suggestionChannel.messages.fetch(messageID);
             const data = suggestedEmbed.embeds[0];
-            const acceptEmbed = new EmbedBuilder()
+
+            const denyEmbed = new EmbedBuilder()
                 .setAuthor({ name: data.author.name, iconURL: 'https://i.imgur.com/oZvnuem.png' })
                 .setTitle('Suggestion Denied')
                 .setDescription(data.description)
@@ -45,20 +46,28 @@ module.exports = new Object({
                 )
                 .setTimestamp()
 
-            message.channel.send("Suggestion: **DENIED** ! `updated`");
-            suggestedEmbed.edit({ embeds: [acceptEmbed] });
+            suggestedEmbed.edit({ embeds: [denyEmbed] });
 
-            // const suggester = await client.users.cache.find(
-            //     (u) => u.username === data.user.username
-            // );
+            const suggester = await client.users.cache.find(
+                (u) => u.username === data.user.username
+            );
             
-            // const denyEmbed = new EmbedBuilder()
-            //     .setAuthor({ name: "SUGGESTION DENIED", iconURL: 'https://i.imgur.com/oZvnuem.png' })
-            //     .setDescription("Your suggestion has been denied by the Elders. Find out why in **[#suggestions](https://discord.com/channels/447069790150852609/842069893113446410)**. Thank you for the suggestion!")
-            //     .setTimestamp()
-            //     .setColor('f04947')
-            //     .setFooter({ text: "Your Suggestions Status" })
-            // await suggester.send({ embeds: [denyEmbed] });
+            const dnEmbed = new EmbedBuilder()
+                .setAuthor({ name: "SUGGESTION DENIED", iconURL: 'https://i.imgur.com/oZvnuem.png' })
+                .setDescription("Your suggestion has been denied by the Elders. Find out why in **[#suggestions](https://discord.com/channels/447069790150852609/842069893113446410)**. Thank you for the suggestion!")
+                .setTimestamp()
+                .setColor('f04947')
+                .setFooter({ text: "Your Suggestions Status" })
+
+            const errorEmbed = new EmbedBuilder()
+                .setDescription("The user unable to receive DMs.")
+                .setColor("43b581")
+
+            await suggester.send({ embeds: [dnEmbed] }).catch((e) => {
+                message.channel.send({ content: "Suggestion: **DENIED** ! `updated`", embeds: [errorEmbed] })
+            });
+
+            message.channel.send("Suggestion: **DENIED** ! `updated`");
             
         } catch (err) {
             console.log(err);
