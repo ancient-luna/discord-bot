@@ -44,7 +44,7 @@ module.exports = {
         .then((modalInteraction) => {
             const suggestValue = modalInteraction.fields.getTextInputValue('suggestInput');
             const suggestNote = new EmbedBuilder()
-                .setAuthor({ name: `${interaction.member.displayName}` })
+                .setAuthor({ name: `${interaction.member.user.username}` })
                 .setDescription(`${suggestValue}`)
                 .setColor('4f545c')
             modalInteraction.guild.channels.cache.get('842069893113446410').send({ embeds: [suggestNote] }).then((msg) => {
