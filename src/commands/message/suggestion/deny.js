@@ -49,7 +49,7 @@ module.exports = new Object({
             suggestedEmbed.edit({ embeds: [denyEmbed] });
 
             const suggester = await client.users.cache.find(
-                (u) => u.username === data.user.username
+                (u) => u.username === data.author.name
             );
             
             const dnEmbed = new EmbedBuilder()
