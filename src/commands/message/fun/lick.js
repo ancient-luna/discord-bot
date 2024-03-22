@@ -6,7 +6,7 @@ module.exports = new Object({
     category: "Fun",
     usage: "",
     cooldown: 0,
-    aliases: ['mlem'],
+    aliases: ['test'],
     examples: [''],
     sub_commands: [],
     args: false,
@@ -32,21 +32,26 @@ module.exports = new Object({
             });
         }
 
-        const cntnTxt = [ 'feet to toe', 'that kind of part', 'ear to whimper', 'tongue deeply', 'neck softly' ]
+        const cntnTxt = ['feet to toe', 'that kind of part', 'ear to whimper', 'tongue deeply', 'neck softly'];
         const rndmMlem = cntnTxt[Math.floor(Math.random() * cntnTxt.length)];
-        const mlemIMG = 'https://i.imgur.com/HHnLLgP.gif';
-        const mlemTxt = `***Mmhmm~ SLuurRpP mmmhm slurp SLurpP*** ...\n<@260390499834265610> *starts [licking](${mlemIMG}) <@${target.user.id}>'s ${rndmMlem}* 💦\n_ _`
 
-        const smileIMG = 'https://i.imgur.com/0XVrYTH.jpg';
-        const smileTxt = `this time <@260390499834265610> had enough\nand just [smiling](${smileIMG}) instead of mlemming\n_ _`;
+        const mlemIMG = new AttachmentBuilder("src/assets/react/mlem.gif");
+        const smileIMG = new AttachmentBuilder("src/assets/react/smile.jpg");
+
+        const mlemTxtContent = `***Mmhmm~ SLuurRpP mmmhm slurp SLurpP*** ...\n<@260390499834265610> *starts licking <@${target.user.id}>'s ${rndmMlem}* 💦\n_ _`;
+        const smileTxtContent = `this time <@260390499834265610> had enough\nand just smiling instead of mlemming\n_ _`;
 
         const rndmNumber = Math.random();
         const mlemProbability = 0.8;
-        const rndmMlemTxt = rndmNumber <= mlemProbability ? mlemTxt : smileTxt;
+        let sentMessage;
+
+        if (rndmNumber <= mlemProbability) {
+            sentMessage = await message.channel.send({ content: mlemTxtContent, files: [mlemIMG] });
+        } else {
+            sentMessage = await message.channel.send({ content: smileTxtContent, files: [smileIMG] });
+        }
 
         await message.react("💦").catch((e) => { });
-        await message.channel.send({
-            content: `${rndmMlemTxt}`
-        }).catch((e) => { });
+        // await sentMessage.react("💦").catch((e) => { });
     }
 });
