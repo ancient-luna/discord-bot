@@ -84,19 +84,20 @@ module.exports = {
         let padding = 15;
 
         // Generate name text
-        let nameLength = ctx.measureText(message.member.displayName.toUpperCase()).width;
-        if (nameLength > 800 - beginX) {
-          fontSize -= 2;
-          nameLength = ctx.measureText(message.member.displayName.toUpperCase()).width;
-          if (nameLength > 800 - beginX) {
-            fontSize -= 3;
-            nameLength = ctx.measureText(message.member.displayName.toUpperCase()).width;
-            if (nameLength > 800 - beginX) {
-              fontSize -= 2;
+        let displayName = message.member.displayName.toUpperCase();
+        let nameFits = false;
+
+        // Continuously check if the name fits within the canvas width
+        while (!nameFits && fontSize > 10) {
+            ctx.font = `${fontSize}px "PaybAck"`;
+            let nameWidth = ctx.measureText(displayName).width;
+            if (nameWidth <= 500 - 2 * padding) {
+                nameFits = true;
+            } else {
+                fontSize -= 2;
             }
-          }
         }
-        ctx.font = `${fontSize}px "PaybAck"`;
+
         ctx.textAlign = "center";
         ctx.fillStyle = "#00cdff";
         ctx.fillText(message.member.displayName, 250, 87);
@@ -126,6 +127,7 @@ module.exports = {
           '839170815932891197', // lunariaID
           '839198215580811344', // lightseekerID
           '620709364247822338', // luminanceID
+          '888736428069105674', // radianceID
           '1148832046505009193', // etendueID
           '1060982357538119850', // discipleID
           '1052973235710464040' // levatioID
