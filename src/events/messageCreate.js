@@ -144,84 +144,50 @@ module.exports = new Object({
 
     // Chat AI
     if (client.config.aiChatChannel.includes(message.channel.id)) {
-      const noAnswer = "There was an issue getting that AI response. Try again sooner or later <:msg_error:1185521089766502400>";
-      let conversationLog = [
-        {
-          role: "system",
-          content:
-            "You are a friendly discord Bot",
-        },
-      ];
+      const axios = require("axios");
+      const errorChat = "There was an issue getting that AI response. Try again sooner or later <:msg_error:1185521089766502400>";
+      const previousMessages = new Collection();
+      if (!message.guild) return; // Ensure message is in a guild
+      if (message.author.id === client.user.id) return; // Ignore messages from the bot itself
       try {
-        const axios = require('axios');
+        let context = "generate a reply as you are chatbot developed by imsoondae";
+        let name = message.author.id;
+        let prompt = previousMessages.map((msg) => msg.content).join(" ") + message.content;
+
+        // message.channel.startTyping(); // Start typing
         await message.channel.sendTyping();
-        // the bot can retrieve old messages and hold a conversation
-        let prevMessages = await message.channel.messages.fetch({ limit: 15 });
-        prevMessages.reverse();
-        prevMessages.forEach((msg) => {
-          if (msg.content.startsWith("!")) return;
-          if (msg.author.id !== client.user.id && message.author.bot) return;
-          if (msg.author.id == client.user.id) {
-            conversationLog.push({
-              role: "assistant",
-              content: msg.content,
-              name: msg.author.username
-                .replace(/\s+/g, "_")
-                .replace(/[^\w\s]/gi, ""),
-            });
-          }
-          if (msg.author.id == message.author.id) {
-            conversationLog.push({
-              role: "user",
-              content: msg.content,
-              name: message.author.username
-                .replace(/\s+/g, "_")
-                .replace(/[^\w\s]/gi, ""),
-            });
-          }
-        });
 
-        const encodedMessage = encodeURIComponent(message.content);
+        setTimeout(async () => {
+          try {
+            let res1 = await axios.post(
+              "https://ai.spin.rip/chat",
+              { prompt, context, name },
+              {
+                headers: {
+                  "Content-Type": "application/json",
+                },
+              },
+            );
 
-        const options = {
-          method: 'GET',
-          url: 'https://google-bard1.p.rapidapi.com/v3/chat/gemini-1.0-pro',
-          headers: {
-            'api-key': process.env.GOOGLE_MAKERSUITE_KEY,
-            message: encodedMessage,
-            'harm-category-harassment': 'BLOCK_NONE',
-            'harm-category-hate-speech': 'BLOCK_NONE',
-            'harm-category-sexually-explicit': 'BLOCK_NONE',
-            'harm-category-dangerous-content': 'BLOCK_NONE',
-            'X-RapidAPI-Key': process.env.X_RAPID_API,
-            'X-RapidAPI-Host': 'google-bard1.p.rapidapi.com'
+            const replyMessage = `<@${name}> ${res1.data.response}`;
+            message.channel.send(replyMessage);
+            
+          } catch (error) {
+            console.error(error);
+            message.channel.send(errorChat);
+          } finally {
+            // message.channel.stopTyping(); // Stop typing
           }
-        };
+        }, 10000); // 10s
 
-        try {
-          const aiChat = await axios.request(options)
-          const outputChat = aiChat.data.response;
-          if (outputChat.length > 2000) {
-            const chunks = outputChat.match(/.{1,2000}/g);
-            for (let i=0; i < chunks.length; i++) {
-              await message.channel.send(chunks[i]).catch(err => {
-                console.log(err);
-                message.channel.send("I am having a hard time to filling that request! Im an only living wisdom on Discord\nI don't have time to process long requests \`Only 2000 max. per-reply\` <:msg_error:1185521089766502400>").catch(err => {});
-              });
-            }
-          } else {
-            await message.channel.send(outputChat).catch(err => {
-              console.log(err);
-              message.channel.send(`${noAnswer}`).catch(err => {});
-            });
-          }
-        } catch (e) {
-          console.error("Error:", e);
-          return await message.channel.send(`${noAnswer}`);
+        previousMessages.set(message.id, message);
+        if (previousMessages.size > 5) {
+          const oldestMessage = previousMessages.first();
+          previousMessages.delete(oldestMessage.id);
         }
-      } catch (e) {
-        console.log(e);
-        message.channel.send(`${noAnswer}`).catch(err => {});
+      } catch (error) {
+        console.error(error);
+        message.channel.send(errorChat);
       }
     }
 
