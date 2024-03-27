@@ -38,8 +38,8 @@ module.exports = new Object({
             .addComponents(
                 new ButtonBuilder()
                 .setStyle(ButtonStyle.Link)
-                .setLabel(`Support (Saweria)`)
-                .setURL(`https://saweria.co/ancientluna`)
+                .setLabel(`Support (Trakteer)`)
+                .setURL(`https://trakteer.id/xxdae`)
             )
             // .addComponents(
             //     new ButtonBuilder()
