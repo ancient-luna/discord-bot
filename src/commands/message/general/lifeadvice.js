@@ -25,32 +25,27 @@ module.exports = new Object({
      */
     async execute(client, message, args) {
 
-        let user = message.mentions.members.first();
+        let user = message.mentions.members.first() || message.member;
         let tweet = await axios.get('https://api.adviceslip.com/advice');
 
-        // if (target.bot) return await message.reply({ content: "Well, it is a BOT. You cant track them" })
+        const randomReplies = Math.floor(Math.random() * 333);
+        const randomRetweets = Math.floor(Math.random() * 666);
 
-        if (!user) {
-            message.react("❓").catch((e) => { });
-            return message.reply({ content: "How can I gib advice to them. Mention one" }).then((msg) => {
-                setTimeout(() => msg.delete().catch((e) => { }), 5000);
-            });
-        }
+        const x = Math.floor(Math.random() * 9) + 1;
+        const y = Math.floor(Math.random() * 9) + 1;
+        const c = Math.random() < 0.5 ? 'M' : 'K';
+
+        const randomLikes = `${x}.${y}${c}`;
 
         let avatarUrl = user.displayAvatarURL({ extension: "jpg" }) || 'https://cdn.discordapp.com/attachments/1080219392337522718/1093224716875087892/twitter.png';
 
-        let canvas = `https://some-random-api.com/canvas/tweet?avatar=${avatarUrl}&displayname=${encodeURIComponent(user.displayName)}&username=${encodeURIComponent(user.user.username)}&comment=${encodeURIComponent(tweet.data.slip.advice)}&replies=${Math.floor(Math.random() * 333)}&retweets=${Math.floor(Math.random() * 666)}`;
-
+        let canvas = `https://some-random-api.com/canvas/tweet?avatar=${avatarUrl}&displayname=${encodeURIComponent(user.displayName)}&username=${encodeURIComponent(user.user.username)}&comment=${encodeURIComponent(tweet.data.slip.advice)}&replies=${randomReplies}&retweets=${randomRetweets}&likes=${randomLikes}`;
+        
         let advice = new EmbedBuilder()
             .setAuthor({ name: `𝔸𝕕𝕧𝕚𝕔𝕖 𝕠𝕗 𝕃𝕚𝕗𝕖`, iconURL: 'https://i.imgur.com/nF8zpsB.png' })
-            .setColor("b8b9bd")
+            .setColor(client.config.embedColorTrans)
             .setImage(canvas)
 
-        // await message.react("<:util_social_twitter:859071787114430475>").catch((e) => { });
-
-        await message.channel.send({
-            // content: canvas,
-            embeds: [advice]
-        });
+        await message.channel.send({ embeds: [advice] });
     }
 });
