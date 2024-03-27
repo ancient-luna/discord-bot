@@ -145,13 +145,13 @@ module.exports = new Object({
     // Chat AI
     if (client.config.aiChatChannel.includes(message.channel.id)) {
       const axios = require("axios");
-      const errorChat = "There was an issue getting that AI response. Try again sooner or later <:msg_error:1185521089766502400>";
+      const errorChat = "Try again, there was an issue getting that AI response <:write:1163568311716565154>";
       const previousMessages = new Collection();
       try {
         let context = "generate a reply as you are chatbot developed by imsoondae";
         let name = message.author.id;
         let prompt = previousMessages.map((msg) => msg.content).join(" ") + message.content;
-        // message.channel.startTyping(); // Start typing
+        let loadingRspns = await message.channel.send(`thinking <a:_util_loading:863317596551118858>`);
         await message.channel.sendTyping();
         setTimeout(async () => {
           try {
@@ -165,22 +165,20 @@ module.exports = new Object({
               },
             );
             const replyMessage = `<@${name}> ${res1.data.response}`;
-            message.channel.send(replyMessage);
+            await loadingRspns.edit(replyMessage);
           } catch (error) {
             console.error(error);
-            message.channel.send(errorChat);
-          } finally {
-            // message.channel.stopTyping(); // Stop typing
+            await loadingRspns.edit(errorChat);
           }
         }, 10000); // 10s
         previousMessages.set(message.id, message);
-        if (previousMessages.size > 5) {
+        if (previousMessages.size > 0) {
           const oldestMessage = previousMessages.first();
           previousMessages.delete(oldestMessage.id);
         }
       } catch (error) {
         console.error(error);
-        message.channel.send(errorChat);
+        await loadingRspns.edit(errorChat);
       }
     }
 
