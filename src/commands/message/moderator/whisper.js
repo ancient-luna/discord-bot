@@ -34,7 +34,7 @@ module.exports = new Object({
       .setTitle(`Dev. Contacts <:verified:1204724590950228008>`)
       .setDescription(`> Discord: axxae - [ancientluna](https://discord.com/invite/Sbp2nt8QHe)\n> dae@ancientluna.org <:ins:1204725582852788256> [everylttlething](https://instagram.com/everylttlething)`)
       .setFooter({ text: `this bot won't read any messages of your replies` })
-      .setColor("2b2d31")
+      .setColor(client.config.embedColorTrans)
       .setThumbnail('https://i.imgur.com/veLhH04.png')
       // .setImage('https://i.imgur.com/4uS7mor.png')
 

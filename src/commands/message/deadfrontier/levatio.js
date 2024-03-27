@@ -55,7 +55,7 @@ module.exports = new Object({
             .setAuthor({ name: "ROLE ADDED", iconURL: 'https://i.imgur.com/aLkmV4I.png' })
             .setDescription("You have been gived **Levatio** role and have access to all channels ( **[#clan-knowledge](https://discord.com/channels/447069790150852609/884345319389810778) [#clan-vault](https://discord.com/channels/447069790150852609/875904001340764190) [#cts-ctl](https://discord.com/channels/447069790150852609/881836063398723585)** ) as an official member in **Dead Frontier** category. May the lights guide us, so we may bask in its light as true levatios")
             .setTimestamp()
-            .setColor("2b2d31")
+            .setColor(client.config.embedColorTrans)
             .setFooter({ text: "Ancient Luna: We ran as if to meet the moon" })
 
         const btnAccess = new ActionRowBuilder()

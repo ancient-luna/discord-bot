@@ -43,7 +43,7 @@ module.exports = new Object({
             .setDescription(`**${target.displayName} get BANNED from the sanctuary**\nReason: *${reason}*`)
             .setImage("https://i.imgur.com/rG7qwId.gif")
             .setFooter({ text: `Banned by ${message.member.displayName}` })
-            .setColor("2b2d31")
+            .setColor(client.config.embedColorTrans)
         await message.guild.bans.create(target, {
             reason: reason
         }).then(() => {

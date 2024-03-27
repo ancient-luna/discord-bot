@@ -80,7 +80,7 @@ module.exports = new Object({
       const embedLucent = new EmbedBuilder()
         .setTitle(`The Lucent Fountain <:ancientluna_pure_luna:866781517312688178>`)
         .setDescription(`𝑾𝒆 𝒓𝒂𝒏 𝒂𝒔 𝒊𝒇 𝒕𝒐 𝒎𝒆𝒆𝒕 𝒕𝒉𝒆 𝒎𝒐𝒐𝒏\n**[Be the true light seekers](https://youtu.be/_rJiY6y3a-A)** ✦`)
-        .setColor("2b2d31")
+        .setColor(client.config.embedColorTrans)
         .setThumbnail('https://i.imgur.com/Mza9Zop.png')
       const btnLucent = new ActionRowBuilder()
         .addComponents(
@@ -124,7 +124,7 @@ module.exports = new Object({
             .setDescription(`Thanks for the hardwork!\nClick on this button to update the payout sheet.`)
             // .setThumbnail(`https://i.imgur.com/JGmEtSL.png`)
             .setThumbnail(`${lunaThumbnail[Math.floor(Math.random() * lunaThumbnail.length)]}`)
-            .setColor('#2b2d31');
+            .setColor(client.config.embedColorTrans);
         let linkSheet = new ActionRowBuilder()
             .addComponents(
                 new ButtonBuilder()

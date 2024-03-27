@@ -59,7 +59,7 @@ module.exports = new Object({
                         { name: 'Identifier', value: `*${data.id}*`, inline: true }
                     )
                     .setThumbnail(data.picture)
-                    .setColor("2b2d31")
+                    .setColor(client.config.embedColorTrans)
                     .setTimestamp()
                     .setFooter({ text: `${message.member.displayName} searched for ${args}`.split(',').join(' '), iconURL: message.author.displayAvatarURL({ dynamic: true }) })
 

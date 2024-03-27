@@ -49,7 +49,7 @@ module.exports = new Object({
         const embed = new EmbedBuilder()
             .setTitle(title)
             .setURL(permalink)
-            .setColor(`2b2d31`)
+            .setColor(client.config.embedColorTrans)
             .addFields(
                 { name: "Definition: ", value: definition },
                 { name: "Example: ", value: example }

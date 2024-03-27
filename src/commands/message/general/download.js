@@ -69,7 +69,7 @@ module.exports = new Object({
             )
 
             const embed = new EmbedBuilder()
-                .setColor('2b2d31')
+                .setColor(client.config.embedColorTrans)
                 .setDescription(`Click on button below to download the converted **${output.data.title}** video`)
 
             await loading.edit({

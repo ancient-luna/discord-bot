@@ -83,7 +83,7 @@ module.exports = new Object({
                     { name: "Booster", value: `${Booster}`, inline: true },
                     { name: `Roles in ${message.guild.name}`, value: `${topRoles.join(" ").replace(`<@${message.guildId}>`)}`, inline: false },
                 ])
-                .setColor('2b2d31')
+                .setColor(client.config.embedColorTrans)
                 .setFooter({ text: `ID: ${member.id}` })
         
             loadingTxt.edit({ content: '⁣', embeds: [Embed], components: [row], files: [imageAttachment] });

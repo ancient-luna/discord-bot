@@ -33,7 +33,7 @@ module.exports = new Object({
             .setAuthor({ name: "ROLE REMOVED", iconURL: "https://i.imgur.com/aLkmV4I.png" })
             .setDescription("Your **Levatio** role has been removed and no longer have access to clan only channels in **[Survivors Homeland](https://discord.com/channels/447069790150852609/860531645916774401)** category. If have any questions regarding this dont hesitate to reach and mention the Levatios in **[#meeting-hall](https://discord.com/channels/447069790150852609/860531645916774401)**")
             .setTimestamp()
-            .setColor("2b2d31")
+            .setColor(client.config.embedColorTrans)
             .setFooter({ text: "Ancient Luna Guild: We ran as if to meet the moon" })
 
         await target.user.send({ embeds: [addLD] }).then(target.roles.remove(role)).catch((e) => { });

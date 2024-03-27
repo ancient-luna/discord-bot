@@ -58,7 +58,7 @@ module.exports = {
             const absenceNote = new EmbedBuilder()
                 .setAuthor({ name: "Vacation Letter" })
                 .setDescription(`*Dear Elders,\nRequested Day Off: __${dayValue} Day(s)__\n\n${reasonValue}\n\nYours sincerely,*\n***${interaction.member.displayName}***`)
-                .setColor('2b2d31')
+                .setColor(client.config.embedColorTrans)
                 .setThumbnail('https://i.imgur.com/Zx4kMoA.png')
             modalInteraction.guild.channels.cache.get('1076767724224659526').send({ embeds: [absenceNote] })
             modalInteraction.reply({

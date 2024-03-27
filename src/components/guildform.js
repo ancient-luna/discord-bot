@@ -94,7 +94,7 @@ module.exports = {
                     { name: `Previous Guild History`, value: `>>> ${prevGuild}`, inline: false },
                     { name: `Guild Expectation`, value: `>>> ${expectGuild}`, inline: false },
                 )
-                .setColor('2b2d31')
+                .setColor(client.config.embedColorTrans)
                 // .setTimestamp()
             modalInteraction.reply({ embeds: [embedForm] })
         })

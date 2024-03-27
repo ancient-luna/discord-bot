@@ -23,7 +23,7 @@ module.exports = {
         { name: `**Guild Quests**`, value: `- Guild Quests only can be taken for **current guild size** only\n - SMH, Combat, and Life GQs can be in any time\n - Guild Mission Specialist position reset every Monday (can reapply again without any requirements)`, inline: false },
         { name: `**Vacation / Day-Off**`, value: `If you are unable to login for 7 days straight it is a must to let us know so we may not kick you out from the guild. **Apply for vacation** in <#1060992992523079800>`, inline: false }
     )
-    .setColor("2b2d31")
+    .setColor(client.config.embedColorTrans)
     .setTimestamp()
     .setFooter({ text: "Ancient Luna Guild: We ran as if to meet the moon" })
 

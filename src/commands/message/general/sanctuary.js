@@ -73,7 +73,7 @@ module.exports = new Object({
                 {name: `Boosters`, value: `${guild.premiumSubscriptionCount}`, inline: true},
                 {name: `Server Region`, value: `${country}`, inline: true}
             )
-            .setColor('2b2d31')
+            .setColor(client.config.embedColorTrans)
             .setTimestamp()
             .setFooter({ text: `Requested by ${message.member.displayName}` })
 

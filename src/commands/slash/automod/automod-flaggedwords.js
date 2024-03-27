@@ -44,7 +44,7 @@ module.exports = {
         setTimeout(async ()=> {
             if (!rule) return;
             const embed = new EmbedBuilder()
-                .setColor('2b2d31')
+                .setColor(client.config.embedColorTrans)
                 .setDescription(`<:vcon_vote_accepted:859075138329903114> You Automod rule has been created\nAll swears will be stopped by **Ancient Luna**`)
             await interaction.editReply({ content: ``, embeds: [embed] });
         }, 3000)

@@ -37,7 +37,7 @@ module.exports = new Object({
             const editEmbed = new EmbedBuilder()
                 // .setTitle('EXCLUSIVE ROLES')
                 .setDescription(editQuery)
-                .setColor(`2b2d31`)
+                .setColor(client.config.embedColorTrans)
                 // .setImage('https://i.imgur.com/tRx8iKL.png')
                 // .setFooter({ text: `*this is world boss alerts (ASIA region only) GMT+8` })
 

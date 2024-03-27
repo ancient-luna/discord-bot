@@ -33,7 +33,7 @@ module.exports = new Object({
                 { name: `Help (Prefix)`, value: `${cB}!help${cB}`, inline: true },
                 { name: `Help (Mention)`, value: `${cB}@AncientLuna${cB}`, inline: true },
             )
-            .setColor("2b2d31")
+            .setColor(client.config.embedColorTrans)
             .setImage("https://i.imgur.com/c8QnpbX.gif")
 
         let serverButton = new ActionRowBuilder()

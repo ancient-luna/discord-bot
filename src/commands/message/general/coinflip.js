@@ -27,14 +27,14 @@ module.exports = new Object({
         const head = new EmbedBuilder()
             .setTitle('ℭ𝔬𝔦𝔫 𝔉𝔩𝔦𝔭: ℌ𝔢𝔞𝔡')
             .setDescription(`${message.member.displayName} flipped the coin and result is **Head**`)
-            .setColor('2b2d31')
+            .setColor(client.config.embedColorTrans)
             .setThumbnail('https://i.imgur.com/X61MBiD.png')
             .setTimestamp()
 
         const tail = new EmbedBuilder()
             .setTitle('ℭ𝔬𝔦𝔫 𝔉𝔩𝔦𝔭: 𝔗𝔞𝔦𝔩')
             .setDescription(`${message.member.displayName} flipped the coin and result is **Tail**`)
-            .setColor('2b2d31')
+            .setColor(client.config.embedColorTrans)
             .setThumbnail('https://i.imgur.com/nlYa0I3.png')
             .setTimestamp()
 
