@@ -71,6 +71,7 @@ module.exports = new Object({
             const embed = new EmbedBuilder()
                 .setColor(client.config.embedColorTrans)
                 .setDescription(`Click on button below to download the converted **${output.data.title}** video`)
+                .setImage(`https://img.youtube.com/vi/${vidID}/maxresdefault.jpg`)
 
             await loading.edit({
                 content: '⁣',
