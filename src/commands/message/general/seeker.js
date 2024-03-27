@@ -27,15 +27,8 @@ module.exports = new Object({
         const loadingTxt = await message.reply(`Getting profile <a:_util_loading:863317596551118858>`);
 
         try {
-            const member = message.mentions.members.first();
+            const member = message.mentions.members.first() || message.member;
             const fetchedMembers = await message.guild.members.fetch();
-
-            if (!member) {
-                message.react("❓").catch((e) => { });
-                return loadingTxt.edit({ content: "Unable to find the member profile. Mention one" }).then((msg) => {
-                    setTimeout(() => msg.delete().catch((e) => { }), 5000);
-                });
-            }
         
             const profileBuffer = await profileImage(member.id);
             const imageAttachment = new AttachmentBuilder(profileBuffer, { name: 'profile.png' });
