@@ -1,11 +1,6 @@
-const {
-  EmbedBuilder,
-  ButtonBuilder,
-  ActionRowBuilder,
-  ChannelType,
-  ButtonStyle,
-  PermissionsBitField,
-  Collection,
+const { 
+  EmbedBuilder, ButtonBuilder, ActionRowBuilder,
+  ChannelType, ButtonStyle, PermissionsBitField, Collection,
 } = require("discord.js");
 
 module.exports = new Object({

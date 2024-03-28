@@ -34,26 +34,6 @@ module.exports = new Object({
     } catch (err) {
       client.console.log(err, "error");
     }
-
-    // let token = process.env.TOKEN;
-    // const rest = new REST({ version: "10" }).setToken(token);
-    // const slashCommands = [];
-    // const cddd = fs
-    //   .readdirSync(path.join(__dirname, "../commands/slash"))
-    //   .filter((file) => file.endsWith(".js"));
-    // for (const file of cddd) {
-    //   const command = await require(`../commands/slash/${file}`);
-    //   slashCommands.push(command.data.toJSON());
-    //   client.slashCommands.set(command.data.name, command);
-    // }
-    // try {
-    //  await rest.put(Routes.applicationCommands(process.env.CLIENT_ID), {
-    //     body: slashCommands,
-    //   });
-    // } catch (error) {
-    //   console.error(error);
-    // }
-    //  client.console.log(`Slash loaded`, "Scmd");
     
     client.console.log(`Logged in as ${client.user.tag}`, "api");
   },
