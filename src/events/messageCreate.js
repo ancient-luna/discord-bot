@@ -152,7 +152,7 @@ module.exports = new Object({
         let name = message.author.id;
         let prompt = previousMessages.map((msg) => msg.content).join(" ") + message.content;
         let loadingRspns = await message.channel.send(`thinking <a:_util_loading:863317596551118858>`);
-        await message.channel.sendTyping();
+        // await message.channel.sendTyping();
         setTimeout(async () => {
           try {
             let res1 = await axios.post(
