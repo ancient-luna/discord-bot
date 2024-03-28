@@ -25,21 +25,14 @@ module.exports = new Object({
      */
     async execute(client, message, args) {
 
-        let target = message.mentions.members.first();
-
-        if (!target) {
-            message.react("❓").catch((e) => { });
-            return message.reply({ content: "How can I track when theres none. Mention one" }).then((msg) => {
-                setTimeout(() => msg.delete().catch((e) => { }), 5000);
-            });
-        }
+        let listener = message.mentions.members.first() || message.member;
 
         let status;
-        if (target.presence.activities.length === 1) status = target.presence.activities[0];
-        else if (target.presence.activities.length > 1) status = target.presence.activities[1];
+        if (listener.presence.activities.length === 1) status = listener.presence.activities[0];
+        else if (listener.presence.activities.length > 1) status = listener.presence.activities[1];
 
-        if (target.presence.activities.length === 0 || status.name !== "Spotify" && status.type !== "LISTENING") {
-            return await message.reply({ content: `${target.displayName} is not listening to Spotify` });
+        if (listener.presence.activities.length === 0 || status.name !== "Spotify" && status.type !== "LISTENING") {
+            return await message.reply({ content: `${listener.displayName} is not listening to Spotify` });
         }
 
         if (status !== null && status.name === "Spotify" && status.assets !== null) {
