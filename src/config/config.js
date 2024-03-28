@@ -4,6 +4,7 @@ module.exports = {
     preMemberRole: "839210689917616218",
     memberRole: "839198215580811344",
     elderRole: "843523544620335124",
+    streamRole: "1221004976839589958",
     ruleChannel: "838751745815216129",
     confessionChannel: "1162416709265784882",
     bdoChannelId: "1049228301807407156",
