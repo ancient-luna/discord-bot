@@ -61,13 +61,23 @@ module.exports = new Object({
 
     // let fileAtch = new AttachmentBuilder('src/assets/wheelingdapho.png')
 
+    const failed = new EmbedBuilder()
+      .setDescription(`<:wrong:1222439146593849425> Failed sending DM to <@${member.user.id}> due they close their DMs`)
+      .setColor(client.config.embedColorTrans)
+      
+    const success = new EmbedBuilder()
+      .setDescription(`<:check:1222439148720361502> Success sending DM to <@${member.user.id}>`)
+      .setColor(client.config.embedColorTrans)
+
     user.send({
       content: `Dear **Lunar Disciples**,\n${str}\n\nWarmest regards,\n[**Aevoa**](https://steamcommunity.com/id/axxae/)\n_ _`,
       embeds: [txtEmbed],
       components: [btnServer],
       // files: [fileAtch]
-    }).catch((e) => { return message.reply(`${e}`) });
-
-    message.react("✉").catch((e) => { console(e) });
+    }).then(() => {
+      message.channel.send({ embeds: [success] });
+    }).catch((e) => { 
+      message.channel.send({ embeds: [failed] });
+    });
   }
 });

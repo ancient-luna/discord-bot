@@ -23,11 +23,11 @@ module.exports = new Object({
      * @param {String[]} args
      */
     async execute(client, message, args) {
-        const messageID = args[0];
-        const acceptQuery = args.slice(1).join(" ");
+        const [messageID, acceptQuery] = args;
 
-        if (!messageID) return message.reply("`accept/deny` `messageid` `reason`").catch((e) => { });
-        if (!acceptQuery) return message.reply("`accept/deny` `messageid` `reason`").catch((e) => { });
+        if (!messageID || !acceptQuery) {
+            return message.reply("`accept/deny` `messageid` `reason`").catch(console.error);
+        }
 
         try {
             const suggestionChannel = message.guild.channels.cache.get("842069893113446410");
@@ -51,22 +51,31 @@ module.exports = new Object({
                 (u) => u.username === data.author.name
             );
 
+            const suggestionLink = `https://discord.com/channels/447069790150852609/842069893113446410/${messageID}`
+
             const accEmbed = new EmbedBuilder()
                 .setAuthor({ name: "SUGGESTION ACCEPTED", iconURL: 'https://i.imgur.com/Kll2T98.png' })
-                .setDescription("Your suggestion has been accepted by the Elders. See further detail in **[#suggestions](https://discord.com/channels/447069790150852609/842069893113446410)**. Thank you for the suggestion!")
+                .setDescription(`Your suggestion has been accepted by the Elders. See further detail in **[#suggestions](${suggestionLink})**. Thank you for the suggestion!`)
                 .setTimestamp()
                 .setColor("43b581")
                 .setFooter({ text: "Your Suggestions Status" })
 
-            const errorEmbed = new EmbedBuilder()
-                .setDescription("The user unable to receive DMs.")
-                .setColor("43b581")
+            const failed = new EmbedBuilder()
+                .setDescription(`<:wrong:1222439146593849425> Failed sending DM to <@${member.user.id}> due they close their DMs`)
+                .setColor(client.config.embedColorTrans)
 
-            await suggester.send({ embeds: [accEmbed] }).catch((e) => {
-                message.channel.send({ content: "Suggestion: **ACCEPTED** ! `updated`", embeds: [errorEmbed] })
+            const success = new EmbedBuilder()
+                .setDescription(`<:check:1222439148720361502> Success sending DM to <@${member.user.id}>`)
+                .setColor(client.config.embedColorTrans)
+
+            await suggester.send({
+                content: `Suggestion: ${suggestionLink} **ACCEPTED** ! \`updated\``,
+                embeds: [accEmbed]
+            }).then(() => {
+                message.channel.send({ embeds: [success] });
+            }).catch((e) => {
+                message.channel.send({ embeds: [failed] });
             });
-
-            message.channel.send("Suggestion: **ACCEPTED** ! `updated`").catch((e) => { });
             
         } catch (err) {
             console.log(err);
