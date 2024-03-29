@@ -33,7 +33,7 @@ module.exports = new Object({
         malScraper.getInfoFromName(search)
             .then((data) => {
                 let malEmbed = new EmbedBuilder()
-                    .setTitle(data.japaneseTitle)
+                    .setTitle(`${data.englishTitle} (${data.japaneseTitle})`)
                     .setURL(data.url)
                     .addFields(
                         { name: 'Premiered', value: `*${data.premiered}*`, inline: true },
@@ -67,7 +67,7 @@ module.exports = new Object({
                     .addComponents(
                         new ButtonBuilder()
                             .setStyle(ButtonStyle.Link)
-                            .setLabel(`${data.englishTitle}`)
+                            .setLabel(`More about ${data.englishTitle} (${data.japaneseTitle})`)
                             .setURL(data.url)
                     )
 
