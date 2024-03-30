@@ -20,23 +20,23 @@ module.exports = new Object({
             const role = newMember.guild.roles.cache.get(client.config.streamRole);
             await newMember.roles.add(role).catch((err) => console.error('Error adding role:', err));
 
-            // const channel = newMember.guild.channels.cache.get(client.config.logChannel);
-            // const message = new EmbedBuilder()
-            //     .setTitle("Temporary Role Assigned")
-            //     .setDescription(`${newMember.user.tag} is streaming on YouTube. Temporary role assigned.`)
-            //     .setColor('7289da');
-            // return channel.send({ embeds: [message] });
+            const channel = newMember.guild.channels.cache.get(client.config.logChannel);
+            const message = new EmbedBuilder()
+                .setTitle("Temporary Role Assigned")
+                .setDescription(`${newMember.user.tag} is streaming on YouTube. Temporary role assigned.`)
+                .setColor('7289da');
+            return channel.send({ embeds: [message] });
 
         } else if (!isNewStreamingYouTube && isOldStreamingYouTube) {
             const role = newMember.guild.roles.cache.get(client.config.streamRole);
             await newMember.roles.remove(role).catch((err) => console.error('Error removing role:', err));
 
-            // const channel = newMember.guild.channels.cache.get(client.config.logChannel);
-            // const message = new EmbedBuilder()
-            //     .setTitle("Temporary Role Removed")
-            //     .setDescription(`${newMember.user.tag} stopped streaming on YouTube. Temporary role removed.`)
-            //     .setColor('7289da');
-            // return channel.send({ embeds: [message] });
+            const channel = newMember.guild.channels.cache.get(client.config.logChannel);
+            const message = new EmbedBuilder()
+                .setTitle("Temporary Role Removed")
+                .setDescription(`${newMember.user.tag} stopped streaming on YouTube. Temporary role removed.`)
+                .setColor('7289da');
+            return channel.send({ embeds: [message] });
         }
     }
 })
