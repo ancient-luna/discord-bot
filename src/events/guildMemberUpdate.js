@@ -24,7 +24,7 @@ module.exports = new Object({
             const message = new EmbedBuilder()
                 .setTitle("Temporary Role Assigned")
                 .setDescription(`${newMember.user.tag} is streaming on YouTube. Temporary role assigned.`)
-                .setColor('7289da');
+                .setColor(client.config.embedColorTrans);
             return channel.send({ embeds: [message] });
 
         } else if (!isNewStreamingYouTube && isOldStreamingYouTube) {
@@ -35,7 +35,7 @@ module.exports = new Object({
             const message = new EmbedBuilder()
                 .setTitle("Temporary Role Removed")
                 .setDescription(`${newMember.user.tag} stopped streaming on YouTube. Temporary role removed.`)
-                .setColor('7289da');
+                .setColor(client.config.embedColorTrans);
             return channel.send({ embeds: [message] });
         }
     }
