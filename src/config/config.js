@@ -13,7 +13,7 @@ module.exports = {
     aiChatChannel: "1142344320708530306",
     artifactChannel: "1050004761631531038",
     sanctumChannel: "1060992670035619931",
-    logChannel: "1104747792947236934",
+    // logChannel: "1104747792947236934",
     generalChannel: "452842830776369152",
     gatewayChannel: "839417251470901279",
     // guidelinesChannel: "864556584818835456",
