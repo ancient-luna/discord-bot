@@ -31,21 +31,22 @@ module.exports = new Object({
     const str = args.slice(1).join(" ");
 
     const txtEmbed = new EmbedBuilder()
-      .setTitle(`Dev. Contacts <:verified:1204724590950228008>`)
+      .setTitle(`Support Dae and Get Exclusive Role in Server <:verified:1204724590950228008>`)
       .setDescription(`> Discord: axxae - [ancientluna](https://discord.com/invite/Sbp2nt8QHe)\n> dae@ancientluna.org <:ins:1204725582852788256> [everylttlething](https://instagram.com/everylttlething)`)
       .setFooter({ text: `this bot won't read any messages of your replies` })
       .setColor(client.config.embedColorTrans)
       .setThumbnail('https://i.imgur.com/veLhH04.png')
-      // .setImage('https://i.imgur.com/4uS7mor.png')
+      .setImage('https://i.imgur.com/vecvAJA.png') // supporter
+      // .setImage('https://i.imgur.com/4uS7mor.png') // aevoa
 
     const btnServer = new ActionRowBuilder()
-      .addComponents(
-        new ButtonBuilder()
-          .setStyle(ButtonStyle.Link)
-          .setLabel("Chat with family")
-          .setEmoji('<:game_logo_bdo:861579805660151818>')
-          .setURL(`https://discord.com/channels/447069790150852609/1060992670035619931`)
-      )
+      // .addComponents(
+      //   new ButtonBuilder()
+      //     .setStyle(ButtonStyle.Link)
+      //     .setLabel("Chat with family")
+      //     .setEmoji('<:game_logo_bdo:861579805660151818>')
+      //     .setURL(`https://discord.com/channels/447069790150852609/1060992670035619931`)
+      // )
       .addComponents(
         new ButtonBuilder()
           .setStyle(ButtonStyle.Link)
@@ -55,9 +56,21 @@ module.exports = new Object({
       .addComponents(
         new ButtonBuilder()
           .setStyle(ButtonStyle.Link)
-          .setLabel("Videos")
-          .setURL(`https://www.youtube.com/@ancientluna/about`)
+          .setLabel(`Support (Ko-Fi)`)
+          .setURL(`https://ko-fi.com/xxdae`)
       )
+      .addComponents(
+        new ButtonBuilder()
+          .setStyle(ButtonStyle.Link)
+          .setLabel(`Support (Trakteer)`)
+          .setURL(`https://trakteer.id/xxdae`)
+      )
+      // .addComponents(
+      //   new ButtonBuilder()
+      //     .setStyle(ButtonStyle.Link)
+      //     .setLabel("Videos")
+      //     .setURL(`https://www.youtube.com/@ancientluna/about`)
+      // )
 
     // let fileAtch = new AttachmentBuilder('src/assets/wheelingdapho.png')
 
@@ -70,7 +83,7 @@ module.exports = new Object({
       .setColor(client.config.embedColorTrans)
 
     user.send({
-      content: `Dear **Lunar Disciples**,\n${str}\n\nWarmest regards,\n[**Aevoa**](https://steamcommunity.com/id/axxae/)\n_ _`,
+      content: `Dear **Lunar Disciples**,\n${str}\n\nWarmest regards & happy holidays,\n[**Aevoa**](https://steamcommunity.com/id/axxae/)\n_ _`,
       embeds: [txtEmbed],
       components: [btnServer],
       // files: [fileAtch]
