@@ -45,8 +45,8 @@ module.exports = new Object({
       .addComponents(
         new ButtonBuilder()
           .setStyle(ButtonStyle.Link)
-          .setLabel("Web")
-          .setURL(`https://ancientluna.org`)
+          .setLabel("Video")
+          .setURL(`https://www.youtube.com/watch?v=SJoqzhnqz3c`)
       )
       .addComponents(
         new ButtonBuilder()
