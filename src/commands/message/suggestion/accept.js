@@ -23,7 +23,8 @@ module.exports = new Object({
      * @param {String[]} args
      */
     async execute(client, message, args) {
-        const [messageID, acceptQuery] = args;
+        const messageID = args[0];
+        const acceptQuery = args.slice(1).join(" ");
 
         if (!messageID || !acceptQuery) {
             return message.reply("`accept/deny` `messageid` `reason`").catch(console.error);
@@ -68,13 +69,16 @@ module.exports = new Object({
                 .setDescription(`<:check:1222439148720361502> Success sending DM to <@${suggester.id}>`)
                 .setColor(client.config.embedColorTrans)
 
-            await suggester.send({
-                content: `Suggestion: ${suggestionLink} **ACCEPTED** ! \`updated\``,
-                embeds: [accEmbed]
-            }).then(() => {
-                message.channel.send({ embeds: [success] });
+            await suggester.send({ embeds: [accEmbed] }).then(() => {
+                message.channel.send({
+                    content: `Suggestion: ${suggestionLink} **ACCEPTED** ! \`updated\``,
+                    embeds: [success]
+                });
             }).catch((e) => {
-                message.channel.send({ embeds: [failed] });
+                message.channel.send({
+                    content: `Suggestion: ${suggestionLink} **ACCEPTED** ! \`updated\``,
+                    embeds: [failed]
+                });
             });
             
         } catch (err) {

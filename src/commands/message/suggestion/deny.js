@@ -23,7 +23,8 @@ module.exports = new Object({
      * @param {String[]} args
      */
     async execute(client, message, args) {
-        const [messageID, denyQuery] = args;
+        const messageID = args[0];
+        const denyQuery = args.slice(1).join(" ");
 
         if (!messageID || !denyQuery) {
             return message.reply("`accept/deny` `messageid` `reason`").catch(console.error);
@@ -52,7 +53,7 @@ module.exports = new Object({
             );
 
             const suggestionLink = `https://discord.com/channels/447069790150852609/842069893113446410/${messageID}`
-            
+
             const dnEmbed = new EmbedBuilder()
                 .setAuthor({ name: "SUGGESTION DENIED", iconURL: 'https://i.imgur.com/oZvnuem.png' })
                 .setDescription(`Your suggestion has been denied by the Elders. Find out why in **[#suggestions](${suggestionLink})**. Thank you for the suggestion!`)
@@ -68,15 +69,18 @@ module.exports = new Object({
                 .setDescription(`<:check:1222439148720361502> Success sending DM to <@${suggester.id}>`)
                 .setColor(client.config.embedColorTrans)
 
-            await suggester.send({
-                content: `Suggestion: ${suggestionLink} **DENIED** ! \`updated\``,
-                embeds: [dnEmbed]
-            }).then(() => {
-                message.channel.send({ embeds: [success] });
+            await suggester.send({ embeds: [dnEmbed] }).then(() => {
+                message.channel.send({
+                    content: `Suggestion: ${suggestionLink} **DENIED** ! \`updated\``,
+                    embeds: [success]
+                });
             }).catch((e) => {
-                message.channel.send({ embeds: [failed] });
+                message.channel.send({
+                    content: `Suggestion: ${suggestionLink} **DENIED** ! \`updated\``,
+                    embeds: [failed]
+                });
             });
-            
+
         } catch (err) {
             console.log(err);
             message.channel.send(`\`\`\`${err}\`\`\``);
