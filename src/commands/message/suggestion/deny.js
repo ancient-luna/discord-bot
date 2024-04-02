@@ -61,11 +61,11 @@ module.exports = new Object({
                 .setFooter({ text: "Your Suggestions Status" })
 
             const failed = new EmbedBuilder()
-                .setDescription(`<:wrong:1222439146593849425> Failed sending DM to <@${member.user.id}> due they close their DMs`)
+                .setDescription(`<:wrong:1222439146593849425> Failed sending DM to <@${suggester.id}> due they close their DMs`)
                 .setColor(client.config.embedColorTrans)
 
             const success = new EmbedBuilder()
-                .setDescription(`<:check:1222439148720361502> Success sending DM to <@${member.user.id}>`)
+                .setDescription(`<:check:1222439148720361502> Success sending DM to <@${suggester.id}>`)
                 .setColor(client.config.embedColorTrans)
 
             await suggester.send({
