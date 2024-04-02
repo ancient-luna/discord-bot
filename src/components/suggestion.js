@@ -48,8 +48,8 @@ module.exports = {
                 .setDescription(`${suggestValue}`)
                 .setColor('4f545c')
             modalInteraction.guild.channels.cache.get('842069893113446410').send({ embeds: [suggestNote] }).then((msg) => {
-                msg.react('<:vcon_vote_upvote:859075141051613214>')
-                msg.react('<:vcon_vote_disagree:859075141668700200>')
+                msg.react('<:like:1220170210624143540>')
+                msg.react('<:dislike:1224757372287848478>')
               }).catch((e) => { });
             modalInteraction.reply({ content: `Suggestion sent to <#842069893113446410>`, ephemeral: true }).catch((e) => { });
         })
