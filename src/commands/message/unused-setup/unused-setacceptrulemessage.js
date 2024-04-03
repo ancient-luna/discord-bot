@@ -1,7 +1,7 @@
 const { save } = require('../../../config/index');
 module.exports = new Object({
-  name: "setacceptrulemessage",
-  description: "setacceptrulemessage.",
+  name: "acvsetacceptrulemessage",
+  description: "acvsetacceptrulemessage.",
   category: "Admin",
   usage: "",
   cooldown: 0,

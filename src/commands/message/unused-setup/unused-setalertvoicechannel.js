@@ -1,8 +1,8 @@
 const { save } = require('../../../config/index');
 
 module.exports = new Object({
-  name: "setalertvoicechannel",
-  description: "setalertvoicechannel.",
+  name: "acvsetalertvoicechannel",
+  description: "acvsetalertvoicechannel.",
   category: "Admin",
   usage: "",
   cooldown: 0,

@@ -1,8 +1,8 @@
 const { save } = require('../../../config/index');
 
 module.exports = new Object({
-  name: "setalertmessage",
-  description: "setalertmessage.",
+  name: "acvsetalertmessage",
+  description: "acvsetalertmessage.",
   category: "Admin",
   usage: "",
   cooldown: 0,

@@ -1,8 +1,8 @@
 const { save } = require('../../../config/index');
 
 module.exports = new Object({
-  name: "setmemberrole",
-  description: "setmemberrole.",
+  name: "acvsetmemberrole",
+  description: "acvsetmemberrole.",
   category: "Admin",
   usage: "",
   cooldown: 0,

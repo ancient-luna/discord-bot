@@ -1,8 +1,8 @@
 const { save } = require('../../../config/index');
 
 module.exports = new Object({
-  name: "setrulechannel",
-  description: "setrulechannel.",
+  name: "acvsetrulechannel",
+  description: "acvsetrulechannel.",
   category: "Admin",
   usage: "",
   cooldown: 0,
