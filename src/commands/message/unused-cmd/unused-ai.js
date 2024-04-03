@@ -4,7 +4,7 @@
 //     const errorChat = "Try again, there was an issue getting that AI response <:write:1163568311716565154>";
 //     const previousMessages = new Collection();
 //     try {
-//       let context = "generate a reply as you are chatbot developed by imsoondae";
+//       let context = "generate a reply as you are chatbot developed by Dae";
 //       let name = message.author.id;
 //       let prompt = previousMessages.map((msg) => msg.content).join(" ") + message.content;
 //       let loadingRspns = await message.channel.send(`thinking <a:_util_loading:863317596551118858>`);
