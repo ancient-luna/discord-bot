@@ -130,3 +130,43 @@ module.exports = new Object({
 //         await loadingRspns.edit(`<@${message.author.id}> ${errorChat}`);
 //     }
 // };
+
+// =========================================================================================
+
+//  // Chat AI
+//  if (client.config.aiChatChannel.includes(message.channel.id)) {
+//     const { ApexAI } = require('apexify.js');
+//     const aiOptions = {
+//       imagine: {
+//         enable: false,
+//         drawTrigger: ["create", "رسم"],
+//         imageModel: "prodia",
+//         numOfImages: 2,
+//         nsfw: false,
+//         enhancer: true
+//       },
+//       chat: {
+//         chatModel: "v3",
+//         readFiles: true,
+//         typeWriting: {
+//           enable: true,
+//           speed: 70,
+//           delay: 2000
+//         }
+//       },
+//       others: {
+//         keywords: ["help", "info"],
+//         keywordResponses: {
+//           help: "I'm here to assist you!",
+//           info: "Here is some information for you."
+//         },
+//         loader: {
+//           enable: false,
+//           loadingMessage: "processing the request <a:_util_loading:863317596551118858>",
+//           loadingTimer: 5000
+//         }
+//       }
+
+//     };
+//     ApexAI(message, aiOptions)
+//   };
