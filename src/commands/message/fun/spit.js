@@ -33,7 +33,7 @@ module.exports = new Object({
         }
         await message.react("💢").catch((e) => { });
         await message.channel.send({
-            content: `***Puih!!*** <@643945264868098049> spits on <@${target.user.id}> 💦`,
+            content: `***Puih!!*** 💦 <@643945264868098049> spits on <@${target.user.id}>\n_ _`,
             files: [IMGpuih]
         }).catch((e) => { });
     }
