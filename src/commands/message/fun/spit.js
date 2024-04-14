@@ -23,7 +23,7 @@ module.exports = new Object({
      * @param {String[]} args
      */
     async execute(client, message, args) {
-        let IMGpuih = new AttachmentBuilder("src/assets/react/puihh.png")
+        let IMGpuih = new AttachmentBuilder("src/assets/react/puihh.gif")
         let target = message.mentions.members.first();
         if (!target) {
             message.react("💢").catch((e) => { });
