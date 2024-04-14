@@ -30,7 +30,7 @@ module.exports = {
     const ctx = canvas.getContext("2d");
 
     registerFont('src/assets/usercard/PaybAck.ttf', { family: 'PaybAck' });
-    registerFont('src/assets/usercard/jazz.ttf', { family: 'jazz' });
+    registerFont('src/assets/usercard/Jazz Jazgarzewszczyzna.ttf', { family: 'Jazz Jazgarzewszczyzna' });
 
     function roundRect(ctx, x, y, width, height, radius, fill, stroke) {
       if (typeof stroke === 'undefined') {
@@ -140,7 +140,7 @@ module.exports = {
 
         beginY += 560;
         let rows = [{ row: 1, roles: [], width: 0 }];
-        ctx.font = '16pt jazz';
+        ctx.font = '16pt Jazz Jazgarzewszczyzna';
         let length = 0;
 
         sortedRoles.forEach((role, index) => {
