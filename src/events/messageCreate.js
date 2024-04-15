@@ -142,7 +142,7 @@ module.exports = new Object({
       const fetchedLucentMessages = await message.channel.messages.fetch();
       const stickyLucentMessage = fetchedLucentMessages.find(m => m.author.id === client.user.id && client.config.stickyGLeagueChannel.includes(m.channel.id));
       const embedLucent = new EmbedBuilder()
-        .setTitle(`Guild Leaguer`)
+        .setTitle(`Guild Leaguer (Roster)`)
         .setURL(`https://blackdesert.pearlabyss.com/ASIA/en-us/News/Notice/Detail?_boardNo=6084`)
         .setDescription(`300-499 Total Kills (Cron Stone x500) // 500-999 Total Kills ([Event] Classic Outfit Box) // Over 1,000 Total Kills ([Event] Premium Outfit Box)`)
         .addFields(
