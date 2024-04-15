@@ -152,7 +152,7 @@ module.exports = new Object({
             { name: `**[Week 4]** \`END: May 08\``, value: `Apr 30, 2024 (Tue) 17:00 - May 08, 2024 (Wed) 01:00`, inline: true }
         )
         .setColor(client.config.embedColorTrans)
-        .setImage('https://s1.pearlcdn.com/KR/Upload/News/7f8428b336320240227154308349.jpg')
+        // .setImage('https://s1.pearlcdn.com/KR/Upload/News/7f8428b336320240227154308349.jpg')
       const btnLucent = new ActionRowBuilder()
         .addComponents(
           new ButtonBuilder()
