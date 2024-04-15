@@ -170,14 +170,16 @@ module.exports = new Object({
       if (stickyLucentMessage) {
         stickyLucentMessage.delete().then(() => {
           message.channel.send({
-            embeds: [embedLucent],
+            content: `best luck!`,
+            // embeds: [embedLucent],
             components: [btnLucent]
           });
         }).catch(() => { });
       } else {
         // Force send a new message.
         message.channel.send({
-          embeds: [embedLucent],
+          content: `best luck!`,
+          // embeds: [embedLucent],
           components: [btnLucent]
         });
       }
