@@ -69,9 +69,9 @@ module.exports = new Object({
     if (message.author.bot) return;
 
     // StickyNote Lucent Fountain
-    if (client.config.stickyGuildChannel.includes(message.channel.id)) {
+    if (client.config.stickyLucentChannel.includes(message.channel.id)) {
       const fetchedLucentMessages = await message.channel.messages.fetch();
-      const stickyLucentMessage = fetchedLucentMessages.find(m => m.author.id === client.user.id && client.config.stickyGuildChannel.includes(m.channel.id));
+      const stickyLucentMessage = fetchedLucentMessages.find(m => m.author.id === client.user.id && client.config.stickyLucentChannel.includes(m.channel.id));
       const embedLucent = new EmbedBuilder()
         .setTitle(`The Lucent Fountain <:ancientluna_pure_luna:866781517312688178>`)
         .setDescription(`𝑾𝒆 𝒓𝒂𝒏 𝒂𝒔 𝒊𝒇 𝒕𝒐 𝒎𝒆𝒆𝒕 𝒕𝒉𝒆 𝒎𝒐𝒐𝒏\n**[Be the true light seekers](https://youtu.be/_rJiY6y3a-A)** ✦`)
@@ -99,42 +99,88 @@ module.exports = new Object({
           });
         }).catch(() => { });
       } else {
-          // Force send a new message.
+        // Force send a new message.
+        message.channel.send({
+          embeds: [embedLucent],
+          components: [btnLucent]
+        });
+      }
+    };
+
+    // StickyNote Tales of Lights
+    if (client.config.stickyTalesChannel.includes(message.channel.id)) {
+      const fetchedTalesMessages = await message.channel.messages.fetch();
+      const stickyTalesMessage = fetchedTalesMessages.find(m => m.author.id === client.user.id && client.config.stickyTalesChannel.includes(m.channel.id));
+      const lunaThumbnail = [
+        'https://i.imgur.com/B6u2feA.png', 'https://i.imgur.com/DrmVtuP.png', 'https://i.imgur.com/Z5mq7OF.png', 'https://i.imgur.com/M0U4I56.png', 'https://i.imgur.com/jOGuk7s.png', 'https://i.imgur.com/tM9xIaq.png', 'https://i.imgur.com/hIBEDkM.png', 'https://i.imgur.com/GUYxDJF.png', 'https://i.imgur.com/MjADPRv.png', 'https://i.imgur.com/InURa9o.png', 'https://i.imgur.com/son6e07.png', 'https://i.imgur.com/0wE5Qyp.png', 'https://i.imgur.com/DHzUulL.png', 'https://i.imgur.com/bEIn9Ag.png', 'https://i.imgur.com/qkw8aXV.png',
+      ]
+      const stickyText = new EmbedBuilder()
+        .setTitle(`Ancient Luna Activity Tracker`)
+        .setDescription(`Thanks for the hardwork!\nClick on this button to update the payout sheet.`)
+        // .setThumbnail(`https://i.imgur.com/JGmEtSL.png`)
+        .setThumbnail(`${lunaThumbnail[Math.floor(Math.random() * lunaThumbnail.length)]}`)
+        .setColor(client.config.embedColorTrans);
+      let linkSheet = new ActionRowBuilder()
+        .addComponents(
+          new ButtonBuilder()
+            .setStyle(ButtonStyle.Link)
+            .setLabel(`Payout sheet`)
+            .setURL(`https://docs.google.com/spreadsheets/d/1hb-WK8921d0erv4zQ5vTpBzEsnMNW0VTLycHwyAW3_k`)
+        )
+      if (stickyTalesMessage) {
+        stickyTalesMessage.delete().then(() => {
+          message.channel.send({ embeds: [stickyText], components: [linkSheet] });
+        }).catch(() => { });
+      } else {
+        // Force send a new message.
+        message.channel.send({ embeds: [stickyText], components: [linkSheet] });
+      }
+    };
+
+    // StickyNote Guild Leagues
+    if (client.config.stickyGLeagueChannel.includes(message.channel.id)) {
+      const fetchedLucentMessages = await message.channel.messages.fetch();
+      const stickyLucentMessage = fetchedLucentMessages.find(m => m.author.id === client.user.id && client.config.stickyGLeagueChannel.includes(m.channel.id));
+      const embedLucent = new EmbedBuilder()
+        .setTitle(`Guild Leaguer`)
+        .setURL(`https://blackdesert.pearlabyss.com/ASIA/en-us/News/Notice/Detail?_boardNo=6084`)
+        .setDescription(`300-499 Total Kills (Cron Stone x500) // 500-999 Total Kills ([Event] Classic Outfit Box) // Over 1,000 Total Kills ([Event] Premium Outfit Box)`)
+        .addFields(
+            { name: `**[Week 1]** \`END: April 17\``, value: `Apr 9, 2024 (Tue) 17:00 - Apr 17, 2024 (Wed) 01:00`, inline: true },
+            { name: `**[Week 2]** \`END: April 24\``, value: `Apr 17, 2024 (Wed) 17:00 - Apr 24, 2024 (Wed) 01:00`, inline: true },
+            { name: `**[Week 3]** \`END: April 30\``, value: `Apr 24, 2024 (Wed) 17:00 - Apr 30, 2024 (Tue) 01:00`, inline: true },
+            { name: `**[Week 4]** \`END: May 08\``, value: `Apr 30, 2024 (Tue) 17:00 - May 08, 2024 (Wed) 01:00`, inline: true }
+        )
+        .setColor(client.config.embedColorTrans)
+        .setImage('https://s1.pearlcdn.com/KR/Upload/News/7f8428b336320240227154308349.jpg')
+      const btnLucent = new ActionRowBuilder()
+        .addComponents(
+          new ButtonBuilder()
+            .setStyle(ButtonStyle.Link)
+            .setLabel(`More details about the event`)
+            .setURL(`https://blackdesert.pearlabyss.com/ASIA/en-us/News/Notice/Detail?_boardNo=6084`)
+        )
+        // .addComponents(
+        //   new ButtonBuilder()
+        //     .setCustomId("btn-guildvacation")
+        //     .setLabel("Vacation")
+        //     .setEmoji('<:game_logo_bdo:861579805660151818>')
+        //     .setStyle(ButtonStyle.Primary)
+        // )
+      if (stickyLucentMessage) {
+        stickyLucentMessage.delete().then(() => {
           message.channel.send({
             embeds: [embedLucent],
             components: [btnLucent]
           });
+        }).catch(() => { });
+      } else {
+        // Force send a new message.
+        message.channel.send({
+          embeds: [embedLucent],
+          components: [btnLucent]
+        });
       }
-    };
-
-    // StickyNote
-    if (client.config.stickyChannel.includes(message.channel.id)) {
-        const fetchedMessages = await message.channel.messages.fetch();
-        const stickyMessage = fetchedMessages.find(m => m.author.id === client.user.id && client.config.stickyChannel.includes(m.channel.id));
-        const lunaThumbnail = [
-          'https://i.imgur.com/B6u2feA.png', 'https://i.imgur.com/DrmVtuP.png', 'https://i.imgur.com/Z5mq7OF.png', 'https://i.imgur.com/M0U4I56.png', 'https://i.imgur.com/jOGuk7s.png', 'https://i.imgur.com/tM9xIaq.png', 'https://i.imgur.com/hIBEDkM.png', 'https://i.imgur.com/GUYxDJF.png', 'https://i.imgur.com/MjADPRv.png', 'https://i.imgur.com/InURa9o.png', 'https://i.imgur.com/son6e07.png', 'https://i.imgur.com/0wE5Qyp.png', 'https://i.imgur.com/DHzUulL.png', 'https://i.imgur.com/bEIn9Ag.png', 'https://i.imgur.com/qkw8aXV.png',
-        ]
-        const stickyText = new EmbedBuilder()
-            .setTitle(`Ancient Luna Activity Tracker`)
-            .setDescription(`Thanks for the hardwork!\nClick on this button to update the payout sheet.`)
-            // .setThumbnail(`https://i.imgur.com/JGmEtSL.png`)
-            .setThumbnail(`${lunaThumbnail[Math.floor(Math.random() * lunaThumbnail.length)]}`)
-            .setColor(client.config.embedColorTrans);
-        let linkSheet = new ActionRowBuilder()
-            .addComponents(
-                new ButtonBuilder()
-                    .setStyle(ButtonStyle.Link)
-                    .setLabel(`Payout sheet`)
-                    .setURL(`https://docs.google.com/spreadsheets/d/1hb-WK8921d0erv4zQ5vTpBzEsnMNW0VTLycHwyAW3_k`)
-            )
-        if (stickyMessage) {
-            stickyMessage.delete().then(() => {
-                message.channel.send({ embeds: [stickyText], components: [linkSheet] });
-            }).catch(() => { });
-        } else {
-            // Force send a new message.
-            message.channel.send({ embeds: [stickyText], components: [linkSheet] });
-        }
     };
 
     // Chat AI
