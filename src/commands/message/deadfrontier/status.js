@@ -95,6 +95,10 @@ module.exports = new Object({
                 let dmg_boost = stat['dmg_boost'].split("<\/i> ")
                 let speed_boost = stat['speed_boost'].split("<\/i> ")
 
+                let exp_boost_ex = stat['exp_boost_ex'].split("<\/i> ")
+                let dmg_boost_ex = stat['dmg_boost_ex'].split("<\/i> ")
+                let speed_boost_ex = stat['speed_boost_ex'].split("<\/i> ")
+
                 // let position = stat['gpscoords']
 
                 let implant_data = stat['implantslots'];
@@ -166,6 +170,9 @@ module.exports = new Object({
                                 { name: `**+50% Exp Boost**`, value: exp_boost[1], inline: true },
                                 { name: `**+35% Damage Boost**`, value: dmg_boost[1], inline: true },
                                 { name: `**+35% Speed Boost**`, value: speed_boost[1], inline: true },
+                                { name: `**+50% Exp Boost EX**`, value: exp_boost_ex[1], inline: true },
+                                { name: `**+35% Damage Boost EX**`, value: dmg_boost_ex[1], inline: true },
+                                { name: `**+35% Speed Boost EX**`, value: speed_boost_ex[1], inline: true },
                                 { name: `**Implants**`, value: `${implant_slots}`, inline: true }
                             )
                             .setImage(`https://i.imgur.com/TMI3wTd.gif`)
@@ -199,6 +206,9 @@ module.exports = new Object({
                                 { name: `**+50% Exp Boost**`, value: exp_boost[1], inline: true },
                                 { name: `**+35% Damage Boost**`, value: dmg_boost[1], inline: true },
                                 { name: `**+35% Speed Boost**`, value: speed_boost[1], inline: true },
+                                { name: `**+50% Exp Boost EX**`, value: exp_boost_ex[1], inline: true },
+                                { name: `**+35% Damage Boost EX**`, value: dmg_boost_ex[1], inline: true },
+                                { name: `**+35% Speed Boost EX**`, value: speed_boost_ex[1], inline: true },
                                 { name: `**Implants**`, value: `No Implants`, inline: true }
                             )
                             .setImage(`https://i.imgur.com/TMI3wTd.gif`)
