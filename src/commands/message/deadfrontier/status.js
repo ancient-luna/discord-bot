@@ -172,9 +172,9 @@ module.exports = new Object({
                                 { name: `**+50% Exp Boost**`, value: exp_boost[1], inline: true },
                                 { name: `**+35% Damage Boost**`, value: dmg_boost[1], inline: true },
                                 { name: `**+35% Speed Boost**`, value: speed_boost[1], inline: true },
-                                { name: `**+50% Exp Boost EX**`, value: exp_boost_ex[1], inline: true },
-                                { name: `**+35% Damage Boost EX**`, value: dmg_boost_ex[1], inline: true },
-                                { name: `**+35% Speed Boost EX**`, value: speed_boost_ex[1], inline: true },
+                                { name: `**+50% Exp EX**`, value: exp_boost_ex[1], inline: true },
+                                { name: `**+35% Damage EX**`, value: dmg_boost_ex[1], inline: true },
+                                { name: `**+35% Speed EX**`, value: speed_boost_ex[1], inline: true },
                                 { name: `**Implants**`, value: `${implant_slots}`, inline: true }
                             )
                             .setImage(`https://i.imgur.com/TMI3wTd.gif`)
@@ -208,9 +208,9 @@ module.exports = new Object({
                                 { name: `**+50% Exp Boost**`, value: exp_boost[1], inline: true },
                                 { name: `**+35% Damage Boost**`, value: dmg_boost[1], inline: true },
                                 { name: `**+35% Speed Boost**`, value: speed_boost[1], inline: true },
-                                { name: `**+50% Exp Boost EX**`, value: exp_boost_ex[1], inline: true },
-                                { name: `**+35% Damage Boost EX**`, value: dmg_boost_ex[1], inline: true },
-                                { name: `**+35% Speed Boost EX**`, value: speed_boost_ex[1], inline: true },
+                                { name: `**+50% Exp EX**`, value: exp_boost_ex[1], inline: true },
+                                { name: `**+35% Damage EX**`, value: dmg_boost_ex[1], inline: true },
+                                { name: `**+35% Speed EX**`, value: speed_boost_ex[1], inline: true },
                                 { name: `**Implants**`, value: `No Implants`, inline: true }
                             )
                             .setImage(`https://i.imgur.com/TMI3wTd.gif`)
