@@ -83,6 +83,8 @@ module.exports = new Object({
                 let stat_accuracy = stat['stat_accuracy'].split(" ")
                 let stat_critical_hit = stat['stat_critical_hit'].split(" ")
                 let stat_reloading = stat['stat_reloading'].split(" ")
+                let stat_dexterity = stat['stat_dexterity']
+                let stat_stealth = stat['stat_stealth']
 
                 let prof_melee = stat['prof_melee']
                 let prof_pistols = stat['prof_pistols']
@@ -164,7 +166,7 @@ module.exports = new Object({
                                 { name: `**Primary Weapon**`, value: `${weapon_name_1}\n${weapon_info_1}`, inline: true },
                                 { name: `**Secondary Weapon**`, value: `${weapon_name_2}\n${weapon_info_2}`, inline: true },
                                 { name: `**Tertiary Weapon**`, value: `${weapon_name_3}\n${weapon_info_3}`, inline: true },
-                                { name: `**Stats**`, value: `Strength: ${stat_strength}\nEndurance: ${stat_endurance[0]}\nAgility: ${stat_agility[0]}\nAccuracy: ${stat_accuracy[0]}\nCritical: ${stat_critical_hit[0]}\nReloading: ${stat_reloading[0]}`, inline: true },
+                                { name: `**Stats**`, value: `Strength: ${stat_strength}\nEndurance: ${stat_endurance[0]}\nAgility: ${stat_agility[0]}\nAccuracy: ${stat_accuracy[0]}\nCritical: ${stat_critical_hit[0]}\nReloading: ${stat_reloading[0]}\nDexterity: ${stat_dexterity}\nStealth: ${stat_stealth}`, inline: true },
                                 { name: `**Proficiencies**`, value: `Melee: ${prof_melee}\nPistols: ${prof_pistols}\nRifles: ${prof_rifles}\nShotguns: ${prof_shotguns}\nMachineguns: ${prof_machine_guns}\nExplosives: ${prof_explosives}`, inline: true },
                                 { name: `**Armor**`, value: armor, inline: true },
                                 { name: `**+50% Exp Boost**`, value: exp_boost[1], inline: true },
@@ -200,7 +202,7 @@ module.exports = new Object({
                                 { name: `**Primary Weapon**`, value: `${weapon_name_1}\n${weapon_info_1}`, inline: true },
                                 { name: `**Secondary Weapon**`, value: `${weapon_name_2}\n${weapon_info_2}`, inline: true },
                                 { name: `**Tertiary Weapon**`, value: `${weapon_name_3}\n${weapon_info_3}`, inline: true },
-                                { name: `**Stats**`, value: `Strength: ${stat_strength}\nEndurance: ${stat_endurance[0]}\nAgility: ${stat_agility[0]}\nAccuracy: ${stat_accuracy[0]}\nCritical: ${stat_critical_hit[0]}\nReloading: ${stat_reloading[0]}`, inline: true },
+                                { name: `**Stats**`, value: `Strength: ${stat_strength}\nEndurance: ${stat_endurance[0]}\nAgility: ${stat_agility[0]}\nAccuracy: ${stat_accuracy[0]}\nCritical: ${stat_critical_hit[0]}\nReloading: ${stat_reloading[0]}\nDexterity: ${stat_dexterity}\nStealth: ${stat_stealth}`, inline: true },
                                 { name: `**Proficiencies**`, value: `Melee: ${prof_melee}\nPistols: ${prof_pistols}\nRifles: ${prof_rifles}\nShotguns: ${prof_shotguns}\nMachineguns: ${prof_machine_guns}\nExplosives: ${prof_explosives}`, inline: true },
                                 { name: `**Armor**`, value: armor, inline: true },
                                 { name: `**+50% Exp Boost**`, value: exp_boost[1], inline: true },
