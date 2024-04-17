@@ -194,7 +194,7 @@ module.exports = new Object({
         let context = "generate a reply as you are chatbot developed by Dae";
         let name = message.author.id;
         let prompt = previousMessages.map((msg) => msg.content).join(" ") + message.content;
-        let loadingRspns = await message.channel.send(`<a:_util_loading:863317596551118858>`);
+        let loadingRspns = await message.channel.send(`**generating** <a:_util_loading:863317596551118858>`);
         // await message.channel.sendTyping();
         setTimeout(async () => {
           try {
