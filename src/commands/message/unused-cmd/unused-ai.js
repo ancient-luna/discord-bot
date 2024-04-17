@@ -66,7 +66,7 @@ module.exports = new Object({
 //       let context = "generate a reply as you are chatbot developed by Dae";
 //       let name = message.author.id;
 //       let prompt = previousMessages.map((msg) => msg.content).join(" ") + message.content;
-//       let loadingRspns = await message.channel.send(`thinking <a:_util_loading:863317596551118858>`);
+//       let loadingRspns = await message.channel.send(`<a:_util_loading:863317596551118858>`);
 //       // await message.channel.sendTyping();
 //       setTimeout(async () => {
 //         try {
@@ -104,7 +104,7 @@ module.exports = new Object({
 //     const axios = require("axios");
 //     const errorChat = "Try again, there was an issue getting that AI response <:write:1163568311716565154>";
 //     const encodedMessage = encodeURIComponent(message.content);
-//     let loadingRspns = await message.channel.send(`thinking <a:_util_loading:863317596551118858>`);
+//     let loadingRspns = await message.channel.send(`<a:_util_loading:863317596551118858>`);
 //     const options = {
 //         method: 'GET',
 //         url: 'https://google-bard1.p.rapidapi.com/v3/chat/gemini-1.0-pro',
@@ -162,7 +162,7 @@ module.exports = new Object({
 //         },
 //         loader: {
 //           enable: false,
-//           loadingMessage: "processing the request <a:_util_loading:863317596551118858>",
+//           loadingMessage: "<a:_util_loading:863317596551118858>",
 //           loadingTimer: 5000
 //         }
 //       }
