@@ -187,42 +187,57 @@ module.exports = new Object({
 
     // Chat AI
     if (client.config.aiChatChannel.includes(message.channel.id)) {
-      const axios = require("axios");
-      const errorChat = "Try again, there was an issue getting that AI response <:write:1163568311716565154>";
-      const previousMessages = new Collection();
-      try {
-        let context = "generate a reply as you are chatbot developed by Dae";
-        let name = message.author.id;
-        let prompt = previousMessages.map((msg) => msg.content).join(" ") + message.content;
-        let loadingRspns = await message.channel.send(`**generating** <a:_util_loading:863317596551118858>`);
-        // await message.channel.sendTyping();
-        setTimeout(async () => {
-          try {
-            let res1 = await axios.post(
-              "https://ai.spin.rip/chat",
-              { prompt, context, name },
-              {
-                headers: {
-                  "Content-Type": "application/json",
-                },
-              },
-            );
-            const replyMessage = `<@${name}> ${res1.data.response}`;
-            await loadingRspns.edit(replyMessage);
-          } catch (error) {
-            console.error(error);
-            await loadingRspns.edit(errorChat);
+      const { ApexAI } = require('apexify.js');
+      const aiOptions = {
+        voice: {
+          enable: false,
+          voiceModal: "google",
+          voice_code: "en-US-3",
+          apiKey: "",
+          type: "b"
+        },
+        imagine: {
+          enable: false,
+          drawTrigger: ["create", "imagine"],
+          imageModel: "prodia",
+          numOfImages: 2,
+          nsfw: false,
+          enhancer: false
+        },
+        chat: {
+          chatModel: "gemini",
+          readFiles: true,
+          readImages: false,
+          typeWriting: {
+            enable: false,
+            speed: 70,
+            delay: 2000
           }
-        }, 10000); // 10s
-        previousMessages.set(message.id, message);
-        if (previousMessages.size > 0) {
-          const oldestMessage = previousMessages.first();
-          previousMessages.delete(oldestMessage.id);
+        },
+        others: {
+          keywords: ["help", "info"],
+          keywordResponses: {
+            help: "By the great wisdom of lleud, I'm here to assist you!",
+            info: "Here is some information for you."
+          },
+          loader: {
+            enable: false,
+            loadingMessage: "**generating** <a:_util_loading:863317596551118858>",
+            loadingTimer: 5000
+          },
+          channel: {
+            enable: false,
+            id: ['']
+          },
+          permissions: {
+            enable: false,
+            role: [''],
+            permission: [''],
+            blockedUsers: ['']
+          }
         }
-      } catch (error) {
-        console.error(error);
-        await loadingRspns.edit(errorChat);
-      }
+      };
+      await ApexAI(message, aiOptions)
     }
 
     // PREFIX COMMAND

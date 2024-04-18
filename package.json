@@ -21,6 +21,7 @@
     "@iamtraction/google-translate": "^2.0.1",
     "@nishantapps/node-gemini": "^2.0.0",
     "@sentry/node": "^7.53.1",
+    "apexify.js": "^3.2.5",
     "axios": "^1.6.8",
     "body-parser": "^1.20.2",
     "canvacord": "^5.4.9",

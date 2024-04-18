@@ -66,7 +66,7 @@ module.exports = new Object({
 //       let context = "generate a reply as you are chatbot developed by Dae";
 //       let name = message.author.id;
 //       let prompt = previousMessages.map((msg) => msg.content).join(" ") + message.content;
-//       let loadingRspns = await message.channel.send(`<a:_util_loading:863317596551118858>`);
+//       let loadingRspns = await message.channel.send(`**generating** <a:_util_loading:863317596551118858>`);
 //       // await message.channel.sendTyping();
 //       setTimeout(async () => {
 //         try {
@@ -104,7 +104,7 @@ module.exports = new Object({
 //     const axios = require("axios");
 //     const errorChat = "Try again, there was an issue getting that AI response <:write:1163568311716565154>";
 //     const encodedMessage = encodeURIComponent(message.content);
-//     let loadingRspns = await message.channel.send(`<a:_util_loading:863317596551118858>`);
+//     let loadingRspns = await message.channel.send(`**generating** <a:_util_loading:863317596551118858>`);
 //     const options = {
 //         method: 'GET',
 //         url: 'https://google-bard1.p.rapidapi.com/v3/chat/gemini-1.0-pro',
@@ -133,40 +133,55 @@ module.exports = new Object({
 
 // =========================================================================================
 
-//  // Chat AI
-//  if (client.config.aiChatChannel.includes(message.channel.id)) {
-//     const { ApexAI } = require('apexify.js');
-//     const aiOptions = {
-//       imagine: {
+// Chat AI
+// const { ApexAI } = require('apexify.js');
+// const aiOptions = {
+//     voice: {
 //         enable: false,
-//         drawTrigger: ["create", "رسم"],
+//         voiceModal: "google",
+//         voice_code: "en-US-3",
+//         apiKey: "",
+//         type: "b"
+//     },
+//     imagine: {
+//         enable: false,
+//         drawTrigger: ["create", "imagine"],
 //         imageModel: "prodia",
 //         numOfImages: 2,
 //         nsfw: false,
 //         enhancer: true
-//       },
-//       chat: {
+//     },
+//     chat: {
 //         chatModel: "v3",
 //         readFiles: true,
+//         readImages: true,
 //         typeWriting: {
-//           enable: true,
-//           speed: 70,
-//           delay: 2000
+//             enable: false,
+//             speed: 70,
+//             delay: 2000
 //         }
-//       },
-//       others: {
+//     },
+//     others: {
 //         keywords: ["help", "info"],
 //         keywordResponses: {
-//           help: "I'm here to assist you!",
-//           info: "Here is some information for you."
+//             help: "I'm here to assist you!",
+//             info: "Here is some information for you."
 //         },
 //         loader: {
-//           enable: false,
-//           loadingMessage: "<a:_util_loading:863317596551118858>",
-//           loadingTimer: 5000
+//             enable: true,
+//             loadingMessage: "Please wait while I process your request...",
+//             loadingTimer: 5000
+//         },
+//         channel: {
+//             enable: false,
+//             id: ['']
+//         },
+//         permissions: {
+//             enable: false,
+//             role: [''],
+//             permission: [''],
+//             blockedUsers: ['']
 //         }
-//       }
-
-//     };
-//     ApexAI(message, aiOptions)
-//   };
+//     }
+// };
+// await ApexAI(message, aiOptions)
