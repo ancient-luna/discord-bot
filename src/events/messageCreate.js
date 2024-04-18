@@ -226,8 +226,8 @@ module.exports = new Object({
             loadingTimer: 5000
           },
           channel: {
-            enable: false,
-            id: ['']
+            enable: true,
+            id: [client.config.aiChatChannel]
           },
           permissions: {
             enable: false,
