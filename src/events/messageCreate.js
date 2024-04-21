@@ -215,11 +215,11 @@ module.exports = new Object({
           }
         },
         others: {
-          keywords: ["help", "info"],
-          keywordResponses: {
-            help: "By the great wisdom of lleud, I'm here to assist you!",
-            info: "Here is some wisdom I have found from sanctuary for you."
-          },
+          // keywords: ["help", "info"],
+          // keywordResponses: {
+          //   help: "By the great wisdom of lleud, I'm here to assist you!",
+          //   info: "Here is some wisdom I have found from sanctuary for you."
+          // },
           messageType: {
               type: 'send', // Specify the type either 'send' or 'type'
               intialContent: `<@${message.author.id}> `
