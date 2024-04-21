@@ -215,7 +215,7 @@ module.exports = new Object({
           }
         },
         others: {
-          // keywords: ["help", "info"],
+          // keywords: ["what is your name", "who made you", "who develop you", "who is your developer"],
           // keywordResponses: {
           //   help: "By the great wisdom of lleud, I'm here to assist you!",
           //   info: "Here is some wisdom I have found from sanctuary for you."
