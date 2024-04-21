@@ -222,7 +222,7 @@ module.exports = new Object({
           },
           messageType: {
               type: 'send', // Specify the type either 'send' or 'type'
-              intialContent: `<@${message.author.id}>,`
+              intialContent: `<@${message.author.id}> `
           },
           // loader: {
           //   enable: false,
