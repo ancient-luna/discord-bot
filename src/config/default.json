@@ -1,15 +1,20 @@
 {
-  "server": {
-    "onJoinConfig": {
-      "preMemberRole": "843849271707041812",
-      "preMemberTriggerMessage": "I understand the wisdom of lleud and sure my call as light seeker"
-    },
-    "memberRole": "843523507621986335",
-    "elderRole": "843523544620335124",
-    "ruleChannel": "843793305069813760",
-    "generalChannel": "843793305069813760",
-    "gatewayChannel": "839417251470901279",
-    "suggestionChannel": "864556584818835456",
-    "localEmoji": "ancientluna_pure_luna"
-  }
+    "server": {
+        "onJoinConfig": {
+            "preMemberRole": "839210689917616218",
+            "preMemberTriggerMessage": "I understand the wisdom of lleud and sure my call as light seeker"
+        },
+        "memberRole": "839198215580811344",
+        "elderRole": "843523544620335124",
+        "ruleChannel": "838751745815216129",
+        "bdoChannel": "1049228301807407156",
+        "stickyChannel": "457908039266205708",
+        "artifactChannel": "1050004761631531038",
+        "generalChannel": "452842830776369152",
+        "gatewayChannel": "839417251470901279",
+        "guidelinesChannel": "864556584818835456",
+        "localEmoji": "ancientluna_pure_luna",
+        "voiceChannel": "893054665632133121",
+        "voiceMessage": "boss cycle updated"
+    }
 }
