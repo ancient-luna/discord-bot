@@ -189,25 +189,25 @@ module.exports = new Object({
     if (client.config.aiChatChannel.includes(message.channel.id)) {
       const { ApexAI } = require('apexify.js');
       const aiOptions = {
-        voice: {
-          enable: false,
-          voiceModal: "google",
-          voice_code: "en-US-3",
-          apiKey: "",
-          type: "b"
-        },
-        imagine: {
-          enable: false,
-          drawTrigger: ["create", "imagine"],
-          imageModel: "prodia",
-          numOfImages: 2,
-          nsfw: false,
-          enhancer: false
-        },
+        // voice: {
+        //   enable: false,
+        //   voiceModal: "google",
+        //   voice_code: "en-US-3",
+        //   apiKey: "",
+        //   type: "b"
+        // },
+        // imagine: {
+        //   enable: false,
+        //   drawTrigger: ["create", "imagine"],
+        //   imageModel: "prodia",
+        //   numOfImages: 2,
+        //   nsfw: false,
+        //   enhancer: false
+        // },
         chat: {
           chatModel: "gemini",
           readFiles: true,
-          readImages: false,
+          readImages: true,
           typeWriting: {
             enable: false,
             speed: 70,
@@ -218,23 +218,27 @@ module.exports = new Object({
           keywords: ["help", "info"],
           keywordResponses: {
             help: "By the great wisdom of lleud, I'm here to assist you!",
-            info: "Here is some information for you."
+            info: "Here is some wisdom I have found from sanctuary for you."
           },
-          loader: {
-            enable: false,
-            loadingMessage: "**generating** <a:_util_loading:863317596551118858>",
-            loadingTimer: 5000
+          messageType: {
+              type: 'send', // Specify the type either 'send' or 'type'
+              intialContent: `<@${message.author.id}>,`
           },
-          channel: {
-            enable: false,
-            id: ['']
-          },
-          permissions: {
-            enable: false,
-            role: [''],
-            permission: [''],
-            blockedUsers: ['']
-          }
+          // loader: {
+          //   enable: false,
+          //   loadingMessage: "**generating** <a:_util_loading:863317596551118858>",
+          //   loadingTimer: 5000
+          // },
+          // channel: {
+          //   enable: false,
+          //   id: ['']
+          // },
+          // permissions: {
+          //   enable: false,
+          //   role: [''],
+          //   permission: [''],
+          //   blockedUsers: ['']
+          // }
         }
       };
       await ApexAI(message, aiOptions)
