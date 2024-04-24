@@ -38,7 +38,7 @@ module.exports = new Object({
 
             const denyEmbed = new EmbedBuilder()
                 .setAuthor({ name: data.author.name, iconURL: 'https://i.imgur.com/oZvnuem.png' })
-                .setTitle('Suggestion Denied')
+                .setTitle('SUGGESTION DENIED')
                 .setDescription(data.description)
                 .setColor(`f04947`)
                 .addFields(
@@ -71,12 +71,12 @@ module.exports = new Object({
 
             await suggester.send({ embeds: [dnEmbed] }).then(() => {
                 message.channel.send({
-                    content: `Suggestion: ${suggestionLink} **DENIED** ! \`updated\``,
+                    content: `SUGGESTION: ${suggestionLink} **DENIED** ! \`updated\``,
                     embeds: [success]
                 });
             }).catch((e) => {
                 message.channel.send({
-                    content: `Suggestion: ${suggestionLink} **DENIED** ! \`updated\``,
+                    content: `SUGGESTION: ${suggestionLink} **DENIED** ! \`updated\``,
                     embeds: [failed]
                 });
             });

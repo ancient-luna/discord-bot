@@ -38,7 +38,7 @@ module.exports = new Object({
 
             const acceptEmbed = new EmbedBuilder()
                 .setAuthor({ name: data.author.name, iconURL: 'https://i.imgur.com/Kll2T98.png' })
-                .setTitle('Suggestion Accepted')
+                .setTitle('SUGGESTION ACCEPTED')
                 .setDescription(data.description)
                 .setColor(`43b581`)
                 .addFields(
@@ -71,12 +71,12 @@ module.exports = new Object({
 
             await suggester.send({ embeds: [accEmbed] }).then(() => {
                 message.channel.send({
-                    content: `Suggestion: ${suggestionLink} **ACCEPTED** ! \`updated\``,
+                    content: `SUGGESTION: ${suggestionLink} **ACCEPTED** ! \`updated\``,
                     embeds: [success]
                 });
             }).catch((e) => {
                 message.channel.send({
-                    content: `Suggestion: ${suggestionLink} **ACCEPTED** ! \`updated\``,
+                    content: `SUGGESTION: ${suggestionLink} **ACCEPTED** ! \`updated\``,
                     embeds: [failed]
                 });
             });
