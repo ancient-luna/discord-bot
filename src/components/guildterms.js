@@ -17,7 +17,8 @@ module.exports = {
     
     const addLDrule = new EmbedBuilder()
     .setAuthor({ name: "Ancient Luna Guild Terms", iconURL: "https://i.imgur.com/SOCuup9.png" })
-    .setDescription("A home for the light seekers!\n우리는 마치 달을 만난 것처럼 달렸다")
+    .setTitle(`우리는 마치 달을 만난 것처럼 달렸다`)
+    .setDescription("A home for the light seekers!")
     .addFields(
         { name: `**Street Fight / PVP**`, value: `- Killing is OK __**only** in arsha__\n- For spots *normal server* can kill **but** ask for DFS first; *arsha server* free kill\n- Avoid bad manner and dont ever trash talking in any servers\n - Any toxicity behaviors in the guild and outside guild are strongly prohibited.  Action will be taken if it happens`, inline: false },
         { name: `**Guild Quests**`, value: `- Guild Quests only can be taken for **current guild size** only\n - SMH, Combat, and Life GQs can be in any time\n - Guild Mission Specialist position reset every Monday (can reapply again without any requirements)`, inline: false },

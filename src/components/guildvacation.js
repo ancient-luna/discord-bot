@@ -56,7 +56,7 @@ module.exports = {
             const reasonValue = modalInteraction.fields.getTextInputValue('reasonInput');
 
             const absenceNote = new EmbedBuilder()
-                .setAuthor({ name: "Vacation Letter" })
+                .setTitle(`Vacation Letter`)
                 .setDescription(`*Dear Elders,\nRequested Day Off: __${dayValue} Day(s)__\n\n${reasonValue}\n\nYours sincerely,*\n***${interaction.member.displayName}***`)
                 .setColor(client.config.embedColorTrans)
                 .setThumbnail('https://i.imgur.com/Zx4kMoA.png')

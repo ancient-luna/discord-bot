@@ -86,13 +86,14 @@ module.exports = {
             const termsAgreement = modalInteraction.fields.getTextInputValue('termsAgreement');
 
             const embedForm = new EmbedBuilder()
-                .setAuthor({ name: `${interaction.member.displayName}'s Guild Application Form`, iconURL: "https://i.imgur.com/Kll2T98.png" })
+                .setAuthor({ name: `APPLIED`, iconURL: "https://i.imgur.com/Kll2T98.png" })
+                .setTitle(`${interaction.member.displayName}'s Guild Application Form`)
                 .addFields(
                     { name: `Family Name`, value: `\`\`\`${famName}\`\`\``, inline: true },
                     { name: `Country`, value: `\`\`\`${countryLoct}\`\`\``, inline: true },
                     { name: `Rules Agreement`, value: `\`\`\`${termsAgreement}\`\`\``, inline: true },
-                    { name: `Previous Guild History`, value: `>>> ${prevGuild}`, inline: false },
-                    { name: `Guild Expectation`, value: `>>> ${expectGuild}`, inline: false },
+                    { name: `Previous Guild History`, value: `\`\`\`${prevGuild}\`\`\``, inline: false },
+                    { name: `Guild Expectation`, value: `\`\`\`${expectGuild}\`\`\``, inline: false },
                 )
                 .setColor(client.config.embedColorTrans)
                 // .setTimestamp()
