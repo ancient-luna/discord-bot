@@ -25,22 +25,36 @@ module.exports = new Object({
     async execute(client, message, args) {
 
         const survivorID = args.join(" ");
-        if (!survivorID) return message.channel.send("Do `!record` `id`").catch((e) => { });
+        if (!survivorID) return message.channel.send("Do `!record` `id`");
 
         const loadingTxt = await message.reply(`Getting player status <a:_util_loading:863317596551118858>`);
 
         let request = require('request')
 
+        const timestamp = Date.now();
+
         let option = {
-            url: `https://www.dfprofiler.com/profile/json/${survivorID}`,
+            url: `https://www.dfprofiler.com/profile/json/${survivorID}?_=${timestamp}`,
             headers: {
                 "X-Requested-With": "XMLHttpRequest"
             }
         }
 
-        request(option, function (err, responce, body) {
-            if (typeof body !== 'undefined' && body) {
-                let stat = JSON.parse(body);
+        request(option, function (err, response, body) {
+            if (err) {
+                console.error("Error:", err);
+                loadingTxt.edit({
+                    content: `Something wrong happened..\n**unable to send the record now**`
+                });
+                return;
+            }
+
+            // Extracting JSON data from response body
+            const jsonStartIndex = body.indexOf('{');
+            const jsonResponse = body.substring(jsonStartIndex);
+
+            try {
+                let stat = JSON.parse(jsonResponse);
 
                 const domUsername = new jsdom.JSDOM(stat['username']);
                 let username = domUsername.window.document.querySelector("a").textContent;
@@ -57,26 +71,26 @@ module.exports = new Object({
                 let all_time_tpk = stat['all_time_tpk']
 
                 try {
-                    let lastloot = stat['lastloot']
+                    let lastloot = stat['lastloot'];
 
                     const embedRecord = new EmbedBuilder()
-                    .setTitle(`${username}'s record`)
-                    .setURL(`https://www.dfprofiler.com/profile/view/${survivorID}`)
-                    .addFields(
-                        { name: `**EXP Since Death**`, value: `${exp_since_death} EXP`, inline: true },
-                        { name: `**Weekly TS**`, value: `${weekly_ts} EXP`, inline: true },
-                        { name: `**⭐ All Time TS**`, value: `${all_time_ts} EXP`, inline: true },
-                        { name: `**Last Loot Item**`, value: lastloot, inline: true },
-                        { name: `**Weekly Loot**`, value: `${weekly_loot} Loot Points`, inline: true },
-                        { name: `**⭐ All Time Loot**`, value: `${all_time_loot} Loot Points`, inline: true },
-                        { name: `**Daily TPK**`, value: `${daily_tpk} Kill`, inline: true },
-                        { name: `**Weekly TPK**`, value: `${weekly_tpk} Kill`, inline: true },
-                        { name: `**⭐ All Time TPK**`, value: `${all_time_tpk} Kill`, inline: true }
-                    )
-                    .setImage(`https://www.dfprofiler.com/signaturereplicate.php?profile=${survivorID}&imgur=5q7hV6B`)
-                    .setFooter({ text: `Powered by Ancient Luna`, iconURL: 'https://i.imgur.com/vKo3PJm.png' })
-                    .setColor('202225')
-                    .setTimestamp()
+                        .setTitle(`${username}'s record`)
+                        .setURL(`https://www.dfprofiler.com/profile/view/${survivorID}`)
+                        .addFields(
+                            { name: `**EXP Since Death**`, value: `${exp_since_death} EXP`, inline: true },
+                            { name: `**Weekly TS**`, value: `${weekly_ts} EXP`, inline: true },
+                            { name: `**⭐ All Time TS**`, value: `${all_time_ts} EXP`, inline: true },
+                            { name: `**Last Loot Item**`, value: lastloot, inline: true },
+                            { name: `**Weekly Loot**`, value: `${weekly_loot} Loot Points`, inline: true },
+                            { name: `**⭐ All Time Loot**`, value: `${all_time_loot} Loot Points`, inline: true },
+                            { name: `**Daily TPK**`, value: `${daily_tpk} Kill`, inline: true },
+                            { name: `**Weekly TPK**`, value: `${weekly_tpk} Kill`, inline: true },
+                            { name: `**⭐ All Time TPK**`, value: `${all_time_tpk} Kill`, inline: true }
+                        )
+                        .setImage(`https://www.dfprofiler.com/signaturereplicate.php?profile=${survivorID}&imgur=5q7hV6B`)
+                        .setFooter({ text: `Powered by Ancient Luna`, iconURL: 'https://i.imgur.com/vKo3PJm.png' })
+                        .setColor('202225')
+                        .setTimestamp()
 
                     const btnProfile = new ActionRowBuilder()
                         .addComponents(
@@ -96,56 +110,19 @@ module.exports = new Object({
                         content: '⁣',
                         embeds: [embedRecord],
                         components: [btnProfile],
-                    }).catch((e) => { });
+                    });
                 } catch (error) {
-                    const embedRecord = new EmbedBuilder()
-                    .setTitle(`${username}'s record`)
-                    .setURL(`https://www.dfprofiler.com/profile/view/${survivorID}`)
-                    .addFields(
-                        { name: `**EXP Since Death**`, value: `${exp_since_death} EXP`, inline: true },
-                        { name: `**Weekly TS**`, value: `${weekly_ts} EXP`, inline: true },
-                        { name: `**⭐ All Time TS**`, value: `${all_time_ts} EXP`, inline: true },
-                        { name: `**Last Loot Item**`, value: `Not looting in a while`, inline: true },
-                        { name: `**Weekly Loot**`, value: `${weekly_loot} Loot Points`, inline: true },
-                        { name: `**⭐ All Time Loot**`, value: `${all_time_loot} Loot Points`, inline: true },
-                        { name: `**Daily TPK**`, value: `${daily_tpk} Kill`, inline: true },
-                        { name: `**Weekly TPK**`, value: `${weekly_tpk} Kill`, inline: true },
-                        { name: `**⭐ All Time TPK**`, value: `${all_time_tpk} Kill`, inline: true }
-                    )
-                    .setImage(`https://www.dfprofiler.com/signaturereplicate.php?profile=${survivorID}&imgur=5q7hV6B`)
-                    .setFooter({ text: `Powered by Ancient Luna`, iconURL: 'https://i.imgur.com/vKo3PJm.png' })
-                    .setColor('202225')
-                    .setTimestamp()
-
-                const btnProfile = new ActionRowBuilder()
-                    .addComponents(
-                        new ButtonBuilder()
-                            .setStyle(ButtonStyle.Link)
-                            .setLabel(`DFP Profile`)
-                            .setURL(`https://www.dfprofiler.com/profile/view/${survivorID}`)
-                    )
-                    .addComponents(
-                        new ButtonBuilder()
-                            .setStyle(ButtonStyle.Link)
-                            .setLabel(`Updated Profile Image`)
-                            .setURL(`https://www.dfprofiler.com/signaturereplicate.php?profile=${survivorID}&imgur=5q7hV6B.png`)
-                    )
-
-                loadingTxt.edit({
-                    content: '⁣',
-                    embeds: [embedRecord],
-                    components: [btnProfile],
-                }).catch((e) => { });
+                    console.error("Error:", error);
+                    loadingTxt.edit({
+                        content: `Something wrong happened..\n**unable to send the record now**`
+                    });
                 }
-            } else {
+            } catch (error) {
+                console.error("Error parsing JSON:", error);
                 loadingTxt.edit({
                     content: `Something wrong happened..\n**unable to send the record now**`
-                }).catch((e) => { });
+                });
             }
-        })
+        });
     }
 })
-
-
-
-

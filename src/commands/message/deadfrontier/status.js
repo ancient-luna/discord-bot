@@ -25,22 +25,37 @@ module.exports = new Object({
     async execute(client, message, args) {
 
         const survivorID = args.join(" ");
-        if (!survivorID) return message.channel.send("Do `!status` `id`").catch((e) => { });
+        if (!survivorID) return message.channel.send("Do `!status` `id`");
 
         const loadingTxt = await message.reply(`Getting player status <a:_util_loading:863317596551118858>`);
 
         let request = require('request')
 
+        const timestamp = Date.now();
+
         let option = {
-            url: `https://www.dfprofiler.com/profile/json/${survivorID}`,
+            url: `https://www.dfprofiler.com/profile/json/${survivorID}?_=${timestamp}`,
             headers: {
                 "X-Requested-With": "XMLHttpRequest"
             }
         }
 
         request(option, function (err, responce, body) {
-            if (typeof body !== 'undefined' && body) {
-                let stat = JSON.parse(body)
+
+            if (err) {
+                console.error("Error:", err);
+                loadingTxt.edit({
+                    content: `Something wrong happened..\n**unable to send the record now**`
+                });
+                return;
+            }
+
+            // Extracting JSON data from response body
+            const jsonStartIndex = body.indexOf('{');
+            const jsonResponse = body.substring(jsonStartIndex);
+
+            try {
+                let stat = JSON.parse(jsonResponse)
 
                 const domUsername = new jsdom.JSDOM(stat['username']);
                 let username = domUsername.window.document.querySelector("a").textContent;
@@ -227,10 +242,10 @@ module.exports = new Object({
                 } catch (error) {
                     loadingTxt.edit({ content: `This player currently naked (please wear an armor)..\n**unable to send the status now**` })
                 }
-            } else {
+            } catch (error) {
                 loadingTxt.edit({
                     content: `Something wrong happened..\n**unable to send the status now**`
-                }).catch((e) => { });
+                });
             }
         })
     }
