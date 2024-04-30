@@ -22,7 +22,7 @@ module.exports = new Object({
    * @param {String[]} args
    */
   async execute(client, message, args) {
-    if (args.length === 0) return message.channel.send("Do: !whisper `userid` `message`").catch((e) => { });
+    if (args.length < 2) return message.channel.send("Do: !whisper `userid` `message`").catch((e) => { });
 
     const user =
       message.mentions.users.first() ||
