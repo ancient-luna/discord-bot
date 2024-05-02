@@ -58,19 +58,13 @@ module.exports = {
     .addComponents(
         new ButtonBuilder()
         .setCustomId("btn-ticketclose")
-        .setLabel("Delete")
+        .setLabel("Save and Close")
         .setStyle(ButtonStyle.Danger)
     )
     .addComponents(
         new ButtonBuilder()
         .setCustomId("btn-ticketlock")
-        .setLabel("Close")
-        .setStyle(ButtonStyle.Danger)
-    )
-    .addComponents(
-        new ButtonBuilder()
-        .setCustomId("btn-ticketscript")
-        .setLabel("Save")
+        .setLabel("Lock")
         .setStyle(ButtonStyle.Primary)
     )
     .addComponents(
