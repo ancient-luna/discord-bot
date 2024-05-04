@@ -48,7 +48,7 @@ module.exports = new Object({
             .setDescription(`**${target.displayName} get kicked from the sanctuary**\nReason: *${reason}*`)
             .setThumbnail("https://i.imgur.com/sm8OXMp.png")
             .setFooter({ text: `Kicked by ${message.member.displayName}` })
-            .setColor(client.config.embedColorTrans)
+            .setColor('Red')
         message.guild.channels.cache.get('839417251470901279').send({ embeds: [embed] }).catch((e) => { });
         target.kick(args[0]);
         message.react("✅").catch((e) => { });
