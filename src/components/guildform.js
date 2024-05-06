@@ -91,8 +91,8 @@ module.exports = {
                     { name: `Family Name`, value: `\`\`\`${famName}\`\`\``, inline: true },
                     { name: `Country`, value: `\`\`\`${countryLoct}\`\`\``, inline: true },
                     { name: `Rules Agreement`, value: `\`\`\`${termsAgreement}\`\`\``, inline: true },
-                    { name: `Previous Guild History`, value: `_ _\n>>> ${prevGuild}n_ _`, inline: false },
-                    { name: `Guild Expectation`, value: `_ _\n>>> ${expectGuild}\n_ _`, inline: false },
+                    { name: `Previous Guild History`, value: `_ _\n>>> ${prevGuild}`, inline: false },
+                    { name: `Guild Expectation`, value: `_ _\n>>> ${expectGuild}`, inline: false },
                 )
                 .setColor(client.config.embedColorTrans)
                 .setFooter({ text: `Signed by ${interaction.member.displayName}` })
