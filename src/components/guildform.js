@@ -86,16 +86,15 @@ module.exports = {
             const termsAgreement = modalInteraction.fields.getTextInputValue('termsAgreement');
 
             const embedForm = new EmbedBuilder()
-                .setAuthor({ name: `GUILD APPLICATION FORM`, iconURL: "https://i.imgur.com/Kll2T98.png" })
+                .setAuthor({ name: `GUILD APPLICATION FORM`, iconURL: "https://i.imgur.com/ehHq6P6.png" })
                 .addFields(
                     { name: `Family Name`, value: `\`\`\`${famName}\`\`\``, inline: true },
                     { name: `Country`, value: `\`\`\`${countryLoct}\`\`\``, inline: true },
                     { name: `Rules Agreement`, value: `\`\`\`${termsAgreement}\`\`\``, inline: true },
-                    { name: `Previous Guild History`, value: `_ _\n>>> ${prevGuild}`, inline: false },
-                    { name: `Guild Expectation`, value: `_ _\n>>> ${expectGuild}`, inline: false },
+                    { name: `Previous Guild History`, value: `_ _\n>>> ${prevGuild}n_ _`, inline: false },
+                    { name: `Guild Expectation`, value: `_ _\n>>> ${expectGuild}\n_ _`, inline: false },
                 )
                 .setColor(client.config.embedColorTrans)
-                .setThumbnail('https://i.imgur.com/ehHq6P6.png')
                 .setFooter({ text: `Signed by ${interaction.member.displayName}` })
                 .setTimestamp()
             modalInteraction.reply({ embeds: [embedForm] })
