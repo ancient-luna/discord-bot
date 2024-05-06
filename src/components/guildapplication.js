@@ -29,6 +29,7 @@ module.exports = {
     const embedForm = new EmbedBuilder()
       .setAuthor({ name: "Ancient Luna Guild Application", iconURL: "https://i.imgur.com/SOCuup9.png" })
       .setTitle(`Welcome to the sanctuary of lights`)
+      .setURL(`https://www.youtube.com/watch?v=_rJiY6y3a-A&ab_channel=AncientLuna`)
       .setDescription(`**To apply for guild, please fill the form by clicking the button below**\nDon't hesitate to ask if there is any questions regarding the guild <:ancientluna_divinare_s:859034096192978965>`)
       .setColor(client.config.embedColorTrans)
       .setFooter({ text: "Hopefully we can be one of the family!" })
@@ -54,7 +55,7 @@ module.exports = {
       )
 
     ThreadSend.send({
-        content: `<@${interaction.user.id}> <@&1076513302970109985> <@&1076513338361643068> <@&1076513211391688735> <@&1076513403364966440> <@&1076513372461334530> <:ancientluna_divinare:841754250949820416>`
+        content: `<@${interaction.user.id}> <@&1235965537326993450> <:ancientluna_divinare:841754250949820416>`
     }).catch(err => {
         return;
     })
