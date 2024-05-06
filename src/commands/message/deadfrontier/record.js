@@ -40,11 +40,12 @@ module.exports = new Object({
             }
         }
 
-        request(option, function (err, response, body) {
-            if (err) {
-                console.error("Error:", err);
+        request(option, function (response, body) {
+
+            if (typeof body !== 'string' || body.trim().length === 0) {
+                console.error("Empty or invalid response body");
                 loadingTxt.edit({
-                    content: `Something wrong happened..\n**unable to send the record now**`
+                    content: `Empty or invalid response received. Unable to fetch the record now.`
                 });
                 return;
             }
