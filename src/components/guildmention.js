@@ -21,7 +21,7 @@ module.exports = {
         'Psst.. pssst..'
     ]
     return interaction.reply({
-        content: `${mentionTxt[Math.floor(Math.random() * mentionTxt.length)]} <@&1076513302970109985> <@&1076513338361643068> <@&1076513211391688735> <@&1076513403364966440> <@&1076513372461334530> !\n**Please check this guild application** ♡`
+        content: `${mentionTxt[Math.floor(Math.random() * mentionTxt.length)]} <@&1235965537326993450> !\n**Please check this guild application** ♡`
     });
   },
 };
