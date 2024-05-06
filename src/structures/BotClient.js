@@ -59,7 +59,7 @@ class BotClient extends Client {
     this.config = require("../config/config");
     this.Commands = new Collection();
     this.slashCommands = new Collection();
-    this.prefix = process.env.COMMAND_PREFIX;Z
+    this.prefix = process.env.COMMAND_PREFIX;
     this.color = this.config.color;
     this.ButtonInt = new Collection();
     this.Cooldown = new Collection();
