@@ -40,15 +40,7 @@ module.exports = new Object({
             }
         }
 
-        request(option, function (err, responce, body) {
-
-            if (err) {
-                console.error("Error:", err);
-                loadingTxt.edit({
-                    content: `Something wrong happened..\n**unable to send the record now**`
-                });
-                return;
-            }
+        request(option, function (responce, body) {
 
             // Extracting JSON data from response body
             const jsonStartIndex = body.indexOf('{');
