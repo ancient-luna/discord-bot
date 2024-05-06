@@ -42,14 +42,6 @@ module.exports = new Object({
 
         request(option, function (response, body) {
 
-            if (typeof body !== 'string' || body.trim().length === 0) {
-                console.error("Empty or invalid response body");
-                loadingTxt.edit({
-                    content: `Empty or invalid response received. Unable to fetch the record now.`
-                });
-                return;
-            }
-
             // Extracting JSON data from response body
             const jsonStartIndex = body.indexOf('{');
             const jsonResponse = body.substring(jsonStartIndex);
