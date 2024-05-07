@@ -24,11 +24,11 @@ module.exports = new Object({
     async execute(client, message, args) {
         const chID = args[0];
         const msgID = args[1];
-        // const editQuery = args.slice(2).join(" ");
+        const cntntQ = args.slice(2).join(" ");
 
         if (!chID) return message.reply("`channelid` `messageid` `reason`").catch((e) => { });
         if (!msgID) return message.reply("`messageid` `reason`").catch((e) => { });
-        // if (!editQuery) return message.reply("set `reason`").catch((e) => { });
+        if (!cntntQ) return message.reply("set `reason`").catch((e) => { });
 
         try {
             const channelID = message.guild.channels.cache.get(chID);
@@ -39,7 +39,7 @@ module.exports = new Object({
 
             // const editEmbed = new EmbedBuilder()
                 // .setTitle('EXCLUSIVE ROLES')
-                // .setDescription(editQuery)
+                .setDescription(cntntQ)
                 // .setColor(client.config.embedColorTrans)
                 // .setImage('https://i.imgur.com/tRx8iKL.png')
                 // .setFooter({ text: `*this is world boss alerts (ASIA region only) GMT+8` })
@@ -54,7 +54,7 @@ module.exports = new Object({
 
             message.channel.send("Embed: **EDITED** ! `updated`").catch((e) => { });
             messageID.edit({
-                // embeds: [editEmbed],
+                embeds: [editEmbed],
                 // components: [editButton],
                 files: [newFile]
             });
