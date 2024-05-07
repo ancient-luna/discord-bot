@@ -16,9 +16,8 @@ module.exports = new Object({
             .setThumbnail(member.user.displayAvatarURL({ dynamic: true, size: 512 }))
             .setDescription(`<@${member.user.id}> please understand our **wisdom of lleud** at ${member.guild.channels.cache.get(client.config.ruleChannel).toString()} as you make your way through this warm sanctuary`)
             .setFooter({ text: `${member.user.username} visited the sanctuary` })
-            .setColor('7289da');
+            .setColor('7289da')
+            .setTimestamp();
         return channel.send({ embeds: [welcomeText] });
-    
     }
 })
-

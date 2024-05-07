@@ -1,4 +1,4 @@
-const { EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle } = require("discord.js");
+const { EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle, AttachmentBuilder } = require("discord.js");
 module.exports = new Object({
     name: "rewrite",
     description: "rewrite.",
@@ -24,20 +24,23 @@ module.exports = new Object({
     async execute(client, message, args) {
         const chID = args[0];
         const messageID = args[1];
-        const editQuery = args.slice(2).join(" ");
+        // const editQuery = args.slice(2).join(" ");
 
         if (!chID) return message.reply("`channelid` `messageid` `reason`").catch((e) => { });
         if (!messageID) return message.reply("`messageid` `reason`").catch((e) => { });
-        if (!editQuery) return message.reply("set `reason`").catch((e) => { });
+        // if (!editQuery) return message.reply("set `reason`").catch((e) => { });
 
         try {
             const channelID = message.guild.channels.cache.get(chID);
 
-            const theEmbed = await channelID.messages.fetch(messageID);
-            const editEmbed = new EmbedBuilder()
+            const messageID = await channelID.messages.fetch(messageID);
+
+            let newFile = new AttachmentBuilder("src/assets/df/thecallers.gif")
+
+            // const editEmbed = new EmbedBuilder()
                 // .setTitle('EXCLUSIVE ROLES')
-                .setDescription(editQuery)
-                .setColor(client.config.embedColorTrans)
+                // .setDescription(editQuery)
+                // .setColor(client.config.embedColorTrans)
                 // .setImage('https://i.imgur.com/tRx8iKL.png')
                 // .setFooter({ text: `*this is world boss alerts (ASIA region only) GMT+8` })
 
@@ -50,9 +53,10 @@ module.exports = new Object({
             // )
 
             message.channel.send("Embed: **EDITED** ! `updated`").catch((e) => { });
-            theEmbed.edit({
-                embeds: [editEmbed],
-                // components: [editButton]
+            messageID.edit({
+                // embeds: [editEmbed],
+                // components: [editButton],
+                files: [newFile]
             });
 
         } catch (err) {
