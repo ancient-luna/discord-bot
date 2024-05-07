@@ -35,12 +35,12 @@ module.exports = new Object({
 
             const messageID = await channelID.messages.fetch(msgID);
 
-            let newFile = new AttachmentBuilder("src/assets/df/thecallers.gif")
+            // let newFile = new AttachmentBuilder("src/assets/df/thecallers.gif")
 
-            // const editEmbed = new EmbedBuilder()
+            const editEmbed = new EmbedBuilder()
                 // .setTitle('EXCLUSIVE ROLES')
                 .setDescription(cntntQ)
-                // .setColor(client.config.embedColorTrans)
+                .setColor(client.config.embedColorTrans)
                 // .setImage('https://i.imgur.com/tRx8iKL.png')
                 // .setFooter({ text: `*this is world boss alerts (ASIA region only) GMT+8` })
 
@@ -56,7 +56,7 @@ module.exports = new Object({
             messageID.edit({
                 embeds: [editEmbed],
                 // components: [editButton],
-                files: [newFile]
+                // files: [newFile]
             });
 
         } catch (err) {
