@@ -23,17 +23,17 @@ module.exports = new Object({
      */
     async execute(client, message, args) {
         const chID = args[0];
-        const messageID = args[1];
+        const msgID = args[1];
         // const editQuery = args.slice(2).join(" ");
 
         if (!chID) return message.reply("`channelid` `messageid` `reason`").catch((e) => { });
-        if (!messageID) return message.reply("`messageid` `reason`").catch((e) => { });
+        if (!msgID) return message.reply("`messageid` `reason`").catch((e) => { });
         // if (!editQuery) return message.reply("set `reason`").catch((e) => { });
 
         try {
             const channelID = message.guild.channels.cache.get(chID);
 
-            const messageID = await channelID.messages.fetch(messageID);
+            const messageID = await channelID.messages.fetch(msgID);
 
             let newFile = new AttachmentBuilder("src/assets/df/thecallers.gif")
 
