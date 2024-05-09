@@ -1,7 +1,7 @@
 const { EmbedBuilder, ButtonBuilder, ActionRowBuilder, ButtonStyle } = require("discord.js");
 const jsdom = require("jsdom");
 module.exports = new Object({
-    name: "status",
+    name: "acvstatus",
     description: "status.",
     category: "Deadfrontier",
     usage: "",
