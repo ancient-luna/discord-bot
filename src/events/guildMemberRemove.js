@@ -13,7 +13,7 @@ module.exports = new Object({
         const channel = guild.channels.cache.get(client.config.gatewayChannel);
         const leavingText = new EmbedBuilder()
             .setDescription(`The lights get dimmed! **${member.displayName}** leaving the sanctuary`)
-            .setFooter({ text: `ID: ${member.user.id} // ${member.user.username}`, iconURL: member.user.displayAvatarURL({ dynamic: true, size: 512 }) })
+            .setFooter({ text: `(id) ${member.user.id} (u) ${member.user.username}`, iconURL: member.user.displayAvatarURL({ dynamic: true, size: 512 }) })
             .setColor('Red')
             .setTimestamp();
         return channel.send({ embeds: [leavingText] })
