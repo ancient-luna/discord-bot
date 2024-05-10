@@ -71,12 +71,12 @@ module.exports = new Object({
 
             await suggester.send({ embeds: [dnEmbed] }).then(() => {
                 message.channel.send({
-                    content: `SUGGESTION: ${suggestionLink} **DENIED** ! \`updated\``,
+                    content: `SUGGESTION: ${suggestionLink} **DENIED** ! \`updated\`\n_ _`,
                     embeds: [success]
                 });
             }).catch((e) => {
                 message.channel.send({
-                    content: `SUGGESTION: ${suggestionLink} **DENIED** ! \`updated\``,
+                    content: `SUGGESTION: ${suggestionLink} **DENIED** ! \`updated\`\n_ _`,
                     embeds: [failed]
                 });
             });

@@ -71,12 +71,12 @@ module.exports = new Object({
 
             await suggester.send({ embeds: [accEmbed] }).then(() => {
                 message.channel.send({
-                    content: `SUGGESTION: ${suggestionLink} **ACCEPTED** ! \`updated\``,
+                    content: `SUGGESTION: ${suggestionLink} **ACCEPTED** ! \`updated\`\n_ _`,
                     embeds: [success]
                 });
             }).catch((e) => {
                 message.channel.send({
-                    content: `SUGGESTION: ${suggestionLink} **ACCEPTED** ! \`updated\``,
+                    content: `SUGGESTION: ${suggestionLink} **ACCEPTED** ! \`updated\`\n_ _`,
                     embeds: [failed]
                 });
             });
