@@ -158,7 +158,7 @@ module.exports = new Object({
           new ButtonBuilder()
             .setStyle(ButtonStyle.Link)
             .setLabel(`More details about the event`)
-            .setURL(`https://blackdesert.pearlabyss.com/ASIA/en-us/News/Notice/Detail?_boardNo=6084`)
+            .setURL(`https://blackdesert.pearlabyss.com/ASIA/en-us/News/Notice/Detail?_boardNo=6127`)
         )
         // .addComponents(
         //   new ButtonBuilder()
@@ -170,7 +170,7 @@ module.exports = new Object({
       if (stickyLucentMessage) {
         stickyLucentMessage.delete().then(() => {
           message.channel.send({
-            content: `best luck!`,
+            content: `Best luck! Event end <t:1717524000:R>`,
             // embeds: [embedLucent],
             components: [btnLucent]
           });
