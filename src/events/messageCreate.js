@@ -1,6 +1,6 @@
 const { 
   EmbedBuilder, ButtonBuilder, ActionRowBuilder,
-  ChannelType, ButtonStyle, PermissionsBitField, Collection,
+  ChannelType, ButtonStyle, PermissionsBitField, Collection, AttachmentBuilder,
 } = require("discord.js");
 
 module.exports = new Object({
@@ -141,18 +141,7 @@ module.exports = new Object({
     if (client.config.stickyGLeagueChannel.includes(message.channel.id)) {
       const fetchedLucentMessages = await message.channel.messages.fetch();
       const stickyLucentMessage = fetchedLucentMessages.find(m => m.author.id === client.user.id && client.config.stickyGLeagueChannel.includes(m.channel.id));
-      const embedLucent = new EmbedBuilder()
-        .setTitle(`Guild Leaguer (Roster)`)
-        .setURL(`https://blackdesert.pearlabyss.com/ASIA/en-us/News/Notice/Detail?_boardNo=6084`)
-        .setDescription(`300-499 Total Kills (Cron Stone x500) // 500-999 Total Kills ([Event] Classic Outfit Box) // Over 1,000 Total Kills ([Event] Premium Outfit Box)`)
-        .addFields(
-            { name: `**[Week 1]** \`END: April 17\``, value: `Apr 9, 2024 (Tue) 17:00 - Apr 17, 2024 (Wed) 01:00`, inline: true },
-            { name: `**[Week 2]** \`END: April 24\``, value: `Apr 17, 2024 (Wed) 17:00 - Apr 24, 2024 (Wed) 01:00`, inline: true },
-            { name: `**[Week 3]** \`END: April 30\``, value: `Apr 24, 2024 (Wed) 17:00 - Apr 30, 2024 (Tue) 01:00`, inline: true },
-            { name: `**[Week 4]** \`END: May 08\``, value: `Apr 30, 2024 (Tue) 17:00 - May 08, 2024 (Wed) 01:00`, inline: true }
-        )
-        .setColor(client.config.embedColorTrans)
-        // .setImage('https://s1.pearlcdn.com/KR/Upload/News/7f8428b336320240227154308349.jpg')
+      const ringOfire = new AttachmentBuilder("src/assets/ringoffire.mp4");
       const btnLucent = new ActionRowBuilder()
         .addComponents(
           new ButtonBuilder()
@@ -170,16 +159,18 @@ module.exports = new Object({
       if (stickyLucentMessage) {
         stickyLucentMessage.delete().then(() => {
           message.channel.send({
-            content: `[**Best luck!**](https://open.spotify.com/track/6Kk1uv7JXbVOkqxrYi0Mzd?si=45c0b88f80b14f46) Event end <t:1717524000:R>`,
+            content: `**Best luck!** Event end <t:1717524000:R>`,
             // embeds: [embedLucent],
+            files: [ringOfire],
             components: [btnLucent]
           });
         }).catch(() => { });
       } else {
         // Force send a new message.
         message.channel.send({
-          content: `best luck!`,
+          content: `**Best luck!** Event end <t:1717524000:R>`,
           // embeds: [embedLucent],
+            files: [ringOfire],
           components: [btnLucent]
         });
       }
