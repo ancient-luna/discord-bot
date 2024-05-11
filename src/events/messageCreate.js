@@ -170,7 +170,7 @@ module.exports = new Object({
       if (stickyLucentMessage) {
         stickyLucentMessage.delete().then(() => {
           message.channel.send({
-            content: `**Best luck!** Event end <t:1717524000:R>`,
+            content: `[**Best luck!**](https://open.spotify.com/track/6Kk1uv7JXbVOkqxrYi0Mzd?si=45c0b88f80b14f46) Event end <t:1717524000:R>`,
             // embeds: [embedLucent],
             components: [btnLucent]
           });
