@@ -1,6 +1,8 @@
 const { EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle } = require("discord.js");
 const jsdom = require("jsdom");
-module.exports = new Object({
+const axios = require('axios');
+
+module.exports = {
     name: "acvrecord",
     description: "record.",
     category: "Deadfrontier",
@@ -23,99 +25,85 @@ module.exports = new Object({
      * @param {String[]} args
      */
     async execute(client, message, args) {
-
         const survivorID = args.join(" ");
         if (!survivorID) return message.channel.send("Do `!record` `id`");
 
         const loadingTxt = await message.reply(`Getting player status <a:_util_loading:863317596551118858>`);
 
-        let request = require('request')
-
         const timestamp = Date.now();
 
-        let option = {
+        const option = {
             url: `https://www.dfprofiler.com/profile/json/${survivorID}?_=${timestamp}`,
             headers: {
                 "X-Requested-With": "XMLHttpRequest"
             }
-        }
+        };
 
-        request(option, function (response, body) {
+        try {
+            const response = await axios(option);
+            const body = response.data;
 
-            // Extracting JSON data from response body
-            const jsonStartIndex = body.indexOf('{');
-            const jsonResponse = body.substring(jsonStartIndex);
+            let stat = body;
 
-            try {
-                let stat = JSON.parse(jsonResponse);
+            const domUsername = new jsdom.JSDOM(stat['username']);
+            let username = domUsername.window.document.querySelector("a").textContent;
 
-                const domUsername = new jsdom.JSDOM(stat['username']);
-                let username = domUsername.window.document.querySelector("a").textContent;
+            let exp_since_death = stat['exp_since_death'];
+            let weekly_ts = stat['weekly_ts'];
+            let all_time_ts = stat['all_time_ts'];
 
-                let exp_since_death = stat['exp_since_death']
-                let weekly_ts = stat['weekly_ts']
-                let all_time_ts = stat['all_time_ts']
+            let weekly_loot = stat['weekly_loot'];
+            let all_time_loot = stat['all_time_loot'];
 
-                let weekly_loot = stat['weekly_loot']
-                let all_time_loot = stat['all_time_loot']
+            let daily_tpk = stat['daily_tpk'];
+            let weekly_tpk = stat['weekly_tpk'];
+            let all_time_tpk = stat['all_time_tpk'];
 
-                let daily_tpk = stat['daily_tpk']
-                let weekly_tpk = stat['weekly_tpk']
-                let all_time_tpk = stat['all_time_tpk']
+            let lastloot = stat['lastloot'];
 
-                try {
-                    let lastloot = stat['lastloot'];
+            const embedRecord = new EmbedBuilder()
+                .setTitle(`${username}'s record`)
+                .setURL(`https://www.dfprofiler.com/profile/view/${survivorID}`)
+                .addFields(
+                    { name: `**EXP Since Death**`, value: `${exp_since_death} EXP`, inline: true },
+                    { name: `**Weekly TS**`, value: `${weekly_ts} EXP`, inline: true },
+                    { name: `**⭐ All Time TS**`, value: `${all_time_ts} EXP`, inline: true },
+                    { name: `**Last Loot Item**`, value: lastloot, inline: true },
+                    { name: `**Weekly Loot**`, value: `${weekly_loot} Loot Points`, inline: true },
+                    { name: `**⭐ All Time Loot**`, value: `${all_time_loot} Loot Points`, inline: true },
+                    { name: `**Daily TPK**`, value: `${daily_tpk} Kill`, inline: true },
+                    { name: `**Weekly TPK**`, value: `${weekly_tpk} Kill`, inline: true },
+                    { name: `**⭐ All Time TPK**`, value: `${all_time_tpk} Kill`, inline: true }
+                )
+                .setImage(`https://www.dfprofiler.com/signaturereplicate.php?profile=${survivorID}&imgur=5q7hV6B`)
+                .setFooter({ text: `Powered by Ancient Luna`, iconURL: 'https://i.imgur.com/vKo3PJm.png' })
+                .setColor('202225')
+                .setTimestamp();
 
-                    const embedRecord = new EmbedBuilder()
-                        .setTitle(`${username}'s record`)
+            const btnProfile = new ActionRowBuilder()
+                .addComponents(
+                    new ButtonBuilder()
+                        .setStyle(ButtonStyle.Link)
+                        .setLabel(`DFP Profile`)
                         .setURL(`https://www.dfprofiler.com/profile/view/${survivorID}`)
-                        .addFields(
-                            { name: `**EXP Since Death**`, value: `${exp_since_death} EXP`, inline: true },
-                            { name: `**Weekly TS**`, value: `${weekly_ts} EXP`, inline: true },
-                            { name: `**⭐ All Time TS**`, value: `${all_time_ts} EXP`, inline: true },
-                            { name: `**Last Loot Item**`, value: lastloot, inline: true },
-                            { name: `**Weekly Loot**`, value: `${weekly_loot} Loot Points`, inline: true },
-                            { name: `**⭐ All Time Loot**`, value: `${all_time_loot} Loot Points`, inline: true },
-                            { name: `**Daily TPK**`, value: `${daily_tpk} Kill`, inline: true },
-                            { name: `**Weekly TPK**`, value: `${weekly_tpk} Kill`, inline: true },
-                            { name: `**⭐ All Time TPK**`, value: `${all_time_tpk} Kill`, inline: true }
-                        )
-                        .setImage(`https://www.dfprofiler.com/signaturereplicate.php?profile=${survivorID}&imgur=5q7hV6B`)
-                        .setFooter({ text: `Powered by Ancient Luna`, iconURL: 'https://i.imgur.com/vKo3PJm.png' })
-                        .setColor('202225')
-                        .setTimestamp()
+                )
+                .addComponents(
+                    new ButtonBuilder()
+                        .setStyle(ButtonStyle.Link)
+                        .setLabel(`Updated Profile Image`)
+                        .setURL(`https://www.dfprofiler.com/signaturereplicate.php?profile=${survivorID}&imgur=5q7hV6B.png`)
+                );
 
-                    const btnProfile = new ActionRowBuilder()
-                        .addComponents(
-                            new ButtonBuilder()
-                                .setStyle(ButtonStyle.Link)
-                                .setLabel(`DFP Profile`)
-                                .setURL(`https://www.dfprofiler.com/profile/view/${survivorID}`)
-                        )
-                        .addComponents(
-                            new ButtonBuilder()
-                                .setStyle(ButtonStyle.Link)
-                                .setLabel(`Updated Profile Image`)
-                                .setURL(`https://www.dfprofiler.com/signaturereplicate.php?profile=${survivorID}&imgur=5q7hV6B.png`)
-                        )
-
-                    loadingTxt.edit({
-                        content: '⁣',
-                        embeds: [embedRecord],
-                        components: [btnProfile],
-                    });
-                } catch (error) {
-                    console.error("Error:", error);
-                    loadingTxt.edit({
-                        content: `Something wrong happened..\n**unable to send the record now**`
-                    });
-                }
-            } catch (error) {
-                console.error("Error parsing JSON:", error);
-                loadingTxt.edit({
-                    content: `Something wrong happened..\n**unable to send the record now**`
-                });
-            }
-        });
+            loadingTxt.edit({
+                content: '⁣',
+                embeds: [embedRecord],
+                components: [btnProfile],
+            });
+        } catch (error) {
+            console.error("Error:", error);
+            loadingTxt.edit({
+                content: `Something wrong happened..\n**unable to send the record now**`
+            });
+        }
     }
-})
+};
