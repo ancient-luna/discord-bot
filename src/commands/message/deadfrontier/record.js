@@ -3,7 +3,7 @@ const jsdom = require("jsdom");
 const axios = require('axios');
 
 module.exports = {
-    name: "acvrecord",
+    name: "record",
     description: "record.",
     category: "Deadfrontier",
     usage: "",

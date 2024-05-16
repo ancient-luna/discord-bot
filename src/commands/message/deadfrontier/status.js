@@ -3,7 +3,7 @@ const jsdom = require("jsdom");
 const axios = require('axios');
 
 module.exports = new Object({
-    name: "acvstatus",
+    name: "status",
     description: "status.",
     category: "Deadfrontier",
     usage: "",
