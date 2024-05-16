@@ -22,7 +22,8 @@ module.exports = {
     .addFields(
         { name: `**Street Fight / PVP**`, value: `- Killing is OK __**only** in arsha__\n- For spots *normal server* can kill **but** ask for DFS first; *arsha server* free kill\n- Avoid bad manner and dont ever trash talking in any servers\n - Any toxicity behaviors in the guild and outside guild are strongly prohibited.  Action will be taken if it happens`, inline: false },
         { name: `**Guild Quests**`, value: `- Guild Quests only can be taken for **current guild size** only\n - SMH, Combat, and Life GQs can be in any time\n - Guild Mission Specialist position reset every Monday (can reapply again without any requirements)`, inline: false },
-        { name: `**Vacation / Day-Off**`, value: `If you are unable to login for 7 days straight it is a must to let us know so we may not kick you out from the guild. **Apply for vacation** in <#1060992992523079800>`, inline: false }
+        { name: `**Guild Buffs**`, value: `- Its always ready 24/7\n - Just chat in guild chat in game to cast the guild buffs (Combat and or Life)\n - Mention <@&1235965537326993450> in <#1060992670035619931> to cast the guild buffs (Combat and or Life) if theres no officer above is online`, inline: false },
+        { name: `**Vacation / Day-Off**`, value: `If you are unable to login for 7 days straight it is a must to let us know so we may not kick you out from the guild. **Vacation** button in <#1060992992523079800>`, inline: false }
     )
     .setColor(client.config.embedColorTrans)
     .setTimestamp()
