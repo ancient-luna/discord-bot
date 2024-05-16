@@ -185,7 +185,7 @@ module.exports = new Object({
           readFiles: true,
           readImages: true,
           personality: '',
-          API_KEY: '',
+          API_KEY: process.env.GOOGLE_AI_API,
           memory: {
             memoryOn: true,
             id: message.author.id
