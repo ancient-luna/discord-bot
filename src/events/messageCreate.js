@@ -180,25 +180,16 @@ module.exports = new Object({
     if (client.config.aiChatChannel.includes(message.channel.id)) {
       const { ApexAI } = require('apexify.js');
       const aiOptions = {
-        // voice: {
-        //   enable: false,
-        //   voiceModal: "google",
-        //   voice_code: "en-US-3",
-        //   apiKey: "",
-        //   type: "b"
-        // },
-        // imagine: {
-        //   enable: false,
-        //   drawTrigger: ["create", "imagine"],
-        //   imageModel: "prodia",
-        //   numOfImages: 2,
-        //   nsfw: false,
-        //   enhancer: false
-        // },
         chat: {
-          chatModel: "gemini",
+          chatModal: "gemini-pro",
           readFiles: true,
           readImages: true,
+          personality: '',
+          API_KEY: '',
+          memory: {
+            memoryOn: true,
+            id: message.author.id
+          },
           typeWriting: {
             enable: false,
             speed: 70,
@@ -206,30 +197,10 @@ module.exports = new Object({
           }
         },
         others: {
-          // keywords: ["what is your name", "who made you", "who develop you", "who is your developer"],
-          // keywordResponses: {
-          //   help: "By the great wisdom of lleud, I'm here to assist you!",
-          //   info: "Here is some wisdom I have found from sanctuary for you."
-          // },
           messageType: {
-              type: 'send', // Specify the type either 'send' or 'type'
-              intialContent: `<@${message.author.id}> `
+            type: 'send', // Specify the type either 'send' or 'type'
+            intialContent: `<@${message.author.id}> `
           },
-          // loader: {
-          //   enable: false,
-          //   loadingMessage: "**generating** <a:_util_loading:863317596551118858>",
-          //   loadingTimer: 5000
-          // },
-          // channel: {
-          //   enable: false,
-          //   id: ['']
-          // },
-          // permissions: {
-          //   enable: false,
-          //   role: [''],
-          //   permission: [''],
-          //   blockedUsers: ['']
-          // }
         }
       };
       await ApexAI(message, aiOptions)
