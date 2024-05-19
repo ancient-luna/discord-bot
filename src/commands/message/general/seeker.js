@@ -66,7 +66,7 @@ module.exports = new Object({
                 .addComponents(avatarButton, bannerButton);
 
             const Embed = new EmbedBuilder()
-                .setAuthor({ name: `User Profile Information` })
+                .setTitle(`User Profile Information`)
                 .setColor('Aqua')
                 .setDescription(`<@${member.id}> joined as the **${addSuffix(joinPosition)}** member of this server.`)
                 .setImage("attachment://profile.png")

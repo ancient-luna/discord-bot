@@ -7,7 +7,7 @@ module.exports = {
   category: "Usercard",
   usage: "",
   cooldown: 0,
-  aliases: [''],
+  aliases: ['test'],
   examples: [''],
   sub_commands: [],
   args: false,
@@ -29,8 +29,8 @@ module.exports = {
     const canvas = createCanvas(500, 800);
     const ctx = canvas.getContext("2d");
 
-    registerFont('src/assets/usercard/PaybAck.ttf', { family: 'PaybAck' });
-    registerFont('src/assets/usercard/Jazz Jazgarzewszczyzna.ttf', { family: 'Jazz Jazgarzewszczyzna' });
+    registerFont('src/assets/usercard/paybAck.ttf', { family: 'paybAck' });
+    registerFont('src/assets/usercard/HelveticaBold.ttf', { family: 'Helvetica' });
 
     function roundRect(ctx, x, y, width, height, radius, fill, stroke) {
       if (typeof stroke === 'undefined') {
@@ -66,7 +66,7 @@ module.exports = {
       }
     }
 
-    fs.readFile('src/assets/usercard/template.png', async (err, data) => {
+    fs.readFile('src/assets/usercard/signature.png', async (err, data) => {
       if (err) {
         console.error('Error reading file:', err);
         return message.reply('Failed to read image file.');
@@ -89,13 +89,13 @@ module.exports = {
 
         // Continuously check if the name fits within the canvas width
         while (!nameFits && fontSize > 10) {
-            ctx.font = `${fontSize}px "PaybAck"`;
-            let nameWidth = ctx.measureText(displayName).width;
-            if (nameWidth <= 500 - 2 * padding) {
-                nameFits = true;
-            } else {
-                fontSize -= 2;
-            }
+          ctx.font = `${fontSize}px "paybAck"`;
+          let nameWidth = ctx.measureText(displayName).width;
+          if (nameWidth <= 500 - 2 * padding) {
+            nameFits = true;
+          } else {
+            fontSize -= 2;
+          }
         }
 
         ctx.textAlign = "center";
@@ -120,7 +120,7 @@ module.exports = {
         avatarCtx.clip();
         avatarCtx.drawImage(avatar, 0, 0, avatarX, avatarY);
         ctx.drawImage(avatarCanvas, 100, 139);
-        
+
         // Generate role texts
         const limitRoles = [
           '590848319111299093', // ancestorID
@@ -136,11 +136,12 @@ module.exports = {
         // Sort roles alphabetically
         const sortedRoles = message.member.roles.cache
           .filter(role => limitRoles.includes(role.id) && role.name !== '@everyone')
-          .sort((a, b) => a.name.localeCompare(b.name));
+          // .sort((a, b) => a.name.localeCompare(b.name));
+          .sort((a, b) => b.position - a.position);
 
         beginY += 560;
         let rows = [{ row: 1, roles: [], width: 0 }];
-        ctx.font = '16pt Jazz Jazgarzewszczyzna';
+        ctx.font = '16pt Helvetica';
         let length = 0;
 
         sortedRoles.forEach((role, index) => {
@@ -157,22 +158,22 @@ module.exports = {
 
         ctx.textAlign = "left";
         rows.forEach(row => {
-          beginX = 250-((row.width/2))
+          beginX = 250 - ((row.width / 2))
           row.roles.forEach((r, index) => {
             let role = message.member.roles.cache.find(i => i.id === r)
             let roleColor = role.color.toString(16).padStart(6, '0')
-            if(role){
+            if (role) {
               let length = ctx.measureText(role.name.toUpperCase()).width;
-              if(endX > beginX){
+              if (endX > beginX) {
                 ctx.fillStyle = "#0c202e";
-                roundRect(ctx, beginX, beginY-26, length+(padding*2), parseInt(fontSize)+7, 22, true, false);
+                roundRect(ctx, beginX, beginY - 26, length + (padding * 2), parseInt(fontSize) + 7, 22, true, false);
                 ctx.fillStyle = `#${roleColor}`
-                ctx.fillText(role.name.toUpperCase(), beginX+padding, beginY);
+                ctx.fillText(role.name.toUpperCase(), beginX + padding, beginY);
               }
-              beginX+=length+spaceX+(padding*2);
+              beginX += length + spaceX + (padding * 2);
             }
           })
-          beginY+=55
+          beginY += 55
         })
 
         const sfBuffer = canvas.toBuffer();
@@ -184,7 +185,7 @@ module.exports = {
               name: 'fellowcard.png'
             }
           ]
-        }).then((msg) => {msg.react('ancientluna_divinare:841754250949820416')}).catch((e) => { });
+        }).then((msg) => { msg.react('ancientluna_divinare:841754250949820416') }).catch((e) => { });
       } catch (error) {
         console.error('Error:', error);
         await loadingTxt.edit('Failed to create test card. Please try again later.');
