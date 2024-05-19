@@ -30,7 +30,7 @@ module.exports = {
     const ctx = canvas.getContext("2d");
 
     registerFont('src/assets/usercard/PaybAck.ttf', { family: 'PaybAck' });
-    registerFont('src/assets/usercard/HelveticaBold.ttf', { family: 'Helvetica' });
+    registerFont('src/assets/usercard/HelveticaBold.ttf', { family: 'HelveticaBold' });
 
     function roundRect(ctx, x, y, width, height, radius, fill, stroke) {
       if (typeof stroke === 'undefined') {
@@ -141,7 +141,7 @@ module.exports = {
 
         beginY += 560;
         let rows = [{ row: 1, roles: [], width: 0 }];
-        ctx.font = '16pt Helvetica';
+        ctx.font = '16pt HelveticaBold';
         let length = 0;
 
         sortedRoles.forEach((role, index) => {
