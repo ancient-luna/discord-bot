@@ -7,7 +7,7 @@ module.exports = {
   category: "Usercard",
   usage: "",
   cooldown: 0,
-  aliases: ['test'],
+  aliases: [''],
   examples: [''],
   sub_commands: [],
   args: false,
