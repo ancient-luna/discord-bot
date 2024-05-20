@@ -23,7 +23,11 @@ module.exports = {
 
     const channel = interaction.channel;
     const channelName = channel.name;
-    const attachment = await discordTranscripts.createTranscript(channel);
+    const attachment = await discordTranscripts.createTranscript(channel, {
+      filename: `${interaction.channel.name}-transcript.html`,
+      footerText: `Exported {number} message{s}.`,
+      poweredBy: false,
+    });
     
     interaction.guild.channels.cache.get('1162419484305391800').send({ content: `Transcripted chat from **# ${channelName}** <:tag:1170150772894351541>`, files: [attachment] })
     interaction.reply({
