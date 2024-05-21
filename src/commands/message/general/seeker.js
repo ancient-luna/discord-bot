@@ -31,6 +31,8 @@ module.exports = new Object({
             const fetchedMembers = await message.guild.members.fetch();
 
             const profileBuffer = await profileImage(member.id, {
+                customBadges: ['src/assets/badge/ancientluna.png'],
+                customDate: '.gg/ancientluna',
                 moreBackgroundBlur: true,
             });
             const imageAttachment = new AttachmentBuilder(profileBuffer, { name: `profile.png` });
