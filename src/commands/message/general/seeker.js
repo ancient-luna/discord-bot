@@ -30,8 +30,10 @@ module.exports = new Object({
             const member = message.mentions.members.first() || message.member;
             const fetchedMembers = await message.guild.members.fetch();
 
-            const profileBuffer = await profileImage(member.id);
-            const imageAttachment = new AttachmentBuilder(profileBuffer, { name: 'profile.png' });
+            const profileBuffer = await profileImage(member.id, {
+                moreBackgroundBlur: true,
+            });
+            const imageAttachment = new AttachmentBuilder(profileBuffer, { name: `${member.user.username}-profile.png` });
 
             const joinPosition = Array.from(fetchedMembers
                 .sort((a, b) => a.joinedTimestamp - b.joinedTimestamp)
@@ -69,7 +71,7 @@ module.exports = new Object({
                 .setTitle(`User Profile Information`)
                 .setColor('Aqua')
                 .setDescription(`<@${member.id}> joined as the **${addSuffix(joinPosition)}** member of this server.`)
-                .setImage("attachment://profile.png")
+                .setImage(`attachment://${member.user.username}-profile.png`)
                 .addFields([
                     { name: "Account Created", value: `<t:${createdTime}:R>`, inline: true },
                     { name: "Joined Since", value: `<t:${joinTime}:D>`, inline: true },
@@ -79,7 +81,7 @@ module.exports = new Object({
                     { name: `Roles in ${message.guild.name}`, value: `${topRoles.join(" ").replace(`<@${message.guildId}>`)}`, inline: false },
                 ])
                 .setColor(client.config.embedColorTrans)
-                .setFooter({ text: `ID: ${member.id}` })
+                .setFooter({ text: `ID: ${member.id} (u) ${member.user.username}` })
 
             loadingTxt.edit({ content: '⁣', embeds: [Embed], components: [row], files: [imageAttachment] });
 

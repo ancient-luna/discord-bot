@@ -1,4 +1,5 @@
 const { EmbedBuilder } = require("discord.js");
+const { profileImage } = require('discord-arts');
 
 module.exports = new Object({
     name: "guildMemberAdd",
@@ -11,13 +12,19 @@ module.exports = new Object({
         const role = member.guild.roles.cache.get(client.config.luxCastaId);
         await member.roles.add(role.id).catch((err) => util.printLog('error', err));
         const channel = member.guild.channels.cache.get(client.config.gatewayChannel);
+        const profileBuffer = await profileImage(member.id, {
+            removeBadges: true,
+            moreBackgroundBlur: true,
+        });
+        const welcomeImage = new AttachmentBuilder(profileBuffer, { name: `${member.user.username}-profile.png` });
         const welcomeText = new EmbedBuilder()
             .setTitle(`Welcome to ${member.guild.name}`)
-            .setThumbnail(member.user.displayAvatarURL({ dynamic: true, size: 512 }))
+            // .setThumbnail(member.user.displayAvatarURL({ dynamic: true, size: 512 }))
             .setDescription(`<@${member.user.id}> please understand our **wisdom of lleud** at ${member.guild.channels.cache.get(client.config.ruleChannel).toString()} as you make your way through this warm sanctuary`)
             .setFooter({ text: `${member.user.username} visited the sanctuary` })
+            .setImage(`attachment://${member.user.username}-profile.png`)
             .setColor('7289da')
             .setTimestamp();
-        return channel.send({ embeds: [welcomeText] });
+        return channel.send({ embeds: [welcomeText], files: [welcomeImage] });
     }
 })
