@@ -33,7 +33,7 @@ module.exports = new Object({
             const profileBuffer = await profileImage(member.id, {
                 moreBackgroundBlur: true,
             });
-            const imageAttachment = new AttachmentBuilder(profileBuffer, { name: `${member.user.username}-profile.png` });
+            const imageAttachment = new AttachmentBuilder(profileBuffer, { name: `profile.png` });
 
             const joinPosition = Array.from(fetchedMembers
                 .sort((a, b) => a.joinedTimestamp - b.joinedTimestamp)
@@ -52,7 +52,7 @@ module.exports = new Object({
             const joinTime = parseInt(member.joinedTimestamp / 1000);
             const createdTime = parseInt(member.user.createdTimestamp / 1000);
 
-            const Booster = member.premiumSince ? "<a:_ab_discord_boost_spin:965778537334312970> active" : "none";
+            const Booster = member.premiumSince ? "<a:_ab_discord_boost_spin:965778537334312970> boosting" : "none";
 
             const avatarButton = new ButtonBuilder()
                 .setLabel('Avatar')
@@ -68,17 +68,17 @@ module.exports = new Object({
                 .addComponents(avatarButton, bannerButton);
 
             const Embed = new EmbedBuilder()
-                .setTitle(`User Profile Information`)
+                .setTitle(`User Profile in ${message.guild.name}`)
                 .setColor('Aqua')
                 .setDescription(`<@${member.id}> joined as the **${addSuffix(joinPosition)}** member of this server.`)
-                .setImage(`attachment://${member.user.username}-profile.png`)
+                .setImage(`attachment://profile.png`)
                 .addFields([
                     { name: "Account Created", value: `<t:${createdTime}:R>`, inline: true },
                     { name: "Joined Since", value: `<t:${joinTime}:D>`, inline: true },
                     // { name: "User ID", value: `${member.id}`, inline: true },
                     // { name: "Badges", value: `${addBadges(userBadges).join("")}`, inline: true },
-                    { name: "Booster", value: `${Booster}`, inline: true },
-                    { name: `Roles in ${message.guild.name}`, value: `${topRoles.join(" ").replace(`<@${message.guildId}>`)}`, inline: false },
+                    { name: "Server Booster", value: `${Booster}`, inline: true },
+                    // { name: `Roles in ${message.guild.name}`, value: `${topRoles.join(" ").replace(`<@${message.guildId}>`)}`, inline: false },
                 ])
                 .setColor(client.config.embedColorTrans)
                 .setFooter({ text: `ID: ${member.id} (u) ${member.user.username}` })
