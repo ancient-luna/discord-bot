@@ -8,7 +8,7 @@ module.exports = new Object({
     category: "Entertainment",
     usage: "",
     cooldown: 0,
-    aliases: ['test'],
+    aliases: [''],
     examples: [''],
     sub_commands: [],
     args: false,
