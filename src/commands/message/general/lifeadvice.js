@@ -28,8 +28,6 @@ module.exports = new Object({
         let user = message.mentions.members.first() || message.member;
         let tweet = await axios.get('https://api.adviceslip.com/advice');
 
-        const loadingTxt = await message.reply(`**${user.displayName}** is writing an advice <a:_util_loading:863317596551118858>`);
-
         const randomReplies = Math.floor(Math.random() * 333);
         const randomRetweets = Math.floor(Math.random() * 666);
 
@@ -41,22 +39,13 @@ module.exports = new Object({
 
         let avatarUrl = user.displayAvatarURL({ extension: "jpg" }) || 'https://cdn.discordapp.com/attachments/1080219392337522718/1093224716875087892/twitter.png';
 
-        let canvasUrl = `https://some-random-api.com/canvas/tweet?avatar=${avatarUrl}&displayname=${encodeURIComponent(user.displayName)}&username=${encodeURIComponent(user.user.username)}&comment=${encodeURIComponent(tweet.data.slip.advice)}&replies=${randomReplies}&retweets=${randomRetweets}&likes=${randomLikes}`;
-
-        let response = await axios.get(canvasUrl, { responseType: 'arraybuffer' });
-        let buffer = Buffer.from(response.data, 'binary');
-
-        const attachment = new AttachmentBuilder(buffer, { name: 'advice.png' });
-
+        let canvas = `https://some-random-api.com/canvas/tweet?avatar=${avatarUrl}&displayname=${encodeURIComponent(user.displayName)}&username=${encodeURIComponent(user.user.username)}&comment=${encodeURIComponent(tweet.data.slip.advice)}&replies=${randomReplies}&retweets=${randomRetweets}&likes=${randomLikes}`;
+        
         let advice = new EmbedBuilder()
             .setAuthor({ name: `𝔸𝕕𝕧𝕚𝕔𝕖 𝕠𝕗 𝕃𝕚𝕗𝕖`, iconURL: 'https://i.imgur.com/nF8zpsB.png' })
             .setColor(client.config.embedColorTrans)
-            .setImage('attachment://advice.png')
+            .setImage(canvas)
 
-        loadingTxt.edit({
-            content: '⁣',
-            embeds: [advice],
-            files: [attachment],
-        });
+        await message.channel.send({ embeds: [advice] });
     }
 });
