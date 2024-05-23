@@ -7,7 +7,7 @@ module.exports = {
     category: "Entertainment",
     usage: "",
     cooldown: 0,
-    aliases: ['test'],
+    aliases: [''],
     examples: [''],
     sub_commands: [],
     args: false,
@@ -28,12 +28,10 @@ module.exports = {
 
         const loadingTxt = await message.reply(`Tracking on what **${listener.displayName}** is listening to <a:_util_loading:863317596551118858>`);
 
-        // Ensure presence is not null
         if (!listener.presence || !listener.presence.activities) {
             return await loadingTxt.edit({ content: `**${listener.displayName}**'s presence or activities data is not available.` });
         }
 
-        // Find the Spotify activity
         let status = listener.presence.activities.find(activity => activity.name === "Spotify" && activity.type === 2); // Type 2 corresponds to 'LISTENING'
 
         if (!status) {
