@@ -1,14 +1,13 @@
 const { EmbedBuilder, AttachmentBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle } = require('discord.js');
 const canvafy = require('canvafy');
 
-
-module.exports = new Object({
+module.exports = {
     name: "spotify",
     description: "spotify.",
     category: "Entertainment",
     usage: "",
     cooldown: 0,
-    aliases: [''],
+    aliases: ['test'],
     examples: [''],
     sub_commands: [],
     args: false,
@@ -25,20 +24,23 @@ module.exports = new Object({
      * @param {String[]} args
      */
     async execute(client, message, args) {
-
         let listener = message.mentions.members.first() || message.member;
 
-        const loadingTxt = await message.reply(`tracking on what **${listener.displayName}** listen to <a:_util_loading:863317596551118858>`);
+        const loadingTxt = await message.reply(`Tracking on what **${listener.displayName}** is listening to <a:_util_loading:863317596551118858>`);
 
-        let status;
-        if (listener.presence.activities.length === 1) status = listener.presence.activities[0];
-        else if (listener.presence.activities.length > 1) status = listener.presence.activities[1];
-
-        if (listener.presence.activities.length === 0 || status.name !== "Spotify" && status.type !== "LISTENING") {
-            return await loadingTxt.edit({ content: `**${listener.displayName}** is not listening to Spotify` });
+        // Ensure presence is not null
+        if (!listener.presence || !listener.presence.activities) {
+            return await loadingTxt.edit({ content: `**${listener.displayName}**'s presence or activities data is not available.` });
         }
 
-        if (status !== null && status.name === "Spotify" && status.assets !== null) {
+        // Find the Spotify activity
+        let status = listener.presence.activities.find(activity => activity.name === "Spotify" && activity.type === 2); // Type 2 corresponds to 'LISTENING'
+
+        if (!status) {
+            return await loadingTxt.edit({ content: `**${listener.displayName}** is not listening to Spotify.` });
+        }
+
+        if (status.assets) {
             let image = `https://i.scdn.co/image/${status.assets.largeImage.slice(8)}`;
             let name = status.details;
             let artist = status.state;
@@ -53,7 +55,7 @@ module.exports = new Object({
                 .setImage(image)
                 .setTitle(name)
                 .setBlur(5)
-                .setOverlayOpacity(0.7)
+                .setOverlayOpacity(0.7);
 
             const Card = await spotify.build();
             const attachments = new AttachmentBuilder(Card, { name: "spotify.png" });
@@ -68,14 +70,14 @@ module.exports = new Object({
             const trackId = status.syncId;
 
             const link = new ActionRowBuilder()
-                    .addComponents(
-                        new ButtonBuilder()
-                            .setStyle(ButtonStyle.Link)
-                            .setLabel(`listen the song here`)
-                            .setURL(`https://open.spotify.com/track/${trackId}`)
-                    )
+                .addComponents(
+                    new ButtonBuilder()
+                        .setStyle(ButtonStyle.Link)
+                        .setLabel(`Listen to the song here`)
+                        .setURL(`https://open.spotify.com/track/${trackId}`)
+                );
 
-            loadingTxt.edit({
+            await loadingTxt.edit({
                 content: '⁣',
                 embeds: [embed],
                 files: [attachments],
@@ -83,4 +85,4 @@ module.exports = new Object({
             });
         }
     }
-});
+};
