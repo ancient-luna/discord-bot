@@ -38,24 +38,31 @@ module.exports = new Object({
             // let newFile = new AttachmentBuilder("src/assets/df/thecallers.gif")
 
             const editEmbed = new EmbedBuilder()
-                // .setTitle('EXCLUSIVE ROLES')
+                .setTitle('EXCLUSIVE ROLES')
+                // .setDescription(`<@&620709364247822338> for the members who boost the server\n<@&888736428069105674> for the supporters through [Ko-Fi](https://ko-fi.com/xxdae) or [Trakteer](https://trakteer.id/xxdae)\n<@&1148832046505009193> for the content creators and or huge game developers`)
                 .setDescription(cntntQ)
                 .setColor(client.config.embedColorTrans)
-                // .setImage('https://i.imgur.com/tRx8iKL.png')
+                .setImage('https://imgur.com/tRx8iKL')
                 // .setFooter({ text: `*this is world boss alerts (ASIA region only) GMT+8` })
 
-            // const editButton = new ActionRowBuilder()
-            // .addComponents(
-            //     new ButtonBuilder()
-            //     .setCustomId("btn-ticketopen")
-            //     .setLabel("Open a Ticket")
-            //     .setStyle(ButtonStyle.Primary)
-            // )
+                const editButton = new ActionRowBuilder()
+                .addComponents(
+                    new ButtonBuilder()
+                    .setStyle(ButtonStyle.Link)
+                    .setLabel(`Support (Ko-Fi)`)
+                    .setURL(`https://ko-fi.com/daexx`)
+                )
+                .addComponents(
+                    new ButtonBuilder()
+                    .setStyle(ButtonStyle.Link)
+                    .setLabel(`Support (Trakteer)`)
+                    .setURL(`https://trakteer.id/daexx`)
+                )
 
             message.channel.send("Embed: **EDITED** ! `updated`").catch((e) => { });
             messageID.edit({
                 embeds: [editEmbed],
-                // components: [editButton],
+                components: [editButton],
                 // files: [newFile]
             });
 
