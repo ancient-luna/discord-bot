@@ -20,7 +20,7 @@
     "@discordjs/voice": "^0.16.0",
     "@iamtraction/google-translate": "^2.0.1",
     "@sentry/node": "^7.53.1",
-    "apexify.js": "^4.1.5",
+    "apexify.js": "^4.1.6",
     "axios": "^1.7.1",
     "body-parser": "^1.20.2",
     "canvacord": "^5.4.10",
