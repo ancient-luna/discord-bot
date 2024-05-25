@@ -42,7 +42,7 @@ module.exports = new Object({
                 // .setDescription(`<@&620709364247822338> for the members who boost the server\n<@&888736428069105674> for the supporters through [Ko-Fi](https://ko-fi.com/xxdae) or [Trakteer](https://trakteer.id/xxdae)\n<@&1148832046505009193> for the content creators and or huge game developers`)
                 .setDescription(cntntQ)
                 .setColor(client.config.embedColorTrans)
-                .setImage('https://i.imgur.com/tRx8iKL.png')
+                .setImage('https://i.imgur.com/vecvAJA.png')
             // .setFooter({ text: `*this is world boss alerts (ASIA region only) GMT+8` })
 
             const editButton = new ActionRowBuilder()
