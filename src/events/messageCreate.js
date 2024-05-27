@@ -9,7 +9,7 @@ module.exports = new Object({
    * @param {import("../index")} client
    * @param {import("discord.js").Message} message
    */
-  async execute(client, message) {
+  async execute(client, message) {  
     // Setup Role And Rules
     const text = client.config.preMemberTriggerMessage;
     function hasMixedCase(text) {
@@ -67,40 +67,6 @@ module.exports = new Object({
     if (message.partial) await message.fetch();
     if (!message.guild) return;
     if (message.author.bot) return;
-
-    // StickyNote Confession
-    if (client.config.confessionChannel.includes(message.channel.id)) {
-      try {
-        const fetchedConfessMessages = await message.channel.messages.fetch();
-        const stickyConfession = fetchedConfessMessages.find(m => 
-          m.author.id === client.user.id && 
-          client.config.confessionChannel.includes(m.channel.id) &&
-          m.embeds.length > 0 && 
-          m.embeds[0].footer && 
-          m.embeds[0].footer.text.startsWith("click")
-        );
-        const embedConfess = new EmbedBuilder()
-          .setDescription(`click on button ✦`)
-          .setColor(client.config.embedColorTrans)
-        const buttonConfess = new ActionRowBuilder()
-          .addComponents(
-            new ButtonBuilder()
-              .setCustomId("btn-confession")
-              .setLabel("Write confess")
-              .setEmoji('<:icons_write:1163563520248512654>')
-              .setStyle(ButtonStyle.Secondary)
-          )
-        if (stickyConfession) {
-          await stickyConfession.delete();
-        }
-        await message.channel.send({
-          embeds: [embedConfess],
-          components: [buttonConfess]
-        });
-      } catch (error) {
-        console.error('Error handling sticky confession:', error);
-      }
-    };
 
     // StickyNote Lucent Fountain
     if (client.config.stickyLucentChannel.includes(message.channel.id)) {
