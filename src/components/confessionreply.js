@@ -28,7 +28,7 @@ module.exports = {
         required: true,
         maxLength: 666,
         placeholder: '(!) Just do not harass anyone',
-    })
+    });
 
     const firstRow = new ActionRowBuilder().addComponents(confessionInputReply)
 
