@@ -44,11 +44,12 @@ module.exports = {
         .then((modalInteraction) => {
             const confessionValue = modalInteraction.fields.getTextInputValue('confessionInput');
             const confessionTxt = new EmbedBuilder()
-                .setAuthor({ name: "confession", url: "https://discord.com/channels/447069790150852609/1162410164356390912" })
-                .setDescription(`<:like:1220170210624143540> <:love:1220170208392773694> <:repost:1220170206337437847> <:share:1220170203913261087>\n\n${confessionValue}`)
+                // .setAuthor({ name: "confession", url: "https://discord.com/channels/447069790150852609/1162410164356390912" })
+                .setTitle(`someone's confess`)
+                .setDescription(`[<:like:1220170210624143540> <:repost:1220170206337437847> <:share:1220170203913261087>](https://discord.com/channels/447069790150852609/1162410164356390912/1163378443287797831)\n\n${confessionValue}`)
                 .setColor(client.config.embedColorTrans)
                 .setTimestamp()
-                .setFooter({ text: 'from Anonymous (click on title to send)' })
+                .setFooter({ text: 'from Anonymous' })
             const btnConfess = new ActionRowBuilder()
               .addComponents(
                   new ButtonBuilder()

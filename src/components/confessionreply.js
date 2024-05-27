@@ -48,7 +48,7 @@ module.exports = {
                 .setDescription(`${confessionValue}`)
                 .setColor(client.config.embedColorTrans)
                 .setTimestamp()
-                .setFooter({ text: 'from Anonymous (click on title to send)' })
+                .setFooter({ text: 'from Anonymous' })
             const confessionLog = new EmbedBuilder()
                 .setDescription(`<@${interaction.member.id}> just replied confession`)
                 .setColor(client.config.embedColorTrans)
