@@ -159,7 +159,7 @@ module.exports = new Object({
       if (stickyLucentMessage) {
         stickyLucentMessage.delete().then(() => {
           message.channel.send({
-            content: `**Best luck!** Event end <t:1717524000:R>`,
+            content: `**Best luck!** Event end <t:1717477200:R>`,
             // embeds: [embedLucent],
             files: [ringOfire],
             components: [btnLucent]
