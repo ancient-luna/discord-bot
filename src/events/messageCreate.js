@@ -68,8 +68,9 @@ module.exports = new Object({
     if (!message.guild) return;
     if (message.author.bot) return;
 
-    // StickyNote Lucent Fountain
-    if (client.config.stickyLucentChannel.includes(message.channel.id)) {
+    // START OF STICKY MESSAGES =========================================================================================================
+
+    if (client.config.stickyLucentChannel.includes(message.channel.id)) { // StickyNote Lucent Fountain
       const fetchedLucentMessages = await message.channel.messages.fetch();
       const stickyLucentMessage = fetchedLucentMessages.find(m => m.author.id === client.user.id && client.config.stickyLucentChannel.includes(m.channel.id));
       const embedLucent = new EmbedBuilder()
@@ -91,54 +92,45 @@ module.exports = new Object({
             .setEmoji('<:game_logo_bdo:861579805660151818>')
             .setStyle(ButtonStyle.Primary)
         )
-      if (stickyLucentMessage) {
-        stickyLucentMessage.delete().then(() => {
-          message.channel.send({
-            embeds: [embedLucent],
-            components: [btnLucent]
-          });
-        }).catch(() => { });
-      } else {
-        // Force send a new message.
-        message.channel.send({
-          embeds: [embedLucent],
-          components: [btnLucent]
-        });
+      try {
+        if (stickyLucentMessage) { await stickyLucentMessage.delete(); }
+        await message.channel.send({ embeds: [embedLucent], components: [btnLucent] });
+      } catch (error) {
+        console.error('Failed to send or delete the sticky message:', error);
       }
     };
 
-    // StickyNote Tales of Lights
-    if (client.config.stickyTalesChannel.includes(message.channel.id)) {
+    if (client.config.stickyTalesChannel.includes(message.channel.id)) { // StickyNote Tales of Lights
       const fetchedTalesMessages = await message.channel.messages.fetch();
       const stickyTalesMessage = fetchedTalesMessages.find(m => m.author.id === client.user.id && client.config.stickyTalesChannel.includes(m.channel.id));
-      const lunaThumbnail = [
-        'https://i.imgur.com/B6u2feA.png', 'https://i.imgur.com/DrmVtuP.png', 'https://i.imgur.com/Z5mq7OF.png', 'https://i.imgur.com/M0U4I56.png', 'https://i.imgur.com/jOGuk7s.png', 'https://i.imgur.com/tM9xIaq.png', 'https://i.imgur.com/hIBEDkM.png', 'https://i.imgur.com/GUYxDJF.png', 'https://i.imgur.com/MjADPRv.png', 'https://i.imgur.com/InURa9o.png', 'https://i.imgur.com/son6e07.png', 'https://i.imgur.com/0wE5Qyp.png', 'https://i.imgur.com/DHzUulL.png', 'https://i.imgur.com/bEIn9Ag.png', 'https://i.imgur.com/qkw8aXV.png',
-      ]
-      const stickyText = new EmbedBuilder()
-        .setTitle(`Ancient Luna Activity Tracker`)
-        .setDescription(`Thanks for the hardwork!\nClick on this button to update the payout sheet.`)
-        // .setThumbnail(`https://i.imgur.com/JGmEtSL.png`)
-        .setThumbnail(`${lunaThumbnail[Math.floor(Math.random() * lunaThumbnail.length)]}`)
+      const lunaThumbnails = [
+        'https://i.imgur.com/B6u2feA.png', 'https://i.imgur.com/DrmVtuP.png', 'https://i.imgur.com/Z5mq7OF.png',
+        'https://i.imgur.com/M0U4I56.png', 'https://i.imgur.com/jOGuk7s.png', 'https://i.imgur.com/tM9xIaq.png',
+        'https://i.imgur.com/hIBEDkM.png', 'https://i.imgur.com/GUYxDJF.png', 'https://i.imgur.com/MjADPRv.png',
+        'https://i.imgur.com/InURa9o.png', 'https://i.imgur.com/son6e07.png', 'https://i.imgur.com/0wE5Qyp.png',
+        'https://i.imgur.com/DHzUulL.png', 'https://i.imgur.com/bEIn9Ag.png', 'https://i.imgur.com/qkw8aXV.png'
+      ];
+      const randomThumbnail = lunaThumbnails[Math.floor(Math.random() * lunaThumbnails.length)];
+      const embedSheet = new EmbedBuilder()
+        .setTitle('Ancient Luna Activity Tracker')
+        .setDescription('Thanks for the hard work!\nClick on this button to update the payout sheet.')
+        .setThumbnail(randomThumbnail)
         .setColor(client.config.embedColorTrans);
-      let linkSheet = new ActionRowBuilder()
-        .addComponents(
-          new ButtonBuilder()
-            .setStyle(ButtonStyle.Link)
-            .setLabel(`Payout sheet`)
-            .setURL(`https://docs.google.com/spreadsheets/d/1hb-WK8921d0erv4zQ5vTpBzEsnMNW0VTLycHwyAW3_k`)
-        )
-      if (stickyTalesMessage) {
-        stickyTalesMessage.delete().then(() => {
-          message.channel.send({ embeds: [stickyText], components: [linkSheet] });
-        }).catch(() => { });
-      } else {
-        // Force send a new message.
-        message.channel.send({ embeds: [stickyText], components: [linkSheet] });
+      const btnSheet = new ActionRowBuilder().addComponents(
+        new ButtonBuilder()
+          .setStyle(ButtonStyle.Link)
+          .setLabel('Payout sheet')
+          .setURL('https://docs.google.com/spreadsheets/d/1hb-WK8921d0erv4zQ5vTpBzEsnMNW0VTLycHwyAW3_k')
+      );
+      try {
+        if (stickyTalesMessage) { await stickyTalesMessage.delete(); }
+        await message.channel.send({ embeds: [embedSheet], components: [btnSheet] });
+      } catch (error) {
+        console.error('Failed to send or delete the sticky message:', error);
       }
     };
 
-    // StickyNote Guild Leagues
-    if (client.config.stickyGLeagueChannel.includes(message.channel.id)) {
+    if (client.config.stickyGLeagueChannel.includes(message.channel.id)) { // StickyNote Guild Leagues
       const fetchedGLeagueMessages = await message.channel.messages.fetch();
       const stickyGLeagueMessage = fetchedGLeagueMessages.find(m => m.author.id === client.user.id && client.config.stickyGLeagueChannel.includes(m.channel.id));
       // const ringOfire = new AttachmentBuilder("src/assets/ringoffire.mp4");
@@ -150,9 +142,7 @@ module.exports = new Object({
             .setURL(`https://blackdesert.pearlabyss.com/asia/en-us/News/Notice/Detail?_boardNo=6186`)
         );
       try {
-        if (stickyGLeagueMessage) {
-          await stickyGLeagueMessage.delete();
-        }
+        if (stickyGLeagueMessage) { await stickyGLeagueMessage.delete(); }
         await message.channel.send({
           content: `[**Take it slow, warmest luck**](https://open.spotify.com/track/6oSJ7jOB4BQv2bInqGMwru?si=281c0d510cf94c11) <:reply:1163568309816541256>\nEvent end <t:1719939600:R> [<t:1719939600:f>]`,
           // files: [ringOfire],
@@ -161,7 +151,9 @@ module.exports = new Object({
       } catch (error) {
         console.error('Failed to send or delete the sticky message:', error);
       }
-    }
+    };
+
+    // END OF STICKY MESSAGES =========================================================================================================
 
     // Chat AI
     if (client.config.aiChatChannel.includes(message.channel.id)) {
