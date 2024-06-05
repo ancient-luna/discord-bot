@@ -149,7 +149,6 @@ module.exports = new Object({
             .setLabel(`More details about the event`)
             .setURL(`https://blackdesert.pearlabyss.com/asia/en-us/News/Notice/Detail?_boardNo=6186`)
         );
-
       try {
         if (stickyGLeagueMessage) {
           await stickyGLeagueMessage.delete();
@@ -157,7 +156,7 @@ module.exports = new Object({
         await message.channel.send({
           content: `[**Take it slow, warmest luck**](https://open.spotify.com/track/6oSJ7jOB4BQv2bInqGMwru?si=281c0d510cf94c11) Event end <t:1719939600:R> [<t:1719939600:f>]`,
           // files: [ringOfire],
-          components: [btnLucent]
+          components: [btnGLeague]
         });
       } catch (error) {
         console.error('Failed to send or delete the sticky message:', error);
