@@ -139,42 +139,30 @@ module.exports = new Object({
 
     // StickyNote Guild Leagues
     if (client.config.stickyGLeagueChannel.includes(message.channel.id)) {
-      const fetchedLucentMessages = await message.channel.messages.fetch();
-      const stickyLucentMessage = fetchedLucentMessages.find(m => m.author.id === client.user.id && client.config.stickyGLeagueChannel.includes(m.channel.id));
-      const ringOfire = new AttachmentBuilder("src/assets/ringoffire.mp4");
-      const btnLucent = new ActionRowBuilder()
+      const fetchedGLeagueMessages = await message.channel.messages.fetch();
+      const stickyGLeagueMessage = fetchedGLeagueMessages.find(m => m.author.id === client.user.id && client.config.stickyGLeagueChannel.includes(m.channel.id));
+      // const ringOfire = new AttachmentBuilder("src/assets/ringoffire.mp4");
+      const btnGLeague = new ActionRowBuilder()
         .addComponents(
           new ButtonBuilder()
             .setStyle(ButtonStyle.Link)
             .setLabel(`More details about the event`)
-            .setURL(`https://blackdesert.pearlabyss.com/ASIA/en-us/News/Notice/Detail?_boardNo=6127`)
-        )
-        // .addComponents(
-        //   new ButtonBuilder()
-        //     .setCustomId("btn-guildvacation")
-        //     .setLabel("Vacation")
-        //     .setEmoji('<:game_logo_bdo:861579805660151818>')
-        //     .setStyle(ButtonStyle.Primary)
-        // )
-      if (stickyLucentMessage) {
-        stickyLucentMessage.delete().then(() => {
-          message.channel.send({
-            content: `**Best luck!** Event end <t:1717520400:R> [<t:1717520400:f>]`,
-            // embeds: [embedLucent],
-            files: [ringOfire],
-            components: [btnLucent]
-          });
-        }).catch(() => { });
-      } else {
-        // Force send a new message.
-        message.channel.send({
-          content: `**Best luck!** Event end <t:1717524000:R>`,
-          // embeds: [embedLucent],
-            files: [ringOfire],
+            .setURL(`https://blackdesert.pearlabyss.com/asia/en-us/News/Notice/Detail?_boardNo=6186`)
+        );
+
+      try {
+        if (stickyGLeagueMessage) {
+          await stickyGLeagueMessage.delete();
+        }
+        await message.channel.send({
+          content: `[**Take it slow, warmest luck**](https://open.spotify.com/track/6oSJ7jOB4BQv2bInqGMwru?si=281c0d510cf94c11) Event end <t:1719939600:R> [<t:1719939600:f>]`,
+          // files: [ringOfire],
           components: [btnLucent]
         });
+      } catch (error) {
+        console.error('Failed to send or delete the sticky message:', error);
       }
-    };
+    }
 
     // Chat AI
     if (client.config.aiChatChannel.includes(message.channel.id)) {
