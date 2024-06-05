@@ -154,7 +154,7 @@ module.exports = new Object({
           await stickyGLeagueMessage.delete();
         }
         await message.channel.send({
-          content: `[**Take it slow, warmest luck**](https://open.spotify.com/track/6oSJ7jOB4BQv2bInqGMwru?si=281c0d510cf94c11)\nEvent end <t:1719939600:R> [<t:1719939600:f>]\n_ _`,
+          content: `[**Take it slow, warmest luck**](https://open.spotify.com/track/6oSJ7jOB4BQv2bInqGMwru?si=281c0d510cf94c11) <:reply:1163568309816541256>\nEvent end <t:1719939600:R> [<t:1719939600:f>]`,
           // files: [ringOfire],
           components: [btnGLeague]
         });
