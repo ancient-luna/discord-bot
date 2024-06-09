@@ -1,4 +1,5 @@
-const { EmbedBuilder } = require("discord.js");
+const { EmbedBuilder, AttachmentBuilder } = require("discord.js");
+const { Minimal } = require("greetify");
 
 module.exports = new Object({
     name: "guildMemberAdd",
@@ -11,13 +12,26 @@ module.exports = new Object({
         const role = member.guild.roles.cache.get(client.config.luxCastaId);
         await member.roles.add(role.id).catch((err) => util.printLog('error', err));
         const channel = member.guild.channels.cache.get(client.config.gatewayChannel);
+        const card = await Minimal({
+            avatar: member.user.displayAvatarURL({ size: 4096 }),
+            name: member.user.username,
+            nameColor: '#178EC7',
+            type: 'WELCOME',
+            typeColor: '#82AADC',
+            message: '우리는 마치 달을 만난 것처럼 달렸다',
+            messageColor: '#82AADC',
+            backgroundImage: 'https://cdn.discordapp.com/attachments/1249246189065601044/1249248421475385417/folmlyl.png?ex=66669cc1&is=66654b41&hm=bd4b616bc338656ba0dfd63796737807dbb335d065c67e6b129d44a1a76497c4&'
+        })
+        const cardBuffer = Buffer.from(card);
+        const attachment = new AttachmentBuilder(cardBuffer, { name: 'gateway-pass.png' });
         const welcomeText = new EmbedBuilder()
             .setTitle(`Welcome to ${member.guild.name}`)
-            .setThumbnail(member.user.displayAvatarURL({ dynamic: true, size: 512 }))
+            // .setThumbnail(member.user.displayAvatarURL({ dynamic: true, size: 512 }))
             .setDescription(`<@${member.user.id}> please understand our **wisdom of lleud** at ${member.guild.channels.cache.get(client.config.ruleChannel).toString()} as you make your way through this warm sanctuary`)
             .setFooter({ text: `(u) ${member.user.username} visited the sanctuary` })
             .setColor('7289da')
+            .setImage('attachment://gateway-pass.png')
             .setTimestamp();
-        return channel.send({ embeds: [welcomeText] });
+        return channel.send({ embeds: [welcomeText], files: [attachment] });
     }
-})
+});
