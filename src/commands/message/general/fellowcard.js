@@ -7,7 +7,7 @@ module.exports = {
   category: "Usercard",
   usage: "",
   cooldown: 0,
-  aliases: [''],
+  aliases: ['test'],
   examples: [''],
   sub_commands: [],
   args: false,
@@ -125,12 +125,12 @@ module.exports = {
         const limitRoles = [
           '590848319111299093', // ancestorID
           '839170815932891197', // lunariaID
-          '839198215580811344', // lightseekerID
           '620709364247822338', // luminanceID
           '888736428069105674', // radianceID
-          '1148832046505009193', // etendueID
-          '1060982357538119850', // discipleID
-          '1052973235710464040' // levatioID
+          '839198215580811344', // lightseekerID
+          // '1148832046505009193', // etendueID
+          // '1060982357538119850', // discipleID
+          // '1052973235710464040' // levatioID
         ];
 
         // Sort roles alphabetically
@@ -139,42 +139,50 @@ module.exports = {
           // .sort((a, b) => a.name.localeCompare(b.name));
           .sort((a, b) => b.position - a.position);
 
-        beginY += 560;
-        let rows = [{ row: 1, roles: [], width: 0 }];
-        ctx.font = '16pt HelveticaBold';
-        let length = 0;
+        // Check if sortedRoles is empty and set context to 'Ancient Luna'
+        if (sortedRoles.size === 0) {
+          ctx.textAlign = "center";
+          ctx.fillStyle = "#6b7b88";
+          ctx.font = '20pt HelveticaBold';
+          ctx.fillText('달을 만났다', 250, 665);
+        } else {
+          beginY += 560;
+          let rows = [{ row: 1, roles: [], width: 0 }];
+          ctx.font = '16pt HelveticaBold';
+          let length = 0;
 
-        sortedRoles.forEach((role, index) => {
-          length += ctx.measureText(role.name.toUpperCase()).width + (padding * 2);
-          if (length >= 480 - (padding * 2)) {
-            length = ctx.measureText(role.name.toUpperCase()).width + (padding * 2);
-            rows.push({ row: rows[rows.length - 1].row + 1, roles: [index], width: length });
-          } else {
-            length += spaceX;
-            if (!rows[rows.length - 1].roles.includes(role.id)) rows[rows.length - 1].roles.push(role.id);
-            rows[rows.length - 1].width = length;
-          }
-        });
-
-        ctx.textAlign = "left";
-        rows.forEach(row => {
-          beginX = 250 - ((row.width / 2))
-          row.roles.forEach((r, index) => {
-            let role = message.member.roles.cache.find(i => i.id === r)
-            let roleColor = role.color.toString(16).padStart(6, '0')
-            if (role) {
-              let length = ctx.measureText(role.name.toUpperCase()).width;
-              if (endX > beginX) {
-                ctx.fillStyle = "#0c202e";
-                roundRect(ctx, beginX, beginY - 26, length + (padding * 2), parseInt(fontSize) + 7, 22, true, false);
-                ctx.fillStyle = `#${roleColor}`
-                ctx.fillText(role.name.toUpperCase(), beginX + padding, beginY);
-              }
-              beginX += length + spaceX + (padding * 2);
+          sortedRoles.forEach((role, index) => {
+            length += ctx.measureText(role.name.toUpperCase()).width + (padding * 2);
+            if (length >= 480 - (padding * 2)) {
+              length = ctx.measureText(role.name.toUpperCase()).width + (padding * 2);
+              rows.push({ row: rows[rows.length - 1].row + 1, roles: [index], width: length });
+            } else {
+              length += spaceX;
+              if (!rows[rows.length - 1].roles.includes(role.id)) rows[rows.length - 1].roles.push(role.id);
+              rows[rows.length - 1].width = length;
             }
+          });
+
+          ctx.textAlign = "left";
+          rows.forEach(row => {
+            beginX = 250 - ((row.width / 2))
+            row.roles.forEach((r, index) => {
+              let role = message.member.roles.cache.find(i => i.id === r)
+              let roleColor = role.color.toString(16).padStart(6, '0')
+              if (role) {
+                let length = ctx.measureText(role.name.toUpperCase()).width;
+                if (endX > beginX) {
+                  ctx.fillStyle = "#0c202e";
+                  roundRect(ctx, beginX, beginY - 26, length + (padding * 2), parseInt(fontSize) + 7, 22, true, false);
+                  ctx.fillStyle = `#${roleColor}`
+                  ctx.fillText(role.name.toUpperCase(), beginX + padding, beginY);
+                }
+                beginX += length + spaceX + (padding * 2);
+              }
+            })
+            beginY += 55
           })
-          beginY += 55
-        })
+        }
 
         const sfBuffer = canvas.toBuffer();
         await loadingTxt.edit({
