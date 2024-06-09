@@ -37,7 +37,7 @@ module.exports = {
         for (const roleId of roleIds) {
             const role = message.guild.roles.cache.get(roleId);
             if (role) {
-                const members = role.members.map(member => member.user);
+                const members = role.members.map(member => member).sort((a, b) => a.displayName.localeCompare(b.displayName));
                 if (roleId === '620709364247822338') {
                     allMembers.luminance.push(...members);
                 } else if (roleId === '888736428069105674') {
@@ -50,12 +50,9 @@ module.exports = {
             return loadingTxt.edit("Roles not found or no members in roles.");
         }
 
-        allMembers.luminance.sort((a, b) => a.username.localeCompare(b.username));
-        allMembers.radiance.sort((a, b) => a.username.localeCompare(b.username));
-
-        const avatarUrls = [...allMembers.luminance, ...allMembers.radiance].map(user => user.displayAvatarURL({ extension: 'png', size: 128 }));
-        const luminanceMentions = allMembers.luminance.map(user => `<@${user.id}>`).join(' ') || 'No members';
-        const radianceMentions = allMembers.radiance.map(user => `<@${user.id}>`).join(' ') || 'No members';
+        const avatarUrls = [...allMembers.luminance, ...allMembers.radiance].map(member => member.user.displayAvatarURL({ extension: 'png', size: 128 }));
+        const luminanceMentions = allMembers.luminance.map(member => `<@${member.id}>`).join(' ') || 'No members';
+        const radianceMentions = allMembers.radiance.map(member => `<@${member.id}>`).join(' ') || 'No members';
 
         const canvas = createCanvas(1730, 441);
         const ctx = canvas.getContext('2d');
