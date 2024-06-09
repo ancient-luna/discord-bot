@@ -86,10 +86,15 @@ module.exports = new Object({
                 .setFooter({ text: `ID: ${member.id} (u) ${member.user.username}` })
                 .setTimestamp()
 
-            loadingTxt.edit({ content: '⁣', embeds: [Embed], components: [row], files: [imageAttachment] });
+            loadingTxt.edit({
+                content: '⁣',
+                embeds: [Embed],
+                // components: [row],
+                files: [imageAttachment]
+            });
 
         } catch (error) {
-            loadingTxt.edit({ content: "An error in the code" });
+            loadingTxt.edit({ content: "unable to show profile at the moment." });
             throw error;
         }
     }
