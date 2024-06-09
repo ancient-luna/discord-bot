@@ -50,9 +50,12 @@ module.exports = {
             return loadingTxt.edit("Roles not found or no members in roles.");
         }
 
+        allMembers.luminance.sort((a, b) => a.username.localeCompare(b.username));
+        allMembers.radiance.sort((a, b) => a.username.localeCompare(b.username));
+
         const avatarUrls = [...allMembers.luminance, ...allMembers.radiance].map(user => user.displayAvatarURL({ extension: 'png', size: 128 }));
-        const luminanceMentions = allMembers.luminance.map(user => `<@&620709364247822338> <@${user.id}>`).join('\n') || 'No members';
-        const radianceMentions = allMembers.radiance.map(user => `<@&888736428069105674> <@${user.id}>`).join('\n') || 'No members';
+        const luminanceMentions = allMembers.luminance.map(user => `<@${user.id}>`).join(' ') || 'No members';
+        const radianceMentions = allMembers.radiance.map(user => `<@${user.id}>`).join(' ') || 'No members';
 
         const canvas = createCanvas(1730, 441);
         const ctx = canvas.getContext('2d');
@@ -69,10 +72,13 @@ module.exports = {
         ctx.fillStyle = gradient;
         ctx.fillRect(0, 0, canvas.width, canvas.height);
 
+        // Load all images in parallel
+        const images = await Promise.all(avatarUrls.map(url => loadImage(url)));
+
         let index = 0;
         for (let row = -1; row < rows; row++) {
             for (let col = -1; col < cols; col++) {
-                if (index >= avatarUrls.length) {
+                if (index >= images.length) {
                     index = 0;
                 }
                 const x = col * (size + margin);
@@ -96,8 +102,7 @@ module.exports = {
                 ctx.closePath();
                 ctx.clip();
 
-                const img = await loadImage(avatarUrls[index]);
-                ctx.drawImage(img, -size / 2, -size / 2, size, size);
+                ctx.drawImage(images[index], -size / 2, -size / 2, size, size);
 
                 ctx.restore();
                 index++;
@@ -108,13 +113,10 @@ module.exports = {
         
         const embed = new EmbedBuilder()
             .setTitle('work in progress')
-            .addFields(
-                { name: '**SUPPORTERS**', value: radianceMentions, inline: true },
-                { name: '**BOOSTERS**', value: luminanceMentions, inline: true },
-            )
+            .setDescription(`\`\`\`SUPPORTERS\`\`\`\n${radianceMentions}\n_ _\`\`\`BOOSTERS\`\`\`\n${luminanceMentions}`)
             .setImage('attachment://radiance.png')
             .setColor(client.config.embedColorTrans)
-            .setTimestamp()
+            .setTimestamp();
 
         loadingTxt.edit({
             content: '⁣',
