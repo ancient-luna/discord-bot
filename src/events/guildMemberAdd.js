@@ -14,6 +14,7 @@ module.exports = new Object({
         const channel = member.guild.channels.cache.get(client.config.gatewayChannel);
         const card = await Minimal({
             avatar: member.user.displayAvatarURL({ size: 4096 }),
+            circleBorder: false,
             name: member.user.username,
             nameColor: '#178EC7',
             type: 'WELCOME',
