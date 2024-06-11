@@ -22,7 +22,7 @@ module.exports = new Object({
             message: 'ancientluna.org/discord',
             // message: '우리는 마치 달을 만난 것처럼 달렸다',
             messageColor: '#82AADC',
-            backgroundImage: 'https://cdn.discordapp.com/attachments/839206614007021668/1249997628243185725/welcomecard.png?ex=66695682&is=66680502&hm=f7093374e029eb2d413ca0edfda0a88c1fe62bbba4be524b1a3c9bdc655a023c&'
+            backgroundImage: 'https://ik.imagekit.io/al/welcomecard.png'
         })
         const cardBuffer = Buffer.from(card);
         const attachment = new AttachmentBuilder(cardBuffer, { name: 'gateway-pass.png' });
