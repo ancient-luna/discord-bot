@@ -22,7 +22,7 @@ module.exports = new Object({
             message: 'ancientluna.org/discord',
             // message: '우리는 마치 달을 만난 것처럼 달렸다',
             messageColor: '#82AADC',
-            backgroundImage: 'https://cdn.discordapp.com/attachments/1249246189065601044/1249248421475385417/folmlyl.png?ex=66669cc1&is=66654b41&hm=bd4b616bc338656ba0dfd63796737807dbb335d065c67e6b129d44a1a76497c4&'
+            backgroundImage: 'https://cdn.discordapp.com/attachments/839206614007021668/1249997628243185725/welcomecard.png?ex=66695682&is=66680502&hm=f7093374e029eb2d413ca0edfda0a88c1fe62bbba4be524b1a3c9bdc655a023c&'
         })
         const cardBuffer = Buffer.from(card);
         const attachment = new AttachmentBuilder(cardBuffer, { name: 'gateway-pass.png' });
