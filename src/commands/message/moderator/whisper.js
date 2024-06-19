@@ -5,7 +5,7 @@ module.exports = new Object({
   category: "Moderator",
   usage: "",
   cooldown: 0,
-  aliases: [''],
+  aliases: ['test'],
   examples: [''],
   sub_commands: [],
   args: false,
@@ -39,6 +39,7 @@ module.exports = new Object({
       .setColor(client.config.embedColorTrans)
       .setThumbnail('https://i.imgur.com/nZqRDtz.png') // aevoa
       // .setImage('https://i.imgur.com/4uS7mor.png') // aevoa
+      .setTimestamp()
 
     const btnServer = new ActionRowBuilder()
       .addComponents(
@@ -69,7 +70,7 @@ module.exports = new Object({
       .setColor(client.config.embedColorTrans)
 
     user.send({
-      content: `Dear **Lunar Disciples**,\n${str}\n\nWarmest regards & happy holidays,\n[**Aevoa**](https://steamcommunity.com/id/axxae/)\n_ _`,
+      content: `Dear **Lunar Disciples**,\n${str}\n\nWarmest regards,\n**Aevoa**\n_ _`,
       embeds: [txtEmbed],
       components: [btnServer],
       files: [img]
