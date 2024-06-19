@@ -34,10 +34,10 @@ module.exports = new Object({
 
     const txtEmbed = new EmbedBuilder()
       .setTitle(`Dev. Support Contacts <:verified:1204724590950228008>`)
-      .setDescription(`> Discord: axxae - [ancientluna](https://discord.com/invite/Sbp2nt8QHe)\n> dae@ancientluna.org <:ins:1204725582852788256> [instagram](https://instagram.com/everylttlething)`)
+      .setDescription(`> Discord: axxae - [ancientluna](https://discord.com/invite/Sbp2nt8QHe)\n> dae@ancientluna.org <:ins:1204725582852788256> [**IG**](https://instagram.com/everylttlething)`)
       .setFooter({ text: `this bot won't read any messages of your replies` })
       .setColor(client.config.embedColorTrans)
-      .setThumbnail('https://i.imgur.com/veLhH04.png') // aevoa
+      .setThumbnail('https://i.imgur.com/nZqRDtz.png') // aevoa
       // .setImage('https://i.imgur.com/4uS7mor.png') // aevoa
 
     const btnServer = new ActionRowBuilder()
