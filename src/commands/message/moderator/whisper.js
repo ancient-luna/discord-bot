@@ -29,36 +29,35 @@ module.exports = new Object({
       message.guild.members.cache.get(args[0]).user;
 
     const str = args.slice(1).join(" ");
+    
+    const img = new AttachmentBuilder("src/assets/gl.png")
 
     const txtEmbed = new EmbedBuilder()
-      .setTitle(`Support Dae and Get Exclusive Role <:verified:1204724590950228008>`)
-      .setDescription(`> Discord: axxae - [ancientluna](https://discord.com/invite/Sbp2nt8QHe)\n> dae@ancientluna.org <:ins:1204725582852788256> [everylttlething](https://instagram.com/everylttlething)`)
+      .setTitle(`Dev. Support Contacts <:verified:1204724590950228008>`)
+      .setDescription(`> Discord: axxae - [ancientluna](https://discord.com/invite/Sbp2nt8QHe)\n> dae@ancientluna.org <:ins:1204725582852788256> [instagram](https://instagram.com/everylttlething)`)
       .setFooter({ text: `this bot won't read any messages of your replies` })
       .setColor(client.config.embedColorTrans)
-      .setThumbnail('https://i.imgur.com/gvdXmII.png') // coins
-      .setImage('https://i.imgur.com/vecvAJA.png') // supporter
-
-      // .setThumbnail('https://i.imgur.com/veLhH04.png') // aevoa
+      .setThumbnail('https://i.imgur.com/veLhH04.png') // aevoa
       // .setImage('https://i.imgur.com/4uS7mor.png') // aevoa
 
     const btnServer = new ActionRowBuilder()
       .addComponents(
         new ButtonBuilder()
           .setStyle(ButtonStyle.Link)
+          .setLabel("Web")
+          .setURL(`https://www.ancientluna.org`)
+      )
+      .addComponents(
+        new ButtonBuilder()
+          .setStyle(ButtonStyle.Link)
           .setLabel("Video")
-          .setURL(`https://www.youtube.com/watch?v=SJoqzhnqz3c`)
+          .setURL(`https://www.youtube.com/@ancientluna`)
       )
       .addComponents(
         new ButtonBuilder()
           .setStyle(ButtonStyle.Link)
-          .setLabel(`Support (Ko-Fi)`)
-          .setURL(`https://ko-fi.com/xxdae`)
-      )
-      .addComponents(
-        new ButtonBuilder()
-          .setStyle(ButtonStyle.Link)
-          .setLabel(`Support (Trakteer)`)
-          .setURL(`https://trakteer.id/xxdae`)
+          .setLabel("Steam Group")
+          .setURL(`https://steamcommunity.com/groups/xxmoon`)
       )
 
     const failed = new EmbedBuilder()
@@ -73,6 +72,7 @@ module.exports = new Object({
       content: `Dear **Lunar Disciples**,\n${str}\n\nWarmest regards & happy holidays,\n[**Aevoa**](https://steamcommunity.com/id/axxae/)\n_ _`,
       embeds: [txtEmbed],
       components: [btnServer],
+      files: [img]
     }).then(() => {
       message.channel.send({ embeds: [success] });
     }).catch((e) => { 
