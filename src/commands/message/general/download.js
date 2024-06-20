@@ -10,7 +10,7 @@ module.exports = {
     aliases: [''],
     examples: [''],
     sub_commands: [],
-    args: true,
+    args: false,
     permissions: {
         client: [],
         user: [],
