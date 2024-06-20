@@ -1,21 +1,26 @@
-const { EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle } = require("discord.js");
-const axios = require("axios");
-module.exports = new Object({
-    name: "download",
-    description: "download.",
-    category: "Entertainment",
-    usage: "",
+const { EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle } = require('discord.js');
+const axios = require('axios');
+
+module.exports = {
+    name: 'download',
+    description: 'download.',
+    category: 'Entertainment',
+    usage: '',
     cooldown: 0,
-    aliases: [''],
+    aliases: [],
     examples: [''],
     sub_commands: [],
-    args: false,
+    args: true,
     permissions: {
         client: [],
         user: [],
         dev: false,
     },
-    player: { voice: false, active: false, dj: false, },
+    player: {
+        voice: false,
+        active: false,
+        dj: false,
+    },
     /**
      * 
      * @param {import("../../../index")} client 
@@ -23,64 +28,122 @@ module.exports = new Object({
      * @param {String[]} args
      */
     async execute(client, message, args) {
-        
-        const vidID = args[0];
-        if (!vidID) return message.reply("By the moonlight, insert the youtube video ID\n**example** `https://www.youtube.com/watch?v=wq0DURi1ekY` **put the** `v=wq0DURi1ekY` **after command**");
+        const url = args[0];
+        if (!url) return message.reply("Please provide a URL to download.");
         let loading = await message.reply(`Getting the file ready <a:_util_loading:863317596551118858>`);
 
-        const inputMP3 = {
-            method: 'GET',
-            url: 'https://youtube-mp3-download1.p.rapidapi.com/dl',
-            params: {id: vidID},
-            headers: {
-                'X-RapidAPI-Key': process.env.X_RAPID_API,
-                'X-RapidAPI-Host': 'youtube-mp3-download1.p.rapidapi.com'
-            }
+        const supportedUrls = ['instagram.com', 'tiktok.com', 'youtube.com', 'youtu.be', 'facebook.com', 'fb.watch', 'reel'];
+        const youtubeRegex = /^((?:https?:)?\/\/)?((?:www|m)\.)?((?:youtube(?:-nocookie)?\.com|youtu.be))(\/(?:[\w\-]+\?v=|embed\/|live\/|v\/)?)([\w\-]+)(\S+)?$/;
+
+        if (!supportedUrls.some(supportedUrl => url.includes(supportedUrl)) && !youtubeRegex.test(url)) {
+            return loading.edit('Unsupported URL! Supported platforms are Facebook, Instagram, TikTok, YouTube.');
         }
 
-        const inputMP4 = {
-            method: 'GET',
-            url: 'https://youtube-video-download-info.p.rapidapi.com/dl',
-            params: {id: vidID},
-            headers: {
-                'X-RapidAPI-Key': process.env.X_RAPID_API,
-                'X-RapidAPI-Host': 'youtube-video-download-info.p.rapidapi.com'
-            }
-        }
+        const apiUrls = {
+            ig: `https://api.nyxs.pw/dl/ig?url=${encodeURIComponent(url)}`,
+            tt: `https://api.nyxs.pw/dl/tiktok?url=${encodeURIComponent(url)}`,
+            yt: `https://api.nyxs.pw/dl/yt?url=${encodeURIComponent(url)}`,
+            fb: `https://api.nyxs.pw/dl/fb?url=${encodeURIComponent(url)}`,
+        };
+
+        let response, data;
+        let downloadLinks = '';
+        let platform = '';
 
         try {
-            const responseMP3 = await axios.request(inputMP3);
+            if (url.includes('instagram.com')) {
+                platform = 'Instagram';
+                response = await axios.get(apiUrls.ig);
+                data = response.data;
+                if (data.result && Array.isArray(data.result)) {
+                    data.result.forEach((item, index) => {
+                        downloadLinks += `[Download File ${index + 1}](${item.url})\n`;
+                    });
+                } else {
+                    throw new Error('Invalid response from Instagram API');
+                }
+            } else if (url.includes('tiktok.com')) {
+                platform = 'TikTok';
+                response = await axios.get(apiUrls.tt);
+                data = response.data;
+                if (data.result) {
+                    if (data.result.type === 'image') {
+                        data.result.images.forEach((imageUrl, index) => {
+                            downloadLinks += `[Download Image ${index + 1}](${imageUrl})\n`;
+                        });
+                        downloadLinks += `[Download Music Audio](${data.result.music})\n`;
+                    } else {
+                        downloadLinks += `[Download Video](${data.result.video1})\n[Download HD Video](${data.result.video_hd})\n[Download Watermark Video](${data.result.video_watermark})\n[Download Music Audio](${data.result.music})`;
+                    }
+                } else {
+                    throw new Error('Invalid response from TikTok API');
+                }
+            } else if (youtubeRegex.test(url)) {
+                platform = 'YouTube';
+                response = await axios.get(apiUrls.yt);
+                data = response.data;
+                if (data.result) {
+                    const { title, data: ytData } = data.result;
+                    downloadLinks = `**${title}**\n\n`;
 
-            const output = await axios.request(inputMP4)
-            const responseMP4 = output.data.link[22]; 
+                    if (ytData.fhd) {
+                        downloadLinks += `[Download Video FHD (1080p)](https://wa.me/6285143582588?text=.ytdl%20${url}%20fhd) - Size: ${ytData.fhd.size}\n`;
+                    }
+                    if (ytData.hd) {
+                        downloadLinks += `[Download Video HD (720p)](https://wa.me/6285143582588?text=.ytdl%20${url}%20hd) - Size: ${ytData.hd.size}\n`;
+                    }
+                    if (ytData.sd) {
+                        downloadLinks += `[Download Video SD (480p)](https://wa.me/6285143582588?text=.ytdl%20${url}%20sd) - Size: ${ytData.sd.size}\n`;
+                    }
+                    if (ytData.mp3) {
+                        downloadLinks += `[Download Audio (mp3)](https://wa.me/6285143582588?text=.ytmp3%20${url}%20) - Size: ${ytData.mp3.size}\n`;
+                    }
+                } else {
+                    throw new Error('Invalid response from YouTube API');
+                }
+            } else if (/(reel|fb|facebook\.com|fb\.watch)/i.test(url)) {
+                platform = 'FaceBook';
+                response = await axios.get(apiUrls.fb);
+                data = response.data;
+                if (data.result) {
+                    const { hd, sd } = data.result;
+
+                    if (hd) {
+                        downloadLinks += `[Download Video HD](${hd})\n`;
+                    }
+                    if (sd) {
+                        downloadLinks += `[Download Video SD](${sd})\n`;
+                    }
+                } else {
+                    throw new Error('Invalid response from Facebook API');
+                }
+            } else {
+                throw new Error('Unsupported URL!');
+            }
 
             const button = new ActionRowBuilder()
-            .addComponents(
-                new ButtonBuilder()
-                .setLabel('Download MP3')
-                .setStyle(ButtonStyle.Link)
-                .setURL(responseMP3.data.link)
-            )
-            .addComponents(
-                new ButtonBuilder()
-                .setLabel('Download MP4')
-                .setStyle(ButtonStyle.Link)
-                .setURL(responseMP4[0])
-            )
+                .addComponents(
+                    new ButtonBuilder()
+                        .setLabel('See original content')
+                        .setStyle(ButtonStyle.Link)
+                        .setURL(url)
+                );
 
             const embed = new EmbedBuilder()
                 .setColor(client.config.embedColorTrans)
-                .setDescription(`Click on button below to download the converted **${output.data.title}** video`)
-                .setImage(`https://img.youtube.com/vi/${vidID}/maxresdefault.jpg`)
+                // .setTitle(platform)
+                .setDescription(downloadLinks)
+                .setFooter({ text:`${platform} download link request (u) ${message.author.username}` })
+                .setTimestamp();
 
             await loading.edit({
                 content: '⁣',
                 embeds: [embed],
-                components:[button]
-            })
-        } catch (e) {
-            console.log (e);
-            await loading.edit({ content: `The video ID does not exist!\n** Go to YouTube link, and copy the ID after the = or the /**` });
+                components: [button]
+            });
+        } catch (error) {
+            console.error(error);
+            await loading.edit('An error occurred while processing your request. Please make sure the link is not private.');
         }
     }
-})
+};
