@@ -29,7 +29,7 @@ module.exports = {
      */
     async execute(client, message, args) {
         const url = args[0];
-        if (!url) return message.reply("Please provide a URL to download.");
+        if (!url) return message.reply("Please provide a `URL` to download");
         let loading = await message.reply(`Getting the file ready <a:_util_loading:863317596551118858>`);
 
         const supportedUrls = ['instagram.com', 'tiktok.com', 'youtube.com', 'youtu.be', 'facebook.com', 'fb.watch', 'reel', 'x.com', 'twitter.com'];
@@ -152,7 +152,6 @@ module.exports = {
 
             const embedDownload = new EmbedBuilder()
                 .setColor(client.config.embedColorTrans)
-                // .setTitle(platform)
                 .setDescription(downloadLinks)
                 .setFooter({ text:`${platform} download link request (u) ${message.author.username}` })
                 .setTimestamp();
