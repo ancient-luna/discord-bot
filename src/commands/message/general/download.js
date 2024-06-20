@@ -7,7 +7,7 @@ module.exports = {
     category: 'Entertainment',
     usage: '',
     cooldown: 0,
-    aliases: [],
+    aliases: [''],
     examples: [''],
     sub_commands: [],
     args: true,
@@ -32,7 +32,7 @@ module.exports = {
         if (!url) return message.reply("Please provide a URL to download.");
         let loading = await message.reply(`Getting the file ready <a:_util_loading:863317596551118858>`);
 
-        const supportedUrls = ['instagram.com', 'tiktok.com', 'youtube.com', 'youtu.be', 'facebook.com', 'fb.watch', 'reel'];
+        const supportedUrls = ['instagram.com', 'tiktok.com', 'youtube.com', 'youtu.be', 'facebook.com', 'fb.watch', 'reel', 'x.com', 'twitter.com'];
         const youtubeRegex = /^((?:https?:)?\/\/)?((?:www|m)\.)?((?:youtube(?:-nocookie)?\.com|youtu.be))(\/(?:[\w\-]+\?v=|embed\/|live\/|v\/)?)([\w\-]+)(\S+)?$/;
 
         if (!supportedUrls.some(supportedUrl => url.includes(supportedUrl)) && !youtubeRegex.test(url)) {
@@ -44,6 +44,7 @@ module.exports = {
             tt: `https://api.nyxs.pw/dl/tiktok?url=${encodeURIComponent(url)}`,
             yt: `https://api.nyxs.pw/dl/yt?url=${encodeURIComponent(url)}`,
             fb: `https://api.nyxs.pw/dl/fb?url=${encodeURIComponent(url)}`,
+            tx: `https://api.nyxs.pw/dl/twitter?url=${encodeURIComponent(url)}`,
         };
 
         let response, data;
@@ -85,7 +86,6 @@ module.exports = {
                 if (data.result) {
                     const { title, data: ytData } = data.result;
                     downloadLinks = `**${title}**\n\n`;
-
                     if (ytData.fhd) {
                         downloadLinks += `[Download Video FHD (1080p)](https://wa.me/6285143582588?text=.ytdl%20${url}%20fhd) - Size: ${ytData.fhd.size}\n`;
                     }
@@ -115,7 +115,28 @@ module.exports = {
                         downloadLinks += `[Download Video SD](${sd})\n`;
                     }
                 } else {
-                    throw new Error('Invalid response from Facebook API');
+                    throw new Error('Invalid response from FaceBook API');
+                }
+            } else if (/(x\.com|twitter\.com)/i.test(url)) {
+                platform = 'X';
+                response = await axios.get(apiUrls.tx);
+                data = response.data;
+                if (data.result) {
+                    const { media } = data.result;
+                    if (media && media.length > 0) {
+                        const video = media.find(m => m.type === 'video');
+                        if (video && video.videos && video.videos.length > 0) {
+                            video.videos.forEach((vid, index) => {
+                                downloadLinks += `[Download Video ${vid.quality}](${vid.url})\n`;
+                            });
+                        } else {
+                            throw new Error('No videos found in the response from X API');
+                        }
+                    } else {
+                        throw new Error('No media found in the response from X API');
+                    }
+                } else {
+                    throw new Error('Invalid response from X API');
                 }
             } else {
                 throw new Error('Unsupported URL!');
@@ -129,7 +150,7 @@ module.exports = {
                         .setURL(url)
                 );
 
-            const embed = new EmbedBuilder()
+            const embedDownload = new EmbedBuilder()
                 .setColor(client.config.embedColorTrans)
                 // .setTitle(platform)
                 .setDescription(downloadLinks)
@@ -138,7 +159,7 @@ module.exports = {
 
             await loading.edit({
                 content: '⁣',
-                embeds: [embed],
+                embeds: [embedDownload],
                 components: [button]
             });
         } catch (error) {
