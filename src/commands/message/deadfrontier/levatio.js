@@ -26,7 +26,7 @@ module.exports = new Object({
 
         let target = message.mentions.members.first();
 
-        if (!target) return message.reply('Please mention them, the one who is about to be a Levatio').catch((e) => { });
+        if (!target) return message.reply('Please `mention` them, the one who is about to be a **Levatio**');
 
         let role = '1052973235710464040';
 
@@ -69,7 +69,7 @@ module.exports = new Object({
         await target.user.send({
             embeds: [addDF],
             components: [btnAccess]
-        }).catch((e) => { });
+        });
     }
 })
 

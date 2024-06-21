@@ -193,10 +193,10 @@ module.exports = {
               name: 'fellowcard.png'
             }
           ]
-        }).then((msg) => { msg.react('ancientluna_divinare:841754250949820416') }).catch((e) => { });
+        }).then((msg) => { msg.react('ancientluna_divinare:841754250949820416') });
       } catch (error) {
         console.error('Error:', error);
-        await loadingTxt.edit('Failed to create test card. Please try again later.');
+        await loadingTxt.edit('Failed to create test card. **Please try again later**');
       }
     });
   }

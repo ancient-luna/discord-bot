@@ -26,9 +26,9 @@ module.exports = new Object({
         const msgID = args[1];
         const cntntQ = args.slice(2).join(" ");
 
-        if (!chID) return message.reply("`channelid` `messageid` `reason`").catch((e) => { });
-        if (!msgID) return message.reply("`messageid` `reason`").catch((e) => { });
-        if (!cntntQ) return message.reply("set `reason`").catch((e) => { });
+        if (!chID) return message.reply("`channelid` `messageid` `reason`");
+        if (!msgID) return message.reply("`messageid` `reason`");
+        if (!cntntQ) return message.reply("set `reason`");
 
         try {
             const channelID = message.guild.channels.cache.get(chID);
@@ -59,7 +59,7 @@ module.exports = new Object({
                         .setURL(`https://trakteer.id/daexx`)
                 )
 
-            message.channel.send("Embed: **EDITED** ! `updated`").catch((e) => { });
+            message.channel.send("Embed: **EDITED** ! `updated`");
             messageID.edit({
                 embeds: [editEmbed],
                 components: [editButton],
@@ -68,7 +68,7 @@ module.exports = new Object({
 
         } catch (err) {
             console.log(err);
-            message.channel.send(`That embed ID doesn't exist.`).catch((e) => { });
+            message.channel.send(`That \`embed ID\` doesn't exist.`);
         }
     }
 });

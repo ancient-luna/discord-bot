@@ -25,7 +25,7 @@ module.exports = new Object({
 
         let target = message.mentions.members.first();
 
-        if (!target) return message.reply('Please mention them, the one who is about to lose theirs').catch(e => { });
+        if (!target) return message.reply('Please `mention` them, the one who is about to lose theirs');
 
         let role = '1060982357538119850';
 
@@ -38,11 +38,9 @@ module.exports = new Object({
             .setColor(client.config.embedColorTrans)
             .setFooter({ text: "Ancient Luna Guild: We ran as if to meet the moon" })
 
-        await target.user.send({ embeds: [addLD] }).then(target.roles.remove(role)).catch((e) => { });
+        await target.user.send({ embeds: [addLD] }).then(target.roles.remove(role));
 
-        await message.react("✅").then(setTimeout(() => message.delete().catch((e) => { }), 5000)).catch((err) => {
-            throw err;
-        })
+        await message.react("✅").then(setTimeout(() => message.delete().catch((e) => { }), 5000)).catch((err) => { throw err; })
     }
 })
 

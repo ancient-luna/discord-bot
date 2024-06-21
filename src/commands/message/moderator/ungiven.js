@@ -22,9 +22,9 @@ module.exports = new Object({
      */
     async execute(client, message, args) {
         let target = message.mentions.members.first();
-        if (!target) return message.reply('Please mention a member').catch((e) => { });
+        if (!target) return message.reply('Please `mention a member`');
         let role = message.mentions.roles.first();
-        if (!role) return message.reply('Add the role to remove').catch((e) => { });
-        await message.react("✅").then(target.roles.remove(role)).catch((e) => { });
+        if (!role) return message.reply('`Add the role` to remove')
+        await message.react("✅").then(target.roles.remove(role));
     }
 });

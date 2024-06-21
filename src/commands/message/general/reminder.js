@@ -29,8 +29,8 @@ module.exports = new Object({
 
         const timeCounter = Date.now() + ms(timeReminder);
 
-        if (!timeReminder) return message.channel.send({ content: "Could you tell me the time? Ex: \`10m\` is 10 minutes." }).catch(e => { });
-        if (!reminderMessage) return message.channel.send({ content: "And I need you to define a thing for the timer to remind you about also. Ex: \`We start running to meet the moon\`" }).catch(e => { });
+        if (!timeReminder) return message.channel.send({ content: "Could you tell me the time? Ex: \`10m\` is 10 minutes." });
+        if (!reminderMessage) return message.channel.send({ content: "And I need you to define a thing for the timer to remind you about also.\nEx: \`We start running to meet the moon\`" });
         
         const loadingTxt = await message.reply(`I keep it safe under the moon's name\nI will remind you back <t:${Math.floor(timeCounter/1000)}:R> <a:_util_loading:863317596551118858>`);
         
@@ -44,8 +44,8 @@ module.exports = new Object({
             message.channel.send({
                 content: `<:ancientluna_divinare:841754250949820416><@${message.author.id}>╮`,
                 embeds: [embedReminder]
-            }).catch(e => { })
-            loadingTxt.edit({ content: `Just successfully **reminded** you.` }).catch(e => { })
+            })
+            loadingTxt.edit({ content: `Just successfully **reminded** you.` });
         }, ms(timeReminder));
     }
 });

@@ -163,7 +163,7 @@ module.exports = {
             });
         } catch (error) {
             console.error(error);
-            await loading.edit('An error occurred while processing your request. Please make sure the link is not private.');
+            await loading.edit('An error occurred while processing your request.\n**Please make sure** `the link is not private`');
         }
     }
 };

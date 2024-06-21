@@ -190,7 +190,7 @@ module.exports = new Object({
                         content: '⁣',
                         embeds: [embedEvent, embed],
                         components: [btnProfile]
-                    }).catch((e) => { })
+                    });
                 } else {
                     const embed = new EmbedBuilder()
                         .addFields(
@@ -226,7 +226,7 @@ module.exports = new Object({
                         content: '⁣',
                         embeds: [embedEvent, embed],
                         components: [btnProfile]
-                    }).catch((e) => { })
+                    });
                 }
             } catch (error) {
                 loadingTxt.edit({ content: `This player currently naked (please wear an armor)..\n**unable to send the status now**` })

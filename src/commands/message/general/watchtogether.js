@@ -24,7 +24,7 @@ module.exports = new Object({
      */
     async execute(client, message, args) {
         let channel = message.member.voice.channel;
-        if (!channel) return message.reply(`You have to be in any **voice channel** first in this server`).catch((e) => { });
+        if (!channel) return message.reply(`You have to be in any \`voice channel\` first in this server`).catch((e) => { });
         client.discordTogether
             .createTogetherCode(channel.id, 'youtube')
             .then((invite) =>
@@ -45,7 +45,7 @@ module.exports = new Object({
                                     .setURL(invite.code)
                             )
                     ]
-                }).catch((e) => { })
+                })
             )
     }
 });

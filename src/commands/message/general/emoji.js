@@ -27,10 +27,10 @@ module.exports = new Object({
 
         const emojiMix = `${args}`;
         if (!emojiMix)
-            return message.reply("Add two emojis that wanted to mix");
+            return message.reply("`Add two emojis` that wanted to mix");
 
         const input = onlyEmoji(emojiMix);
-        const response = `One or both of these emojis ${emojiMix} are not supported.`
+        const response = `\`One\` or \`both\` of these emojis ${emojiMix} are not supported.`
 
         const output = await superagent.get('https://tenor.googleapis.com/v2/featured').query({
             key: process.env.GOOGLE_API,

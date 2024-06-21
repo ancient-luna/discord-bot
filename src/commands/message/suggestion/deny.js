@@ -27,7 +27,7 @@ module.exports = new Object({
         const denyQuery = args.slice(1).join(" ");
 
         if (!messageID || !denyQuery) {
-            return message.reply("`accept/deny` `messageid` `reason`").catch(console.error);
+            return message.reply("`accept/deny` `messageid` `reason`");
         }
 
         try {

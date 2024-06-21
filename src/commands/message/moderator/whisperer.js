@@ -26,7 +26,7 @@ module.exports = new Object({
 
         const roleId = args.shift();
         const role = message.guild.roles.cache.get(roleId);
-        if (!role) return message.channel.send("Role not found!");
+        if (!role) return message.channel.send("`Role` not found!");
 
         const str = args.join(" ");
 

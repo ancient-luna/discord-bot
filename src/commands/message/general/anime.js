@@ -26,7 +26,7 @@ module.exports = new Object({
 
         const search = `${args}`;
         if (!search)
-            return message.reply("Please add the anime title that you're looking for").catch((e) => { });
+            return message.reply("Please add the `anime title` that you're looking for");
 
         const loadingTxt = await message.reply(`<a:_util_loading:863317596551118858> Searching on MyAnimeList`);
 
@@ -75,7 +75,7 @@ module.exports = new Object({
                     content: '⁣',
                     embeds: [malEmbed],
                     components: [link]
-                }).catch((e) => { });
-            }).catch((e) => { });
+                });
+            });
     }
 })

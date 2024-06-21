@@ -27,7 +27,7 @@ module.exports = new Object({
         const acceptQuery = args.slice(1).join(" ");
 
         if (!messageID || !acceptQuery) {
-            return message.reply("`accept/deny` `messageid` `reason`").catch(console.error);
+            return message.reply("`accept/deny` `messageid` `reason`");
         }
 
         try {
@@ -46,7 +46,7 @@ module.exports = new Object({
                 )
                 .setTimestamp()
 
-            suggestedEmbed.edit({ embeds: [acceptEmbed] }).catch((e) => { });
+            suggestedEmbed.edit({ embeds: [acceptEmbed] });
 
             const suggester = client.users.cache.find(
                 (u) => u.username === data.author.name

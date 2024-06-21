@@ -26,17 +26,17 @@ module.exports = new Object({
 
         if (!target) {
             return message.channel.send(
-                `**${message.author.username}**, Please mention the person who you want to kick`
+                `**${message.author.username}**, Please \`mention the person\` who you want to kick`
             );
         }
 
         if (target.id === message.guild.ownerId) {
-            return message.channel.send("You cannot kick the Server Owner");
+            return message.channel.send("You cannot kick the `Server Owner`");
         }
 
         if (target.id === message.author.id) {
             return message.channel.send(
-                `**${message.author.username}**, You can not kick yourself`
+                `**${message.author.username}**, You can not kick \`yourself\``
             );
         }
 
@@ -49,8 +49,8 @@ module.exports = new Object({
             .setThumbnail("https://i.imgur.com/sm8OXMp.png")
             .setFooter({ text: `Kicked by ${message.member.displayName}` })
             .setColor('Red')
-        message.guild.channels.cache.get('839417251470901279').send({ embeds: [embed] }).catch((e) => { });
+        message.guild.channels.cache.get('839417251470901279').send({ embeds: [embed] });
         target.kick(args[0]);
-        message.react("✅").catch((e) => { });
+        message.react("✅");
     }
 });

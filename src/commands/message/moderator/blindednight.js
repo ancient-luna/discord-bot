@@ -25,15 +25,15 @@ module.exports = new Object({
         let target = message.mentions.members.first() || message.guild.members.cache.get(args[0]);
         if (!target) {
             return message.channel.send(
-                `**${message.author.username}**, Please mention the person who you want to ban.`
+                `**${message.author.username}**, Please \`mention the person\` who you want to ban.`
             );
         }
         if (target.id === message.guild.ownerId) {
-            return message.channel.send("You cannot Ban The Server Owner");
+            return message.channel.send("You cannot Ban the `Server Owner`");
         }
         if (target.id === message.author.id) {
             return message.channel.send(
-                `**${message.author.username}**, You can not ban yourself!`
+                `**${message.author.username}**, You can not ban \`yourself\``
             );
         }
         let reason = args.slice(1).join(" ");
@@ -49,6 +49,6 @@ module.exports = new Object({
         }).then(() => {
             message.guild.channels.cache.get('839417251470901279').send({ embeds: [embed] })
         });
-        message.react("✅").catch((e) => { });
+        message.react("✅");
     }
 });

@@ -23,7 +23,7 @@ module.exports = new Object({
      */
     async execute(client, message, args) {
         let target = message.mentions.members.first();
-        if (!target) return message.reply('please mention a user').catch((e) => { });
+        if (!target) return message.reply('please `mention a user`');
         let lightseekerRole = '839198215580811344';
         let luxcastaRole = '839210689917616218';
         const welcomeButton = new ActionRowBuilder()

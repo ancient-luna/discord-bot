@@ -94,7 +94,7 @@ module.exports = new Object({
             });
 
         } catch (error) {
-            loadingTxt.edit({ content: "unable to show profile at the moment." });
+            loadingTxt.edit({ content: "unable to show `profile` at the moment." });
             throw error;
         }
     }

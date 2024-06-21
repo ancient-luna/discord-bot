@@ -26,6 +26,6 @@ module.exports = new Object({
         await message.channel.send({
             content: "Oh no! <@200511009922744320> the Gremlin is here\n*Why you steal my point?!* ***Gggrrrrr*** :anger:\n⁣",
             files: [IMGgrrr]
-        }).catch((e) => { });
+        });
     }
 });

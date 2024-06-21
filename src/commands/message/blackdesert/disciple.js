@@ -24,7 +24,7 @@ module.exports = new Object({
     async execute(client, message, args) {
 
         let target = message.mentions.members.first();
-        if (!target) return message.reply('Please mention them, the one who is about to be the **Lunar Disciple** <:ancientluna_pure_luna:866781517312688178>').catch(e => { });
+        if (!target) return message.reply('Please `mention` them, the one who is about to be the **Lunar Disciple** <:ancientluna_pure_luna:866781517312688178>');
         let role = '1060982357538119850';
 
         const btnTerms = new ActionRowBuilder()
@@ -44,7 +44,7 @@ module.exports = new Object({
         message.guild.channels.cache.get('1060992670035619931').send({
             content: `**We ran as if to meet the moon**,\nA seeker named <@${target.user.id}> become a part of **Lunar Disciples** <:ancientluna_pure_luna:866781517312688178>`,
             components: [btnTerms]
-        }).then(target.roles.add(role)).catch(e => { });
+        }).then(target.roles.add(role));
 
         await message.delete().catch((e) => { });
 
@@ -67,6 +67,6 @@ module.exports = new Object({
         await target.user.send({
             embeds: [addLD],
             components: [btnAccess]
-        }).catch(e => { });
+        });
     }
 })

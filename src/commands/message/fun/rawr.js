@@ -26,6 +26,6 @@ module.exports = new Object({
         await message.channel.send({
             content: "scawy <@213718304320126986> has been summoned,\n***RaawWwRrrRRrrrrRR~*** *wanna fite?*\n⁣",
             files: [IMGrawr]
-        }).catch((e) => { });
+        });
     }
 });

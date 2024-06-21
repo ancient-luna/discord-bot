@@ -28,7 +28,7 @@ module.exports = new Object({
             content: "Accidentally threw a peanut and dealt **+9999999 emotional damage** ...",
             files: [SRCtomato]
         }).then((msg) => {
-            msg.react('🔥').catch((e) => { });
-        }).catch((e) => { });
+            msg.react('🔥');
+        });
     }
 });

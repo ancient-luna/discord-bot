@@ -26,8 +26,8 @@ module.exports = new Object({
         let target = message.mentions.members.first();
         
         if (!target) {
-            message.react("❓").catch((e) => { });
-            return message.reply({ content: "How can *He* licks when theres no one to lick on!\n **Hurry! Mention one, cause He cant wait to lick sumthin**" }).then((msg) => {
+            message.react("❓");
+            return message.reply({ content: "How can *He* licks when theres no one to lick on!\n **Hurry!** `Mention one`**, cause He cant wait to lick sumthin**" }).then((msg) => {
                 setTimeout(() => msg.delete().catch((e) => { }), 5000);
             });
         }
@@ -51,7 +51,7 @@ module.exports = new Object({
             sentMessage = await message.channel.send({ content: smileTxtContent, files: [smileIMG] });
         }
 
-        await message.react("💦").catch((e) => { });
-        // await sentMessage.react("💦").catch((e) => { });
+        await message.react("💦");
+        // await sentMessage.react("💦");
     }
 });
