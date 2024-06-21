@@ -3,8 +3,8 @@ module.exports = class Console {
         switch (type) {
             case "log": { return console.log(`• [ Log ] ` + "      => " + content) }
             case "warn": { return console.log(`• [ Warn ] ` + "      => " + content) }
-            case "error": { return console.log(`• [ Error ] ` + "=> " + content) }
-            case "debug": { return console.log(`• [ Debug ] ` + "=> " + content) }
+            case "error": { return console.log(`• [ Error ] ` + "   => " + content) }
+            case "debug": { return console.log(`• [ Debug ] ` + "   => " + content) }
             case "cmd": { return console.log(`• [ Commands ] ` + " => " + content) }
             case "scmd": { return console.log(`• [ Slash ] ` + "    => " + content) }
             case "button": { return console.log(`• [ Button ] ` + "   => " + content) }
