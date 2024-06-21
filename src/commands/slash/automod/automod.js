@@ -67,7 +67,7 @@ module.exports = {
                 await handleAutomodFlaggedWords(client, interaction);
                 break;
             default:
-                await interaction.reply('Invalid subcommand.');
+                await interaction.reply({ content: 'Invalid subcommand.', ephemeral: true });
                 break;
         }
     }
@@ -75,8 +75,6 @@ module.exports = {
 
 async function handleAutomodSpamMessages(client, interaction) {
     const { guild } = interaction;
-
-    await interaction.reply(`<a:_util_loading:863317596551118858> Loading the spam messages automod rule...`);
 
     const rule = await guild.autoModerationRules.create({
         name: `Prevent spam messages by Ancient Luna`,
@@ -96,25 +94,21 @@ async function handleAutomodSpamMessages(client, interaction) {
         ]
     }).catch(async err => {
         console.error(err);
-        await interaction.editReply(`❌ An error occurred while creating the automod rule: ${err}`);
+        await interaction.reply({ content: `❌ An error occurred while creating the automod rule:\n\`\`\`${err}\`\`\``, ephemeral: true });
         return null;
     });
 
     if (!rule) return;
 
-    setTimeout(async () => {
-        const embed = new MessageEmbed()
-            .setColor(client.config.embedColorTrans)
-            .setDescription(`<:vcon_vote_accepted:859075138329903114> Automod rule created\nAll messages suspected of spam will be deleted by **Ancient Luna**`);
-        await interaction.editReply({ content: '', embeds: [embed] });
-    }, 3000);
+    const embed = new MessageEmbed()
+        .setColor(client.config.embedColorTrans)
+        .setDescription(`<:vcon_vote_accepted:859075138329903114> Automod rule created\nAll messages suspected of spam will be deleted by **Ancient Luna**`);
+    await interaction.reply({ embeds: [embed], ephemeral: true });
 }
 
 async function handleAutomodSpamMentions(client, interaction) {
     const { guild, options } = interaction;
     const number = options.getInteger('number');
-
-    await interaction.reply(`<a:_util_loading:863317596551118858> Loading the spam mentions automod rule...`);
 
     const rule = await guild.autoModerationRules.create({
         name: `Prevent spam mentions by Ancient Luna`,
@@ -137,25 +131,21 @@ async function handleAutomodSpamMentions(client, interaction) {
         ]
     }).catch(async err => {
         console.error(err);
-        await interaction.editReply(`❌ An error occurred while creating the automod rule: ${err}`);
+        await interaction.reply({ content: `❌ An error occurred while creating the automod rule:\n\`\`\`${err}\`\`\``, ephemeral: true });
         return null;
     });
 
     if (!rule) return;
 
-    setTimeout(async () => {
-        const embed = new MessageEmbed()
-            .setColor(client.config.embedColorTrans)
-            .setDescription(`<:vcon_vote_accepted:859075138329903114> Automod rule created\nAll messages suspected of mention spam will be deleted by **Ancient Luna**`);
-        await interaction.editReply({ content: '', embeds: [embed] });
-    }, 3000);
+    const embed = new MessageEmbed()
+        .setColor(client.config.embedColorTrans)
+        .setDescription(`<:vcon_vote_accepted:859075138329903114> Automod rule created\nAll messages suspected of mention spam will be deleted by **Ancient Luna**`);
+    await interaction.reply({ embeds: [embed], ephemeral: true });
 }
 
 async function handleAutomodKeywords(client, interaction) {
     const { guild, options } = interaction;
     const word = options.getString('word');
-
-    await interaction.reply(`<a:_util_loading:863317596551118858> Loading the keyword automod rule...`);
 
     const rule = await guild.autoModerationRules.create({
         name: `Prevent the word ${word} from being used by Ancient Luna`,
@@ -178,24 +168,20 @@ async function handleAutomodKeywords(client, interaction) {
         ]
     }).catch(async err => {
         console.error(err);
-        await interaction.editReply(`❌ An error occurred while creating the automod rule: ${err}`);
+        await interaction.reply({ content: `❌ An error occurred while creating the automod rule:\n\`\`\`${err}\`\`\``, ephemeral: true });
         return null;
     });
 
     if (!rule) return;
 
-    setTimeout(async () => {
-        const embed = new MessageEmbed()
-            .setColor(client.config.embedColorTrans)
-            .setDescription(`<:vcon_vote_accepted:859075138329903114> Automod rule created\nAll messages containing the word \`${word}\` will be deleted by **Ancient Luna**`);
-        await interaction.editReply({ content: '', embeds: [embed] });
-    }, 3000);
+    const embed = new MessageEmbed()
+        .setColor(client.config.embedColorTrans)
+        .setDescription(`<:vcon_vote_accepted:859075138329903114> Automod rule created\nAll messages containing the word \`${word}\` will be deleted by **Ancient Luna**`);
+    await interaction.reply({ embeds: [embed], ephemeral: true });
 }
 
 async function handleAutomodFlaggedWords(client, interaction) {
     const { guild } = interaction;
-
-    await interaction.reply(`<a:_util_loading:863317596551118858> Loading the flagged words automod rule...`);
 
     const rule = await guild.autoModerationRules.create({
         name: `Block profanity, sexual content, and slurs by Ancient Luna`,
@@ -218,16 +204,14 @@ async function handleAutomodFlaggedWords(client, interaction) {
         ]
     }).catch(async err => {
         console.error(err);
-        await interaction.editReply(`❌ An error occurred while creating the automod rule: ${err}`);
+        await interaction.reply({ content: `❌ An error occurred while creating the automod rule:\n\`\`\`${err}\`\`\``, ephemeral: true });
         return null;
     });
 
     if (!rule) return;
-
-    setTimeout(async () => {
-        const embed = new MessageEmbed()
-            .setColor(client.config.embedColorTrans)
-            .setDescription(`<:vcon_vote_accepted:859075138329903114> Automod rule created\nAll swears will be stopped by **Ancient Luna**`);
-        await interaction.editReply({ content: '', embeds: [embed] });
-    }, 3000);
+    
+    const embed = new MessageEmbed()
+        .setColor(client.config.embedColorTrans)
+        .setDescription(`<:vcon_vote_accepted:859075138329903114> Automod rule created\nAll swears will be stopped by **Ancient Luna**`);
+    await interaction.reply({ embeds: [embed], ephemeral: true });
 }
