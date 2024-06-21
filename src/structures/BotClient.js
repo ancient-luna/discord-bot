@@ -79,6 +79,7 @@ class BotClient extends Client {
   embed(data) {
     return new EmbedBuilder(data);
   }
+
   /**
    * @param {import('discord.js').APIButtonComponent} data
    * @returns {ButtonBuilder}
@@ -86,6 +87,7 @@ class BotClient extends Client {
   button(data) {
     return new ButtonBuilder(data);
   }
+
   /**
    * @param {import('discord.js').APISelectMenuComponent} data
    * @returns {StringSelectMenuBuilder}
@@ -93,6 +95,7 @@ class BotClient extends Client {
   menu(data) {
     return new StringSelectMenuBuilder(data);
   }
+
   /**
    * @param {import('discord.js').APIActionRowComponent} data
    * @returns {ActionRowBuilder}
