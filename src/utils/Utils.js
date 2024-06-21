@@ -1,3 +1,4 @@
+const { EmbedBuilder } = require("discord.js")
 const { readdirSync, lstatSync } = require("fs");
 const { join, extname } = require("path");
 const permissions = require("../structures/Permissions");

@@ -35,6 +35,6 @@ module.exports = new Object({
       client.console.log(err, "error");
     }
     
-    client.console.log(`Logged in as ${client.user.tag}`, "api");
+    client.console.log(`Logged in as ${client.user.tag}`, "client");
   },
 });
