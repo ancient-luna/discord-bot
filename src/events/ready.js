@@ -30,7 +30,7 @@ module.exports = new Object({
     // Deploying slash command
     const getCommands = client.slashCommands.map((x) => x); try {
       await client.application.commands.set(getCommands);
-      client.console.log(`Loaded ${getCommands.length} Slash Commands!`, "cmd")
+      client.console.log(`Loaded ${getCommands.length} Slash Commands!`, "scmd")
     } catch (err) {
       client.console.log(err, "error");
     }
