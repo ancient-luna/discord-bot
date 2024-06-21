@@ -8,7 +8,6 @@ module.exports = {
     permissions: [],
 
     /**
-     *
      * @param {import('../index')} client
      * @param {CommandInteraction} interaction
      */
