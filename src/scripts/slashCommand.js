@@ -13,7 +13,7 @@ module.exports = async (client) => {
 					const props = require(`${__dirname}/../commands/slash/${dir}/${f}`);
 					client.slashCommands.set(props.name, props);
 				});
-                client.console.log(`${dir} loaded with ${file.length} [/] slash commands`, "scmd");
+                client.console.log(`[/] ${dir} loaded with ${file.length} slash commands`, "scmd");
 			});
 		});
 	});

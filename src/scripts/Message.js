@@ -15,5 +15,5 @@ module.exports = (client) => {
             count++
         };
     });
-    client.console.log(`Command Loaded: ${count}`, "cmd");
+    client.console.log(`Loaded: ${count}`, "cmd");
 }
