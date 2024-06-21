@@ -2,14 +2,10 @@ const { presenceHandler } = require("../handlers");
 require("dotenv").config();
 const express = require("express");
 const app = express();
-const fs = require("fs");
 const { REST } = require("@discordjs/rest");
 const { Routes } = require("discord-api-types/v10");
-const path = require("path");
 /**
  * @param {import("../index")} client
- * @param {import("discord.js").Message} message
- * @param {import("discord.js").GuildMember} member
  */
 module.exports = new Object({
   name: "ready",
@@ -28,9 +24,11 @@ module.exports = new Object({
     app.listen(8080);
 
     // Deploying slash command
-    const getCommands = client.slashCommands.map((x) => x); try {
-      await client.application.commands.set(getCommands);
-      client.console.log(`Loaded: ${getCommands.length}`, "scmd")
+    const getCommands = client.slashCommands.map((x) => x);
+    try {
+      await client.application.commands.set([]); // Clear existing global commands
+      await client.application.commands.set(getCommands); // Set new commands
+      client.console.log(`Loaded: ${getCommands.length}`, "scmd");
     } catch (err) {
       client.console.log(err, "error");
     }
