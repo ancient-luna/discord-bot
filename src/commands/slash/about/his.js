@@ -1,7 +1,7 @@
 const { MessageEmbed, CommandInteraction } = require('discord.js');
 
 module.exports = {
-    name: 'summon',
+    name: 'his',
     description: 'call out my name, im yours to tame',
     dir: 'about',
     cooldown: 1, // cooldown (seconds)
