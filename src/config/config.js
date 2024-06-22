@@ -25,7 +25,8 @@ module.exports = {
     embedColorTrans: '#2b2d31',
 
     color: '#4277e8',
-    AppID: '839380589508558910',
+    appID: '839380589508558910',
+    guildID: '447069790150852609',
 
     INTERACTIONS: {
         SLASH: true, // Should the interactions be enabled
