@@ -7,7 +7,7 @@ module.exports = {
     category: "Entertainment",
     usage: "",
     cooldown: 0,
-    aliases: [],
+    aliases: [''],
     examples: [],
     sub_commands: [],
     args: false,
@@ -109,10 +109,11 @@ module.exports = {
         const radiance = new AttachmentBuilder(canvas.toBuffer(), { name: 'radiance.png' });
         
         const embed = new EmbedBuilder()
-            .setTitle('work in progress')
-            .setDescription(`\`\`\`SUPPORTERS\`\`\`\n${radianceMentions}\n_ _\`\`\`BOOSTERS\`\`\`\n${luminanceMentions}`)
+            .setTitle('Thank you!')
+            .setDescription(`To <#1171703846918168577> <#839417252561944586>,\nthis growth of my will to rise this community wouldn't be possible without your support.\n⁣\`\`\`𝐒𝐔𝐏𝐏𝐎𝐑𝐓𝐄𝐑𝐒 (𝐑𝐀𝐃𝐈𝐀𝐍𝐂𝐄) ✦\`\`\`\n> ${radianceMentions}\n⁣\`\`\`𝐁𝐎𝐎𝐒𝐓𝐄𝐑𝐒 (𝐋𝐔𝐌𝐈𝐍𝐀𝐍𝐂𝐄) ♡\`\`\`\n> ${luminanceMentions}`)
             .setImage('attachment://radiance.png')
             .setColor(client.config.embedColorTrans)
+            .setFooter({ text: `A frame of honor people #달을만났다` })
             .setTimestamp();
 
         loadingTxt.edit({
