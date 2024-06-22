@@ -2,13 +2,8 @@ const { presenceHandler } = require("../handlers");
 require("dotenv").config();
 const express = require("express");
 const app = express();
-
-const { REST, Routes } = require('discord.js');
-const { config } = require("process");
-const rest = new REST({ version: '10' }).setToken(process.env.TOKEN);
-
-const clientId = process.env.CLIENT_ID;
-const guildId = process.env.GUILD_ID; 
+const { REST } = require("@discordjs/rest");
+const { Routes } = require("discord-api-types/v10");
 
 /**
  * @param {import("../index")} client
@@ -38,24 +33,6 @@ module.exports = new Object({
     } catch (err) {
       client.console.log(err, "error");
     }
-
-    async function deleteCommands() {
-      const commandIds = [
-        '1112308063395926026',
-        '1112308063395926027'
-      ];
-
-      try {
-        for (const commandId of commandIds) {
-          await rest.delete(Routes.applicationGuildCommand(clientId, guildId, commandId));
-          console.log(`Deleted command ${commandId}`);
-        }
-      } catch (error) {
-        console.error(error);
-      }
-    }
-
-    await deleteCommands();
     
     client.console.log(`Logged in as ${client.user.tag}`, "client");
   },
