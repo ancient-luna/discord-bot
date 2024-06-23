@@ -9,7 +9,7 @@ module.exports = new Object({
      */
     async execute(client, member) {
         // if (member.user.bot) return;
-        const role = member.guild.roles.cache.get(client.config.luxCastaId);
+        const role = member.guild.roles.cache.get(client.config.luxcastaRole);
         await member.roles.add(role.id).catch((err) => util.printLog('error', err));
         const channel = member.guild.channels.cache.get(client.config.gatewayChannel);
         const card = await Minimal({

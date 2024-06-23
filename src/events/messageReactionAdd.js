@@ -23,7 +23,7 @@ module.exports = new Object({
     
     if (reaction.message.channel.id === '864556584818835456') {
         if (reaction.emoji.name === 'game_logo_bdo') {
-            const channelCity = reaction.message.guild.channels.cache.get(client.config.bdoChannelId);
+            const channelCity = reaction.message.guild.channels.cache.get(client.config.bdoCityChannel);
             const civilizationsButton = new ActionRowBuilder()
                 .addComponents(
                     new ButtonBuilder()
