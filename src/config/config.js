@@ -34,12 +34,12 @@ module.exports = {
 
     INTERACTIONS: {
         SLASH: true,
-        // GUILD_ID: "447069790150852609", // Guild ID where the interactions should be registered. [** Test you commands here first **]
+        // GUILD_ID: "447069790150852609", // Guild ID where the interactions should be registered. [** test commands here first **]
     },
 
     PRESENCE: {
         ENABLED: true,
-        STATUS: "online", // [online, idle, dnd, invisible]
+        STATUS: "online", // [online | idle | dnd | invisible]
         TYPE: "WATCHING", // [PLAYING | LISTENING | WATCHING | COMPETING | STREAMING]
         MESSAGE: `around sanctuary`, // status message use : {members} or {servers}
     },
