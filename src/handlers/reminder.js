@@ -78,7 +78,4 @@ function removeReminder(reminder) {
   fs.writeFileSync(reminderFile, JSON.stringify(reminders, null, 2));
 }
 
-module.exports = {
-  loadReminders,
-  app // Export the Express app to use in your server initialization
-};
+module.exports = { loadReminders, app };
