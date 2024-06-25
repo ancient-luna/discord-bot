@@ -36,23 +36,23 @@ module.exports = new Object({
 
         const timeCounter = Date.now() + ms(timeReminder);
 
-        const loadingTxt = await message.reply(`I keep it safe under the moon's name\nI will remind you back <t:${Math.floor(timeCounter / 1000)}:R> <a:_util_loading:863317596551118858>`);
+        const loadingTxt = await message.reply(`Setting a reminder...\nI will remind you back <t:${Math.floor(timeCounter / 1000)}:R> <a:_util_loading:863317596551118858>`);
 
         let embedReminder = new EmbedBuilder()
             .setAuthor({ name: `${message.member.displayName}'s Reminder`, iconURL: message.author.displayAvatarURL() })
             .setDescription(`*" ${reminderMessage} "*`)
-            .setColor(client.config.embedColorTrans)
-            // .setFooter({ text: `Reminder was set for ${timeReminder}` });
+            .setColor(client.config.embedColorTrans);
 
         setTimeout(async () => {
             message.channel.send({
-                content: `<:ancientluna_divinare:841754250949820416><@${message.author.id}>╮`,
+                content: `<@${message.author.id}>`,
                 embeds: [embedReminder]
             });
+
             const channel = await client.channels.fetch(message.channel.id);
             const msg = await channel.messages.fetch(loadingTxt.id);
             if (msg) {
-                msg.edit({ content: `Just successfully **reminded** you.` });
+                await msg.edit({ content: `Just successfully **reminded** you.` });
             }
         }, ms(timeReminder));
 
