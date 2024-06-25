@@ -144,7 +144,7 @@ module.exports = new Object({
       try {
         if (stickyGLeagueMessage) { await stickyGLeagueMessage.delete(); }
         await message.channel.send({
-          content: `[**Take it slow, warmest luck**](https://open.spotify.com/track/6oSJ7jOB4BQv2bInqGMwru?si=281c0d510cf94c11) <:reply:1163568309816541256>\nEvent end <t:1719939600:R> [<t:1719939600:f>]`,
+          content: `[**Warmest luck, 「Never Break Down」リリックビデオ**](https://www.youtube.com/watch?v=r8eQDtOnUsY&ab_channel=TOHOanimation%E3%83%81%E3%83%A3%E3%83%B3%E3%83%8D%E3%83%AB) <:reply:1163568309816541256>\nEvent end <t:1719939600:R> [<t:1719939600:f>]`,
           // files: [ringOfire],
           components: [btnGLeague]
         });
