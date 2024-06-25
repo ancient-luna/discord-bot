@@ -23,7 +23,7 @@ function loadReminders(client) {
                                 .setAuthor({ name: `${client.users.cache.get(reminder.user).username}'s Reminder`, iconURL: client.users.cache.get(reminder.user).displayAvatarURL() })
                                 .setDescription(`*" ${reminder.reminderMessage} "*`)
                                 .setColor(client.config.embedColorTrans)
-                                .setFooter({ text: `Reminder was set` });
+                                // .setFooter({ text: `Reminder was set` });
 
                             channel.send({
                                 content: `<:ancientluna_divinare:841754250949820416><@${reminder.user}>╮`,

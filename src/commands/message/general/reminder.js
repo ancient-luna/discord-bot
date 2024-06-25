@@ -42,7 +42,7 @@ module.exports = new Object({
             .setAuthor({ name: `${message.member.displayName}'s Reminder`, iconURL: message.author.displayAvatarURL() })
             .setDescription(`*" ${reminderMessage} "*`)
             .setColor(client.config.embedColorTrans)
-            .setFooter({ text: `Reminder was set for ${timeReminder}` });
+            // .setFooter({ text: `Reminder was set for ${timeReminder}` });
 
         setTimeout(async () => {
             message.channel.send({
