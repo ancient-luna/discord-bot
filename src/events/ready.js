@@ -1,20 +1,19 @@
-const { presenceHandler } = require("../handlers");
+const { presenceHandler, reminderHandler } = require("../handlers");
 require("dotenv").config();
 const express = require("express");
 const app = express();
 const { REST } = require("@discordjs/rest");
 const { Routes } = require("discord-api-types/v10");
 
-/**
- * @param {import("../index")} client
- */
 module.exports = new Object({
   name: "ready",
+  
   /**
    * @param {import("../index")} client
    */
+
   async execute(client) {
-    // Update Bot Presence
+
     if (client.config.PRESENCE.ENABLED) {
       presenceHandler(client);
     }
@@ -35,5 +34,7 @@ module.exports = new Object({
     }
     
     client.console.log(`Logged in as ${client.user.tag}`, "client");
+
+    reminderHandler(client); // load reminders
   },
 });

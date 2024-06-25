@@ -1,5 +1,10 @@
 const { EmbedBuilder } = require("discord.js");
 const ms = require("ms");
+const fs = require("fs");
+const path = require("path");
+
+const reminderFile = path.resolve(__dirname, '../../../config/reminder.json');
+
 module.exports = new Object({
     name: "reminder",
     description: "reminder.",
@@ -23,29 +28,51 @@ module.exports = new Object({
      * @param {String[]} args
      */
     async execute(client, message, args) {
+        const timeReminder = args[0];
+        const reminderMessage = args.slice(1).join(" ");
 
-        const timeReminder = args[0]
-        const reminderMessage = args[1];
+        if (!timeReminder) return message.channel.send({ content: "Could you tell me the time? Ex: `10m` is 10 minutes." });
+        if (!reminderMessage) return message.channel.send({ content: "And I need you to define a thing for the timer to remind you about also.\nEx: `We start running to meet the moon`" });
 
         const timeCounter = Date.now() + ms(timeReminder);
 
-        if (!timeReminder) return message.channel.send({ content: "Could you tell me the time? Ex: \`10m\` is 10 minutes." });
-        if (!reminderMessage) return message.channel.send({ content: "And I need you to define a thing for the timer to remind you about also.\nEx: \`We start running to meet the moon\`" });
-        
-        const loadingTxt = await message.reply(`I keep it safe under the moon's name\nI will remind you back <t:${Math.floor(timeCounter/1000)}:R> <a:_util_loading:863317596551118858>`);
-        
+        const loadingTxt = await message.reply(`I keep it safe under the moon's name\nI will remind you back <t:${Math.floor(timeCounter / 1000)}:R> <a:_util_loading:863317596551118858>`);
+
         let embedReminder = new EmbedBuilder()
             .setAuthor({ name: `${message.member.displayName}'s Reminder`, iconURL: message.author.displayAvatarURL() })
-            .setDescription(`*" ${args.slice(1).join(" ")} "*`)
+            .setDescription(`*" ${reminderMessage} "*`)
             .setColor(client.config.embedColorTrans)
-            .setFooter({ text: `Reminder was set for ${timeReminder}` })
+            .setFooter({ text: `Reminder was set for ${timeReminder}` });
 
         setTimeout(async () => {
             message.channel.send({
                 content: `<:ancientluna_divinare:841754250949820416><@${message.author.id}>╮`,
                 embeds: [embedReminder]
-            })
-            loadingTxt.edit({ content: `Just successfully **reminded** you.` });
+            });
+            const channel = await client.channels.fetch(message.channel.id);
+            const msg = await channel.messages.fetch(loadingTxt.id);
+            if (msg) {
+                msg.edit({ content: `Just successfully **reminded** you.` });
+            }
         }, ms(timeReminder));
+
+        // Save the reminder to the JSON file
+        let reminders = [];
+        if (fs.existsSync(reminderFile)) {
+            const fileContent = fs.readFileSync(reminderFile, 'utf8');
+            if (fileContent) {
+                reminders = JSON.parse(fileContent);
+            }
+        }
+
+        reminders.push({
+            timeCounter: timeCounter,
+            reminderMessage: reminderMessage,
+            user: message.author.id,
+            channel: message.channel.id,
+            loadingMsgId: loadingTxt.id
+        });
+
+        fs.writeFileSync(reminderFile, JSON.stringify(reminders, null, 2));
     }
 });
