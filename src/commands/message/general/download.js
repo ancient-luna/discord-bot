@@ -79,27 +79,37 @@ module.exports = {
                 } else {
                     throw new Error('Invalid response from TikTok API');
                 }
-            } else if (youtubeRegex.test(url)) {
+            }  else if (youtubeRegex.test(url)) {
                 platform = 'YouTube';
-                response = await axios.get(apiUrls.yt);
-                data = response.data;
-                if (data.result) {
-                    const { title, data: ytData } = data.result;
-                    downloadLinks = `**${title}**\n\n`;
-                    if (ytData.fhd) {
-                        downloadLinks += `[Download Video FHD (1080p)](https://wa.me/6285143582588?text=.ytdl%20${url}%20fhd) - Size: ${ytData.fhd.size}\n`;
+                const vidUrl = url.match(youtubeRegex)[5];
+                const inputMP3 = {
+                    method: 'GET',
+                    url: 'https://youtube-mp3-download1.p.rapidapi.com/dl',
+                    params: { id: vidUrl },
+                    headers: {
+                        'X-RapidAPI-Key': process.env.X_RAPID_API,
+                        'X-RapidAPI-Host': 'youtube-mp3-download1.p.rapidapi.com'
                     }
-                    if (ytData.hd) {
-                        downloadLinks += `[Download Video HD (720p)](https://wa.me/6285143582588?text=.ytdl%20${url}%20hd) - Size: ${ytData.hd.size}\n`;
+                }
+                const inputMP4 = {
+                    method: 'GET',
+                    url: 'https://youtube-video-download-info.p.rapidapi.com/dl',
+                    params: { id: vidUrl },
+                    headers: {
+                        'X-RapidAPI-Key': process.env.X_RAPID_API,
+                        'X-RapidAPI-Host': 'youtube-video-download-info.p.rapidapi.com'
                     }
-                    if (ytData.sd) {
-                        downloadLinks += `[Download Video SD (480p)](https://wa.me/6285143582588?text=.ytdl%20${url}%20sd) - Size: ${ytData.sd.size}\n`;
-                    }
-                    if (ytData.mp3) {
-                        downloadLinks += `[Download Audio (mp3)](https://wa.me/6285143582588?text=.ytmp3%20${url}%20) - Size: ${ytData.mp3.size}\n`;
-                    }
-                } else {
-                    throw new Error('Invalid response from YouTube API');
+                }
+                try {
+                    const responseMP3 = await axios.request(inputMP3);
+                    const output = await axios.request(inputMP4);
+                    const responseMP4 = output.data.link[22];
+                    downloadLinks = `**${output.data.title}**\n\n`;
+                    downloadLinks += `[Download MP3](${responseMP3.data.link})\n`;
+                    downloadLinks += `[Download MP4](${responseMP4[0]})\n`;
+                } catch (e) {
+                    console.log(e);
+                    await loading.edit({ content: `The video ID does not exist!\n** Go to YouTube link, and copy the ID after the = or the /**` });
                 }
             } else if (/(reel|fb|facebook\.com|fb\.watch)/i.test(url)) {
                 platform = 'FaceBook';
