@@ -93,20 +93,23 @@ module.exports = {
                 }
                 const inputMP4 = {
                     method: 'GET',
-                    url: 'https://youtube-video-download-info.p.rapidapi.com/dl',
+                    url: 'https://yt-api.p.rapidapi.com/dl',
                     params: { id: vidUrl },
                     headers: {
                         'X-RapidAPI-Key': process.env.X_RAPID_API,
-                        'X-RapidAPI-Host': 'youtube-video-download-info.p.rapidapi.com'
+                        'X-RapidAPI-Host': 'yt-api.p.rapidapi.com'
                     }
                 }
                 try {
                     const responseMP3 = await axios.request(inputMP3);
                     const output = await axios.request(inputMP4);
-                    const responseMP4 = output.data.link[22];
+                    const formats = output.data.adaptiveFormats;
                     downloadLinks = `**${output.data.title}**\n\n`;
                     downloadLinks += `[Download MP3](${responseMP3.data.link})\n`;
-                    downloadLinks += `[Download MP4](${responseMP4[0]})\n`;
+
+                    formats.slice(0, 1).forEach((format, index) => {
+                        downloadLinks += `[Download Video (${format.qualityLabel}p)](${format.url})\n`;
+                    });
                 } catch (e) {
                     console.log(e);
                     await loading.edit({ content: `The video ID does not exist!\n** Go to YouTube link, and copy the ID after the = or the /**` });
