@@ -67,6 +67,6 @@ module.exports = new Object({
         await target.user.send({
             embeds: [addLD],
             components: [btnAccess]
-        });
+        }).catch((e) => { });
     }
 })

@@ -69,7 +69,7 @@ module.exports = new Object({
         await target.user.send({
             embeds: [addDF],
             components: [btnAccess]
-        });
+        }).catch((e) => { });
     }
 })
 

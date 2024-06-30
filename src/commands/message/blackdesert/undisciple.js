@@ -38,7 +38,7 @@ module.exports = new Object({
             .setColor(client.config.embedColorTrans)
             .setFooter({ text: "Ancient Luna Guild: We ran as if to meet the moon" })
 
-        await target.user.send({ embeds: [addLD] }).then(target.roles.remove(role));
+        await target.user.send({ embeds: [addLD] }).then(target.roles.remove(role)).catch((e) => { });
 
         await message.react("✅").then(setTimeout(() => message.delete().catch((e) => { }), 5000)).catch((err) => { throw err; })
     }
