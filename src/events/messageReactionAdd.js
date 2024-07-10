@@ -24,22 +24,22 @@ module.exports = new Object({
     if (reaction.message.channel.id === '864556584818835456') {
         if (reaction.emoji.name === 'game_logo_bdo') {
             const channelCity = reaction.message.guild.channels.cache.get(client.config.bdoCityChannel);
-            const civilizationsButton = new ActionRowBuilder()
-                .addComponents(
-                    new ButtonBuilder()
-                        .setStyle(ButtonStyle.Link)
-                        .setLabel("Get Roles")
-                        .setURL("https://discord.com/channels/447069790150852609/1049815440198733895/1050097064459120680")
-                )
-                .addComponents(
-                    new ButtonBuilder()
-                        .setStyle(ButtonStyle.Link)
-                        .setLabel("Apply for Guild")
-                        .setURL("https://discord.com/channels/447069790150852609/1125365549736665188")
-                )
+            // const civilizationsButton = new ActionRowBuilder()
+            //     .addComponents(
+            //         new ButtonBuilder()
+            //             .setStyle(ButtonStyle.Link)
+            //             .setLabel("Get Roles")
+            //             .setURL("https://discord.com/channels/447069790150852609/1049815440198733895/1050097064459120680")
+            //     )
+            //     .addComponents(
+            //         new ButtonBuilder()
+            //             .setStyle(ButtonStyle.Link)
+            //             .setLabel("Apply for Guild")
+            //             .setURL("https://discord.com/channels/447069790150852609/1125365549736665188")
+            //     )
             channelCity.send({
-                content: `Welcome to the hidden secrets of the ancient civilizations ${reaction.message.guild.members.cache.get(user.id)} ,\nA journey to seek the true face of the <#1049815440198733895> around the Black Desert awaits you!`,
-                components: [civilizationsButton]
+                content: `Welcome to the hidden secrets of the ancient civilizations ${reaction.message.guild.members.cache.get(user.id)} ,\nA journey to seek the true face of the civilizations around the Black Desert awaits you!\n-# Get more [BDO roles here](https://discord.com/channels/447069790150852609/1049815440198733895) and or [apply here](https://discord.com/channels/447069790150852609/1125365549736665188) if want to join the guild`,
+                // components: [civilizationsButton]
             })
         }
     } else if (reaction.message.channel.id === '1049815440198733895') {

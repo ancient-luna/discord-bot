@@ -45,7 +45,7 @@ module.exports = new Object({
           client.config.generalChannel
         );
         await channel.send({
-          content: `<@${message.author.id}> has passed the trial by understand our wisdom of lleud to reach this warm sanctuary deeper.\nWelcome, to the sanctuary of lights. The <@&${client.config.elderRole}> welcome you as one of true light seekers ${ancientLunaEmoji}`,
+          content: `Welcome <@${message.author.id}>, to the sanctuary of lights\nThe <@&${client.config.elderRole}> welcome you as one of true light seekers ${ancientLunaEmoji}\n-# ${message.author.displayName} has passed the trial by understand our wisdom of lleud to reach this warm sanctuary deeper`,
           components: [welcomeButton],
         });
       }
