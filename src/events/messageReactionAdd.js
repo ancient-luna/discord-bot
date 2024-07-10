@@ -38,7 +38,7 @@ module.exports = new Object({
             //             .setURL("https://discord.com/channels/447069790150852609/1125365549736665188")
             //     )
             channelCity.send({
-                content: `Welcome to the <#1049228301807407156> of luna ${reaction.message.guild.members.cache.get(user.id)} ,\nA journey to seek the true face of the civilizations around the Black Desert awaits you!\n-# Get more [BDO roles here](https://discord.com/channels/447069790150852609/1049815440198733895) and or [apply here](https://discord.com/channels/447069790150852609/1125365549736665188) if want to join the guild`,
+                content: `Welcome to the **city of luna** ${reaction.message.guild.members.cache.get(user.id)},\nA journey to seek the true face of the civilizations around the Black Desert awaits you!\n-# Here <#1125365549736665188> application and more BDO roles in <#1049815440198733895>`,
                 // components: [civilizationsButton]
             })
         }
