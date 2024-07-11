@@ -14,7 +14,7 @@ module.exports = {
    * @param {import("discord.js").ButtonInteraction} interaction
    */
   execute: async (client, interaction) => {
-    const SRCguildbanner = new AttachmentBuilder("src/assets/bdo/Gintro.png")
+    const SRCguildbanner = new AttachmentBuilder("src/assets/bdo/gbanner.png")
     return interaction.reply({
         files: [SRCguildbanner],
         ephemeral: true
