@@ -42,7 +42,7 @@ module.exports = new Object({
                 .setDescription(data.description)
                 .setColor(`f04947`)
                 .addFields(
-                    { name: `Reason from ${editor}`, value: denyQuery }
+                    { name: `-# Reason from ${editor}`, value: `-# ${denyQuery}` }
                 )
                 .setTimestamp()
 

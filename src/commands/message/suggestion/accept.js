@@ -42,7 +42,7 @@ module.exports = new Object({
                 .setDescription(data.description)
                 .setColor(`43b581`)
                 .addFields(
-                    { name: `Reason from ${editor}`, value: acceptQuery }
+                    { name: `-# Reason from ${editor}`, value: `-# ${acceptQuery}` }
                 )
                 .setTimestamp()
 
