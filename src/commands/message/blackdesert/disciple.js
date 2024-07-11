@@ -38,7 +38,7 @@ module.exports = new Object({
                 new ButtonBuilder()
                     .setCustomId("btn-guildbanner")
                     .setLabel("See Guild Banner")
-                    .setStyle(ButtonStyle.Primary)
+                    .setStyle(ButtonStyle.Secondary)
             )
 
         message.guild.channels.cache.get('1060992670035619931').send({
