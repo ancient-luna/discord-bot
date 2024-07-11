@@ -56,7 +56,7 @@ module.exports = new Object({
 
             const accEmbed = new EmbedBuilder()
                 .setAuthor({ name: "SUGGESTION ACCEPTED", iconURL: 'https://i.imgur.com/Kll2T98.png' })
-                .setDescription(`Your suggestion has been accepted by the Elders\n-# See further detail in **[#suggestions](${suggestionLink})**`)
+                .setDescription(`Your suggestion has been accepted by the Elders\n-# See further detail in [#suggestions](${suggestionLink})`)
                 .setTimestamp()
                 .setColor("43b581")
                 .setFooter({ text: "Thank you for the suggestion!" })

@@ -56,7 +56,7 @@ module.exports = new Object({
 
             const dnEmbed = new EmbedBuilder()
                 .setAuthor({ name: "SUGGESTION DENIED", iconURL: 'https://i.imgur.com/oZvnuem.png' })
-                .setDescription(`Your suggestion has been denied by the Elders\n-# Find out why in **[#suggestions](${suggestionLink})**`)
+                .setDescription(`Your suggestion has been denied by the Elders\n-# Find out why in [#suggestions](${suggestionLink})`)
                 .setTimestamp()
                 .setColor('f04947')
                 .setFooter({ text: "Thank you for the suggestion!" })
