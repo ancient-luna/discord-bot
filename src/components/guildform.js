@@ -87,7 +87,7 @@ module.exports = {
 
             const embedForm = new EmbedBuilder()
                 .setAuthor({ name: `GUILD APPLICATION FORM`, iconURL: "https://i.imgur.com/ehHq6P6.png" })
-                .setDescription(`-# <@${modalInteraction.user.id}> just applied. • [check ${famName} profile here](https://blackdesert.pearlabyss.com/ASIA/en-us/Game/Profile/Search?_type=2&_keyword=${famName})`)
+                .setDescription(`-# <@${interaction.user.id}> just applied. • [check ${famName} profile here](<https://blackdesert.pearlabyss.com/ASIA/en-us/Game/Profile/Search?_type=2&_keyword=${famName}>)`)
                 .addFields(
                     { name: `𝑭𝒂𝒎𝒊𝒍𝒚 𝑵𝒂𝒎𝒆`, value: `\`\`\`${famName}\`\`\``, inline: true },
                     { name: `𝑪𝒐𝒖𝒏𝒕𝒓𝒚`, value: `\`\`\`${countryLoct}\`\`\``, inline: true },
