@@ -39,8 +39,11 @@ module.exports = new Object({
             const acceptEmbed = new EmbedBuilder()
                 .setAuthor({ name: data.author.name, iconURL: 'https://i.imgur.com/Kll2T98.png' })
                 .setTitle('SUGGESTION ACCEPTED')
-                .setDescription(`${data.description}\n\n-# Reason from **${editor}** : "${acceptQuery}"`)
+                .setDescription(data.description)
                 .setColor(`43b581`)
+                .addFields(
+                    { name: `⁣`, value: `-# Reason from **${editor}** : ${acceptQuery}` }
+                )
                 .setTimestamp()
 
             suggestedEmbed.edit({ embeds: [acceptEmbed] });
