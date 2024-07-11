@@ -56,10 +56,10 @@ module.exports = new Object({
 
             const dnEmbed = new EmbedBuilder()
                 .setAuthor({ name: "SUGGESTION DENIED", iconURL: 'https://i.imgur.com/oZvnuem.png' })
-                .setDescription(`Your suggestion has been denied by the Elders. Find out why in **[#suggestions](${suggestionLink})**. Thank you for the suggestion!`)
+                .setDescription(`Your suggestion has been denied by the Elders\n-# Find out why in **[#suggestions](${suggestionLink})**`)
                 .setTimestamp()
                 .setColor('f04947')
-                .setFooter({ text: "Your Suggestions Status" })
+                .setFooter({ text: "Thank you for the suggestion!" })
 
             const failed = new EmbedBuilder()
                 .setDescription(`<:wrong:1222439146593849425> Failed sending DM to <@${suggester.id}> due they close their DMs`)

@@ -56,10 +56,10 @@ module.exports = new Object({
 
             const accEmbed = new EmbedBuilder()
                 .setAuthor({ name: "SUGGESTION ACCEPTED", iconURL: 'https://i.imgur.com/Kll2T98.png' })
-                .setDescription(`Your suggestion has been accepted by the Elders. See further detail in **[#suggestions](${suggestionLink})**. Thank you for the suggestion!`)
+                .setDescription(`Your suggestion has been accepted by the Elders\n-# See further detail in **[#suggestions](${suggestionLink})**`)
                 .setTimestamp()
                 .setColor("43b581")
-                .setFooter({ text: "Your Suggestions Status" })
+                .setFooter({ text: "Thank you for the suggestion!" })
 
             const failed = new EmbedBuilder()
                 .setDescription(`<:wrong:1222439146593849425> Failed sending DM to <@${suggester.id}> due they close their DMs`)
