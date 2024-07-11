@@ -35,8 +35,9 @@ module.exports = new Object({
 
             const profileBuffer = await profileImage(member.id, {
                 overwriteBadges: true,
-                // customBadges: ['src/assets/badge/ancientluna.png'],
+                customBadges: ['src/assets/badge/ancientluna.png'],
                 moreBackgroundBlur: true,
+                removeBorder: true,
                 presenceStatus: status
             });
             const imageAttachment = new AttachmentBuilder(profileBuffer, { name: `profile.png` });
@@ -74,7 +75,7 @@ module.exports = new Object({
             const Embed = new EmbedBuilder()
                 .setTitle(`User Profile in ${message.guild.name}`)
                 .setColor('Aqua')
-                .setDescription(`<@${member.id}> joined as the \`${addSuffix(joinPosition)}\` member of this server.`)
+                .setDescription(`<@${member.id}> joined as the ${addSuffix(joinPosition)} member of this server\n-# (id) ${member.id} (username) ${member.user.username}`)
                 .setImage(`attachment://profile.png`)
                 .addFields([
                     { name: "Account Created", value: `<t:${createdTime}:R>`, inline: true },
@@ -83,7 +84,7 @@ module.exports = new Object({
                     // { name: `Roles in ${message.guild.name}`, value: `${topRoles.join(" ").replace(`<@${message.guildId}>`)}`, inline: false },
                 ])
                 .setColor(client.config.embedColorTrans)
-                .setFooter({ text: `ID: ${member.id} (u) ${member.user.username}` })
+                // .setFooter({ text: `ID: ${member.id} (u) ${member.user.username}` })
                 .setTimestamp()
 
             loadingTxt.edit({
