@@ -24,22 +24,8 @@ module.exports = new Object({
     if (reaction.message.channel.id === '864556584818835456') {
         if (reaction.emoji.name === 'game_logo_bdo') {
             const channelCity = reaction.message.guild.channels.cache.get(client.config.bdoCityChannel);
-            // const civilizationsButton = new ActionRowBuilder()
-            //     .addComponents(
-            //         new ButtonBuilder()
-            //             .setStyle(ButtonStyle.Link)
-            //             .setLabel("Get Roles")
-            //             .setURL("https://discord.com/channels/447069790150852609/1049815440198733895/1050097064459120680")
-            //     )
-            //     .addComponents(
-            //         new ButtonBuilder()
-            //             .setStyle(ButtonStyle.Link)
-            //             .setLabel("Apply for Guild")
-            //             .setURL("https://discord.com/channels/447069790150852609/1125365549736665188")
-            //     )
             channelCity.send({
                 content: `Welcome to the **city of luna** ${reaction.message.guild.members.cache.get(user.id)},\nA journey to seek the true face of the civilizations around the Black Desert awaits you!\n-# Here <#1125365549736665188> application and more BDO roles in <#1049815440198733895>`,
-                // components: [civilizationsButton]
             })
         }
     } else if (reaction.message.channel.id === '1049815440198733895') {
