@@ -39,7 +39,7 @@ module.exports = new Object({
             const denyEmbed = new EmbedBuilder()
                 .setAuthor({ name: data.author.name, iconURL: 'https://i.imgur.com/oZvnuem.png' })
                 .setTitle('SUGGESTION DENIED')
-                .setDescription(`${data.description}\n\n-# Reason from ${editor} : "${denyQuery}"`)
+                .setDescription(`${data.description}\n\n-# Reason from **${editor}** : "${denyQuery}"`)
                 .setColor(`f04947`)
                 .setTimestamp()
 
