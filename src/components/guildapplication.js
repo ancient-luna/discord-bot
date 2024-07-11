@@ -29,7 +29,7 @@ module.exports = {
     const embedForm = new EmbedBuilder()
       .setAuthor({ name: "Ancient Luna Guild Application", iconURL: "https://i.imgur.com/SOCuup9.png" })
       .setTitle(`Welcome to the sanctuary of lights`)
-      .setURL(`https://www.youtube.com/watch?v=_rJiY6y3a-A&ab_channel=AncientLuna`)
+      .setURL(`https://ancientluna.org`)
       .setDescription(`**To apply for guild, please fill the form by clicking the button below**\nDon't hesitate to ask if there is any questions regarding the guild <:ancientluna_divinare_s:859034096192978965>`)
       .setColor(client.config.embedColorTrans)
       .setFooter({ text: "Hopefully we can be one of the family!" })
