@@ -29,7 +29,7 @@ module.exports = {
     const canvas = createCanvas(500, 800);
     const ctx = canvas.getContext("2d");
 
-    registerFont('src/assets/usercard/PaybAck.ttf', { family: 'PaybAck' });
+    registerFont('src/assets/usercard/PearlAbyss.ttf', { family: 'PearlAbyss' });
     registerFont('src/assets/usercard/HelveticaBold.ttf', { family: 'HelveticaBold' });
 
     function roundRect(ctx, x, y, width, height, radius, fill, stroke) {
@@ -76,6 +76,7 @@ module.exports = {
         const image = await loadImage(data);
         ctx.drawImage(image, 0, 0, 500, 800);
 
+        let nameSize = 40;
         let fontSize = 33;
         let beginY = 95;
         let beginX = 250;
@@ -88,13 +89,13 @@ module.exports = {
         let nameFits = false;
 
         // Continuously check if the name fits within the canvas width
-        while (!nameFits && fontSize > 10) {
-          ctx.font = `${fontSize}px "PaybAck"`;
+        while (!nameFits && nameSize > 10) {
+          ctx.font = `${nameSize}px "PearlAbyss"`;
           let nameWidth = ctx.measureText(displayName).width;
           if (nameWidth <= 500 - 2 * padding) {
             nameFits = true;
           } else {
-            fontSize -= 2;
+            nameSize -= 2;
           }
         }
 
