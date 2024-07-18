@@ -35,35 +35,39 @@ module.exports = new Object({
 
             const messageID = await channelID.messages.fetch(msgID);
 
-            // let newFile = new AttachmentBuilder("src/assets/df/thecallers.gif")
-
             const editEmbed = new EmbedBuilder()
-                .setTitle('EXCLUSIVE ROLES')
-                // .setDescription(`<@&620709364247822338> for the members who boost the server\n<@&888736428069105674> for the supporters through [Ko-Fi](https://ko-fi.com/xxdae) or [Trakteer](https://trakteer.id/xxdae)\n<@&1148832046505009193> for the content creators and or huge game developers`)
+                .setAuthor({ name: "Ancient Luna Guild Application", iconURL: "https://i.imgur.com/SOCuup9.png" })
                 .setDescription(cntntQ)
                 .setColor(client.config.embedColorTrans)
-                .setImage('https://i.imgur.com/WeX4nGf.png')
-            // .setFooter({ text: `*this is world boss alerts (ASIA region only) GMT+8` })
+                .setImage('https://i.imgur.com/zO7pdYW.png')
+
+            // const editButton = new ActionRowBuilder()
+            //     .addComponents(
+            //         new ButtonBuilder()
+            //             .setStyle(ButtonStyle.Link)
+            //             .setLabel(`Support (Ko-Fi)`)
+            //             .setURL(`https://ko-fi.com/daexx`)
+            //     )
+            //     .addComponents(
+            //         new ButtonBuilder()
+            //             .setStyle(ButtonStyle.Link)
+            //             .setLabel(`Support (Trakteer)`)
+            //             .setURL(`https://trakteer.id/daexx`)
+            //     )
 
             const editButton = new ActionRowBuilder()
                 .addComponents(
                     new ButtonBuilder()
-                        .setStyle(ButtonStyle.Link)
-                        .setLabel(`Support (Ko-Fi)`)
-                        .setURL(`https://ko-fi.com/daexx`)
-                )
-                .addComponents(
-                    new ButtonBuilder()
-                        .setStyle(ButtonStyle.Link)
-                        .setLabel(`Support (Trakteer)`)
-                        .setURL(`https://trakteer.id/daexx`)
+                        .setCustomId("btn-guildapplication")
+                        .setLabel("Apply for Guild Member")
+                        .setStyle(ButtonStyle.Danger)
+                        .setEmoji("<:guild_gold:1263379356525264936>")
                 )
 
             message.channel.send("Embed: **EDITED** ! `updated`");
             messageID.edit({
                 embeds: [editEmbed],
                 components: [editButton],
-                // files: [newFile]
             });
 
         } catch (err) {
