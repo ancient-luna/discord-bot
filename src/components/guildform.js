@@ -92,8 +92,8 @@ module.exports = {
                     { name: `𝑭𝒂𝒎𝒊𝒍𝒚 𝑵𝒂𝒎𝒆`, value: `\`\`\`${famName}\`\`\``, inline: true },
                     { name: `𝑪𝒐𝒖𝒏𝒕𝒓𝒚`, value: `\`\`\`${countryLoct}\`\`\``, inline: true },
                     { name: `𝑹𝒖𝒍𝒆𝒔 𝑨𝒈𝒓𝒆𝒆𝒎𝒆𝒏𝒕`, value: `\`\`\`${termsAgreement}\`\`\``, inline: true },
-                    { name: `𝑷𝒓𝒆𝒗𝒊𝒐𝒖𝒔 𝑮𝒖𝒊𝒍𝒅 𝑯𝒊𝒔𝒕𝒐𝒓𝒚 <:write:1163568311716565154>`, value: `"${prevGuild}"`, inline: false },
-                    { name: `𝑮𝒖𝒊𝒍𝒅 𝑬𝒙𝒑𝒆𝒄𝒕𝒂𝒕𝒊𝒐𝒏 <:write:1163568311716565154>`, value: `"${expectGuild}"`, inline: false },
+                    { name: `𝑷𝒓𝒆𝒗𝒊𝒐𝒖𝒔 𝑮𝒖𝒊𝒍𝒅 𝑯𝒊𝒔𝒕𝒐𝒓𝒚`, value: `"${prevGuild}"`, inline: false },
+                    { name: `𝑮𝒖𝒊𝒍𝒅 𝑬𝒙𝒑𝒆𝒄𝒕𝒂𝒕𝒊𝒐𝒏`, value: `"${expectGuild}"`, inline: false },
                 )
                 .setColor(client.config.embedColorTrans)
                 .setFooter({ text: `Signed by ${famName}` })
