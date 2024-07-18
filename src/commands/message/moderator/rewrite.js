@@ -36,10 +36,8 @@ module.exports = new Object({
             const messageID = await channelID.messages.fetch(msgID);
 
             const editEmbed = new EmbedBuilder()
-                .setAuthor({ name: "Ancient Luna Guild Application", iconURL: "https://i.imgur.com/SOCuup9.png" })
                 .setDescription(cntntQ)
                 .setColor(client.config.embedColorTrans)
-                .setImage('https://i.imgur.com/zO7pdYW.png')
 
             // const editButton = new ActionRowBuilder()
             //     .addComponents(
@@ -54,15 +52,6 @@ module.exports = new Object({
             //             .setLabel(`Support (Trakteer)`)
             //             .setURL(`https://trakteer.id/daexx`)
             //     )
-
-            const editButton = new ActionRowBuilder()
-                .addComponents(
-                    new ButtonBuilder()
-                        .setCustomId("btn-guildapplication")
-                        .setLabel("Apply for Guild Member")
-                        .setStyle(ButtonStyle.Primary)
-                        .setEmoji("<:guild_base:1263386782880366695>")
-                )
 
             message.channel.send("Embed: **EDITED** ! `updated`");
             messageID.edit({
