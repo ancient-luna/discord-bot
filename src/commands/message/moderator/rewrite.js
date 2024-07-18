@@ -60,8 +60,8 @@ module.exports = new Object({
                     new ButtonBuilder()
                         .setCustomId("btn-guildapplication")
                         .setLabel("Apply for Guild Member")
-                        .setStyle(ButtonStyle.Danger)
-                        .setEmoji("<:guild_gold:1263379356525264936>")
+                        .setStyle(ButtonStyle.Primary)
+                        .setEmoji("<:guild_silver:1263379359360876564>")
                 )
 
             message.channel.send("Embed: **EDITED** ! `updated`");
