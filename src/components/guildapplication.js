@@ -17,7 +17,7 @@ module.exports = {
 
     const thread = await interaction.channel.threads.create({
         name: `${interaction.member.displayName} Guild Application`,
-        autoArchiveDuration: 86400,
+        autoArchiveDuration: 1440,
         type: ChannelType.PrivateThread,
     }).catch(err => {
         return;
