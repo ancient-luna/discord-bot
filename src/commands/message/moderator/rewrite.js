@@ -39,6 +39,8 @@ module.exports = new Object({
                 .setDescription(cntntQ)
                 .setColor(client.config.embedColorTrans)
 
+            const editImage = new AttachmentBuilder('src/assests/bdo/civilizationclasses.png')
+
             // const editButton = new ActionRowBuilder()
             //     .addComponents(
             //         new ButtonBuilder()
@@ -56,6 +58,7 @@ module.exports = new Object({
             message.channel.send("Embed: **EDITED** ! `updated`");
             messageID.edit({
                 embeds: [editEmbed],
+                files: [editImage],
                 // components: [editButton],
             });
 
