@@ -68,7 +68,7 @@ module.exports = new Object({
                     .setFooter({ text: 'Elionian Year' })
                     .setTimestamp()
                     .setImage(`${heroIMG[Math.floor(Math.random() * heroIMG.length)]}`)
-                    .setDescription(`Registered Name: ${reaction.message.guild.members.cache.get(user.id)}\n-# ${quoteText[Math.floor(Math.random() * quoteText.length)]}`)
+                    .setDescription(`-#Registered Name: ${reaction.message.guild.members.cache.get(user.id)}\n\n-# ${quoteText[Math.floor(Math.random() * quoteText.length)]}`)
                     .setColor(client.config.embedColorTrans);
                 return channelArtifact.send({ embeds: [heroText] });
             }
