@@ -39,7 +39,7 @@ module.exports = new Object({
                 .setDescription(cntntQ)
                 .setColor(client.config.embedColorTrans)
 
-            const editImage = new AttachmentBuilder('src/assests/bdo/civilizationclasses.png')
+            const editImage = new AttachmentBuilder('src/assets/bdo/civilizationclasses.png')
 
             // const editButton = new ActionRowBuilder()
             //     .addComponents(
