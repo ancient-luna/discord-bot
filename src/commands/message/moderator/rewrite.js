@@ -56,7 +56,7 @@ module.exports = new Object({
             message.channel.send("Embed: **EDITED** ! `updated`");
             messageID.edit({
                 embeds: [editEmbed],
-                components: [editButton],
+                // components: [editButton],
             });
 
         } catch (err) {
