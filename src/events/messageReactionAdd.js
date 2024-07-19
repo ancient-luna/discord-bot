@@ -500,21 +500,21 @@ module.exports = new Object({
                     .setColor(client.config.embedColorTrans);
                 return channelArtifact.send({ embeds: [classText] });
             }
-            // if (reaction.emoji.name === 'xu_bdo_class_scholar') {
-            //     const channelArtifact = reaction.message.guild.channels.cache.get(client.config.artifactChannel);
-            //     const quoteText = [
-            //         '𝔄𝔭𝔭𝔢𝔞𝔯𝔦𝔫𝔤 𝔣𝔯𝔬𝔪 𝔱𝔥𝔢 ℭ𝔩𝔬𝔲𝔡𝔰, 𝔙𝔞𝔫𝔦𝔰𝔥𝔦𝔫𝔤 𝔴𝔦𝔱𝔥 𝔱𝔥𝔢 𝔉𝔬𝔤',
-            //         '𝔚𝔦𝔱𝔥 𝔖𝔞𝔠𝔯𝔢𝔡 ℜ𝔢𝔩𝔦𝔠𝔰, ℌ𝔢 𝔅𝔢𝔫𝔡𝔰 𝔱𝔥𝔢 ℭ𝔩𝔬𝔲𝔡𝔰 𝔞𝔱 𝔚𝔥𝔦𝔪'
-            //     ]
-            //     const classText = new EmbedBuilder()
-            //         .setAuthor({ name: "CHOSEN MAIN CLASS", iconURL: "https://i.imgur.com/Sjc6F8x.png" })
-            //         .setFooter({ text: 'Elionian Year' })
-            //         .setTimestamp()
-            //         .setThumbnail('https://i.imgur.com/1aLbsd9.png')
-            //         .setDescription(`${quoteText[Math.floor(Math.random() * quoteText.length)]}\n-# Ancient Civilizations Name: ${reaction.message.guild.members.cache.get(user.id)}\n-# Chosen Main Class: **Dosa** <:dosa:1258082938105368648>`)
-            //         .setColor(client.config.embedColorTrans);
-            //     return channelArtifact.send({ embeds: [classText] });
-            // }
+            if (reaction.emoji.name === 'xu_bdo_class_dosa') {
+                const channelArtifact = reaction.message.guild.channels.cache.get(client.config.artifactChannel);
+                const quoteText = [
+                    '𝔄𝔭𝔭𝔢𝔞𝔯𝔦𝔫𝔤 𝔣𝔯𝔬𝔪 𝔱𝔥𝔢 ℭ𝔩𝔬𝔲𝔡𝔰, 𝔙𝔞𝔫𝔦𝔰𝔥𝔦𝔫𝔤 𝔴𝔦𝔱𝔥 𝔱𝔥𝔢 𝔉𝔬𝔤',
+                    '𝔚𝔦𝔱𝔥 𝔖𝔞𝔠𝔯𝔢𝔡 ℜ𝔢𝔩𝔦𝔠𝔰, ℌ𝔢 𝔅𝔢𝔫𝔡𝔰 𝔱𝔥𝔢 ℭ𝔩𝔬𝔲𝔡𝔰 𝔞𝔱 𝔚𝔥𝔦𝔪'
+                ]
+                const classText = new EmbedBuilder()
+                    .setAuthor({ name: "CHOSEN MAIN CLASS", iconURL: "https://i.imgur.com/Sjc6F8x.png" })
+                    .setFooter({ text: 'Elionian Year' })
+                    .setTimestamp()
+                    .setThumbnail('https://i.imgur.com/1aLbsd9.png')
+                    .setDescription(`${quoteText[Math.floor(Math.random() * quoteText.length)]}\n-# Ancient Civilizations Name: ${reaction.message.guild.members.cache.get(user.id)}\n-# Chosen Main Class: **Dosa** <:dosa:1258082938105368648>`)
+                    .setColor(client.config.embedColorTrans);
+                return channelArtifact.send({ embeds: [classText] });
+            }
         } else if (reaction.message.channel.id === '1060992992523079800') {
             if (reaction.emoji.name === 'ancientluna_divinare') {
                 const channelSanctum = reaction.message.guild.channels.cache.get(client.config.sanctumChannel);
