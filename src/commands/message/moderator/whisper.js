@@ -30,14 +30,14 @@ module.exports = new Object({
 
     const str = args.slice(1).join(" ");
     
-    const img = new AttachmentBuilder("src/assets/gl.png")
+    const img = new AttachmentBuilder("src/assets/perfectdays.mp4")
 
     const txtEmbed = new EmbedBuilder()
       .setTitle(`Dev. Support Contacts <:verified:1204724590950228008>`)
       .setDescription(`> Discord: axxae - [ancientluna](https://discord.com/invite/Sbp2nt8QHe)\n> dae@ancientluna.org <:ins:1204725582852788256> [**IG**](https://instagram.com/everylttlething)`)
       .setFooter({ text: `this bot won't read any messages of your replies` })
       .setColor(client.config.embedColorTrans)
-      .setThumbnail('https://i.imgur.com/nZqRDtz.png') // aevoa
+      .setThumbnail('https://i.imgur.com/vfx9TEB.png') // aevoa
       // .setImage('https://i.imgur.com/4uS7mor.png') // aevoa
       .setTimestamp()
 
@@ -46,7 +46,7 @@ module.exports = new Object({
         new ButtonBuilder()
           .setStyle(ButtonStyle.Link)
           .setLabel("Web")
-          .setURL(`https://www.ancientluna.org`)
+          .setURL(`https://www.bdo.ancientluna.org`)
       )
       .addComponents(
         new ButtonBuilder()
