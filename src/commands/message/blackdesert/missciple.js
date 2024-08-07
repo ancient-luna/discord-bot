@@ -1,7 +1,7 @@
 const { EmbedBuilder } = require("discord.js");
 module.exports = new Object({
-    name: "inacdisciple",
-    description: "inacdisciple.",
+    name: "missciple",
+    description: "missciple.",
     category: "Blackdesert",
     usage: "",
     cooldown: 0,
