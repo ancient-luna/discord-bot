@@ -75,7 +75,7 @@ module.exports = new Object({
             const Embed = new EmbedBuilder()
                 .setTitle(`User Profile in ${message.guild.name}`)
                 .setColor('Aqua')
-                .setDescription(`<@${member.id}> joined as the ${addSuffix(joinPosition)} member of this server}`)
+                .setDescription(`<@${member.id}> joined as the ${addSuffix(joinPosition)} member of this server`)
                 .setImage(`attachment://profile.png`)
                 .addFields([
                     { name: "Account Created", value: `<t:${createdTime}:R>`, inline: true },
