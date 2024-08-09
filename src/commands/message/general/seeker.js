@@ -75,16 +75,16 @@ module.exports = new Object({
             const Embed = new EmbedBuilder()
                 .setTitle(`User Profile in ${message.guild.name}`)
                 .setColor('Aqua')
-                .setDescription(`<@${member.id}> joined as the ${addSuffix(joinPosition)} member of this server\n-# (id) ${member.id} (username) ${member.user.username}`)
+                .setDescription(`<@${member.id}> joined as the ${addSuffix(joinPosition)} member of this server}`)
                 .setImage(`attachment://profile.png`)
                 .addFields([
                     { name: "Account Created", value: `<t:${createdTime}:R>`, inline: true },
                     { name: "Joined Since", value: `<t:${joinTime}:D>`, inline: true },
                     { name: "Server Booster", value: `${Booster}`, inline: true },
-                    // { name: `Roles in ${message.guild.name}`, value: `${topRoles.join(" ").replace(`<@${message.guildId}>`)}`, inline: false },
+                    { name: `Roles in ${message.guild.name}`, value: `${topRoles.join(" ").replace(`<@${message.guildId}>`)}`, inline: false },
                 ])
                 .setColor(client.config.embedColorTrans)
-                // .setFooter({ text: `ID: ${member.id} (u) ${member.user.username}` })
+                // .setFooter({ text: `${member.id} (u) ${member.user.username}` })
                 .setTimestamp()
 
             loadingTxt.edit({
