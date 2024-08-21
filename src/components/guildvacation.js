@@ -54,13 +54,25 @@ module.exports = {
         .then((modalInteraction) => {
             const dayValue = modalInteraction.fields.getTextInputValue('dayInput');
             const reasonValue = modalInteraction.fields.getTextInputValue('reasonInput');
-
             const absenceNote = new EmbedBuilder()
                 .setTitle(`Vacation Letter`)
                 .setDescription(`*Dear Elders,\nRequested Day Off: ${dayValue} Days\n\n${reasonValue}\n\nYours sincerely,*\n***${interaction.member.displayName}***`)
                 .setColor(client.config.embedColorTrans)
                 .setThumbnail('https://i.imgur.com/Zx4kMoA.png')
-            modalInteraction.guild.channels.cache.get('1076767724224659526').send({ embeds: [absenceNote] })
+          const btnVacaAcc = new ActionRowBuilder()
+            .addComponents(
+              new ButtonBuilder()
+                .setStyle(ButtonStyle.Link)
+                .setLabel(`Guild Forum`)
+                .setURL(`https://www.sea.playblackdesert.com/en-US/Forum/ForumTopic/Detail?_topicNo=42709&_page=1&_opinionNo=69067`)
+            )
+            .addComponents(
+              new ButtonBuilder()
+                .setStyle(ButtonStyle.Link)
+                .setLabel(`Guild Video`)
+                .setURL(`https://youtu.be/3S8HVfHYJ5k`)
+            )
+            modalInteraction.guild.channels.cache.get('1076767724224659526').send({ embeds: [absenceNote], components: [btnVacaAcc] })
             modalInteraction.reply({
               content: `*The vacation letter has been delivered to the Elders, dear* ***${interaction.member.displayName}***\n*All your privacy will be kept safe under them*`,
               ephemeral: true
