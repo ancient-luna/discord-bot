@@ -23,8 +23,8 @@ module.exports = {
         
     const updatedButton = new ButtonBuilder()
       .setCustomId('btn-guildvacationacc')
-      .setLabel('Approve')
-      .setStyle(ButtonStyle.Success)
+      .setLabel('Approved')
+      .setStyle(ButtonStyle.Secondary)
       .setDisabled(true);
 
     const row = new ActionRowBuilder().addComponents(updatedButton);
