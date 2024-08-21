@@ -19,7 +19,7 @@ module.exports = {
     const userIdMatch = originalMessage.embeds[0]?.description?.match(/\*\*\*(\d+)\*\*\*/);
     const userID = userIdMatch ? userIdMatch[1] : "`???`"; // Default to "the user" if not found
 
-    interaction.guild.channels.cache.get('1076767724224659526').send({ content: `Good news to <@${userID}>! Your vacation has been **approved** by <@${interaction.user.id}>` });
+    interaction.guild.channels.cache.get('1076767724224659526').send({ content: `Good news to <@${userID}>! Your vacation has been **approved** by <@${interaction.user.id}> <:vcon_vote_accepted:859075138329903114>` });
         
     const updatedButton = new ButtonBuilder()
       .setCustomId('btn-guildvacationacc')
