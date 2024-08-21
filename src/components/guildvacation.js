@@ -62,15 +62,9 @@ module.exports = {
           const btnVacaAcc = new ActionRowBuilder()
             .addComponents(
               new ButtonBuilder()
-                .setStyle(ButtonStyle.Link)
-                .setLabel(`Guild Forum`)
-                .setURL(`https://www.sea.playblackdesert.com/en-US/Forum/ForumTopic/Detail?_topicNo=42709&_page=1&_opinionNo=69067`)
-            )
-            .addComponents(
-              new ButtonBuilder()
-                .setStyle(ButtonStyle.Link)
-                .setLabel(`Guild Video`)
-                .setURL(`https://youtu.be/3S8HVfHYJ5k`)
+                .setStyle(ButtonStyle.Success)
+                .setCustomId("btn-guildvacationacc")
+                .setLabel(`Approve`)
             )
             modalInteraction.guild.channels.cache.get('1076767724224659526').send({ embeds: [absenceNote], components: [btnVacaAcc] })
             modalInteraction.reply({
