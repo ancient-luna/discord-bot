@@ -19,7 +19,7 @@ module.exports = {
     const userIdMatch = originalMessage.embeds[0]?.description?.match(/\*\*\*\<\@(\d+)\>\*\*\*/);
     const userID = userIdMatch ? userIdMatch[1] : "`???`";
 
-    interaction.guild.channels.cache.get('1076767724224659526').send({ content: `Good news to ${userID} ! Your vacation has been **approved** by <@${interaction.user.id}> <:vcon_vote_accepted:859075138329903114>` });
+    interaction.guild.channels.cache.get('1060992670035619931').send({ content: `Good news to <@${userID}> ! Your vacation has been **approved** by <@${interaction.user.id}> <:vcon_vote_accepted:859075138329903114>` });
         
     const updatedButton = new ButtonBuilder()
       .setCustomId('btn-guildvacationacc')
@@ -30,12 +30,12 @@ module.exports = {
     const row = new ActionRowBuilder().addComponents(updatedButton);
 
     await interaction.update({
-      content: `*The vacation has been approved*`,
+      content: '⁣',
       components: [row],
     });
 
     return interaction.followUp({
-      content: `*successfully approved*`,
+      content: `*Successfully approved* <:vcon_vote_accepted:859075138329903114>`,
       ephemeral: true
     });
   },
