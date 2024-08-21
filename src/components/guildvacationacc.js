@@ -16,14 +16,27 @@ module.exports = {
   execute: async (client, interaction) => {
 
     const originalMessage = await interaction.message.fetch(); 
-    const displayNameMatch = originalMessage.embeds[0]?.description?.match(/\*\*\*(.*?)\*\*\*/);
-    const displayName = displayNameMatch ? displayNameMatch[1] : "???";
+    const userIdMatch = originalMessage.embeds[0]?.description?.match(/\*\*\*(\d+)\*\*\*/);
+    const userID = userIdMatch ? userIdMatch[1] : "`???`"; // Default to "the user" if not found
 
-    interaction.guild.channels.cache.get('1076767724224659526').send({ content: `Good news to **${displayName}**! Your vacation has been approved by <@${interaction.user.id}>` })
+    interaction.guild.channels.cache.get('1076767724224659526').send({ content: `Good news to <@${userID}>! Your vacation has been **approved** by <@${interaction.user.id}>` });
         
-    return interaction.reply({
+    const updatedButton = new ButtonBuilder()
+      .setCustomId('btn-guildvacationacc')
+      .setLabel('Approve')
+      .setStyle(ButtonStyle.Success)
+      .setDisabled(true);
+
+    const row = new ActionRowBuilder().addComponents(updatedButton);
+
+    await interaction.update({
+      content: `*The vacation has been approved*`,
+      components: [row],
+    });
+
+    return interaction.followUp({
       content: `*successfully approved*`,
       ephemeral: true
-    })
+    });
   },
 };
