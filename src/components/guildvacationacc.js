@@ -25,7 +25,7 @@ module.exports = {
         
     const updatedButton = new ButtonBuilder()
       .setCustomId('btn-guildvacationacc')
-      .setLabel('Approved')
+      .setLabel(`Approved by ${interaction.member.displayName}`)
       .setStyle(ButtonStyle.Secondary)
       .setDisabled(true);
 
