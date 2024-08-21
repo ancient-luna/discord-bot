@@ -36,32 +36,32 @@ module.exports = new Object({
             const messageID = await channelID.messages.fetch(msgID);
 
             const editEmbed = new EmbedBuilder()
-                .setTitle('EXCLUSIVE ROLES')
+                .setTitle('GAME ROLES')
                 .setDescription(cntntQ)
                 .setColor(client.config.embedColorTrans)
-                .setImage('https://i.imgur.com/0KWUGuk.png')
+                // .setImage('https://i.imgur.com/0KWUGuk.png')
 
             // const editImage = new AttachmentBuilder('src/assets/bdo/civilizationclasses.png')
 
-            const editButton = new ActionRowBuilder()
-                .addComponents(
-                    new ButtonBuilder()
-                        .setStyle(ButtonStyle.Link)
-                        .setLabel(`Support (Ko-Fi)`)
-                        .setURL(`https://ko-fi.com/daexx`)
-                )
-                .addComponents(
-                    new ButtonBuilder()
-                        .setStyle(ButtonStyle.Link)
-                        .setLabel(`Support (Trakteer)`)
-                        .setURL(`https://trakteer.id/daexx`)
-                )
+            // const editButton = new ActionRowBuilder()
+            //     .addComponents(
+            //         new ButtonBuilder()
+            //             .setStyle(ButtonStyle.Link)
+            //             .setLabel(`Support (Ko-Fi)`)
+            //             .setURL(`https://ko-fi.com/daexx`)
+            //     )
+            //     .addComponents(
+            //         new ButtonBuilder()
+            //             .setStyle(ButtonStyle.Link)
+            //             .setLabel(`Support (Trakteer)`)
+            //             .setURL(`https://trakteer.id/daexx`)
+            //     )
 
             message.channel.send("Embed: **EDITED** ! `updated`");
             messageID.edit({
                 embeds: [editEmbed],
                 // files: [editImage],
-                components: [editButton],
+                // components: [editButton],
             });
 
         } catch (err) {
