@@ -36,6 +36,7 @@ module.exports = new Object({
             const messageID = await channelID.messages.fetch(msgID);
 
             const editEmbed = new EmbedBuilder()
+                .setTitle('EXCLUSIVE ROLES')
                 .setDescription(cntntQ)
                 .setColor(client.config.embedColorTrans)
                 .setImage('https://i.imgur.com/0KWUGuk.png')
