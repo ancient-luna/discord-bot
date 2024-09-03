@@ -71,7 +71,7 @@ module.exports = {
                 .addComponents(
                     new ButtonBuilder()
                         .setStyle(ButtonStyle.Link)
-                        .setLabel(`Listen ${name} now`)
+                        .setLabel(`Listen now`)
                         .setURL(`https://open.spotify.com/track/${trackId}`)
                 );
 
