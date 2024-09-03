@@ -31,6 +31,12 @@ function updatePresence(client) {
             {
                 name: message,
                 type: getType(client.config.PRESENCE.TYPE),
+                assets: {
+                    largeImage: assets.LARGE_IMAGE || undefined,
+                    largeText: assets.LARGE_TEXT || undefined,
+                    smallImage: assets.SMALL_IMAGE || undefined,
+                    smallText: assets.SMALL_TEXT || undefined,
+                },
             },
         ],
     });

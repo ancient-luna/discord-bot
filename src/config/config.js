@@ -42,5 +42,11 @@ module.exports = {
         STATUS: "online", // [online | idle | dnd | invisible]
         TYPE: "WATCHING", // [PLAYING | LISTENING | WATCHING | COMPETING | STREAMING]
         MESSAGE: `around sanctuary`, // status message use : {members} or {servers}
+        "ASSETS": {
+            "LARGE_IMAGE": "large_image", // The name of your uploaded image
+            "LARGE_TEXT": "Hover text for large image", // Optional hover text for the large image
+            "SMALL_IMAGE": "small_image", // The name of your uploaded image (optional)
+            "SMALL_TEXT": "Hover text for small image" // Optional hover text for the small image
+        }
     },
 }
