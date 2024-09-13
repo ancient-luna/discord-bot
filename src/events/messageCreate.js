@@ -160,7 +160,7 @@ module.exports = new Object({
       const { ApexAI } = require('apexify.js');
       const aiOptions = {
         chat: {
-          chatModel: "gemini-pro",
+          chatModel: "gpt-4o",
           readFiles: true,
           readImages: true,
           personality: '',
