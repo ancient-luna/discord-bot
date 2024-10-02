@@ -43,26 +43,26 @@ module.exports = new Object({
 
             // const editImage = new AttachmentBuilder('src/assets/bdo/civilizationclasses.png')
 
-            const editButton = new ActionRowBuilder()
-                .addComponents(
-                    new ButtonBuilder()
-                        .setCustomId("btn-ticketopen")
-                        .setLabel("Open Ticket")
-                        .setStyle(ButtonStyle.Primary)
-                )
-                .addComponents(
-                    new ButtonBuilder()
-                        .setCustomId("btn-confession")
-                        .setLabel("Confession")
-                        .setEmoji('<:icons_write:1163563520248512654>')
-                        .setStyle(ButtonStyle.Secondary)
-                )
-                // .addComponents(
-                //     new ButtonBuilder()
-                //         .setStyle(ButtonStyle.Link)
-                //         .setLabel(`Support (Ko-Fi)`)
-                //         .setURL(`https://ko-fi.com/daexx`)
-                // )
+            // const editButton = new ActionRowBuilder()
+            //     .addComponents(
+            //         new ButtonBuilder()
+            //             .setCustomId("btn-ticketopen")
+            //             .setLabel("Open Ticket")
+            //             .setStyle(ButtonStyle.Primary)
+            //     )
+            //     .addComponents(
+            //         new ButtonBuilder()
+            //             .setCustomId("btn-confession")
+            //             .setLabel("Confession")
+            //             .setEmoji('<:icons_write:1163563520248512654>')
+            //             .setStyle(ButtonStyle.Secondary)
+            //     )
+            //     .addComponents(
+            //         new ButtonBuilder()
+            //             .setStyle(ButtonStyle.Link)
+            //             .setLabel(`Support (Ko-Fi)`)
+            //             .setURL(`https://ko-fi.com/daexx`)
+            //     )
             //     .addComponents(
             //         new ButtonBuilder()
             //             .setStyle(ButtonStyle.Link)
@@ -74,7 +74,7 @@ module.exports = new Object({
             messageID.edit({
                 embeds: [editEmbed],
                 // files: [editImage],
-                components: [editButton],
+                // components: [editButton],
             });
 
         } catch (err) {
