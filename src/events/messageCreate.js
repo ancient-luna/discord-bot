@@ -27,7 +27,6 @@ module.exports = new Object({
         const memberRole = message.guild.roles.cache.get(
           client.config.memberRole
         );
-
         const preMemberRole = message.guild.roles.cache.get(
           client.config.preMemberRole
         );
@@ -38,12 +37,12 @@ module.exports = new Object({
             .setURL(
               "https://discord.com/channels/447069790150852609/864556584818835456"
             )
-            // .addComponents(
-            //     new ButtonBuilder()
-            //         .setCustomId("btn-fellowcard")
-            //         .setLabel("Signature")
-            //         .setStyle(ButtonStyle.Primary)
-            // )
+        );
+        const signatureButton = new ActionRowBuilder().addComponents(
+          new ButtonBuilder()
+            .setCustomId("btn-fellowcard")
+            .setLabel("Signature")
+            .setStyle(ButtonStyle.Primary)
         );
         await message.member.roles.add(memberRole);
         await message.member.roles.remove(preMemberRole);
@@ -52,7 +51,7 @@ module.exports = new Object({
         );
         await channel.send({
           content: `Welcome <@${message.author.id}>, to **the sanctuary of lights**. The <@&${client.config.elderRole}> welcome you as one of true light seekers ${ancientLunaEmoji}\n-# ${message.author.displayName} has passed the trial by understand our wisdom of lleud to reach this warm sanctuary deeper`,
-          components: [welcomeButton],
+          components: [welcomeButton, signatureButton],
         });
       }
       if (!message.author.bot) await message.delete().catch((e) => { });;
