@@ -36,7 +36,7 @@ module.exports = new Object({
             .addComponents(
                 new ButtonBuilder()
                     .setCustomId("btn-fellowcard")
-                    .setLabel("Your fellowcard")
+                    .setLabel("Signature")
                     .setStyle(ButtonStyle.Primary)
             )
         message.guild.channels.cache.get('452842830776369152').send({
