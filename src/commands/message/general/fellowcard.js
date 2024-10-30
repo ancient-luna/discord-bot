@@ -1,4 +1,4 @@
-const fs = require("fs");
+const fs = require("fs").promises;
 const { createCanvas, loadImage, registerFont } = require("canvas");
 
 module.exports = {
