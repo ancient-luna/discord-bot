@@ -32,17 +32,13 @@ module.exports = new Object({
         );
         const welcomeButton = new ActionRowBuilder().addComponents(
           new ButtonBuilder()
-            .setStyle(ButtonStyle.Link)
+            .setCustomId("btn-welcome")
             .setLabel("Get more roles here")
-            .setURL(
-              "https://discord.com/channels/447069790150852609/864556584818835456"
-            )
-        );
-        const signatureButton = new ActionRowBuilder().addComponents(
+            .setStyle(ButtonStyle.Primary), // Changed from ButtonStyle.Link to ButtonStyle.Primary
           new ButtonBuilder()
             .setCustomId("btn-fellowcard")
             .setLabel("Signature")
-            .setStyle(ButtonStyle.Primary)
+            .setStyle(ButtonStyle.Secondary) // Secondary style for the signature button
         );
         await message.member.roles.add(memberRole);
         await message.member.roles.remove(preMemberRole);
@@ -51,7 +47,7 @@ module.exports = new Object({
         );
         await channel.send({
           content: `Welcome <@${message.author.id}>, to **the sanctuary of lights**. The <@&${client.config.elderRole}> welcome you as one of true light seekers ${ancientLunaEmoji}\n-# ${message.author.displayName} has passed the trial by understand our wisdom of lleud to reach this warm sanctuary deeper`,
-          components: [welcomeButton, signatureButton],
+          components: [welcomeButton],
         });
       }
       if (!message.author.bot) await message.delete().catch((e) => { });;
