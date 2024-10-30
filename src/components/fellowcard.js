@@ -90,7 +90,7 @@ module.exports = {
 
             ctx.textAlign = "center";
             ctx.fillStyle = "#00cdff";
-            ctx.fillText(message.member.displayName, 250, 87);
+            ctx.fillText(interaction.member.displayName, 250, 87);
 
             // Load avatar and draw it on canvas
             const avatar = await loadImage(interaction.member.displayAvatarURL({ extension: "png", dynamic: true, size: 512 }));
@@ -146,7 +146,7 @@ module.exports = {
                 rows.forEach(row => {
                     beginX = 250 - ((row.width / 2))
                     row.roles.forEach((r, index) => {
-                        let role = message.member.roles.cache.find(i => i.id === r)
+                        let role = interaction.member.roles.cache.find(i => i.id === r)
                         let roleColor = role.color.toString(16).padStart(6, '0')
                         if (role) {
                             let length = ctx.measureText(role.name.toUpperCase()).width;
