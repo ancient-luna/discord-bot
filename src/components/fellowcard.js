@@ -16,177 +16,103 @@ module.exports = {
    * @param {import("discord.js").ButtonInteraction} interaction
    */
   execute: async (client, interaction) => {
-    const canvas = createCanvas(500, 800);
-    const ctx = canvas.getContext("2d");
+    try {
+      // Canvas and context setup
+      const canvas = createCanvas(500, 800);
+      const ctx = canvas.getContext("2d");
 
-    registerFont('src/assets/usercard/PearlAbyss.ttf', { family: 'PearlAbyss' });
-    registerFont('src/assets/usercard/HelveticaBold.ttf', { family: 'HelveticaBold' });
+      // Load fonts
+      registerFont('src/assets/usercard/PearlAbyss.ttf', { family: 'PearlAbyss' });
+      registerFont('src/assets/usercard/HelveticaBold.ttf', { family: 'HelveticaBold' });
 
-    function roundRect(ctx, x, y, width, height, radius, fill, stroke) {
-      if (typeof stroke === 'undefined') {
-        stroke = true;
-      }
-      if (typeof radius === 'undefined') {
-        radius = 5;
-      }
-      if (typeof radius === 'number') {
-        radius = { tl: radius, tr: radius, br: radius, bl: radius };
-      } else {
-        var defaultRadius = { tl: 0, tr: 0, br: 0, bl: 0 };
-        for (var side in defaultRadius) {
-          radius[side] = radius[side] || defaultRadius[side];
-        }
-      }
-      ctx.beginPath();
-      ctx.moveTo(x + radius.tl, y);
-      ctx.lineTo(x + width - radius.tr, y);
-      ctx.quadraticCurveTo(x + width, y, x + width, y + radius.tr);
-      ctx.lineTo(x + width, y + height - radius.br);
-      ctx.quadraticCurveTo(x + width, y + height, x + width - radius.br, y + height);
-      ctx.lineTo(x + radius.bl, y + height);
-      ctx.quadraticCurveTo(x, y + height, x, y + height - radius.bl);
-      ctx.lineTo(x, y + radius.tl);
-      ctx.quadraticCurveTo(x, y, x + radius.tl, y);
-      ctx.closePath();
-      if (fill) {
-        ctx.fill();
-      }
-      if (stroke) {
-        ctx.stroke();
-      }
-    }
-
-    fs.readFile('src/assets/usercard/signature.png', async (err, data) => {
-      if (err) {
-        console.error('Error reading file:', err);
-        return interaction.reply('Failed to read image file.');
-      }
-
-      try {
-        const image = await loadImage(data);
-        ctx.drawImage(image, 0, 0, 500, 800);
-
-        let nameSize = 40;
-        let fontSize = 33;
-        let beginY = 95;
-        let beginX = 250;
-        let spaceX = 10;
-        let endX = 480;
-        let padding = 15;
-
-        // Generate name text
-        let displayName = interaction.member.displayName.toUpperCase();
-        let nameFits = false;
-
-        // Continuously check if the name fits within the canvas width
-        while (!nameFits && nameSize > 10) {
-          ctx.font = `${nameSize}px "PearlAbyss"`;
-          let nameWidth = ctx.measureText(displayName).width;
-          if (nameWidth <= 500 - 2 * padding) {
-            nameFits = true;
-          } else {
-            nameSize -= 2;
-          }
-        }
-
-        ctx.textAlign = "center";
-        ctx.fillStyle = "#00cdff";
-        ctx.fillText(interaction.member.displayName, 250, 87);
-
-        const avatar = await loadImage(interaction.member.displayAvatarURL({ extension: "png", dynamic: true, size: 512 }));
-        let avatarX = 310;
-        let avatarY = 310;
-        let avatarCanvas = createCanvas(avatarX, avatarY);
-        let avatarCtx = avatarCanvas.getContext('2d');
-        avatarCtx.beginPath();
-        avatarCtx.arc(avatarX / 2, avatarY / 2, 150, 0, Math.PI * 2, true);
-        let grd = ctx.createLinearGradient(150.000, 300.000, 150.000, 0.000);
-        grd.addColorStop(0.450, '#00cdff');
-        grd.addColorStop(1.000, 'rgba(255, 255, 255, 0.000)');
-        ctx.fillStyle = grd;
-        avatarCtx.lineWidth = 11;
-        avatarCtx.strokeStyle = grd;
-        avatarCtx.stroke();
-        avatarCtx.closePath();
-        avatarCtx.clip();
-        avatarCtx.drawImage(avatar, 0, 0, avatarX, avatarY);
-        ctx.drawImage(avatarCanvas, 100, 139);
-
-        // Generate role texts
-        const limitRoles = [
-          '590848319111299093', // ancestorID
-          '839170815932891197', // lunariaID
-          '620709364247822338', // luminanceID
-          '888736428069105674', // radianceID
-          '839198215580811344', // lightseekerID
-          // '1148832046505009193', // etendueID
-          // '1060982357538119850', // discipleID
-          // '1052973235710464040' // levatioID
-        ];
-
-        // Sort roles alphabetically
-        const sortedRoles = interaction.member.roles.cache
-          .filter(role => limitRoles.includes(role.id) && role.name !== '@everyone')
-          // .sort((a, b) => a.name.localeCompare(b.name));
-          .sort((a, b) => b.position - a.position);
-
-        // Check if sortedRoles is empty and set context to 'Ancient Luna'
-        if (sortedRoles.size === 0) {
-          ctx.textAlign = "center";
-          ctx.fillStyle = "#6b7b88";
-          ctx.font = '20pt HelveticaBold';
-          ctx.fillText('달을 만났다', 250, 665);
+      // Define rounded rectangle function
+      function roundRect(ctx, x, y, width, height, radius = 5, fill = true, stroke = true) {
+        if (typeof radius === 'number') {
+          radius = { tl: radius, tr: radius, br: radius, bl: radius };
         } else {
-          beginY += 560;
-          let rows = [{ row: 1, roles: [], width: 0 }];
-          ctx.font = '16pt HelveticaBold';
-          let length = 0;
-
-          sortedRoles.forEach((role, index) => {
-            length += ctx.measureText(role.name.toUpperCase()).width + (padding * 2);
-            if (length >= 480 - (padding * 2)) {
-              length = ctx.measureText(role.name.toUpperCase()).width + (padding * 2);
-              rows.push({ row: rows[rows.length - 1].row + 1, roles: [index], width: length });
-            } else {
-              length += spaceX;
-              if (!rows[rows.length - 1].roles.includes(role.id)) rows[rows.length - 1].roles.push(role.id);
-              rows[rows.length - 1].width = length;
-            }
-          });
-
-          ctx.textAlign = "left";
-          rows.forEach(row => {
-            beginX = 250 - ((row.width / 2))
-            row.roles.forEach((r, index) => {
-              let role = interaction.member.roles.cache.find(i => i.id === r)
-              let roleColor = role.color.toString(16).padStart(6, '0')
-              if (role) {
-                let length = ctx.measureText(role.name.toUpperCase()).width;
-                if (endX > beginX) {
-                  ctx.fillStyle = "#0c202e";
-                  roundRect(ctx, beginX, beginY - 26, length + (padding * 2), parseInt(fontSize) + 7, 22, true, false);
-                  ctx.fillStyle = `#${roleColor}`
-                  ctx.fillText(role.name.toUpperCase(), beginX + padding, beginY);
-                }
-                beginX += length + spaceX + (padding * 2);
-              }
-            })
-            beginY += 55
-          })
+          radius = { tl: 0, tr: 0, br: 0, bl: 0, ...radius };
         }
-
-        // Send image as attachment
-        const sfBuffer = canvas.toBuffer();
-        const attachment = new AttachmentBuilder(sfBuffer, { name: 'fellowcard.png' });
-        await interaction.reply({
-            content: '_ _',
-            files: [attachment],
-            ephemeral: true
-        });
-    } catch (error) {
-        console.error('Error:', error);
-        await interaction.reply({ content: 'Failed to create test card. **Please try again later**', ephemeral: true });
+        ctx.beginPath();
+        ctx.moveTo(x + radius.tl, y);
+        ctx.lineTo(x + width - radius.tr, y);
+        ctx.quadraticCurveTo(x + width, y, x + width, y + radius.tr);
+        ctx.lineTo(x + width, y + height - radius.br);
+        ctx.quadraticCurveTo(x + width, y + height, x + width - radius.br, y + height);
+        ctx.lineTo(x + radius.bl, y + height);
+        ctx.quadraticCurveTo(x, y + height, x, y + height - radius.bl);
+        ctx.lineTo(x, y + radius.tl);
+        ctx.quadraticCurveTo(x, y, x + radius.tl, y);
+        ctx.closePath();
+        if (fill) ctx.fill();
+        if (stroke) ctx.stroke();
       }
-    });
+
+      // Load the background image
+      const backgroundImage = await fs.readFile('src/assets/usercard/signature.png');
+      const image = await loadImage(backgroundImage);
+      ctx.drawImage(image, 0, 0, 500, 800);
+
+      // Text settings and adjustments for display name
+      let nameSize = 40;
+      const padding = 15;
+      const displayName = interaction.member.displayName.toUpperCase();
+      while (ctx.measureText(displayName).width > 500 - 2 * padding && nameSize > 10) {
+        ctx.font = `${(nameSize -= 2)}px "PearlAbyss"`;
+      }
+      ctx.fillStyle = "#00cdff";
+      ctx.textAlign = "center";
+      ctx.fillText(displayName, 250, 87);
+
+      // Load avatar and draw it on canvas
+      const avatar = await loadImage(interaction.member.displayAvatarURL({ extension: "png", dynamic: true, size: 512 }));
+      const avatarCanvas = createCanvas(310, 310);
+      const avatarCtx = avatarCanvas.getContext('2d');
+      avatarCtx.beginPath();
+      avatarCtx.arc(155, 155, 150, 0, Math.PI * 2);
+      avatarCtx.clip();
+      avatarCtx.drawImage(avatar, 0, 0, 310, 310);
+      ctx.drawImage(avatarCanvas, 100, 139);
+
+      // Role display setup
+      const limitRoles = ['590848319111299093', '839170815932891197', '620709364247822338', '888736428069105674', '839198215580811344'];
+      const sortedRoles = interaction.member.roles.cache
+        .filter(role => limitRoles.includes(role.id) && role.name !== '@everyone')
+        .sort((a, b) => b.position - a.position);
+
+      let beginY = 655;
+      const spaceX = 10;
+
+      if (sortedRoles.size === 0) {
+        ctx.fillStyle = "#6b7b88";
+        ctx.font = '20pt HelveticaBold';
+        ctx.fillText('달을 만났다', 250, beginY);
+      } else {
+        ctx.font = '16pt HelveticaBold';
+        let rowX = 250 - (ctx.measureText(sortedRoles.map(role => role.name.toUpperCase()).join(' ') + spaceX).width / 2);
+
+        sortedRoles.forEach((role) => {
+          const roleName = role.name.toUpperCase();
+          const roleWidth = ctx.measureText(roleName).width + padding * 2;
+          const roleColor = role.color.toString(16).padStart(6, '0');
+          ctx.fillStyle = "#0c202e";
+          roundRect(ctx, rowX, beginY - 26, roleWidth, 40, 22, true, false);
+          ctx.fillStyle = `#${roleColor}`;
+          ctx.fillText(roleName, rowX + padding, beginY);
+          rowX += roleWidth + spaceX;
+        });
+      }
+
+      // Send image as attachment
+      const sfBuffer = canvas.toBuffer();
+      const attachment = new AttachmentBuilder(sfBuffer, { name: 'fellowcard.png' });
+      await interaction.reply({
+        content: '_ _',
+        files: [attachment],
+        ephemeral: true
+      });
+    } catch (error) {
+      console.error('Error:', error);
+      await interaction.reply({ content: 'An error occurred while creating the fellowcard. Please try again later.', ephemeral: true });
+    }
   },
 };
