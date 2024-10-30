@@ -177,9 +177,10 @@ module.exports = {
 
         // Send image as attachment
         const sfBuffer = canvas.toBuffer();
+        const attachment = new AttachmentBuilder(sfBuffer, { name: 'fellowcard.png' });
         await interaction.reply({
             content: '_ _',
-            files: [{ attachment: sfBuffer, name: 'fellowcard.png' }],
+            files: [attachment],
             ephemeral: true
         });
     } catch (error) {
