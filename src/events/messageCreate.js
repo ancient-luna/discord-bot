@@ -38,12 +38,12 @@ module.exports = new Object({
             .setURL(
               "https://discord.com/channels/447069790150852609/864556584818835456"
             )
-            .addComponents(
-                new ButtonBuilder()
-                    .setCustomId("btn-fellowcard")
-                    .setLabel("Signature")
-                    .setStyle(ButtonStyle.Primary)
-            )
+            // .addComponents(
+            //     new ButtonBuilder()
+            //         .setCustomId("btn-fellowcard")
+            //         .setLabel("Signature")
+            //         .setStyle(ButtonStyle.Primary)
+            // )
         );
         await message.member.roles.add(memberRole);
         await message.member.roles.remove(preMemberRole);
