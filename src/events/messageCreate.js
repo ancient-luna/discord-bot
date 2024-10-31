@@ -32,13 +32,13 @@ module.exports = new Object({
         );
         const welcomeButton = new ActionRowBuilder().addComponents(
           new ButtonBuilder()
-            .setCustomId("btn-welcome")
+            .setStyle(ButtonStyle.Link)
             .setLabel("Get more roles here")
-            .setStyle(ButtonStyle.Primary), // Changed from ButtonStyle.Link to ButtonStyle.Primary
+            .setURL("https://discord.com/channels/447069790150852609/864556584818835456"),
           new ButtonBuilder()
             .setCustomId("btn-fellowcard")
             .setLabel("Signature")
-            .setStyle(ButtonStyle.Secondary) // Secondary style for the signature button
+            .setStyle(ButtonStyle.Primary)
         );
         await message.member.roles.add(memberRole);
         await message.member.roles.remove(preMemberRole);
