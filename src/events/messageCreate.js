@@ -164,7 +164,7 @@ module.exports = new Object({
           chatModel: "gpt-4o",
           readFiles: true,
           readImages: true,
-          personality: '',
+          instruction: 'Your name is Luna, a diety and a wisdom keeper of Ancient Luna sanctuary for the ancestor',
           memory: {
             memoryOn: true,
             id: message.author.id
