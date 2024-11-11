@@ -19,7 +19,7 @@ module.exports = new Object({
             nameColor: '#178EC7',
             type: 'WELCOME',
             typeColor: '#82AADC',
-            message: false,
+            message: 'we ran as if to meet the moon',
             // message: '우리는 마치 달을 만난 것처럼 달렸다',
             messageColor: '#82AADC',
             backgroundImage: 'https://ik.imagekit.io/al/welcomecard.png'
