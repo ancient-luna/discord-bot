@@ -15,8 +15,8 @@ module.exports = new Object({
         const card = await new canvafy.WelcomeLeave()
             .setAvatar(member.user.displayAvatarURL({ size: 4096 }))
             .setAvatarBorder('#fff')
-            .setTitle(member.user.displayName)
-            .setDescription('우리는 마치 달을 만난 것처럼 달렸다')
+            .setTitle(member.user.username)
+            .setDescription('we ran as if to meet the moon')
             .setBackground('image','https://ik.imagekit.io/al/welcomecard.png')
             .build();
         const cardBuffer = Buffer.from(card);
