@@ -14,8 +14,8 @@ module.exports = new Object({
         const channel = member.guild.channels.cache.get(client.config.gatewayChannel);
         const card = await new canvafy.WelcomeLeave()
             .setAvatar(member.user.displayAvatarURL({ size: 4096 }))
-            .setAvatarBorder('#7a97aa')
-            .setTitle(member.user.username,'#7a97aa')
+            .setAvatarBorder('#82AADC')
+            .setTitle(member.user.username,'#82AADC')
             .setDescription('we ran as if to meet the moon')
             .setBackground('image','https://ik.imagekit.io/al/welcomecard.png')
             .build();
