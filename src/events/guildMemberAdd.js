@@ -16,7 +16,7 @@ module.exports = new Object({
             .setAvatar(member.user.displayAvatarURL({ size: 4096 }))
             .setAvatarBorder('#fff')
             .setTitle(member.user.displayName)
-            .setDescription('we ran as if to meet the moon')
+            .setDescription('우리는 마치 달을 만난 것처럼 달렸다')
             .setBackground('image','https://ik.imagekit.io/al/welcomecard.png')
             .build();
         const cardBuffer = Buffer.from(card);
