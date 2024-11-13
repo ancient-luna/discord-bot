@@ -17,7 +17,7 @@ module.exports = new Object({
             .setAvatarBorder('#82AADC')
             .setTitle(member.user.username,'#82AADC')
             .setDescription('we ran as if to meet the moon')
-            .setBackground('image','https://ik.imagekit.io/al/wisdomseeker.png')
+            .setBackground('image','https://ik.imagekit.io/al/welcomemsg.png')
             .build();
         const cardBuffer = Buffer.from(card);
         const attachment = new AttachmentBuilder(cardBuffer, { name: `${member.user.id}.png` });
