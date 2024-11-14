@@ -158,16 +158,31 @@ module.exports = new Object({
 
     // Chat AI
     if (client.config.aiChatChannel.includes(message.channel.id)) {
-      const { ApexChat } = require('apexify.js');
-      const chatModel = 'chatgpt-4o-latest'
-      const chatPrompt = message
-      const chatOptions = {
-        userId: message.author.id,
-        memory: true,
-        limit: 15,
-        instruction: 'Your name is Luna. You were born as a relic and a wisdom keeper of Ancient Luna sanctuary by the ancestor',
+      const { ApexAI } = require('apexify.js');
+      const aiOptions = {
+        chat: {
+          chatModel: "chatgpt-4o-latest",
+          readFiles: true,
+          readImages: true,
+          instruction: 'Your name is Luna. You were born as a relic and a wisdom keeper of Ancient Luna sanctuary by the ancestor',
+          memory: {
+            memoryOn: true,
+            id: message.author.id
+          },
+          typeWriting: {
+            enable: false,
+            speed: 70,
+            delay: 2000
+          }
+        },
+        others: {
+          messageType: {
+            type: 'send', // Specify the type either 'send' or 'type'
+            intialContent: `<@${message.author.id}> `
+          },
+        }
       };
-      await ApexChat(chatModel, chatPrompt, chatOptions)
+      await ApexAI(message, aiOptions)
     }
 
     // PREFIX COMMAND
