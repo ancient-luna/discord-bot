@@ -160,6 +160,7 @@ module.exports = new Object({
     if (client.config.aiChatChannel.includes(message.channel.id)) {
       const { ApexChat } = require('apexify.js');
       const aiOptions = {
+        userId: message.author.id,
         chat: {
           chatModel: "chatgpt-4o-latest",
           readFiles: true,
