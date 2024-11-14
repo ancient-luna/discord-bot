@@ -158,10 +158,10 @@ module.exports = new Object({
 
     // Chat AI
     if (client.config.aiChatChannel.includes(message.channel.id)) {
-      const { ApexAI } = require('apexify.js');
+      const { ApexChat } = require('apexify.js');
       const aiOptions = {
         chat: {
-          chatModel: "gpt-4o",
+          chatModel: "chatgpt-4o-latest",
           readFiles: true,
           readImages: true,
           instruction: 'Your name is Luna. You were born as a relic and a wisdom keeper of Ancient Luna sanctuary by the ancestor',
@@ -182,7 +182,7 @@ module.exports = new Object({
           },
         }
       };
-      await ApexAI(message, aiOptions)
+      await ApexChat(message, aiOptions)
     }
 
     // PREFIX COMMAND
