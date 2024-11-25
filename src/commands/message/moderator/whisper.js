@@ -30,11 +30,11 @@ module.exports = new Object({
 
     const str = args.slice(1).join(" ");
     
-    const img = new AttachmentBuilder("src/assets/perfectdays.mp4")
+    const img = new AttachmentBuilder("src/assets/latestwordsfromaevoa.mp4")
 
     const txtEmbed = new EmbedBuilder()
       .setTitle(`Dev. Support Contacts <:verified:1204724590950228008>`)
-      .setDescription(`> Discord: axxae - [ancientluna](https://discord.com/invite/Sbp2nt8QHe)\n> dae@ancientluna.org <:ins:1204725582852788256> [**IG**](https://instagram.com/everylttlething)`)
+      .setDescription(`> Discord: asonofbiscuit - [ancientluna](https://discord.com/channels/447069790150852609/1162410164356390912)\n> ~~dae@ancientluna.org~~ <:ins:1204725582852788256> ~~**IG**~~`)
       .setFooter({ text: `this bot won't read any messages of your replies` })
       .setColor(client.config.embedColorTrans)
       .setThumbnail('https://i.imgur.com/vfx9TEB.png') // aevoa
