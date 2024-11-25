@@ -30,7 +30,7 @@ module.exports = new Object({
 
     const str = args.slice(1).join(" ");
     
-    const img = new AttachmentBuilder("src/assets/latestwordsfromaevoa.mp4")
+    // const img = new AttachmentBuilder("src/assets/latestwordsfromaevoa.mp4")
 
     const txtEmbed = new EmbedBuilder()
       .setTitle(`Dev. Support Contacts <:verified:1204724590950228008>`)
@@ -73,7 +73,7 @@ module.exports = new Object({
       content: `Dear **Lunar Disciples**,\n${str}\n\nWarmest regards,\n**Aevoa**\n_ _`,
       embeds: [txtEmbed],
       components: [btnServer],
-      files: [img]
+      // files: [img]
     }).then(() => {
       message.channel.send({ embeds: [success] });
     }).catch((e) => { 
