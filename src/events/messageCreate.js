@@ -189,7 +189,7 @@ module.exports = new Object({
       const chatOptions = {
         userId: message.author.id,
         memory: true,
-        limit: 15,
+        limit: 5,
         instruction: 'if someone ask who you are: Your name is Luna, a relic that born to seek wisdom',
       };
       await message.channel.sendTyping();
