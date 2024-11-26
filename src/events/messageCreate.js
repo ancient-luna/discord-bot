@@ -190,7 +190,7 @@ module.exports = new Object({
         userId: message.author.id,
         memory: true,
         limit: 15,
-        instruction: 'Your name is Luna, a relic that born to seek wisdom',
+        instruction: 'if someone ask who you are: Your name is Luna, a relic that born to seek wisdom',
       };
       await message.channel.sendTyping();
       const chatResponse = await ApexChat(model, prompt, chatOptions);
