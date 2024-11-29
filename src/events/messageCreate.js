@@ -158,43 +158,43 @@ module.exports = new Object({
 
     // Chat AI
     if (client.config.aiChatChannel.includes(message.channel.id)) {
-      // const { ApexAI } = require('apexify.js');
-      // const aiOptions = {
-      //   chat: {
-      //     chatModel: "chatgpt-4o-latest",
-      //     readFiles: true,
-      //     readImages: true,
-      //     instruction: 'Your name is Luna. You were born as a relic and a wisdom keeper of Ancient Luna sanctuary by the ancestor',
-      //     memory: {
-      //       memoryOn: true,
-      //       id: message.author.id
-      //     },
-      //     typeWriting: {
-      //       enable: false,
-      //       speed: 70,
-      //       delay: 2000
-      //     }
-      //   },
-      //   others: {
-      //     messageType: {
-      //       type: 'send', // Specify the type either 'send' or 'type'
-      //       intialContent: `<@${message.author.id}> `
-      //     },
-      //   }
-      // };
-      // await ApexAI(message, aiOptions)
-      const { ApexChat } = require('apexify.js');
-      const model = 'chatgpt-4o-latest';
-      const prompt = message;
-      const chatOptions = {
-        userId: message.author.id,
-        memory: true,
-        limit: 5,
-        instruction: 'Your name is Luna',
+      const { ApexAI } = require('apexify.js');
+      const aiOptions = {
+        chat: {
+          chatModel: "chatgpt-4o-latest",
+          readFiles: true,
+          readImages: true,
+          instruction: 'Your name is Luna. You were born as a relic and a wisdom keeper of Ancient Luna sanctuary by the ancestor',
+          memory: {
+            memoryOn: true,
+            id: message.author.id
+          },
+          typeWriting: {
+            enable: false,
+            speed: 70,
+            delay: 2000
+          }
+        },
+        others: {
+          messageType: {
+            type: 'send', // Specify the type either 'send' or 'type'
+            intialContent: `<@${message.author.id}> `
+          },
+        }
       };
-      await message.channel.sendTyping();
-      const chatResponse = await ApexChat(model, prompt, chatOptions);
-      message.channel.send(`<@${message.author.id}> ${chatResponse}`)
+      await ApexAI(message, aiOptions)
+      // const { ApexChat } = require('apexify.js');
+      // const model = 'chatgpt-4o-latest';
+      // const prompt = message;
+      // const chatOptions = {
+      //   userId: message.author.id,
+      //   memory: true,
+      //   limit: 5,
+      //   instruction: 'Your name is Luna, a relic that born to seek wisdom',
+      // };
+      // await message.channel.sendTyping();
+      // const chatResponse = await ApexChat(model, prompt, chatOptions);
+      // message.channel.send(`<@${message.author.id}> ${chatResponse}`)
     }
 
     // PREFIX COMMAND
