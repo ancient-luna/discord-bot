@@ -184,7 +184,7 @@ module.exports = new Object({
       // };
       // await ApexAI(message, aiOptions)
       const { ApexChat } = require('apexify.js');
-      const model = 'claude-3.5-sonnet-200k';
+      const model = 'claude-3-opus-20240229';
       const prompt = message;
       const chatOptions = {
         userId: message.author.id,
