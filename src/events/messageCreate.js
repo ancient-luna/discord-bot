@@ -184,7 +184,7 @@ module.exports = new Object({
       // };
       // await ApexAI(message, aiOptions)
       const { ApexChat } = require('apexify.js');
-      const model = 'chatgpt-4o-latest';
+      const model = 'chatgpt-4o';
       const prompt = message;
       const chatOptions = {
         userId: message.author.id,
