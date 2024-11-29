@@ -184,13 +184,13 @@ module.exports = new Object({
       // };
       // await ApexAI(message, aiOptions)
       const { ApexChat } = require('apexify.js');
-      const model = 'claude-3-opus-20240229';
+      const model = 'chatgpt-4o-latest';
       const prompt = message;
       const chatOptions = {
         userId: message.author.id,
         memory: true,
         limit: 5,
-        instruction: 'Your name is Luna, a relic that born to seek wisdom',
+        instruction: 'Your name is Luna',
       };
       await message.channel.sendTyping();
       const chatResponse = await ApexChat(model, prompt, chatOptions);
