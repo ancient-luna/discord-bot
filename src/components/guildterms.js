@@ -21,7 +21,7 @@ module.exports = {
     .setDescription("-# A home for the light seekers!")
     .addFields(
         { name: `**Street Fight / PVP**`, value: `- Killing is OK **only** in *Arsha server*\n- For spots in *normal server* can kill **but** ask for DFS first; *Arsha server* free kill\n- Be respectful and avoid trash talk on any of the servers\n - -# Any toxic behavior, both inside and outside the guild, is strongly prohibited. Action will be taken if it happens`, inline: false },
-        { name: `**Guild Quests**`, value: `- All members have permissions to take Guild Quests by their own. Feel free, either its SMH, Conbat, and Life GQs. No limits.`, inline: false },
+        { name: `**Guild Quests**`, value: `- All members have permissions to take Guild Quests by their own. Feel free, either its SMH, Combat, and Life GQs. No limits.`, inline: false },
         { name: `**Guild Buffs**`, value: `- It's always ready 24/7\n - -# Just ask in-game guild chat to cast the guild buffs (Combat and/or Life)\n - -# Mention <@&1235965537326993450> in <#1060992670035619931> to cast the guild buffs (Combat and/or Life) if any of the officers are currently not online in game`, inline: false },
         { name: `**Vacation / Day-Off**`, value: `If you are unable to login for 7 days straight, it is a must to let us know so we may not kick you out from the guild. **Vacation** button in <#1060992992523079800>`, inline: false }
     )
