@@ -7,7 +7,6 @@ module.exports = new Object({
    * @param {import("discord.js").Message} message
    */
   async execute(client, message) {
-    // Ignore messages from bots, DMs, or webhooks
     if (message.author.bot || !message.guild || message.channel.type === ChannelType.DM) return;
 
     const noCuss = new AttachmentBuilder('src/assets/react/nocussnuuh.mp4')
