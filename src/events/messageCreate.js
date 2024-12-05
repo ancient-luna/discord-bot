@@ -53,18 +53,9 @@ module.exports = new Object({
       if (!message.author.bot) await message.delete().catch((e) => { });;
     }
 
-    if (
-      message.author.bot ||
-      message.webhookId ||
-      !message.guild ||
-      !message.channel
-    )
-      return;
-    if (
-      message.channel.type == ChannelType.DM ||
-      message.channel.type == ChannelType.GuildForum
-    )
-      return;
+    if ( message.author.bot || message.webhookId || !message.guild || !message.channel ) return;
+    if ( message.channel.type == ChannelType.DM || message.channel.type == ChannelType.GuildForum ) return;
+    
     if (message.partial) await message.fetch();
     if (!message.guild) return;
     if (message.author.bot) return;
