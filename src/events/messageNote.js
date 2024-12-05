@@ -7,7 +7,7 @@ module.exports = new Object({
    * @param {import("discord.js").Message} message
    */
   async execute(client, message) {
-    if (!message.guild || message.channel.type === ChannelType.DM) return;
+    if (message.author.bot || !message.guild || message.channel.type === ChannelType.DM) return;
 
     // START OF STICKY MESSAGES =========================================================================================================
 
