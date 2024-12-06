@@ -17,12 +17,18 @@ module.exports = new Object({
     }
 
     const responses = {
-      "dae": "our ancestor? he sleep ... for the eternals",
+      "dae": { text: "-# he who remains, dae — beyond the reach of those who seek him", video: "src/assets/react/hewhoremains.mp4" },
+      "pastaroni": { text: "*Hany (하니) for sweetness,*\n*Biskit (비스킷) for the best duo—together,*\n# *perfectly sweet!*", video: null }
     };
 
     const response = responses[message.content.toLowerCase()];
     if (response) {
-      await message.reply(response);
+      if (response.video) {
+        await message.reply({ files: [new AttachmentBuilder(response.video)] });
+        await message.channel.send(response.text);
+      } else {
+        await message.reply(response.text);
+      }
     }
   },
 });
