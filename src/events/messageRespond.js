@@ -17,7 +17,7 @@ module.exports = new Object({
     }
 
     const responses = {
-      "dae": { text: "-# he who remains, dae — beyond the reach of those who seek him", video: "src/assets/react/hewhoremains.mp4" },
+      "dae": { text: "-# dae — he who remains, beyond the reach of those who seek him", video: "src/assets/react/hewhoremains.mp4" },
       "pastaroni": { text: "# *perfectly sweet!*\n*Hany (하니) for sweetness,*\n*Biskit (비스킷) for the best duo—together,*", video: null }
     };
 
