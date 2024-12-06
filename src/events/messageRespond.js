@@ -10,7 +10,7 @@ module.exports = new Object({
     if (message.author.bot || !message.guild || message.channel.type === ChannelType.DM) return;
 
     const noCuss = new AttachmentBuilder('src/assets/react/nocussnuuh.mp4')
-    const bannedWords = ["fuck", "bitch", "cunt"];
+    const bannedWords = ["fuck", "bitch", "cunt", "dick"];
     if (bannedWords.some((word) => message.content.toLowerCase().includes(word))) {
       await message.reply({ files: [noCuss] });
       return message.channel.send(`-# be wise ${message.author.displayName} or we square up`)
