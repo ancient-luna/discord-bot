@@ -9,7 +9,7 @@ module.exports = new Object({
   async execute(client, message) {
     const guildsID = '447069790150852609';
 
-    if (message.author.bot || message.guild !== guildsID || message.channel.type === ChannelType.DM) return;
+    if (message.author.bot || message.guild.id !== guildsID || message.channel.type === ChannelType.DM) return;
 
     const noCuss = new AttachmentBuilder('src/assets/react/nocussnuuh.mp4')
     const bannedWords = ["fuck", "bitch", "cunt", "dick"];
