@@ -7,7 +7,9 @@ module.exports = new Object({
    * @param {import("discord.js").Message} message
    */
   async execute(client, message) {
-    if (message.author.bot || !message.guild || message.channel.type === ChannelType.DM) return;
+    const guildsID = '447069790150852609';
+
+    if (message.author.bot || message.guild !== guildsID || message.channel.type === ChannelType.DM) return;
 
     const noCuss = new AttachmentBuilder('src/assets/react/nocussnuuh.mp4')
     const bannedWords = ["fuck", "bitch", "cunt", "dick"];
