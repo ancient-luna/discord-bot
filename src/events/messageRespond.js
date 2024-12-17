@@ -15,7 +15,7 @@ module.exports = new Object({
     const bannedWords = ["fuck", "bitch", "cunt", "dick"];
     if (bannedWords.some((word) => message.content.toLowerCase().includes(word))) {
       await message.reply({ files: [noCuss] });
-      return message.channel.send(`-# be wise ${message.author.displayName} or we square up`)
+      return message.channel.send(`-# be wise ${message.member.displayName} or we square up`)
     }
 
     const responses = {
