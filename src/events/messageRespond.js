@@ -16,7 +16,7 @@ module.exports = new Object({
     if (bannedWords.some((word) => message.content.toLowerCase().includes(word))) {
       if (Math.random() < 0.5) {
         await message.reply({ files: [noCuss] });
-        await message.channel.send(`-# Be wise, ${message.member.displayName}, or we square up.`);
+        return message.channel.send(`-# Be wise, ${message.member.displayName}, or we square up.`);
       }
     }
 
