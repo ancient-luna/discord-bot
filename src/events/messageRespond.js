@@ -14,12 +14,15 @@ module.exports = new Object({
     const noCuss = new AttachmentBuilder('src/assets/react/nocussnuuh.mp4')
     const bannedWords = ["fuck", "bitch", "cunt", "dick"];
     if (bannedWords.some((word) => message.content.toLowerCase().includes(word))) {
-      await message.reply({ files: [noCuss] });
-      return message.channel.send(`-# be wise ${message.member.displayName} or we square up`)
+      const rng = Math.random();
+      if (rng < 0.5) {
+        await message.reply({ files: [noCuss] });
+        return message.channel.send(`-# be wise ${message.member.displayName} or we square up`);
+      }
     }
 
     const responses = {
-      "dae": { text: "-# dae — he who remains, beyond the reach of those who seek him", video: "src/assets/react/hewhoremains.mp4" },
+      // "dae": { text: "-# dae — he who remains, beyond the reach of those who seek him", video: "src/assets/react/hewhoremains.mp4" },
       "pastaroni": { text: "# *perfectly sweet!*\n*Hany (하니) for sweetness,*\n*Biskit (비스킷) for the best duo—together.*", video: null }
     };
 
