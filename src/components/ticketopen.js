@@ -50,36 +50,36 @@ module.exports = {
     });
 
     const mEmbed = new EmbedBuilder()
-        .setAuthor({ name: `✦ ${interaction.user.username}'s ticket ✦`, iconURL: interaction.user.displayAvatarURL({ dynamic: true }) })
-        .setDescription(`**Thank you for your application.**\nThe Ancestor and the Elders will be here as soon as possible! If they are still alive out there. Please take your time while waiting`)
-        .setFooter({ text: `note: Don't hesitate to mention them if need now ` })
-        .setColor(client.config.embedColorTrans)
+      .setAuthor({ name: `✦ ${interaction.user.username}'s ticket ✦`, iconURL: interaction.user.displayAvatarURL({ dynamic: true }) })
+      .setDescription(`**Thank you for your application.**\nThe Ancestor and the Elders will be here as soon as possible! If they are still alive out there. Please take your time while waiting`)
+      .setFooter({ text: `note: Don't hesitate to mention them if need now ` })
+      .setColor(client.config.embedColorTrans)
 
     const btnTicket = new ActionRowBuilder()
-    .addComponents(
+      .addComponents(
         new ButtonBuilder()
-        .setCustomId("btn-ticketclose")
-        .setLabel("Save and Close")
-        .setStyle(ButtonStyle.Danger)
-    )
-    .addComponents(
+          .setCustomId("btn-ticketclose")
+          .setLabel("Save and Close")
+          .setStyle(ButtonStyle.Danger)
+      )
+      .addComponents(
         new ButtonBuilder()
-        .setCustomId("btn-ticketlock")
-        .setLabel("Lock")
-        .setStyle(ButtonStyle.Primary)
-    )
-    .addComponents(
+          .setCustomId("btn-ticketlock")
+          .setLabel("Lock")
+          .setStyle(ButtonStyle.Primary)
+      )
+      .addComponents(
         new ButtonBuilder()
-        .setCustomId("btn-ticketmention")
-        .setLabel("Mention Now")
-        .setStyle(ButtonStyle.Secondary)
-    );
-    
+          .setCustomId("btn-ticketmention")
+          .setLabel("Mention Now")
+          .setStyle(ButtonStyle.Secondary)
+      );
+
     await openTicket.send({ embeds: [mEmbed], components: [btnTicket] })
 
     await interaction.reply({
       content: `Your ticket opened in ${openTicket}`,
       ephemeral: true
-  });
+    });
   },
 };
