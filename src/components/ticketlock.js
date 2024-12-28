@@ -14,7 +14,7 @@ module.exports = {
    * @param {import("discord.js").ButtonInteraction} interaction
    */
   execute: async (client, interaction) => {
-    if (!interaction.member.permissions.has(PermissionsBitField.Flags.ManageMessages)) return interaction.reply({ content: `Only the **Ancestor** and **Elders** can lock this ticket`, ephemeral: true })
+    if (!interaction.member.permissions.has(PermissionsBitField.Flags.ManageMessages)) return await interaction.reply({ content: `Only the **Ancestor** and **Elders** can lock this ticket`, ephemeral: true })
     
     const lunariaID = '839170815932891197'
     const ticketAuthorID = interaction.channel.topic;
