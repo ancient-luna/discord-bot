@@ -88,7 +88,7 @@ module.exports = {
         ],
       });
 
-      await interaction.reply({
+      await interaction.followUp({
         content: `:unlock: Ticket has been **unlocked** for <@${ticketAuthorID}>`,
         ephemeral: true,
       })
@@ -135,7 +135,7 @@ module.exports = {
         ],
       });
 
-      await interaction.reply({
+      await interaction.followUp({
         content: `:lock: Ticket has been **locked** from <@${ticketAuthorID}>`,
         ephemeral: true,
       })
