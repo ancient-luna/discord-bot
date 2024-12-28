@@ -40,11 +40,11 @@ module.exports = {
         },
         {
           id: interaction.user.id,
-          allow: [PermissionsBitField.Flags.ViewChannel],
+          allow: PermissionsBitField.Flags.ViewChannel,
         },
         {
           id: interaction.guild.roles.everyone,
-          deny: [PermissionsBitField.Flags.ViewChannel],
+          deny: PermissionsBitField.Flags.ViewChannel,
         },
       ],
     });
