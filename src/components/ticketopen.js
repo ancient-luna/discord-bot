@@ -32,6 +32,7 @@ module.exports = {
       name: `ticket-${interaction.user.username}`,
       type: ChannelType.GuildText,
       parent: ticketCategory,
+      topic: interaction.user.id,
       permissionOverwrites: [
         {
           id: lunariaID,
