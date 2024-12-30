@@ -20,6 +20,7 @@ module.exports = {
     stickyLucentChannel: "1060992992523079800",
     stickyTalesChannel: "1090915653575258123",
     stickyGLeagueChannel: "1214877757209710622",
+    stickyCTSChannel: "881836063398723585",
     
     localEmoji: "ancientluna_pure_luna",
 

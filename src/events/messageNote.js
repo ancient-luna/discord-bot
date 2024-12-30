@@ -94,6 +94,29 @@ module.exports = new Object({
       }
     };
 
+    if (client.config.stickyCTSChannel.includes(message.channel.id)) { // StickyNote CTS/CTL
+      const fetchedCTSMessages = await message.channel.messages.fetch();
+      const stickyCTSMessage = fetchedCTSMessages.find(m => m.author.id === client.user.id && client.config.stickyCTSChannel.includes(m.channel.id));
+      // const ringOfire = new AttachmentBuilder("src/assets/ringoffire.mp4");
+      const btnCTS = new ActionRowBuilder()
+        .addComponents(
+          new ButtonBuilder()
+            .setStyle(ButtonStyle.Link)
+            .setLabel(`Clan Member Tracking Sheet`)
+            .setURL(`https://docs.google.com/spreadsheets/d/16mQsX0bVe2iLHwJmpHIQhZb-iBqGC1FO/edit?rtpof=true&sd=true`)
+        );
+      try {
+        if (stickyCTSMessage) { await stickyCTSMessage.delete(); }
+        await message.channel.send({
+          content: `-# CTS/CTL Requirement \`on events = 500m EXP/7.5k LP\` / \`off events = 250m EXP/3.5k LP\``,
+          // files: [ringOfire],
+          components: [btnCTS]
+        });
+      } catch (error) {
+        console.error('Failed to send or delete the sticky message:', error);
+      }
+    };
+
     // END OF STICKY MESSAGES =========================================================================================================
   },
 });
