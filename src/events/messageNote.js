@@ -105,7 +105,7 @@ module.exports = new Object({
       try {
         if (stickyCTSMessage) { await stickyCTSMessage.delete(); }
         await message.channel.send({
-          content: `-# CTS/CTL Requirement \`on events = 500m EXP/7.5k LP\` / \`off events = 250m EXP/3.5k LP\``,
+          content: `-# CTS/CTL Requirement • https://discord.com/channels/447069790150852609/881836063398723585/1323180190679175219`,
           components: [btnCTS]
         });
       } catch (error) {
