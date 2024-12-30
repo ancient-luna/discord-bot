@@ -97,7 +97,6 @@ module.exports = new Object({
     if (client.config.stickyCTSChannel.includes(message.channel.id)) { // StickyNote CTS/CTL
       const fetchedCTSMessages = await message.channel.messages.fetch();
       const stickyCTSMessage = fetchedCTSMessages.find(m => m.author.id === client.user.id && client.config.stickyCTSChannel.includes(m.channel.id));
-      // const ringOfire = new AttachmentBuilder("src/assets/ringoffire.mp4");
       const btnCTS = new ActionRowBuilder()
         .addComponents(
           new ButtonBuilder()
@@ -109,7 +108,6 @@ module.exports = new Object({
         if (stickyCTSMessage) { await stickyCTSMessage.delete(); }
         await message.channel.send({
           content: `-# CTS/CTL Requirement \`on events = 500m EXP/7.5k LP\` / \`off events = 250m EXP/3.5k LP\``,
-          // files: [ringOfire],
           components: [btnCTS]
         });
       } catch (error) {
