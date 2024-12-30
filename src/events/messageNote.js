@@ -9,8 +9,6 @@ module.exports = new Object({
   async execute(client, message) {
     if (message.author.bot || !message.guild || message.channel.type === ChannelType.DM) return;
 
-    // START OF STICKY MESSAGES =========================================================================================================
-
     if (client.config.stickyLucentChannel.includes(message.channel.id)) { // StickyNote Lucent Fountain
       const fetchedLucentMessages = await message.channel.messages.fetch();
       const stickyLucentMessage = fetchedLucentMessages.find(m => m.author.id === client.user.id && client.config.stickyLucentChannel.includes(m.channel.id));
@@ -114,7 +112,5 @@ module.exports = new Object({
         console.error('Failed to send or delete the sticky message:', error);
       }
     };
-
-    // END OF STICKY MESSAGES =========================================================================================================
   },
 });
