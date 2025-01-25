@@ -39,27 +39,21 @@ module.exports = new Object({
         let serverButton = new ActionRowBuilder()
             .addComponents(
                 new ButtonBuilder()
-                .setCustomId("btn-helpcmd")
-                .setLabel("Commands")
-                .setStyle(ButtonStyle.Primary)
-            )
-            .addComponents(
+                    .setCustomId("btn-helpcmd")
+                    .setLabel("Commands")
+                    .setStyle(ButtonStyle.Primary),
                 new ButtonBuilder()
                     .setStyle(ButtonStyle.Link)
                     .setLabel('Server')
-                    .setURL('https://discord.com/invite/Sbp2nt8QHe')
-            )
-            .addComponents(
+                    .setURL('https://discord.com/invite/Sbp2nt8QHe'),
                 new ButtonBuilder()
                     .setStyle(ButtonStyle.Link)
                     .setLabel('Support')
-                    .setURL('https://ko-fi.com/daekid')
-            )
-            .addComponents(
+                    .setURL('https://ko-fi.com/daekid'),
                 new ButtonBuilder()
-                .setStyle(ButtonStyle.Link)
-                .setLabel('YouTube')
-                .setURL('https://www.youtube.com/@ancientluna')
+                    .setStyle(ButtonStyle.Link)
+                    .setLabel('YouTube')
+                    .setURL('https://www.youtube.com/@ancientluna')
             )
 
         message.reply({

@@ -121,15 +121,11 @@ module.exports = new Object({
                     new ButtonBuilder()
                         .setStyle(ButtonStyle.Link)
                         .setLabel("Dead Frontier Profile")
-                        .setURL(`https://fairview.DEADFRONTIER.com/onlinezombiemmo/index.php?action=profile;u=${survivorID}`)
-                )
-                .addComponents(
+                        .setURL(`https://fairview.DEADFRONTIER.com/onlinezombiemmo/index.php?action=profile;u=${survivorID}`),
                     new ButtonBuilder()
                         .setStyle(ButtonStyle.Link)
                         .setLabel("Send Message")
-                        .setURL(`https://fairview.DEADFRONTIER.com/onlinezombiemmo/index.php?action=pm;sa=send;u=${survivorID}`)
-                )
-                .addComponents(
+                        .setURL(`https://fairview.DEADFRONTIER.com/onlinezombiemmo/index.php?action=pm;sa=send;u=${survivorID}`),
                     new ButtonBuilder()
                         .setStyle(ButtonStyle.Link)
                         .setLabel("Trade")

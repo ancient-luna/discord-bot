@@ -35,9 +35,7 @@ module.exports = new Object({
                 new ButtonBuilder()
                     .setStyle(ButtonStyle.Link)
                     .setLabel(`Clan Vault`)
-                    .setURL(`https://discord.com/channels/447069790150852609/875904001340764190`)
-            )
-            .addComponents(
+                    .setURL(`https://discord.com/channels/447069790150852609/875904001340764190`),
                 new ButtonBuilder()
                     .setStyle(ButtonStyle.Link)
                     .setLabel(`CTS/CTL`)

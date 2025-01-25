@@ -85,9 +85,7 @@ module.exports = {
                     new ButtonBuilder()
                         .setStyle(ButtonStyle.Link)
                         .setLabel(`DFP Profile`)
-                        .setURL(`https://www.dfprofiler.com/profile/view/${survivorID}`)
-                )
-                .addComponents(
+                        .setURL(`https://www.dfprofiler.com/profile/view/${survivorID}`),
                     new ButtonBuilder()
                         .setStyle(ButtonStyle.Link)
                         .setLabel(`Updated Profile Image`)

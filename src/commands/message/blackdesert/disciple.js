@@ -32,9 +32,7 @@ module.exports = new Object({
                 new ButtonBuilder()
                     .setCustomId("btn-guildterms")
                     .setLabel("Read Guild Terms")
-                    .setStyle(ButtonStyle.Secondary)
-            )
-            .addComponents(
+                    .setStyle(ButtonStyle.Secondary),
                 new ButtonBuilder()
                     .setCustomId("btn-guildbanner")
                     .setLabel("See Guild Banner")
