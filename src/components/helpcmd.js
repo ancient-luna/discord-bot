@@ -1,5 +1,6 @@
 const { EmbedBuilder } = require("discord.js");
-const { stripIndent } = require("common-tags");
+const { readdirSync } = require("fs");
+const { join } = require("path");
 
 module.exports = {
   name: "helpcmd",
@@ -14,10 +15,70 @@ module.exports = {
    * @param {import("discord.js").ButtonInteraction} interaction
    */
   execute: async (client, interaction) => {
-    const cmdText = "## Generals and Entertainments\n- `!advice` giving random advice to mentioned member\n- `!anime` searching anime based on MyAnimeList\n- `!dictionary` giving example sentences based on Urban Dictionary\n- `!download` convert YouTube to MP3 and MP4 to download\n- `!emoji` mixing two emojis\n- `!profile` giving member information\n- `!reminder` setting up a reminder in min/hrs\n- `!screenshot` taking a screenshot of a web page\n- `!spotify` tracking member's listened current song on spotify\n- `!watchtogether` giving link for YouTube Watch Together on current joined voice channel\n## Game Status Trackers\n- **DEAD FRONTIER 1**\n - `!record` tracking weekly CTS/CTL\n - `!status` tracking player stats including weapons, location, and many\n## Miscellaneous\n- `!emotionaldamage` li'el pean is attacking!\n- `!grrr` why you steal my points?!\n- `!rawr` you wanna fite?\n- `server` discord server information\n- `!spit` pui! spitting too much"      
+    const commandsDir = join(__dirname, "../commands/message");
+    const excludedFolders = ["blackdesert", "deadfrontier", "fortnite", "moderator", "suggestion", "unused-setup"];
+    const allowedCommands = ["record", "status"];
+
+    const categories = readdirSync(commandsDir, { withFileTypes: true })
+      .filter((dirent) => dirent.isDirectory())
+      .map((dirent) => dirent.name);
+
+    let helpText = "";
+    let specialCommands = "";
+
+    for (const excludedFolder of excludedFolders) {
+      const excludedPath = join(commandsDir, excludedFolder);
+      const commandFiles = readdirSync(excludedPath).filter((file) => file.endsWith(".js"));
+
+      let folderSpecialCommands = "";
+      for (const file of commandFiles) {
+        const command = require(join(excludedPath, file));
+        if (command.name && command.description && allowedCommands.includes(command.name)) {
+          folderSpecialCommands += `- \`!${command.name}\` ${command.description}\n`;
+        }
+      }
+
+      if (folderSpecialCommands) {
+        specialCommands += `## ${excludedFolder.replace(/^\w/, (c) => c.toUpperCase())}\n${folderSpecialCommands}`;
+      }
+    }
+
+    if (specialCommands) {
+      helpText += specialCommands;
+    }
+
+    for (const category of categories) {
+      if (excludedFolders.includes(category)) {
+        continue;
+      }
+
+      const categoryPath = join(commandsDir, category);
+      const commandFiles = readdirSync(categoryPath).filter((file) => file.endsWith(".js"));
+
+      helpText += `## ${category.replace(/^\w/, (c) => c.toUpperCase())}\n`;
+
+      for (const file of commandFiles) {
+        const command = require(join(categoryPath, file));
+        if (command.name && command.description) {
+          helpText += `- \`!${command.name}\` ${command.description}\n`;
+        }
+      }
+    }
+
+    if (!helpText) {
+      helpText = "No commands found.";
+    }
+
+    const embed = new EmbedBuilder()
+      .setTitle("Help Command")
+      .setDescription(helpText.trim())
+      .setColor(client.config.embedColorTrans)
+      .setTimestamp();
+
     return interaction.reply({
-        content: cmdText,
-        ephemeral: true,
+      content: `${helpText.trim()}`,
+      // embeds: [embed],
+      ephemeral: true,
     });
   },
 };
