@@ -1,4 +1,4 @@
-const { MessageEmbed, CommandInteraction } = require('discord.js');
+const { EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle, CommandInteraction } = require('discord.js');
 
 module.exports = {
     name: 'help',
