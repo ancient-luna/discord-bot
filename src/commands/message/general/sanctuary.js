@@ -1,8 +1,8 @@
 const { EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle } = require("discord.js");
 module.exports = new Object({
     name: "sanctuary",
-    description: "sanctuary.",
-    category: "Entertainment",
+    description: "current server information",
+    category: "general",
     cooldown: 0,
     usage: "",
     aliases: ['server'],

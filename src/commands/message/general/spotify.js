@@ -3,8 +3,8 @@ const canvafy = require('canvafy');
 
 module.exports = {
     name: "spotify",
-    description: "spotify.",
-    category: "Entertainment",
+    description: "getting member's currently listened-to songs on Spotify",
+    category: "general",
     usage: "",
     cooldown: 0,
     aliases: [''],

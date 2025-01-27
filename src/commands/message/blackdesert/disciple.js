@@ -1,8 +1,8 @@
 const { EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle } = require("discord.js");
 module.exports = new Object({
     name: "disciple",
-    description: "disciple.",
-    category: "Blackdesert",
+    description: "giving mentioned member lunar disciple role",
+    category: "blackdesert",
     usage: "",
     cooldown: 0,
     aliases: [''],

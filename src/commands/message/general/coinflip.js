@@ -2,8 +2,8 @@ const { EmbedBuilder, AttachmentBuilder } = require('discord.js');
 
 module.exports = new Object({
     name: "coinflip",
-    description: "coinflip.",
-    category: "Entertainment",
+    description: "toss your luck",
+    category: "general",
     usage: "",
     cooldown: 0,
     aliases: [''],

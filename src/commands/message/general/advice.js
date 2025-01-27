@@ -2,12 +2,12 @@ const { EmbedBuilder, AttachmentBuilder } = require('discord.js');
 const axios = require('axios');
 
 module.exports = new Object({
-    name: "lifeadvice",
-    description: "lifeadvice.",
-    category: "Entertainment",
+    name: "advice",
+    description: "a total random advice",
+    category: "general",
     usage: "",
     cooldown: 0,
-    aliases: ['advice'],
+    aliases: ['lifeadvice'],
     examples: [''],
     sub_commands: [],
     args: false,

@@ -4,8 +4,8 @@ const axios = require('axios');
 
 module.exports = new Object({
     name: "status",
-    description: "status.",
-    category: "Deadfrontier",
+    description: "tracking player stats including weapons, location, and many",
+    category: "deadfrontier",
     usage: "",
     cooldown: 0,
     aliases: [''],

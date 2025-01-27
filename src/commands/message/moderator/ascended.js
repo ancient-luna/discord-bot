@@ -1,8 +1,8 @@
 const { EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle } = require("discord.js");
 module.exports = new Object({
     name: "ascended",
-    description: "ascended.",
-    category: "Moderator",
+    description: "giving mentioned member roles",
+    category: "moderator",
     usage: "",
     cooldown: 0,
     aliases: [''],

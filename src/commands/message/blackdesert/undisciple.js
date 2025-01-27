@@ -1,8 +1,8 @@
 const { EmbedBuilder } = require("discord.js");
 module.exports = new Object({
     name: "undisciple",
-    description: "undisciple.",
-    category: "Blackdesert",
+    description: "removing mentioned member lunar disciple role",
+    category: "blackdesert",
     usage: "",
     cooldown: 0,
     aliases: [''],

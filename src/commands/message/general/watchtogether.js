@@ -2,8 +2,8 @@
 const { EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle, AttachmentBuilder } = require("discord.js");
 module.exports = new Object({
     name: "watchtogether",
-    description: "watchtogether.",
-    category: "Entertainment",
+    description: "sharing a YouTube Watch Together link in the voice channel",
+    category: "general",
     usage: "",
     cooldown: 0,
     aliases: [''],

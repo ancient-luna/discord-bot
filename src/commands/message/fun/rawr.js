@@ -1,7 +1,7 @@
 const { AttachmentBuilder } = require("discord.js");
 module.exports = new Object({
     name: "rawr",
-    description: "rawr.",
+    description: "you wanna fite?",
     category: "Fun",
     usage: "",
     cooldown: 0,

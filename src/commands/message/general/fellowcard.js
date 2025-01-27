@@ -3,8 +3,8 @@ const { createCanvas, loadImage, registerFont } = require("canvas");
 
 module.exports = {
   name: "fellowcard",
-  description: "fellowcard.",
-  category: "Usercard",
+  description: "special card for the light seekers",
+  category: "general",
   usage: "",
   cooldown: 0,
   aliases: [''],

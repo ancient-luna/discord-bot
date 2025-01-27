@@ -1,8 +1,8 @@
 const { EmbedBuilder } = require("discord.js");
 module.exports = new Object({
   name: "clearwisdom",
-  description: "clearwisdom.",
-  category: "Moderator",
+  description: "deleting some messages",
+  category: "moderator",
   usage: "",
   cooldown: 0,
   aliases: [],

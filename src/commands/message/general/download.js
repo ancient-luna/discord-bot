@@ -3,8 +3,8 @@ const axios = require('axios');
 
 module.exports = {
     name: 'download',
-    description: 'download.',
-    category: 'Entertainment',
+    description: 'convert YouTube to MP3 and MP4 to download',
+    category: 'general',
     usage: '',
     cooldown: 0,
     aliases: [''],

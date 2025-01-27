@@ -1,8 +1,8 @@
 const { EmbedBuilder } = require("discord.js");
 module.exports = new Object({
     name: "unlevatio",
-    description: "unlevatio.",
-    category: "Deadfrontier",
+    description: "removing mentioned member levatio role",
+    category: "deadfrontier",
     usage: "",
     cooldown: 0,
     aliases: [''],

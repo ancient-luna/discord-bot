@@ -1,8 +1,8 @@
 const { EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle, AttachmentBuilder } = require("discord.js");
 module.exports = new Object({
     name: "rewrite",
-    description: "rewrite.",
-    category: "Moderator",
+    description: "editting embeds",
+    category: "moderator",
     usage: "",
     cooldown: 0,
     aliases: ['editembed'],

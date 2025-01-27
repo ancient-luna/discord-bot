@@ -1,8 +1,8 @@
 const { EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle } = require("discord.js");
 module.exports = new Object({
     name: "wisdomoflleud",
-    description: "wisdomoflleud.",
-    category: "Entertainment",
+    description: "whole Luna information that you might need to know",
+    category: "general",
     cooldown: 0,
     usage: "",
     aliases: ['help', 'about'],
@@ -34,7 +34,7 @@ module.exports = new Object({
                 { name: `Help (Mention)`, value: `${cB}@AncientLuna${cB}`, inline: true },
             )
             .setColor(client.config.embedColorTrans)
-            .setImage("https://i.imgur.com/c8QnpbX.gif")
+            .setThumbnail("https://i.imgur.com/c8QnpbX.gif")
 
         let serverButton = new ActionRowBuilder()
             .addComponents(
@@ -49,7 +49,7 @@ module.exports = new Object({
                 new ButtonBuilder()
                     .setStyle(ButtonStyle.Link)
                     .setLabel('Support')
-                    .setURL('https://ko-fi.com/daekid'),
+                    .setURL('https://ko-fi.com/daexx'),
                 new ButtonBuilder()
                     .setStyle(ButtonStyle.Link)
                     .setLabel('YouTube')

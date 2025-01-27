@@ -1,7 +1,7 @@
 module.exports = new Object({
     name: "ungiven",
-    description: "ungiven.",
-    category: "Moderator",
+    description: "removing mentioned member roles",
+    category: "moderator",
     usage: "",
     cooldown: 0,
     aliases: ['removerole'],

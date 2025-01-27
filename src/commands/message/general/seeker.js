@@ -3,8 +3,8 @@ const { profileImage } = require('discord-arts');
 
 module.exports = new Object({
     name: "seeker",
-    description: "seeker.",
-    category: "Entertainment",
+    description: "giving member information",
+    category: "general",
     cooldown: 0,
     usage: "",
     aliases: ['profile', 'avatar'],

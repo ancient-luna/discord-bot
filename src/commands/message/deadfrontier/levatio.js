@@ -2,8 +2,8 @@
 const { EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle } = require("discord.js");
 module.exports = new Object({
     name: "levatio",
-    description: "levatio.",
-    category: "Deadfrontier",
+    description: "giving mentioned member levatio role",
+    category: "deadfrontier",
     usage: "",
     cooldown: 0,
     aliases: [''],

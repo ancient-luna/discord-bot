@@ -7,8 +7,8 @@ const reminderFile = path.resolve(__dirname, '../../../config/reminder.json');
 
 module.exports = new Object({
     name: "reminder",
-    description: "reminder.",
-    category: "Entertainment",
+    description: "setting up a reminder in min/hrs",
+    category: "general",
     usage: "",
     cooldown: 0,
     aliases: [''],

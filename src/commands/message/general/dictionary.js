@@ -2,8 +2,8 @@ const { EmbedBuilder } = require("discord.js");
 const axios = require("axios");
 module.exports = new Object({
     name: "dictionary",
-    description: "dictionary.",
-    category: "Entertainment",
+    description: "example sentences based on Urban Dictionary definitions",
+    category: "general",
     usage: "",
     cooldown: 0,
     aliases: ['whatis', 'urban', 'meaning', 'meaningof'],

@@ -3,7 +3,7 @@ const Canvas = require("canvas");
 
 module.exports = new Object({
     name: "pepe",
-    description: "pepe.",
+    description: "el pepe sign",
     category: "Fun",
     usage: "",
     cooldown: 0,

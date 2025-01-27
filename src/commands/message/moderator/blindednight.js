@@ -1,8 +1,8 @@
 const { EmbedBuilder } = require("discord.js");
 module.exports = new Object({
     name: "blindednight",
-    description: "blindednight.",
-    category: "Moderator",
+    description: "banning mentioned member",
+    category: "moderator",
     usage: "",
     cooldown: 0,
     aliases: ['ban'],

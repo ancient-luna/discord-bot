@@ -4,8 +4,8 @@ const axios = require('axios');
 
 module.exports = {
     name: "record",
-    description: "record.",
-    category: "Deadfrontier",
+    description: "tracking weekly CTS/CTL",
+    category: "deadfrontier",
     usage: "",
     cooldown: 0,
     aliases: [''],

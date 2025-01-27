@@ -2,8 +2,8 @@ const { EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle } = require("
 const malScraper = require('mal-scraper');
 module.exports = new Object({
     name: "anime",
-    description: "myanimelist.",
-    category: "Entertainment",
+    description: "searching anime based on MyAnimeList",
+    category: "general",
     usage: "",
     cooldown: 0,
     aliases: ['myanimelist'],

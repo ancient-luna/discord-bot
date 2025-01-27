@@ -3,8 +3,8 @@ const superagent = require("superagent");
 const onlyEmoji = require("emoji-aware").onlyEmoji;
 module.exports = new Object({
     name: "emoji",
-    description: "emoji.",
-    category: "Entertainment",
+    description: "combining two emojis just for fun and creating silly emojis",
+    category: "general",
     usage: "",
     cooldown: 0,
     aliases: [],

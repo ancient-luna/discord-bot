@@ -3,8 +3,8 @@ const { createCanvas, loadImage } = require('canvas');
 
 module.exports = {
     name: "radiance",
-    description: "radiance.",
-    category: "Entertainment",
+    description: "current supporters and booster in the sanctuary",
+    category: "general",
     usage: "",
     cooldown: 0,
     aliases: [''],
