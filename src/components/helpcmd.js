@@ -16,7 +16,7 @@ module.exports = {
    */
   execute: async (client, interaction) => {
     const commandsDir = join(__dirname, "../commands/message");
-    const excludedFolders = ["blackdesert", "deadfrontier", "fortnite", "moderator", "suggestion", "unused-setup"];
+    const excludedFolders = ["blackdesert", "deadfrontier", "moderator", "suggestion", "unused-setup"];
     const allowedCommands = ["record", "status"];
 
     const categories = readdirSync(commandsDir, { withFileTypes: true })
