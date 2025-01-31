@@ -25,7 +25,7 @@ module.exports = {
      */
     async execute(client, message, args) {
 
-        const loadingTxt = await message.channel.send(`Listing the **Supporters** and the **Boosters** <a:_util_loading:863317596551118858>`);
+        const loadingTxt = await message.channel.send(`Listing the **Supporters** and the **Boosters** <:u_load:1334900265953923085>`);
 
         const roleIds = [
             '620709364247822338', // luminance role

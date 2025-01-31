@@ -31,7 +31,7 @@ module.exports = {
     
     interaction.guild.channels.cache.get('1162419484305391800').send({ content: `Transcripted chat from **# ${channelName}** <:srv_tag:1334880991512236053>`, files: [attachment] })
     interaction.reply({
-        content: `Closing ticket in 5 seconds <a:_util_loading:863317596551118858>`,
+        content: `Closing ticket in 5 seconds <:u_load:1334900265953923085>`,
         ephemeral: true
     });
 

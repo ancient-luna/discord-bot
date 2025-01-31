@@ -28,7 +28,7 @@ module.exports = new Object({
         if (!search)
             return message.reply("Please add the `anime title` that you're looking for");
 
-        const loadingTxt = await message.reply(`<a:_util_loading:863317596551118858> Searching on MyAnimeList`);
+        const loadingTxt = await message.reply(`<:u_load:1334900265953923085> Searching on MyAnimeList`);
 
         malScraper.getInfoFromName(search)
             .then((data) => {

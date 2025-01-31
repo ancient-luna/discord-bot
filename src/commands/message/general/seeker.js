@@ -25,7 +25,7 @@ module.exports = new Object({
      */
     async execute(client, message, args) {
 
-        const loadingTxt = await message.reply(`Getting profile <a:_util_loading:863317596551118858>`);
+        const loadingTxt = await message.reply(`Getting profile <:u_load:1334900265953923085>`);
 
         try {
             const member = message.mentions.members.first() || message.member;

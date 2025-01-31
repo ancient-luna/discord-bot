@@ -24,7 +24,7 @@ module.exports = {
    * @param {String[]} args
    */
   async execute(client, message, args) {
-    let loadingTxt = await message.channel.send(`generating your own unique card <a:_util_loading:863317596551118858>`);
+    let loadingTxt = await message.channel.send(`generating your own unique card <:u_load:1334900265953923085>`);
 
     const canvas = createCanvas(500, 800);
     const ctx = canvas.getContext("2d");

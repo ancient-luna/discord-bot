@@ -30,7 +30,7 @@ module.exports = {
     async execute(client, message, args) {
         const url = args[0];
         if (!url) return message.reply("Please provide a `URL` to download");
-        let loading = await message.reply(`Getting the file ready <a:_util_loading:863317596551118858>`);
+        let loading = await message.reply(`Getting the file ready <:u_load:1334900265953923085>`);
 
         const supportedUrls = ['instagram.com', 'tiktok.com', 'youtube.com', 'youtu.be', 'facebook.com', 'fb.watch', 'reel', 'x.com', 'twitter.com'];
         const youtubeRegex = /^((?:https?:)?\/\/)?((?:www|m)\.)?((?:youtube(?:-nocookie)?\.com|youtu.be))(\/(?:[\w\-]+\?v=|embed\/|live\/|v\/)?)([\w\-]+)(\S+)?$/;

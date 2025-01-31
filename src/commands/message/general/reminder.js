@@ -36,7 +36,7 @@ module.exports = new Object({
 
         const timeCounter = Date.now() + ms(timeReminder);
 
-        const loadingTxt = await message.reply(`Setting a reminder...\nI will remind you back <t:${Math.floor(timeCounter / 1000)}:R> <a:_util_loading:863317596551118858>`);
+        const loadingTxt = await message.reply(`Setting a reminder...\nI will remind you back <t:${Math.floor(timeCounter / 1000)}:R> <:u_load:1334900265953923085>`);
 
         let embedReminder = new EmbedBuilder()
             .setAuthor({ name: `${message.member.displayName}'s Reminder`, iconURL: message.author.displayAvatarURL() })
