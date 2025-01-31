@@ -46,7 +46,7 @@ module.exports = {
             const confessionTxt = new EmbedBuilder()
                 // .setAuthor({ name: "confession", url: "https://discord.com/channels/447069790150852609/1162410164356390912" })
                 .setTitle(`thy confessional anon`)
-                .setDescription(`[<:ic_repost:1334863701026541648> <:ic_share:1334863681443463169>](https://discord.com/channels/447069790150852609/1162410164356390912/1163378443287797831)\n\n${confessionValue}\n\n-# from Anonymous • [click here to confess](https://discord.com/channels/447069790150852609/1162410164356390912/1163378443287797831)`)
+                .setDescription(`[<:ic_like:1334863610802995281> <:ic_repost:1334863701026541648> <:ic_share:1334863681443463169>](https://discord.com/channels/447069790150852609/1162410164356390912/1163378443287797831)\n\n${confessionValue}\n\n-# from Anonymous • [click here to confess](https://discord.com/channels/447069790150852609/1162410164356390912/1163378443287797831)`)
                 .setColor(client.config.embedColorTrans)
                 .setTimestamp()
             const btnConfess = new ActionRowBuilder()
