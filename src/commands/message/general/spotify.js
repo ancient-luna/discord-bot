@@ -26,7 +26,7 @@ module.exports = {
     async execute(client, message, args) {
         let listener = message.mentions.members.first() || message.member;
 
-        const loadingTxt = await message.reply(`Tracking on what **${listener.displayName}** is listening to <:u_load:1334900265953923085>`);
+        const loadingTxt = await message.reply(`Tracking on what **${listener.displayName}** is listening to <a:u_load:1334900265953923085>`);
 
         if (!listener.presence || !listener.presence.activities) {
             return await loadingTxt.edit({ content: `**${listener.displayName}**'s presence or activities data is not available.` });

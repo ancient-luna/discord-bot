@@ -29,7 +29,7 @@ module.exports = new Object({
         const survivorID = args.join(" ");
         if (!survivorID) return message.channel.send("Do `!status` `id`");
 
-        const loadingTxt = await message.reply(`Getting player status <:u_load:1334900265953923085>`);
+        const loadingTxt = await message.reply(`Getting player status <a:u_load:1334900265953923085>`);
 
         const timestamp = Date.now();
 
