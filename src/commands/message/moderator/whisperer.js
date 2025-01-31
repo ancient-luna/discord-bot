@@ -31,32 +31,29 @@ module.exports = new Object({
         const str = args.join(" ");
 
         const txtEmbed = new EmbedBuilder()
-            .setTitle(`Dev. Contacts <:verified:1204724590950228008>`)
-            .setDescription(`> Discord: axxae - [ancientluna](https://discord.com/invite/Sbp2nt8QHe)\n> dae@ancientluna.org <:ins:1204725582852788256> [everylttlething](https://instagram.com/everylttlething)`)
+            .setTitle(`Dev. Support Contacts <:sc_verified:1334889120849330266>`)
+            .setDescription(`> Discord: asonofbiscuit - [ancientluna](https://discord.com/channels/447069790150852609/1162410164356390912)\n> ~~dae@ancientluna.org~~ <:sc_ins:1334889482633084989> ~~**IG**~~`)
             .setFooter({ text: `this bot won't read any messages of your replies` })
             .setColor(client.config.embedColorTrans)
-            .setThumbnail('https://i.imgur.com/veLhH04.png');
+            .setThumbnail('https://i.imgur.com/vfx9TEB.png') // aevoa
+            // .setImage('https://i.imgur.com/4uS7mor.png') // aevoa
+            .setTimestamp()
 
         const btnServer = new ActionRowBuilder()
             .addComponents(
                 new ButtonBuilder()
                     .setStyle(ButtonStyle.Link)
-                    .setLabel("Chat with family")
-                    .setEmoji('<:game_logo_bdo:861579805660151818>')
-                    .setURL(`https://discord.com/channels/447069790150852609/1060992670035619931`)
-            )
-            .addComponents(
-                new ButtonBuilder()
-                    .setStyle(ButtonStyle.Link)
                     .setLabel("Web")
-                    .setURL(`https://ancientluna.org`)
-            )
-            .addComponents(
+                    .setURL(`https://www.bdo.ancientluna.org`),
                 new ButtonBuilder()
                     .setStyle(ButtonStyle.Link)
-                    .setLabel("Videos")
-                    .setURL(`https://www.youtube.com/@ancientluna/about`)
-            );
+                    .setLabel("Video")
+                    .setURL(`https://www.youtube.com/@ancientluna`),
+                new ButtonBuilder()
+                    .setStyle(ButtonStyle.Link)
+                    .setLabel("Steam Group")
+                    .setURL(`https://steamcommunity.com/groups/xxmoon`)
+            )
 
         let successful = 0;
         let failed = 0;
@@ -65,7 +62,7 @@ module.exports = new Object({
         message.guild.members.cache.forEach(member => {
             if (member.roles.cache.has(role.id)) {
                 promises.push(member.send({
-                    content: `Dear **Lunar Disciples**,\n${str}\n\nWarmest regards,\n[**Aevoa**](https://steamcommunity.com/id/axxae/)\n_ _`,
+                    content: `Dear **Lunar Disciples**,\n${str}\n\nWarmest regards,\n**Aevoa**\n_ _`,
                     embeds: [txtEmbed],
                     components: [btnServer]
                 }).then(() => {
@@ -85,7 +82,7 @@ module.exports = new Object({
         Promise.all(promises)
             .then(() => {
                 const statusEmbed = new EmbedBuilder()
-                    .setDescription(`<:check:1222439148720361502> Message sent successfully to ${successful} members <:wrong:1222439146593849425> Failed to send to ${failed} members.`)
+                    .setDescription(`<:srv_accept:1334881070449164378> Message sent successfully to ${successful} members <:srv_deny:1334881089205829674> Failed to send to ${failed} members.`)
                     .setColor(client.config.embedColorTrans)
                 message.channel.send({ embeds: [statusEmbed] });
             })

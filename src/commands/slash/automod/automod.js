@@ -102,7 +102,7 @@ async function handleAutomodSpamMessages(client, interaction) {
 
     const embed = new EmbedBuilder()
         .setColor(client.config.embedColorTrans)
-        .setDescription(`<:vcon_vote_accepted:859075138329903114> **AUTOMOD RULE CREATED**\nAll messages suspected of spam will be deleted by **Ancient Luna**`);
+        .setDescription(`<:srv_accepted:1334885365676507188> **AUTOMOD RULE CREATED**\nAll messages suspected of spam will be deleted by **Ancient Luna**`);
     await interaction.reply({ embeds: [embed], ephemeral: true });
 }
 
@@ -139,7 +139,7 @@ async function handleAutomodSpamMentions(client, interaction) {
 
     const embed = new EmbedBuilder()
         .setColor(client.config.embedColorTrans)
-        .setDescription(`<:vcon_vote_accepted:859075138329903114> **AUTOMOD RULE CREATED**\nAll messages suspected of mention spam will be deleted by **Ancient Luna**`);
+        .setDescription(`<:srv_accepted:1334885365676507188> **AUTOMOD RULE CREATED**\nAll messages suspected of mention spam will be deleted by **Ancient Luna**`);
     await interaction.reply({ embeds: [embed], ephemeral: true });
 }
 
@@ -176,7 +176,7 @@ async function handleAutomodKeywords(client, interaction) {
 
     const embed = new EmbedBuilder()
         .setColor(client.config.embedColorTrans)
-        .setDescription(`<:vcon_vote_accepted:859075138329903114> **AUTOMOD RULE CREATED**\nAll messages containing the word \`${word}\` will be deleted by **Ancient Luna**`);
+        .setDescription(`<:srv_accepted:1334885365676507188> **AUTOMOD RULE CREATED**\nAll messages containing the word \`${word}\` will be deleted by **Ancient Luna**`);
     await interaction.reply({ embeds: [embed], ephemeral: true });
 }
 
@@ -212,6 +212,6 @@ async function handleAutomodFlaggedWords(client, interaction) {
     
     const embed = new EmbedBuilder()
         .setColor(client.config.embedColorTrans)
-        .setDescription(`<:vcon_vote_accepted:859075138329903114> **AUTOMOD RULE CREATED**\nAll swears will be stopped by **Ancient Luna**`);
+        .setDescription(`<:srv_accepted:1334885365676507188> **AUTOMOD RULE CREATED**\nAll swears will be stopped by **Ancient Luna**`);
     await interaction.reply({ embeds: [embed], ephemeral: true });
 }

@@ -21,8 +21,6 @@ module.exports = {
     stickyTalesChannel: "1090915653575258123",
     stickyGLeagueChannel: "1214877757209710622",
     stickyCTSChannel: "881836063398723585",
-    
-    localEmoji: "ancientluna_pure_luna",
 
     voiceChannel: "525889181273292801",
     voiceMessage: "boss cycle updated",

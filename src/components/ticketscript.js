@@ -20,7 +20,7 @@ module.exports = {
     const attachment = await discordTranscripts.createTranscript(channel);
     // interaction.channel.send({ files: [attachment] })
     interaction.reply({
-        content: `<:ancientluna_divinare_s:859034096192978965> \`here is the transcripted chat log\``,
+        content: `<:srv_attachment:1334881013943504980> \`here is the transcripted chat log\``,
         files: [attachment],
         ephemeral: true
     });

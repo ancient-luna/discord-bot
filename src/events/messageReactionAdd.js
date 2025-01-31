@@ -68,7 +68,7 @@ module.exports = new Object({
                     .setFooter({ text: 'Elionian Year' })
                     .setTimestamp()
                     .setImage(`${heroIMG[Math.floor(Math.random() * heroIMG.length)]}`)
-                    .setDescription(`-# Registered Name: ${reaction.message.guild.members.cache.get(user.id)}\n\n${quoteText[Math.floor(Math.random() * quoteText.length)]}`)
+                    .setDescription(`-# Registered Name: ${reaction.message.guild.members.cache.get(user.id)} <:bdo_warheroes:1334894096870801429>\n\n${quoteText[Math.floor(Math.random() * quoteText.length)]}`)
                     .setColor(client.config.embedColorTrans);
                 return channelArtifact.send({ embeds: [heroText] });
             }
@@ -85,7 +85,7 @@ module.exports = new Object({
                     .setFooter({ text: 'Elionian Year' })
                     .setTimestamp()
                     .setThumbnail('https://i.imgur.com/8mhq47l.png')
-                    .setDescription(`${quoteText[Math.floor(Math.random() * quoteText.length)]}\n-# Ancient Civilizations Name: ${reaction.message.guild.members.cache.get(user.id)}\n-# Chosen Main Class: **Warrior** <:warrior:1258082990031114282>`)
+                    .setDescription(`${quoteText[Math.floor(Math.random() * quoteText.length)]}\n-# Ancient Civilizations Name: ${reaction.message.guild.members.cache.get(user.id)}\n-# Chosen Main Class: **Warrior** <:bdo_warrior:1334895041436581969>`)
                     .setColor(client.config.embedColorTrans);
                 return channelArtifact.send({ embeds: [classText] });
             }
@@ -101,7 +101,7 @@ module.exports = new Object({
                     .setFooter({ text: 'Elionian Year' })
                     .setTimestamp()
                     .setThumbnail('https://i.imgur.com/jLhX7dM.png')
-                    .setDescription(`${quoteText[Math.floor(Math.random() * quoteText.length)]}\n-# Ancient Civilizations Name: ${reaction.message.guild.members.cache.get(user.id)}\n-# Chosen Main Class: **Ranger** <:ranger:1258082966005878796>`)
+                    .setDescription(`${quoteText[Math.floor(Math.random() * quoteText.length)]}\n-# Ancient Civilizations Name: ${reaction.message.guild.members.cache.get(user.id)}\n-# Chosen Main Class: **Ranger** <:bdo_ranger:1334894926038569032>`)
                     .setColor(client.config.embedColorTrans);
                 return channelArtifact.send({ embeds: [classText] });
             }
@@ -117,7 +117,7 @@ module.exports = new Object({
                     .setFooter({ text: 'Elionian Year' })
                     .setTimestamp()
                     .setThumbnail('https://i.imgur.com/49Nq37M.png')
-                    .setDescription(`${quoteText[Math.floor(Math.random() * quoteText.length)]}\n-# Ancient Civilizations Name: ${reaction.message.guild.members.cache.get(user.id)}\n-# Chosen Main Class: **Sorceress** <:sorceress:1258082979117273128>`)
+                    .setDescription(`${quoteText[Math.floor(Math.random() * quoteText.length)]}\n-# Ancient Civilizations Name: ${reaction.message.guild.members.cache.get(user.id)}\n-# Chosen Main Class: **Sorceress** <:bdo_sorceress:1334894991150944319>`)
                     .setColor(client.config.embedColorTrans);
                 return channelArtifact.send({ embeds: [classText] });
             }
@@ -133,7 +133,7 @@ module.exports = new Object({
                     .setFooter({ text: 'Elionian Year' })
                     .setTimestamp()
                     .setThumbnail('https://i.imgur.com/MwWEQML.png')
-                    .setDescription(`${quoteText[Math.floor(Math.random() * quoteText.length)]}\n-# Ancient Civilizations Name: ${reaction.message.guild.members.cache.get(user.id)}\n-# Chosen Main Class: **Berserker** <:berserker:1258082931679821895>`)
+                    .setDescription(`${quoteText[Math.floor(Math.random() * quoteText.length)]}\n-# Ancient Civilizations Name: ${reaction.message.guild.members.cache.get(user.id)}\n-# Chosen Main Class: **Berserker** <:bdo_berserker:1334894687366021185>`)
                     .setColor(client.config.embedColorTrans);
                 return channelArtifact.send({ embeds: [classText] });
             }
@@ -149,7 +149,7 @@ module.exports = new Object({
                     .setFooter({ text: 'Elionian Year' })
                     .setTimestamp()
                     .setThumbnail('https://i.imgur.com/iJRr8ym.png')
-                    .setDescription(`${quoteText[Math.floor(Math.random() * quoteText.length)]}\n-# Ancient Civilizations Name: ${reaction.message.guild.members.cache.get(user.id)}\n-# Chosen Main Class: **Tamer** <:tamer:1258082983810826363>`)
+                    .setDescription(`${quoteText[Math.floor(Math.random() * quoteText.length)]}\n-# Ancient Civilizations Name: ${reaction.message.guild.members.cache.get(user.id)}\n-# Chosen Main Class: **Tamer** <:bdo_tamer:1334895017189183518>`)
                     .setColor(client.config.embedColorTrans);
                 return channelArtifact.send({ embeds: [classText] });
             }
@@ -165,7 +165,7 @@ module.exports = new Object({
                     .setFooter({ text: 'Elionian Year' })
                     .setTimestamp()
                     .setThumbnail('https://i.imgur.com/rv1Ynri.png')
-                    .setDescription(`${quoteText[Math.floor(Math.random() * quoteText.length)]}\n-# Ancient Civilizations Name: ${reaction.message.guild.members.cache.get(user.id)}\n-# Chosen Main Class: **Musa** <:musa:1258082956258447450>`)
+                    .setDescription(`${quoteText[Math.floor(Math.random() * quoteText.length)]}\n-# Ancient Civilizations Name: ${reaction.message.guild.members.cache.get(user.id)}\n-# Chosen Main Class: **Musa** <:bdo_musa:1334894856534757460>`)
                     .setColor(client.config.embedColorTrans);
                 return channelArtifact.send({ embeds: [classText] });
             }
@@ -181,7 +181,7 @@ module.exports = new Object({
                     .setFooter({ text: 'Elionian Year' })
                     .setTimestamp()
                     .setThumbnail('https://i.imgur.com/6HZDRtx.png')
-                    .setDescription(`${quoteText[Math.floor(Math.random() * quoteText.length)]}\n-# Ancient Civilizations Name: ${reaction.message.guild.members.cache.get(user.id)}\n-# Chosen Main Class: **Maehwa** <:maehwa:1258082954245046394>`)
+                    .setDescription(`${quoteText[Math.floor(Math.random() * quoteText.length)]}\n-# Ancient Civilizations Name: ${reaction.message.guild.members.cache.get(user.id)}\n-# Chosen Main Class: **Maehwa** <:bdo_maehwa:1334894829351731250>`)
                     .setColor(client.config.embedColorTrans);
                 return channelArtifact.send({ embeds: [classText] });
             }
@@ -197,7 +197,7 @@ module.exports = new Object({
                     .setFooter({ text: 'Elionian Year' })
                     .setTimestamp()
                     .setThumbnail('https://i.imgur.com/GyGTUxc.png')
-                    .setDescription(`${quoteText[Math.floor(Math.random() * quoteText.length)]}\n-# Ancient Civilizations Name: ${reaction.message.guild.members.cache.get(user.id)}\n-# Chosen Main Class: **Valkyrie** <:valkyrie:1258082988525228153>`)
+                    .setDescription(`${quoteText[Math.floor(Math.random() * quoteText.length)]}\n-# Ancient Civilizations Name: ${reaction.message.guild.members.cache.get(user.id)}\n-# Chosen Main Class: **Valkyrie** <:bdo_valkyrie:1334895028757331988>`)
                     .setColor(client.config.embedColorTrans);
                 return channelArtifact.send({ embeds: [classText] });
             }
@@ -213,7 +213,7 @@ module.exports = new Object({
                     .setFooter({ text: 'Elionian Year' })
                     .setTimestamp()
                     .setThumbnail('')
-                    .setDescription(`${quoteText[Math.floor(Math.random() * quoteText.length)]}\n-# Ancient Civilizations Name: ${reaction.message.guild.members.cache.get(user.id)}\n-# Chosen Main Class: **Kunoichi** <:kunoichi:1258082947555393556>`)
+                    .setDescription(`${quoteText[Math.floor(Math.random() * quoteText.length)]}\n-# Ancient Civilizations Name: ${reaction.message.guild.members.cache.get(user.id)}\n-# Chosen Main Class: **Kunoichi** <:bdo_kunoichi:1334894783650598982>`)
                     .setColor(client.config.embedColorTrans);
                 return channelArtifact.send({ embeds: [classText] });
             }
@@ -229,7 +229,7 @@ module.exports = new Object({
                     .setFooter({ text: 'Elionian Year' })
                     .setTimestamp()
                     .setThumbnail('https://i.imgur.com/dLd7J9d.png')
-                    .setDescription(`${quoteText[Math.floor(Math.random() * quoteText.length)]}\n-# Ancient Civilizations Name: ${reaction.message.guild.members.cache.get(user.id)}\n-# Chosen Main Class: **Ninja** <:ninja:1258082960888954971>`)
+                    .setDescription(`${quoteText[Math.floor(Math.random() * quoteText.length)]}\n-# Ancient Civilizations Name: ${reaction.message.guild.members.cache.get(user.id)}\n-# Chosen Main Class: **Ninja** <:bdo_ninja:1334894890810867834>`)
                     .setColor(client.config.embedColorTrans);
                 return channelArtifact.send({ embeds: [classText] });
             }
@@ -245,7 +245,7 @@ module.exports = new Object({
                     .setFooter({ text: 'Elionian Year' })
                     .setTimestamp()
                     .setThumbnail('https://i.imgur.com/MX2acTM.png')
-                    .setDescription(`${quoteText[Math.floor(Math.random() * quoteText.length)]}\n-# Ancient Civilizations Name: ${reaction.message.guild.members.cache.get(user.id)}\n-# Chosen Main Class: **Wizard** <:wizard:1258083206792482938>`)
+                    .setDescription(`${quoteText[Math.floor(Math.random() * quoteText.length)]}\n-# Ancient Civilizations Name: ${reaction.message.guild.members.cache.get(user.id)}\n-# Chosen Main Class: **Wizard** <:bdo_wizard:1334895064819826788>`)
                     .setColor(client.config.embedColorTrans);
                 return channelArtifact.send({ embeds: [classText] });
             }
@@ -261,7 +261,7 @@ module.exports = new Object({
                     .setFooter({ text: 'Elionian Year' })
                     .setTimestamp()
                     .setThumbnail('https://i.imgur.com/5mtNcAc.png')
-                    .setDescription(`${quoteText[Math.floor(Math.random() * quoteText.length)]}\n-# Ancient Civilizations Name: ${reaction.message.guild.members.cache.get(user.id)}\n-# Chosen Main Class: **Witch** <:witch:1258082992631582741>`)
+                    .setDescription(`${quoteText[Math.floor(Math.random() * quoteText.length)]}\n-# Ancient Civilizations Name: ${reaction.message.guild.members.cache.get(user.id)}\n-# Chosen Main Class: **Witch** <:bdo_witch:1334895054094991410>`)
                     .setColor(client.config.embedColorTrans);
                 return channelArtifact.send({ embeds: [classText] });
             }
@@ -277,7 +277,7 @@ module.exports = new Object({
                     .setFooter({ text: 'Elionian Year' })
                     .setTimestamp()
                     .setThumbnail('https://i.imgur.com/LvGgoHJ.png')
-                    .setDescription(`${quoteText[Math.floor(Math.random() * quoteText.length)]}\n-# Ancient Civilizations Name: ${reaction.message.guild.members.cache.get(user.id)}\n-# Chosen Main Class: **Dark Knight** <:darkknight:1258082936083710013>`)
+                    .setDescription(`${quoteText[Math.floor(Math.random() * quoteText.length)]}\n-# Ancient Civilizations Name: ${reaction.message.guild.members.cache.get(user.id)}\n-# Chosen Main Class: **Dark Knight** <:bdo_darkknight:1334894711919349790>`)
                     .setColor(client.config.embedColorTrans);
                 return channelArtifact.send({ embeds: [classText] });
             }
@@ -293,7 +293,7 @@ module.exports = new Object({
                     .setFooter({ text: 'Elionian Year' })
                     .setTimestamp()
                     .setThumbnail('https://i.imgur.com/gFcFm1y.png')
-                    .setDescription(`${quoteText[Math.floor(Math.random() * quoteText.length)]}\n-# Ancient Civilizations Name: ${reaction.message.guild.members.cache.get(user.id)}\n-# Chosen Main Class: **Striker** <:striker:1258083204150202409>`)
+                    .setDescription(`${quoteText[Math.floor(Math.random() * quoteText.length)]}\n-# Ancient Civilizations Name: ${reaction.message.guild.members.cache.get(user.id)}\n-# Chosen Main Class: **Striker** <:bdo_striker:1334895004975632467>`)
                     .setColor(client.config.embedColorTrans);
                 return channelArtifact.send({ embeds: [classText] });
             }
@@ -309,7 +309,7 @@ module.exports = new Object({
                     .setFooter({ text: 'Elionian Year' })
                     .setTimestamp()
                     .setThumbnail('https://i.imgur.com/Xyh2bS8.png')
-                    .setDescription(`${quoteText[Math.floor(Math.random() * quoteText.length)]}\n-# Ancient Civilizations Name: ${reaction.message.guild.members.cache.get(user.id)}\n-# Chosen Main Class: **Mystic** <:mystic:1258082958540279839>`)
+                    .setDescription(`${quoteText[Math.floor(Math.random() * quoteText.length)]}\n-# Ancient Civilizations Name: ${reaction.message.guild.members.cache.get(user.id)}\n-# Chosen Main Class: **Mystic** <:bdo_mystic:1334894876181139516>`)
                     .setColor(client.config.embedColorTrans);
                 return channelArtifact.send({ embeds: [classText] });
             }
@@ -324,7 +324,7 @@ module.exports = new Object({
                     .setFooter({ text: 'Elionian Year' })
                     .setTimestamp()
                     .setThumbnail('https://i.imgur.com/FqkNHuN.png')
-                    .setDescription(`${quoteText[Math.floor(Math.random() * quoteText.length)]}\n-# Ancient Civilizations Name: ${reaction.message.guild.members.cache.get(user.id)}\n-# Chosen Main Class: **Archer** <:archer:1258082929150660750>`)
+                    .setDescription(`${quoteText[Math.floor(Math.random() * quoteText.length)]}\n-# Ancient Civilizations Name: ${reaction.message.guild.members.cache.get(user.id)}\n-# Chosen Main Class: **Archer** <:bdo_archer:1334894674741301349>`)
                     .setColor(client.config.embedColorTrans);
                 return channelArtifact.send({ embeds: [classText] });
             }
@@ -340,7 +340,7 @@ module.exports = new Object({
                     .setFooter({ text: 'Elionian Year' })
                     .setTimestamp()
                     .setThumbnail('https://i.imgur.com/sD0JgWc.png')
-                    .setDescription(`${quoteText[Math.floor(Math.random() * quoteText.length)]}\n-# Ancient Civilizations Name: ${reaction.message.guild.members.cache.get(user.id)}\n-# Chosen Main Class: **Lahn** <:lahn:1258082949505482906>`)
+                    .setDescription(`${quoteText[Math.floor(Math.random() * quoteText.length)]}\n-# Ancient Civilizations Name: ${reaction.message.guild.members.cache.get(user.id)}\n-# Chosen Main Class: **Lahn** <:bdo_lahn:1334894798355693569>`)
                     .setColor(client.config.embedColorTrans);
                 return channelArtifact.send({ embeds: [classText] });
             }
@@ -355,7 +355,7 @@ module.exports = new Object({
                     .setFooter({ text: 'Elionian Year' })
                     .setTimestamp()
                     .setThumbnail('https://i.imgur.com/GErJhhL.png')
-                    .setDescription(`${quoteText[Math.floor(Math.random() * quoteText.length)]}\n-# Ancient Civilizations Name: ${reaction.message.guild.members.cache.get(user.id)}\n-# Chosen Main Class: **Shai** <:shai:1258082976961396828>`)
+                    .setDescription(`${quoteText[Math.floor(Math.random() * quoteText.length)]}\n-# Ancient Civilizations Name: ${reaction.message.guild.members.cache.get(user.id)}\n-# Chosen Main Class: **Shai** <:bdo_shai:1334894975292538900>`)
                     .setColor(client.config.embedColorTrans);
                 return channelArtifact.send({ embeds: [classText] });
             }
@@ -371,7 +371,7 @@ module.exports = new Object({
                     .setFooter({ text: 'Elionian Year' })
                     .setTimestamp()
                     .setThumbnail('https://i.imgur.com/EWbbpT8.png')
-                    .setDescription(`${quoteText[Math.floor(Math.random() * quoteText.length)]}\n-# Ancient Civilizations Name: ${reaction.message.guild.members.cache.get(user.id)}\n-# Chosen Main Class: **Guardian** <:guardian:1258082942547267665>`)
+                    .setDescription(`${quoteText[Math.floor(Math.random() * quoteText.length)]}\n-# Ancient Civilizations Name: ${reaction.message.guild.members.cache.get(user.id)}\n-# Chosen Main Class: **Guardian** <:bdo_guardian:1334894747969523732>`)
                     .setColor(client.config.embedColorTrans);
                 return channelArtifact.send({ embeds: [classText] });
             }
@@ -387,7 +387,7 @@ module.exports = new Object({
                     .setFooter({ text: 'Elionian Year' })
                     .setTimestamp()
                     .setThumbnail('https://i.imgur.com/uMXMYAE.png')
-                    .setDescription(`${quoteText[Math.floor(Math.random() * quoteText.length)]}\n-# Ancient Civilizations Name: ${reaction.message.guild.members.cache.get(user.id)}\n-# Chosen Main Class: **Hashashin** <:hashashin:1258082945005260942>`)
+                    .setDescription(`${quoteText[Math.floor(Math.random() * quoteText.length)]}\n-# Ancient Civilizations Name: ${reaction.message.guild.members.cache.get(user.id)}\n-# Chosen Main Class: **Hashashin** <:bdo_hashashin:1334894759105269831>`)
                     .setColor(client.config.embedColorTrans);
                 return channelArtifact.send({ embeds: [classText] });
             }
@@ -403,7 +403,7 @@ module.exports = new Object({
                     .setFooter({ text: 'Elionian Year' })
                     .setTimestamp()
                     .setThumbnail('https://i.imgur.com/ZKyiFHl.png')
-                    .setDescription(`${quoteText[Math.floor(Math.random() * quoteText.length)]}\n-# Ancient Civilizations Name: ${reaction.message.guild.members.cache.get(user.id)}\n-# Chosen Main Class: **Nova** <:nova:1258083201969029181>`)
+                    .setDescription(`${quoteText[Math.floor(Math.random() * quoteText.length)]}\n-# Ancient Civilizations Name: ${reaction.message.guild.members.cache.get(user.id)}\n-# Chosen Main Class: **Nova** <:bdo_nova:1334894909089386546>`)
                     .setColor(client.config.embedColorTrans);
                 return channelArtifact.send({ embeds: [classText] });
             }
@@ -419,7 +419,7 @@ module.exports = new Object({
                     .setFooter({ text: 'Elionian Year' })
                     .setTimestamp()
                     .setThumbnail('https://i.imgur.com/53UDmDL.png')
-                    .setDescription(`${quoteText[Math.floor(Math.random() * quoteText.length)]}\n-# Ancient Civilizations Name: ${reaction.message.guild.members.cache.get(user.id)}\n-# Chosen Main Class: **Sage** <:sage:1258082969562648668>`)
+                    .setDescription(`${quoteText[Math.floor(Math.random() * quoteText.length)]}\n-# Ancient Civilizations Name: ${reaction.message.guild.members.cache.get(user.id)}\n-# Chosen Main Class: **Sage** <:bdo_sage:1334894939594555524>`)
                     .setColor(client.config.embedColorTrans);
                 return channelArtifact.send({ embeds: [classText] });
             }
@@ -435,7 +435,7 @@ module.exports = new Object({
                     .setFooter({ text: 'Elionian Year' })
                     .setTimestamp()
                     .setThumbnail('https://i.imgur.com/zbsHwAB.png')
-                    .setDescription(`${quoteText[Math.floor(Math.random() * quoteText.length)]}\n-# Ancient Civilizations Name: ${reaction.message.guild.members.cache.get(user.id)}\n-# Chosen Main Class: **Corsair** <:corsair:1258082934154461307>`)
+                    .setDescription(`${quoteText[Math.floor(Math.random() * quoteText.length)]}\n-# Ancient Civilizations Name: ${reaction.message.guild.members.cache.get(user.id)}\n-# Chosen Main Class: **Corsair** <:bdo_corsair:1334894699579703377>`)
                     .setColor(client.config.embedColorTrans);
                 return channelArtifact.send({ embeds: [classText] });
             }
@@ -451,7 +451,7 @@ module.exports = new Object({
                     .setFooter({ text: 'Elionian Year' })
                     .setTimestamp()
                     .setThumbnail('https://i.imgur.com/NzvTRJf.png')
-                    .setDescription(`${quoteText[Math.floor(Math.random() * quoteText.length)]}\n-# Ancient Civilizations Name: ${reaction.message.guild.members.cache.get(user.id)}\n-# Chosen Main Class: **Drakania** <:drakania:1258082940508700704>`)
+                    .setDescription(`${quoteText[Math.floor(Math.random() * quoteText.length)]}\n-# Ancient Civilizations Name: ${reaction.message.guild.members.cache.get(user.id)}\n-# Chosen Main Class: **Drakania** <:bdo_drakania:1334894736292708362>`)
                     .setColor(client.config.embedColorTrans);
                 return channelArtifact.send({ embeds: [classText] });
             }
@@ -466,7 +466,7 @@ module.exports = new Object({
                     .setFooter({ text: 'Elionian Year' })
                     .setTimestamp()
                     .setThumbnail('https://i.imgur.com/fQc6gVq.png')
-                    .setDescription(`${quoteText[Math.floor(Math.random() * quoteText.length)]}\n-# Ancient Civilizations Name: ${reaction.message.guild.members.cache.get(user.id)}\n-# Chosen Main Class: **Woosa** <:woosa:1258083034117308528>`)
+                    .setDescription(`${quoteText[Math.floor(Math.random() * quoteText.length)]}\n-# Ancient Civilizations Name: ${reaction.message.guild.members.cache.get(user.id)}\n-# Chosen Main Class: **Woosa** <:bdo_woosa:1334895076924461076>`)
                     .setColor(client.config.embedColorTrans);
                 return channelArtifact.send({ embeds: [classText] });
             }
@@ -481,7 +481,7 @@ module.exports = new Object({
                     .setFooter({ text: 'Elionian Year' })
                     .setTimestamp()
                     .setThumbnail('https://i.imgur.com/oB319WT.png')
-                    .setDescription(`${quoteText[Math.floor(Math.random() * quoteText.length)]}\n-# Ancient Civilizations Name: ${reaction.message.guild.members.cache.get(user.id)}\n-# Chosen Main Class: **Maegu** <:maegu:1258082951535657031>`)
+                    .setDescription(`${quoteText[Math.floor(Math.random() * quoteText.length)]}\n-# Ancient Civilizations Name: ${reaction.message.guild.members.cache.get(user.id)}\n-# Chosen Main Class: **Maegu** <:bdo_maegu:1334894817221541981>`)
                     .setColor(client.config.embedColorTrans);
                 return channelArtifact.send({ embeds: [classText] });
             }
@@ -496,7 +496,7 @@ module.exports = new Object({
                     .setFooter({ text: 'Elionian Year' })
                     .setTimestamp()
                     .setThumbnail('https://i.imgur.com/vdWEFoo.png')
-                    .setDescription(`${quoteText[Math.floor(Math.random() * quoteText.length)]}\n-# Ancient Civilizations Name: ${reaction.message.guild.members.cache.get(user.id)}\n-# Chosen Main Class: **Scholar** <:scholar:1258082973497167925>`)
+                    .setDescription(`${quoteText[Math.floor(Math.random() * quoteText.length)]}\n-# Ancient Civilizations Name: ${reaction.message.guild.members.cache.get(user.id)}\n-# Chosen Main Class: **Scholar** <:bdo_scholar:1334894954807427175>`)
                     .setColor(client.config.embedColorTrans);
                 return channelArtifact.send({ embeds: [classText] });
             }
@@ -511,7 +511,7 @@ module.exports = new Object({
                     .setFooter({ text: 'Elionian Year' })
                     .setTimestamp()
                     .setThumbnail('https://i.imgur.com/1aLbsd9.png')
-                    .setDescription(`${quoteText[Math.floor(Math.random() * quoteText.length)]}\n-# Ancient Civilizations Name: ${reaction.message.guild.members.cache.get(user.id)}\n-# Chosen Main Class: **Dosa** <:dosa:1258082938105368648>`)
+                    .setDescription(`${quoteText[Math.floor(Math.random() * quoteText.length)]}\n-# Ancient Civilizations Name: ${reaction.message.guild.members.cache.get(user.id)}\n-# Chosen Main Class: **Dosa** <:bdo_dosa:1334894724263186542>`)
                     .setColor(client.config.embedColorTrans);
                 return channelArtifact.send({ embeds: [classText] });
             }

@@ -13,7 +13,7 @@ module.exports = new Object({
       const fetchedLucentMessages = await message.channel.messages.fetch();
       const stickyLucentMessage = fetchedLucentMessages.find(m => m.author.id === client.user.id && client.config.stickyLucentChannel.includes(m.channel.id));
       const embedLucent = new EmbedBuilder()
-        .setTitle(`The Lucent Fountain <:ancientluna_pure_luna:866781517312688178>`)
+        .setTitle(`The Lucent Fountain`)
         .setDescription(`𝑾𝒆 𝒓𝒂𝒏 𝒂𝒔 𝒊𝒇 𝒕𝒐 𝒎𝒆𝒆𝒕 𝒕𝒉𝒆 𝒎𝒐𝒐𝒏\n**[Be the true light seekers](https://youtu.be/_rJiY6y3a-A)** ✦`)
         .setColor(client.config.embedColorTrans)
         .setThumbnail('https://i.imgur.com/Mza9Zop.png')
@@ -28,7 +28,7 @@ module.exports = new Object({
           new ButtonBuilder()
             .setCustomId("btn-guildvacation")
             .setLabel("Vacation")
-            .setEmoji('<:game_logo_bdo:861579805660151818>')
+            .setEmoji('<:bdo:1334891168407752806>')
             .setStyle(ButtonStyle.Primary)
         )
       try {
@@ -83,7 +83,7 @@ module.exports = new Object({
       try {
         if (stickyGLeagueMessage) { await stickyGLeagueMessage.delete(); }
         await message.channel.send({
-          content: `**Never Break Down!**<:reply:1163568309816541256>\nEvent end <t:1719939600:R> [<t:1719939600:f>]`,
+          content: `**Never Break Down!**<:ico_reply:1334864405866741892>\nEvent end <t:1719939600:R> [<t:1719939600:f>]`,
           // files: [ringOfire],
           components: [btnGLeague]
         });

@@ -40,7 +40,7 @@ module.exports = new Object({
                     .setStyle(ButtonStyle.Primary)
             )
         message.guild.channels.cache.get('452842830776369152').send({
-            content: `Welcome <@${target.user.id}>, to **the sanctuary of light**. The <@&843523544620335124> welcome you as one of true light seekers <:ancientluna_pure_luna:866781517312688178>\n-# ${target.user.displayName} has passed the trial by understand our wisdom of lleud to reach this warm sanctuary deeper`,
+            content: `**Welcome <@${target.user.id}>, to the sanctuary of light**. The <@&843523544620335124> welcome you as one of true light seekers\n-# <:al_wisdom:1334851144572211240> ${target.user.displayName} has passed the trial by understand our wisdom of lleud to reach this warm sanctuary deeper`,
             components: [welcomeButton]
         });
         await target.roles.remove(luxcastaRole);

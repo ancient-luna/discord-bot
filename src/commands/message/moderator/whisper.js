@@ -33,8 +33,8 @@ module.exports = new Object({
     // const img = new AttachmentBuilder("src/assets/latestwordsfromaevoa.mp4")
 
     const txtEmbed = new EmbedBuilder()
-      .setTitle(`Dev. Support Contacts <:verified:1204724590950228008>`)
-      .setDescription(`> Discord: asonofbiscuit - [ancientluna](https://discord.com/channels/447069790150852609/1162410164356390912)\n> ~~dae@ancientluna.org~~ <:ins:1204725582852788256> ~~**IG**~~`)
+      .setTitle(`Dev. Support Contacts <:sc_verified:1334889120849330266>`)
+      .setDescription(`> Discord: asonofbiscuit - [ancientluna](https://discord.com/channels/447069790150852609/1162410164356390912)\n> ~~dae@ancientluna.org~~ <:sc_ins:1334889482633084989> ~~**IG**~~`)
       .setFooter({ text: `this bot won't read any messages of your replies` })
       .setColor(client.config.embedColorTrans)
       .setThumbnail('https://i.imgur.com/vfx9TEB.png') // aevoa
@@ -46,15 +46,11 @@ module.exports = new Object({
         new ButtonBuilder()
           .setStyle(ButtonStyle.Link)
           .setLabel("Web")
-          .setURL(`https://www.bdo.ancientluna.org`)
-      )
-      .addComponents(
+          .setURL(`https://www.bdo.ancientluna.org`),
         new ButtonBuilder()
           .setStyle(ButtonStyle.Link)
           .setLabel("Video")
-          .setURL(`https://www.youtube.com/@ancientluna`)
-      )
-      .addComponents(
+          .setURL(`https://www.youtube.com/@ancientluna`),
         new ButtonBuilder()
           .setStyle(ButtonStyle.Link)
           .setLabel("Steam Group")
@@ -62,11 +58,11 @@ module.exports = new Object({
       )
 
     const failed = new EmbedBuilder()
-      .setDescription(`<:wrong:1222439146593849425> Failed sending DM to <@${user.id}> due they close their DMs`)
+      .setDescription(`<:srv_deny:1334881089205829674> Failed sending DM to <@${user.id}> due they close their DMs`)
       .setColor(client.config.embedColorTrans)
       
     const success = new EmbedBuilder()
-      .setDescription(`<:check:1222439148720361502> Success sending DM to <@${user.id}>`)
+      .setDescription(`<:srv_accept:1334881070449164378> Success sending DM to <@${user.id}>`)
       .setColor(client.config.embedColorTrans)
 
     user.send({

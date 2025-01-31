@@ -24,7 +24,7 @@ module.exports = new Object({
     async execute(client, message, args) {
 
         let target = message.mentions.members.first();
-        if (!target) return message.reply('Please `mention` them, the one who is about to be the **Lunar Disciple** <:ancientluna_pure_luna:866781517312688178>');
+        if (!target) return message.reply('Please `mention` them, the one who is about to be the **Lunar Disciple** <:al_bs:1334859889155117116>');
         let role = '1060982357538119850';
 
         const btnTerms = new ActionRowBuilder()
@@ -40,7 +40,7 @@ module.exports = new Object({
             )
 
         message.guild.channels.cache.get('1060992670035619931').send({
-            content: `**We ran as if to meet the moon**,\nA seeker named <@${target.user.id}> become a part of **Lunar Disciples** <:ancientluna_pure_luna:866781517312688178>\n-# Don't forget to get more BDO roles in <#1049815440198733895>`,
+            content: `**We ran as if to meet the moon**,\nA seeker named <@${target.user.id}> become a part of **Lunar Disciples** <:al_bs:1334859889155117116>\n-# Don't forget to get more BDO roles in <#1049815440198733895>`,
             components: [btnTerms]
         }).then(target.roles.add(role));
 

@@ -30,7 +30,7 @@ module.exports = {
       .setAuthor({ name: "Ancient Luna Guild Application", iconURL: "https://i.imgur.com/SOCuup9.png" })
       .setTitle(`Welcome to the sanctuary of lights`)
       .setURL(`https://ancientluna.org`)
-      .setDescription(`**To apply for guild, please fill the form by clicking the button below**\nDon't hesitate to ask if there is any questions regarding the guild <:ancientluna_divinare_s:859034096192978965>`)
+      .setDescription(`**To apply for guild, please fill the form by clicking the button below**\nDon't hesitate to ask if there is any questions regarding the guild`)
       .setColor(client.config.embedColorTrans)
       .setFooter({ text: "Hopefully we can be one of the family!" })
 
@@ -55,7 +55,7 @@ module.exports = {
       )
 
     ThreadSend.send({
-        content: `<@${interaction.user.id}> <@&1235965537326993450> <:ancientluna_divinare:841754250949820416>`
+        content: `<@${interaction.user.id}> <@&1235965537326993450> <:al_wisdomlleud:1334882891200594012>`
     }).catch(err => {
         return;
     })

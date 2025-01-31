@@ -21,9 +21,6 @@ module.exports = new Object({
         message.content?.toLowerCase() === text.toLowerCase() &&
         message.member.roles.cache.has(client.config.preMemberRole)
       ) {
-        const ancientLunaEmoji = client.emojis.cache.find(
-          (emoji) => emoji.name === client.config.localEmoji
-        );
         const memberRole = message.guild.roles.cache.get(
           client.config.memberRole
         );
@@ -46,7 +43,7 @@ module.exports = new Object({
           client.config.generalChannel
         );
         await channel.send({
-          content: `Welcome <@${message.author.id}>, to **the sanctuary of lights**. The <@&${client.config.elderRole}> welcome you as one of true light seekers ${ancientLunaEmoji}\n-# ${message.author.displayName} has passed the trial by understand our wisdom of lleud to reach this warm sanctuary deeper`,
+          content: `**Welcome <@${message.author.id}>, to the sanctuary of lights**. The <@&${client.config.elderRole}> welcome you as one of true light seekers\n-# <:al_wisdom:1334851144572211240> ${message.author.displayName} has passed the trial by understand our wisdom of lleud to reach this warm sanctuary deeper`,
           components: [welcomeButton],
         });
       }

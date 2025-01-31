@@ -21,7 +21,7 @@ module.exports = {
     const userID = userIdMatch ? userIdMatch[1] : "`undefined`";
     const dayOff = dayMatch ? dayMatch[1] : "`undefined`";
 
-    interaction.guild.channels.cache.get('1060992670035619931').send({ content: `**Good news** to <@${userID}> ! Your ${dayOff} days off for vacation has been **approved** by <@${interaction.user.id}> <:vcon_vote_accepted:859075138329903114>` });
+    interaction.guild.channels.cache.get('1060992670035619931').send({ content: `**Good news** to <@${userID}> ! Your ${dayOff} days off for vacation has been **approved** by <@${interaction.user.id}> <:srv_accepted:1334885365676507188>` });
         
     const updatedButton = new ButtonBuilder()
       .setCustomId('btn-guildvacationacc')
@@ -37,7 +37,7 @@ module.exports = {
     });
 
     return interaction.followUp({
-      content: `*Successfully approved* <:vcon_vote_accepted:859075138329903114>`,
+      content: `*Successfully approved* <:srv_accepted:1334885365676507188>`,
       ephemeral: true
     });
   },
