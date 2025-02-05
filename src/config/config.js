@@ -25,7 +25,8 @@ module.exports = {
     voiceChannel: "525889181273292801",
     voiceMessage: "boss cycle updated",
 
-    embedColorTrans: '#2b2d31',
+    // embedColorTrans: '#2b2d31',
+    embedColorTrans: '#37373e',
 
     color: '#4277e8',
     appID: '839380589508558910',
