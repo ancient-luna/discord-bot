@@ -24,11 +24,11 @@ module.exports = new Object({
     async execute(client, message, args) {
         const chID = args[0];
         const msgID = args[1];
-        const cntntQ = args.slice(2).join(" ");
+        // const cntntQ = args.slice(2).join(" ");
 
         if (!chID) return message.reply("`channelid` `messageid` `reason`");
         if (!msgID) return message.reply("`messageid` `reason`");
-        if (!cntntQ) return message.reply("set `reason`");
+        // if (!cntntQ) return message.reply("set `reason`");
 
         try {
             const channelID = message.guild.channels.cache.get(chID);
@@ -37,7 +37,7 @@ module.exports = new Object({
 
             const editEmbed = new EmbedBuilder()
                 // .setTitle('GAME ROLES')
-                .setDescription(cntntQ)
+                // .setDescription(cntntQ)
                 .setColor(client.config.embedColorTrans)
                 // .setImage('https://i.imgur.com/0KWUGuk.png')
 
