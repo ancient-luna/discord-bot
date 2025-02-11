@@ -28,12 +28,12 @@ module.exports = new Object({
         if (!chID) return message.reply("missing `channelid` `messageid`");
         if (!msgID) return message.reply("missing `messageid`");
 
-        const fetchData = await chID.messages.fetch(msgID);
-        const data = fetchData.embeds[0];
-
         try {
             const channelID = message.guild.channels.cache.get(chID);
             const messageID = await channelID.messages.fetch(msgID);
+
+            const fetchData = await channelID.messages.fetch(messageID);
+            const data = fetchData.embeds[0];
 
             const editEmbed = new EmbedBuilder()
                 .setDescription(data.description)
