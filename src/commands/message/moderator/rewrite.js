@@ -43,38 +43,32 @@ module.exports = new Object({
 
             // const editImage = new AttachmentBuilder('src/assets/bdo/civilizationclasses.png')
 
-            // const editButton = new ActionRowBuilder()
-            //     .addComponents(
-            //         new ButtonBuilder()
-            //             .setCustomId("btn-ticketopen")
-            //             .setLabel("Open Ticket")
-            //             .setStyle(ButtonStyle.Primary)
-            //     )
-            //     .addComponents(
-            //         new ButtonBuilder()
-            //             .setCustomId("btn-confession")
-            //             .setLabel("Confession")
-            //             .setEmoji('<:icons_write:1163563520248512654>')
-            //             .setStyle(ButtonStyle.Secondary)
-            //     )
-            //     .addComponents(
-            //         new ButtonBuilder()
-            //             .setStyle(ButtonStyle.Link)
-            //             .setLabel(`Support (Ko-Fi)`)
-            //             .setURL(`https://ko-fi.com/daexx`)
-            //     )
-            //     .addComponents(
-            //         new ButtonBuilder()
-            //             .setStyle(ButtonStyle.Link)
-            //             .setLabel(`Support (Trakteer)`)
-            //             .setURL(`https://trakteer.id/daexx`)
-            //     )
+            const editButton = new ActionRowBuilder()
+                .addComponents(
+                    new ButtonBuilder()
+                        .setCustomId("btn-ticketopen")
+                        .setLabel("Open Ticket")
+                        .setStyle(ButtonStyle.Primary),
+                    new ButtonBuilder()
+                        .setCustomId("btn-confession")
+                        .setLabel("Write Confession")
+                        .setEmoji('<:write:1163568311716565154>')
+                        .setStyle(ButtonStyle.Secondary),
+                    // new ButtonBuilder()
+                    //     .setStyle(ButtonStyle.Link)
+                    //     .setLabel(`Support (Ko-Fi)`)
+                    //     .setURL(`https://ko-fi.com/daexx`),
+                    // new ButtonBuilder()
+                    //     .setStyle(ButtonStyle.Link)
+                    //     .setLabel(`Support (Trakteer)`)
+                    //     .setURL(`https://trakteer.id/daexx`)
+                )
 
             message.channel.send("Embed: **EDITED** ! `updated`");
             messageID.edit({
                 embeds: [editEmbed],
                 // files: [editImage],
-                // components: [editButton],
+                components: [editButton],
             });
 
         } catch (err) {
