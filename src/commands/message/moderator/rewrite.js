@@ -30,6 +30,9 @@ module.exports = new Object({
         if (!msgID) return message.reply("`messageid` `reason`");
         // if (!cntntQ) return message.reply("set `reason`");
 
+        const fetchData = await chID.messages.fetch(msgID);
+        const data = fetchData.embeds[0];
+
         try {
             const channelID = message.guild.channels.cache.get(chID);
 
@@ -38,6 +41,7 @@ module.exports = new Object({
             const editEmbed = new EmbedBuilder()
                 // .setTitle('GAME ROLES')
                 // .setDescription(cntntQ)
+                .setDescription(data.description)
                 .setColor(client.config.embedColorTrans)
                 // .setImage('https://i.imgur.com/0KWUGuk.png')
 
