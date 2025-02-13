@@ -32,7 +32,7 @@ module.exports = new Object({
           others: {
             messageType: {
               type: 'send', // 'send' or 'reply'
-              intialContent: `<@${message.author.id}> `,
+              intialContent: `<@${message.author.id}>`,
               sendAs: 'content',
             },
           }
