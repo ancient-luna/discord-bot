@@ -1,5 +1,5 @@
 const { ChannelType, AttachmentBuilder } = require("discord.js");
-const { ApexAI } = require('apexify.js');
+const { validateModels, ApexAI } = require('apexify.js');
 
 module.exports = new Object({
   name: "messageCreate",
@@ -15,7 +15,7 @@ module.exports = new Object({
         const aiOptions = {
           chat: {
             enable: true,
-            chatModel: "chatgpt-4o-latest",
+            chatModel: "deepseek-llm-67b-chat", // chatgpt-4o-latest , deepseek-coder , deepseek-math-7b-instruct
             readFiles: true,
             readImages: true,
             instruction: 'Your name is Luna. You were born as a relic and a wisdom keeper of Ancient Luna sanctuary by the ancestor',
