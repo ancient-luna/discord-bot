@@ -21,7 +21,7 @@ module.exports = new Object({
             instruction: 'Your name is Luna. You were born as a relic and a wisdom keeper of Ancient Luna sanctuary by the ancestor',
             memory: {
               memoryOn: true,
-              id: message.author.id
+              id: message.author.id,
             },
             typeWriting: {
               enable: false,
