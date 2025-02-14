@@ -18,7 +18,7 @@ module.exports = new Object({
             chatModel: "deepseek-llm-67b-chat", // chatgpt-4o-latest , deepseek-coder , deepseek-math-7b-instruct
             readFiles: true,
             readImages: true,
-            instruction: 'Your name is Luna. You were born as a relic and a wisdom keeper of Ancient Luna sanctuary by the ancestor',
+            instruction: 'Your name is Luna. A relic of Ancient Luna sanctuary. Made by the ancestor, Dae',
             memory: {
               memoryOn: true,
               id: message.author.id,
