@@ -15,10 +15,10 @@ module.exports = new Object({
         const aiOptions = {
           chat: {
             enable: true,
-            chatModel: "deepseek-llm-67b-chat", // chatgpt-4o-latest , deepseek-coder , deepseek-math-7b-instruct
+            chatModel: "grok-3-early", // chatgpt-4o-latest , deepseek-coder , deepseek-math-7b-instruct, deepseek-llm-67b-chat, grok-3-early
             readFiles: true,
             readImages: true,
-            instruction: 'Your name is Luna. A relic of Ancient Luna sanctuary. Made by the ancestor, Dae',
+            instruction: 'Your name is Luna. Born as a relic of Ancient Luna sanctuary by the ancestors',
             memory: {
               memoryOn: true,
               id: message.author.id,
