@@ -103,7 +103,7 @@ module.exports = new Object({
       try {
         if (stickyCTSMessage) { await stickyCTSMessage.delete(); }
         await message.channel.send({
-          content: `-# CTS/CTL Requirement • https://discord.com/channels/447069790150852609/881836063398723585/1323180190679175219`,
+          // content: `-# CTS/CTL Requirement • https://discord.com/channels/447069790150852609/881836063398723585/1323180190679175219`,
           components: [btnCTS]
         });
       } catch (error) {
