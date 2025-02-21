@@ -22,7 +22,7 @@ module.exports = new Object({
 
     const responses = {
       // "dae": { text: "-# dae — he who remains, beyond the reach of those who seek him", video: "src/assets/react/hewhoremains.mp4" },
-      "pastaroni": { text: "# *perfectly sweet!*\n*Hany (하니) for sweetness,*\n*Biskit (비스킷) for the best duo—together.*", video: null }
+      "pastaroni": { text: "# 𝒂𝒅𝒐𝒓𝒂𝒃𝒍𝒚 𝒔𝒘𝒆𝒆𝒕\n-# Hany (하니) for sweetness,\n-# Biskit (비스킷) for the best duo—together.", video: null }
     };
 
     const messageContent = message.content.toLowerCase();
