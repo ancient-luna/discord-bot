@@ -67,29 +67,6 @@ module.exports = new Object({
       }
     };
 
-    if (client.config.stickyGLeagueChannel.includes(message.channel.id)) { // StickyNote Guild Leagues
-      const fetchedGLeagueMessages = await message.channel.messages.fetch();
-      const stickyGLeagueMessage = fetchedGLeagueMessages.find(m => m.author.id === client.user.id && client.config.stickyGLeagueChannel.includes(m.channel.id));
-      // const ringOfire = new AttachmentBuilder("src/assets/ringoffire.mp4");
-      const btnGLeague = new ActionRowBuilder()
-        .addComponents(
-          new ButtonBuilder()
-            .setStyle(ButtonStyle.Link)
-            .setLabel(`More details about the event`)
-            .setURL(`https://blackdesert.pearlabyss.com/asia/en-us/News/Notice/Detail?_boardNo=6186`)
-        );
-      try {
-        if (stickyGLeagueMessage) { await stickyGLeagueMessage.delete(); }
-        await message.channel.send({
-          content: `**Never Break Down!**<:ico_reply:1334864405866741892>\nEvent end <t:1719939600:R> [<t:1719939600:f>]`,
-          // files: [ringOfire],
-          components: [btnGLeague]
-        });
-      } catch (error) {
-        console.error('Failed to send or delete the sticky message:', error);
-      }
-    };
-
     if (client.config.stickyCTSChannel.includes(message.channel.id)) { // StickyNote CTS/CTL
       const fetchedCTSMessages = await message.channel.messages.fetch();
       const stickyCTSMessage = fetchedCTSMessages.find(m => m.author.id === client.user.id && client.config.stickyCTSChannel.includes(m.channel.id));
