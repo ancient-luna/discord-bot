@@ -22,6 +22,8 @@ module.exports = new Object({
             memory: {
               memoryOn: true,
               id: message.author.id,
+              threshold: 0.3,
+              limit: 50,
             },
             typeWriting: {
               enable: false,
