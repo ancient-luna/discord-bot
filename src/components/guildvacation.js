@@ -56,7 +56,7 @@ module.exports = {
             const reasonValue = modalInteraction.fields.getTextInputValue('reasonInput');
             const absenceNote = new EmbedBuilder()
                 .setTitle(`Vacation Letter`)
-                .setDescription(`*Dear Elders,\nRequested Day Off: ${dayValue} Days\n\n${reasonValue}\n\nYours sincerely,*\n***<@${interaction.user.id}>***`)
+                .setDescription(`*Dear Elders,\n-# Requested Day Off: ${dayValue} Days\n\n${reasonValue}\n\nYours sincerely,*\n***<@${interaction.user.id}>***`)
                 .setColor(client.config.embedColorTrans)
                 .setThumbnail('https://i.imgur.com/Zx4kMoA.png')
           const btnVacaAcc = new ActionRowBuilder()
