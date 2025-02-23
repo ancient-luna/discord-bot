@@ -68,7 +68,7 @@ module.exports = {
             )
             modalInteraction.guild.channels.cache.get('1076767724224659526').send({ embeds: [absenceNote], components: [btnVacaAcc] })
             modalInteraction.reply({
-              content: `*The vacation letter has been delivered to the Elders, dear* ***${interaction.member.displayName}***\n*All your privacy will be kept safe under them*`,
+              content: `The vacation letter has been delivered to the Elders, dear **${interaction.member.displayName}**\n-# All your privacy will be kept safe under them`,
               ephemeral: true
             })
         })
