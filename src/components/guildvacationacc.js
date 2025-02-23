@@ -21,7 +21,7 @@ module.exports = {
     const userID = userIdMatch ? userIdMatch[1] : "`undefined`";
     const dayOff = dayMatch ? dayMatch[1] : "`undefined`";
 
-    interaction.guild.channels.cache.get('1060992670035619931').send({ content: `**Good news to <@${userID}> !** <:srv_accepted:1334885365676507188>\n-# Your ${dayOff} days off for vacation have been \`approved\` by <@${interaction.user.id}>` });
+    interaction.guild.channels.cache.get('1060992670035619931').send({ content: `**Good news to <@${userID}> !** <:bdo_bs_sprout:1343145256555905165>\n-# Your ${dayOff} days off for vacation have been approved by <@${interaction.user.id}>` });
         
     const updatedButton = new ButtonBuilder()
       .setCustomId('btn-guildvacationacc')
