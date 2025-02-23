@@ -16,12 +16,13 @@ module.exports = new Object({
     if (bannedWords.some((word) => message.content.toLowerCase().includes(word))) {
       if (Math.random() < 0.5) {
         await message.reply({ files: [noCuss] });
-        return message.channel.send(`-# Be wise ${message.member.displayName}, or we square up.`);
+        return message.channel.send(`-# be wise ${message.member.displayName}, or we square up.`);
       }
     }
 
     const responses = {
       // "dae": { text: "-# dae — he who remains, beyond the reach of those who seek him", video: "src/assets/react/hewhoremains.mp4" },
+      "cat": { text: "-# 𝒘𝒊 𝒘𝒊 𝒘𝒊", video: "src/assets/react/wiwiwi.mp4" },
       "pastaroni": { text: "# 𝒂𝒅𝒐𝒓𝒂𝒃𝒍𝒚 𝒔𝒘𝒆𝒆𝒕\n-# Hany (하니) for sweetness,\n-# Biskit (비스킷) for the best duo—together.", video: null }
     };
 
