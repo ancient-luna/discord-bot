@@ -22,7 +22,7 @@ module.exports = new Object({
             memory: {
               memoryOn: true,
               id: message.author.id,
-              threshold: 0.3,
+              threshold: 0.3, //0-1 the higher the better the ai remember the most related topic
               limit: 50,
             },
             typeWriting: {
