@@ -22,7 +22,7 @@ module.exports = new Object({
 
     const responses = {
       // "dae": { text: "-# dae — he who remains, beyond the reach of those who seek him", video: "src/assets/react/hewhoremains.mp4" },
-      "cat": { text: "-# 𝒘𝒊 𝒘𝒊 𝒘𝒊", video: "src/assets/react/wiwiwi.mp4" },
+      "meow": { text: "-# 𝒘𝒊 𝒘𝒊 𝒘𝒊", video: "src/assets/react/wiwiwi.mp4" },
       "pastaroni": { text: "# 𝒂𝒅𝒐𝒓𝒂𝒃𝒍𝒚 𝒔𝒘𝒆𝒆𝒕\n-# Hany (하니) for sweetness,\n-# Biskit (비스킷) for the best duo—together.", video: null }
     };
 
