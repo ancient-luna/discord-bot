@@ -39,7 +39,8 @@ module.exports = new Object({
                 // .setTitle('GAME ROLES')
                 .setDescription(cntntQ)
                 .setColor(client.config.embedColorTrans)
-                // .setImage('https://i.imgur.com/0KWUGuk.png')
+                // .setImage('https://i.imgur.com/0KWUGuk.png') // radiance
+                .setImage('https://imgur.com/zO7pdYW') // guild
 
             // const editImage = new AttachmentBuilder('src/assets/bdo/civilizationclasses.png')
 
