@@ -36,11 +36,10 @@ module.exports = new Object({
             const messageID = await channelID.messages.fetch(msgID);
 
             const editEmbed = new EmbedBuilder()
-            .setAuthor({ name: "Ancient Luna Guild Application", iconURL: "https://i.imgur.com/SOCuup9.png" })
                 .setDescription(cntntQ)
                 .setColor(client.config.embedColorTrans)
                 // .setImage('https://i.imgur.com/0KWUGuk.png') // radiance
-                .setImage('https://i.imgur.com/zO7pdYW.png') // guild
+                // .setImage('https://i.imgur.com/zO7pdYW.png') // guild
 
             // const editImage = new AttachmentBuilder('src/assets/bdo/civilizationclasses.png')
 
