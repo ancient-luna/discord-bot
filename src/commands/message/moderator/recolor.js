@@ -1,6 +1,6 @@
 const { EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle, AttachmentBuilder } = require("discord.js");
 module.exports = new Object({
-    name: "redye",
+    name: "recolor",
     description: "recoloring embeds",
     category: "moderator",
     usage: "",
