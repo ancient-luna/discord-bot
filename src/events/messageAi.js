@@ -15,7 +15,7 @@ module.exports = new Object({
         const aiOptions = {
           chat: {
             enable: true,
-            chatModel: "gpt-4.5-preview", //  gpt-4.5-preview, deepseek-coder, deepseek-math-7b-instruct, deepseek-llm-67b-chat, grok-3-early
+            chatModel: "gpt-4.5-preview", //gpt-4.5-preview, deepseek-coder, deepseek-math-7b-instruct, deepseek-llm-67b-chat, grok-3-early
             readFiles: true,
             readImages: true,
             instruction: 'Your name is Luna, a relic of the Ancient Luna sanctuary.',
