@@ -1,66 +1,75 @@
-const cron = require('node-cron');
-const fs = require('fs');
-const path = require('path');
-const { EmbedBuilder } = require('discord.js');
+const fs = require("fs");
+const path = require("path");
+const { EmbedBuilder } = require("discord.js");
 
-const reminderFile = path.resolve(__dirname, '../config/reminder.json');
+const reminderFile = path.resolve(__dirname, "../config/reminder.json");
 
 function loadReminders(client) {
-  if (fs.existsSync(reminderFile)) {
-    try {
-      const fileContent = fs.readFileSync(reminderFile, 'utf8');
-      if (fileContent) {
-        const reminders = JSON.parse(fileContent);
-        reminders.forEach(reminder => {
-          scheduleReminder(reminder, client);
-        });
-      } else {
-        console.log('Reminder file is empty.');
-      }
-    } catch (err) {
-      console.error('Error parsing reminder file:', err);
-    }
-  } else {
-    console.log('Reminder file does not exist.');
-  }
+    const reminders = readReminders();
+    reminders.forEach(reminder => {
+        scheduleReminder(reminder, client);
+    });
 }
 
 function scheduleReminder(reminder, client) {
-  const cronExpression = new Date(reminder.timeCounter).toISOString().slice(14, 19).replace(':', ' ') + ' * * *';
+    const delay = reminder.timeCounter - Date.now();
 
-  cron.schedule(cronExpression, async () => {
-    try {
-      const channel = await client.channels.fetch(reminder.channel);
-      const embedReminder = new EmbedBuilder()
-        .setAuthor({ name: `${client.users.cache.get(reminder.user).username}'s Reminder`, iconURL: client.users.cache.get(reminder.user).displayAvatarURL() })
-        .setDescription(`*" ${reminder.reminderMessage} "*`)
-        .setColor(client.config.embedColorTrans);
-
-      await channel.send({
-        content: `<@${reminder.user}>`,
-        embeds: [embedReminder],
-      });
-
-      const msg = await channel.messages.fetch(reminder.loadingMsgId);
-      if (msg) {
-        await msg.edit({ content: `Just successfully **reminded** you.` });
-      }
-
-      removeReminder(reminder);
-    } catch (err) {
-      console.error('Error handling reminder:', err);
-      removeReminder(reminder);
+    if (delay <= 0) {
+        // If the reminder time has already passed, send it immediately
+        sendReminder(reminder, client);
+        removeReminder(reminder.timeCounter);
+        return;
     }
-  }, {
-    scheduled: true,
-    timezone: "Your_Timezone_Here"  // Replace with your specific timezone if needed
-  });
+
+    setTimeout(() => {
+        sendReminder(reminder, client);
+        removeReminder(reminder.timeCounter);
+    }, delay);
 }
 
-function removeReminder(reminder) {
-  let reminders = JSON.parse(fs.readFileSync(reminderFile));
-  reminders = reminders.filter(r => r.timeCounter !== reminder.timeCounter);
-  fs.writeFileSync(reminderFile, JSON.stringify(reminders, null, 2));
+async function sendReminder(reminder, client) {
+    try {
+        const channel = await client.channels.fetch(reminder.channel);
+        const user = await client.users.fetch(reminder.user);
+
+        const embedReminder = new EmbedBuilder()
+            .setAuthor({ name: `${user.username}'s Reminder`, iconURL: user.displayAvatarURL() })
+            .setDescription(`*" ${reminder.reminderMessage} "*`)
+            .setColor(client.config.embedColorTrans);
+
+        await channel.send({ content: `<@${reminder.user}>`, embeds: [embedReminder] });
+
+        const msg = await channel.messages.fetch(reminder.loadingMsgId);
+        if (msg) await msg.edit({ content: `Successfully **reminded** you` });
+
+    } catch (err) {
+        console.error("Error handling reminder:", err);
+    }
+}
+
+function readReminders() {
+    try {
+        if (!fs.existsSync(reminderFile)) return [];
+        const data = fs.readFileSync(reminderFile, "utf8");
+        return data ? JSON.parse(data) : [];
+    } catch (err) {
+        console.error("Error reading reminders:", err);
+        return [];
+    }
+}
+
+function writeReminders(reminders) {
+    try {
+        fs.writeFileSync(reminderFile, JSON.stringify(reminders, null, 2));
+    } catch (err) {
+        console.error("Error writing reminders:", err);
+    }
+}
+
+function removeReminder(timeCounter) {
+    let reminders = readReminders();
+    reminders = reminders.filter(r => r.timeCounter !== timeCounter);
+    writeReminders(reminders);
 }
 
 module.exports = { loadReminders };
