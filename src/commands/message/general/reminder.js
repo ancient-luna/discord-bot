@@ -36,7 +36,7 @@ module.exports = new Object({
 
         const timeCounter = Date.now() + ms(timeReminder);
 
-        const loadingTxt = await message.reply(`Setting a reminder...\nI will remind you <t:${Math.floor(timeCounter / 1000)}:R> <a:u_load:1334900265953923085>`);
+        const loadingTxt = await message.reply(`-# your reminder has been kept under the moonlight\n<a:u_load:1334900265953923085> I will remind you <t:${Math.floor(timeCounter / 1000)}:R>`);
 
         let embedReminder = new EmbedBuilder()
             .setAuthor({ name: `${message.member.displayName}'s Reminder`, iconURL: message.author.displayAvatarURL() })
@@ -44,15 +44,33 @@ module.exports = new Object({
             .setColor(client.config.embedColorTrans);
 
         let reminders = readReminders();
-        reminders.push({
+        const newReminder = {
             timeCounter,
             reminderMessage,
             user: message.author.id,
             channel: message.channel.id,
             loadingMsgId: loadingTxt.id
-        });
+        };
 
+        reminders.push(newReminder);
         writeReminders(reminders);
+
+        setTimeout(async () => {
+            try {
+                const channel = await client.channels.fetch(newReminder.channel);
+                await channel.send({
+                    content: `<@${newReminder.user}>`,
+                    embeds: [embedReminder]
+                });
+                
+                const msg = await channel.messages.fetch(newReminder.loadingMsgId);
+                if (msg) await msg.edit({ content: `Successfully **reminded** you` });
+
+                removeReminder(newReminder.timeCounter); // remove the reminder after sending
+            } catch (err) {
+                console.error("Error sending reminder:", err);
+            }
+        }, ms(timeReminder));
     }
 });
 
@@ -73,4 +91,10 @@ function writeReminders(reminders) {
     } catch (err) {
         console.error("Error writing reminders:", err);
     }
+}
+
+function removeReminder(timeCounter) {
+    let reminders = readReminders();
+    reminders = reminders.filter(r => r.timeCounter !== timeCounter);
+    writeReminders(reminders);
 }

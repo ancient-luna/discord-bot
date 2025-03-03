@@ -33,7 +33,7 @@ async function sendReminder(reminder, client) {
         const user = await client.users.fetch(reminder.user);
 
         const embedReminder = new EmbedBuilder()
-            .setAuthor({ name: `${user.username}'s Reminder`, iconURL: user.displayAvatarURL() })
+            .setAuthor({ name: `${user.displayName}'s Reminder`, iconURL: user.displayAvatarURL() })
             .setDescription(`*" ${reminder.reminderMessage} "*`)
             .setColor(client.config.embedColorTrans);
 
