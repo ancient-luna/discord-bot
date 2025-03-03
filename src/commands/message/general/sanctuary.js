@@ -1,4 +1,4 @@
-const { EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle } = require("discord.js");
+const { EmbedBuilder } = require("discord.js");
 module.exports = new Object({
     name: "sanctuary",
     description: "current server information",
@@ -27,6 +27,7 @@ module.exports = new Object({
         const { ownerId, createdTimestamp } = guild;
         const serverDescription = guild.description || `This server doesn't have description`;
         const serverIcon = guild.iconURL();
+        const serverBanner = guild.bannerURL({ format: "png", size: 4096 });  
         const serverName = guild.name;
         const roles = guild.roles.cache.size;
         const emojis = guild.emojis.cache.size;
@@ -74,6 +75,7 @@ module.exports = new Object({
                 {name: `Server Region`, value: `${country}`, inline: true}
             )
             .setColor(client.config.embedColorTrans)
+            // .setImage(serverBanner || null)
             .setTimestamp()
             .setFooter({ text: `Requested by ${message.member.displayName}` })
 
