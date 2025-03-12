@@ -25,11 +25,6 @@ module.exports = new Object({
               threshold: 0.3, //0-1 the higher the better the ai remember the most related topic
               limit: 3,
             },
-            typeWriting: {
-              enable: true,
-              speed: 50,
-              delay: 500,
-            }
           },
           others: {
             messageType: {
