@@ -26,7 +26,7 @@ module.exports = new Object({
               limit: 3,
             },
             typeWriting: {
-              enable: false,
+              enable: true,
               speed: 50,
               delay: 500,
             }
