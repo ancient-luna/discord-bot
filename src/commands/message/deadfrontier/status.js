@@ -115,6 +115,7 @@ module.exports = new Object({
                 .setThumbnail(`https://i.imgur.com/ulP4oAd.png`)
                 .setDescription(`**${profession_level}**\n(${experience})`)
                 .setImage(`https://www.dfprofiler.com/signaturereplicate.php?profile=${survivorID}&imgur=5q7hV6B`)
+                .setColor('202225')
 
             const btnProfile = new ActionRowBuilder()
                 .addComponents(
