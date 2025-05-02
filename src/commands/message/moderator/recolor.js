@@ -24,7 +24,7 @@ module.exports = new Object({
     async execute(client, message, args) {
         const [chID, msgID, embedColor] = args;
 
-        if (!chID || !msgID || !embedColor) return message.reply("wrong format. Usage: `!recolor <channelID> <messageID> <#HEX>`");
+        if (!chID || !msgID || !embedColor) return message.reply("**WRONG FORMAT**. Usage: `!recolor <channelID> <messageID> <#HEX>`");
 
         try {
             const targetChannel = message.guild.channels.cache.get(chID);
