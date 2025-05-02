@@ -22,31 +22,25 @@ module.exports = new Object({
      * @param {String[]} args
      */
     async execute(client, message, args) {
-        const chID = args[0];
-        const msgID = args[1];
+        const [chID, msgID, embedColor] = args;
 
-        if (!chID) return message.reply("missing `channelid` `messageid`");
-        if (!msgID) return message.reply("missing `messageid`");
+        if (!chID || !msgID || !embedColor) return message.reply("wrong format. Usage: `!recolor <channelID> <messageID> <#HEX>`");
 
         try {
-            const channelID = message.guild.channels.cache.get(chID);
-            const messageID = await channelID.messages.fetch(msgID);
+            const targetChannel = message.guild.channels.cache.get(chID);
+            const targetMessage = await targetChannel.messages.fetch(msgID);
+            const originalEmbed = targetMessage.embeds[0];
 
-            const fetchData = await channelID.messages.fetch(messageID);
-            const data = fetchData.embeds[0];
+            if (!originalEmbed) return message.reply("That message doesn't have an embed.");
 
-            const editEmbed = new EmbedBuilder()
-                .setDescription(data.description)
-                .setColor(client.config.embedColorTrans)
+            const newEmbed = EmbedBuilder.from(originalEmbed).setColor(embedColor);
+
+            await targetMessage.edit({ embeds: [newEmbed] });
 
             message.channel.send("Embed: **EDITED** ! `updated`");
-            messageID.edit({
-                embeds: [editEmbed]
-            });
-
         } catch (err) {
-            console.log(err);
-            message.channel.send(`That \`embed ID\` doesn't exist.`);
+            console.error(err);
+            message.channel.send("That `embed ID` doesn't exist.");
         }
     }
 });
