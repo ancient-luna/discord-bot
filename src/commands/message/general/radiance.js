@@ -7,7 +7,7 @@ module.exports = {
     category: "general",
     usage: "",
     cooldown: 0,
-    aliases: [''],
+    aliases: [],
     examples: [],
     sub_commands: [],
     args: false,
@@ -47,7 +47,7 @@ module.exports = {
         }
 
         if (allMembers.luminance.length === 0 && allMembers.radiance.length === 0) {
-            return loadingTxt.edit("Roles not found or no members in roles.");
+            return loadingTxt.edit("this command may stay only in [**AncientLuna**](https://discord.gg/Sbp2nt8QHe)");
         }
 
         const avatarUrls = [...allMembers.luminance, ...allMembers.radiance].map(member => member.user.displayAvatarURL({ extension: 'png', size: 128 }));
@@ -109,11 +109,11 @@ module.exports = {
         const radiance = new AttachmentBuilder(canvas.toBuffer(), { name: 'radiance.png' });
         
         const embed = new EmbedBuilder()
-            .setTitle('Thank you!')
-            .setDescription(`To <#1171703846918168577> <#839417252561944586>,\nthis growth of my will to rise this community wouldn't be possible without your support.\n⁣\`\`\`𝐒𝐔𝐏𝐏𝐎𝐑𝐓𝐄𝐑𝐒 (𝐑𝐀𝐃𝐈𝐀𝐍𝐂𝐄) ✦\`\`\`\n> ${radianceMentions}\n⁣\`\`\`𝐁𝐎𝐎𝐒𝐓𝐄𝐑𝐒 (𝐋𝐔𝐌𝐈𝐍𝐀𝐍𝐂𝐄) ♡\`\`\`\n> ${luminanceMentions}`)
+            .setTitle('Gratitude from the Ancients')
+            .setDescription(`To <#1171703846918168577> <#839417252561944586>,\nWhat began as my spark now grows in your glow. Ancient Luna breathes because your light remains\n⁣\`\`\`𝐒𝐔𝐏𝐏𝐎𝐑𝐓𝐄𝐑𝐒 (𝐑𝐀𝐃𝐈𝐀𝐍𝐂𝐄) ✦\`\`\`\n${radianceMentions}\n⁣\`\`\`𝐁𝐎𝐎𝐒𝐓𝐄𝐑𝐒 (𝐋𝐔𝐌𝐈𝐍𝐀𝐍𝐂𝐄) ♡\`\`\`\n${luminanceMentions}`)
             .setImage('attachment://radiance.png')
-            .setColor(client.config.embedColorTrans)
-            .setFooter({ text: `A frame of honor people light seekers` })
+            .setColor('#3c3d4f')
+            .setFooter({ text: `A legacy framed in honor — carried by the Light Seekers` })
             .setTimestamp();
 
         loadingTxt.edit({
