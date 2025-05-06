@@ -34,7 +34,7 @@ module.exports = new Object({
 
     const txtEmbed = new EmbedBuilder()
       .setTitle(`Dev. Support Contacts <:sc_verified:1334889120849330266>`)
-      .setDescription(`> Discord: asonofbiscuit - [ancientluna](https://discord.com/channels/447069790150852609/1162410164356390912)\n> ~~dae@ancientluna.org~~ <:sc_ins:1334889482633084989> ~~**IG**~~`)
+      .setDescription(`> Discord: asonofbiscuit - [ancientluna](https://discord.com/invite/Sbp2nt8QHe)\n> ~~dae@ancientluna.org~~ <:sc_ins:1334889482633084989> ~~**IG**~~`)
       .setFooter({ text: `this bot won't read any messages of your replies` })
       .setColor(client.config.embedColorTrans)
       .setThumbnail('https://i.imgur.com/vfx9TEB.png') // aevoa
