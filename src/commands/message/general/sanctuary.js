@@ -65,7 +65,7 @@ module.exports = new Object({
                 {name: `Server Owner`, value: `<@${ownerUsername}> <:ico_owner:1369186022558269561>`, inline: true},
                 {name: `Boosters`, value: `${guild.premiumSubscriptionCount} <:ico_nitro:1369190458357452802>`, inline: true},
                 {name: `Category`, value: `${categoryChannels}`, inline: true},
-                {name: `Channels`, value: `${textChannels} <:ico_write:1334864388942856212> ${voiceChannels} <:ico_mic:1369186046499229726>`, inline: true},
+                {name: `Channels`, value: `${textChannels} <:ico_chat:1369210205321166858> ${voiceChannels} <:icon_headphone:1369186550599913473>`, inline: true},
                 {name: `Members`, value: `${memberCount} <:ico_member:1369189422846967818> ${botCount} <:ico_bot:1369189440647331870>`, inline: true},
                 {name: `Emojis`, value: `${emojis}`, inline: true},
                 {name: `Roles`, value: `${roles}`, inline: true},
