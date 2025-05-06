@@ -77,7 +77,7 @@ module.exports = {
 
             await loadingTxt.edit({
                 content: '⁣',
-                embeds: [embed],
+                // embeds: [embed],
                 files: [attachments],
                 components: [link]
             });

@@ -24,7 +24,7 @@ module.exports = new Object({
     async execute(client, message, args) {
         let IMGrawr = new AttachmentBuilder("src/assets/react/rawrrr.png")
         await message.channel.send({
-            content: "scawy <@213718304320126986> has been summoned,\n***RaawWwRrrRRrrrrRR~*** *wanna fite?*\n⁣",
+            content: "scawy ??? has been summoned,\n***RaawWwRrrRRrrrrRR~*** *wanna fite?*\n⁣",
             files: [IMGrawr]
         });
     }

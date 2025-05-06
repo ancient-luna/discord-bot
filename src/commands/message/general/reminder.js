@@ -36,7 +36,7 @@ module.exports = new Object({
 
         const timeCounter = Date.now() + ms(timeReminder);
 
-        const loadingTxt = await message.reply(`-# your reminder has been kept under the moonlight\n<a:u_load:1334900265953923085> I will remind you <t:${Math.floor(timeCounter / 1000)}:R>`);
+        const loadingTxt = await message.reply(`<a:u_load:1334900265953923085> I will remind you <t:${Math.floor(timeCounter / 1000)}:R>\n-# your reminder has been kept under the moonlight`);
 
         let embedReminder = new EmbedBuilder()
             .setAuthor({ name: `${message.member.displayName}'s Reminder`, iconURL: message.author.displayAvatarURL() })

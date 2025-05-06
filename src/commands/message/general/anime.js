@@ -28,7 +28,7 @@ module.exports = new Object({
         if (!search)
             return message.reply("Please add the `anime title` that you're looking for");
 
-        const loadingTxt = await message.reply(`<a:u_load:1334900265953923085> Searching on MyAnimeList`);
+        const loadingTxt = await message.reply(`<a:u_load:1334900265953923085> Searching on *MyAnimeList*`);
 
         malScraper.getInfoFromName(search)
             .then((data) => {
@@ -60,8 +60,6 @@ module.exports = new Object({
                     )
                     .setThumbnail(data.picture)
                     .setColor(client.config.embedColorTrans)
-                    .setTimestamp()
-                    .setFooter({ text: `${message.member.displayName} searched for ${args}`.split(',').join(' '), iconURL: message.author.displayAvatarURL({ dynamic: true }) })
 
                 let link = new ActionRowBuilder()
                     .addComponents(

@@ -34,11 +34,14 @@ module.exports = new Object({
             let status = member.presence?.status || 'offline';
 
             const profileBuffer = await profileImage(member.id, {
-                overwriteBadges: true,
+                overwriteBadges: false,
                 customBadges: ['src/assets/badge/ancientluna.png'],
                 moreBackgroundBlur: true,
                 removeBorder: true,
-                presenceStatus: status
+                presenceStatus: status,
+                customUsername: member.displayName,
+                customSubtitle: `${member.user.id} ${member.user.createdAt.toLocaleDateString()}`,
+                customDate: `@${member.user.username}`
             });
             const imageAttachment = new AttachmentBuilder(profileBuffer, { name: `profile.png` });
 
@@ -62,21 +65,21 @@ module.exports = new Object({
             const avatarButton = new ButtonBuilder()
                 .setLabel('Avatar')
                 .setStyle(ButtonStyle.Link)
-                .setURL(member.displayAvatarURL());
+                .setURL(member.displayAvatarURL({ format: "png", size: 4096 }));
 
             const bannerButton = new ButtonBuilder()
                 .setLabel('Banner')
                 .setStyle(ButtonStyle.Link)
-                .setURL((await member.user.fetch()).bannerURL() || 'https://example.com/default-banner.jpg');
+                .setURL((await member.user.fetch()).bannerURL({ format: "png", size: 4096 }));
 
-            const row = new ActionRowBuilder()
+            const profileButton = new ActionRowBuilder()
                 .addComponents(avatarButton, bannerButton);
 
             const Embed = new EmbedBuilder()
-                .setTitle(`User Profile in ${message.guild.name}`)
+                .setTitle(`${member.displayName} Profile in ${message.guild.name} ✦`)
                 .setColor('Aqua')
                 .setDescription(`<@${member.id}> joined as the ${addSuffix(joinPosition)} member of this server`)
-                .setImage(`attachment://profile.png`)
+                // .setImage(`attachment://profile.png`)
                 .addFields([
                     { name: "Account Created", value: `<t:${createdTime}:R>`, inline: true },
                     { name: "Joined Since", value: `<t:${joinTime}:D>`, inline: true },
@@ -89,9 +92,14 @@ module.exports = new Object({
 
             loadingTxt.edit({
                 content: '⁣',
-                embeds: [Embed],
-                // components: [row],
+                // embeds: [Embed],
+                // components: [profileButton],
                 files: [imageAttachment]
+            });
+
+            message.channel.send({
+                content: `-# Discord member since <t:${createdTime}:R> as ${addSuffix(joinPosition)} member of this server since <t:${joinTime}:D>`,
+                // components: [profileButton],
             });
 
         } catch (error) {

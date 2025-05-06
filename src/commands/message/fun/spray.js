@@ -1,11 +1,11 @@
 const { AttachmentBuilder } = require('discord.js');
 module.exports = new Object({
-    name: "peanut",
+    name: "spray",
     description: "li'el pean is attacking!",
     category: "Fun",
     usage: "",
     cooldown: 0,
-    aliases: ['spray', 'emotionaldamage'],
+    aliases: ['fact', 'emotionaldamage', 'aki', 'hany'],
     examples: [''],
     sub_commands: [],
     args: false,
@@ -22,13 +22,15 @@ module.exports = new Object({
      * @param {String[]} args
      */
     async execute(client, message, args) {
-        let loadingTxt = await message.channel.send(`<:xmot_spray:991166260341637140> *spraying o wo' ooh bo' ooh ...*`);
+        let loadingTxt = await message.channel.send(`<a:mm_spray:1369204415298408448> *spraying o wo' ooh bo' ooh ...*`);
         let SRCtomato = new AttachmentBuilder("src/assets/react/tomatooo.mp4")
         await loadingTxt.edit({
-            content: "Accidentally threw a peanut and dealt **+9999999 emotional damage** ...",
+            content: "<@396683781119148032> threw facts and dealt ...",
             files: [SRCtomato]
-        }).then((msg) => {
-            msg.react('🔥');
+        });
+        await message.channel.send('# 𝒆𝒎𝒐𝒕𝒊𝒐𝒏𝒂𝒍 𝒅𝒂𝒎𝒂𝒈𝒆').then(msg => {
+            // msg.react('<a:mm_spray:1369204415298408448>'),
+            msg.react('💔')
         });
     }
 });

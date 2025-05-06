@@ -25,23 +25,25 @@ module.exports = new Object({
     async execute(client, message, args) {
 
         const head = new EmbedBuilder()
-            .setTitle('ℭ𝔬𝔦𝔫 𝔉𝔩𝔦𝔭: ℌ𝔢𝔞𝔡')
-            .setDescription(`${message.member.displayName} flipped the coin and result is **Head**`)
+            .setTitle('# 𝕳𝖊𝖆𝖉')
+            .setDescription(`-# ${message.member.displayName} flipped the coin and ...\nthe result is **Head**`)
             .setColor(client.config.embedColorTrans)
             .setThumbnail('https://i.imgur.com/X61MBiD.png')
-            .setTimestamp()
 
         const tail = new EmbedBuilder()
-            .setTitle('ℭ𝔬𝔦𝔫 𝔉𝔩𝔦𝔭: 𝔗𝔞𝔦𝔩')
-            .setDescription(`${message.member.displayName} flipped the coin and result is **Tail**`)
+            .setTitle('# 𝕿𝖆𝖎𝖑')
+            .setDescription(`-# ${message.member.displayName} flipped the coin and ...\nthe result is **Tail**`)
             .setColor(client.config.embedColorTrans)
             .setThumbnail('https://i.imgur.com/nlYa0I3.png')
-            .setTimestamp()
 
         const coin = [head, tail];
 
         const flipped = coin[Math.floor(Math.random() * coin.length)];
 
-        message.channel.send({ embeds: [flipped] });
+        const msg = await message.channel.send({ content: `<a:u_load:1334900265953923085> flipping the coin` });
+
+        setTimeout(() => {
+            msg.edit({ content: null, embeds: [flipped] });
+        }, 5000);
     }
 });

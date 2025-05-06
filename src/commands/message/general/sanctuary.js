@@ -57,27 +57,24 @@ module.exports = new Object({
 
         const serverInfo = new EmbedBuilder()
             .setAuthor({ url: `https://discord.com/invite/Sbp2nt8QHe`, iconURL: serverIcon, name: serverName })
-            .setTitle(`Server information`)
+            .setTitle(`𝑺𝒆𝒓𝒗𝒆𝒓 𝑰𝒏𝒇𝒐𝒓𝒎𝒂𝒕𝒊𝒐𝒏 ✦`)
             .setThumbnail(serverIcon)
             .addFields(
-                {name: `About`, value: `${serverDescription}`, inline: false},
+                {name: `About`, value: `-# ${serverDescription}`, inline: false},
                 {name: `Date Created`, value: `<t:${parseInt(createdTimestamp/ 1000)}:R>`, inline: true},
-                {name: `Server Owner`, value: `<@${ownerUsername}>`, inline: true},
-                {name: `Verification`, value: `${baseVerification}`, inline: true},
+                {name: `Server Owner`, value: `<@${ownerUsername}> <:ico_owner:1369186022558269561>`, inline: true},
+                {name: `Boosters`, value: `${guild.premiumSubscriptionCount} <:ico_nitro:1369190458357452802>`, inline: true},
                 {name: `Category`, value: `${categoryChannels}`, inline: true},
-                {name: `Text Channels`, value: `${textChannels}`, inline: true},
-                {name: `Voice Channels`, value: `${voiceChannels}`, inline: true},
-                {name: `Bots`, value: `${botCount}`, inline: true},
-                {name: `Members`, value: `${memberCount}`, inline: true},
+                {name: `Channels`, value: `${textChannels} <:ico_write:1334864388942856212> ${voiceChannels} <:ico_mic:1369186046499229726>`, inline: true},
+                {name: `Members`, value: `${memberCount} <:ico_member:1369189422846967818> ${botCount} <:ico_bot:1369189440647331870>`, inline: true},
                 {name: `Emojis`, value: `${emojis}`, inline: true},
                 {name: `Roles`, value: `${roles}`, inline: true},
-                {name: `Boosters`, value: `${guild.premiumSubscriptionCount}`, inline: true},
-                {name: `Server Region`, value: `${country}`, inline: true}
+                {name: `Verification`, value: `${baseVerification}`, inline: true},
             )
             .setColor(client.config.embedColorTrans)
-            // .setImage(serverBanner || null)
+            .setImage(serverBanner || null)
             .setTimestamp()
-            .setFooter({ text: `Requested by ${message.member.displayName}` })
+            // .setFooter({ text: `Requested by ${message.member.displayName}` })
 
         await message.reply({ embeds: [serverInfo] });
 
