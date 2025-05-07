@@ -68,7 +68,7 @@ module.exports = new Object({
             messageID.edit({
                 embeds: [editEmbed],
                 // files: [editImage],
-                // components: [editButton],
+                components: [editButton],
             });
 
         } catch (err) {
