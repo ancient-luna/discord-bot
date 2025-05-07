@@ -41,12 +41,11 @@ module.exports = new Object({
                 new ButtonBuilder()
                     .setCustomId("btn-tagguildmobile")
                     .setLabel("Mobile")
-                    .setEmoji('<:ico_write:1334864388942856212>')
                     .setStyle(ButtonStyle.Secondary),
                 new ButtonBuilder()
                     .setCustomId("btn-tagguildlink")
                     .setLabel("Get Invitation Link")
-                    .setEmoji('<:ico_write:1334864388942856212>')
+                    .setEmoji('<:ico_radiance:1334864373331787827>')
                     .setStyle(ButtonStyle.Primary),
             )
 
