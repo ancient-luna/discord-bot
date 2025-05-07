@@ -53,7 +53,7 @@ module.exports = new Object({
         await message.channel.send({
             content: poet,
             // embeds: [poetry],
-            files: [memoir],
+            // files: [memoir],
             // components: [ink],
         });
     }
