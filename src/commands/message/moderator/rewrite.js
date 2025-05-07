@@ -63,7 +63,7 @@ module.exports = new Object({
             await messageID.edit({
                 embeds: [editEmbed],
                 // files: [editImage],
-                components: [editButton],
+                // components: [editButton],
             });
 
             message.channel.send("Embed: **EDITED** ! `updated`");
