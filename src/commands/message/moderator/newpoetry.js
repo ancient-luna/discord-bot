@@ -1,11 +1,11 @@
 const { EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle, AttachmentBuilder } = require("discord.js");
 module.exports = new Object({
-    name: "newpoet",
+    name: "newpoetry",
     description: "writing new embed",
     category: "moderator",
     usage: "",
     cooldown: 0,
-    aliases: ['embed'],
+    aliases: [''],
     examples: [''],
     sub_commands: [],
     args: false,
@@ -53,8 +53,8 @@ module.exports = new Object({
         await message.channel.send({
             content: poet,
             // embeds: [poetry],
-            files: [memoir],
-            // components: [ink],
+            // files: [memoir],
+            components: [ink],
         });
     }
 });
