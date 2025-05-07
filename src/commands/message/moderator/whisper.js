@@ -30,7 +30,7 @@ module.exports = new Object({
 
     const str = args.slice(1).join(" ");
     
-    // const img = new AttachmentBuilder("src/assets/latestwordsfromaevoa.mp4")
+    const img = new AttachmentBuilder("src/assets/ancientluna-tag.png")
 
     const txtEmbed = new EmbedBuilder()
       .setTitle(`Dev. Support Contacts <:sc_verified:1334889120849330266>`)
@@ -45,16 +45,16 @@ module.exports = new Object({
       .addComponents(
         new ButtonBuilder()
           .setStyle(ButtonStyle.Link)
-          .setLabel("Web")
-          .setURL(`https://www.bdo.ancientluna.org`),
-        new ButtonBuilder()
-          .setStyle(ButtonStyle.Link)
-          .setLabel("Video")
+          .setLabel("YouTube")
           .setURL(`https://www.youtube.com/@ancientluna`),
         new ButtonBuilder()
           .setStyle(ButtonStyle.Link)
           .setLabel("Steam Group")
-          .setURL(`https://steamcommunity.com/groups/xxmoon`)
+          .setURL(`https://steamcommunity.com/groups/xxmoon`),
+          new ButtonBuilder()
+            .setStyle(ButtonStyle.Link)
+            .setLabel("Get The Tag Now")
+            .setURL(`https://discord.gg/ch8f2CUe7q`),
       )
 
     const failed = new EmbedBuilder()
@@ -67,9 +67,9 @@ module.exports = new Object({
 
     user.send({
       content: `Dear **Lunar Disciples**,\n${str}\n\nWarmest regards,\n**Aevoa**\n_ _`,
-      embeds: [txtEmbed],
+      // embeds: [txtEmbed],
       components: [btnServer],
-      // files: [img]
+      files: [img]
     }).then(() => {
       message.channel.send({ embeds: [success] });
     }).catch((e) => { 
