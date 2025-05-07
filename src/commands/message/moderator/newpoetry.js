@@ -44,7 +44,7 @@ module.exports = new Object({
                     .setStyle(ButtonStyle.Secondary),
                 new ButtonBuilder()
                     .setCustomId("btn-tagguildlink")
-                    .setLabel("Get Invitation Link")
+                    .setLabel("[LUNA] Link")
                     .setEmoji('<:ico_radiance:1334864373331787827>')
                     .setStyle(ButtonStyle.Primary),
             )
