@@ -35,16 +35,16 @@ module.exports = new Object({
         const ink = new ActionRowBuilder()
             .addComponents(
                 new ButtonBuilder()
-                    .setCustomId("btn-guildtagpc")
+                    .setCustomId("btn-tagguildpc")
                     .setLabel("Computer")
                     .setStyle(ButtonStyle.Secondary),
                 new ButtonBuilder()
-                    .setCustomId("btn-guildtagmobile")
+                    .setCustomId("btn-tagguildmobile")
                     .setLabel("Mobile")
                     .setEmoji('<:ico_write:1334864388942856212>')
                     .setStyle(ButtonStyle.Secondary),
                 new ButtonBuilder()
-                    .setCustomId("btn-guildtaglink")
+                    .setCustomId("btn-tagguildlink")
                     .setLabel("Get Invitation Link")
                     .setEmoji('<:ico_write:1334864388942856212>')
                     .setStyle(ButtonStyle.Primary),
