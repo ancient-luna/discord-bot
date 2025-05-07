@@ -30,7 +30,7 @@ module.exports = new Object({
             .setDescription(poet)
             .setColor(client.config.embedColorTrans)
 
-        const memoir = new AttachmentBuilder('src/assets/bdo/civilizationclasses.png')
+        const memoir = new AttachmentBuilder('src/assets/bdo/ancientluna-tag.png')
 
         const ink = new ActionRowBuilder()
             .addComponents(
