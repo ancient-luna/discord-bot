@@ -52,7 +52,7 @@ module.exports = new Object({
                     new ButtonBuilder()
                         .setCustomId("btn-confession")
                         .setLabel("Write Confession")
-                        .setEmoji('<:write:1163568311716565154>')
+                        .setEmoji('<:ico_write:1334864388942856212>')
                         .setStyle(ButtonStyle.Secondary),
                     new ButtonBuilder()
                         .setStyle(ButtonStyle.Link)
@@ -65,7 +65,7 @@ module.exports = new Object({
                 // files: [editImage],
                 components: [editButton],
             });
-            
+
             message.channel.send("Embed: **EDITED** ! `updated`");
 
         } catch (err) {
