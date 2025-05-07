@@ -54,23 +54,19 @@ module.exports = new Object({
                         .setLabel("Write Confession")
                         .setEmoji('<:write:1163568311716565154>')
                         .setStyle(ButtonStyle.Secondary),
-                    // new ButtonBuilder()
-                    //     .setStyle(ButtonStyle.Link)
-                    //     .setLabel(`Support (Trakteer)`)
-                    //     .setURL(`https://trakteer.id/daexx`)
-                )
-                .addComponents(
                     new ButtonBuilder()
                         .setStyle(ButtonStyle.Link)
                         .setLabel(`Get Guild Tag`)
-                        .setURL(`https://discord.gg/XJCtfTPBfu`),)
+                        .setURL(`https://discord.gg/XJCtfTPBfu`),
+                )
 
-            message.channel.send("Embed: **EDITED** ! `updated`");
-            messageID.edit({
+            await messageID.edit({
                 embeds: [editEmbed],
                 // files: [editImage],
                 components: [editButton],
             });
+            
+            message.channel.send("Embed: **EDITED** ! `updated`");
 
         } catch (err) {
             console.log(err);
