@@ -54,10 +54,10 @@ module.exports = new Object({
                         .setLabel("Write Confession")
                         .setEmoji('<:write:1163568311716565154>')
                         .setStyle(ButtonStyle.Secondary),
-                    // new ButtonBuilder()
-                    //     .setStyle(ButtonStyle.Link)
-                    //     .setLabel(`Support (Ko-Fi)`)
-                    //     .setURL(`https://ko-fi.com/daexx`),
+                    new ButtonBuilder()
+                        .setStyle(ButtonStyle.Link)
+                        .setLabel(`Get Guild Tag`)
+                        .setURL(`https://discord.gg/XJCtfTPBfu`),
                     // new ButtonBuilder()
                     //     .setStyle(ButtonStyle.Link)
                     //     .setLabel(`Support (Trakteer)`)
