@@ -10,7 +10,8 @@ module.exports = new Object({
     async execute(client, member) {
         // if (member.user.bot) return;
         const role = member.guild.roles.cache.get(client.config.luxcastaRole);
-        await member.roles.add(role.id).catch((err) => util.printLog('error', err));
+        if (!role) return;
+        await member.roles.add(role).catch((err) => util.printLog('error', err));
         const channel = member.guild.channels.cache.get(client.config.gatewayChannel);
         const card = await new canvafy.WelcomeLeave()
             .setAvatar(member.user.displayAvatarURL({ size: 4096 }))
