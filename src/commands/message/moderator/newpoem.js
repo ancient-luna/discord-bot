@@ -23,7 +23,7 @@ module.exports = new Object({
      */
     async execute(client, message, args) {
 
-        const memoir = new AttachmentBuilder('src/assets/bdo/ancientluna-tag.png')
+        const memoir = new AttachmentBuilder('src/assets/ancientluna-tag.png')
 
         await message.channel.send({
             files: [memoir]
