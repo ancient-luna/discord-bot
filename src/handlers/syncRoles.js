@@ -32,6 +32,8 @@ module.exports = async function syncRolesHandler(client) {
         const hasLightSeeker = memberServer.roles.cache.has(lightSeekerRole);
         const hasLunarDisciple = memberServer.roles.cache.has(lunarDiscipleRole);
         const hasLevatio = memberServer.roles.cache.has(levatioRole);
+        const hasOG = memberServer.roles.cache.has(ogRole);
+        const hasLoyalties = memberServer.roles.cache.has(loyaltiesRole);
 
         if (inGuild && hasLightSeeker && !hasOG) await memberServer.roles.add(ogRole).catch(() => {});
         if (inGuild && (hasLunarDisciple || hasLevatio) && !hasLoyalties) await memberServer.roles.add(loyaltiesRole).catch(() => {});
