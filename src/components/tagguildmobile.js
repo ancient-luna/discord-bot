@@ -31,7 +31,7 @@ module.exports = {
       .setColor("#3c3d4f")
     
     return interaction.reply({
-      content: 'https://discord.gg/XJCtfTPBfu',
+      embeds: [howTo1, howTo2, howTo3],
       ephemeral: true,
     });
   },
