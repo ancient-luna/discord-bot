@@ -7,6 +7,14 @@ module.exports = {
     elderRole: "843523544620335124",
     streamRole: "1221004976839589958",
 
+    radianceRole: "888736428069105674",
+    luminanceRole: "620709364247822338",
+    ennoiaRole: "1369558642013110343",
+    dalumiRole: "1369924194401390652",
+
+    ancientLunaServer: "447069790150852609",
+    ancientLunaGuild: "1369521104548401265",
+
     ruleChannel: "838751745815216129",
     generalChannel: "452842830776369152",
     aiChatChannel: "1142344320708530306",
@@ -25,7 +33,6 @@ module.exports = {
     voiceChannel: "525889181273292801",
     voiceMessage: "boss cycle updated",
 
-    // embedColorTrans: '#2b2d31',
     embedColorTrans: '#393a41',
 
     color: '#4277e8',
