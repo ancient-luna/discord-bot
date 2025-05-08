@@ -1,4 +1,4 @@
-const { presenceHandler, reminderHandler } = require("../handlers");
+const { presenceHandler, reminderHandler, syncRolesHandler } = require("../handlers");
 require("dotenv").config();
 const express = require("express");
 const app = express();
