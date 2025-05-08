@@ -12,6 +12,12 @@ module.exports = {
     ennoiaRole: "1369558642013110343",
     dalumiRole: "1369924194401390652",
 
+    lunarDiscipleRole: "1060982357538119850",
+    levatioRole: "1052973235710464040",
+
+    loyaltiesRole: "1367669191225770075",
+    ogRole: "1369967597210304544",
+
     ancientLunaServer: "447069790150852609",
     ancientLunaGuild: "1369521104548401265",
 
