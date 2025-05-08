@@ -44,7 +44,7 @@ module.exports = new Object({
         const hasOG = newMember.roles.cache.has(ogRole);
         const hasLoyalties = newMember.roles.cache.has(loyaltiesRole);
 
-        if (inGuild && hasLightSeeker && !hasOG) await newMember.roles.add(ogRole).catch(() => {});
-        if (inGuild && (hasLunarDisciple || hasLevatio) && !hasLoyalties) await newMember.roles.add(loyaltiesRole).catch(() => {});
+        if (hasLightSeeker && !hasOG) await newMember.roles.add(ogRole).catch(() => {});
+        if ((hasLunarDisciple || hasLevatio) && !hasLoyalties) await newMember.roles.add(loyaltiesRole).catch(() => {});
     }
 });
