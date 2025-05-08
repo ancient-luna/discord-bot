@@ -1,4 +1,5 @@
-const { presenceHandler, reminderHandler, syncRolesHandler } = require("../handlers");
+const { presenceHandler, reminderHandler } = require("../handlers");
+const syncRolesHandler = require("../handlers/syncRoles");
 require("dotenv").config();
 const express = require("express");
 const app = express();
@@ -24,5 +25,7 @@ module.exports = new Object({
 
     reminderHandler(client);
     await syncRolesHandler(client);
+
+    setInterval(() => syncRolesHandler(client), 5 * 60 * 1000);
   },
 });
