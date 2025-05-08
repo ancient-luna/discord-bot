@@ -27,7 +27,7 @@ module.exports = {
     const howTo3 = new EmbedBuilder()
       .setTitle("Ⅲ. Server Tag")
       .setImage("https://i.imgur.com/eG2Vxf9.jpeg")
-      .setFooter('*scroll down until you see the server tag option')
+      .setFooter({ text: '*scroll down until you see the server tag option' })
       .setColor("#3c3d4f")
     
     return interaction.reply({
