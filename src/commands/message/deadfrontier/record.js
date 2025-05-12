@@ -77,7 +77,7 @@ module.exports = {
                 )
                 .setImage(`https://www.dfprofiler.com/signaturereplicate.php?profile=${survivorID}&imgur=5q7hV6B`)
                 .setFooter({ text: `Powered by Ancient Luna`, iconURL: 'https://i.imgur.com/vKo3PJm.png' })
-                .setColor('202225')
+                .setColor('3c3d4f')
                 .setTimestamp();
 
             const btnProfile = new ActionRowBuilder()

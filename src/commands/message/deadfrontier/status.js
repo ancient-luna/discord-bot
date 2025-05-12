@@ -115,7 +115,7 @@ module.exports = new Object({
                 .setThumbnail(`https://i.imgur.com/ulP4oAd.png`)
                 .setDescription(`**${profession_level}**\n(${experience})`)
                 .setImage(`https://www.dfprofiler.com/signaturereplicate.php?profile=${survivorID}&imgur=5q7hV6B`)
-                .setColor('202225')
+                .setColor('3c3d4f')
 
             const btnProfile = new ActionRowBuilder()
                 .addComponents(
@@ -180,7 +180,7 @@ module.exports = new Object({
                         )
                         .setImage(`https://i.imgur.com/TMI3wTd.gif`)
                         .setFooter({ text: `Powered by Ancient Luna`, iconURL: 'https://i.imgur.com/vKo3PJm.png' })
-                        .setColor('202225')
+                        .setColor('3c3d4f')
                         .setTimestamp()
 
                     loadingTxt.edit({
@@ -216,7 +216,7 @@ module.exports = new Object({
                         )
                         .setImage(`https://i.imgur.com/TMI3wTd.gif`)
                         .setFooter({ text: `Powered by Ancient Luna`, iconURL: 'https://i.imgur.com/vKo3PJm.png' })
-                        .setColor('202225')
+                        .setColor('3c3d4f')
                         .setTimestamp()
 
                     loadingTxt.edit({
