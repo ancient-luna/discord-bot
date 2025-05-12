@@ -39,7 +39,7 @@ module.exports = new Object({
                 moreBackgroundBlur: true,
                 removeBorder: true,
                 presenceStatus: status,
-                customUsername: member.displayName,
+                // customUsername: member.displayName,
                 customSubtitle: `${member.user.id} ${member.user.createdAt.toLocaleDateString()}`,
                 customDate: `@${member.user.username}`
             });
