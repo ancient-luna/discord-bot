@@ -39,7 +39,7 @@ module.exports = new Object({
                 moreBackgroundBlur: true,
                 removeBorder: true,
                 presenceStatus: status,
-                // customUsername: member.displayName,
+                customUsername: member.displayName,
                 customSubtitle: `${member.user.id} ${member.user.createdAt.toLocaleDateString()}`,
                 customDate: `@${member.user.username}`
             });
@@ -65,12 +65,12 @@ module.exports = new Object({
             const avatarButton = new ButtonBuilder()
                 .setLabel('Avatar')
                 .setStyle(ButtonStyle.Link)
-                .setURL(member.displayAvatarURL({ format: "png", size: 4096 }));
+                .setURL(member.displayAvatarURL({ format: "png", size: 4096 }) || "https://ancientluna.org/none-display");
 
             const bannerButton = new ButtonBuilder()
                 .setLabel('Banner')
                 .setStyle(ButtonStyle.Link)
-                .setURL((await member.user.fetch()).bannerURL({ format: "png", size: 4096 }));
+                .setURL((await member.user.fetch()).bannerURL({ format: "png", size: 4096 }) || "https://ancientluna.org/none-display");
 
             const profileButton = new ActionRowBuilder()
                 .addComponents(avatarButton, bannerButton);
