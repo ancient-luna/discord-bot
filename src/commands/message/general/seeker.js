@@ -1,5 +1,5 @@
 const { EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle, AttachmentBuilder } = require("discord.js");
-const { profileImage } = require('discord-arts');
+const { Profile } = require('discord-arts');
 
 module.exports = new Object({
     name: "seeker",
@@ -7,7 +7,7 @@ module.exports = new Object({
     category: "general",
     cooldown: 0,
     usage: "",
-    aliases: ['profile', 'avatar'],
+    aliases: ['profile', 'avatar', 'a'],
     examples: [''],
     sub_commands: [],
     args: false,
@@ -33,7 +33,7 @@ module.exports = new Object({
             
             let status = member.presence?.status || 'offline';
 
-            const profileBuffer = await profileImage(member.id, {
+            const profileBuffer = await Profile(member.id, {
                 overwriteBadges: false,
                 customBadges: ['src/assets/badge/ancientluna.png'],
                 moreBackgroundBlur: true,
@@ -41,7 +41,8 @@ module.exports = new Object({
                 presenceStatus: status,
                 customUsername: member.displayName,
                 customSubtitle: `${member.user.id} ${member.user.createdAt.toLocaleDateString()}`,
-                customDate: `@${member.user.username}`
+                customDate: `@${member.user.username}`,
+                customFont: 'src/assets/usercard/Noto.otf',
             });
             const imageAttachment = new AttachmentBuilder(profileBuffer, { name: `profile.png` });
 
