@@ -7,7 +7,7 @@ module.exports = new Object({
     category: "general",
     cooldown: 0,
     usage: "",
-    aliases: ['profile', 'avatar', 'a'],
+    aliases: ['profile', 'avatar'],
     examples: [''],
     sub_commands: [],
     args: false,
