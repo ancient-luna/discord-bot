@@ -52,8 +52,10 @@
     "node-schedule": "^2.1.1",
     "pino": "^8.21.0",
     "pino-pretty": "^10.3.1",
+    "quick.db-lite": "^1.0.0",
     "request": "^2.88.2",
     "spotify-url-info": "^3.2.18",
+    "sqlite3": "^5.1.7",
     "superagent": "^8.1.2"
   },
   "devDependencies": {

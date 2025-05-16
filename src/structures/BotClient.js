@@ -10,6 +10,7 @@ const {
 } = require("discord.js");
 const Utils = require("../utils/Utils");
 const { DiscordTogether } = require("discord-together");
+const QuickDB = require("quick.db-lite");
 require("dotenv").config();
 
 const Intents = [
@@ -68,6 +69,7 @@ class BotClient extends Client {
     this.console = require("../utils/Console");
     this.util = new Utils(this);
     this.discordTogether = new DiscordTogether(this);
+    this.db = new QuickDB();
     if (!this.token) this.token = process.env.TOKEN;
     this.connect();
   }

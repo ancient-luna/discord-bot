@@ -23,14 +23,15 @@ module.exports = {
     const content = `${body}`;
 
     try {
-      await webhookClient.send({
+      const sent = await webhookClient.send({
         content,
         username: `${displayName} ✦ #${channelName} ✦`,
         avatarURL: avatarUrl,
         files: message.attachments.map(att => att),
       });
+      await client.db.set(`mirror_${message.id}`, sent.id);
     } catch (err) {
-      console.error("❌ Failed to forward message:", err);
+      console.error("failed to forward message:", err);
     }
   }
 };
