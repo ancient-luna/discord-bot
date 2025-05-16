@@ -15,7 +15,9 @@ module.exports = {
     try {
       await webhookClient.editMessage(webhookMessageId, {
         content: "[message deleted]",
+        filed: []
       });
+      await client.db.delete(`mirror_${message.id}`);
     } catch (err) {
       console.error("failed to mark message as deleted:", err);
     }
