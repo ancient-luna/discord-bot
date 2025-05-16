@@ -20,6 +20,11 @@ module.exports = new Object({
       const btnLucent = new ActionRowBuilder()
         .addComponents(
           new ButtonBuilder()
+            .setCustomId("btn-guildvacation")
+            .setLabel("Vacation")
+            .setEmoji('<:bdo:1334891168407752806>')
+            .setStyle(ButtonStyle.Primary),
+          new ButtonBuilder()
             .setCustomId("btn-guildterms")
             .setLabel("Guild Terms")
             .setStyle(ButtonStyle.Secondary),
@@ -27,11 +32,6 @@ module.exports = new Object({
             .setLabel("Guild Alliance")
             .setStyle(ButtonStyle.Link)
             .setURL('https://discord.gg/u2Hb7kcC'),
-          new ButtonBuilder()
-            .setCustomId("btn-guildvacation")
-            .setLabel("Vacation")
-            .setEmoji('<:bdo:1334891168407752806>')
-            .setStyle(ButtonStyle.Primary)
         )
       try {
         if (stickyLucentMessage) { await stickyLucentMessage.delete(); }
