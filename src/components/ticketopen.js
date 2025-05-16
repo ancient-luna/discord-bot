@@ -60,15 +60,11 @@ module.exports = {
         new ButtonBuilder()
           .setCustomId("btn-ticketclose")
           .setLabel("Save and Close")
-          .setStyle(ButtonStyle.Danger)
-      )
-      .addComponents(
+          .setStyle(ButtonStyle.Danger),
         new ButtonBuilder()
           .setCustomId("btn-ticketlock")
           .setLabel("Lock")
-          .setStyle(ButtonStyle.Primary)
-      )
-      .addComponents(
+          .setStyle(ButtonStyle.Primary),
         new ButtonBuilder()
           .setCustomId("btn-ticketmention")
           .setLabel("Mention Now")

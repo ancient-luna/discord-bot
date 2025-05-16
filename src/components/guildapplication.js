@@ -39,15 +39,11 @@ module.exports = {
         new ButtonBuilder()
           .setCustomId("btn-guildterms")
           .setLabel("Read Guild Terms")
-          .setStyle(ButtonStyle.Primary)
-      )
-      .addComponents(
+          .setStyle(ButtonStyle.Primary),
         new ButtonBuilder()
           .setCustomId("btn-guildform")
           .setLabel("Fill Form")
-          .setStyle(ButtonStyle.Success)
-      )
-      .addComponents(
+          .setStyle(ButtonStyle.Success),
         new ButtonBuilder()
           .setCustomId("btn-guildmention")
           .setLabel("Mention Now")

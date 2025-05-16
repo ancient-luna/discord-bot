@@ -21,8 +21,12 @@ module.exports = new Object({
         .addComponents(
           new ButtonBuilder()
             .setCustomId("btn-guildterms")
-            .setLabel("Read Guild Terms")
+            .setLabel("Guild Terms")
             .setStyle(ButtonStyle.Secondary),
+          new ButtonBuilder()
+            .setLabel("Guild Alliance")
+            .setStyle(ButtonStyle.Link)
+            .setURL('https://discord.gg/u2Hb7kcC'),
           new ButtonBuilder()
             .setCustomId("btn-guildvacation")
             .setLabel("Vacation")

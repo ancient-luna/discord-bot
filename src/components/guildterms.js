@@ -30,18 +30,16 @@ module.exports = {
     .setFooter({ text: "Ancient Luna Guild: We ran as if to meet the moon" })
 
     const btnGuild = new ActionRowBuilder()
-        .addComponents(
-            new ButtonBuilder()
-                .setStyle(ButtonStyle.Link)
-                .setLabel(`Guild Forum`)
-                .setURL(`https://www.sea.playblackdesert.com/en-US/Forum/ForumTopic/Detail?_topicNo=42709&_page=1&_opinionNo=69067`)
-        )
-        .addComponents(
-            new ButtonBuilder()
-                .setStyle(ButtonStyle.Link)
-                .setLabel(`Guild Video`)
-                .setURL(`https://youtu.be/3S8HVfHYJ5k`)
-        )
+      .addComponents(
+        new ButtonBuilder()
+          .setStyle(ButtonStyle.Link)
+          .setLabel(`Guild Forum`)
+          .setURL(`https://www.sea.playblackdesert.com/en-US/Forum/ForumTopic/Detail?_topicNo=42709&_page=1&_opinionNo=69067`),
+        new ButtonBuilder()
+          .setStyle(ButtonStyle.Link)
+          .setLabel(`Guild Video`)
+          .setURL(`https://youtu.be/3S8HVfHYJ5k`),
+      )
         
     return interaction.reply({
       embeds: [addLDrule],
