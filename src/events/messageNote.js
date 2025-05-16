@@ -22,7 +22,7 @@ module.exports = new Object({
           new ButtonBuilder()
             .setCustomId("btn-guildvacation")
             .setLabel("Vacation")
-            .setEmoji('<:bdo:1334891168407752806>')
+            // .setEmoji('<:bdo:1334891168407752806>')
             .setStyle(ButtonStyle.Primary),
           new ButtonBuilder()
             .setCustomId("btn-guildterms")
