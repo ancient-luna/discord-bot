@@ -20,6 +20,7 @@ module.exports = {
 
     ancientLunaServer: "447069790150852609",
     ancientLunaGuild: "1369521104548401265",
+    ancientLunaAlliance: "1367757032081330228",
 
     ruleChannel: "838751745815216129",
     generalChannel: "452842830776369152",
