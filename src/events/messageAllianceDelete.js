@@ -14,8 +14,10 @@ module.exports = {
 
     try {
       await webhookClient.editMessage(webhookMessageId, {
-        content: "[message deleted]",
         filed: []
+      });
+      await webhookClient.editMessage(webhookMessageId, {
+        content: "[message deleted]"
       });
       await client.db.delete(`mirror_${message.id}`);
     } catch (err) {
