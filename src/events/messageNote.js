@@ -31,7 +31,7 @@ module.exports = new Object({
           new ButtonBuilder()
             .setLabel("Guild Alliance")
             .setStyle(ButtonStyle.Link)
-            .setURL('https://discord.gg/u2Hb7kcC'),
+            .setURL('https://discord.gg/tjdhmd38P5'),
         )
       try {
         if (stickyLucentMessage) { await stickyLucentMessage.delete(); }
