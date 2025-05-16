@@ -1,9 +1,5 @@
 const { EmbedBuilder } = require("discord.js");
 const ms = require("ms");
-const fs = require("fs");
-const path = require("path");
-
-const reminderFile = path.resolve(__dirname, "../../../config/reminder.json");
 
 module.exports = new Object({
     name: "reminder",
@@ -38,12 +34,6 @@ module.exports = new Object({
 
         const loadingTxt = await message.reply(`<a:u_load:1334900265953923085> I will remind you <t:${Math.floor(timeCounter / 1000)}:R>\n-# your reminder has been kept under the moonlight`);
 
-        let embedReminder = new EmbedBuilder()
-            .setAuthor({ name: `${message.member.displayName}'s Reminder`, iconURL: message.author.displayAvatarURL() })
-            .setDescription(`*" ${reminderMessage} "*`)
-            .setColor(client.config.embedColorTrans);
-
-        let reminders = readReminders();
         const newReminder = {
             timeCounter,
             reminderMessage,
@@ -52,8 +42,12 @@ module.exports = new Object({
             loadingMsgId: loadingTxt.id
         };
 
-        reminders.push(newReminder);
-        writeReminders(reminders);
+        const embedReminder = new EmbedBuilder()
+            .setAuthor({ name: `${message.member.displayName}'s Reminder`, iconURL: message.author.displayAvatarURL() })
+            .setDescription(`*" ${reminderMessage} "*`)
+            .setColor(client.config.embedColorTrans);
+
+        await client.db.push("reminders", newReminder);
 
         setTimeout(async () => {
             try {
@@ -62,39 +56,17 @@ module.exports = new Object({
                     content: `<@${newReminder.user}>`,
                     embeds: [embedReminder]
                 });
-                
+
                 const msg = await channel.messages.fetch(newReminder.loadingMsgId);
                 if (msg) await msg.edit({ content: `Successfully **reminded** you` });
 
-                removeReminder(newReminder.timeCounter); // remove the reminder after sending
+                // remove from DB
+                const reminders = await client.db.get("reminders") || [];
+                const updated = reminders.filter(r => r.timeCounter !== newReminder.timeCounter);
+                await client.db.set("reminders", updated);
             } catch (err) {
                 console.error("Error sending reminder:", err);
             }
         }, ms(timeReminder));
     }
 });
-
-function readReminders() {
-    try {
-        if (!fs.existsSync(reminderFile)) return [];
-        const data = fs.readFileSync(reminderFile, "utf8");
-        return data ? JSON.parse(data) : [];
-    } catch (err) {
-        console.error("Error reading reminders:", err);
-        return [];
-    }
-}
-
-function writeReminders(reminders) {
-    try {
-        fs.writeFileSync(reminderFile, JSON.stringify(reminders, null, 2));
-    } catch (err) {
-        console.error("Error writing reminders:", err);
-    }
-}
-
-function removeReminder(timeCounter) {
-    let reminders = readReminders();
-    reminders = reminders.filter(r => r.timeCounter !== timeCounter);
-    writeReminders(reminders);
-}

@@ -1,11 +1,8 @@
-const fs = require("fs");
-const path = require("path");
 const { EmbedBuilder } = require("discord.js");
 
-const reminderFile = path.resolve(__dirname, "../config/reminder.json");
+async function loadReminders(client) {
+    const reminders = await client.db.get("reminders") || [];
 
-function loadReminders(client) {
-    const reminders = readReminders();
     reminders.forEach(reminder => {
         scheduleReminder(reminder, client);
     });
@@ -15,15 +12,14 @@ function scheduleReminder(reminder, client) {
     const delay = reminder.timeCounter - Date.now();
 
     if (delay <= 0) {
-        // If the reminder time has already passed, send it immediately
         sendReminder(reminder, client);
-        removeReminder(reminder.timeCounter);
+        removeReminder(reminder, client);
         return;
     }
 
     setTimeout(() => {
         sendReminder(reminder, client);
-        removeReminder(reminder.timeCounter);
+        removeReminder(reminder, client);
     }, delay);
 }
 
@@ -33,7 +29,7 @@ async function sendReminder(reminder, client) {
         const user = await client.users.fetch(reminder.user);
 
         const embedReminder = new EmbedBuilder()
-            .setAuthor({ name: `${user.displayName}'s Reminder`, iconURL: user.displayAvatarURL() })
+            .setAuthor({ name: `${user.username}'s Reminder`, iconURL: user.displayAvatarURL() })
             .setDescription(`*" ${reminder.reminderMessage} "*`)
             .setColor(client.config.embedColorTrans);
 
@@ -47,29 +43,10 @@ async function sendReminder(reminder, client) {
     }
 }
 
-function readReminders() {
-    try {
-        if (!fs.existsSync(reminderFile)) return [];
-        const data = fs.readFileSync(reminderFile, "utf8");
-        return data ? JSON.parse(data) : [];
-    } catch (err) {
-        console.error("Error reading reminders:", err);
-        return [];
-    }
-}
-
-function writeReminders(reminders) {
-    try {
-        fs.writeFileSync(reminderFile, JSON.stringify(reminders, null, 2));
-    } catch (err) {
-        console.error("Error writing reminders:", err);
-    }
-}
-
-function removeReminder(timeCounter) {
-    let reminders = readReminders();
-    reminders = reminders.filter(r => r.timeCounter !== timeCounter);
-    writeReminders(reminders);
+async function removeReminder(timeCounter, client) {
+    const reminders = await client.db.get("reminders") || [];
+    const updated = reminders.filter(r => r.timeCounter !== timeCounter);
+    await client.db.set("reminders", updated);
 }
 
 module.exports = { loadReminders };
