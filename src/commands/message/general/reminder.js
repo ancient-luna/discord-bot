@@ -39,6 +39,7 @@ module.exports = new Object({
             reminderMessage,
             user: message.author.id,
             channel: message.channel.id,
+            guild: message.guild.id,
             loadingMsgId: loadingTxt.id
         };
 

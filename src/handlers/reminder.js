@@ -26,27 +26,35 @@ function scheduleReminder(reminder, client) {
 async function sendReminder(reminder, client) {
     try {
         const channel = await client.channels.fetch(reminder.channel);
-        const user = await client.users.fetch(reminder.user);
+        const guild = client.guilds.cache.get(reminder.guild);
+        if (!guild) return removeReminder(reminder.timeCounter, client);
+        const member = await guild.members.fetch(reminder.user).catch(() => null);
+        if (!member) return removeReminder(reminder.timeCounter, client);
 
         const embedReminder = new EmbedBuilder()
-            .setAuthor({ name: `${user.username}'s Reminder`, iconURL: user.displayAvatarURL() })
+            .setAuthor({ name: `${member.displayName}'s Reminder`, iconURL: member.displayAvatarURL() })
             .setDescription(`*" ${reminder.reminderMessage} "*`)
             .setColor(client.config.embedColorTrans);
 
         await channel.send({ content: `<@${reminder.user}>`, embeds: [embedReminder] });
 
-        const msg = await channel.messages.fetch(reminder.loadingMsgId);
+        const msg = await channel.messages.fetch(reminder.loadingMsgId).catch(() => null);
         if (msg) await msg.edit({ content: `Successfully **reminded** you` });
+
+        // Remove reminder AFTER sending
+        await removeReminder(reminder.timeCounter, client);
 
     } catch (err) {
         console.error("Error handling reminder:", err);
+        // On error, try removing it anyway to prevent spam
+        await removeReminder(reminder.timeCounter, client);
     }
 }
 
 async function removeReminder(timeCounter, client) {
-    const reminders = await client.db.get("reminders") || [];
-    const updated = reminders.filter(r => r.timeCounter !== timeCounter);
-    await client.db.set("reminders", updated);
+    let all = await client.db.get("reminders") || [];
+    all = all.filter(r => r.timeCounter !== timeCounter);
+    await client.db.set("reminders", all);
 }
 
 module.exports = { loadReminders };
