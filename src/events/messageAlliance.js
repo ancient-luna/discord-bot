@@ -11,6 +11,8 @@ module.exports = {
     const allianceServerID = client.config.ancientLunaAlliance;
     if (message.guild?.id !== allianceServerID) return;
 
+    const channelName = message.channel.name;
+
     const member = await message.guild.members.fetch(message.author.id).catch(() => {});
     const displayName = member?.displayName || message.author.username;
     const avatarUrl = message.author.displayAvatarURL({ extension: "png", dynamic: true, size: 512 });
@@ -18,12 +20,12 @@ module.exports = {
     const body = message.content?.trim() || "";
     if (!body && message.attachments.size === 0) return;
 
-    const content = `**#${message.channel.name}:** ${body}`;
+    const content = `${body}`;
 
     try {
       await webhookClient.send({
         content,
-        username: displayName,
+        username: `${displayName} ✦ #${channelName} ✦`,
         avatarURL: avatarUrl,
         files: message.attachments.map(att => att),
       });
