@@ -31,12 +31,16 @@ module.exports = new Object({
             .addComponents(
                 new ButtonBuilder()
                     .setCustomId("btn-guildterms")
-                    .setLabel("Read Guild Terms")
+                    .setLabel("Guild Terms")
                     .setStyle(ButtonStyle.Secondary),
                 new ButtonBuilder()
                     .setCustomId("btn-guildbanner")
-                    .setLabel("See Guild Banner")
-                    .setStyle(ButtonStyle.Secondary)
+                    .setLabel("Guild Banner")
+                    .setStyle(ButtonStyle.Secondary),
+                new ButtonBuilder()
+                    .setLabel("Guild Alliance")
+                    .setURL("https://discord.gg/tjdhmd38P5")
+                    .setStyle(ButtonStyle.Link),
             )
 
         message.guild.channels.cache.get('1060992670035619931').send({
