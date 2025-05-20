@@ -29,7 +29,7 @@ module.exports = new Object({
             .setLabel("Guild Terms")
             .setStyle(ButtonStyle.Secondary),
           new ButtonBuilder()
-            .setLabel("Guild Alliance")
+            .setLabel("Join Alliance")
             .setStyle(ButtonStyle.Link)
             .setURL('https://discord.gg/tjdhmd38P5'),
         )
