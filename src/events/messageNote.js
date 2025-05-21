@@ -26,7 +26,7 @@ module.exports = new Object({
             .setStyle(ButtonStyle.Primary),
           new ButtonBuilder()
             .setCustomId("btn-guildterms")
-            .setLabel("Guild Terms")
+            .setLabel("Rules")
             .setStyle(ButtonStyle.Secondary),
           new ButtonBuilder()
             .setLabel("Join Alliance")

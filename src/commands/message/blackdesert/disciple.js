@@ -31,11 +31,11 @@ module.exports = new Object({
             .addComponents(
                 new ButtonBuilder()
                     .setCustomId("btn-guildterms")
-                    .setLabel("Guild Terms")
+                    .setLabel("Rules")
                     .setStyle(ButtonStyle.Secondary),
                 new ButtonBuilder()
                     .setCustomId("btn-guildbanner")
-                    .setLabel("Guild Banner")
+                    .setLabel("Banner")
                     .setStyle(ButtonStyle.Secondary),
                 new ButtonBuilder()
                     .setLabel("Join Alliance")
