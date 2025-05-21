@@ -11,17 +11,10 @@ module.exports = {
 
     const webhookMessageId = await client.db.get(`mirror_${newMessage.id}`);
     if (!webhookMessageId) return;
-    
-    let body = newMessage.content?.trim() || "[edited]";
-    body = body
-      .replace(/@everyone/g, "`@everyone`")
-      .replace(/@here/g, "`@here`")
-      .replace(/<@!?(\d+)>/g, "`@user`")
-      .replace(/<@&(\d+)>/g, "`@role`");
 
     try {
       await webhookClient.editMessage(webhookMessageId, {
-        content: body,
+        content: newMessage.content?.trim() || "[edited]",
         allowedMentions: { parse: [] },
       });
     } catch (err) {
