@@ -21,8 +21,6 @@ module.exports = {
     body = body
       .replace(/@everyone/g, "`@everyone`")
       .replace(/@here/g, "`@here`")
-      .replace(/<@!?(\d+)>/g, "`@user`")
-      .replace(/<@&(\d+)>/g, "`@role`");
     if (!body && message.attachments.size === 0) return;
 
     const content = `${body}`;
