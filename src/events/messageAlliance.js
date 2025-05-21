@@ -17,7 +17,7 @@ module.exports = {
     const displayName = member?.displayName || message.author.username;
     const avatarUrl = message.author.displayAvatarURL({ extension: "png", dynamic: true, size: 512 });
 
-    const body = message.content?.trim() || "";
+    let body = message.content?.trim() || "";
     body = body.replace(/@everyone/g, "`@everyone`").replace(/@here/g, "`@here`");
     if (!body && message.attachments.size === 0) return;
 
