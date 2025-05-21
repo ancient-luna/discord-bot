@@ -16,7 +16,7 @@ module.exports = {
 
     try {
       await webhookClient.send({
-        content: '-# <:ico_join:1374730865430495232> joined the alliance server ⓘ [TacoYaki](<https://discord.gg/tjdhmd38P5>)',
+        content: '-# <:ico_join:1374730865430495232> joined the alliance server ⓘ TacoYaki',
         username: `${displayName}`,
         avatarURL: avatarUrl,
       });
