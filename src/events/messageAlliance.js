@@ -25,7 +25,7 @@ module.exports = {
     try {
       const sent = await webhookClient.send({
         content,
-        username: `${displayName} ✦ #${channelName} ✦`,
+        username: `${displayName} ・ #${channelName}`,
         avatarURL: avatarUrl,
         files: message.attachments.map(att => att),
         allowedMentions: { parse: [] },
