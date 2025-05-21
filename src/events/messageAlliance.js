@@ -18,7 +18,11 @@ module.exports = {
     const avatarUrl = message.author.displayAvatarURL({ extension: "png", dynamic: true, size: 512 });
 
     let body = message.content?.trim() || "";
-    body = body.replace(/@everyone/g, "`@everyone`").replace(/@here/g, "`@here`");
+    body = body
+      .replace(/@everyone/g, "`@everyone`")
+      .replace(/@here/g, "`@here`")
+      .replace(/<@!?(\d+)>/g, "`@user`")
+      .replace(/<@&(\d+)>/g, "`@role`");
     if (!body && message.attachments.size === 0) return;
 
     const content = `${body}`;
@@ -29,6 +33,7 @@ module.exports = {
         username: `${displayName} ✦ #${channelName} ✦`,
         avatarURL: avatarUrl,
         files: message.attachments.map(att => att),
+        allowedMentions: { parse: [] },
       });
       await client.db.set(`mirror_${message.id}`, sent.id);
     } catch (err) {
