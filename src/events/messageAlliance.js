@@ -29,6 +29,7 @@ module.exports = {
         avatarURL: avatarUrl,
         files: message.attachments.map(att => att),
         allowedMentions: { parse: [] },
+        stickers: message.stickers.size ? [...message.stickers.values()].map(s => s.id) : undefined,
       });
       await client.db.set(`mirror_${message.id}`, sent.id);
     } catch (err) {
