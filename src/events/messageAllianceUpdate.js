@@ -12,9 +12,32 @@ module.exports = {
     const webhookMessageId = await client.db.get(`mirror_${newMessage.id}`);
     if (!webhookMessageId) return;
 
+    let body = newMessage.content?.trim() || "[edited]";
+
+    const emojiRegex = /<a?:\w+:(\d+)>/g;
+    const emojiMatches = [...body.matchAll(emojiRegex)];
+
+    if (emojiMatches.length) {
+      const parts = body.split(emojiRegex);
+      if (parts.join("").trim() === "") {
+        if (emojiMatches.length === 1) {
+          body = `https://cdn.discordapp.com/emojis/${emojiMatches[0][1]}.png`;
+        } else {
+          body = emojiMatches
+            .map(m => `[\`${m[0].split(":")[1]}\`](https://cdn.discordapp.com/emojis/${m[1]}.png)`)
+            .join(" ");
+        }
+      } else {
+        body = body.replace(emojiRegex, (match, id) => {
+          const name = match.split(":")[1];
+          return `[\`${name}\`](https://cdn.discordapp.com/emojis/${id}.png)`;
+        });
+      }
+    }
+
     try {
       await webhookClient.editMessage(webhookMessageId, {
-        content: newMessage.content?.trim() || "[edited]",
+        content: body,
         allowedMentions: { parse: [] },
       });
     } catch (err) {
