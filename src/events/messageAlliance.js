@@ -45,7 +45,7 @@ module.exports = {
         content: body,
         username: `${displayName} ・ #${channelName}`,
         avatarURL: avatarUrl,
-        files: message.attachments.map(att => att),
+        files: message.attachments.map(att => att.url),
         allowedMentions: { parse: [] },
       });
       await client.db.set(`mirror_${message.id}`, sent.id);
