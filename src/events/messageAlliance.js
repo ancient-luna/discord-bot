@@ -45,8 +45,6 @@ module.exports = {
         });
       }
     }
-    
-    if (message.stickers.size) body = message.stickers.first().url;
 
     if (message.stickers.size) {
       const sticker = message.stickers.first();
