@@ -48,6 +48,11 @@ module.exports = {
     
     if (message.stickers.size) body = message.stickers.first().url;
 
+    if (message.stickers.size) {
+      const sticker = message.stickers.first();
+      body = `https://media.discordapp.net/stickers/${sticker.id}.png?size=160&passthrough=false`;
+    }
+
     if (!body && message.attachments.size === 0) return;
 
     try {
