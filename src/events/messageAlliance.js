@@ -1,4 +1,4 @@
-const { WebhookClient } = require("discord.js");
+const { WebhookClient, StickerFormatType } = require("discord.js");
 require('dotenv').config();
 
 const webhookClient = new WebhookClient({ url: process.env.WEBHOOK_ALLIANCE });
@@ -19,26 +19,24 @@ module.exports = {
 
     let body = message.content?.trim() || "";
 
-    const emojiRegex = /<a?:\w+:(\d+)>/g;
-    const emojiMatches = [...body.matchAll(emojiRegex)];
-
-    if (emojiMatches.length) {
-      const parts = body.split(emojiRegex);
-      if (parts.join("").trim() === "") {
-        if (emojiMatches.length === 1) {
-          body = `https://cdn.discordapp.com/emojis/${emojiMatches[0][1]}.png`;
-        } else {
-          body = emojiMatches.map(m => `[\`${m[0].split(":")[1]}\`](https://cdn.discordapp.com/emojis/${m[1]}.png)`).join(" ");
-        }
-      } else {
-        body = body.replace(emojiRegex, (match, id) => {
-          const name = match.split(":")[1];
-          return `[\`${name}\`](https://cdn.discordapp.com/emojis/${id}.png)`;
-        });
+    const emojiNameRegex = /:([a-zA-Z0-9_]+):/g;
+    body = body.replace(emojiNameRegex, (match, name) => {
+      const emoji = client.emojis.cache.find(e => e.name === name);
+      if (!emoji) return match;
+      return `<${emoji.animated ? 'a' : ''}:${emoji.name}:${emoji.id}>`;
+    });
+    
+    const sticker = message.stickers.first();
+    let stickerUrl = null;
+    if (sticker) {
+      const isAnimated = sticker.format === StickerFormatType.Lottie || sticker.format === StickerFormatType.APNG;
+      if (!isAnimated) {
+        stickerUrl = `https://media.discordapp.net/stickers/${sticker.id}.png?size=320&passthrough=false`;
       }
     }
-    
-    if (message.stickers.size) body = message.stickers.first().url;
+    if (!body && stickerUrl) { body = stickerUrl; }
+
+    // if (message.stickers.size) body = message.stickers.first().url;
 
     if (!body && message.attachments.size === 0) return;
 
