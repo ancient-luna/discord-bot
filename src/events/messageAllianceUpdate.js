@@ -14,12 +14,32 @@ module.exports = {
 
     let body = newMessage.content?.trim() || "[edited]";
 
-    const emojiNameRegex = /:([a-zA-Z0-9_]+):/g;
-    body = body.replace(emojiNameRegex, (match, name) => {
-      const emoji = client.emojis.cache.find(e => e.name === name);
-      if (!emoji) return match;
-      return `<${emoji.animated ? 'a' : ''}:${emoji.name}:${emoji.id}>`;
-    });
+    const emojiRegex = /<a?:\w+:(\d+)>/g;
+    const emojiMatches = [...body.matchAll(emojiRegex)];
+
+    if (emojiMatches.length) {
+      const parts = body.split(emojiRegex);
+      if (parts.join("").trim() === "") {
+        if (emojiMatches.length === 1) {
+          const isAnimated = emojiMatches[0][0].startsWith("<a:");
+          const ext = isAnimated ? "gif" : "png";
+          body = `https://cdn.discordapp.com/emojis/${emojiMatches[0][1]}.${ext}?size=48`;
+        } else {
+          body = emojiMatches.map(m => {
+              const isAnimated = m[0].startsWith("<a:");
+              const ext = isAnimated ? "gif" : "png";
+              return `[ⓘ](https://cdn.discordapp.com/emojis/${m[1]}.${ext}?size=48)`;
+            }).join(" ");
+        }
+      } else {
+        body = body.replace(emojiRegex, (match, id) => {
+          const isAnimated = match.startsWith("<a:");
+          const ext = isAnimated ? "gif" : "png";
+          const name = match.split(":")[1];
+          return `[ⓘ](https://cdn.discordapp.com/emojis/${id}.${ext}?size=48)`;
+        });
+      }
+    }
 
     try {
       await webhookClient.editMessage(webhookMessageId, {

@@ -1,4 +1,4 @@
-const { WebhookClient, StickerFormatType } = require("discord.js");
+const { WebhookClient } = require("discord.js");
 require('dotenv').config();
 
 const webhookClient = new WebhookClient({ url: process.env.WEBHOOK_ALLIANCE });
@@ -19,24 +19,34 @@ module.exports = {
 
     let body = message.content?.trim() || "";
 
-    const emojiNameRegex = /:([a-zA-Z0-9_]+):/g;
-    body = body.replace(emojiNameRegex, (match, name) => {
-      const emoji = client.emojis.cache.find(e => e.name === name);
-      if (!emoji) return match;
-      return `<${emoji.animated ? 'a' : ''}:${emoji.name}:${emoji.id}>`;
-    });
-    
-    const sticker = message.stickers.first();
-    let stickerUrl = null;
-    if (sticker) {
-      const isAnimated = sticker.format === StickerFormatType.Lottie || sticker.format === StickerFormatType.APNG;
-      if (!isAnimated) {
-        stickerUrl = `https://media.discordapp.net/stickers/${sticker.id}.png?size=320&passthrough=false`;
+    const emojiRegex = /<a?:\w+:(\d+)>/g;
+    const emojiMatches = [...body.matchAll(emojiRegex)];
+
+    if (emojiMatches.length) {
+      const parts = body.split(emojiRegex);
+      if (parts.join("").trim() === "") {
+        if (emojiMatches.length === 1) {
+          const isAnimated = emojiMatches[0][0].startsWith("<a:");
+          const ext = isAnimated ? "gif" : "png";
+          body = `https://cdn.discordapp.com/emojis/${emojiMatches[0][1]}.${ext}?size=48`;
+        } else {
+          body = emojiMatches.map(m => {
+              const isAnimated = m[0].startsWith("<a:");
+              const ext = isAnimated ? "gif" : "png";
+              return `[ⓘ](https://cdn.discordapp.com/emojis/${m[1]}.${ext}?size=48)`;
+            }).join(" ");
+        }
+      } else {
+        body = body.replace(emojiRegex, (match, id) => {
+          const isAnimated = match.startsWith("<a:");
+          const ext = isAnimated ? "gif" : "png";
+          const name = match.split(":")[1];
+          return `[ⓘ](https://cdn.discordapp.com/emojis/${id}.${ext}?size=48)`;
+        });
       }
     }
-    if (!body && stickerUrl) { body = stickerUrl; }
-
-    // if (message.stickers.size) body = message.stickers.first().url;
+    
+    if (message.stickers.size) body = message.stickers.first().url;
 
     if (!body && message.attachments.size === 0) return;
 
@@ -45,7 +55,7 @@ module.exports = {
         content: body,
         username: `${displayName} ・ #${channelName}`,
         avatarURL: avatarUrl,
-        files: message.attachments.map(att => att.url),
+        files: message.attachments.map(att => att),
         allowedMentions: { parse: [] },
       });
       await client.db.set(`mirror_${message.id}`, sent.id);
