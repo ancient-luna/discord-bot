@@ -25,7 +25,7 @@ module.exports = new Object({
     async execute(client, message, args) {
         const guildEldersID = '1235965537326993450';
         if (!message.member.roles.cache.has(guildEldersID)) {
-            return message.reply(`**No, you can't**, only the **Guild Elders** able to command me for this.`);
+            return message.reply(`**No, you can't**. only the **Guild Elders** able to command me for this.`);
         }
 
         let target = message.mentions.members.first();

@@ -24,7 +24,7 @@ module.exports = new Object({
     async execute(client, message, args) {
         const lunariaID = '839170815932891197';
         if (!message.member.roles.cache.has(lunariaID)) {
-            return message.reply(`**No, you can't**, only the **LUNARIA** able to command me for this.`);
+            return message.reply(`**No, you can't**. only the **LUNARIA** able to command me for this.`);
         }
 
         let target = message.mentions.members.first();
