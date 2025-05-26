@@ -6,6 +6,7 @@ const app = express();
 
 module.exports = new Object({
   name: "ready",
+  once: true,
   /**
    * @param {import("../index")} client
    */
