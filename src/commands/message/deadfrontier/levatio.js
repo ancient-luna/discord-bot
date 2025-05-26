@@ -29,7 +29,7 @@ module.exports = new Object({
         }
 
         let target = message.mentions.members.first();
-        if (!target) return message.reply('Please `mention` them, the one who is about to be a **Levatio** <:al_levatio:1376685304005525585');
+        if (!target) return message.reply('Please `mention` them, the one who is about to be a **Levatio** <:al_levatio:1376685304005525585>');
 
         let role = '1052973235710464040';
 
