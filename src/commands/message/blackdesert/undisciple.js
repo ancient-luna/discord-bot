@@ -3,7 +3,7 @@ module.exports = new Object({
     name: "undisciple",
     description: "removing mentioned member lunar disciple role",
     category: "blackdesert",
-    usage: `${client.prefix}undisciple <@user> [vac]`,
+    usage: `undisciple <@user> [vac]`,
     cooldown: 0,
     aliases: [],
     examples: [],

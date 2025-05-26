@@ -4,7 +4,7 @@ module.exports = new Object({
     name: "accept",
     description: "accepting suggestion",
     category: "suggestion",
-    usage: `${client.prefix}accept <messageID> <reason>`,
+    usage: `accept <messageID> <reason>`,
     cooldown: 0,
     aliases: [],
     examples: [],

@@ -6,7 +6,7 @@ module.exports = new Object({
     name: "status",
     description: "tracking player stats including weapons, location, and many",
     category: "deadfrontier",
-    usage: `${client.prefix}status <dfp userid>`,
+    usage: `status <dfp userid>`,
     cooldown: 0,
     aliases: [],
     examples: [],

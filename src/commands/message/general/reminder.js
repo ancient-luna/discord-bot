@@ -5,7 +5,7 @@ module.exports = new Object({
     name: "reminder",
     description: "setting up a reminder in min/hrs",
     category: "general",
-    usage: `${client.prefix}reminder <time> <message>`,
+    usage: `reminder <time> <message>`,
     cooldown: 0,
     aliases: [],
     examples: [],

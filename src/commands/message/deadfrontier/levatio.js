@@ -4,7 +4,7 @@ module.exports = new Object({
     name: "levatio",
     description: "giving mentioned member levatio role",
     category: "deadfrontier",
-    usage: `${client.prefix}levatio <@user>`,
+    usage: `levatio <@user>`,
     cooldown: 0,
     aliases: [],
     examples: [],

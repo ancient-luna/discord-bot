@@ -3,7 +3,7 @@ module.exports = new Object({
   name: "clearwisdom",
   description: "deleting some messages",
   category: "moderator",
-  usage: `${client.prefix}clearwisdom <number>`,
+  usage: `clearwisdom <number>`,
   cooldown: 0,
   aliases: [],
   examples: [],

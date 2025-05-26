@@ -3,7 +3,7 @@ module.exports = new Object({
   name: "whisper",
   description: "dm to mentioned members",
   category: "moderator",
-  usage: `${client.prefix}whisper <userid> <message>`,
+  usage: `whisper <userid> <message>`,
   cooldown: 0,
   aliases: [],
   examples: [],

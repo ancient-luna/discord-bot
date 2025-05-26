@@ -3,7 +3,7 @@ module.exports = new Object({
     name: "lightseeker",
     description: "giving lightseeker role to mentioned member",
     category: "moderator",
-    usage: `${client.prefix}lightseeker <@user>`,
+    usage: `lightseeker <@user>`,
     cooldown: 0,
     aliases: [],
     examples: [],

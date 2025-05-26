@@ -3,7 +3,7 @@ module.exports = new Object({
     name: "blindednight",
     description: "banning mentioned member",
     category: "moderator",
-    usage: `${client.prefix}blindednight <@user> [reason]`,
+    usage: `blindednight <@user> [reason]`,
     cooldown: 0,
     aliases: ['ban'],
     examples: [],

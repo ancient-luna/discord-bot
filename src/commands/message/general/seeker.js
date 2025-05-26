@@ -5,7 +5,7 @@ module.exports = new Object({
     name: "seeker",
     description: "giving member information",
     category: "general",
-    usage: `${client.prefix}seeker [@user]`,
+    usage: `seeker [@user]`,
     cooldown: 0,
     aliases: ['profile', 'avatar'],
     examples: [],

@@ -5,7 +5,7 @@ module.exports = {
     name: "spotify",
     description: "getting member's currently listened-to songs on Spotify",
     category: "general",
-    usage: `${client.prefix}spotify [@user]`,
+    usage: `spotify [@user]`,
     cooldown: 0,
     aliases: [],
     examples: [],

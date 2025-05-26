@@ -3,7 +3,7 @@ module.exports = new Object({
     name: "rawr",
     description: "you wanna fite?",
     category: "fun",
-    usage: `${client.prefix}rawr`,
+    usage: `rawr`,
     cooldown: 0,
     aliases: [],
     examples: [],

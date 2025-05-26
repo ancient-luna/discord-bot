@@ -4,7 +4,7 @@ module.exports = new Object({
     description: "whole Luna information that you might need to know",
     category: "general",
     cooldown: 0,
-    usage: `${client.prefix}wisdomoflleud`,
+    usage: `wisdomoflleud`,
     aliases: ['help', 'about'],
     examples: [],
     sub_commands: [],

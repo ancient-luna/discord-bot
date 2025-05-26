@@ -5,7 +5,7 @@ module.exports = {
     name: "radiance",
     description: "current supporters and booster in the sanctuary",
     category: "general",
-    usage: `${client.prefix}radiance`,
+    usage: `radiance`,
     cooldown: 0,
     aliases: [],
     examples: [],

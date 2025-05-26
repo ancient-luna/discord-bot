@@ -4,7 +4,7 @@ module.exports = new Object({
     name: "spit",
     description: "hawk tuah!",
     category: "fun",
-    usage: `${client.prefix}spit <@user> | (reply to a message)`,
+    usage: `spit <@user> | (reply to a message)`,
     cooldown: 0,
     aliases: [],
     examples: [],

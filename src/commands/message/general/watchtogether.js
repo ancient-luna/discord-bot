@@ -4,7 +4,7 @@ module.exports = new Object({
     name: "watchtogether",
     description: "sharing a YouTube Watch Together link in the voice channel",
     category: "general",
-    usage: `${client.prefix}watchtogether`,
+    usage: `watchtogether`,
     cooldown: 0,
     aliases: [],
     examples: [],

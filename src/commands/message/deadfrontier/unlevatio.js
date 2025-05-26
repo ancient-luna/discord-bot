@@ -3,7 +3,7 @@ module.exports = new Object({
     name: "unlevatio",
     description: "removing mentioned member levatio role",
     category: "deadfrontier",
-    usage: `${client.prefix}unlevatio <@user>`,
+    usage: `unlevatio <@user>`,
     cooldown: 0,
     aliases: [],
     examples: [],

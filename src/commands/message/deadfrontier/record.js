@@ -6,7 +6,7 @@ module.exports = {
     name: "record",
     description: "tracking weekly CTS/CTL",
     category: "deadfrontier",
-    usage: `${client.prefix}record <dfp userid>`,
+    usage: `record <dfp userid>`,
     cooldown: 0,
     aliases: [],
     examples: [],

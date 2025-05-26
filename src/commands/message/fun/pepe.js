@@ -5,7 +5,7 @@ module.exports = new Object({
     name: "pepe",
     description: "el pepe sign",
     category: "fun",
-    usage: `${client.prefix}pepe [text]`,
+    usage: `pepe [text]`,
     cooldown: 0,
     aliases: [],
     examples: [],

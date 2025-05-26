@@ -3,7 +3,7 @@ module.exports = new Object({
     name: "rewrite",
     description: "editting embeds",
     category: "moderator",
-    usage: `${client.prefix}rewrite <channelID> <messageID> <content>`,
+    usage: `rewrite <channelID> <messageID> <content>`,
     cooldown: 0,
     aliases: ['editembed'],
     examples: [],

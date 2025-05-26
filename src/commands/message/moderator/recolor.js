@@ -3,7 +3,7 @@ module.exports = new Object({
     name: "recolor",
     description: "recoloring embeds",
     category: "moderator",
-    usage: `${client.prefix}recolor <channelID> <messageID> <#HEX>`,
+    usage: `recolor <channelID> <messageID> <#HEX>`,
     cooldown: 0,
     aliases: [],
     examples: [],

@@ -4,7 +4,7 @@ module.exports = new Object({
     name: "dictionary",
     description: "example sentences based on Urban Dictionary definitions",
     category: "general",
-    usage: `${client.prefix}dictionary <word>`,
+    usage: `dictionary <word>`,
     cooldown: 0,
     aliases: ['whatis', 'urban', 'meaning', 'meaningof'],
     examples: [],

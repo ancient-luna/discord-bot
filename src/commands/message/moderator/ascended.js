@@ -3,7 +3,7 @@ module.exports = new Object({
     name: "ascended",
     description: "giving mentioned member roles",
     category: "moderator",
-    usage: `${client.prefix}ascended <@role>`,
+    usage: `ascended <@role>`,
     cooldown: 0,
     aliases: [],
     examples: [],

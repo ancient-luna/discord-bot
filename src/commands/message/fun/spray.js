@@ -3,7 +3,7 @@ module.exports = new Object({
     name: "spray",
     description: "li'el pean is attacking!",
     category: "fun",
-    usage: `${client.prefix}spray`,
+    usage: `spray`,
     cooldown: 0,
     aliases: ['fact', 'emotionaldamage', 'aki', 'hany'],
     examples: [],
