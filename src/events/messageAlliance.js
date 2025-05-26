@@ -33,7 +33,7 @@ module.exports = {
           body = emojiMatches.map(m => {
               const isAnimated = m[0].startsWith("<a:");
               const ext = isAnimated ? "gif" : "png";
-              return `[ⓘ](https://cdn.discordapp.com/emojis/${m[1]}.${ext}?size=48)`;
+              return `[☺](https://cdn.discordapp.com/emojis/${m[1]}.${ext}?size=48)`;
             }).join(" ");
         }
       } else {
@@ -41,7 +41,7 @@ module.exports = {
           const isAnimated = match.startsWith("<a:");
           const ext = isAnimated ? "gif" : "png";
           const name = match.split(":")[1];
-          return `[ⓘ](https://cdn.discordapp.com/emojis/${id}.${ext}?size=48)`;
+          return `[☺](https://cdn.discordapp.com/emojis/${id}.${ext}?size=48)`;
         });
       }
     }
@@ -51,6 +51,8 @@ module.exports = {
       body = `https://media.discordapp.net/stickers/${sticker.id}.png?size=160&passthrough=false`;
     }
 
+    const embedData = message.embeds?.map(embed => embed.toJSON()) || [];
+
     if (!body && message.attachments.size === 0) return;
 
     try {
@@ -59,6 +61,7 @@ module.exports = {
         username: `${displayName} ・ #${channelName}`,
         avatarURL: avatarUrl,
         files: message.attachments.map(att => att),
+        embeds: embedData,
         allowedMentions: { parse: [] },
       });
       await client.db.set(`mirror_${message.id}`, sent.id);

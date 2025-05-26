@@ -16,7 +16,7 @@ module.exports = {
 
     try {
       await webhookClient.send({
-        content: '-# <:join:1375226477989200004> joined the alliance server ⓘ TacoYaki',
+        content: '-# joined the alliance server ⓘ',
         username: `${displayName}`,
         avatarURL: avatarUrl,
       });

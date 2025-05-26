@@ -28,7 +28,7 @@ module.exports = {
           body = emojiMatches.map(m => {
               const isAnimated = m[0].startsWith("<a:");
               const ext = isAnimated ? "gif" : "png";
-              return `[ⓘ](https://cdn.discordapp.com/emojis/${m[1]}.${ext}?size=48)`;
+              return `[☺](https://cdn.discordapp.com/emojis/${m[1]}.${ext}?size=48)`;
             }).join(" ");
         }
       } else {
@@ -36,14 +36,17 @@ module.exports = {
           const isAnimated = match.startsWith("<a:");
           const ext = isAnimated ? "gif" : "png";
           const name = match.split(":")[1];
-          return `[ⓘ](https://cdn.discordapp.com/emojis/${id}.${ext}?size=48)`;
+          return `[☺](https://cdn.discordapp.com/emojis/${id}.${ext}?size=48)`;
         });
       }
     }
 
+    const embedData = newMessage.embeds?.map(embed => embed.toJSON()) || [];
+
     try {
       await webhookClient.editMessage(webhookMessageId, {
         content: body,
+        embeds: embedData,
         allowedMentions: { parse: [] },
       });
     } catch (err) {
