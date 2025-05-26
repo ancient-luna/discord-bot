@@ -7,7 +7,7 @@ module.exports = new Object({
     usage: `coinflip`,
     cooldown: 0,
     aliases: [],
-    examples: '],
+    examples: [],
     sub_commands: [],
     args: false,
     permissions: {
