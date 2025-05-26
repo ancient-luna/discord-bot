@@ -5,10 +5,10 @@ module.exports = new Object({
     name: "seeker",
     description: "giving member information",
     category: "general",
+    usage: `${client.prefix}seeker [@user]`,
     cooldown: 0,
-    usage: "",
     aliases: ['profile', 'avatar'],
-    examples: [''],
+    examples: [],
     sub_commands: [],
     args: false,
     permissions: {
@@ -78,7 +78,6 @@ module.exports = new Object({
 
             const Embed = new EmbedBuilder()
                 .setTitle(`${member.displayName} Profile in ${message.guild.name} ✦`)
-                .setColor('Aqua')
                 .setDescription(`<@${member.id}> joined as the ${addSuffix(joinPosition)} member of this server`)
                 // .setImage(`attachment://profile.png`)
                 .addFields([

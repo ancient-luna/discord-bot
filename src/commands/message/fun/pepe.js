@@ -4,11 +4,11 @@ const Canvas = require("canvas");
 module.exports = new Object({
     name: "pepe",
     description: "el pepe sign",
-    category: "Fun",
-    usage: "",
+    category: "fun",
+    usage: `${client.prefix}pepe [text]`,
     cooldown: 0,
-    aliases: [''],
-    examples: [''],
+    aliases: [],
+    examples: [],
     sub_commands: [],
     args: false,
     permissions: {

@@ -5,10 +5,10 @@ module.exports = {
     name: "spotify",
     description: "getting member's currently listened-to songs on Spotify",
     category: "general",
-    usage: "",
+    usage: `${client.prefix}spotify [@user]`,
     cooldown: 0,
-    aliases: [''],
-    examples: [''],
+    aliases: [],
+    examples: [],
     sub_commands: [],
     args: false,
     permissions: {
@@ -58,13 +58,6 @@ module.exports = {
             const Card = await spotify.build();
             const attachments = new AttachmentBuilder(Card, { name: "spotify.png" });
 
-            const embed = new EmbedBuilder()
-                .setTitle(`${listener.displayName} is currently listening to`)
-                .setImage(`attachment://spotify.png`)
-                .setTimestamp()
-                .setColor(`1db954`)
-                .setFooter({ text: `Spotify`, iconURL: `https://i.imgur.com/o0RHwu2.png` });
-
             const trackId = status.syncId;
 
             const link = new ActionRowBuilder()
@@ -77,7 +70,6 @@ module.exports = {
 
             await loadingTxt.edit({
                 content: '⁣',
-                // embeds: [embed],
                 files: [attachments],
                 components: [link]
             });

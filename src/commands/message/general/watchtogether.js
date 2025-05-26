@@ -4,10 +4,10 @@ module.exports = new Object({
     name: "watchtogether",
     description: "sharing a YouTube Watch Together link in the voice channel",
     category: "general",
-    usage: "",
+    usage: `${client.prefix}watchtogether`,
     cooldown: 0,
-    aliases: [''],
-    examples: [''],
+    aliases: [],
+    examples: [],
     sub_commands: [],
     args: false,
     permissions: {
@@ -34,7 +34,7 @@ module.exports = new Object({
                             .setTitle(`Get your snacks and relax 🍿`)
                             .setDescription(`**${message.author.username}** has started **[YouTube Together](${invite.code})** in <#${channel.id}>\nWatch YouTube videos in ${message.guild.name}`)
                             .setFooter({ text: `Mobile ver. not supported`, iconURL: 'https://i.imgur.com/7WAJS44.png' })
-                            .setColor('ed0000')
+                            .setColor('#ed0000')
                     ],
                     components: [
                         new ActionRowBuilder()

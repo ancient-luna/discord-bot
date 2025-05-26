@@ -4,10 +4,10 @@ module.exports = new Object({
     name: "dictionary",
     description: "example sentences based on Urban Dictionary definitions",
     category: "general",
-    usage: "",
+    usage: `${client.prefix}dictionary <word>`,
     cooldown: 0,
     aliases: ['whatis', 'urban', 'meaning', 'meaningof'],
-    examples: [''],
+    examples: [],
     sub_commands: [],
     args: false,
     permissions: {

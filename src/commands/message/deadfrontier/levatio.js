@@ -4,15 +4,15 @@ module.exports = new Object({
     name: "levatio",
     description: "giving mentioned member levatio role",
     category: "deadfrontier",
-    usage: "",
+    usage: `${client.prefix}levatio <@user>`,
     cooldown: 0,
-    aliases: [''],
-    examples: [''],
+    aliases: [],
+    examples: [],
     sub_commands: [],
     args: false,
     permissions: {
         client: [],
-        user: ['ManageMessages'],
+        user: [],
         dev: false,
     },
     player: { voice: false, active: false, dj: false, },
@@ -23,9 +23,12 @@ module.exports = new Object({
      * @param {String[]} args
      */
     async execute(client, message, args) {
+        const lunariaID = '839170815932891197';
+        if (!message.member.roles.cache.has(lunariaID)) {
+            return message.reply(`**No, you can't**, only the **LUNARIA** able to command me for this.`);
+        }
 
         let target = message.mentions.members.first();
-
         if (!target) return message.reply('Please `mention` them, the one who is about to be a **Levatio**');
 
         let role = '1052973235710464040';

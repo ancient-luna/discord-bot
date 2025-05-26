@@ -6,16 +6,16 @@ module.exports = new Object({
     name: "status",
     description: "tracking player stats including weapons, location, and many",
     category: "deadfrontier",
-    usage: "",
+    usage: `${client.prefix}status <dfp userid>`,
     cooldown: 0,
-    aliases: [''],
-    examples: [''],
+    aliases: [],
+    examples: [],
     sub_commands: [],
     args: false,
     permissions: {
         client: [],
         user: [],
-        dev: false,
+        dev: true,
     },
     player: { voice: false, active: false, dj: false, },
     /**
@@ -115,7 +115,7 @@ module.exports = new Object({
                 .setThumbnail(`https://i.imgur.com/ulP4oAd.png`)
                 .setDescription(`**${profession_level}**\n(${experience})`)
                 .setImage(`https://www.dfprofiler.com/signaturereplicate.php?profile=${survivorID}&imgur=5q7hV6B`)
-                .setColor('3c3d4f')
+                .setColor(client.config.embedColorTrans)
 
             const btnProfile = new ActionRowBuilder()
                 .addComponents(
@@ -180,7 +180,7 @@ module.exports = new Object({
                         )
                         .setImage(`https://i.imgur.com/TMI3wTd.gif`)
                         .setFooter({ text: `Powered by Ancient Luna`, iconURL: 'https://i.imgur.com/vKo3PJm.png' })
-                        .setColor('3c3d4f')
+                        .setColor(client.config.embedColorTrans)
                         .setTimestamp()
 
                     loadingTxt.edit({
@@ -216,7 +216,7 @@ module.exports = new Object({
                         )
                         .setImage(`https://i.imgur.com/TMI3wTd.gif`)
                         .setFooter({ text: `Powered by Ancient Luna`, iconURL: 'https://i.imgur.com/vKo3PJm.png' })
-                        .setColor('3c3d4f')
+                        .setColor(client.config.embedColorTrans)
                         .setTimestamp()
 
                     loadingTxt.edit({

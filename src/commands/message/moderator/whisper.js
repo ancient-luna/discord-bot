@@ -3,10 +3,10 @@ module.exports = new Object({
   name: "whisper",
   description: "dm to mentioned members",
   category: "moderator",
-  usage: "",
+  usage: `${client.prefix}whisper <userid> <message>`,
   cooldown: 0,
-  aliases: [''],
-  examples: [''],
+  aliases: [],
+  examples: [],
   sub_commands: [],
   args: false,
   permissions: {

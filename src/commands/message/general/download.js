@@ -5,10 +5,10 @@ module.exports = {
     name: 'download',
     description: 'convert YouTube to MP3 and MP4 to download',
     category: 'general',
-    usage: '',
+    usage: `${client.prefix}download <URL>`,
     cooldown: 0,
-    aliases: [''],
-    examples: [''],
+    aliases: [],
+    examples: [],
     sub_commands: [],
     args: false,
     permissions: {

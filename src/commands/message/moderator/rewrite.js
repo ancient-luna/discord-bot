@@ -3,10 +3,10 @@ module.exports = new Object({
     name: "rewrite",
     description: "editting embeds",
     category: "moderator",
-    usage: "",
+    usage: `${client.prefix}rewrite <channelID> <messageID> <content>`,
     cooldown: 0,
     aliases: ['editembed'],
-    examples: [''],
+    examples: [],
     sub_commands: [],
     args: false,
     permissions: {
@@ -26,9 +26,9 @@ module.exports = new Object({
         const msgID = args[1];
         const cntntQ = args.slice(2).join(" ");
 
-        if (!chID) return message.reply("missing `channelid` `messageid` `reason`");
-        if (!msgID) return message.reply("missing `messageid` `reason`");
-        if (!cntntQ) return message.reply("missing `reason`");
+        if (!chID) return message.reply("missing `channelid` `messageid` `content`");
+        if (!msgID) return message.reply("missing `messageid` `content`");
+        if (!cntntQ) return message.reply("missing `content`");
 
         try {
             const channelID = message.guild.channels.cache.get(chID);

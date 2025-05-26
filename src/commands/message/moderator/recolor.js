@@ -3,10 +3,10 @@ module.exports = new Object({
     name: "recolor",
     description: "recoloring embeds",
     category: "moderator",
-    usage: "",
+    usage: `${client.prefix}recolor <channelID> <messageID> <#HEX>`,
     cooldown: 0,
-    aliases: [''],
-    examples: [''],
+    aliases: [],
+    examples: [],
     sub_commands: [],
     args: false,
     permissions: {

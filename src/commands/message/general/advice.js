@@ -5,10 +5,10 @@ module.exports = new Object({
     name: "advice",
     description: "a total random advice",
     category: "general",
-    usage: "",
+    usage: `${client.prefix}advice [@user]`,
     cooldown: 0,
     aliases: ['lifeadvice'],
-    examples: [''],
+    examples: [],
     sub_commands: [],
     args: false,
     permissions: {

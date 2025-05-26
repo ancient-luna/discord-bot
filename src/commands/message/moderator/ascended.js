@@ -3,10 +3,10 @@ module.exports = new Object({
     name: "ascended",
     description: "giving mentioned member roles",
     category: "moderator",
-    usage: "",
+    usage: `${client.prefix}ascended <@role>`,
     cooldown: 0,
-    aliases: [''],
-    examples: [''],
+    aliases: [],
+    examples: [],
     sub_commands: [],
     args: false,
     permissions: {
@@ -22,23 +22,29 @@ module.exports = new Object({
      * @param {String[]} args
      */
     async execute(client, message, args) {
-        // Get the role option from the user's input
         const role = message.mentions.roles.first();
-
-        // Get all members in the server
+        if (!role) return message.reply("Please mention a valid role!");
+        
         const members = await message.guild.members.fetch();
 
-        // Give the role to all members
-        members.forEach(member => {
-            if (!member.roles.cache.has(role.id)) {
-                member.roles.add(role);
-            }
-        });
+        let successCount = 0;
+        let failCount = 0;
 
-        // Send a success message
+        for (const member of members.values()) {
+            try {
+                if (!member.roles.cache.has(role.id)) {
+                    await member.roles.add(role);
+                    successCount++;
+                    await new Promise(res => setTimeout(res, 100));
+                }
+            } catch {
+                failCount++;
+            }
+        }
+
         const embed = new EmbedBuilder()
-            .setColor('#00FF00')
-            .setDescription(`Successfully gave the "${role.name}" role to all members.`);
+            .setColor(client.config.embedColorBlurple)
+            .setDescription(`<:srv_accept:1334881070449164378> Successfully gave the **${role.name}** role to ${successCount} members.\n<:srv_deny:1334881089205829674> Failed to add role to ${failCount} members.`);
 
         return message.reply({ embeds: [embed] });
     }

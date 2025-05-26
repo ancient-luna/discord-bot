@@ -2,11 +2,11 @@ const { AttachmentBuilder } = require("discord.js");
 module.exports = new Object({
     name: "chichay",
     description: "uiiaiouiiiai",
-    category: "Fun",
-    usage: "",
+    category: "fun",
+    usage: `${client.prefix}chichay`,
     cooldown: 0,
     aliases: ['uiia'],
-    examples: [''],
+    examples: [],
     sub_commands: [],
     args: false,
     permissions: {

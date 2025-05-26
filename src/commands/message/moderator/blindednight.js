@@ -3,10 +3,10 @@ module.exports = new Object({
     name: "blindednight",
     description: "banning mentioned member",
     category: "moderator",
-    usage: "",
+    usage: `${client.prefix}blindednight <@user> [reason]`,
     cooldown: 0,
     aliases: ['ban'],
-    examples: [''],
+    examples: [],
     sub_commands: [],
     args: false,
     permissions: {
@@ -29,11 +29,11 @@ module.exports = new Object({
             );
         }
         if (target.id === message.guild.ownerId) {
-            return message.channel.send("You cannot Ban the `Server Owner`");
+            return message.channel.send("You cannot Ban the **Server Owner**");
         }
         if (target.id === message.author.id) {
             return message.channel.send(
-                `**${message.author.username}**, You can not ban \`yourself\``
+                `**${message.author.username}**, You can not ban **yourself**`
             );
         }
         let reason = args.slice(1).join(" ");

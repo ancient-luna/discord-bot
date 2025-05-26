@@ -3,10 +3,10 @@ module.exports = new Object({
     name: "dimmedlight",
     description: "kicking mentioned member",
     category: "moderator",
-    usage: "",
+    usage: `${client.prefix}dimmedlight <@user> [reason]`,
     cooldown: 0,
     aliases: ['kick'],
-    examples: [''],
+    examples: [],
     sub_commands: [],
     args: false,
     permissions: {
@@ -31,12 +31,12 @@ module.exports = new Object({
         }
 
         if (target.id === message.guild.ownerId) {
-            return message.channel.send("You cannot kick the `Server Owner`");
+            return message.channel.send("You cannot kick the **Server Owner**");
         }
 
         if (target.id === message.author.id) {
             return message.channel.send(
-                `**${message.author.username}**, You can not kick \`yourself\``
+                `**${message.author.username}**, You can not kick **yourself**`
             );
         }
 

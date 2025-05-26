@@ -1,17 +1,18 @@
 const { EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle } = require("discord.js");
+const client = require("../../..");
 module.exports = new Object({
     name: "disciple",
     description: "giving mentioned member lunar disciple role",
     category: "blackdesert",
-    usage: "",
+    usage: `${client.prefix}disciple <@user>`,
     cooldown: 0,
-    aliases: [''],
-    examples: [''],
+    aliases: [],
+    examples: [],
     sub_commands: [],
     args: false,
     permissions: {
         client: [],
-        user: ['ManageThreads'],
+        user: [],
         dev: false,
     },
     player: { voice: false, active: false, dj: false, },
@@ -22,9 +23,14 @@ module.exports = new Object({
      * @param {String[]} args
      */
     async execute(client, message, args) {
+        const guildEldersID = '1235965537326993450';
+        if (!message.member.roles.cache.has(guildEldersID)) {
+            return message.reply(`**No, you can't**, only the **Guild Elders** able to command me for this.`);
+        }
 
         let target = message.mentions.members.first();
         if (!target) return message.reply('Please `mention` them, the one who is about to be the **Lunar Disciple** <:al_bs:1334859889155117116>');
+
         let role = '1060982357538119850';
 
         const btnTerms = new ActionRowBuilder()

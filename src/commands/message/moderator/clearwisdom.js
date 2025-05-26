@@ -3,10 +3,10 @@ module.exports = new Object({
   name: "clearwisdom",
   description: "deleting some messages",
   category: "moderator",
-  usage: "",
+  usage: `${client.prefix}clearwisdom <number>`,
   cooldown: 0,
   aliases: [],
-  examples: [''],
+  examples: [],
   sub_commands: [],
   args: false,
   permissions: {
@@ -23,13 +23,13 @@ module.exports = new Object({
    */
   async execute(client, message, args) {
     if (args.length !== 1) return message.channel.send('Wrong usage. `!clearwisdom [1-100]`');
+
     const numberOfMessages = args[0];
     if (numberOfMessages > 100 || numberOfMessages < 0)
       return message.channel.send('Invalid number of messages. `!clearwisdom [1-100]`');
-    await message.channel.bulkDelete(numberOfMessages)
-      .then((messages) => {
+
+    await message.channel.bulkDelete(numberOfMessages).then((messages) => {
         client.util.printLog('info', `Bulk deleted ${messages.size} messages`);
-      })
-      .catch(console.error);
+      }).catch(console.error);
   }
 });

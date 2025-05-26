@@ -5,10 +5,10 @@ module.exports = new Object({
     name: "reminder",
     description: "setting up a reminder in min/hrs",
     category: "general",
-    usage: "",
+    usage: `${client.prefix}reminder <time> <message>`,
     cooldown: 0,
-    aliases: [''],
-    examples: [''],
+    aliases: [],
+    examples: [],
     sub_commands: [],
     args: false,
     permissions: {

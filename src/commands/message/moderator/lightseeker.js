@@ -3,15 +3,15 @@ module.exports = new Object({
     name: "lightseeker",
     description: "giving lightseeker role to mentioned member",
     category: "moderator",
-    usage: "",
+    usage: `${client.prefix}lightseeker <@user>`,
     cooldown: 0,
-    aliases: [''],
-    examples: [''],
+    aliases: [],
+    examples: [],
     sub_commands: [],
     args: false,
     permissions: {
         client: ['ManageGuild'],
-        user: ['ManageMessages'],
+        user: [],
         dev: false,
     },
     player: { voice: false, active: false, dj: false, },
@@ -22,6 +22,10 @@ module.exports = new Object({
      * @param {String[]} args
      */
     async execute(client, message, args) {
+        const lunariaID = '839170815932891197';
+        if (!message.member.roles.cache.has(lunariaID)) {
+            return message.reply(`**No, you can't**, only the **LUNARIA** able to command me for this.`);
+        }
         let target = message.mentions.members.first();
         if (!target) return message.reply('please `mention a user`');
         let lightseekerRole = '839198215580811344';

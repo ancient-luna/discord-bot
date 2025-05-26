@@ -5,10 +5,10 @@ module.exports = {
   name: "fellowcard",
   description: "special card for the light seekers",
   category: "general",
-  usage: "",
+  usage: `${client.prefix}fellowcard`,
   cooldown: 0,
-  aliases: [''],
-  examples: [''],
+  aliases: [],
+  examples: [],
   sub_commands: [],
   args: false,
   permissions: {

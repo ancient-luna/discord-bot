@@ -5,10 +5,10 @@ module.exports = new Object({
     name: "emoji",
     description: "combining two emojis just for fun and creating silly emojis",
     category: "general",
-    usage: "",
+    usage: `${client.prefix}emoji <emoji1> <emoji2>`,
     cooldown: 0,
     aliases: [],
-    examples: [''],
+    examples: [],
     sub_commands: [],
     args: false,
     permissions: {

@@ -6,10 +6,10 @@ module.exports = {
     name: "record",
     description: "tracking weekly CTS/CTL",
     category: "deadfrontier",
-    usage: "",
+    usage: `${client.prefix}record <dfp userid>`,
     cooldown: 0,
-    aliases: [''],
-    examples: [''],
+    aliases: [],
+    examples: [],
     sub_commands: [],
     args: false,
     permissions: {
@@ -77,7 +77,7 @@ module.exports = {
                 )
                 .setImage(`https://www.dfprofiler.com/signaturereplicate.php?profile=${survivorID}&imgur=5q7hV6B`)
                 .setFooter({ text: `Powered by Ancient Luna`, iconURL: 'https://i.imgur.com/vKo3PJm.png' })
-                .setColor('3c3d4f')
+                .setColor(client.config.embedColorTrans)
                 .setTimestamp();
 
             const btnProfile = new ActionRowBuilder()

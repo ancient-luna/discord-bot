@@ -3,10 +3,10 @@ module.exports = new Object({
     name: "sanctuary",
     description: "current server information",
     category: "general",
+    usage: `${client.prefix}sanctuary`,
     cooldown: 0,
-    usage: "",
     aliases: ['server'],
-    examples: [''],
+    examples: [],
     sub_commands: [],
     args: false,
     permissions: {

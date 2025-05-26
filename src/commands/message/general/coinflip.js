@@ -4,10 +4,10 @@ module.exports = new Object({
     name: "coinflip",
     description: "toss your luck",
     category: "general",
-    usage: "",
+    usage: `${client.prefix}coinflip`,
     cooldown: 0,
-    aliases: [''],
-    examples: [''],
+    aliases: [],
+    examples: '],
     sub_commands: [],
     args: false,
     permissions: {

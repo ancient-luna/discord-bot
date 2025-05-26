@@ -40,6 +40,7 @@ module.exports = {
     voiceChannel: "525889181273292801",
     voiceMessage: "boss cycle updated",
 
+    embedColorBlurple: '#3c3d4f',
     embedColorTrans: '#393a41',
 
     color: '#4277e8',

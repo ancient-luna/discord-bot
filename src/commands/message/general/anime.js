@@ -4,10 +4,10 @@ module.exports = new Object({
     name: "anime",
     description: "searching anime based on MyAnimeList",
     category: "general",
-    usage: "",
+    usage: `${client.prefix}anime <anime title>`,
     cooldown: 0,
     aliases: ['myanimelist'],
-    examples: [''],
+    examples: [],
     sub_commands: [],
     args: false,
     permissions: {

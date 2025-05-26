@@ -4,10 +4,10 @@ module.exports = new Object({
     name: "deny",
     description: "denying suggestion",
     category: "suggestion",
-    usage: "",
+    usage: `${client.prefix}deny <messageID> <reason>`,
     cooldown: 0,
     aliases: [],
-    examples: [''],
+    examples: [],
     sub_commands: [],
     args: false,
     permissions: {

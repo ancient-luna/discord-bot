@@ -3,11 +3,11 @@ const { AttachmentBuilder } = require("discord.js");
 module.exports = new Object({
     name: "spit",
     description: "hawk tuah!",
-    category: "Fun",
-    usage: "",
+    category: "fun",
+    usage: `${client.prefix}spit <@user> | (reply to a message)`,
     cooldown: 0,
-    aliases: [''],
-    examples: [''],
+    aliases: [],
+    examples: [],
     sub_commands: [],
     args: false,
     permissions: {
@@ -26,7 +26,7 @@ module.exports = new Object({
         let IMGpuih = new AttachmentBuilder("src/assets/react/puihh.gif")
         let target = message.mentions.members.first();
         if (!target) {
-            message.react("💢");
+            message.react("❓");
             return message.reply({ content: "How can *She* spits when theres no one to spit on! `Mention one` 💢" }).then((msg) => {
                 setTimeout(() => msg.delete().catch((e) => { }), 5000);
             });
