@@ -110,7 +110,7 @@ module.exports = {
         
         const embed = new EmbedBuilder()
             .setTitle('Gratitude from the Ancients')
-            .setDescription(`To <#1171703846918168577> <#839417252561944586>,\nWhat began as my spark now grows in your glow. Ancient Luna breathes because your light remains\n⁣\`\`\`𝐒𝐔𝐏𝐏𝐎𝐑𝐓𝐄𝐑𝐒 (𝐑𝐀𝐃𝐈𝐀𝐍𝐂𝐄) ✦\`\`\`\n${radianceMentions}\n⁣\`\`\`𝐁𝐎𝐎𝐒𝐓𝐄𝐑𝐒 (𝐋𝐔𝐌𝐈𝐍𝐀𝐍𝐂𝐄) ♡\`\`\`\n${luminanceMentions}`)
+            .setDescription(`To <@&888736428069105674> <@&620709364247822338>,\nWhat began as my spark now grows in your glow. Ancient Luna breathes because your light remains\n⁣\`\`\`𝐒𝐔𝐏𝐏𝐎𝐑𝐓𝐄𝐑𝐒 (𝐑𝐀𝐃𝐈𝐀𝐍𝐂𝐄) ✦\`\`\`\n${radianceMentions}\n⁣\`\`\`𝐁𝐎𝐎𝐒𝐓𝐄𝐑𝐒 (𝐋𝐔𝐌𝐈𝐍𝐀𝐍𝐂𝐄) ♡\`\`\`\n${luminanceMentions}`)
             .setImage('attachment://radiance.png')
             .setColor(client.config.embedColorBlurple)
             .setFooter({ text: `A legacy framed in honor — carried by the Light Seekers` })
