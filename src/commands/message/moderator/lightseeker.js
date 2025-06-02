@@ -34,8 +34,14 @@ module.exports = new Object({
             .addComponents(
                 new ButtonBuilder()
                     .setStyle(ButtonStyle.Link)
-                    .setLabel("Get more roles here")
+                    .setLabel("Get Roles")
                     .setURL("https://discord.com/channels/447069790150852609/864556584818835456")
+            )
+            .addComponents(
+                new ButtonBuilder()
+                    .setStyle(ButtonStyle.Link)
+                    .setLabel("Get Guild Tag")
+                    .setURL("https://discord.gg/XJCtfTPBfu")
             )
             .addComponents(
                 new ButtonBuilder()
