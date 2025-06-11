@@ -1,4 +1,4 @@
-const { EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle, ChannelType } = require("discord.js");
+const { EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle, ChannelType, MessageFlags } = require("discord.js");
 const { stripIndent } = require("common-tags");
 
 module.exports = {
@@ -66,7 +66,7 @@ module.exports = {
     
     return interaction.reply({
         content: `Please go to <#${threadID}> to continue`,
-        ephemeral: true,
+        flags: MessageFlags.Ephemeral
     });
   },
 };

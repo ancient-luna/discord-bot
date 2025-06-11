@@ -17,7 +17,7 @@ module.exports = {
     const SRCguildbanner = new AttachmentBuilder("src/assets/bdo/gbanner.png")
     return interaction.reply({
         files: [SRCguildbanner],
-        ephemeral: true
+        flags: MessageFlags.Ephemeral,
     });
   },
 };

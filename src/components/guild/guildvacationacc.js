@@ -38,7 +38,7 @@ module.exports = {
 
     return interaction.followUp({
       content: `Successfully approved <:srv_accepted:1334885365676507188>`,
-      ephemeral: true
+      flags: MessageFlags.Ephemeral,
     });
   },
 };

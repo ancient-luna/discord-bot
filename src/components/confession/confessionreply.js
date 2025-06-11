@@ -54,7 +54,7 @@ module.exports = {
                 .setColor(client.config.embedColorTrans)
                 .setTimestamp()
                 .setFooter({ text: `(r) ${interaction.user.username}` })
-            modalInteraction.reply({ embeds: [confessionTxt], ephemeral: false })
+            modalInteraction.reply({ embeds: [confessionTxt] })
             modalInteraction.guild.channels.cache.get('1162419484305391800').send({ embeds: [confessionLog] })
         })
         .catch((e)=> { console.log(e) })

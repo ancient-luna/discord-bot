@@ -44,7 +44,7 @@ module.exports = {
     return interaction.reply({
       embeds: [addLDrule],
       components: [btnGuild],
-      ephemeral: true,
+      flags: MessageFlags.Ephemeral,
     });
   },
 };

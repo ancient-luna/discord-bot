@@ -1,4 +1,4 @@
-const { EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle, ModalBuilder, TextInputBuilder, TextInputStyle } = require("discord.js");
+const { EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle, ModalBuilder, TextInputBuilder, TextInputStyle, MessageFlags } = require("discord.js");
 const { stripIndent } = require("common-tags");
 
 module.exports = {
@@ -66,7 +66,7 @@ module.exports = {
             modalInteraction.guild.channels.cache.get('1162416709265784882').send({ embeds: [confessionTxt], components: [btnConfess] })
             modalInteraction.reply({
               content: `Your confession sent to <#1162416709265784882>`,
-              ephemeral: true
+              flags: MessageFlags.Ephemeral
             })
         })
         .catch((e)=> { console.log(e) })
