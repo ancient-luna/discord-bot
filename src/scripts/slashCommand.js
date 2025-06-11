@@ -11,7 +11,11 @@ module.exports = async (client) => {
 				if (err) client.logger.error(err);
 				file.forEach((f) => {
 					const props = require(`${__dirname}/../commands/slash/${dir}/${f}`);
-					client.slashCommands.set(props.name, props);
+					if (!props?.data?.name || typeof props.data.toJSON !== 'function') {
+						client.logger?.warn?.(`[!] Skipped invalid slash command: ${f}`);
+						return;
+					}
+					client.slashCommands.set(props.data.name, props);
 				});
                 client.console.log(`[/] ${dir} loaded with ${file.length} slash commands`, "scmd");
 			});

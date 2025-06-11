@@ -17,7 +17,7 @@ module.exports = new Object({
     app.get("/", (req, res) => res.send("Hello world"));
     app.listen(8080);
 
-    const getCommands = client.slashCommands.map((x) => x);
+    const getCommands = client.slashCommands.map((x) => x.data.toJSON());
     await client.application.commands.set([]);
     await client.application.commands.set(getCommands);
 

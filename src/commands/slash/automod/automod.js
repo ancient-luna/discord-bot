@@ -1,217 +1,119 @@
-const { CommandInteraction, EmbedBuilder } = require('discord.js');
+const { SlashCommandBuilder, EmbedBuilder, PermissionFlagsBits, MessageFlags, } = require("discord.js");
 
 module.exports = {
-    name: 'automod',
-    description: 'Setup automod system',
-    options: [
-        {
-            name: 'spammessages',
-            description: 'Setup spam messages auto moderation',
-            type: 1
-        },
-        {
-            name: 'spammentions',
-            description: 'Setup spam mentions auto moderation',
-            type: 1,
-            options: [
-                {
-                    name: 'number',
-                    description: 'Number of mentions trigger auto moderation',
-                    type: 4,
-                    required: true
-                }
-            ]
-        },
-        {
-            name: 'keywords',
-            description: 'Setup keyword auto moderation',
-            type: 1,
-            options: [
-                {
-                    name: 'word',
-                    description: 'Keyword to moderate',
-                    type: 3,
-                    required: true
-                }
-            ]
-        },
-        {
-            name: 'flaggedwords',
-            description: 'Setup flagged words auto moderation',
-            type: 1
-        }
-    ],
-    cooldown: 5, // cooldown in seconds
-    permissions: ['ADMINISTRATOR'],
+  data: new SlashCommandBuilder()
+    .setName("automod")
+    .setDescription("Setup auto moderation rules")
+    .setDefaultMemberPermissions(PermissionFlagsBits.Administrator)
+    .addSubcommand((c) => c
+        .setName("spammessages").setDescription("Prevent spam messages")
+    )
+    .addSubcommand((c) => c
+        .setName("spammentions")
+        .setDescription("Prevent mention spam")
+        .addIntegerOption((o) => o
+            .setName("number")
+            .setDescription("Mention limit before triggering")
+            .setRequired(true)
+        )
+    )
+    .addSubcommand((c) => c
+        .setName("keywords")
+        .setDescription("Block specific keywords")
+        .addStringOption((o) => o
+            .setName("word")
+            .setDescription("The keyword to block")
+            .setRequired(true)
+        )
+    )
+    .addSubcommand((c) => c
+        .setName("flaggedwords")
+        .setDescription("Block swears, slurs, and sexual content")
+    ),
 
-    /**
-     * @param {import('../index')} client
-     * @param {CommandInteraction} interaction
-     */
-    run: async (client, interaction) => {
-        // Get the chosen subcommand
-        const subcommand = interaction.options.getSubcommand();
+  cooldown: 5,
 
-        // Handle each subcommand accordingly
-        switch (subcommand) {
-            case 'spammessages':
-                await handleAutomodSpamMessages(client, interaction);
-                break;
-            case 'spammentions':
-                await handleAutomodSpamMentions(client, interaction);
-                break;
-            case 'keywords':
-                await handleAutomodKeywords(client, interaction);
-                break;
-            case 'flaggedwords':
-                await handleAutomodFlaggedWords(client, interaction);
-                break;
-            default:
-                await interaction.reply({ content: 'Invalid subcommand.', ephemeral: true });
-                break;
-        }
+  async execute(client, interaction) {
+    const sub = interaction.options.getSubcommand();
+    const color = client.config.embedColorTrans;
+    const acceptedIcon = "<:srv_accepted:1334885365676507188>";
+    const metadata = {
+      channel: interaction.channel,
+      durationSeconds: 10,
+      customMessage:
+        "This message was prevented by Ancient Luna auto moderation",
+    };
+
+    const replyEmbed = (desc) =>
+      new EmbedBuilder()
+        .setColor(color)
+        .setDescription(`${acceptedIcon} ${desc}`);
+
+    try {
+      if (sub === "spammessages") {
+        await interaction.guild.autoModerationRules.create({
+          name: "Prevent spam messages by Ancient Luna",
+          creatorId: client.user.id,
+          enabled: true,
+          eventType: 1,
+          triggerType: 3,
+          actions: [{ type: 1, metadata }],
+        });
+
+        await interaction.reply({ embeds: [replyEmbed("**AUTOMOD RULE CREATED**\n-# Spam messages will be deleted.")] });
+      }
+
+      if (sub === "spammentions") {
+        const number = interaction.options.getInteger("number");
+
+        await interaction.guild.autoModerationRules.create({
+          name: "Prevent spam mentions by Ancient Luna",
+          creatorId: client.user.id,
+          enabled: true,
+          eventType: 1,
+          triggerType: 5,
+          triggerMetadata: { mentionTotalLimit: number },
+          actions: [{ type: 1, metadata }],
+        });
+
+        await interaction.reply({ embeds: [replyEmbed(`**AUTOMOD RULE CREATED**\n-# Mention spam (${number}+ pings) will be deleted.`)] });
+      }
+
+      if (sub === "keywords") {
+        const word = interaction.options.getString("word");
+
+        await interaction.guild.autoModerationRules.create({
+          name: `Block keyword "${word}" by Ancient Luna`,
+          creatorId: client.user.id,
+          enabled: true,
+          eventType: 1,
+          triggerType: 1,
+          triggerMetadata: { keywordFilter: [word] },
+          actions: [{ type: 1, metadata }],
+        });
+
+        await interaction.reply({ embeds: [replyEmbed(`**AUTOMOD RULE CREATED**\n-# Messages containing \`${word}\` will be deleted.`)] });
+      }
+
+      if (sub === "flaggedwords") {
+        await interaction.guild.autoModerationRules.create({
+          name: "Block flagged words by Ancient Luna",
+          creatorId: client.user.id,
+          enabled: true,
+          eventType: 1,
+          triggerType: 4,
+          triggerMetadata: { presets: [1, 2, 3] }, // 1: profanity, 2: sexual, 3: slurs
+          actions: [{ type: 1, metadata }],
+        });
+
+        await interaction.reply({ embeds: [replyEmbed("**AUTOMOD RULE CREATED**\n-# Swears, slurs, and sexual content will be blocked.")] });
+      }
+    } catch (err) {
+      console.error(err);
+      await interaction.reply({
+        content: `<:srv_denied:1334885383636521050> Failed to create auto moderation rule:\n-# \`\`\`${err}\`\`\``,
+        flags: MessageFlags.Ephemeral,
+      });
     }
+  },
 };
-
-async function handleAutomodSpamMessages(client, interaction) {
-    const { guild } = interaction;
-
-    const rule = await guild.autoModerationRules.create({
-        name: `Prevent spam messages by Ancient Luna`,
-        creatorId: '793482727223590922',
-        enabled: true,
-        eventType: 1,
-        triggerType: 3,
-        actions: [
-            {
-                type: 1,
-                metadata: {
-                    channel: interaction.channel,
-                    durationSeconds: 10,
-                    customMessage: 'This message was prevented by Ancient Luna auto moderation'
-                }
-            }
-        ]
-    }).catch(async err => {
-        console.error(err);
-        await interaction.reply({ content: `❌ An error occurred while creating the automod rule:\n\`\`\`${err}\`\`\``, ephemeral: true });
-        return null;
-    });
-
-    if (!rule) return;
-
-    const embed = new EmbedBuilder()
-        .setColor(client.config.embedColorTrans)
-        .setDescription(`<:srv_accepted:1334885365676507188> **AUTOMOD RULE CREATED**\nAll messages suspected of spam will be deleted by **Ancient Luna**`);
-    await interaction.reply({ embeds: [embed], ephemeral: true });
-}
-
-async function handleAutomodSpamMentions(client, interaction) {
-    const { guild, options } = interaction;
-    const number = options.getInteger('number');
-
-    const rule = await guild.autoModerationRules.create({
-        name: `Prevent spam mentions by Ancient Luna`,
-        creatorId: '793482727223590922',
-        enabled: true,
-        eventType: 1,
-        triggerType: 5,
-        triggerMetadata: {
-            mentionTotalLimit: number
-        },
-        actions: [
-            {
-                type: 1,
-                metadata: {
-                    channel: interaction.channel,
-                    durationSeconds: 10,
-                    customMessage: 'This message was prevented by Ancient Luna auto moderation'
-                }
-            }
-        ]
-    }).catch(async err => {
-        console.error(err);
-        await interaction.reply({ content: `❌ An error occurred while creating the automod rule:\n\`\`\`${err}\`\`\``, ephemeral: true });
-        return null;
-    });
-
-    if (!rule) return;
-
-    const embed = new EmbedBuilder()
-        .setColor(client.config.embedColorTrans)
-        .setDescription(`<:srv_accepted:1334885365676507188> **AUTOMOD RULE CREATED**\nAll messages suspected of mention spam will be deleted by **Ancient Luna**`);
-    await interaction.reply({ embeds: [embed], ephemeral: true });
-}
-
-async function handleAutomodKeywords(client, interaction) {
-    const { guild, options } = interaction;
-    const word = options.getString('word');
-
-    const rule = await guild.autoModerationRules.create({
-        name: `Prevent the word ${word} from being used by Ancient Luna`,
-        creatorId: '793482727223590922',
-        enabled: true,
-        eventType: 1,
-        triggerType: 1,
-        triggerMetadata: {
-            keywordFilter: [word]
-        },
-        actions: [
-            {
-                type: 1,
-                metadata: {
-                    channel: interaction.channel,
-                    durationSeconds: 10,
-                    customMessage: 'This message was prevented by Ancient Luna auto moderation'
-                }
-            }
-        ]
-    }).catch(async err => {
-        console.error(err);
-        await interaction.reply({ content: `❌ An error occurred while creating the automod rule:\n\`\`\`${err}\`\`\``, ephemeral: true });
-        return null;
-    });
-
-    if (!rule) return;
-
-    const embed = new EmbedBuilder()
-        .setColor(client.config.embedColorTrans)
-        .setDescription(`<:srv_accepted:1334885365676507188> **AUTOMOD RULE CREATED**\nAll messages containing the word \`${word}\` will be deleted by **Ancient Luna**`);
-    await interaction.reply({ embeds: [embed], ephemeral: true });
-}
-
-async function handleAutomodFlaggedWords(client, interaction) {
-    const { guild } = interaction;
-
-    const rule = await guild.autoModerationRules.create({
-        name: `Block profanity, sexual content, and slurs by Ancient Luna`,
-        creatorId: '793482727223590922',
-        enabled: true,
-        eventType: 1,
-        triggerType: 4,
-        triggerMetadata: {
-            presets: [1, 2, 3]
-        },
-        actions: [
-            {
-                type: 1,
-                metadata: {
-                    channel: interaction.channel,
-                    durationSeconds: 10,
-                    customMessage: 'This message was prevented by Ancient Luna auto moderation'
-                }
-            }
-        ]
-    }).catch(async err => {
-        console.error(err);
-        await interaction.reply({ content: `❌ An error occurred while creating the automod rule:\n\`\`\`${err}\`\`\``, ephemeral: true });
-        return null;
-    });
-
-    if (!rule) return;
-    
-    const embed = new EmbedBuilder()
-        .setColor(client.config.embedColorTrans)
-        .setDescription(`<:srv_accepted:1334885365676507188> **AUTOMOD RULE CREATED**\nAll swears will be stopped by **Ancient Luna**`);
-    await interaction.reply({ embeds: [embed], ephemeral: true });
-}

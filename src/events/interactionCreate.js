@@ -52,8 +52,7 @@ module.exports = new Object({
           }
         }
 
-        await command.run(client, interaction);
-        // console.log("test interaction slash");
+        await command.execute(client, interaction);
       } catch (err) {
         client.console.log(err, "error");
         await interaction.reply({ content: 'An error has occured', ephemeral: true });
@@ -62,11 +61,6 @@ module.exports = new Object({
     if (interaction.isButton()) {
       client.emit("ButtonInteraction", interaction);
     }
-    /**
-       if (interaction.isChatInputCommand()) {
-      await commandHandler.handleSlashCommand(interaction);
-    }
-     */
     if (!interaction.isModalSubmit() && !interaction.isStringSelectMenu())
       return;
   },
