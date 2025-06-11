@@ -1,7 +1,4 @@
-const { 
-  EmbedBuilder, ButtonBuilder, ActionRowBuilder,
-  ChannelType, ButtonStyle, PermissionsBitField, Collection, AttachmentBuilder,
-} = require("discord.js");
+const { EmbedBuilder, ButtonBuilder, ActionRowBuilder, ChannelType, ButtonStyle, PermissionsBitField, Collection, AttachmentBuilder } = require("discord.js");
 
 module.exports = new Object({
   name: "messageCreate",

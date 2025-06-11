@@ -1,4 +1,4 @@
-const { Collection, CommandInteraction } = require('discord.js');
+const { Collection, CommandInteraction, MessageFlags } = require('discord.js');
 
 module.exports = new Object({
   name: "interactionCreate",
