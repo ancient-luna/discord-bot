@@ -12,11 +12,7 @@ module.exports = new Object({
     examples: [],
     sub_commands: [],
     args: false,
-    permissions: {
-        client: [],
-        user: [],
-        dev: true,
-    },
+    permissions: { client: [], user: [], dev: false, },
     player: { voice: false, active: false, dj: false, },
     /**
      * 
