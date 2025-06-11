@@ -20,7 +20,7 @@ module.exports = new Object({
         )
           return await interaction.reply({
             content: `I don't have \`${button.permissions.client}\` permission to execute this button.`,
-            ephemeral: true,
+            flags: MessageFlags.Ephemeral,
           });
       }
       if (button.permissions.user) {
@@ -33,7 +33,7 @@ module.exports = new Object({
           return await interaction.reply({
             // content: `You don't have \`${button.permissions.user}\` permission to use this button.`,
             content: `You don't have permission to use this button.`,
-            ephemeral: true,
+            flags: MessageFlags.Ephemeral,
           });
       }
       if (button.permissions.dev) {
@@ -44,7 +44,7 @@ module.exports = new Object({
           if (!findDev)
             return interaction.reply({
               content: `Sorry! This is a owner based command you cant use it.`,
-              ephemeral: true,
+              flags: MessageFlags.Ephemeral,
             });
         }
       }

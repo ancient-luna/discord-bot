@@ -15,14 +15,14 @@ module.exports = {
    * @param {import("discord.js").ButtonInteraction} interaction
    */
   execute: async (client, interaction) => {
-    if (!interaction.member.permissions.has(PermissionsBitField.Flags.ManageMessages)) return await interaction.reply({ content: `Only the **Ancestor** and **Elders** can save this ticket`, ephemeral: true })
+    if (!interaction.member.permissions.has(PermissionsBitField.Flags.ManageMessages)) return await interaction.reply({ content: `Only the **Ancestor** and **Elders** can save this ticket`, flags: MessageFlags.Ephemeral })
     const channel = interaction.channel;
     const attachment = await discordTranscripts.createTranscript(channel);
     // interaction.channel.send({ files: [attachment] })
     interaction.reply({
         content: `<:srv_attachment:1334881013943504980> \`here is the transcripted chat log\``,
         files: [attachment],
-        ephemeral: true
+        flags: MessageFlags.Ephemeral
     });
   },
 };

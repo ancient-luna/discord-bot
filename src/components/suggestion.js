@@ -51,7 +51,7 @@ module.exports = {
                 msg.react('<:ic_like:1334863610802995281>')
                 msg.react('<:ic_dislike:1334863630864351322>')
               }).catch((e) => { });
-            modalInteraction.reply({ content: `Suggestion sent to <#842069893113446410>`, ephemeral: true }).catch((e) => { });
+            modalInteraction.reply({ content: `Suggestion sent to <#842069893113446410>`, flags: MessageFlags.Ephemeral }).catch((e) => { });
         })
         .catch((e)=> { console.log(e) })
   },

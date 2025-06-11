@@ -168,11 +168,11 @@ module.exports = {
             const attachment = new AttachmentBuilder(sfBuffer, { name: 'fellowcard.png' });
             await interaction.reply({
                 files: [attachment],
-                ephemeral: true
+                flags: MessageFlags.Ephemeral
             });
         } catch (error) {
             console.error('Error:', error);
-            await interaction.reply({ content: 'An error occurred while creating the fellowcard. Please try again later.', ephemeral: true });
+            await interaction.reply({ content: 'An error occurred while creating the fellowcard. Please try again later.', flags: MessageFlags.Ephemeral });
         }
     },
 };

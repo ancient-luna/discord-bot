@@ -11,11 +11,11 @@ module.exports = new Object({
   async execute(client, interaction) {
     if (interaction.isChatInputCommand() || interaction.isCommand()) {
       if (!interaction.guild) {
-        return interaction.reply({ content: 'This command can only be run within a guild/server!', ephemeral: true }); // kalo bukan di guild
+        return interaction.reply({ content: 'This command can only be run within a guild/server!', flags: MessageFlags.Ephemeral }); // kalo bukan di guild
       }
 
       if (!client.slashCommands.has(interaction.commandName)) {
-        return interaction.reply({ content: 'Cannot find that command. Might no longer exist!', ephemeral: true }); // kalo command nya gak ada
+        return interaction.reply({ content: 'Cannot find that command. Might no longer exist!', flags: MessageFlags.Ephemeral }); // kalo command nya gak ada
       }
 
       const command = client.slashCommands.get(interaction.commandName);
@@ -35,7 +35,7 @@ module.exports = new Object({
             const timeLeft = (expirationTime - now) / 1000;
             return interaction.reply({
               content: `Wait ${timeLeft.toFixed(1)} more second${timeLeft.toFixed(1) < 2 ? '' : 's'} to use **${command.name}**`, // cooldown message
-              ephemeral: true
+              flags: MessageFlags.Ephemeral
             });
           }
         }
@@ -47,7 +47,7 @@ module.exports = new Object({
           if (!interaction.member.permissions.has(command.permissions)) {
             return interaction.reply({
               content: `You're missing permissions : ${command.permissions.map((p) => `**${p}**`).join(', ')}`, // permission message
-              ephemeral: true
+              flags: MessageFlags.Ephemeral
             });
           }
         }
@@ -55,7 +55,7 @@ module.exports = new Object({
         await command.execute(client, interaction);
       } catch (err) {
         client.console.log(err, "error");
-        await interaction.reply({ content: 'An error has occured', ephemeral: true });
+        await interaction.reply({ content: 'An error has occured', flags: MessageFlags.Ephemeral });
       }
     }
     if (interaction.isButton()) {

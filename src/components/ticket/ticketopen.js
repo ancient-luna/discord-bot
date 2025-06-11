@@ -75,7 +75,7 @@ module.exports = {
 
     await interaction.reply({
       content: `Your ticket opened in ${openTicket}`,
-      ephemeral: true
+      flags: MessageFlags.Ephemeral
     });
   },
 };

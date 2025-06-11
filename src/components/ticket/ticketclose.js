@@ -15,10 +15,10 @@ module.exports = {
    * @param {import("discord.js").ButtonInteraction} interaction
    */
   execute: async (client, interaction) => {
-    if (!interaction.member.permissions.has(PermissionsBitField.Flags.ManageMessages)) return await interaction.reply({ content: `Only the **Ancestor** and **Elders** can close this ticket`, ephemeral: true })
+    if (!interaction.member.permissions.has(PermissionsBitField.Flags.ManageMessages)) return await interaction.reply({ content: `Only the **Ancestor** and **Elders** can close this ticket`, flags: MessageFlags.Ephemeral }).catch((e) => { });
     if (!interaction.channel.name.includes('ticket')) return interaction.reply({
       content: `You are not allowed to delete a non-ticket channel`,
-      ephemeral: true
+      flags: MessageFlags.Ephemeral
     }).catch((e) => { });
 
     const channel = interaction.channel;
@@ -32,7 +32,7 @@ module.exports = {
     interaction.guild.channels.cache.get('1162419484305391800').send({ content: `Transcripted chat from **# ${channelName}** <:srv_tag:1334880991512236053>`, files: [attachment] })
     interaction.reply({
         content: `Closing ticket in 5 seconds <a:u_load:1334900265953923085>`,
-        ephemeral: true
+        flags: MessageFlags.Ephemeral
     });
 
     setTimeout(() => {

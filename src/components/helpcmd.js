@@ -78,7 +78,7 @@ module.exports = {
     return interaction.reply({
       content: `${helpText.trim()}`,
       // embeds: [embed],
-      ephemeral: true,
+      flags: MessageFlags.Ephemeral,
     });
   },
 };

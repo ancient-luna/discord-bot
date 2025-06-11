@@ -32,7 +32,7 @@ module.exports = {
     
     return interaction.reply({
       embeds: [howTo1, howTo2, howTo3],
-      ephemeral: true,
+      flags: MessageFlags.Ephemeral,
     });
   },
 };
