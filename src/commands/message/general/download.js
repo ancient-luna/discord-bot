@@ -3,7 +3,7 @@ const axios = require('axios');
 
 module.exports = new Object({
     name: "download",
-    description: "download contents",
+    description: "download contents from FB/IG/TikTok/Spotify links",
     category: "general",
     usage: `download <link>`,
     cooldown: 0,
@@ -33,7 +33,6 @@ module.exports = new Object({
             else if (hostname.includes("instagram.com")) platform = "instagram";
             else if (hostname.includes("tiktok.com")) platform = "tiktok";
             else if (hostname.includes("spotify.com")) platform = "spotify";
-            else if (hostname.includes("soundcloud.com")) platform = "soundcloud";
             else return loadingTxt.edit("**Unsupported platform.** Currently only support Facebook, Instagram, TikTok, or Spotify links.");
         } catch (e) {
             return loadingTxt.edit("invalid URLs");
@@ -55,27 +54,27 @@ module.exports = new Object({
         const data = res.data?.data || res.result;
         if (!data) return loadingTxt.edit("Uh-oh! Something went wrong while fetching the data.");
 
-        let videoUrl;
+        let contentURLs;
         // let title = data.title || data.metadata.title || data.meta.title || "here the downloaded content";
 
         switch (platform) {
             case "facebook":
-                videoUrl = data.hd || data.sd;
+                contentURLs = data.hd || data.sd;
                 break;
             case "instagram":
-                videoUrl = data.videoUrls?.[0]?.url;
+                contentURLs = data.videoUrls?.[0]?.url;
                 break;
             case "tiktok":
-                videoUrl = data.play;
+                contentURLs = data.play;
                 break;
             case "spotify":
-                videoUrl = res.data.download;
+                contentURLs = res.data.download;
                 break;
         }
 
-        if (!videoUrl) return loadingTxt.edit("Failed to find the video URL. Please check the link or try again.");
+        if (!contentURLs) return loadingTxt.edit("Failed to find the video URL. Please check the link or try again.");
 
-        loadingTxt.edit({ content: `<:ic_repost:1334863701026541648> [download here](${videoUrl})` })
+        loadingTxt.edit({ content: `<:ic_repost:1334863701026541648> [download here](${contentURLs})` })
 
     }
 });
