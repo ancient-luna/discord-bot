@@ -15,6 +15,8 @@ module.exports = {
     try {
       await webhookClient.editMessage(webhookMessageId, {
         content: "[message deleted]",
+        embeds: [],
+        components: [],
         files: [],
       });
       await client.db.delete(`mirror_${message.id}`);
