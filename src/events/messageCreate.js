@@ -27,11 +27,11 @@ module.exports = new Object({
         const welcomeButton = new ActionRowBuilder().addComponents(
           new ButtonBuilder()
             .setStyle(ButtonStyle.Link)
-            .setLabel("Get Roles")
+            .setLabel("Roles")
             .setURL("https://discord.com/channels/447069790150852609/864556584818835456"),
           new ButtonBuilder()
             .setStyle(ButtonStyle.Link)
-            .setLabel("Get Guild Tag")
+            .setLabel("Guild Tag")
             .setURL("https://discord.gg/XJCtfTPBfu"),
           new ButtonBuilder()
             .setCustomId("btn-fellowcard")
