@@ -52,6 +52,7 @@ module.exports = {
     }
 
     const embedData = message.embeds?.map(embed => embed.toJSON()) || [];
+    const componentData = message.components?.map(c => c.toJSON()) || [];
 
     if (!body && message.attachments.size === 0) return;
 
@@ -62,6 +63,7 @@ module.exports = {
         avatarURL: avatarUrl,
         files: message.attachments.map(att => att),
         embeds: embedData,
+        components: componentData,
         allowedMentions: { parse: [] },
       });
       await client.db.set(`mirror_${message.id}`, sent.id);

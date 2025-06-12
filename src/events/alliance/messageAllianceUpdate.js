@@ -42,11 +42,13 @@ module.exports = {
     }
 
     const embedData = newMessage.embeds?.map(embed => embed.toJSON()) || [];
+    const componentData = newMessage.components?.map(c => c.toJSON()) || [];
 
     try {
       await webhookClient.editMessage(webhookMessageId, {
         content: body,
         embeds: embedData,
+        components: componentData,
         allowedMentions: { parse: [] },
       });
     } catch (err) {
