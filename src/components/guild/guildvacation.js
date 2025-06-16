@@ -67,10 +67,8 @@ module.exports = {
                 .setLabel(`Approve`)
             )
             modalInteraction.guild.channels.cache.get('1076767724224659526').send({ embeds: [absenceNote], components: [btnVacaAcc] })
-            modalInteraction.reply({
-              content: `The vacation letter has been delivered to the Elders, dear **${interaction.member.displayName}**\n-# All your privacy will be kept safe under them`,
-              flags: MessageFlags.Ephemeral
-            })
+            modalInteraction.deferReply({ flags: MessageFlags.Ephemeral })
+            modalInteraction.editReply({ content: `The vacation letter has been delivered to the Elders, dear **${interaction.member.displayName}**\n-# All your privacy will be kept safe under them` })
         })
         .catch((e)=> { })
   },

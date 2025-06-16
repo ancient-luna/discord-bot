@@ -41,10 +41,10 @@ module.exports = {
           .setURL(`https://youtu.be/3S8HVfHYJ5k`),
       )
         
-    return interaction.reply({
+    await interaction.deferReply({ flags: MessageFlags.Ephemeral });
+    await interaction.editReply({
       embeds: [addLDrule],
       components: [btnGuild],
-      flags: MessageFlags.Ephemeral,
     });
   },
 };
