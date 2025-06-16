@@ -13,6 +13,7 @@ module.exports = new Object({
     const stickyConfigs = [
       {
         channels: client.config.stickyLucentChannel,
+        match: (msg) => msg.embeds?.[0]?.title === "The Lucent Fountain",
         build: () => ({
           embeds: [
             new EmbedBuilder()
@@ -41,6 +42,8 @@ module.exports = new Object({
       },
       {
         channels: client.config.stickyCTSChannel,
+        match: (msg) =>
+          msg.components?.[0]?.components?.[0]?.label === "Clan Member Tracking Sheet",
         build: () => ({
           components: [
             new ActionRowBuilder().addComponents(
@@ -60,25 +63,30 @@ module.exports = new Object({
       const stickyKey = `sticky_${message.channel.id}`;
       const cooldownKey = `cd_${message.channel.id}`;
 
-      // Cooldown per channel
       if (stickyCooldown.has(cooldownKey)) return;
       stickyCooldown.set(cooldownKey, true);
       setTimeout(() => stickyCooldown.delete(cooldownKey), 2000);
 
       try {
-        const stickyMsgId = await client.db.get(stickyKey);
-        let oldSticky = null;
+        const messages = await message.channel.messages.fetch({ limit: 10 });
+        const savedStickyId = await client.db.get(stickyKey);
 
-        if (stickyMsgId) {
-          oldSticky = await message.channel.messages.fetch(stickyMsgId).catch(() => null);
-          if (oldSticky) {
-            await oldSticky.delete().catch(() => {});
-            await client.db.delete(stickyKey); // ✅ Clear the key after deletion
-          } else {
-            await client.db.delete(stickyKey); // ✅ Also clear if the message was already deleted manually
+        // Remove any message that matches the sticky format
+        for (const msg of messages.values()) {
+          if (
+            msg.author.id === client.user.id &&
+            sticky.match(msg) &&
+            msg.id !== savedStickyId
+          ) {
+            await msg.delete().catch(() => {});
           }
         }
 
+        // Check if the saved sticky is already the last message
+        const lastMsg = messages.first();
+        if (lastMsg?.id === savedStickyId) continue;
+
+        // Build sticky
         const content = sticky.build();
         if (!content.content && !content.embeds && !content.files && !content.attachments) {
           content.content = " ";
@@ -86,7 +94,6 @@ module.exports = new Object({
 
         const newSticky = await message.channel.send(content);
         await client.db.set(stickyKey, newSticky.id);
-
       } catch (err) {
         console.error(`[Sticky] Error in #${message.channel.name}:`, err);
       }
