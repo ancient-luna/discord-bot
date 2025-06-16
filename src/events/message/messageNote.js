@@ -1,4 +1,5 @@
 const { ChannelType, AttachmentBuilder, EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle } = require("discord.js");
+const stickyCooldown = new Map();
 
 module.exports = new Object({
   name: "messageCreate",
@@ -87,6 +88,12 @@ module.exports = new Object({
       if (!sticky.channels.includes(message.channel.id)) continue;
 
       const stickyKey = `sticky_${message.channel.id}`;
+      const cooldownKey = `cd_${message.channel.id}`;
+
+      // 🕒 Cooldown check
+      if (stickyCooldown.has(cooldownKey)) return;
+      stickyCooldown.set(cooldownKey, true);
+      setTimeout(() => stickyCooldown.delete(cooldownKey), 2000); // 2s cd per channel
 
       try {
         const messages = await message.channel.messages.fetch({ limit: 10 });
@@ -106,8 +113,6 @@ module.exports = new Object({
 
         // Build new sticky content
         const content = sticky.build();
-
-        // Ensure content isn't "empty" (Discord will reject)
         if (!content.content && !content.embeds && !content.files && !content.attachments) {
           content.content = " ";
         }
