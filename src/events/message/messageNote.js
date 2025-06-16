@@ -71,7 +71,6 @@ module.exports = new Object({
 
         if (stickyMsgId) {
           oldSticky = await message.channel.messages.fetch(stickyMsgId).catch(() => null);
-
           if (oldSticky) {
             await oldSticky.delete().catch(() => {});
             await client.db.delete(stickyKey); // ✅ Clear the key after deletion
