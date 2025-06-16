@@ -40,37 +40,6 @@ module.exports = new Object({
         })
       },
       {
-        channels: client.config.stickyTalesChannel,
-        build: () => {
-          const thumbnails = [
-            'https://i.imgur.com/B6u2feA.png', 'https://i.imgur.com/DrmVtuP.png', 'https://i.imgur.com/Z5mq7OF.png',
-            'https://i.imgur.com/M0U4I56.png', 'https://i.imgur.com/jOGuk7s.png', 'https://i.imgur.com/tM9xIaq.png',
-            'https://i.imgur.com/hIBEDkM.png', 'https://i.imgur.com/GUYxDJF.png', 'https://i.imgur.com/MjADPRv.png',
-            'https://i.imgur.com/InURa9o.png', 'https://i.imgur.com/son6e07.png', 'https://i.imgur.com/0wE5Qyp.png',
-            'https://i.imgur.com/DHzUulL.png', 'https://i.imgur.com/bEIn9Ag.png', 'https://i.imgur.com/qkw8aXV.png'
-          ];
-          const thumb = thumbnails[Math.floor(Math.random() * thumbnails.length)];
-
-          return {
-            embeds: [
-              new EmbedBuilder()
-                .setTitle('Ancient Luna Activity Tracker')
-                .setDescription('Thanks for the hard work!\nClick on this button to update the payout sheet.')
-                .setThumbnail(thumb)
-                .setColor(client.config.embedColorTrans)
-            ],
-            components: [
-              new ActionRowBuilder().addComponents(
-                new ButtonBuilder()
-                  .setStyle(ButtonStyle.Link)
-                  .setLabel('Payout sheet')
-                  .setURL('https://docs.google.com/spreadsheets/d/1hb-WK8921d0erv4zQ5vTpBzEsnMNW0VTLycHwyAW3_k')
-              )
-            ]
-          };
-        }
-      },
-      {
         channels: client.config.stickyCTSChannel,
         build: () => ({
           components: [
