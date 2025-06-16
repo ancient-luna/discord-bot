@@ -91,40 +91,39 @@ module.exports = new Object({
       const stickyKey = `sticky_${message.channel.id}`;
       const cooldownKey = `cd_${message.channel.id}`;
 
-      // 🕒 Cooldown check
+      // cooldown check
       if (stickyCooldown.has(cooldownKey)) return;
       stickyCooldown.set(cooldownKey, true);
       setTimeout(() => stickyCooldown.delete(cooldownKey), 2000); // 2s cd per channel
 
       try {
         const messages = await message.channel.messages.fetch({ limit: 10 });
-        const lastMsg = messages.first();
-        if (!lastMsg) continue;
-
         const stickyMsgId = await client.db.get(stickyKey);
-        const stickyMsg = stickyMsgId
-          ? await message.channel.messages.fetch(stickyMsgId).catch(() => null)
-          : null;
 
-        // If sticky is already last message, skip
-        if (stickyMsg && stickyMsg.id === lastMsg.id) continue;
+        // if sticky exists and is still in recent messages → delete it
+        if (stickyMsgId) {
+          const cached = messages.find((msg) => msg.id === stickyMsgId);
+          if (cached) {
+            await cached.delete().catch(() => {});
+            await client.db.delete(stickyKey);
+          }
+        }
 
-        // Delete old sticky if exists
-        if (stickyMsg) await stickyMsg.delete().catch(() => {});
+        // skip if last message is a sticky it just sent
+        const lastMsg = messages.first();
+        if (lastMsg?.id === stickyMsgId) continue;
 
-        // Build new sticky content
+        // build content and ensure it's not empty
         const content = sticky.build();
-        if (!content.content && !content.embeds && !content.files && !content.attachments) {
+        if ( !content.content && !content.embeds && !content.files && !content.attachments ) {
           content.content = " ";
         }
 
-        // Send and save
         const newSticky = await message.channel.send(content);
         await client.db.set(stickyKey, newSticky.id);
-
       } catch (err) {
         console.error(`[Sticky] Error in #${message.channel.name}:`, err);
       }
     }
-  }
+  },
 });
