@@ -67,16 +67,19 @@ module.exports = new Object({
 
       try {
         const stickyMsgId = await client.db.get(stickyKey);
+        let oldSticky = null;
 
-        // Directly fetch old sticky by ID and delete it
         if (stickyMsgId) {
-          const oldSticky = await message.channel.messages.fetch(stickyMsgId).catch(() => null);
+          oldSticky = await message.channel.messages.fetch(stickyMsgId).catch(() => null);
+
           if (oldSticky) {
             await oldSticky.delete().catch(() => {});
+            await client.db.delete(stickyKey); // ✅ Clear the key after deletion
+          } else {
+            await client.db.delete(stickyKey); // ✅ Also clear if the message was already deleted manually
           }
         }
 
-        // Build new sticky
         const content = sticky.build();
         if (!content.content && !content.embeds && !content.files && !content.attachments) {
           content.content = " ";
