@@ -53,6 +53,6 @@ module.exports = {
               }).catch((e) => { });
             modalInteraction.reply({ content: `Suggestion sent to <#842069893113446410>`, flags: MessageFlags.Ephemeral }).catch((e) => { });
         })
-        .catch((e)=> { console.log(e) })
+        .catch((e)=> { })
   },
 };

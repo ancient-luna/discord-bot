@@ -57,6 +57,6 @@ module.exports = {
             modalInteraction.reply({ embeds: [confessionTxt] })
             modalInteraction.guild.channels.cache.get('1162419484305391800').send({ embeds: [confessionLog] })
         })
-        .catch((e)=> { console.log(e) })
+        .catch((e)=> { })
   },
 };

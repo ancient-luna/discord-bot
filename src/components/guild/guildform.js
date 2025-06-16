@@ -100,6 +100,6 @@ module.exports = {
                 .setTimestamp()
             modalInteraction.reply({ embeds: [embedForm] })
         })
-        .catch((e)=> { console.log(e) })
+        .catch((e)=> { })
   },
 };
