@@ -7,7 +7,8 @@ module.exports = new Object({
    * @param {import("../index")} client
    * @param {import("discord.js").Message} message
    */
-  async execute(client, message) {if (!message.guild || message.channel.type === ChannelType.DM) return;
+  async execute(client, message) {
+    if (!message.guild || message.channel.type === ChannelType.DM) return;
 
     const stickyConfigs = [
       {
