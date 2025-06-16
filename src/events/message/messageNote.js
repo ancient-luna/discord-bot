@@ -60,35 +60,21 @@ module.exports = new Object({
       const stickyKey = `sticky_${message.channel.id}`;
       const cooldownKey = `cd_${message.channel.id}`;
 
-      // ⏱ Cooldown check
+      // Cooldown per channel
       if (stickyCooldown.has(cooldownKey)) return;
       stickyCooldown.set(cooldownKey, true);
       setTimeout(() => stickyCooldown.delete(cooldownKey), 2000);
 
       try {
         const stickyMsgId = await client.db.get(stickyKey);
-        let oldSticky = null;
 
-        // Try direct fetch first (even if not cached)
+        // Directly fetch old sticky by ID and delete it
         if (stickyMsgId) {
-          oldSticky = await message.channel.messages.fetch(stickyMsgId).catch(() => null);
+          const oldSticky = await message.channel.messages.fetch(stickyMsgId).catch(() => null);
+          if (oldSticky) {
+            await oldSticky.delete().catch(() => {});
+          }
         }
-
-        // If not found, fallback to recent scan
-        if (!oldSticky) {
-          const recentMessages = await message.channel.messages.fetch({ limit: 20 });
-          oldSticky = recentMessages.find(msg => msg.id === stickyMsgId);
-        }
-
-        // Delete if found
-        if (oldSticky) {
-          await oldSticky.delete().catch(() => {});
-          await client.db.delete(stickyKey);
-        }
-
-        // Check last message to avoid double-posting sticky
-        const lastMessage = (await message.channel.messages.fetch({ limit: 1 })).first();
-        if (lastMessage?.id === stickyMsgId) continue;
 
         // Build new sticky
         const content = sticky.build();
