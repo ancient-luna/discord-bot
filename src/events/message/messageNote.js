@@ -60,39 +60,40 @@ module.exports = new Object({
       const stickyKey = `sticky_${message.channel.id}`;
       const cooldownKey = `cd_${message.channel.id}`;
 
-      // cooldown check
       if (stickyCooldown.has(cooldownKey)) return;
       stickyCooldown.set(cooldownKey, true);
-      setTimeout(() => stickyCooldown.delete(cooldownKey), 2000); // 2s cd per channel
+      setTimeout(() => stickyCooldown.delete(cooldownKey), 2000);
 
       try {
         const messages = await message.channel.messages.fetch({ limit: 10 });
-        const stickyMsgId = await client.db.get(stickyKey);
+        const lastMsg = messages.first();
 
-        // if sticky exists and is still in recent messages → delete it
+        const stickyMsgId = await client.db.get(stickyKey);
+        let stickyMsg = null;
+
         if (stickyMsgId) {
-          const cached = messages.find((msg) => msg.id === stickyMsgId);
-          if (cached) {
-            await cached.delete().catch(() => {});
+          stickyMsg = messages.find(msg => msg.id === stickyMsgId) || await message.channel.messages.fetch(stickyMsgId).catch(() => null);
+
+          if (stickyMsg) {
+            await stickyMsg.delete().catch(() => {});
             await client.db.delete(stickyKey);
           }
         }
 
-        // skip if last message is a sticky it just sent
-        const lastMsg = messages.first();
-        if (lastMsg?.id === stickyMsgId) continue;
+        // after deleting, if latest message is still same sticky, skip
+        if (lastMsg && lastMsg.id === stickyMsgId) continue;
 
-        // build content and ensure it's not empty
         const content = sticky.build();
-        if ( !content.content && !content.embeds && !content.files && !content.attachments ) {
+        if (!content.content && !content.embeds && !content.files && !content.attachments) {
           content.content = " ";
         }
 
         const newSticky = await message.channel.send(content);
         await client.db.set(stickyKey, newSticky.id);
+
       } catch (err) {
-        console.error(`[Sticky] Error in #${message.channel.name}:`, err);
+        console.error(`[Sticky Error] in #${message.channel.name}:`, err);
       }
     }
-  },
+  }
 });
