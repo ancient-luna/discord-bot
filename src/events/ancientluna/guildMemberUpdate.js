@@ -11,6 +11,7 @@ module.exports = new Object({
             radianceRole,
             luminanceRole,
             dalumiRole,
+            luxcastaRole,
             memberRole: lightSeekerRole,
             lunarDiscipleRole,
             levatioRole,
@@ -39,12 +40,13 @@ module.exports = new Object({
 
         // OG & Loyalties sync
         const hasLightSeeker = newMember.roles.cache.has(lightSeekerRole);
+        const hasLuxCasta = newMember.roles.cache.has(luxcastaRole);
         const hasLunarDisciple = newMember.roles.cache.has(lunarDiscipleRole);
         const hasLevatio = newMember.roles.cache.has(levatioRole);
         const hasOG = newMember.roles.cache.has(ogRole);
         const hasLoyalties = newMember.roles.cache.has(loyaltiesRole);
 
-        if (hasLightSeeker && !hasOG) await newMember.roles.add(ogRole).catch(() => {});
+        if ((hasLuxCasta || hasLightSeeker) && !hasOG) await newMember.roles.add(ogRole).catch(() => {});
         if ((hasLunarDisciple || hasLevatio) && !hasLoyalties) await newMember.roles.add(loyaltiesRole).catch(() => {});
     }
 });

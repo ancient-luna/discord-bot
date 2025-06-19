@@ -5,6 +5,7 @@ module.exports = async function syncRolesHandler(client) {
     const luminanceRole = client.config.luminanceRole;
     const dalumiRole = client.config.dalumiRole;
 
+    const luxcastaRole = client.config.luxcastaRole;
     const lightSeekerRole = client.config.memberRole;
     const lunarDiscipleRole = client.config.lunarDiscipleRole;
     const levatioRole = client.config.levatioRole;
@@ -29,13 +30,14 @@ module.exports = async function syncRolesHandler(client) {
 
         // For OG and Loyalties role reward in server
         const inGuild = !!memberGuild;
+        const hasLuxCasta = memberServer.roles.cache.has(luxcastaRole);
         const hasLightSeeker = memberServer.roles.cache.has(lightSeekerRole);
         const hasLunarDisciple = memberServer.roles.cache.has(lunarDiscipleRole);
         const hasLevatio = memberServer.roles.cache.has(levatioRole);
         const hasOG = memberServer.roles.cache.has(ogRole);
         const hasLoyalties = memberServer.roles.cache.has(loyaltiesRole);
 
-        if (inGuild && hasLightSeeker && !hasOG) await memberServer.roles.add(ogRole).catch(() => {});
+        if (inGuild && (hasLuxCasta || hasLightSeeker) && !hasOG) await memberServer.roles.add(ogRole).catch(() => {});
         if (inGuild && (hasLunarDisciple || hasLevatio) && !hasLoyalties) await memberServer.roles.add(loyaltiesRole).catch(() => {});
     }
 };
