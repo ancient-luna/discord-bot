@@ -26,6 +26,7 @@ module.exports = new Object({
 
     reminderHandler(client);
     await syncRolesHandler(client);
+    await syncPreRolesHandler(client);
 
     setInterval(() => syncRolesHandler(client), 5 * 60 * 1000);
   },
