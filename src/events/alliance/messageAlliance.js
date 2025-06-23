@@ -8,6 +8,17 @@ module.exports = {
   async execute(client, message) {
     const allianceServerID = client.config.ancientLunaAlliance;
     if (message.guild?.id !== allianceServerID) return;
+
+    // force refetch if the message is from a bot
+    if (message.author.bot) {
+      try {
+        message = await message.channel.messages.fetch(message.id);
+      } catch (e) {
+        console.warn("Could not refetch full message:", e);
+        return;
+      }
+    }
+
     const channelName = message.channel.name;
     const member = await message.guild.members.fetch(message.author.id).catch(() => {});
     const displayName = member?.displayName || message.author.username;
@@ -47,7 +58,7 @@ module.exports = {
     const embedData = message.embeds?.map(embed => embed.toJSON()) || [];
     const componentData = message.components?.map(row => ({ type: row.type, components: row.components.map(button => button.toJSON()) })) || [];
 
-    if (!body && message.attachments.size === 0) return;
+    if (!body && message.attachments.size === 0 && embedData.length === 0 && componentData.length === 0) return;
 
     try {
       const sent = await webhookClient.send({

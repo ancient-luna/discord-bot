@@ -9,6 +9,17 @@ module.exports = {
     if (newMessage.guild?.id !== client.config.ancientLunaAlliance) return;
     const webhookMessageId = await client.db.get(`mirror_${newMessage.id}`);
     if (!webhookMessageId) return;
+
+    // force refetch if the message is from a bot
+    if (newMessage.author?.bot) {
+      try {
+        newMessage = await newMessage.channel.messages.fetch(newMessage.id);
+      } catch (e) {
+        console.warn("Could not refetch full updated message:", e);
+        return;
+      }
+    }
+
     let body = newMessage.content?.trim() || "[edited]";
 
     const emojiRegex = /<a?:\w+:(\d+)>/g;
