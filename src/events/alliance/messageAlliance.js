@@ -6,22 +6,16 @@ const webhookClient = new WebhookClient({ url: process.env.WEBHOOK_ALLIANCE });
 module.exports = {
   name: "messageCreate",
   async execute(client, message) {
-    // if (message.author.bot) return;
-
     const allianceServerID = client.config.ancientLunaAlliance;
     if (message.guild?.id !== allianceServerID) return;
-
     const channelName = message.channel.name;
-
     const member = await message.guild.members.fetch(message.author.id).catch(() => {});
     const displayName = member?.displayName || message.author.username;
     const avatarUrl = message.author.displayAvatarURL({ extension: "png", dynamic: true, size: 512 });
-
     let body = message.content?.trim() || "";
 
     const emojiRegex = /<a?:\w+:(\d+)>/g;
     const emojiMatches = [...body.matchAll(emojiRegex)];
-
     if (emojiMatches.length) {
       const parts = body.split(emojiRegex);
       if (parts.join("").trim() === "") {
@@ -31,16 +25,15 @@ module.exports = {
           body = `https://cdn.discordapp.com/emojis/${emojiMatches[0][1]}.${ext}?size=48`;
         } else {
           body = emojiMatches.map(m => {
-              const isAnimated = m[0].startsWith("<a:");
-              const ext = isAnimated ? "gif" : "png";
-              return `[☺](https://cdn.discordapp.com/emojis/${m[1]}.${ext}?size=48)`;
-            }).join(" ");
+            const isAnimated = m[0].startsWith("<a:");
+            const ext = isAnimated ? "gif" : "png";
+            return `[☺](https://cdn.discordapp.com/emojis/${m[1]}.${ext}?size=48)`;
+          }).join(" ");
         }
       } else {
         body = body.replace(emojiRegex, (match, id) => {
           const isAnimated = match.startsWith("<a:");
           const ext = isAnimated ? "gif" : "png";
-          const name = match.split(":")[1];
           return `[☺](https://cdn.discordapp.com/emojis/${id}.${ext}?size=48)`;
         });
       }
@@ -52,14 +45,14 @@ module.exports = {
     }
 
     const embedData = message.embeds?.map(embed => embed.toJSON()) || [];
-    const componentData = message.components?.map(c => c.toJSON()) || [];
+    const componentData = message.components?.map(row => ({ type: row.type, components: row.components.map(button => button.toJSON()) })) || [];
 
     if (!body && message.attachments.size === 0) return;
 
     try {
       const sent = await webhookClient.send({
         content: body,
-        username: `${displayName} ・ #${channelName}`,
+        username: `${displayName} ・ ${channelName}`,
         avatarURL: avatarUrl,
         files: message.attachments.map(att => att),
         embeds: embedData,

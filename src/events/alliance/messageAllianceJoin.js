@@ -6,8 +6,6 @@ const webhookClient = new WebhookClient({ url: process.env.WEBHOOK_ALLIANCE });
 module.exports = {
   name: "guildMemberAdd",
   async execute(client, member) {
-    if (member.user.bot) return;
-
     const allianceServerID = client.config.ancientLunaAlliance;
     if (member.guild.id !== allianceServerID) return;
 
