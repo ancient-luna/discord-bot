@@ -7,9 +7,11 @@ module.exports = {
   name: "messageUpdate",
   async execute(client, oldMessage, newMessage) {
     if (newMessage.guild?.id !== client.config.ancientLunaAlliance) return;
+    if (newMessage.interaction?.ephemeral) return;
+    if (newMessage.interaction && newMessage.webhookId) return;
+    
     const webhookMessageId = await client.db.get(`mirror_${newMessage.id}`);
     if (!webhookMessageId) return;
-    if (newMessage.interaction?.ephemeral) return;
 
     // force refetch if the message is from a bot
     if (newMessage.author?.bot) {
