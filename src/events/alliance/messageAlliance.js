@@ -8,8 +8,7 @@ module.exports = {
   async execute(client, message) {
     const allianceServerID = client.config.ancientLunaAlliance;
     if (message.guild?.id !== allianceServerID) return;
-    if (message.interaction?.ephemeral) return;
-    if (message.interaction && message.webhookId) return;
+    if ((message.flags?.bitfield ?? 0) & 64) return;
 
     // force refetch if the message is from a bot
     if (message.author.bot) {

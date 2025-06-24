@@ -7,9 +7,8 @@ module.exports = {
   name: "messageUpdate",
   async execute(client, oldMessage, newMessage) {
     if (newMessage.guild?.id !== client.config.ancientLunaAlliance) return;
-    if (newMessage.interaction?.ephemeral) return;
-    if (newMessage.interaction && newMessage.webhookId) return;
-    
+    if ((newMessage.flags?.bitfield ?? 0) & 64) return;
+
     const webhookMessageId = await client.db.get(`mirror_${newMessage.id}`);
     if (!webhookMessageId) return;
 
