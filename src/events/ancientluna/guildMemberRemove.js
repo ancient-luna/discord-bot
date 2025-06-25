@@ -9,11 +9,7 @@ module.exports = new Object({
     async execute(client, member) {
         if (member.partial) await member.user.fetch();
         if (!member.guild) return;
-        let channel = member.guild.channels.cache.get(client.config.gatewayChannel);
-        if (!channel) {
-            channel = await member.guild.channels.fetch(client.config.gatewayChannel).catch(console.error);
-            if (!channel) return;
-        }
+        const channel = member.guild.channels.cache.get(client.config.gatewayChannel);
         const leavingText = new EmbedBuilder()
             .setDescription(`The lights get dimmed! **${member.displayName}** leaving the sanctuary`)
             .setFooter({ text: `${member.user.id} (u) ${member.user.username}`, iconURL: member.user.displayAvatarURL({ dynamic: true, size: 512 }) })
