@@ -117,5 +117,6 @@ module.exports = {
             embeds: [embed],
             files: [radiance]
         });
+        await message.delete().catch((e) => { });
     }
 };
