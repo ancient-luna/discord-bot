@@ -17,7 +17,7 @@ module.exports = new Object({
     app.listen(8080);
 
     const getCommands = client.slashCommands.map((x) => x.data.toJSON());
-    await client.application.commands.set([]);
+    // await client.application.commands.set([]); // deleting and pre-registering all commands
     await client.application.commands.set(getCommands);
 
     client.console.log(`Loaded: ${getCommands.length}`, "scmd");
