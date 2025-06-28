@@ -22,7 +22,7 @@ module.exports = {
       }
     }
 
-    let body = newMessage.content?.trim() || "[edited]";
+    let body = newMessage.content?.trim() || "⁣";
 
     const emojiRegex = /<a?:\w+:(\d+)>/g;
     const emojiMatches = [...body.matchAll(emojiRegex)];

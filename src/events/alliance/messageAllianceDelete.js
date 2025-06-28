@@ -11,7 +11,7 @@ module.exports = {
     if (!webhookMessageId) return;
     try {
       await webhookClient.editMessage(webhookMessageId, {
-        content: "[message deleted]",
+        content: "-# [message deleted]",
         embeds: [],
         components: [],
         files: [],
