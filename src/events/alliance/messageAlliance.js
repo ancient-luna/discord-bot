@@ -53,7 +53,11 @@ module.exports = {
 
     if (message.stickers.size) {
       const sticker = message.stickers.first();
-      body = `https://media.discordapp.net/stickers/${sticker.id}.png?size=160&passthrough=false`;
+      if ( sticker.format === 3 ) {
+        body = `-# is sending sticker: *${sticker.name}*`
+      } else {
+        body = `https://media.discordapp.net/stickers/${sticker.id}.png?size=160&passthrough=false`;
+      }
     }
 
     const embedData = message.embeds?.map(embed => embed.toJSON()) || [];
