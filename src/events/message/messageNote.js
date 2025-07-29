@@ -1,41 +1,60 @@
 const { ChannelType, EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle, } = require("discord.js");
 
-// Store sticky message IDs and last update times
+// Store sticky message IDs, last update times, and processing locks
 const stickyMessageIds = new Map(); // channelId -> messageId
 const lastUpdate = new Map(); // channelId -> timestamp
+const processingLocks = new Map(); // channelId -> Promise
 const STICKY_COOLDOWN = 3000; // 3 seconds
 
 /**
- * Updates sticky message for a channel
+ * Updates sticky message for a channel with race condition protection
  * @param {import("discord.js").TextChannel} channel
  * @param {Object} embed
  * @param {Object} components
  * @param {string} content
  */
 async function updateStickyMessage(channel, embed, components, content = null) {
-  try {
-    // Delete old sticky message if exists
-    if (stickyMessageIds.has(channel.id)) {
-      try {
-        const oldMessage = await channel.messages.fetch(
-          stickyMessageIds.get(channel.id)
-        );
-        await oldMessage.delete();
-      } catch (error) {
-        // Message might already be deleted, ignore
+  // If already processing for this channel, wait for it to complete
+  if (processingLocks.has(channel.id)) {
+    await processingLocks.get(channel.id);
+    return; // Skip this update since another one just completed
+  }
+
+  // Create a lock for this channel
+  const updatePromise = (async () => {
+    try {
+      // Store old message ID before deletion
+      const oldMessageId = stickyMessageIds.get(channel.id);
+
+      // Send new sticky message first
+      const messageOptions = { components };
+      if (embed) messageOptions.embeds = [embed];
+      if (content) messageOptions.content = content;
+
+      const newSticky = await channel.send(messageOptions);
+      stickyMessageIds.set(channel.id, newSticky.id);
+      lastUpdate.set(channel.id, Date.now());
+
+      // Delete old sticky message after new one is sent
+      if (oldMessageId && oldMessageId !== newSticky.id) {
+        try {
+          const oldMessage = await channel.messages.fetch(oldMessageId);
+          await oldMessage.delete();
+        } catch (error) {
+          // Message might already be deleted, ignore
+        }
       }
+    } catch (error) {
+      console.error("Failed to update sticky message:", error);
     }
+  })();
 
-    // Send new sticky message
-    const messageOptions = { components };
-    if (embed) messageOptions.embeds = [embed];
-    if (content) messageOptions.content = content;
+  processingLocks.set(channel.id, updatePromise);
 
-    const newSticky = await channel.send(messageOptions);
-    stickyMessageIds.set(channel.id, newSticky.id);
-    lastUpdate.set(channel.id, Date.now());
-  } catch (error) {
-    console.error("Failed to update sticky message:", error);
+  try {
+    await updatePromise;
+  } finally {
+    processingLocks.delete(channel.id);
   }
 }
 
