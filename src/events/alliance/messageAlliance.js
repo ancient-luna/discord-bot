@@ -54,7 +54,7 @@ module.exports = {
     if (message.stickers.size) {
       const sticker = message.stickers.first();
       if ( sticker.format === 3 ) {
-        body = `-# is sending sticker ✨ *${sticker.name}*`
+        body = `-# is sending sticker ✨ ***${sticker.name}***`
       } else {
         body = `https://media.discordapp.net/stickers/${sticker.id}.png?size=160&passthrough=false`;
       }
