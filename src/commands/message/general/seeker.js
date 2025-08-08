@@ -7,7 +7,7 @@ module.exports = new Object({
     category: "general",
     usage: `seeker [@user]`,
     cooldown: 0,
-    aliases: ['profile', 'avatar'],
+    aliases: [],
     examples: [],
     sub_commands: [],
     args: false,
@@ -21,98 +21,98 @@ module.exports = new Object({
      */
     async execute(client, message, args) {
 
-        const loadingTxt = await message.reply(`Getting profile <a:u_load:1334900265953923085>`);
+      const loadingTxt = await message.reply(`Getting profile <a:u_load:1334900265953923085>`);
 
-        try {
-            const member = message.mentions.members.first() || message.member;
-            const fetchedMembers = await message.guild.members.fetch();
-            
-            let status = member.presence?.status || 'offline';
+      try {
+          const member = message.mentions.members.first() || message.member;
+          const fetchedMembers = await message.guild.members.fetch();
+          
+          let status = member.presence?.status || 'offline';
 
-            const profileBuffer = await Profile(member.id, {
-                overwriteBadges: false,
-                customBadges: ['src/assets/badge/ancientluna.png'],
-                moreBackgroundBlur: true,
-                removeBorder: true,
-                presenceStatus: status,
-                customUsername: member.displayName,
-                customSubtitle: `${member.user.id} ${member.user.createdAt.toLocaleDateString()}`,
-                customDate: `@${member.user.username}`,
-                customFont: 'src/assets/usercard/Noto.otf',
-            });
-            const imageAttachment = new AttachmentBuilder(profileBuffer, { name: `profile.png` });
+          const profileBuffer = await Profile(member.id, {
+              overwriteBadges: false,
+              customBadges: ['src/assets/badge/ancientluna.png'],
+              moreBackgroundBlur: true,
+              removeBorder: true,
+              presenceStatus: status,
+              customUsername: member.displayName,
+              customSubtitle: `${member.user.id} ${member.user.createdAt.toLocaleDateString()}`,
+              customDate: `@${member.user.username}`,
+              customFont: 'src/assets/usercard/Noto.otf',
+          });
+          const imageAttachment = new AttachmentBuilder(profileBuffer, { name: `profile.png` });
 
-            const joinPosition = Array.from(fetchedMembers
-                .sort((a, b) => a.joinedTimestamp - b.joinedTimestamp)
-                .keys())
-                .indexOf(member.id) + 1;
+          const joinPosition = Array.from(fetchedMembers
+              .sort((a, b) => a.joinedTimestamp - b.joinedTimestamp)
+              .keys())
+              .indexOf(member.id) + 1;
 
-            const everyoneRole = message.guild.roles.cache.find(role => role.name === '@everyone');
-            const topRoles = member.roles.cache
-                .filter(role => role !== everyoneRole)
-                .sort((a, b) => b.position - a.position)
-                .map(role => role)
-                // .slice(0, 3);
+          const everyoneRole = message.guild.roles.cache.find(role => role.name === '@everyone');
+          const topRoles = member.roles.cache
+              .filter(role => role !== everyoneRole)
+              .sort((a, b) => b.position - a.position)
+              .map(role => role)
+              // .slice(0, 3);
 
-            const joinTime = parseInt(member.joinedTimestamp / 1000);
-            const createdTime = parseInt(member.user.createdTimestamp / 1000);
+          const joinTime = parseInt(member.joinedTimestamp / 1000);
+          const createdTime = parseInt(member.user.createdTimestamp / 1000);
 
-            const Booster = member.premiumSince ? "<a:_ab_discord_boost_spin:965778537334312970> boosting" : "none";
+          const Booster = member.premiumSince ? "<a:_ab_discord_boost_spin:965778537334312970> boosting" : "none";
 
-            const avatarButton = new ButtonBuilder()
-                .setLabel('Avatar')
-                .setStyle(ButtonStyle.Link)
-                .setURL(member.displayAvatarURL({ format: "png", size: 4096 }) || "https://ancientluna.org/none-display");
+          const avatarButton = new ButtonBuilder()
+              .setLabel('Avatar')
+              .setStyle(ButtonStyle.Link)
+              .setURL(member.displayAvatarURL({ format: "png", size: 4096 }) || "https://ancientluna.org/none-display");
 
-            const bannerButton = new ButtonBuilder()
-                .setLabel('Banner')
-                .setStyle(ButtonStyle.Link)
-                .setURL((await member.user.fetch()).bannerURL({ format: "png", size: 4096 }) || "https://ancientluna.org/none-display");
+          const bannerButton = new ButtonBuilder()
+              .setLabel('Banner')
+              .setStyle(ButtonStyle.Link)
+              .setURL((await member.user.fetch()).bannerURL({ format: "png", size: 4096 }) || "https://ancientluna.org/none-display");
 
-            const profileButton = new ActionRowBuilder()
-                .addComponents(avatarButton, bannerButton);
+          const profileButton = new ActionRowBuilder()
+              .addComponents(avatarButton, bannerButton);
 
-            const Embed = new EmbedBuilder()
-                .setTitle(`${member.displayName} Profile in ${message.guild.name} ✦`)
-                .setDescription(`<@${member.id}> joined as the ${addSuffix(joinPosition)} member of this server`)
-                // .setImage(`attachment://profile.png`)
-                .addFields([
-                    { name: "Account Created", value: `<t:${createdTime}:R>`, inline: true },
-                    { name: "Joined Since", value: `<t:${joinTime}:D>`, inline: true },
-                    { name: "Server Booster", value: `${Booster}`, inline: true },
-                    { name: `Roles in ${message.guild.name}`, value: `${topRoles.join(" ").replace(`<@${message.guildId}>`)}`, inline: false },
-                ])
-                .setColor(client.config.embedColorTrans)
-                // .setFooter({ text: `${member.id} (u) ${member.user.username}` })
-                .setTimestamp()
+          const Embed = new EmbedBuilder()
+              .setTitle(`${member.displayName} Profile in ${message.guild.name} ✦`)
+              .setDescription(`<@${member.id}> joined as the ${addSuffix(joinPosition)} member of this server`)
+              // .setImage(`attachment://profile.png`)
+              .addFields([
+                  { name: "Account Created", value: `<t:${createdTime}:R>`, inline: true },
+                  { name: "Joined Since", value: `<t:${joinTime}:D>`, inline: true },
+                  { name: "Server Booster", value: `${Booster}`, inline: true },
+                  { name: `Roles in ${message.guild.name}`, value: `${topRoles.join(" ").replace(`<@${message.guildId}>`)}`, inline: false },
+              ])
+              .setColor(client.config.embedColorTrans)
+              // .setFooter({ text: `${member.id} (u) ${member.user.username}` })
+              .setTimestamp()
 
-            loadingTxt.edit({
-                content: '⁣',
-                // embeds: [Embed],
-                // components: [profileButton],
-                files: [imageAttachment]
-            });
+          loadingTxt.edit({
+              content: '⁣',
+              // embeds: [Embed],
+              // components: [profileButton],
+              files: [imageAttachment]
+          });
 
-            message.channel.send({
-                content: `-# Discord member since <t:${createdTime}:R> as ${addSuffix(joinPosition)} member of this server since <t:${joinTime}:D>`,
-                // components: [profileButton],
-            });
+          message.channel.send({
+              content: `-# Discord member since <t:${createdTime}:R> as ${addSuffix(joinPosition)} member of this server since <t:${joinTime}:D>`,
+              // components: [profileButton],
+          });
 
-        } catch (error) {
-            loadingTxt.edit({ content: "unable to show `profile` at the moment." });
-            throw error;
-        }
-    }
+      } catch (error) {
+          loadingTxt.edit({ content: "unable to show `profile` at the moment." });
+          throw error;
+      }
+  }
 });
 
 function addSuffix(number) {
-    if (number % 100 >= 11 && number % 100 <= 13)
-        return number + "th";
+  if (number % 100 >= 11 && number % 100 <= 13)
+      return number + "th";
 
-    switch (number % 10) {
-        case 1: return number + "st";
-        case 2: return number + "nd";
-        case 3: return number + "rd";
-    }
-    return number + "th";
+  switch (number % 10) {
+      case 1: return number + "st";
+      case 2: return number + "nd";
+      case 3: return number + "rd";
+  }
+  return number + "th";
 };
