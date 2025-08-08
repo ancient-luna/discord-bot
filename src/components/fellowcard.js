@@ -164,10 +164,9 @@ module.exports = {
             }
 
             // Send image as attachment
-            const sfBuffer = canvas.toBuffer();
-            const attachment = new AttachmentBuilder(sfBuffer, { name: 'fellowcard.png' });
+            const fellowCard = new AttachmentBuilder(canvas.toBuffer(), { name: 'fellowcard.png' });
             await interaction.reply({
-                files: [attachment],
+                files: [fellowCard],
                 flags: MessageFlags.Ephemeral
             });
         } catch (error) {
