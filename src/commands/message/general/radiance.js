@@ -20,6 +20,7 @@ module.exports = {
      * @param {String[]} args
      */
     async execute(client, message, args) {
+        await message.delete().catch((e) => { });
 
         const loadingTxt = await message.channel.send(`Listing the **Supporters** and the **Boosters** <a:u_load:1334900265953923085>`);
 
@@ -174,6 +175,5 @@ module.exports = {
             files: [radiance],
             allowedMentions: { parse: [] },
         }).catch((e) => { });
-        await message.delete().catch((e) => { });
     }
 };
