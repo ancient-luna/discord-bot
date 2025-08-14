@@ -1,4 +1,5 @@
-const { EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle } = require("discord.js");
+const { SlashCommandBuilder, EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle, ContainerBuilder, MediaGalleryBuilder, MessageFlags, TextDisplayBuilder, SeparatorSpacingSize, SeparatorBuilder } = require('discord.js');
+
 module.exports = new Object({
     name: "wisdomoflleud",
     description: "whole Luna information that you might need to know",
@@ -18,43 +19,41 @@ module.exports = new Object({
      * @param {String[]} args
      */
     async execute(client, message, args) {
-
-        const cB = `\`\`\``
-
-        const descGeneral = new EmbedBuilder()
-            .setTitle(`About Ancient Luna Bot`)
-            .setDescription(`우리는 마치 달을 만난 것처럼 달렸다\nI'm a relic that born by [@imsoondae](https://www.instagram.com/?/) to seek wisdom\nBlessed by [@biglebomb](https://discordapp.com/users/306545868054593537) to be alive while until now`)
-            .addFields(
-                { name: `Prefix`, value: `${cB}!${cB}`, inline: true },
-                { name: `Help (Prefix)`, value: `${cB}!help${cB}`, inline: true },
-                { name: `Help (Command)`, value: `${cB}/help${cB}`, inline: true },
-            )
-            .setColor(client.config.embedColorTrans)
-            .setThumbnail("https://i.imgur.com/c8QnpbX.gif")
-
-        let serverButton = new ActionRowBuilder()
-            .addComponents(
-                new ButtonBuilder()
-                    .setCustomId("btn-helpcmd")
-                    .setLabel("Commands")
-                    .setStyle(ButtonStyle.Primary),
-                new ButtonBuilder()
-                    .setStyle(ButtonStyle.Link)
-                    .setLabel('Server')
-                    .setURL('https://discord.com/invite/Sbp2nt8QHe'),
-                new ButtonBuilder()
-                    .setStyle(ButtonStyle.Link)
-                    .setLabel('Support')
-                    .setURL('https://ko-fi.com/daexx'),
-                new ButtonBuilder()
-                    .setStyle(ButtonStyle.Link)
-                    .setLabel('YouTube')
-                    .setURL('https://www.youtube.com/@ancientluna')
-            )
+        const serverButton = new ActionRowBuilder().addComponents(
+            new ButtonBuilder()
+            .setCustomId("btn-helpcmd")
+            .setLabel("Commands")
+            .setStyle(ButtonStyle.Primary),
+            new ButtonBuilder()
+            .setLabel("Server")
+            .setStyle(ButtonStyle.Link)
+            .setURL("https://discord.com/invite/Sbp2nt8QHe"),
+            new ButtonBuilder()
+            .setLabel("Support")
+            .setStyle(ButtonStyle.Link)
+            .setURL("https://ko-fi.com/daexx"),
+            new ButtonBuilder()
+            .setLabel("YouTube")
+            .setStyle(ButtonStyle.Link)
+            .setURL("https://www.youtube.com/@ancientluna")
+        );
+    
+        const container = new ContainerBuilder()
+        const separator = new SeparatorBuilder({ spacing: SeparatorSpacingSize.Large });
+        // const headerImage = new MediaGalleryBuilder().addItems({ type: 'image', media: { url: 'https://i.imgur.com/c8QnpbX.gif' } });
+        const textDetail = new TextDisplayBuilder().setContent(`# 우리는 마치 달을 만난 것처럼 달렸다\nI'm a relic that was born by [@imsoondae](https://www.instagram.com/?/) to seek wisdom.\nBlessed by [@biglebomb](https://discordapp.com/users/306545868054593537) to be alive until now.`)
+        const textPrefix = new TextDisplayBuilder().setContent(`-# current command prefix is: \`!\``);
+    
+        // container.addMediaGalleryComponents(headerImage);
+        container.addTextDisplayComponents(textDetail);
+        container.addTextDisplayComponents(textPrefix);
+        container.addSeparatorComponents(separator);
+        container.addActionRowComponents(serverButton);
 
         message.reply({
-            embeds: [descGeneral],
-            components: [serverButton]
+            flags: MessageFlags.IsComponentsV2,
+            components: [container],
+            allowedMentions: { parse: [] },
         })
     }
 });

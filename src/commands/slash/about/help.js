@@ -1,4 +1,4 @@
-const { SlashCommandBuilder, EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle } = require('discord.js');
+const { SlashCommandBuilder, EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle, ContainerBuilder, MediaGalleryBuilder, MessageFlags, TextDisplayBuilder, SeparatorSpacingSize, SeparatorBuilder } = require('discord.js');
 
 module.exports = {
   data: new SlashCommandBuilder()
@@ -8,19 +8,6 @@ module.exports = {
   cooldown: 1, // in seconds
 
   async execute(client, interaction) {
-    const cB = "```";
-
-    const descGeneral = new EmbedBuilder()
-      .setTitle("About Ancient Luna Bot")
-      .setDescription(`우리는 마치 달을 만난 것처럼 달렸다\nI'm a relic that was born by [@imsoondae](https://www.instagram.com/?/) to seek wisdom.\nBlessed by [@biglebomb](https://discordapp.com/users/306545868054593537) to be alive until now.`)
-      .addFields(
-        { name: "Prefix", value: `${cB}!${cB}`, inline: true },
-        { name: "Help (Prefix)", value: `${cB}!help${cB}`, inline: true },
-        { name: "Help (Command)", value: `${cB}/help${cB}`, inline: true }
-      )
-      .setColor(client.config.embedColorTrans)
-      .setThumbnail("https://i.imgur.com/c8QnpbX.gif");
-
     const serverButton = new ActionRowBuilder().addComponents(
       new ButtonBuilder()
         .setCustomId("btn-helpcmd")
@@ -40,9 +27,22 @@ module.exports = {
         .setURL("https://www.youtube.com/@ancientluna")
     );
 
+    const container = new ContainerBuilder()
+    const separator = new SeparatorBuilder({ spacing: SeparatorSpacingSize.Large });
+    // const headerImage = new MediaGalleryBuilder().addItems({ type: 'image', media: { url: 'https://i.imgur.com/c8QnpbX.gif' } });
+    const textDetail = new TextDisplayBuilder().setContent(`# 우리는 마치 달을 만난 것처럼 달렸다\nI'm a relic that was born by [@imsoondae](https://www.instagram.com/?/) to seek wisdom.\nBlessed by [@biglebomb](https://discordapp.com/users/306545868054593537) to be alive until now.`)
+    const textPrefix = new TextDisplayBuilder().setContent(`-# current command prefix is: \`!\``);
+
+    // container.addMediaGalleryComponents(headerImage);
+    container.addTextDisplayComponents(textDetail);
+    container.addTextDisplayComponents(textPrefix);
+    container.addSeparatorComponents(separator);
+    container.addActionRowComponents(serverButton);
+
     await interaction.reply({
-      embeds: [descGeneral],
-      components: [serverButton],
+      flags: MessageFlags.IsComponentsV2,
+      components: [container],
+      allowedMentions: { parse: [] },
     });
   },
 };
