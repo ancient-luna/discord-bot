@@ -28,8 +28,6 @@ module.exports = new Object({
     if (numberOfMessages > 100 || numberOfMessages < 0)
       return message.channel.send('Invalid number of messages. `!clearwisdom [1-100]`');
 
-    await message.channel.bulkDelete(numberOfMessages).then((messages) => {
-        client.util.printLog('info', `Bulk deleted ${messages.size} messages`);
-      }).catch(console.error);
+    await message.channel.bulkDelete(numberOfMessages).catch((e) => { });
   }
 });
