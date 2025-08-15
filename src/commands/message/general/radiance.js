@@ -22,7 +22,10 @@ module.exports = {
     async execute(client, message, args) {
         await message.delete().catch((e) => { });
 
-        const loadingTxt = await message.channel.send(`Listing the **Supporters** and the **Boosters** <a:u_load:1334900265953923085>`);
+        const loadingText = new TextDisplayBuilder().setContent(`Listing the **Supporters** and the **Boosters** <a:u_load:1334900265953923085>`)
+        const loadingFail = new TextDisplayBuilder().setContent(`this command may stay only in [**AncientLuna**](https://discord.gg/Sbp2nt8QHe)`)
+
+        let loadingTxt = await message.channel.send({ flags: MessageFlags.IsComponentsV2, components: [loadingText] })
 
         const roleIds = [
             '620709364247822338', // luminance role
@@ -44,7 +47,7 @@ module.exports = {
         }
 
         if (allMembers.luminance.length === 0 && allMembers.radiance.length === 0) {
-            return loadingTxt.edit("this command may stay only in [**AncientLuna**](https://discord.gg/Sbp2nt8QHe)");
+            return await loadingTxt.edit({ flags: MessageFlags.IsComponentsV2, components: [loadingFail] });
         }
 
         const avatarUrls = [...allMembers.luminance, ...allMembers.radiance].map(member => member.user.displayAvatarURL({ extension: 'png', size: 128 }));
@@ -104,26 +107,13 @@ module.exports = {
         }
 
         const radiance = new AttachmentBuilder(canvas.toBuffer(), { name: 'radiance.png' });
-        
-        const embed = new EmbedBuilder()
-            .setTitle('Gratitude from the Ancients')
-            .setDescription(`To <@&888736428069105674> <@&620709364247822338>,\nWhat began as my spark now grows in your glow. Ancient Luna breathes because your light remains\n⁣\`\`\`𝐒𝐔𝐏𝐏𝐎𝐑𝐓𝐄𝐑𝐒 (𝐑𝐀𝐃𝐈𝐀𝐍𝐂𝐄) ✦\`\`\`\n${radianceMentions}\n⁣\`\`\`𝐁𝐎𝐎𝐒𝐓𝐄𝐑𝐒 (𝐋𝐔𝐌𝐈𝐍𝐀𝐍𝐂𝐄) ♡\`\`\`\n${luminanceMentions}`)
-            .setImage('attachment://radiance.png')
-            .setColor(client.config.embedColorBlurple)
-            .setFooter({ text: `A legacy framed in honor — carried by the Light Seekers` })
-            .setTimestamp();
 
         const container = new ContainerBuilder();
-
         const textHeader = new TextDisplayBuilder().setContent('# Gratitude from the Ancients')
-
         const separator = new SeparatorBuilder({ spacing: SeparatorSpacingSize.Large })
-
         const textContent = new TextDisplayBuilder().setContent(`From the first breath of moonlight, a vow was made — and a sanctuary was born. What began as my spark now grows in your glow. Ancient Luna rises, not by my will alone, but through the quiet radiance you carry.`);
-
         const textRadiance = new TextDisplayBuilder().setContent('### <:ancientluna_divinare:841754250949820416> <@&888736428069105674>\n-# *Guided by the Radiance: those who keep our light enduring*')
         const textRadianceMentions = new TextDisplayBuilder().setContent(radianceMentions)
-
         const textLuminance = new TextDisplayBuilder().setContent('### <:ancientluna_divinare_s:859034096192978965> <@&620709364247822338>\n-# *Honoring the Luminance: our sanctuary’s uplifted souls*')
         const textLuminanceMentions = new TextDisplayBuilder().setContent(luminanceMentions)
 
@@ -164,16 +154,11 @@ module.exports = {
         container.addTextDisplayComponents(textLuminanceMentions)
         container.addMediaGalleryComponents(mediaSign);
 
-        loadingTxt.edit({
-            content: '⁣',
-            // embeds: [embed],
-        });
-
-        message.channel.send({
+        await loadingTxt.edit({
             flags: MessageFlags.IsComponentsV2,
             components: [container],
             files: [radiance],
             allowedMentions: { parse: [] },
-        }).catch((e) => { });
+        });
     }
 };
