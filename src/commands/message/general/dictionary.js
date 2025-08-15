@@ -1,4 +1,4 @@
-const { EmbedBuilder } = require("discord.js");
+const { EmbedBuilder, ContainerBuilder, TextDisplayBuilder, SeparatorBuilder, SeparatorSpacingSize, MessageFlags, SectionBuilder, ButtonStyle } = require("discord.js");
 const axios = require("axios");
 module.exports = new Object({
     name: "dictionary",
@@ -31,27 +31,39 @@ module.exports = new Object({
             return message.reply("My knowledge can't define the word further, try seek another wisdom");
         }
 
-        let data = fetch[0]
+        let randomIndex = Math.floor(Math.random() * fetch.length);
+        let data = fetch[randomIndex];
+        let title = data.word
+        let permalink = data.permalink
+        let author = data.author
         let definition = data.definition
         let example = data.example
-        let permalink = data.permalink
         let thumbsUp = data.thumbs_up
         let thumbsDown = data.thumbs_down
-        let title = data.word
 
         definition = definition.length >= 1024 ? definition.slice(0, 1020) + "..." : definition;
         example = example.length >= 1024 ? example.slice(0, 1020) + "..." : example;
-
-        const embed = new EmbedBuilder()
-            .setTitle(title)
-            .setURL(permalink)
-            .setColor(client.config.embedColorTrans)
-            .addFields(
-                { name: "Definition: ", value: definition },
-                { name: "Example: ", value: example }
+        
+        const container = new ContainerBuilder()
+        const separator = new SeparatorBuilder({ spacing: SeparatorSpacingSize.Large })
+        const textHeader = new TextDisplayBuilder().setContent(`## [${title}](${permalink})\n-# author: ${author}`)
+        const sectionHeader = new SectionBuilder()
+            .addTextDisplayComponents(textHeader)
+            .setButtonAccessory(button => button
+                .setStyle(ButtonStyle.Link)
+                .setURL(permalink)
+                .setLabel('See Dictionary')
             )
-            .setFooter({ text: `rating ↑ ${thumbsUp} ↓ ${thumbsDown}` })
+        const textDefinition = new TextDisplayBuilder().setContent(`${definition}`)
+        const textExample = new TextDisplayBuilder().setContent(`-# __example__\n${example}`)
+        const textRate = new TextDisplayBuilder().setContent(`-# rating ↑ ${thumbsUp} ↓ ${thumbsDown}`)
 
-        return message.reply({ embeds: [embed] });
+        container.addSectionComponents(sectionHeader)
+        container.addSeparatorComponents(separator)
+        container.addTextDisplayComponents(textDefinition)
+        container.addTextDisplayComponents(textExample)
+        container.addTextDisplayComponents(textRate)
+
+        return message.reply({ flags: MessageFlags.IsComponentsV2, components: [container] });
     }
 })
