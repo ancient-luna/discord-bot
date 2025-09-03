@@ -4,7 +4,7 @@ const express = require("express");
 const app = express();
 
 module.exports = new Object({
-  name: "ready",
+  name: "clientReady",
   once: true,
   /**
    * @param {import("../index")} client
