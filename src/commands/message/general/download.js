@@ -81,39 +81,39 @@ module.exports = new Object({
     if (!contentURLs) return loadingTxt.edit(`Failed to find the video URL. **Please check the link or try again.**`);
 
     let shortenedUrl = contentURLs;
-    try {
-      const shortlinkApiUrl = `https://api.ferdev.my.id/tools/shortlink?link=${encodeURIComponent(contentURLs)}&apikey=${process.env.RES_API}`;
-      const shortRes = await axios.get(shortlinkApiUrl, {
-        headers: { "User-Agent": "Mozilla/5.0 (compatible)" }
-      });
+    // try {
+    //   const shortlinkApiUrl = `https://api.ferdev.my.id/tools/shortlink?link=${encodeURIComponent(contentURLs)}&apikey=${process.env.RES_API}`;
+    //   const shortRes = await axios.get(shortlinkApiUrl, {
+    //     headers: { "User-Agent": "Mozilla/5.0 (compatible)" }
+    //   });
 
-      // Try different possible response structures
-      if (shortRes.data?.data?.shortlink) {
-        shortenedUrl = shortRes.data.data.shortlink;
-      } else if (shortRes.data?.shortlink) {
-        shortenedUrl = shortRes.data.shortlink;
-      } else if (shortRes.data?.data?.result) {
-        shortenedUrl = shortRes.data.data.result;
-      } else if (shortRes.data?.result) {
-        shortenedUrl = shortRes.data.result;
-      } else if (shortRes.data?.data) {
-        shortenedUrl = shortRes.data.data;
-      }
-    } catch (err) {
-      console.error("Failed to shorten URL:", err);
-      // Continue with original URL if shortening fails
-    }
+    //   // Try different possible response structures
+    //   if (shortRes.data?.data?.shortlink) {
+    //     shortenedUrl = shortRes.data.data.shortlink;
+    //   } else if (shortRes.data?.shortlink) {
+    //     shortenedUrl = shortRes.data.shortlink;
+    //   } else if (shortRes.data?.data?.result) {
+    //     shortenedUrl = shortRes.data.data.result;
+    //   } else if (shortRes.data?.result) {
+    //     shortenedUrl = shortRes.data.result;
+    //   } else if (shortRes.data?.data) {
+    //     shortenedUrl = shortRes.data.data;
+    //   }
+    // } catch (err) {
+    //   console.error("Failed to shorten URL:", err);
+    //   // Continue with original URL if shortening fails
+    // }
 
-    let linkButton = new ActionRowBuilder().addComponents(
-      new ButtonBuilder()
-        .setStyle(ButtonStyle.Link)
-        .setLabel(`Download Here`)
-        .setURL(shortenedUrl)
-    );
+    // let linkButton = new ActionRowBuilder().addComponents(
+    //   new ButtonBuilder()
+    //     .setStyle(ButtonStyle.Link)
+    //     .setLabel(`Download Here`)
+    //     .setURL(shortenedUrl)
+    // );
 
     loadingTxt.edit({
       content: `<:ic_repost:1334863701026541648> [media](${shortenedUrl})`,
-      components: [linkButton]
+      // components: [linkButton]
     });
   },
 });
