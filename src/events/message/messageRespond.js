@@ -13,12 +13,6 @@ module.exports = new Object({
 
     const content = message.content.toLowerCase();
 
-    if (content.includes("bitch") && Math.random() < 0.2) {
-      const noBih = new AttachmentBuilder('src/assets/react/nobih.mp4');
-      await message.reply({ files: [noBih] });
-      return message.channel.send(`-# **move**.. bihs, ${message.member.displayName}.`);
-    }
-
     const bannedWords = ["fuck", "cunt", "dick"];
     if (bannedWords.some((word) => content.includes(word)) && Math.random() < 0.2) {
       const noCuss = new AttachmentBuilder('src/assets/react/nocussnuuh.mp4');
@@ -27,13 +21,13 @@ module.exports = new Object({
     }
 
     const responses = {
-      // "dae": { text: "-# dae — he who remains, beyond the reach of those who seek him", video: "src/assets/react/hewhoremains.mp4" },
-      // "meow": { text: "-# 𝒘𝒊 𝒘𝒊 𝒘𝒊", video: "src/assets/react/wiwiwi.mp4" },
-      "pastaroni": { text: "# 𝒂𝒅𝒐𝒓𝒂𝒃𝒍𝒚 𝒔𝒘𝒆𝒆𝒕\n-# Hany (하니) for sweetness,\n-# Biskit (비스킷) for the best duo—together.", video: null }
+      "bitch": { text: `-# **move**.. bihs, ${message.member.displayName}`, video: "src/assets/react/bih.mp4", chance: 0.2 },
+      "dae": { text: "-# dae — he who remains, beyond the reach of those who seek him", video: "src/assets/react/hewhoremains.mp4", chance: 0.5 },
+      "pastaroni": { text: "# 𝒂𝒅𝒐𝒓𝒂𝒃𝒍𝒚 𝒔𝒘𝒆𝒆𝒕\n-# Hany (하니) for sweetness,\n-# Biskit (비스킷) for the best duo—together.", video: null, chance: 1 }
     };
 
     for (const [key, response] of Object.entries(responses)) {
-      if (content.includes(key)) {
+      if (content.includes(key) && Math.random() < response.chance) {
         if (response.video) {
           await message.reply({ files: [new AttachmentBuilder(response.video)] });
           await message.channel.send(response.text);
