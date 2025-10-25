@@ -11,13 +11,19 @@ module.exports = new Object({
 
     if (message.author.bot || message.guild.id !== guildsID || message.channel.type === ChannelType.DM) return;
 
-    const noCuss = new AttachmentBuilder('src/assets/react/nocussnuuh.mp4')
-    const bannedWords = ["fuck", "bitch", "cunt", "dick"];
-    if (bannedWords.some((word) => message.content.toLowerCase().includes(word))) {
-      if (Math.random() < 0.2) {
-        await message.reply({ files: [noCuss] });
-        return message.channel.send(`-# be wise ${message.member.displayName}, or we square up.`);
-      }
+    const content = message.content.toLowerCase();
+
+    if (content.includes("bitch") && Math.random() < 0.2) {
+      const noBih = new AttachmentBuilder('src/assets/react/nobih.mp4');
+      await message.reply({ files: [noBih] });
+      return message.channel.send(`-# **move**.. bihs, ${message.member.displayName}.`);
+    }
+
+    const bannedWords = ["fuck", "cunt", "dick"];
+    if (bannedWords.some((word) => content.includes(word)) && Math.random() < 0.2) {
+      const noCuss = new AttachmentBuilder('src/assets/react/nocussnuuh.mp4');
+      await message.reply({ files: [noCuss] });
+      return message.channel.send(`-# be wise ${message.member.displayName}, or we square up.`);
     }
 
     const responses = {
@@ -26,9 +32,8 @@ module.exports = new Object({
       "pastaroni": { text: "# 𝒂𝒅𝒐𝒓𝒂𝒃𝒍𝒚 𝒔𝒘𝒆𝒆𝒕\n-# Hany (하니) for sweetness,\n-# Biskit (비스킷) for the best duo—together.", video: null }
     };
 
-    const messageContent = message.content.toLowerCase();
     for (const [key, response] of Object.entries(responses)) {
-      if (messageContent.includes(key)) {
+      if (content.includes(key)) {
         if (response.video) {
           await message.reply({ files: [new AttachmentBuilder(response.video)] });
           await message.channel.send(response.text);
