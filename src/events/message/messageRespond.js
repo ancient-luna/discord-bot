@@ -35,6 +35,7 @@ module.exports = new Object({
           await message.reply(response.text);
         }
       }
+      break;
     }
   },
 });
