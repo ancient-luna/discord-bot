@@ -12,7 +12,7 @@
 
 ## 🌙 About
 
-Ancient Luna Bot is a powerful Discord bot designed to enhance your server with utility, moderation, entertainment, and community engagement features. Born from the ancient wisdom of Dae, this relic traverses the digital cosmos to bring harmony and functionality to Discord communities.
+Ancient Luna Bot is a powerful Discord bot designed to enhance your server with utility, moderation, entertainment, and community engagement features. Born from the ancient wisdom of Dae, this relic traverses the digital sanctuaries to bring harmony and functionality to Discord communities.
 
 ## Features
 
