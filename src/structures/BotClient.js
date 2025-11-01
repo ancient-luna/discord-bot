@@ -10,7 +10,9 @@ const {
 } = require("discord.js");
 const Utils = require("../utils/Utils");
 const { DiscordTogether } = require("discord-together");
-const QuickDB = require("quick.db-lite");
+const sqlite3 = require('sqlite3').verbose();
+const path = require('path');
+const fs = require('fs');
 require("dotenv").config();
 
 const Intents = [
@@ -25,6 +27,98 @@ const Intents = [
   GatewayIntentBits.GuildMessageReactions,
   GatewayIntentBits.GuildPresences,
 ];
+
+class SimpleDB {
+  constructor() {
+    const dbPath = process.env.DATABASE_PATH || path.join(process.cwd(), 'database.sqlite');
+    
+    const dbDir = path.dirname(dbPath);
+    if (!fs.existsSync(dbDir)) {
+      fs.mkdirSync(dbDir, { recursive: true });
+    }
+    
+    this.db = new sqlite3.Database(dbPath);
+    this.db.serialize(() => {
+      this.db.run("CREATE TABLE IF NOT EXISTS keyvalue (key TEXT PRIMARY KEY, value TEXT)");
+    });
+    console.log(`Database initialized at: ${dbPath}`);
+  }
+
+  async set(key, value) {
+    return new Promise((resolve, reject) => {
+      const serializedValue = JSON.stringify(value);
+      this.db.run("INSERT OR REPLACE INTO keyvalue (key, value) VALUES (?, ?)", [key, serializedValue], (err) => {
+        if (err) {
+          console.error('Database set error:', err);
+          reject(err);
+        } else {
+          resolve(value);
+        }
+      });
+    });
+  }
+
+  async get(key) {
+    return new Promise((resolve, reject) => {
+      this.db.get("SELECT value FROM keyvalue WHERE key = ?", [key], (err, row) => {
+        if (err) {
+          console.error('Database get error:', err);
+          reject(err);
+        } else if (row) {
+          try {
+            resolve(JSON.parse(row.value));
+          } catch (parseErr) {
+            console.error('JSON parse error:', parseErr);
+            resolve(null);
+          }
+        } else {
+          resolve(null);
+        }
+      });
+    });
+  }
+
+  async push(key, value) {
+    return new Promise(async (resolve, reject) => {
+      try {
+        let arr = await this.get(key) || [];
+        arr.push(value);
+        const result = await this.set(key, arr);
+        resolve(result);
+      } catch (err) {
+        console.error('Database push error:', err);
+        reject(err);
+      }
+    });
+  }
+
+  async delete(key) {
+    return new Promise((resolve, reject) => {
+      this.db.run("DELETE FROM keyvalue WHERE key = ?", [key], (err) => {
+        if (err) {
+          console.error('Database delete error:', err);
+          reject(err);
+        } else {
+          resolve();
+        }
+      });
+    });
+  }
+
+  close() {
+    return new Promise((resolve, reject) => {
+      this.db.close((err) => {
+        if (err) {
+          console.error('Database close error:', err);
+          reject(err);
+        } else {
+          console.log('Database connection closed');
+          resolve();
+        }
+      });
+    });
+  }
+}
 
 class BotClient extends Client {
   constructor() {
@@ -69,7 +163,7 @@ class BotClient extends Client {
     this.console = require("../utils/Console");
     this.util = new Utils(this);
     this.discordTogether = new DiscordTogether(this);
-    this.db = new QuickDB();
+    this.db = new SimpleDB();
     if (!this.token) this.token = process.env.TOKEN;
     this.connect();
   }
