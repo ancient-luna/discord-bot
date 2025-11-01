@@ -60,7 +60,7 @@ cp .env.example .env
 npm run start
 ```
 
-The bot will be available at http://localhost:8081 (web server endpoint).
+The bot will be available at http://localhost:8080 (web server endpoint).
 
 ## ☁️ Cloud Deployment
 
