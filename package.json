@@ -9,7 +9,8 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "engines": {
-    "node": "20.x"
+    "node": "24.x",
+    "npm": "11.x"
   },
   "keywords": [
     "discord",
