@@ -19,8 +19,7 @@ module.exports = new Object({
     const getCommands = client.slashCommands.map((x) => x.data.toJSON());
     // await client.application.commands.set([]); // deleting and pre-registering all commands
     await client.application.commands.set(getCommands);
-
-    client.console.log(`Loaded: ${getCommands.length}`, "scmd");
+    
     client.console.log(`Logged in as ${client.user.tag}`, "client");
 
     reminderHandler(client);
