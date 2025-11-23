@@ -1,5 +1,5 @@
-const { EmbedBuilder, MessageFlags } = require("discord.js");
-const { readdirSync } = require("fs");
+const { EmbedBuilder, MessageFlags, ContainerBuilder, TextDisplayBuilder } = require("discord.js");
+const { readdirSync, existsSync } = require("fs");
 const { join } = require("path");
 
 module.exports = {
@@ -65,20 +65,59 @@ module.exports = {
       }
     }
 
+    // Slash Commands
+    const slashCommandsDir = join(__dirname, "../commands/slash");
+    if (existsSync(slashCommandsDir)) {
+      const slashCategories = readdirSync(slashCommandsDir, { withFileTypes: true })
+        .filter((dirent) => dirent.isDirectory())
+        .map((dirent) => dirent.name);
+
+      // Ensure commands are fetched
+      const applicationCommands = client.application.commands.cache.size > 0 
+        ? client.application.commands.cache 
+        : await client.application.commands.fetch();
+
+      for (const category of slashCategories) {
+        const categoryPath = join(slashCommandsDir, category);
+        const commandFiles = readdirSync(categoryPath).filter((file) => file.endsWith(".js"));
+
+        let categoryHelp = "";
+        for (const file of commandFiles) {
+          const command = require(join(categoryPath, file));
+          if (command?.data?.name && command?.data?.description) {
+            const cmdName = command.data.name;
+            const cmdId = applicationCommands.find(c => c.name === cmdName)?.id;
+            
+            const cmdData = command.data.toJSON();
+            const subcommands = cmdData.options?.filter(opt => opt.type === 1);
+
+            if (subcommands && subcommands.length > 0) {
+              for (const sub of subcommands) {
+                const cmdDisplay = cmdId ? `</${cmdName} ${sub.name}:${cmdId}>` : `\`/${cmdName} ${sub.name}\``;
+                categoryHelp += `- ${cmdDisplay} ${sub.description}\n`;
+              }
+            } else {
+              const cmdDisplay = cmdId ? `</${cmdName}:${cmdId}>` : `\`/${cmdName}\``;
+              categoryHelp += `- ${cmdDisplay} ${command.data.description}\n`;
+            }
+          }
+        }
+        
+        if (categoryHelp) {
+           helpText += `## [/] ${category.replace(/^\w/, (c) => c.toUpperCase())}\n${categoryHelp}`;
+        }
+      }
+    }
+
     if (!helpText) {
       helpText = "No commands found.";
     }
 
-    const embed = new EmbedBuilder()
-      .setTitle("Help Command")
-      .setDescription(helpText.trim())
-      .setColor(client.config.embedColorTrans)
-      .setTimestamp();
+    const helpDetail = new TextDisplayBuilder().setContent(helpText.trim())
 
     return interaction.reply({
-      content: `${helpText.trim()}`,
-      // embeds: [embed],
-      flags: MessageFlags.Ephemeral,
+      flags: [MessageFlags.IsComponentsV2, MessageFlags.Ephemeral],
+      components: [helpDetail]
     });
   },
 };
