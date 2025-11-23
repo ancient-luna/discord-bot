@@ -17,6 +17,11 @@ module.exports = {
      */
     execute: async (client, interaction) => {
         try {
+            const targetMember = interaction.message.mentions.members.first();
+            if (!targetMember) {
+                return interaction.reply({ content: 'No user mentioned in the message.', flags: MessageFlags.Ephemeral });
+            }
+
             // Canvas and context setup
             const canvas = createCanvas(500, 800);
             const ctx = canvas.getContext("2d");
@@ -74,7 +79,7 @@ module.exports = {
             let endX = 480;
             let padding = 15;
 
-            const displayName = interaction.member.displayName.toUpperCase();
+            const displayName = targetMember.displayName.toUpperCase();
             let nameFits = false;
 
             // Continuously check if the name fits within the canvas width
@@ -90,10 +95,10 @@ module.exports = {
 
             ctx.textAlign = "center";
             ctx.fillStyle = "#00cdff";
-            ctx.fillText(interaction.member.displayName, 250, 87);
+            ctx.fillText(targetMember.displayName, 250, 87);
 
             // Load avatar and draw it on canvas
-            const avatar = await loadImage(interaction.member.displayAvatarURL({ extension: "png", dynamic: true, size: 512 }));
+            const avatar = await loadImage(targetMember.displayAvatarURL({ extension: "png", dynamic: true, size: 512 }));
             let avatarX = 310;
             let avatarY = 310;
             let avatarCanvas = createCanvas(avatarX, avatarY);
@@ -114,7 +119,7 @@ module.exports = {
 
             // Role display setup
             const limitRoles = ['590848319111299093', '839170815932891197', '620709364247822338', '888736428069105674', '839198215580811344'];
-            const sortedRoles = interaction.member.roles.cache
+            const sortedRoles = targetMember.roles.cache
                 .filter(role => limitRoles.includes(role.id) && role.name !== '@everyone')
                 .sort((a, b) => b.position - a.position);
 
@@ -146,7 +151,7 @@ module.exports = {
                 rows.forEach(row => {
                     beginX = 250 - ((row.width / 2))
                     row.roles.forEach((r, index) => {
-                        let role = interaction.member.roles.cache.find(i => i.id === r)
+                        let role = targetMember.roles.cache.find(i => i.id === r)
                         let roleColor = role.color.toString(16).padStart(6, '0')
                         if (role) {
                             let length = ctx.measureText(role.name.toUpperCase()).width;
