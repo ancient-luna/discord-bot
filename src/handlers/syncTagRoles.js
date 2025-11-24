@@ -6,7 +6,7 @@ module.exports = {
         const ancientLunaServerId = config.ancientLunaServer;
         const nocturnaRole = config.nocturnaRole;
 
-        if (!nocturnaRole || nocturnaRole === client.config.nocturnaRole) return;
+        if (!nocturnaRole) return;
 
         // Use provided profile or fallback to member.user
         const user = userProfile || member.user;
@@ -52,7 +52,7 @@ module.exports = {
             return;
         }
 
-        if (!nocturnaRole || nocturnaRole === client.config.nocturnaRole) {
+        if (!nocturnaRole) {
             client.console.log("Nocturna Role ID not configured.", "error");
             return;
         }
