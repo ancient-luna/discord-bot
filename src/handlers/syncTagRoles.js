@@ -76,7 +76,7 @@ module.exports = {
                 count++;
                 
                 if (count % 20 === 0 || count === total) {
-                    process.stdout.write(`\r [${count}/${total}] synced`);
+                    process.stdout.write(` [${count}/${total}] synced`);
                     if (count % 20 === 0) {
                         await new Promise(resolve => setTimeout(resolve, 1000));
                     }
