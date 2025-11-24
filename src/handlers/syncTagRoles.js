@@ -44,15 +44,23 @@ module.exports = {
         
         try {
             const members = await guild.members.fetch();
+            const total = members.size;
             let count = 0;
+
             for (const [id, member] of members) {
                 if (member.user.bot) continue;
                 await this.syncMemberTagRoles(member);
                 count++;
-                if (count % 20 === 0) {
-                    await new Promise(resolve => setTimeout(resolve, 1000));
+                
+                if (count % 20 === 0 || count === total) {
+                    process.stdout.write(`\r• [ Client ]    => Syncing tag roles... [${count}/${total}]`);
+                    if (count % 20 === 0) {
+                        await new Promise(resolve => setTimeout(resolve, 1000));
+                    }
                 }
             }
+            process.stdout.write("\n");
+            client.console.log("Synced tag roles", "client");
         } catch (err) {
             client.console.error(`Error fetching members for tag role sync: ${err.message}`);
         }

@@ -2,12 +2,14 @@ module.exports = {
     async syncMemberRoles(member) {
         const { client } = member;
         const server = member.guild;
+        
         if (server.id !== client.config.ancientLunaServer) return;
 
         const luxcastaRole = client.config.luxcastaRole;
         if (!luxcastaRole) return;
 
         if (member.user.bot) return;
+
         const roleCount = member.roles.cache.filter(role => role.id !== server.id).size;
         
         if (roleCount === 0 && !member.roles.cache.has(luxcastaRole)) {
@@ -28,14 +30,22 @@ module.exports = {
 
         try {
             const members = await server.members.fetch();
+            const total = members.size;
             let count = 0;
+            
             for (const [id, member] of members) {
                 await this.syncMemberRoles(member);
                 count++;
-                if (count % 20 === 0) {
-                    await new Promise(resolve => setTimeout(resolve, 1000));
+                
+                if (count % 20 === 0 || count === total) {
+                    process.stdout.write(`\r• [ Client ]    => Syncing default roles... [${count}/${total}]`);
+                    if (count % 20 === 0) {
+                        await new Promise(resolve => setTimeout(resolve, 1000));
+                    }
                 }
             }
+            process.stdout.write("\n");
+            client.console.log("Synced default roles", "client");
         } catch (err) {
             client.console.error(`Error fetching members for role sync: ${err.message}`);
         }
