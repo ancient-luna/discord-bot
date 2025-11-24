@@ -1,5 +1,4 @@
 module.exports = {
-    // Single member sync (used by events)
     async syncMemberTagRoles(member, userProfile = null) {
         const { client } = member;
         const config = client.config;
@@ -49,8 +48,6 @@ module.exports = {
             return;
         }
 
-        client.console.log("Syncing tag roles...", "client");
-
         try {
             const members = await guild.members.fetch();
             const total = members.size;
@@ -64,24 +61,26 @@ module.exports = {
                     const hasTargetPrimaryGuild = user.primaryGuild && 
                                                 user.primaryGuild.identityGuildId === ancientLunaServerId &&
                                                 user.primaryGuild.tag === "LUNA";
+                    
                     if (hasTargetPrimaryGuild && !member.roles.cache.has(nocturnaRole)) {
                         await member.roles.add(nocturnaRole);
                     } else if (!hasTargetPrimaryGuild && member.roles.cache.has(nocturnaRole)) {
                         await member.roles.remove(nocturnaRole);
                     }
                 } catch (err) {
-                    // Silently skip errors during bulk sync
                 }
                 
                 count++;
                 
                 if (count % 20 === 0 || count === total) {
-                    process.stdout.write(` [${count}/${total}] synced`);
-                    if (count % 20 === 0) {
+                    const status = count === total ? 'synced' : 'syncing...';
+                    process.stdout.write(`\r • [ Client ]    => Syncing tag roles... [${count}/${total}] ${status}`);
+                    if (count % 20 === 0 && count !== total) {
                         await new Promise(resolve => setTimeout(resolve, 1000));
                     }
                 }
             }
+            process.stdout.write("\n");
         } catch (err) {
             client.console.log(`Error fetching members for tag role sync: ${err.message}`, "error");
         }

@@ -24,8 +24,6 @@ module.exports = {
     async syncAllRoles(client) {
         const server = client.guilds.cache.get(client.config.ancientLunaServer);
         if (!server) return;
-        
-        client.console.log("Syncing default roles...", "role");
 
         try {
             const members = await server.members.fetch();
@@ -37,12 +35,14 @@ module.exports = {
                 count++;
                 
                 if (count % 20 === 0 || count === total) {
-                    process.stdout.write(` [${count}/${total}] synced`);
-                    if (count % 20 === 0) {
+                    const status = count === total ? 'synced' : 'syncing...';
+                    process.stdout.write(`\r • [ Role ]      => Syncing default roles... [${count}/${total}] ${status}`);
+                    if (count % 20 === 0 && count !== total) {
                         await new Promise(resolve => setTimeout(resolve, 1000));
                     }
                 }
             }
+            process.stdout.write("\n");
         } catch (err) {
             client.console.log(`Error fetching members for role sync: ${err.message}`, "error");
         }
