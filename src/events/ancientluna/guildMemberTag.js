@@ -13,9 +13,22 @@ module.exports = {
         if (!guild) return;
 
         try {
+            client.console.log(`[Debug] userUpdate fired for ${newUser.tag}`, "debug");
+            
             const member = await guild.members.fetch(newUser.id).catch(() => null);
-            if (!member) return;
+            if (!member) {
+                client.console.log(`[Debug] Member not found in guild`, "debug");
+                return;
+            }
+
             const userProfile = await newUser.fetch(true).catch(() => null);
+            if (!userProfile) {
+                client.console.log(`[Debug] Failed to fetch user profile`, "debug");
+                return;
+            }
+
+            client.console.log(`[Debug] Fetched profile. primaryGuild: ${JSON.stringify(userProfile.primaryGuild)}`, "debug");
+
             if (member && userProfile) {
                 await syncMemberTagRoles(member, userProfile);
             }
