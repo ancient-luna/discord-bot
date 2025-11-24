@@ -9,6 +9,7 @@ module.exports = {
 
     radianceRole: "888736428069105674",
     luminanceRole: "620709364247822338",
+    nocturnaRole: "1442603418924355605",
     ennoiaRole: "1369558642013110343",
     dalumiRole: "1369924194401390652",
 
@@ -55,7 +56,7 @@ module.exports = {
     PRESENCE: {
         ENABLED: true,
         STATUS: "online", // [online | idle | dnd | invisible]
-        TYPE: "WATCHING", // [PLAYING | LISTENING | WATCHING | COMPETING | STREAMING]
+        TYPE: "LISTENING", // [PLAYING | LISTENING | WATCHING | COMPETING | STREAMING]
         MESSAGE: `around sanctuary`, // status message use : {members} or {servers}
     },
 }
