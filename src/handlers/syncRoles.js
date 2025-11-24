@@ -2,16 +2,12 @@ module.exports = {
     async syncMemberRoles(member) {
         const { client } = member;
         const server = member.guild;
-        
-        // Ensure we are in the correct server
         if (server.id !== client.config.ancientLunaServer) return;
 
         const luxcastaRole = client.config.luxcastaRole;
         if (!luxcastaRole) return;
 
         if (member.user.bot) return;
-
-        // Count roles excluding @everyone (which has same ID as server)
         const roleCount = member.roles.cache.filter(role => role.id !== server.id).size;
         
         if (roleCount === 0 && !member.roles.cache.has(luxcastaRole)) {
@@ -36,7 +32,6 @@ module.exports = {
             for (const [id, member] of members) {
                 await this.syncMemberRoles(member);
                 count++;
-                // Batching: Pause for 1 second every 20 members to prevent rate limits
                 if (count % 20 === 0) {
                     await new Promise(resolve => setTimeout(resolve, 1000));
                 }
