@@ -15,9 +15,8 @@ module.exports = {
         if (roleCount === 0 && !member.roles.cache.has(luxcastaRole)) {
             try {
                 await member.roles.add(luxcastaRole);
-                client.console.log(`Added luxcastaRole to ${member.user.tag}`, "role");
             } catch (err) {
-                client.console.error(`Failed to add luxcastaRole to ${member.user.tag}: ${err.message}`);
+                client.console.log(`Failed to add luxcastaRole to ${member.user.tag}: ${err.message}`, "error");
             }
         }
     },
@@ -26,7 +25,7 @@ module.exports = {
         const server = client.guilds.cache.get(client.config.ancientLunaServer);
         if (!server) return;
         
-        client.console.log("Syncing default roles...", "client");
+        client.console.log("Syncing default roles...", "role");
 
         try {
             const members = await server.members.fetch();
@@ -38,16 +37,14 @@ module.exports = {
                 count++;
                 
                 if (count % 20 === 0 || count === total) {
-                    process.stdout.write(`\r• [ Client ]    => Syncing default roles... [${count}/${total}]`);
+                    process.stdout.write(`\r [${count}/${total}] synced`);
                     if (count % 20 === 0) {
                         await new Promise(resolve => setTimeout(resolve, 1000));
                     }
                 }
             }
-            process.stdout.write("\n");
-            client.console.log("Synced default roles", "client");
         } catch (err) {
-            client.console.error(`Error fetching members for role sync: ${err.message}`);
+            client.console.log(`Error fetching members for role sync: ${err.message}`, "error");
         }
     }
 };
