@@ -12,13 +12,10 @@ module.exports = {
         const user = userProfile || member.user;
         
         // If we don't have primaryGuild, we can't do anything.
-        if (!user.primaryGuild) {
-            client.console.log(`[Debug] No primaryGuild found for ${user.tag}`, "debug");
-            return;
-        }
+        // In the event handler, we force fetch, so this should be populated.
+        if (!user.primaryGuild) return;
 
         const { identityGuildId, tag } = user.primaryGuild;
-        client.console.log(`[Debug] Checking ${user.tag}: ID=${identityGuildId}, Tag=${tag}`, "debug");
 
         // Check conditions: primaryGuild is identityGuild AND tag is "LUNA"
         if (identityGuildId === ancientLunaServerId && tag === "LUNA") {
@@ -27,7 +24,7 @@ module.exports = {
                     await member.roles.add(nocturnaRole);
                     client.console.log(`Added nocturnaRole to ${user.tag}`, "role");
                 } catch (err) {
-                    client.console.error(`Failed to add nocturnaRole to ${user.tag}: ${err.message}`);
+                    client.console.log(`Failed to add nocturnaRole to ${user.tag}: ${err.message}`, "error");
                 }
             }
         } else {
@@ -37,7 +34,7 @@ module.exports = {
                     await member.roles.remove(nocturnaRole);
                     client.console.log(`Removed nocturnaRole from ${user.tag}`, "role");
                 } catch (err) {
-                    client.console.error(`Failed to remove nocturnaRole from ${user.tag}: ${err.message}`);
+                    client.console.log(`Failed to remove nocturnaRole from ${user.tag}: ${err.message}`, "error");
                 }
             }
         }
@@ -51,12 +48,12 @@ module.exports = {
         const guild = client.guilds.cache.get(ancientLunaServerId);
 
         if (!guild) {
-            client.console.error(`Ancient Luna Server (${ancientLunaServerId}) not found.`);
+            client.console.log(`Ancient Luna Server (${ancientLunaServerId}) not found.`, "error");
             return;
         }
 
         if (!nocturnaRole || nocturnaRole === client.config.nocturnaRole) {
-            client.console.error("Nocturna Role ID not configured.");
+            client.console.log("Nocturna Role ID not configured.", "error");
             return;
         }
 
@@ -67,7 +64,7 @@ module.exports = {
             try {
                 const role = guild.roles.cache.get(nocturnaRole);
                 if (!role) {
-                    client.console.error(`Role with ID ${nocturnaRole} not found`);
+                    client.console.log(`Role with ID ${nocturnaRole} not found`, "error");
                     return;
                 }
 
@@ -93,7 +90,7 @@ module.exports = {
                             removedCount++;
                         }
                     } catch (err) {
-                        client.console.error(`Error checking member ${member.user.tag}: ${err.message}`);
+                        client.console.log(`Error checking member ${member.user.tag}: ${err.message}`, "error");
                     }
                     // Small delay
                     await new Promise(r => setTimeout(r, 100)); 
@@ -150,7 +147,7 @@ module.exports = {
                 client.console.log(`Tag role sync complete: ${assignedCount} assigned, ${removedCount} removed.`, "client");
                 
             } catch (error) {
-                client.console.error(`Error during tag role initialization: ${error.message}`);
+                client.console.log(`Error during tag role initialization: ${error.message}`, "error");
             }
         })();
     }
