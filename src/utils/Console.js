@@ -11,6 +11,7 @@ module.exports = class Console {
             case "event": { return console.log(`• [ Events ] ` + "   => " + content) }
             case "client": { return console.log(`• [ Client ] ` + "   => " + content) }
             case "api": { return console.log(`• [ Api ] ` + "      => " + content) }
+            case "role": { return console.log(`• [ Role ] ` + "     => " + content) }
             default: throw new TypeError("Logger type must be either warn, debug, log, ready, cmd or error.")
         }
     }
