@@ -57,98 +57,48 @@ module.exports = {
             return;
         }
 
-        client.console.log("Starting tag role initialization...", "client");
+        client.console.log("Syncing tag roles...", "client");
 
-        // Run in background to avoid blocking
-        (async () => {
-            try {
-                const role = guild.roles.cache.get(nocturnaRole);
-                if (!role) {
-                    client.console.log(`Role with ID ${nocturnaRole} not found`, "error");
-                    return;
-                }
-
-                // PHASE 1: Quick Cleanup
-                // Check members who ALREADY have the role.
-                client.console.log('Phase 1: Checking existing role holders...', "client");
-                const membersWithRole = role.members;
-                let removedCount = 0;
+        try {
+            const members = await guild.members.fetch();
+            const total = members.size;
+            let count = 0;
+            
+            for (const [id, member] of members) {
+                if (member.user.bot) continue;
                 
-                for (const [memberId, member] of membersWithRole) {
-                    if (member.user.bot) continue;
+                try {
+                    // Force fetch to get primaryGuild
+                    const user = await member.user.fetch(true);
+                    const hasTargetPrimaryGuild = user.primaryGuild && 
+                                                user.primaryGuild.identityGuildId === ancientLunaServerId &&
+                                                user.primaryGuild.tag === "LUNA";
                     
-                    try {
-                        // Force fetch to get primaryGuild
-                        const user = await member.user.fetch(true);
-                        const hasTargetPrimaryGuild = user.primaryGuild && 
-                                                    user.primaryGuild.identityGuildId === ancientLunaServerId &&
-                                                    user.primaryGuild.tag === "LUNA";
-                        
-                        if (!hasTargetPrimaryGuild) {
-                            await member.roles.remove(role);
-                            client.console.log(`[Startup] Removed role from ${member.user.tag} (no longer has tag)`, "role");
-                            removedCount++;
-                        }
-                    } catch (err) {
-                        client.console.log(`Error checking member ${member.user.tag}: ${err.message}`, "error");
+                    // Add or remove role based on conditions
+                    if (hasTargetPrimaryGuild && !member.roles.cache.has(nocturnaRole)) {
+                        await member.roles.add(nocturnaRole);
+                    } else if (!hasTargetPrimaryGuild && member.roles.cache.has(nocturnaRole)) {
+                        await member.roles.remove(nocturnaRole);
                     }
-                    // Small delay
-                    await new Promise(r => setTimeout(r, 100)); 
+                } catch (err) {
+                    // Silently skip errors during bulk sync
                 }
-                client.console.log(`Phase 1 Complete. Removed roles from ${removedCount} members.`, "client");
-
-                // PHASE 2: Background Scan
-                // Check ALL members to find those who SHOULD have the role but don't.
-                client.console.log('Phase 2: Starting background scan for missing roles...', "client");
                 
-                const allMembers = await guild.members.fetch();
-                const memberArray = Array.from(allMembers.values());
-                const batchSize = 20;
-                let assignedCount = 0;
-                let errorCount = 0;
+                count++;
                 
-                client.console.log(`Scanning ${memberArray.length} members in background...`, "client");
-                
-                for (let i = 0; i < memberArray.length; i += batchSize) {
-                    const batch = memberArray.slice(i, i + batchSize);
-                    
-                    // Process batch
-                    await Promise.all(batch.map(async (member) => {
-                        if (member.user.bot) return;
-                        if (member.roles.cache.has(nocturnaRole)) return; // Already checked in Phase 1 or has role
-                        
-                        try {
-                            // Fetch user to get primaryGuild
-                            const user = await member.user.fetch(true);
-                            const hasTargetPrimaryGuild = user.primaryGuild && 
-                                                    user.primaryGuild.identityGuildId === ancientLunaServerId &&
-                                                    user.primaryGuild.tag === "LUNA";
-
-                            if (hasTargetPrimaryGuild) {
-                                await member.roles.add(role);
-                                client.console.log(`[Startup] Assigned role to ${member.user.tag}`, "role");
-                                assignedCount++;
-                            }
-                        } catch (error) {
-                            if (error.code !== 50035) errorCount++; // Ignore invalid user errors
-                        }
-                    }));
-
-                    // Log progress
-                    if ((i + batchSize) % 1000 < batchSize) {
-                        process.stdout.write(`\r• [ Client ]    => [Background Scan] Processed ${Math.min(i + batchSize, memberArray.length)}/${memberArray.length} members...`);
+                // Update progress log in-place every 20 members
+                if (count % 20 === 0 || count === total) {
+                    process.stdout.write(`\r• [ Client ]    => Syncing tag roles... [${count}/${total}]`);
+                    if (count % 20 === 0) {
+                        await new Promise(resolve => setTimeout(resolve, 1000));
                     }
-                    
-                    // Significant delay between batches
-                    await new Promise(resolve => setTimeout(resolve, 2000));
                 }
-                
-                process.stdout.write("\n");
-                client.console.log(`Tag role sync complete: ${assignedCount} assigned, ${removedCount} removed.`, "client");
-                
-            } catch (error) {
-                client.console.log(`Error during tag role initialization: ${error.message}`, "error");
             }
-        })();
+            
+            process.stdout.write("\n");
+            client.console.log("Synced tag roles", "client");
+        } catch (err) {
+            client.console.log(`Error fetching members for tag role sync: ${err.message}`, "error");
+        }
     }
 };
