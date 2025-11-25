@@ -40,7 +40,7 @@ module.exports = {
                     }
                 }
             }
-            client.console.log(`Default roles synced: ${total}`, "role");
+            client.console.log(`D. Synced: ${total}`, "role");
         } catch (err) {
             client.console.log(`Error fetching members for role sync: ${err.message}`, "error");
         }
