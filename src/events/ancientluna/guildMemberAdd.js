@@ -1,4 +1,4 @@
-const { EmbedBuilder, AttachmentBuilder } = require("discord.js");
+const { EmbedBuilder, AttachmentBuilder, ContainerBuilder, TextDisplayBuilder, MediaGalleryBuilder, SectionBuilder, MessageFlags, ButtonBuilder } = require("discord.js");
 const canvafy = require('canvafy');
 
 module.exports = new Object({
@@ -24,14 +24,34 @@ module.exports = new Object({
             .build();
         const cardBuffer = Buffer.from(card);
         const attachment = new AttachmentBuilder(cardBuffer, { name: `${member.user.id}.png` });
-        const welcomeText = new EmbedBuilder()
-            .setTitle(`Welcome to ${member.guild.name}`)
-            // .setThumbnail(member.user.displayAvatarURL({ dynamic: true, size: 512 }))
-            .setDescription(`<@${member.user.id}> please understand our **wisdom of lleud** at ${member.guild.channels.cache.get(client.config.ruleChannel).toString()} as you make your way through this warm sanctuary`)
-            .setFooter({ text: `(u) ${member.user.username} visited the sanctuary` })
-            .setColor('7289da')
-            .setImage(`attachment://${member.user.id}.png`)
-            .setTimestamp();
-        return channel.send({ embeds: [welcomeText], files: [attachment] });
+
+        const container = new ContainerBuilder()
+        const textHeader = new TextDisplayBuilder().setContent(`# Welcome to [${member.guild.name}](https://discord.gg/Sbp2nt8QHe)`);
+        const textDescription = new TextDisplayBuilder().setContent(`<@${member.user.id}> please understand our **wisdom of lleud** at ${member.guild.channels.cache.get(client.config.ruleChannel).toString()} as you make your way through this warm sanctuary`);
+        const mediaGallery = new MediaGalleryBuilder()
+            .addItems([{
+                type: 'image',
+                media: {
+                    url: `attachment://${member.user.id}.png`
+                } 
+            }]);
+        const wisdomButton = new ButtonBuilder()
+            .setLabel('Wisdom of Lleud')
+            .setStyle('Link')
+            .setURL('https://discord.com/channels/447069790150852609/838751745815216129');
+        const section = new SectionBuilder()
+            .addTextDisplayComponents(textDescription)
+            .setButtonAccessory(wisdomButton)
+
+        container.addMediaGalleryComponents(mediaGallery);
+        container.addTextDisplayComponents(textHeader);
+        container.addSectionComponents(section);
+        
+        return channel.send({
+            flags: MessageFlags.IsComponentsV2,
+            components: [container],
+            files: [attachment],
+            allowedMentions: { parse: [] }
+        });
     }
 });
