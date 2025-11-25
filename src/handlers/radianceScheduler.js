@@ -187,8 +187,6 @@ async function sendRadianceMessage(client) {
 function scheduleNextRadianceMessage(client) {
     const delay = getMillisecondsUntilMidnightGMT7();
     
-    client.console.log(`Next radiance message scheduled in ${Math.round(delay / 1000 / 60 / 60)} hours`, "info");
-    
     setTimeout(async () => {
         await sendRadianceMessage(client);
         // Schedule the next one after sending
@@ -201,7 +199,7 @@ function scheduleNextRadianceMessage(client) {
  * @param {import("../index")} client 
  */
 function initRadianceScheduler(client) {
-    client.console.log('Radiance scheduler initialized', "info");
+    client.console.log('Radiance scheduler initialized', "scheduler");
     scheduleNextRadianceMessage(client);
 }
 
