@@ -37,6 +37,25 @@ async function sendRadianceMessage(client) {
             return;
         }
 
+        // Delete previous radiance message
+        try {
+            const messages = await channel.messages.fetch({ limit: 20 });
+            const previousMessage = messages.find(msg => 
+                msg.author.id === client.user.id && 
+                (
+                    msg.attachments.some(a => a.name === 'radiance.png') ||
+                    (msg.content && msg.content.includes('Gratitude from the Ancients'))
+                )
+            );
+
+            if (previousMessage) {
+                await previousMessage.delete();
+                client.console.log('Deleted previous radiance message', "scheduler");
+            }
+        } catch (error) {
+            client.console.log(`Error deleting previous message: ${error.message}`, "warn");
+        }
+
         const guild = channel.guild;
         
         const roleIds = [
