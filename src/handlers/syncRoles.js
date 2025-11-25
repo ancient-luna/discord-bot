@@ -35,8 +35,7 @@ module.exports = {
                 count++;
                 
                 if (count % 20 === 0 || count === total) {
-                    const status = count === total ? 'synced' : 'syncing...';
-                    process.stdout.write(`\r • [ Role ]      => Syncing default roles... [${count}/${total}] ${status}`);
+                    process.stdout.write(`\r • [ Role ]      => Syncing default roles... [${count}/${total}] synced`);
                     if (count % 20 === 0 && count !== total) {
                         await new Promise(resolve => setTimeout(resolve, 1000));
                     }
