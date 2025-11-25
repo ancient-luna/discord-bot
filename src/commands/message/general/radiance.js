@@ -50,7 +50,7 @@ module.exports = {
             return await loadingTxt.edit({ flags: MessageFlags.IsComponentsV2, components: [loadingFail] });
         }
 
-        const avatarUrls = [...allMembers.luminance, ...allMembers.radiance].map(member => member.user.displayAvatarURL({ extension: 'png', size: 128 }));
+        const avatarUrls = [...allMembers.luminance, ...allMembers.radiance].map(member => member.displayAvatarURL({ extension: 'png', size: 128 }));
         const luminanceMentions = allMembers.luminance.map(member => `<@${member.id}>`).join(' ') || 'No members';
         const radianceMentions = allMembers.radiance.map(member => `<@${member.id}>`).join(' ') || 'No members';
 

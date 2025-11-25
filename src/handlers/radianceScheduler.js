@@ -59,8 +59,8 @@ async function sendRadianceMessage(client) {
         const guild = channel.guild;
         
         const roleIds = [
-            client.config.luminanceRole, // luminance role
-            client.config.radianceRole // radiance role
+            client.config.luminanceRole,
+            client.config.radianceRole
         ];
 
         const allMembers = { luminance: [], radiance: [] };
@@ -82,7 +82,7 @@ async function sendRadianceMessage(client) {
             return;
         }
 
-        const avatarUrls = [...allMembers.luminance, ...allMembers.radiance].map(member => member.user.displayAvatarURL({ extension: 'png', size: 128 }));
+        const avatarUrls = [...allMembers.luminance, ...allMembers.radiance].map(member => member.displayAvatarURL({ extension: 'png', size: 128 }));
         const luminanceMentions = allMembers.luminance.map(member => `<@${member.id}>`).join(' ') || 'No members';
         const radianceMentions = allMembers.radiance.map(member => `<@${member.id}>`).join(' ') || 'No members';
 
@@ -191,8 +191,6 @@ async function sendRadianceMessage(client) {
             files: [radiance],
             allowedMentions: { parse: [] },
         });
-
-        client.console.log('Daily radiance message sent successfully', "success");
     } catch (error) {
         client.console.log(`Error sending radiance message: ${error.message}`, "error");
         console.error(error);
