@@ -25,8 +25,6 @@ module.exports = {
         const server = client.guilds.cache.get(client.config.ancientLunaServer);
         if (!server) return;
 
-        client.console.log("Syncing default roles...", "role");
-
         try {
             const members = await server.members.fetch();
             const total = members.size;
@@ -42,7 +40,7 @@ module.exports = {
                     }
                 }
             }
-            client.console.log(`[${total}] Default roles synced`, "role");
+            client.console.log(`Default roles synced: ${total}`, "role");
         } catch (err) {
             client.console.log(`Error fetching members for role sync: ${err.message}`, "error");
         }
