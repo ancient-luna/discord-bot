@@ -1,4 +1,3 @@
-const { EmbedBuilder } = require("discord.js");
 const ms = require("ms");
 
 module.exports = new Object({
@@ -39,31 +38,9 @@ module.exports = new Object({
             loadingMsgId: loadingTxt.id
         };
 
-        const embedReminder = new EmbedBuilder()
-            .setAuthor({ name: `${message.member.displayName}'s Reminder`, iconURL: message.author.displayAvatarURL() })
-            .setDescription(`*" ${reminderMessage} "*`)
-            .setColor(client.config.embedColorTrans);
-
         await client.db.push("reminders", newReminder);
 
-        setTimeout(async () => {
-            try {
-                const channel = await client.channels.fetch(newReminder.channel);
-                await channel.send({
-                    content: `<@${newReminder.user}>`,
-                    embeds: [embedReminder]
-                });
-
-                const msg = await channel.messages.fetch(newReminder.loadingMsgId);
-                if (msg) await msg.edit({ content: `Successfully **reminded** you` });
-
-                // remove from DB
-                const reminders = await client.db.get("reminders") || [];
-                const updated = reminders.filter(r => r.timeCounter !== newReminder.timeCounter);
-                await client.db.set("reminders", updated);
-            } catch (err) {
-                console.error("Error sending reminder:", err);
-            }
-        }, ms(timeReminder));
+        const { scheduleReminder } = require("../../../handlers/reminder");
+        scheduleReminder(newReminder, client);
     }
 });
