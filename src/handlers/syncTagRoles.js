@@ -78,7 +78,7 @@ module.exports = {
                     }
                 }
             }
-            client.console.log(`T. Synced: ${total}`, "role");
+            client.console.log(`Synced: ${total} (T)`, "role");
         } catch (err) {
             client.console.log(`Error fetching members for tag role sync: ${err.message}`, "error");
         }
