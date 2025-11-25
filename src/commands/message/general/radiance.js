@@ -28,8 +28,8 @@ module.exports = {
         let loadingTxt = await message.channel.send({ flags: MessageFlags.IsComponentsV2, components: [loadingText] })
 
         const roleIds = [
-            '620709364247822338', // luminance role
-            '888736428069105674' // radiance role
+            client.config.luminanceRole, // luminance role
+            client.config.radianceRole // radiance role
         ];
 
         const allMembers = { luminance: [], radiance: [] };
@@ -38,9 +38,9 @@ module.exports = {
             const role = message.guild.roles.cache.get(roleId);
             if (role) {
                 const members = role.members.map(member => member).sort((a, b) => a.displayName.localeCompare(b.displayName));
-                if (roleId === '620709364247822338') {
+                if (roleId === client.config.luminanceRole) {
                     allMembers.luminance.push(...members);
-                } else if (roleId === '888736428069105674') {
+                } else if (roleId === client.config.radianceRole) {
                     allMembers.radiance.push(...members);
                 }
             }

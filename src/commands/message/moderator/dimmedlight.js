@@ -49,7 +49,7 @@ module.exports = new Object({
             .setThumbnail("https://i.imgur.com/sm8OXMp.png")
             .setFooter({ text: `Kicked by ${message.member.displayName}` })
             .setColor('Red')
-        message.guild.channels.cache.get('839417251470901279').send({ embeds: [embed] });
+        message.guild.channels.cache.get(client.config.gatewayChannel).send({ embeds: [embed] });
         target.kick(args[0]);
         message.react("✅");
     }

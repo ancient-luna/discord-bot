@@ -47,7 +47,7 @@ module.exports = new Object({
         await message.guild.bans.create(target, {
             reason: reason
         }).then(() => {
-            message.guild.channels.cache.get('839417251470901279').send({ embeds: [embed] })
+            message.guild.channels.cache.get(client.config.gatewayChannel).send({ embeds: [embed] })
         });
         message.react("✅");
     }

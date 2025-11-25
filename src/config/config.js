@@ -1,4 +1,6 @@
 module.exports = {
+    ancestorRole: "590848319111299093",
+    lunariaRole: "839170815932891197",
     luxcastaRole: "839210689917616218",
     preMemberTriggerMessage: "I understand the wisdom of lleud and sure my call as light seeker",
     preMemberRole: "839210689917616218",
@@ -19,6 +21,8 @@ module.exports = {
     loyaltiesRole: "1367669191225770075",
     ogRole: "1369967597210304544",
 
+    guildOfficerRole: "1235965537326993450",
+
     ancientLunaServer: "447069790150852609",
     ancientLunaGuild: "1369521104548401265",
     ancientLunaAlliance: "1367757032081330228",
@@ -27,11 +31,20 @@ module.exports = {
     generalChannel: "452842830776369152",
     aiChatChannel: "1142344320708530306",
     confessionChannel: "1162416709265784882",
+    luminanceChannel: "839417252561944586",
     gatewayChannel: "839417251470901279",
+    knowledgeChannel: "864556584818835456",
+    suggestionChannel: "842069893113446410",
+    transcriptChannel: "1162419484305391800",
+    vacationChannel: "1076767724224659526",
+    bdoRoleChannel: "1049815440198733895",
+    bdoWelcomeChannel: "1125365549736665188",
 
     artifactChannel: "1050004761631531038",
     sanctumChannel: "1060992670035619931",
     bdoCityChannel: "1049228301807407156",
+
+    ticketCategory: "1010531564586811453",
 
     stickyLucentChannel: "1060992992523079800",
     stickyTalesChannel: "1090915653575258123",
