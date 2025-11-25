@@ -48,6 +48,8 @@ module.exports = {
             return;
         }
 
+        client.console.log("Syncing tag roles...", "role");
+
         try {
             const members = await guild.members.fetch();
             const total = members.size;
@@ -73,13 +75,12 @@ module.exports = {
                 count++;
                 
                 if (count % 20 === 0 || count === total) {
-                    process.stdout.write(`\r • [ Role ]      => Syncing tag roles... [${count}/${total}] synced`);
                     if (count % 20 === 0 && count !== total) {
                         await new Promise(resolve => setTimeout(resolve, 1000));
                     }
                 }
             }
-            process.stdout.write("\n");
+            client.console.log(`[${total}] Tag roles synced`, "role");
         } catch (err) {
             client.console.log(`Error fetching members for tag role sync: ${err.message}`, "error");
         }
