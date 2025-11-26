@@ -37,20 +37,39 @@ async function sendRadianceMessage(client) {
             return;
         }
 
-        // Delete previous radiance message
-        try {
-            const messages = await channel.messages.fetch({ limit: 20 });
-            const previousMessage = messages.find(msg => 
-                msg.author.id === client.user.id && 
-                (
-                    msg.attachments.some(a => a.name === 'radiance.png') ||
-                    (msg.content && msg.content.includes('Gratitude from the Ancients'))
-                )
-            );
+        // Check for double-send (prevent sending if sent less than 1 minute ago)
+        const lastSentTime = await client.db.get("radiance_last_sent_time");
+        if (lastSentTime && Date.now() - lastSentTime < 60000) {
+            client.console.log("Radiance message already sent recently. Skipping.", "scheduler");
+            return;
+        }
 
-            if (previousMessage) {
-                await previousMessage.delete();
-                client.console.log('Deleted previous radiance message', "scheduler");
+        // Delete previous radiance message using stored ID
+        try {
+            const lastMessageId = await client.db.get("radiance_message_id");
+            if (lastMessageId) {
+                const previousMessage = await channel.messages.fetch(lastMessageId).catch(() => null);
+                if (previousMessage) {
+                    await previousMessage.delete();
+                    client.console.log('Deleted previous radiance message (ID from DB)', "scheduler");
+                } else {
+                    client.console.log('Previous radiance message not found (ID from DB)', "debug");
+                }
+            } else {
+                // Fallback: Scan recent messages if no ID in DB (migration path)
+                const messages = await channel.messages.fetch({ limit: 20 });
+                const previousMessage = messages.find(msg => 
+                    msg.author.id === client.user.id && 
+                    (
+                        msg.attachments.some(a => a.name === 'radiance.png') ||
+                        (msg.content && msg.content.includes('Gratitude from the Ancients'))
+                    )
+                );
+
+                if (previousMessage) {
+                    await previousMessage.delete();
+                    client.console.log('Deleted previous radiance message (Fallback Scan)', "scheduler");
+                }
             }
         } catch (error) {
             client.console.log(`Error deleting previous message: ${error.message}`, "warn");
@@ -185,12 +204,18 @@ async function sendRadianceMessage(client) {
         container.addTextDisplayComponents(textLuminanceMentions)
         container.addMediaGalleryComponents(mediaSign);
 
-        await channel.send({
+        const sentMessage = await channel.send({
             flags: MessageFlags.IsComponentsV2,
             components: [container],
             files: [radiance],
             allowedMentions: { parse: [] },
         });
+
+        // Save message ID and timestamp to DB
+        await client.db.set("radiance_message_id", sentMessage.id);
+        await client.db.set("radiance_last_sent_time", Date.now());
+
+        client.console.log('Daily radiance message sent successfully', "success");
     } catch (error) {
         client.console.log(`Error sending radiance message: ${error.message}`, "error");
         console.error(error);
