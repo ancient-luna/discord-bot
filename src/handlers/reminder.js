@@ -1,4 +1,4 @@
-const { EmbedBuilder } = require("discord.js");
+const { EmbedBuilder, ContainerBuilder, TextDisplayBuilder, MessageFlags } = require("discord.js");
 
 // Max 32-bit signed integer (approx 24.8 days)
 const MAX_TIMEOUT = 2147483647;
@@ -48,12 +48,18 @@ async function sendReminder(reminder, client) {
                 const member = await guild.members.fetch(reminder.user).catch(() => null);
                 
                 if (member) {
-                    const embedReminder = new EmbedBuilder()
-                        .setAuthor({ name: `${member.displayName}'s Reminder`, iconURL: member.displayAvatarURL() })
-                        .setDescription(`*" ${reminder.reminderMessage} "*`)
-                        .setColor(client.config.embedColorTrans);
+                    const container = new ContainerBuilder()
+                    const textCaller = new TextDisplayBuilder().setContent(`-# what's kept for you is here <@${reminder.user}>`);
+                    const textHeader = new TextDisplayBuilder().setContent(`## Reminder`);
+                    const textReminder = new TextDisplayBuilder().setContent(`${reminder.reminderMessage}`);
 
-                    await channel.send({ content: `<@${reminder.user}>`, embeds: [embedReminder] });
+                    container.addTextDisplayComponents(textHeader);
+                    container.addTextDisplayComponents(textReminder);
+
+                    await channel.send({
+                        flags: MessageFlags.IsComponentsV2,
+                        components: [textCaller, container]
+                    });
 
                     const msg = await channel.messages.fetch(reminder.loadingMsgId).catch(() => null);
                     if (msg) await msg.edit({ content: `Successfully **reminded** you` });

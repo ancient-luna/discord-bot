@@ -22,10 +22,15 @@ module.exports = new Object({
         const timeReminder = args[0];
         const reminderMessage = args.slice(1).join(" ");
 
-        if (!timeReminder) return message.channel.send({ content: "Could you tell me the time? Ex: `10m` (10 minutes)." });
+        if (!timeReminder) return message.channel.send({ content: "Could you tell me the time? Ex: `10s`, `5m`, `2h`, `1d`" });
         if (!reminderMessage) return message.channel.send({ content: "Please provide a reminder message. Ex: `Meeting at 3 PM`" });
 
-        const timeCounter = Date.now() + ms(timeReminder);
+        const timeMs = ms(timeReminder);
+        if (!timeMs || isNaN(timeMs)) {
+            return message.channel.send({ content: "By the moonlight! Invalid format\n-# Do `time` `reminder note` *Ex: !reminder 10h Meeting at 3 PM*" });
+        }
+
+        const timeCounter = Date.now() + timeMs;
 
         const loadingTxt = await message.reply(`<a:u_load:1334900265953923085> I will remind you <t:${Math.floor(timeCounter / 1000)}:R>\n-# your reminder has been kept under the moonlight`);
 
