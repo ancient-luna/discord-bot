@@ -214,8 +214,6 @@ async function sendRadianceMessage(client) {
         // Save message ID and timestamp to DB
         await client.db.set("radiance_message_id", sentMessage.id);
         await client.db.set("radiance_last_sent_time", Date.now());
-
-        client.console.log('Daily radiance message sent successfully', "success");
     } catch (error) {
         client.console.log(`Error sending radiance message: ${error.message}`, "error");
         console.error(error);
