@@ -14,11 +14,6 @@ module.exports = {
     permissions: { client: [], user: [], dev: false, },
     player: { voice: false, active: false, dj: false, },
 
-    /**
-     * @param {import("../../../index")} client 
-     * @param {import("discord.js").Message} message
-     * @param {String[]} args
-     */
     async execute(client, message, args) {
         await message.delete().catch((e) => { });
 

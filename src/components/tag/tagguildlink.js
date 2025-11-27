@@ -9,10 +9,7 @@ module.exports = {
     user: [],
     dev: false,
   },
-  /**
-   * @param {import("../index")} client
-   * @param {import("discord.js").ButtonInteraction} interaction
-   */
+  
   execute: async (client, interaction) => {
     return interaction.reply({
       content: 'https://discord.gg/XJCtfTPBfu',

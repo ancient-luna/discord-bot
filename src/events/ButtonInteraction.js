@@ -2,10 +2,7 @@ const { PermissionsBitField, MessageFlags } = require("discord.js");
 
 module.exports = new Object({
   name: "ButtonInteraction",
-  /**
-   * @param {import("../index")} client
-   * @param {import("discord.js").ButtonInteraction} interaction
-   */
+  
   async execute(client, interaction) {
     const button = client.ButtonInt.get(interaction.customId);
     if (!button) return;

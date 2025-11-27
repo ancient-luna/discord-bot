@@ -11,12 +11,7 @@ module.exports = new Object({
     args: false,
     permissions: { client: [], user: [], dev: false, },
     player: { voice: false, active: false, dj: false, },
-    /**
-     * 
-     * @param {import("../../../index")} client 
-     * @param {import("discord.js").Message} message
-     * @param {String[]} args
-     */
+    
     async execute(client, message, args) {
         let loadingTxt = await message.channel.send(`<a:mm_spray:1369204415298408448> *spraying o wo' ooh bo' ooh ...*`);
         let SRCtomato = new AttachmentBuilder("src/assets/react/tomatooo.mp4")

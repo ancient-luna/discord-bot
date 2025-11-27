@@ -3,11 +3,6 @@ const { Collection, CommandInteraction, MessageFlags } = require('discord.js');
 module.exports = new Object({
   name: "interactionCreate",
 
-  /**
-   * @param {*} client
-   * @param {CommandInteraction} interaction
-   */
-
   async execute(client, interaction) {
     if (interaction.isChatInputCommand() || interaction.isCommand()) {
       if (!interaction.guild) {

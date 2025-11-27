@@ -1,8 +1,5 @@
 const { ActivityType } = require("discord.js");
 
-/**
- * @param {import('../structures/BotClient')} client
- */
 function updatePresence(client) {
     let message = client.config.PRESENCE.MESSAGE;
 

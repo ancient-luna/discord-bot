@@ -11,10 +11,7 @@ module.exports = {
         user: [],
         dev: false,
     },
-    /**
-     * @param {import("../index")} client
-     * @param {import("discord.js").ButtonInteraction} interaction
-     */
+    
     execute: async (client, interaction) => {
         try {
             const targetMember = interaction.message.mentions.members.first();

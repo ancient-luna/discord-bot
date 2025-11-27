@@ -3,10 +3,7 @@ const canvafy = require('canvafy');
 
 module.exports = new Object({
     name: "guildMemberAdd",
-    /**
-     * @param {import("../index")} client
-     * @param {import('discord.js').GuildMember|import('discord.js').PartialGuildMember} member
-     */
+    
     async execute(client, member) {
         // if (member.user.bot) return;
         const role = member.guild.roles.cache.get(client.config.luxcastaRole);

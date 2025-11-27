@@ -2,11 +2,7 @@ const { syncMemberTagRoles } = require("../../handlers/syncTagRoles");
 
 module.exports = {
     name: "userUpdate",
-    /**
-     * @param {import("../../index")} client
-     * @param {import("discord.js").User} oldUser
-     * @param {import("discord.js").User} newUser
-     */
+    
     async execute(client, oldUser, newUser) {
         const ancientLunaServerId = client.config.ancientLunaServer;
         const guild = client.guilds.cache.get(ancientLunaServerId);

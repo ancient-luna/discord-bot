@@ -15,12 +15,7 @@ module.exports = new Object({
         dev: false,
     },
     player: { voice: false, active: false, dj: false, },
-    /**
-     * 
-     * @param {import("../../../index")} client 
-     * @param {import("discord.js").Message} message
-     * @param {String[]} args
-     */
+    
     async execute(client, message, args) {
         const guild = message.guild;
         const serverId = guild.id;

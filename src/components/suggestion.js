@@ -9,11 +9,7 @@ module.exports = {
     user: [],
     dev: false,
   },
-  /**
-   * @param {import("../index")} client
-   * @param {import("discord.js").ButtonInteraction} interaction
-     * @param {import("discord.js").Message} message
-   */
+  
   execute: async (client, interaction, message) => {
 
     const txtModal = new ModalBuilder({

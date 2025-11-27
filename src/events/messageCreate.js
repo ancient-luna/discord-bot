@@ -2,10 +2,7 @@ const { EmbedBuilder, ButtonBuilder, ActionRowBuilder, ChannelType, ButtonStyle,
 
 module.exports = new Object({
   name: "messageCreate",
-  /**
-   * @param {import("../index")} client
-   * @param {import("discord.js").Message} message
-   */
+  
   async execute(client, message) {  
     // Setup Role And Rules
     const text = client.config.preMemberTriggerMessage;

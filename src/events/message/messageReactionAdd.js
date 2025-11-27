@@ -2,18 +2,10 @@ const {
     EmbedBuilder, ButtonBuilder, ActionRowBuilder,
     ChannelType, ButtonStyle, PermissionsBitField, Collection,
 } = require("discord.js");
-/**
-     * @param {import("discord.js").GuildMember} member
-     * @param {import("discord.js").messageReaction} reaction
-     */
+
 module.exports = new Object({
     name: "messageReactionAdd",
-    /**
-     * @param {import("../../Eunha")} client 
-     * @param {import("discord.js").Message} message
-     * @param {import("discord.js").GuildMember} member
-     * @param {import("discord.js").messageReaction} reaction
-     */
+    
     async execute(client, reaction, user) {
 
         if (reaction.message.partial) await reaction.message.fetch();

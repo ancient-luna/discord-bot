@@ -13,12 +13,7 @@ module.exports = new Object({
     args: false,
     permissions: { client: [], user: [], dev: false, },
     player: { voice: false, active: false, dj: false, },
-    /**
-     * 
-     * @param {import("../../../index")} client 
-     * @param {import("discord.js").Message} message
-     * @param {String[]} args
-     */
+    
     async execute(client, message, args) {
         let loadingTxt = await message.channel.send({ content: 'typing advice <a:u_load:1334900265953923085>' });
 

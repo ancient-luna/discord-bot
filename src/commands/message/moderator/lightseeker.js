@@ -15,12 +15,7 @@ module.exports = new Object({
         dev: false,
     },
     player: { voice: false, active: false, dj: false, },
-    /**
-     * 
-     * @param {import("../../../index")} client 
-     * @param {import("discord.js").Message} message
-     * @param {String[]} args
-     */
+    
     async execute(client, message, args) {
         if (!message.member.roles.cache.has(client.config.lunariaRole)) {
             return message.reply(`**No, you can't**. only the **LUNARIA** able to command me for this.`);

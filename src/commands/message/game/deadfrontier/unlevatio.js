@@ -11,12 +11,7 @@ module.exports = new Object({
     args: false,
     permissions: { client: [], user: [], dev: false, },
     player: { voice: false, active: false, dj: false, },
-    /**
-     * 
-     * @param {import("../../../../index")} client 
-     * @param {import("discord.js").Message} message
-     * @param {String[]} args
-     */
+    
     async execute(client, message, args) {
         const lunariaID = '839170815932891197';
         if (!message.member.roles.cache.has(lunariaID)) {

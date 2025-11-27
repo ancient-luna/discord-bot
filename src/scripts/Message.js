@@ -1,8 +1,6 @@
 const { readdirSync, statSync } = require('node:fs');
 const { join } = require('path');
-/**
- * @param {import('../index')} client 
- */
+
 module.exports = (client) => {
     let count = 0;
     const loadCommands = (dir) => {

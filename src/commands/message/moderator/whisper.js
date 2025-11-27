@@ -15,12 +15,7 @@ module.exports = new Object({
     dev: false,
   },
   player: { voice: false, active: false, dj: false, },
-  /**
-   * 
-   * @param {import("../../../index")} client 
-   * @param {import("discord.js").Message} message
-   * @param {String[]} args
-   */
+  
   async execute(client, message, args) {
     if (args.length < 2) return message.channel.send("Do: `!whisper` `userid` `message`");
 

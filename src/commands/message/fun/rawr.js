@@ -11,12 +11,7 @@ module.exports = new Object({
     args: false,
     permissions: { client: [], user: [], dev: false, },
     player: { voice: false, active: false, dj: false, },
-    /**
-     * 
-     * @param {import("../../../index")} client 
-     * @param {import("discord.js").Message} message
-     * @param {String[]} args
-     */
+    
     async execute(client, message, args) {
         let IMGrawr = new AttachmentBuilder("src/assets/react/rawrrr.png")
         await message.channel.send({

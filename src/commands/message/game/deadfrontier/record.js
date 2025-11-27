@@ -14,12 +14,7 @@ module.exports = {
     args: false,
     permissions: { client: [], user: [], dev: false, },
     player: { voice: false, active: false, dj: false, },
-    /**
-     * 
-     * @param {import("../../../index")} client 
-     * @param {import("discord.js").Message} message
-     * @param {String[]} args
-     */
+    
     async execute(client, message, args) {
         const survivorID = args.join(" ");
         if (!survivorID) return message.channel.send("Do `!record` `id`");

@@ -6,9 +6,7 @@ const app = express();
 module.exports = new Object({
   name: "clientReady",
   once: true,
-  /**
-   * @param {import("../index")} client
-   */
+  
   async execute(client) {
 
     if (client.config.PRESENCE.ENABLED) presenceHandler(client);

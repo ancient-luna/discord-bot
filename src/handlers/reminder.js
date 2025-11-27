@@ -19,7 +19,6 @@ function scheduleReminder(reminder, client) {
         return;
     }
 
-    // If delay is larger than MAX_TIMEOUT, wait MAX_TIMEOUT and then check again
     if (delay > MAX_TIMEOUT) {
         setTimeout(() => {
             scheduleReminder(reminder, client);
@@ -33,17 +32,14 @@ function scheduleReminder(reminder, client) {
 
 async function sendReminder(reminder, client) {
     try {
-        // Double check if it's actually time (in case of early wakeups or logic glitches)
         if (Date.now() < reminder.timeCounter) {
             return scheduleReminder(reminder, client);
         }
 
         const channel = await client.channels.fetch(reminder.channel).catch(() => null);
         
-        // If channel is not found, we can't send, but we should still remove the reminder
         if (channel) {
             const guild = client.guilds.cache.get(reminder.guild);
-            // If guild is gone, remove reminder
             if (guild) {
                 const member = await guild.members.fetch(reminder.user).catch(() => null);
                 
@@ -69,7 +65,6 @@ async function sendReminder(reminder, client) {
     } catch (err) {
         console.error("Error handling reminder:", err);
     } finally {
-        // Always remove the reminder after attempting to send
         await removeReminder(reminder.timeCounter, client);
     }
 }

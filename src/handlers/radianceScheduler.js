@@ -1,32 +1,23 @@
 const { MessageFlags, ContainerBuilder, TextDisplayBuilder, SeparatorBuilder, SeparatorSpacingSize, MediaGalleryBuilder, AttachmentBuilder, ButtonBuilder, SectionBuilder } = require("discord.js");
 const { createCanvas, loadImage } = require('canvas');
 
-/**
- * Calculate milliseconds until next 00:00 GMT+7
- * @returns {number} Milliseconds until next midnight GMT+7
- */
 function getMillisecondsUntilMidnightGMT7() {
     const now = new Date();
     
     // Convert current time to GMT+7
-    const gmt7Offset = 7 * 60; // GMT+7 in minutes
-    const localOffset = now.getTimezoneOffset(); // Local offset in minutes (negative for ahead of UTC)
+    const gmt7Offset = 7 * 60;
+    const localOffset = now.getTimezoneOffset();
     const gmt7Time = new Date(now.getTime() + (gmt7Offset + localOffset) * 60 * 1000);
     
-    // Calculate next midnight GMT+7
     const nextMidnight = new Date(gmt7Time);
-    nextMidnight.setHours(24, 0, 0, 0); // Set to next midnight
+    nextMidnight.setHours(24, 0, 0, 0);
     
-    // Convert back to local time
     const nextMidnightLocal = new Date(nextMidnight.getTime() - (gmt7Offset + localOffset) * 60 * 1000);
     
     return nextMidnightLocal.getTime() - now.getTime();
 }
 
-/**
- * Send the radiance message to the luminance channel
- * @param {import("../index")} client 
- */
+
 async function sendRadianceMessage(client) {
     try {
         const channelId = client.config.luminanceChannel;
@@ -37,14 +28,12 @@ async function sendRadianceMessage(client) {
             return;
         }
 
-        // Check for double-send (prevent sending if sent less than 1 minute ago)
         const lastSentTime = await client.db.get("radiance_last_sent_time");
         if (lastSentTime && Date.now() - lastSentTime < 60000) {
             client.console.log("Radiance message already sent recently. Skipping.", "scheduler");
             return;
         }
 
-        // Delete previous radiance message using stored ID
         try {
             const lastMessageId = await client.db.get("radiance_message_id");
             if (lastMessageId) {
@@ -56,7 +45,6 @@ async function sendRadianceMessage(client) {
                     client.console.log('Previous radiance message not found (ID from DB)', "debug");
                 }
             } else {
-                // Fallback: Scan recent messages if no ID in DB (migration path)
                 const messages = await channel.messages.fetch({ limit: 20 });
                 const previousMessage = messages.find(msg => 
                     msg.author.id === client.user.id && 
@@ -120,7 +108,6 @@ async function sendRadianceMessage(client) {
         ctx.fillStyle = gradient;
         ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-        // Load all images in parallel
         const images = await Promise.all(avatarUrls.map(url => loadImage(url)));
 
         let index = 0;
@@ -211,7 +198,6 @@ async function sendRadianceMessage(client) {
             allowedMentions: { parse: [] },
         });
 
-        // Save message ID and timestamp to DB
         await client.db.set("radiance_message_id", sentMessage.id);
         await client.db.set("radiance_last_sent_time", Date.now());
     } catch (error) {
@@ -220,24 +206,17 @@ async function sendRadianceMessage(client) {
     }
 }
 
-/**
- * Schedule the next radiance message
- * @param {import("../index")} client 
- */
+
 function scheduleNextRadianceMessage(client) {
     const delay = getMillisecondsUntilMidnightGMT7();
     
     setTimeout(async () => {
         await sendRadianceMessage(client);
-        // Schedule the next one after sending
         scheduleNextRadianceMessage(client);
     }, delay);
 }
 
-/**
- * Initialize the radiance scheduler
- * @param {import("../index")} client 
- */
+
 function initRadianceScheduler(client) {
     client.console.log('Radiance scheduler initialized', "scheduler");
     scheduleNextRadianceMessage(client);

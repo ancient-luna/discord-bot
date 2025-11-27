@@ -4,59 +4,33 @@ const { join, extname } = require("path");
 const permissions = require("../structures/Permissions");
 
 module.exports = class Utils {
-    /**
-     * Checks if a string contains a URL
-     * @param {string} text
-     */
+    
     static containsLink(text) {
         return /(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})/.test(
             text
         );
     }
 
-    /**
-     * Checks if a string is a valid discord invite
-     * @param {string} text
-     */
     static containsDiscordInvite(text) {
         return /(https?:\/\/)?(www.)?(discord.(gg|io|me|li|link|plus)|discorda?p?p?.com\/invite|invite.gg|dsc.gg|urlcord.cf)\/[^\s/]+?(?=\b)/.test(
             text
         );
     }
 
-    /**
-     * Returns a random number below a max
-     * @param {number} max
-     */
     static getRandomInt(max) {
         return Math.floor(Math.random() * max);
     }
 
-    /**
-     * Checks if a string is a valid Hex color
-     * @param {string} text
-     */
     static isHex(text) {
         return /^#[0-9A-F]{6}$/i.test(text);
     }
 
-    /**
-     * Returns hour difference between two dates
-     * @param {Date} dt2
-     * @param {Date} dt1
-     */
     static diffHours(dt2, dt1) {
         let diff = (dt2.getTime() - dt1.getTime()) / 1000;
         diff /= 60 * 60;
         return Math.abs(Math.round(diff));
     }
-    /**
-        * 
-        * @param {Message} msg 
-        * @param {String} args 
-        * @param {String} color 
-        * @returns {Promise<Message | void>}
-        */
+    
     async replyOops(msg, args, color) {
         const config = require("../config/config")
         if (!msg) return;
@@ -69,10 +43,6 @@ module.exports = class Utils {
         }, 7000);
     };
 
-    /**
-     * Returns remaining time in days, hours, minutes and seconds
-     * @param {number} timeInSeconds
-     */
     static timeformat(timeInSeconds) {
         const days = Math.floor((timeInSeconds % 31536000) / 86400);
         const hours = Math.floor((timeInSeconds % 86400) / 3600);
@@ -86,10 +56,6 @@ module.exports = class Utils {
         );
     }
 
-    /**
-     * Converts duration to milliseconds
-     * @param {string} duration
-     */
     static durationToMillis(duration) {
         return duration
             .split(":")
@@ -97,31 +63,16 @@ module.exports = class Utils {
             .reduce((acc, curr) => curr + acc * 60) * 1000;
     }
 
-    /**
-     * Returns time remaining until provided date
-     * @param {Date} timeUntil
-     */
     static getRemainingTime(timeUntil) {
         const seconds = Math.abs((timeUntil - new Date()) / 1000);
         const time = Utils.timeformat(seconds);
         return time;
     }
 
-    /**
-     * @param {import("discord.js").PermissionResolvable[]} perms
-     */
     static parsePermissions(perms) {
         const permissionWord = `permission${perms.length > 1 ? "s" : ""}`;
         return "`" + perms.map((perm) => permissions[perm]).join(", ") + "` " + permissionWord;
     }
-
-    /**
-    * @param {String} id
-    * @param {String} commandName 
-    * @param {import('discord.js').Message} message 
-    * @param {String} args
-    * @param {import("../index")} client 
-    */
 
     async invalidArgs(commandName, message, args, client) {
         try {
@@ -153,11 +104,6 @@ module.exports = class Utils {
         };
     };
 
-    /**
-     * Recursively searches for a file in a directory
-     * @param {string} dir
-     * @param {string[]} allowedExtensions
-     */
     static recursiveReadDirSync(dir, allowedExtensions = [".js"]) {
         const filePaths = [];
         const readCommands = (dir) => {

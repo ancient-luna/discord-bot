@@ -168,42 +168,22 @@ class BotClient extends Client {
     this.connect();
   }
 
-  /**
-   * @param {import('discord.js').APIEmbed} data
-   * @returns {EmbedBuilder}
-   */
   embed(data) {
     return new EmbedBuilder(data);
   }
 
-  /**
-   * @param {import('discord.js').APIButtonComponent} data
-   * @returns {ButtonBuilder}
-   */
   button(data) {
     return new ButtonBuilder(data);
   }
 
-  /**
-   * @param {import('discord.js').APISelectMenuComponent} data
-   * @returns {StringSelectMenuBuilder}
-   */
   menu(data) {
     return new StringSelectMenuBuilder(data);
   }
 
-  /**
-   * @param {import('discord.js').APIActionRowComponent} data
-   * @returns {ActionRowBuilder}
-   */
   row(data) {
     return new ActionRowBuilder(data);
   }
 
-  /**
-   * @param {string} search
-   * @param {Boolean} exact
-   */
   async resolveUsers(search, exact = false) {
     if (!search || typeof search !== "string") return [];
     const users = [];

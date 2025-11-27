@@ -10,10 +10,7 @@ module.exports = {
     user: ['ManageMessages'],
     dev: false,
   },
-  /**
-   * @param {import("../index")} client
-   * @param {import("discord.js").ButtonInteraction} interaction
-   */
+  
   execute: async (client, interaction) => {
     if (!interaction.member.permissions.has(PermissionsBitField.Flags.ManageMessages)) return await interaction.reply({ content: `Only the **Ancestor** and **Elders** can save this ticket`, flags: MessageFlags.Ephemeral })
     const channel = interaction.channel;

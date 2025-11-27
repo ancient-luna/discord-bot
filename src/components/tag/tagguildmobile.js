@@ -9,10 +9,7 @@ module.exports = {
     user: [],
     dev: false,
   },
-  /**
-   * @param {import("../index")} client
-   * @param {import("discord.js").ButtonInteraction} interaction
-   */
+  
   execute: async (client, interaction) => {
     const howTo1 = new EmbedBuilder()
       .setTitle("Ⅰ. Profile")
