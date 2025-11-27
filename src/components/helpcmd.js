@@ -12,64 +12,62 @@ module.exports = {
   },
   
   execute: async (client, interaction) => {
-    const commandsDir = join(__dirname, "../commands/message");
     const excludedFolders = ["blackdesert", "deadfrontier", "moderator", "suggestion"];
     const allowedCommands = ["record", "status"];
-
-    const categories = readdirSync(commandsDir, { withFileTypes: true })
-      .filter((dirent) => dirent.isDirectory())
-      .map((dirent) => dirent.name);
 
     let helpText = "";
     let specialCommands = "";
 
-    for (const excludedFolder of excludedFolders) {
-      const excludedPath = join(commandsDir, excludedFolder);
-      const commandFiles = readdirSync(excludedPath).filter((file) => file.endsWith(".js"));
+    const commandsByCategory = new Map();
+    client.Commands.forEach(cmd => {
+        const cat = cmd.category || 'default';
+        if (!commandsByCategory.has(cat)) commandsByCategory.set(cat, []);
+        commandsByCategory.get(cat).push(cmd);
+    });
 
-      let folderSpecialCommands = "";
-      for (const file of commandFiles) {
-        const command = require(join(excludedPath, file));
-        if (command.name && command.description && allowedCommands.includes(command.name)) {
-          folderSpecialCommands += `- \`!${command.name}\` ${command.description}\n`;
+    for (const folder of excludedFolders) {
+        if (commandsByCategory.has(folder)) {
+            const cmds = commandsByCategory.get(folder).filter(cmd => allowedCommands.includes(cmd.name));
+            if (cmds.length > 0) {
+                let folderSpecialCommands = "";
+                for (const cmd of cmds) {
+                    if (cmd.description) {
+                        folderSpecialCommands += `- \`!${cmd.name}\` ${cmd.description}\n`;
+                    }
+                }
+                if (folderSpecialCommands) {
+                    specialCommands += `## ${folder.replace(/^\w/, (c) => c.toUpperCase())}\n${folderSpecialCommands}`;
+                }
+            }
         }
-      }
-
-      if (folderSpecialCommands) {
-        specialCommands += `## ${excludedFolder.replace(/^\w/, (c) => c.toUpperCase())}\n${folderSpecialCommands}`;
-      }
     }
 
     if (specialCommands) {
-      helpText += specialCommands;
+        helpText += specialCommands;
     }
 
-    for (const category of categories) {
-      if (excludedFolders.includes(category)) {
-        continue;
-      }
+    const sortedCategories = [...commandsByCategory.keys()].sort();
+    
+    for (const category of sortedCategories) {
+        if (excludedFolders.includes(category)) continue;
 
-      const categoryPath = join(commandsDir, category);
-      const commandFiles = readdirSync(categoryPath).filter((file) => file.endsWith(".js"));
-
-      helpText += `## ${category.replace(/^\w/, (c) => c.toUpperCase())}\n`;
-
-      for (const file of commandFiles) {
-        const command = require(join(categoryPath, file));
-        if (command.name && command.description) {
-          helpText += `- \`!${command.name}\` ${command.description}\n`;
+        const cmds = commandsByCategory.get(category);
+        if (cmds.length > 0) {
+            helpText += `## ${category.replace(/^\w/, (c) => c.toUpperCase())}\n`;
+            for (const cmd of cmds) {
+                if (cmd.description) {
+                    helpText += `- \`!${cmd.name}\` ${cmd.description}\n`;
+                }
+            }
         }
-      }
     }
 
-    // Slash Commands
     const slashCommandsDir = join(__dirname, "../commands/slash");
     if (existsSync(slashCommandsDir)) {
       const slashCategories = readdirSync(slashCommandsDir, { withFileTypes: true })
         .filter((dirent) => dirent.isDirectory())
         .map((dirent) => dirent.name);
 
-      // Ensure commands are fetched
       const applicationCommands = client.application.commands.cache.size > 0 
         ? client.application.commands.cache 
         : await client.application.commands.fetch();
