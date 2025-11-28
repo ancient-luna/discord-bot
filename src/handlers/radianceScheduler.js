@@ -1,23 +1,54 @@
 const { MessageFlags, ContainerBuilder, TextDisplayBuilder, SeparatorBuilder, SeparatorSpacingSize, MediaGalleryBuilder, AttachmentBuilder, ButtonBuilder, SectionBuilder } = require("discord.js");
 const { createCanvas, loadImage } = require('canvas');
 
+/**
+ * Calculate milliseconds until next 00:00 GMT+7
+ * @returns {number} Milliseconds until next midnight GMT+7
+ */
 function getMillisecondsUntilMidnightGMT7() {
     const now = new Date();
     
     // Convert current time to GMT+7
-    const gmt7Offset = 7 * 60;
-    const localOffset = now.getTimezoneOffset();
+    const gmt7Offset = 7 * 60; // GMT+7 in minutes
+    const localOffset = now.getTimezoneOffset(); // Local offset in minutes (negative for ahead of UTC)
     const gmt7Time = new Date(now.getTime() + (gmt7Offset + localOffset) * 60 * 1000);
     
+    // Calculate next midnight GMT+7
     const nextMidnight = new Date(gmt7Time);
-    nextMidnight.setHours(24, 0, 0, 0);
+    nextMidnight.setHours(24, 0, 0, 0); // Set to next midnight
     
+    // Convert back to local time
     const nextMidnightLocal = new Date(nextMidnight.getTime() - (gmt7Offset + localOffset) * 60 * 1000);
     
     return nextMidnightLocal.getTime() - now.getTime();
 }
 
+/**
+ * Calculate timestamp of the most recent 00:00 GMT+7
+ * @returns {number} Timestamp of previous midnight GMT+7
+ */
+function getPreviousMidnightGMT7() {
+    const now = new Date();
+    
+    // Convert current time to GMT+7
+    const gmt7Offset = 7 * 60; // GMT+7 in minutes
+    const localOffset = now.getTimezoneOffset(); // Local offset in minutes (negative for ahead of UTC)
+    const gmt7Time = new Date(now.getTime() + (gmt7Offset + localOffset) * 60 * 1000);
+    
+    // Calculate previous midnight GMT+7
+    const prevMidnight = new Date(gmt7Time);
+    prevMidnight.setHours(0, 0, 0, 0); // Set to midnight
+    
+    // Convert back to local time
+    const prevMidnightLocal = new Date(prevMidnight.getTime() - (gmt7Offset + localOffset) * 60 * 1000);
+    
+    return prevMidnightLocal.getTime();
+}
 
+/**
+ * Send the radiance message to the luminance channel
+ * @param {import("../index")} client 
+ */
 async function sendRadianceMessage(client) {
     try {
         const channelId = client.config.luminanceChannel;
@@ -28,23 +59,34 @@ async function sendRadianceMessage(client) {
             return;
         }
 
+        // Check for double-send (prevent sending if sent less than 1 minute ago)
         const lastSentTime = await client.db.get("radiance_last_sent_time");
         if (lastSentTime && Date.now() - lastSentTime < 60000) {
             client.console.log("Radiance message already sent recently. Skipping.", "scheduler");
             return;
         }
 
+        // Delete previous radiance message using stored ID or fallback scan
         try {
+            let deleted = false;
             const lastMessageId = await client.db.get("radiance_message_id");
+            
             if (lastMessageId) {
+                client.console.log(`Attempting to delete previous message with ID: ${lastMessageId}`, "debug");
                 const previousMessage = await channel.messages.fetch(lastMessageId).catch(() => null);
+                
                 if (previousMessage) {
                     await previousMessage.delete();
+                    await client.db.delete("radiance_message_id");
                     client.console.log('Deleted previous radiance message (ID from DB)', "scheduler");
+                    deleted = true;
                 } else {
-                    client.console.log('Previous radiance message not found (ID from DB)', "debug");
+                    client.console.log('Previous radiance message not found via ID. Attempting fallback scan.', "debug");
                 }
-            } else {
+            }
+
+            if (!deleted) {
+                // Fallback: Scan recent messages if ID failed or wasn't found
                 const messages = await channel.messages.fetch({ limit: 20 });
                 const previousMessage = messages.find(msg => 
                     msg.author.id === client.user.id && 
@@ -56,6 +98,8 @@ async function sendRadianceMessage(client) {
 
                 if (previousMessage) {
                     await previousMessage.delete();
+                    // Clean up DB if we found it via scan but ID was stale
+                    if (lastMessageId) await client.db.delete("radiance_message_id");
                     client.console.log('Deleted previous radiance message (Fallback Scan)', "scheduler");
                 }
             }
@@ -108,6 +152,7 @@ async function sendRadianceMessage(client) {
         ctx.fillStyle = gradient;
         ctx.fillRect(0, 0, canvas.width, canvas.height);
 
+        // Load all images in parallel
         const images = await Promise.all(avatarUrls.map(url => loadImage(url)));
 
         let index = 0;
@@ -198,15 +243,21 @@ async function sendRadianceMessage(client) {
             allowedMentions: { parse: [] },
         });
 
+        // Save message ID and timestamp to DB
         await client.db.set("radiance_message_id", sentMessage.id);
         await client.db.set("radiance_last_sent_time", Date.now());
+
+        client.console.log('Daily radiance message sent successfully', "scheduler");
     } catch (error) {
         client.console.log(`Error sending radiance message: ${error.message}`, "error");
         console.error(error);
     }
 }
 
-
+/**
+ * Schedule the next radiance message
+ * @param {import("../index")} client 
+ */
 function scheduleNextRadianceMessage(client) {
     const delay = getMillisecondsUntilMidnightGMT7();
     
@@ -216,9 +267,26 @@ function scheduleNextRadianceMessage(client) {
     }, delay);
 }
 
-
-function initRadianceScheduler(client) {
+/**
+ * Initialize the radiance scheduler
+ * @param {import("../index")} client 
+ */
+async function initRadianceScheduler(client) {
     client.console.log('Radiance scheduler initialized', "scheduler");
+
+    try {
+        // Check if we missed today's message
+        const lastSentTime = await client.db.get("radiance_last_sent_time");
+        const prevMidnight = getPreviousMidnightGMT7();
+
+        if (!lastSentTime || lastSentTime < prevMidnight) {
+            client.console.log('Missed scheduled message. Sending now...', "scheduler");
+            await sendRadianceMessage(client);
+        }
+    } catch (err) {
+        client.console.log(`Error in catch-up logic: ${err.message}`, "error");
+    }
+
     scheduleNextRadianceMessage(client);
 }
 
