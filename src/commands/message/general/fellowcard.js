@@ -209,12 +209,6 @@ module.exports = new Object({
               }
             }])
 
-          // const sectionCard = new SectionBuilder()
-          //   .addTextDisplayComponents(userDetail)
-          //   .setThumbnailAccessory(thumbnail => thumbnail
-          //       .setURL('attachment://fellowcard.png')
-          //   );
-
           const sectionCard = new SectionBuilder()
             .addTextDisplayComponents(userDetail)
             .setButtonAccessory(button => button
