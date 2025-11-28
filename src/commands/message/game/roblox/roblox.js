@@ -1,14 +1,4 @@
-const {
-    EmbedBuilder,
-    AttachmentBuilder,
-    ContainerBuilder,
-    MediaGalleryBuilder,
-    MessageFlags,
-    TextDisplayBuilder,
-    ActionRowBuilder,
-    ButtonBuilder,
-    ButtonStyle,
-} = require("discord.js");
+const { AttachmentBuilder, ContainerBuilder, MediaGalleryBuilder, MessageFlags, TextDisplayBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle, } = require("discord.js");
 const axios = require("axios");
 const { createCanvas, loadImage /*, registerFont */ } = require("canvas");
 
@@ -69,7 +59,7 @@ module.exports = new Object({
     async execute(client, message, args) {
         const username = args[0];
         if (!username) {
-            return message.reply("❌ | Use `roblox <username>`");
+            return message.reply("**That's no poetry**, write `roblox <username>` instead");
         }
 
         try {
@@ -84,7 +74,7 @@ module.exports = new Object({
             );
 
             if (!userLookup.data.data || !userLookup.data.data.length) {
-                return message.reply("❌ | Roblox user not found.");
+                return message.reply("**No such name in my book!** Who are you looking for?\n-# Roblox user not found.");
             }
 
             const basic = userLookup.data.data[0];
@@ -471,13 +461,6 @@ module.exports = new Object({
             ctx.font = "18px Sans-Serif";
             
             wrapText(ctx, descText, margin + 30, descY + 60, descW - 60, 22);
-
-            // --- Footer (outside description box) ---
-            // ctx.fillStyle = "#4b5563";
-            // ctx.font = "bold 14px Sans-Serif";
-            // ctx.textAlign = "center";
-            // ctx.fillText("Ancient Luna", width / 2, height - 20);
-            // ctx.textAlign = "start"; // Reset text align
 
             // 4) Send to Discord
             const buffer = canvas.toBuffer("image/png");
