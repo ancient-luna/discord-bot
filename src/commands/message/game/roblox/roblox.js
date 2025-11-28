@@ -337,8 +337,8 @@ module.exports = new Object({
             
             // ID Badge with gradient
             const idGradient = ctx.createLinearGradient(badgeX, currentY - 30, badgeX, currentY - 30 + badgeHeight);
-            idGradient.addColorStop(0, "#151f2b");
-            idGradient.addColorStop(1, "#0d1723");
+            idGradient.addColorStop(0, "#242e3c");
+            idGradient.addColorStop(1, "#242e3c");
             ctx.fillStyle = idGradient;
             roundRect(ctx, badgeX, currentY - 30, 180, badgeHeight, 8);
             ctx.fill();
@@ -349,16 +349,16 @@ module.exports = new Object({
             ctx.font = "bold 16px Sans-Serif";
             ctx.fillText("ID:", badgeX + 15, currentY - 4);
             ctx.fillStyle = "#f8fafc"; // Value color
-            ctx.fillText(userId.toString(), badgeX + 45, currentY - 4);
+            ctx.fillText(userId.toString(), badgeX + 50, currentY - 4);
             
             badgeX += 180 + badgeGap;
 
             // Joined Badge with gradient
             const joinedGradient = ctx.createLinearGradient(badgeX, currentY - 30, badgeX, currentY - 30 + badgeHeight);
-            joinedGradient.addColorStop(0, "#151f2b");
-            joinedGradient.addColorStop(1, "#0d1723");
+            joinedGradient.addColorStop(0, "#242e3c");
+            joinedGradient.addColorStop(1, "#242e3c");
             ctx.fillStyle = joinedGradient;
-            roundRect(ctx, badgeX, currentY - 30, 200, badgeHeight, 8);
+            roundRect(ctx, badgeX, currentY - 30, 230, badgeHeight, 8);
             ctx.fill();
             ctx.strokeStyle = "#374151";
             ctx.lineWidth = 1;
@@ -366,15 +366,15 @@ module.exports = new Object({
             ctx.fillStyle = "#64748b";
             ctx.fillText("JOINED:", badgeX + 15, currentY - 4);
             ctx.fillStyle = "#f8fafc";
-            ctx.fillText(joinedStr, badgeX + 85, currentY - 4);
+            ctx.fillText(joinedStr, badgeX + 95, currentY - 4);
             
-            badgeX += 200 + badgeGap;
+            badgeX += 230 + badgeGap;
 
             // Status Badge (Dynamic) with gradient
             const statusBadgeWidth = 160;
             const statusGradient = ctx.createLinearGradient(badgeX, currentY - 30, badgeX, currentY - 30 + badgeHeight);
-            statusGradient.addColorStop(0, "#151f2b");
-            statusGradient.addColorStop(1, "#0d1723");
+            statusGradient.addColorStop(0, "#242e3c");
+            statusGradient.addColorStop(1, "#242e3c");
             ctx.fillStyle = statusGradient;
             roundRect(ctx, badgeX, currentY - 30, statusBadgeWidth, badgeHeight, 8);
             ctx.fill();
@@ -497,7 +497,7 @@ module.exports = new Object({
                 .addComponents(
                     new ButtonBuilder()
                         .setStyle(ButtonStyle.Link)
-                        .setLabel(`View Profile`)
+                        .setLabel(`View ${displayName} Profile`)
                         .setURL(profileUrl)
                 );
 
@@ -512,7 +512,7 @@ module.exports = new Object({
         } catch (err) {
             console.error(err);
             return message.reply(
-                "⚠️ | Something went wrong while generating the Roblox card."
+                "**Under the moonlight!** I'm powerless,\n-# Something went wrong while generating the Roblox card"
             );
         }
     },
