@@ -275,18 +275,57 @@ async function initRadianceScheduler(client) {
     client.console.log('Radiance scheduler initialized', "scheduler");
 
     try {
-        // Check if we missed today's message
-        const lastSentTime = await client.db.get("radiance_last_sent_time");
-        const prevMidnight = getPreviousMidnightGMT7();
+        const channelId = client.config.luminanceChannel;
+        const channel = await client.channels.fetch(channelId).catch(() => null);
 
-        if (!lastSentTime || lastSentTime < prevMidnight) {
-            client.console.log('Missed scheduled message. Sending now...', "scheduler");
+        if (!channel) {
+            client.console.log(`Luminance channel not found during init: ${channelId}`, "error");
+            scheduleNextRadianceMessage(client);
+            return;
+        }
+
+        // 1. Check if a radiance message already exists
+        let existingMessage = null;
+        const lastMessageId = await client.db.get("radiance_message_id");
+
+        // Try fetching by ID first
+        if (lastMessageId) {
+            existingMessage = await channel.messages.fetch(lastMessageId).catch(() => null);
+        }
+
+        // Fallback: Scan if not found by ID
+        if (!existingMessage) {
+            const messages = await channel.messages.fetch({ limit: 20 });
+            existingMessage = messages.find(msg => 
+                msg.author.id === client.user.id && 
+                (
+                    msg.attachments.some(a => a.name === 'radiance.png') ||
+                    (msg.content && msg.content.includes('# Gratitude from the Ancients'))
+                )
+            );
+            
+            if (existingMessage) {
+                // Found via scan, update DB so we have the correct ID for next time
+                await client.db.set("radiance_message_id", existingMessage.id);
+                client.console.log(`Found existing radiance message via scan (ID: ${existingMessage.id}). Updating DB.`, "scheduler");
+            }
+        }
+
+        // 2. Decide action based on existence
+        if (existingMessage) {
+            client.console.log('Radiance message exists. Waiting for next schedule.', "scheduler");
+            // Do nothing, just wait for the schedule
+        } else {
+            client.console.log('No radiance message found. Sending new one immediately.', "scheduler");
             await sendRadianceMessage(client);
         }
+
     } catch (err) {
-        client.console.log(`Error in catch-up logic: ${err.message}`, "error");
+        client.console.log(`Error in radiance scheduler init: ${err.message}`, "error");
+        console.error(err);
     }
 
+    // Always start the timer for the next cycle
     scheduleNextRadianceMessage(client);
 }
 
