@@ -15,7 +15,7 @@ module.exports = {
     container.addTextDisplayComponents(textPrefix);
 
     if (message.content.match(mention)) {
-      if (message.guild.members.cache.get(client.user.id).permissionsIn(message.channel).has(PermissionsBitField.Flags.SendMessages)) {
+      if (message.guild.members.me.permissionsIn(message.channel).has(PermissionsBitField.Flags.SendMessages)) {
         return await message.reply({
           flags: MessageFlags.IsComponentsV2,
           components: [container],
@@ -32,12 +32,12 @@ module.exports = {
     if (!command) return;
 
     // Auto Permission Return
-    if (!message.guild.members.cache.get(client.user.id).permissionsIn(message.channel).has(PermissionsBitField.Flags.SendMessages))
+    if (!message.guild.members.me.permissionsIn(message.channel).has(PermissionsBitField.Flags.SendMessages))
       return await message.author.send({
           content: `I don't have \`SEND_MESSAGES\` permission in <#${message.channelId}> to execute this **\`${command.name}\`** command ${starIco}`, 
       }).catch(() => {});
-    if (!message.guild.members.cache.get(client.user.id).permissionsIn(message.channel).has(PermissionsBitField.Flags.ViewChannel)) return;
-    if (!message.guild.members.cache.get(client.user.id).permissionsIn(message.channel).has(PermissionsBitField.Flags.EmbedLinks))
+    if (!message.guild.members.me.permissionsIn(message.channel).has(PermissionsBitField.Flags.ViewChannel)) return;
+    if (!message.guild.members.me.permissionsIn(message.channel).has(PermissionsBitField.Flags.EmbedLinks))
       return await message.reply({
           content: `I don't have \`EMBED_LINKS\` permission to execute this **\`${command.name}\`** command ${starIco}`,
       }).catch(() => {});
@@ -45,7 +45,7 @@ module.exports = {
     // Permission for handler
     if (command.permissions) {
       if (command.permissions.client) {
-        if (!message.guild.members.cache.get(client.user.id).permissionsIn(message.channel).has(PermissionsBitField.resolve(command.permissions.client) || []))
+        if (!message.guild.members.me.permissionsIn(message.channel).has(PermissionsBitField.resolve(command.permissions.client) || []))
           return await client.util.replyOops(
             message,
             `I don't have \`${command.permissions.client.join(", ")}\` permission(s) to execute this command ${starIco}`
@@ -83,7 +83,7 @@ module.exports = {
 
     const cooldown = client.Cooldown.get(command.name);
     let cooldownAmount = command.cooldown && command.cooldown > 0 ? command.cooldown * 1000 : 3000;
-    if ( cooldown.has(message.author.id) && !(client.owners && client.owners.includes(message.author.id))) {
+    if ( cooldown.has(message.author.id) && !(client.owners?.includes(message.author.id))) {
       let expiretime = cooldown.get(message.author.id);
       let timeleft = cooldownAmount - (Date.now() - expiretime);
 
