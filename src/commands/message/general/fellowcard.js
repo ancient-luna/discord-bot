@@ -142,7 +142,7 @@ module.exports = new Object({
   
           // Sort roles alphabetically
           const sortedRoles = member.roles.cache
-            .filter(role => limitRoles.includes(role.id) && role.name !== '@everyone')
+            .filter(role => limitRoles?.includes(role.id) && role.name !== '@everyone')
             // .sort((a, b) => a.name.localeCompare(b.name));
             .sort((a, b) => b.position - a.position);
   

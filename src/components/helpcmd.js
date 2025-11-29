@@ -27,7 +27,7 @@ module.exports = {
 
     for (const folder of excludedFolders) {
         if (commandsByCategory.has(folder)) {
-            const cmds = commandsByCategory.get(folder).filter(cmd => allowedCommands.includes(cmd.name));
+            const cmds = commandsByCategory.get(folder).filter(cmd => allowedCommands?.includes(cmd.name));
             if (cmds.length > 0) {
                 let folderSpecialCommands = "";
                 for (const cmd of cmds) {
@@ -49,7 +49,7 @@ module.exports = {
     const sortedCategories = [...commandsByCategory.keys()].sort();
     
     for (const category of sortedCategories) {
-        if (excludedFolders.includes(category)) continue;
+        if (excludedFolders?.includes(category)) continue;
 
         const cmds = commandsByCategory.get(category);
         if (cmds.length > 0) {

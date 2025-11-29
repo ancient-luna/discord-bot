@@ -117,7 +117,7 @@ module.exports = {
             // Role display setup
             const limitRoles = ['590848319111299093', '839170815932891197', '620709364247822338', '888736428069105674', '839198215580811344'];
             const sortedRoles = targetMember.roles.cache
-                .filter(role => limitRoles.includes(role.id) && role.name !== '@everyone')
+                .filter(role => limitRoles?.includes(role.id) && role.name !== '@everyone')
                 .sort((a, b) => b.position - a.position);
 
             // Check if sortedRoles is empty and set context to 'Ancient Luna'

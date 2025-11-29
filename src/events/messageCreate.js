@@ -1,6 +1,6 @@
-const { EmbedBuilder, ButtonBuilder, ActionRowBuilder, ChannelType, ButtonStyle, PermissionsBitField, Collection, AttachmentBuilder, ContainerBuilder, TextDisplayBuilder, MessageFlags, SectionBuilder } = require("discord.js");
+const { ButtonStyle, PermissionsBitField, Collection, ContainerBuilder, TextDisplayBuilder, MessageFlags, SectionBuilder } = require("discord.js");
 
-module.exports = new Object({
+module.exports = {
   name: "messageCreate",
   
   async execute(client, message) {
@@ -62,7 +62,7 @@ module.exports = new Object({
         if (client.owners) {
           const findDev = client.owners.find((x) => x === message.author.id);
           if (!findDev) return message.reply({
-            content: `Sorry! this cmd on maintenance for now please wait a couple time ${starIco}`,
+            content: `Sorry! this cmd on maintenance for now please wait a moment ${starIco}`,
           });
         }
       }
@@ -83,7 +83,7 @@ module.exports = new Object({
 
     const cooldown = client.Cooldown.get(command.name);
     let cooldownAmount = command.cooldown && command.cooldown > 0 ? command.cooldown * 1000 : 3000;
-    if ( cooldown.has(message.author.id) && !client.owners.includes(message.member.id)) {
+    if ( cooldown.has(message.author.id) && !(client.owners && client.owners.includes(message.author.id))) {
       let expiretime = cooldown.get(message.author.id);
       let timeleft = cooldownAmount - (Date.now() - expiretime);
 
@@ -104,7 +104,7 @@ module.exports = new Object({
       await command.execute(client, message, args, prefix);
     } catch (error) {
       const container = new ContainerBuilder();
-      const textError = new TextDisplayBuilder().setContent(`An unexpected error occured..\n-# Please contact devs if it still occurred ${starIco}`);
+      const textError = new TextDisplayBuilder().setContent(`An unexpected error occurred..\n-# Please contact devs if it still occurred ${starIco}`);
       const section = new SectionBuilder()
         .addTextDisplayComponents(textError)
         .setButtonAccessory(button => button
@@ -120,4 +120,4 @@ module.exports = new Object({
       console.error(error);
     }
   },
-});
+};

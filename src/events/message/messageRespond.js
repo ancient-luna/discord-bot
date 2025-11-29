@@ -11,7 +11,7 @@ module.exports = new Object({
     const content = message.content.toLowerCase();
 
     const bannedWords = ["fuck", "cunt", "dick"];
-    if (bannedWords.some((word) => content.includes(word)) && Math.random() < 0.2) {
+    if (bannedWords && bannedWords.some((word) => content.includes(word)) && Math.random() < 0.2) {
       const noCuss = new AttachmentBuilder('src/assets/react/nocussnuuh.mp4');
       await message.reply({ files: [noCuss] });
       return message.channel.send(`-# be wise ${message.member.displayName}, or we square up.`);
@@ -25,7 +25,7 @@ module.exports = new Object({
     };
 
     for (const [key, response] of Object.entries(responses)) {
-      if (content.includes(key) && Math.random() < response.chance) {
+      if (content && content.includes(key) && Math.random() < response.chance) {
         if (response.video) {
           await message.reply({ files: [new AttachmentBuilder(response.video)] });
           await message.channel.send(response.text);

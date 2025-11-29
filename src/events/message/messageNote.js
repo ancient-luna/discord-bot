@@ -6,9 +6,9 @@ module.exports = new Object({
   async execute(client, message) {
     if (message.author.bot || !message.guild || message.channel.type === ChannelType.DM) return;
 
-    if (client.config.stickyLucentChannel.includes(message.channel.id)) { // StickyNote Lucent Fountain
+    if (client.config.stickyLucentChannel?.includes(message.channel.id)) { // StickyNote Lucent Fountain
       const fetchedLucentMessages = await message.channel.messages.fetch();
-      const stickyLucentMessage = fetchedLucentMessages.find(m => m.author.id === client.user.id && client.config.stickyLucentChannel.includes(m.channel.id));
+      const stickyLucentMessage = fetchedLucentMessages.find(m => m.author.id === client.user.id && client.config.stickyLucentChannel?.includes(m.channel.id));
       const embedLucent = new EmbedBuilder()
         .setTitle(`The Lucent Fountain`)
         .setDescription(`𝑾𝒆 𝒓𝒂𝒏 𝒂𝒔 𝒊𝒇 𝒕𝒐 𝒎𝒆𝒆𝒕 𝒕𝒉𝒆 𝒎𝒐𝒐𝒏\n**[Be the true light seekers](https://youtu.be/_rJiY6y3a-A)** ✦`)
@@ -38,9 +38,9 @@ module.exports = new Object({
       }
     };
 
-    if (client.config.stickyTalesChannel.includes(message.channel.id)) { // StickyNote Tales of Lights
+    if (client.config.stickyTalesChannel?.includes(message.channel.id)) { // StickyNote Tales of Lights
       const fetchedTalesMessages = await message.channel.messages.fetch();
-      const stickyTalesMessage = fetchedTalesMessages.find(m => m.author.id === client.user.id && client.config.stickyTalesChannel.includes(m.channel.id));
+      const stickyTalesMessage = fetchedTalesMessages.find(m => m.author.id === client.user.id && client.config.stickyTalesChannel?.includes(m.channel.id));
       const lunaThumbnails = [
         'https://i.imgur.com/B6u2feA.png', 'https://i.imgur.com/DrmVtuP.png', 'https://i.imgur.com/Z5mq7OF.png',
         'https://i.imgur.com/M0U4I56.png', 'https://i.imgur.com/jOGuk7s.png', 'https://i.imgur.com/tM9xIaq.png',
@@ -68,9 +68,9 @@ module.exports = new Object({
       }
     };
 
-    if (client.config.stickyCTSChannel.includes(message.channel.id)) { // StickyNote CTS/CTL
+    if (client.config.stickyCTSChannel?.includes(message.channel.id)) { // StickyNote CTS/CTL
       const fetchedCTSMessages = await message.channel.messages.fetch();
-      const stickyCTSMessage = fetchedCTSMessages.find(m => m.author.id === client.user.id && client.config.stickyCTSChannel.includes(m.channel.id));
+      const stickyCTSMessage = fetchedCTSMessages.find(m => m.author.id === client.user.id && client.config.stickyCTSChannel?.includes(m.channel.id));
       const btnCTS = new ActionRowBuilder()
         .addComponents(
           new ButtonBuilder()

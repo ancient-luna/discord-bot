@@ -156,6 +156,7 @@ class BotClient extends Client {
     this.slashCommands = new Collection();
     this.prefix = process.env.COMMAND_PREFIX;
     this.color = this.config.color;
+    this.owners = this.config.owners || [];
     this.ButtonInt = new Collection();
     this.Cooldown = new Collection();
     this.commadArray = [];
@@ -165,6 +166,11 @@ class BotClient extends Client {
     this.discordTogether = new DiscordTogether(this);
     this.db = new SimpleDB();
     if (!this.token) this.token = process.env.TOKEN;
+    
+    this.on('error', (error) => {
+        this.console.log(error, "error");
+    });
+
     this.connect();
   }
 

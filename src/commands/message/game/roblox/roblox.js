@@ -48,7 +48,7 @@ module.exports = new Object({
     description: "giving roblox profile",
     category: "roblox",
     usage: `roblox username`,
-    cooldown: 0,
+    cooldown: 5,
     aliases: [],
     examples: [],
     sub_commands: [],

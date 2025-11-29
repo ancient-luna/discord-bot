@@ -20,10 +20,10 @@ module.exports = {
         try {
             const hostname = new URL(link).hostname;
 
-            if (hostname.includes("facebook.com")) platform = "facebook";
-            else if (hostname.includes("instagram.com")) platform = "instagram";
-            else if (hostname.includes("tiktok.com")) platform = "tiktok";
-            else if (hostname.includes("spotify.com")) platform = "spotify";
+            if (hostname?.includes("facebook.com")) platform = "facebook";
+            else if (hostname?.includes("instagram.com")) platform = "instagram";
+            else if (hostname?.includes("tiktok.com")) platform = "tiktok";
+            else if (hostname?.includes("spotify.com")) platform = "spotify";
             else
                 return interaction.reply({ content: "**Unsupported platform.**\n-# Currently only support Facebook, Instagram, TikTok, or Spotify links.", flags: MessageFlags.Ephemeral });
         } catch (e) {

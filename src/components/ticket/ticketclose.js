@@ -13,7 +13,7 @@ module.exports = {
   
   execute: async (client, interaction) => {
     if (!interaction.member.permissions.has(PermissionsBitField.Flags.ManageMessages)) return await interaction.reply({ content: `Only the **Ancestor** and **Elders** can close this ticket`, flags: MessageFlags.Ephemeral }).catch((e) => { });
-    if (!interaction.channel.name.includes('ticket')) return interaction.reply({
+    if (!interaction.channel?.name?.includes('ticket')) return interaction.reply({
       content: `You are not allowed to delete a non-ticket channel`,
       flags: MessageFlags.Ephemeral
     }).catch((e) => { });
