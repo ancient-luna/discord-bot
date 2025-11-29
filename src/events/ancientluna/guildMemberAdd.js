@@ -37,12 +37,12 @@ module.exports = new Object({
             .setStyle('Link')
             .setURL('https://discord.com/channels/447069790150852609/838751745815216129');
         const section = new SectionBuilder()
-            .addTextDisplayComponents(textDescription)
+            .addTextDisplayComponents(textHeader)
             .setButtonAccessory(wisdomButton)
 
         container.addMediaGalleryComponents(mediaGallery);
-        container.addTextDisplayComponents(textHeader);
         container.addSectionComponents(section);
+        container.addTextDisplayComponents(textDescription);
         
         return channel.send({
             flags: MessageFlags.IsComponentsV2,
