@@ -14,10 +14,8 @@ module.exports = class Console {
             role: "Role",
             scheduler: "Scheduler"
         };
-
         const label = types[type];
         if (!label) throw new TypeError(`Logger type must be either ${Object.keys(types).join(", ")}.`);
-
         return console.log(`• [ ${label.padEnd(9)} ] => ${content}`);
     }
 };
