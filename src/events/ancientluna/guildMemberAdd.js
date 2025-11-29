@@ -23,8 +23,9 @@ module.exports = new Object({
         const attachment = new AttachmentBuilder(cardBuffer, { name: `${member.user.id}.png` });
 
         const container = new ContainerBuilder()
+        const textMention = new TextDisplayBuilder().setContent(`-# Dear <@${member.user.id}> ,`);
         const textHeader = new TextDisplayBuilder().setContent(`# Welcome to [${member.guild.name}](https://discord.gg/Sbp2nt8QHe)`);
-        const textDescription = new TextDisplayBuilder().setContent(`<@${member.user.id}> please understand our **wisdom of lleud** at ${member.guild.channels.cache.get(client.config.ruleChannel).toString()} as you make your way through this warm sanctuary`);
+        const textDescription = new TextDisplayBuilder().setContent(`-# Understand our **wisdom of lleud** at ${member.guild.channels.cache.get(client.config.ruleChannel).toString()} as you make your way through this warm sanctuary`);
         const mediaGallery = new MediaGalleryBuilder()
             .addItems([{
                 type: 'image',
@@ -40,13 +41,13 @@ module.exports = new Object({
             .addTextDisplayComponents(textHeader)
             .setButtonAccessory(wisdomButton)
 
-        container.addMediaGalleryComponents(mediaGallery);
         container.addSectionComponents(section);
+        container.addMediaGalleryComponents(mediaGallery);
         container.addTextDisplayComponents(textDescription);
         
         return channel.send({
             flags: MessageFlags.IsComponentsV2,
-            components: [container],
+            components: [textMention, container],
             files: [attachment],
             allowedMentions: { parse: [] }
         });
