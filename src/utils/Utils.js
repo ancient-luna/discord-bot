@@ -1,4 +1,4 @@
-const { EmbedBuilder } = require("discord.js")
+const { EmbedBuilder, ContainerBuilder, TextDisplayBuilder, MessageFlags } = require("discord.js")
 const { readdirSync, lstatSync } = require("fs");
 const { join, extname } = require("path");
 const permissions = require("../structures/Permissions");
@@ -31,13 +31,16 @@ module.exports = class Utils {
         return Math.abs(Math.round(diff));
     }
     
-    async replyOops(msg, args, color) {
+    async replyOops(msg, args) {
         const config = require("../config/config")
         if (!msg) return;
         if (!args) return;
-        if (!color) color = config.color;
-        let embed = new EmbedBuilder().setColor(color).setDescription(`${args}`);
-        let m = await msg.reply({ embeds: [embed] });
+
+        let container = new ContainerBuilder();
+        let textDisplay = new TextDisplayBuilder().setContent(`${args}`);
+        container.addTextDisplayComponents(textDisplay);
+
+        let m = await msg.reply({ flags: MessageFlags.IsComponentsV2, components: [container] });
         setTimeout(async () => {
             if (m && m.deletable) await m.delete().catch(() => { });
         }, 7000);
