@@ -28,11 +28,11 @@ module.exports = {
                 },
             });
         } catch (err) {
-            return interaction.editReply({ content: `Uh-oh! Something went wrong while fetching the data **[${err.response?.status || 'Unknown'}]**` });
+            return interaction.editReply({ content: `**By the moon!** Something went wrong while fetching the data **[${err.response?.status || 'Unknown'}]**`, ephemeral: MessageFlags.Ephemeral });
         }
 
         const data = res.data?.data || res.result;
-        if (!data) return interaction.editReply({ content: `Uh-oh! Something went wrong while fetching the data` });
+        if (!data) return interaction.editReply({ content: `**By the moon!** Something went wrong while fetching the data`, ephemeral: MessageFlags.Ephemeral });
 
         if (data.source === "youtube") {
             try {
@@ -78,7 +78,7 @@ module.exports = {
                     }]);
                 const ytTitle = new TextDisplayBuilder().setContent(data.title);
                 const ytDownload = new TextDisplayBuilder().setContent(downloadOptions);
-                const ytHow = new TextDisplayBuilder().setContent('-# click link to download');
+                const ytHow = new TextDisplayBuilder().setContent('-# <:ic_repost:1334863701026541648> click link to download');
                 ytContainer.addTextDisplayComponents(ytTitle, ytDownload);
                     
                 return await interaction.editReply({
@@ -87,13 +87,41 @@ module.exports = {
                 });
             } catch (error) {
                 console.error('Error processing YouTube link:', error);
-                return interaction.editReply({ content: `Uh-oh! Something went wrong while processing the YouTube link.` });
+                return interaction.editReply({ content: `**By the moon!** Something went wrong while processing the YouTube link.`, ephemeral: MessageFlags.Ephemeral });
+            }
+        }
+
+        const validMedias = data.medias?.filter(media => media.type === "video" || media.type === "image") || [];
+
+        if (validMedias.length > 1) {
+            try {
+                const gallery = new MediaGalleryBuilder();
+                const items = validMedias.map(media => ({
+                    type: media.type === "video" ? "video" : "image",
+                    media: { url: media.url }
+                }));
+                gallery.addItems(items);
+
+                const title = `[${data.title}](${data.url})` || "Content";
+                const container = new ContainerBuilder();
+                const description = new TextDisplayBuilder().setContent(`-# <:ic_repost:1334863701026541648> ${validMedias.length} medias from ${title}`);
+                
+                container.addMediaGalleryComponents(gallery);
+                container.addTextDisplayComponents(description);
+
+                return await interaction.editReply({
+                    flags: MessageFlags.IsComponentsV2,
+                    components: [container]
+                });
+            } catch (error) {
+                console.error('Error processing multi-media link:', error);
+                return interaction.editReply({ content: `**By the moon!** Something went wrong while processing the media gallery.`, ephemeral: MessageFlags.Ephemeral });
             }
         }
 
         const contentURL = data.medias?.find(media => media.type === "video" || media.type === "image")?.url;
         
-        if (!contentURL) return interaction.editReply({ content: `Failed to find the media URL. **Please check the link or try again.**` });
+        if (!contentURL) return interaction.editReply({ content: `Failed to find the media URL. **Please check the link or try again.**`, ephemeral: MessageFlags.Ephemeral });
 
         let shortenedUrl = contentURL;
         try {
@@ -106,21 +134,21 @@ module.exports = {
             console.error('URL shortening failed:', err.message);
         }
 
-        const row = new ActionRowBuilder()
-            .addComponents(
-                new ButtonBuilder()
-                    .setLabel('Download')
-                    .setStyle(ButtonStyle.Link)
-                    .setURL(shortenedUrl),
-                new ButtonBuilder()
-                    .setLabel('View')
-                    .setStyle(ButtonStyle.Link)
-                    .setURL(link),
-            );
+        const description = new TextDisplayBuilder().setContent(`-# <:ic_repost:1334863701026541648> displayed [content](${contentURL})`);
+        const row = new ActionRowBuilder().addComponents(
+            new ButtonBuilder()
+                .setLabel('Download')
+                .setStyle(ButtonStyle.Link)
+                .setURL(shortenedUrl),
+            new ButtonBuilder()
+                .setLabel('View')
+                .setStyle(ButtonStyle.Link)
+                .setURL(link),
+        );
 
         await interaction.editReply({
-            content: `<:ic_repost:1334863701026541648> [content](${contentURL})`,
-            components: [row]
+            flags: MessageFlags.IsComponentsV2,
+            components: [description, row]
         });
     },
 };
