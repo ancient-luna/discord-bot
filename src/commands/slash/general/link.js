@@ -134,8 +134,8 @@ module.exports = {
             console.error('URL shortening failed:', err.message);
         }
 
-        const description = new TextDisplayBuilder().setContent(`-# <:ic_repost:1334863701026541648> displayed [content](${contentURL})`);
-        const row = new ActionRowBuilder().addComponents(
+        const description = `-# <:ic_repost:1334863701026541648> displayed [content](${contentURL})`;
+        const linkButton = new ActionRowBuilder().addComponents(
             new ButtonBuilder()
                 .setLabel('Download')
                 .setStyle(ButtonStyle.Link)
@@ -147,8 +147,8 @@ module.exports = {
         );
 
         await interaction.editReply({
-            flags: MessageFlags.IsComponentsV2,
-            components: [description, row]
+            content: description,
+            components: [linkButton]
         });
     },
 };
