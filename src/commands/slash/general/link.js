@@ -28,11 +28,11 @@ module.exports = {
                 },
             });
         } catch (err) {
-            return interaction.editReply({ content: `**By the moon!** Something went wrong while fetching the data **[${err.response?.status || 'Unknown'}]**`, ephemeral: MessageFlags.Ephemeral });
+            return interaction.editReply({ content: `**By the moon!** Something went wrong while fetching the data **[${err.response?.status || 'Unknown'}]**`, flags: MessageFlags.Ephemeral });
         }
 
         const data = res.data?.data || res.result;
-        if (!data) return interaction.editReply({ content: `**By the moon!** Something went wrong while fetching the data`, ephemeral: MessageFlags.Ephemeral });
+        if (!data) return interaction.editReply({ content: `**By the moon!** Something went wrong while fetching the data`, flags: MessageFlags.Ephemeral });
 
         if (data.source === "youtube") {
             try {
@@ -87,7 +87,7 @@ module.exports = {
                 });
             } catch (error) {
                 console.error('Error processing YouTube link:', error);
-                return interaction.editReply({ content: `**By the moon!** Something went wrong while processing the YouTube link.`, ephemeral: MessageFlags.Ephemeral });
+                return interaction.editReply({ content: `**By the moon!** Something went wrong while processing the YouTube link.`, flags: MessageFlags.Ephemeral });
             }
         }
 
@@ -115,13 +115,13 @@ module.exports = {
                 });
             } catch (error) {
                 console.error('Error processing multi-media link:', error);
-                return interaction.editReply({ content: `**By the moon!** Something went wrong while processing the media gallery.`, ephemeral: MessageFlags.Ephemeral });
+                return interaction.editReply({ content: `**By the moon!** Something went wrong while processing the media gallery.`, flags: MessageFlags.Ephemeral });
             }
         }
 
         const contentURL = data.medias?.find(media => media.type === "video" || media.type === "image")?.url;
         
-        if (!contentURL) return interaction.editReply({ content: `Failed to find the media URL. **Please check the link or try again.**`, ephemeral: MessageFlags.Ephemeral });
+        if (!contentURL) return interaction.editReply({ content: `Failed to find the media URL. **Please check the link or try again.**`, flags: MessageFlags.Ephemeral });
 
         let shortenedUrl = contentURL;
         try {
