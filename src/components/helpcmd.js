@@ -12,7 +12,7 @@ module.exports = {
   },
   
   execute: async (client, interaction) => {
-    const excludedFolders = ["blackdesert", "deadfrontier", "moderator", "suggestion"];
+    const excludedFolders = ["blackdesert", "deadfrontier", "moderator", "suggestion", "fun"];
     const allowedCommands = ["record", "status"];
 
     let helpText = "";
