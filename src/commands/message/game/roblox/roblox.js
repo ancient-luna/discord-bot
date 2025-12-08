@@ -414,8 +414,18 @@ module.exports = new Object({
                 // Value
                 ctx.shadowBlur = 0; // Reset shadow for text
                 ctx.fillStyle = "#ffffff";
-                ctx.font = "bold 42px Sans-Serif";
-                ctx.fillText(value.toLocaleString(), x + 50, cardY + 60);
+                // Dynamic font sizing for value
+                let fontSize = 42;
+                const valueStr = value.toLocaleString();
+                const maxTextWidth = cardW - 70; // cardW - (padding left 50 + padding right 20)
+                
+                ctx.font = `bold ${fontSize}px Sans-Serif`;
+                while (ctx.measureText(valueStr).width > maxTextWidth && fontSize > 20) {
+                    fontSize -= 2;
+                    ctx.font = `bold ${fontSize}px Sans-Serif`;
+                }
+                
+                ctx.fillText(valueStr, x + 50, cardY + 60);
 
                 // Label
                 ctx.fillStyle = "#9ca3af";
