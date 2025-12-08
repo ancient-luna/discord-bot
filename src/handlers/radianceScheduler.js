@@ -316,24 +316,34 @@ async function initRadianceScheduler(client) {
         // Robust Scan: Check for ANY existing radiance message in the channel
         const messages = await channel.messages.fetch({ limit: 100 });
         
-        // Filter for Radiance messages
-        const radianceMessages = messages.filter(msg => 
-            msg.author.id === client.user.id && 
-            (
-                msg.attachments.size > 0 || 
-                (msg.content && msg.content.includes('Gratitude from the Ancients')) ||
-                // Check for specific button label in components
-                (msg.components.length > 0 && msg.components.some(row => 
-                    row.components.some(c => c.label === 'Testaments of the Seekers' || (c.data && c.data.label === 'Testaments of the Seekers'))
-                ))
-            )
-        );
-
-        // DEBUG: Log found messages
-        client.console.log(`[DEBUG] Found ${radianceMessages.size} radiance messages in scan.`, "debug");
-        radianceMessages.forEach(msg => {
-            client.console.log(`[DEBUG] Radiance Msg ID: ${msg.id}, Created: ${new Date(msg.createdTimestamp).toISOString()}`, "debug");
+        // DEBUG: Log ALL bot messages to understand their structure
+        const botMessages = messages.filter(msg => msg.author.id === client.user.id);
+        client.console.log(`[DEBUG] Found ${botMessages.size} TOTAL messages from bot.`, "debug");
+        
+        botMessages.forEach(msg => {
+            client.console.log(`[DEBUG] Msg ID: ${msg.id}`, "debug");
+            client.console.log(`[DEBUG] - Content: "${msg.content}"`, "debug");
+            client.console.log(`[DEBUG] - Attachments: ${msg.attachments.size}`, "debug");
+            client.console.log(`[DEBUG] - Embeds: ${msg.embeds.length}`, "debug");
+            client.console.log(`[DEBUG] - Components: ${msg.components.length}`, "debug");
+            if (msg.components.length > 0) {
+                try {
+                    client.console.log(`[DEBUG] - Component[0] JSON: ${JSON.stringify(msg.components[0].toJSON())}`, "debug");
+                } catch (e) {
+                    client.console.log(`[DEBUG] - Failed to stringify component: ${e.message}`, "debug");
+                }
+            }
         });
+
+        // Filter for Radiance messages
+        const radianceMessages = botMessages.filter(msg => 
+            // For now, let's assume ANY message from the bot in this channel with components OR attachments is a radiance message
+            // This is a temporary broad filter to catch them, we can refine later based on logs
+            msg.attachments.size > 0 || 
+            (msg.content && msg.content.includes('Gratitude from the Ancients')) ||
+            msg.components.length > 0 ||
+            msg.embeds.length > 0
+        );
 
         const now = Date.now();
         let messageForToday = null;
