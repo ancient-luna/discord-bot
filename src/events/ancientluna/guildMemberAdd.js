@@ -1,17 +1,23 @@
-const { EmbedBuilder, AttachmentBuilder, ContainerBuilder, TextDisplayBuilder, MediaGalleryBuilder, SectionBuilder, MessageFlags, ButtonBuilder } = require("discord.js");
+const { AttachmentBuilder, ContainerBuilder, TextDisplayBuilder, MediaGalleryBuilder, SectionBuilder, MessageFlags, ButtonBuilder } = require("discord.js");
 const canvafy = require('canvafy');
+const util = require('../../utils/index');
 
 module.exports = new Object({
     name: "guildMemberAdd",
     
     async execute(client, member) {
         // if (member.user.bot) return;
+        await member.fetch();
+        await client.users.fetch(member.id);
+
         const role = member.guild.roles.cache.get(client.config.luxcastaRole);
         if (!role) return;
         await member.roles.add(role).catch((err) => util.printLog('error', err));
+        
         const baseUsername = member.user.username;
         const memberUsername = baseUsername.length > 20 ? baseUsername.slice(0, 17) + '...' : baseUsername;
         const channel = member.guild.channels.cache.get(client.config.gatewayChannel);
+        
         const card = await new canvafy.WelcomeLeave()
             .setAvatar(member.user.displayAvatarURL({ size: 4096 }))
             .setAvatarBorder('#82AADC')
@@ -36,18 +42,20 @@ module.exports = new Object({
         const wisdomButton = new ButtonBuilder()
             .setLabel('Wisdom of Lleud')
             .setStyle('Link')
+            .setLabel('<:al_wisdom:1334851144572211240>')
             .setURL('https://discord.com/channels/447069790150852609/838751745815216129');
         const section = new SectionBuilder()
             .addTextDisplayComponents(textHeader)
             .setButtonAccessory(wisdomButton)
 
+        container.addTextDisplayComponents(textMention);
         container.addSectionComponents(section);
         container.addMediaGalleryComponents(mediaGallery);
         container.addTextDisplayComponents(textDescription);
         
         return channel.send({
             flags: MessageFlags.IsComponentsV2,
-            components: [textMention, container],
+            components: [container],
             files: [attachment],
             allowedMentions: { parse: [] }
         });
