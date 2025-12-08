@@ -113,9 +113,8 @@ async function sendRadianceMessage(client) {
                 const previousMessage = messages.find(msg => 
                     msg.author.id === client.user.id && 
                     (
-                        msg.attachments.some(a => a.name === 'radiance.png') ||
-                        (msg.content && msg.content.includes('# Gratitude from the Ancients')) ||
-                        (msg.components && msg.components.some(row => row.components.some(c => c.data.label === 'Testaments of the Seekers')))
+                        msg.attachments.size > 0 ||
+                        (msg.content && msg.content.includes('Gratitude from the Ancients'))
                     )
                 );
 
@@ -309,13 +308,26 @@ async function initRadianceScheduler(client) {
 
         // Robust Scan: Check for ANY existing radiance message in the channel
         // This handles cases where DB might be out of sync or bot was restarted
-        const messages = await channel.messages.fetch({ limit: 50 });
+        const messages = await channel.messages.fetch({ limit: 100 });
+        
+        // DEBUG: Log what we find to understand why detection failed
+        const botMessages = messages.filter(msg => msg.author.id === client.user.id);
+        client.console.log(`[DEBUG] Found ${botMessages.size} messages from bot in scan.`, "debug");
+        botMessages.forEach(msg => {
+            client.console.log(`[DEBUG] Msg ID: ${msg.id}, Attachments: ${msg.attachments.size}, Content: "${msg.content?.substring(0, 20)}..."`, "debug");
+            if (msg.attachments.size > 0) {
+                client.console.log(`[DEBUG] Attachment Names: ${msg.attachments.map(a => a.name).join(', ')}`, "debug");
+            }
+        });
+
         const existingMessage = messages.find(msg => 
             msg.author.id === client.user.id && 
             (
-                msg.attachments.some(a => a.name === 'radiance.png') ||
-                (msg.content && msg.content.includes('# Gratitude from the Ancients')) ||
-                (msg.components && msg.components.some(row => row.components.some(c => c.data.label === 'Testaments of the Seekers')))
+                // Radiance message ALWAYS has the generated image attachment
+                msg.attachments.size > 0 || 
+                // Fallback: Check for specific text in content (if not in components)
+                (msg.content && msg.content.includes('Gratitude from the Ancients'))
+                // Note: Components check removed as it can be brittle/complex to traverse
             )
         );
 
