@@ -16,7 +16,7 @@ module.exports = {
     async execute(client, interaction) {
         const link = interaction.options.getString("url");
 
-        await interaction.deferReply();
+        await interaction.deferReply({ ephemeral: true });
 
         const downloadApiUrl = `https://api.ferdev.my.id/downloader/allinone?link=${encodeURIComponent(link)}&apikey=${process.env.RES_API}`;
         
@@ -28,11 +28,11 @@ module.exports = {
                 },
             });
         } catch (err) {
-            return interaction.editReply({ content: `**By the moon!** Something went wrong while fetching the data **[${err.response?.status || 'Unknown'}]**`, flags: MessageFlags.Ephemeral });
+            return interaction.editReply({ content: `**By the moon!** Something went wrong while fetching the data **[${err.response?.status || 'Unknown'}]**` });
         }
 
         const data = res.data?.data || res.result;
-        if (!data) return interaction.editReply({ content: `**By the moon!** Something went wrong while fetching the data`, flags: MessageFlags.Ephemeral });
+        if (!data) return interaction.editReply({ content: `**By the moon!** Something went wrong while fetching the data` });
 
         if (data.source === "youtube") {
             try {
@@ -87,7 +87,7 @@ module.exports = {
                 });
             } catch (error) {
                 console.error('Error processing YouTube link:', error);
-                return interaction.editReply({ content: `**By the moon!** Something went wrong while processing the YouTube link.`, flags: MessageFlags.Ephemeral });
+                return interaction.editReply({ content: `**By the moon!** Something went wrong while processing the YouTube link.` });
             }
         }
 
@@ -115,13 +115,13 @@ module.exports = {
                 });
             } catch (error) {
                 console.error('Error processing multi-media link:', error);
-                return interaction.editReply({ content: `**By the moon!** Something went wrong while processing the media gallery.`, flags: MessageFlags.Ephemeral });
+                return interaction.editReply({ content: `**By the moon!** Something went wrong while processing the media gallery.` });
             }
         }
 
         const contentURL = data.medias?.find(media => media.type === "video" || media.type === "image")?.url;
         
-        if (!contentURL) return interaction.editReply({ content: `Failed to find the media URL. **Please check the link or try again.**`, flags: MessageFlags.Ephemeral });
+        if (!contentURL) return interaction.editReply({ content: `Failed to find the media URL. **Please check the link or try again.**` });
 
         let shortenedUrl = contentURL;
         try {
