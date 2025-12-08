@@ -114,7 +114,10 @@ async function sendRadianceMessage(client) {
                     msg.author.id === client.user.id && 
                     (
                         msg.attachments.size > 0 ||
-                        (msg.content && msg.content.includes('Gratitude from the Ancients'))
+                        (msg.content && msg.content.includes('Gratitude from the Ancients')) ||
+                        (msg.components.length > 0 && msg.components.some(row => 
+                            row.components.some(c => c.label === 'Testaments of the Seekers' || (c.data && c.data.label === 'Testaments of the Seekers'))
+                        ))
                     )
                 );
 
@@ -293,6 +296,10 @@ function scheduleNextRadianceMessage(client) {
  * Initialize the radiance scheduler
  * @param {import("../index")} client 
  */
+/**
+ * Initialize the radiance scheduler
+ * @param {import("../index")} client 
+ */
 async function initRadianceScheduler(client) {
     client.console.log('Radiance scheduler initialized', "scheduler");
 
@@ -307,68 +314,73 @@ async function initRadianceScheduler(client) {
         }
 
         // Robust Scan: Check for ANY existing radiance message in the channel
-        // This handles cases where DB might be out of sync or bot was restarted
         const messages = await channel.messages.fetch({ limit: 100 });
         
-        // DEBUG: Log what we find to understand why detection failed
-        const botMessages = messages.filter(msg => msg.author.id === client.user.id);
-        client.console.log(`[DEBUG] Found ${botMessages.size} messages from bot in scan.`, "debug");
-        botMessages.forEach(msg => {
-            client.console.log(`[DEBUG] Msg ID: ${msg.id}, Attachments: ${msg.attachments.size}, Content: "${msg.content?.substring(0, 20)}..."`, "debug");
-            if (msg.attachments.size > 0) {
-                client.console.log(`[DEBUG] Attachment Names: ${msg.attachments.map(a => a.name).join(', ')}`, "debug");
-            }
-        });
-
-        const existingMessage = messages.find(msg => 
+        // Filter for Radiance messages
+        const radianceMessages = messages.filter(msg => 
             msg.author.id === client.user.id && 
             (
-                // Radiance message ALWAYS has the generated image attachment
                 msg.attachments.size > 0 || 
-                // Fallback: Check for specific text in content (if not in components)
-                (msg.content && msg.content.includes('Gratitude from the Ancients'))
-                // Note: Components check removed as it can be brittle/complex to traverse
+                (msg.content && msg.content.includes('Gratitude from the Ancients')) ||
+                // Check for specific button label in components
+                (msg.components.length > 0 && msg.components.some(row => 
+                    row.components.some(c => c.label === 'Testaments of the Seekers' || (c.data && c.data.label === 'Testaments of the Seekers'))
+                ))
             )
         );
 
-        const now = Date.now();
+        // DEBUG: Log found messages
+        client.console.log(`[DEBUG] Found ${radianceMessages.size} radiance messages in scan.`, "debug");
+        radianceMessages.forEach(msg => {
+            client.console.log(`[DEBUG] Radiance Msg ID: ${msg.id}, Created: ${new Date(msg.createdTimestamp).toISOString()}`, "debug");
+        });
 
-        if (existingMessage) {
-            const messageTime = existingMessage.createdTimestamp;
+        const now = Date.now();
+        let messageForToday = null;
+
+        // Sort by time descending (newest first)
+        const sortedMessages = radianceMessages.sort((a, b) => b.createdTimestamp - a.createdTimestamp);
+
+        if (sortedMessages.size > 0) {
+            const newestMessage = sortedMessages.first();
             
-            if (isSameDayGMT7(messageTime, now)) {
-                // Message for TODAY already exists
-                client.console.log(`Found existing radiance message sent today (ID: ${existingMessage.id}). Syncing DB and skipping send.`, "scheduler");
-                
-                // Sync DB
-                await client.db.set("radiance_message_id", existingMessage.id);
-                await client.db.set("radiance_last_sent_time", messageTime);
-                
-                scheduleNextRadianceMessage(client);
-                return;
-            } else {
-                // Message exists but is from a PREVIOUS day
-                client.console.log(`Found stale radiance message from previous day (ID: ${existingMessage.id}). Marking for deletion.`, "scheduler");
-                
-                // Update DB so sendRadianceMessage knows what to delete
-                await client.db.set("radiance_message_id", existingMessage.id);
-                // We do NOT set last_sent_time to now, because we want to send a new one
+            if (isSameDayGMT7(newestMessage.createdTimestamp, now)) {
+                messageForToday = newestMessage;
+                client.console.log(`Found valid radiance message for today (ID: ${newestMessage.id}).`, "scheduler");
             }
-        } else {
-             client.console.log('No existing radiance message found in recent history.', "scheduler");
         }
 
-        // Check if we have already sent a message TODAY (GMT+7) according to DB
-        // (This is a secondary check in case the message was deleted but DB says we sent it)
-        const lastSentTime = await client.db.get("radiance_last_sent_time");
+        // Cleanup Logic
+        const messagesToDelete = sortedMessages.filter(msg => msg.id !== messageForToday?.id);
         
-        if (lastSentTime && isSameDayGMT7(lastSentTime, now)) {
-            client.console.log('DB says radiance message already sent today. Waiting for next schedule.', "scheduler");
+        if (messagesToDelete.size > 0) {
+            client.console.log(`Deleting ${messagesToDelete.size} stale radiance messages...`, "scheduler");
+            for (const msg of messagesToDelete.values()) {
+                await msg.delete().catch(e => client.console.log(`Failed to delete msg ${msg.id}: ${e.message}`, "warn"));
+            }
+        }
+
+        if (messageForToday) {
+            // We have a message for today, sync DB and skip sending
+            await client.db.set("radiance_message_id", messageForToday.id);
+            await client.db.set("radiance_last_sent_time", messageForToday.createdTimestamp);
             scheduleNextRadianceMessage(client);
             return;
         }
 
-        // If we are here, we need to send a message
+        // Check DB as secondary source (if we didn't find one in channel but DB says we sent one today)
+        // Note: If we found nothing in channel, but DB says we sent one, it implies it was deleted.
+        // So we probably SHOULD send a new one? Or respect the DB?
+        // Usually if it's deleted, we want to resend? Or maybe not to avoid spam if it was manually deleted?
+        // Let's stick to: if DB says sent today, we wait.
+        const lastSentTime = await client.db.get("radiance_last_sent_time");
+        if (lastSentTime && isSameDayGMT7(lastSentTime, now)) {
+             client.console.log('DB says radiance message already sent today (but not found in channel). Waiting for next schedule.', "scheduler");
+             scheduleNextRadianceMessage(client);
+             return;
+        }
+
+        // Send new message
         client.console.log('No radiance message sent today. Sending new one immediately.', "scheduler");
         await sendRadianceMessage(client);
 
