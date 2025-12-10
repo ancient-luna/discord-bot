@@ -7,8 +7,6 @@ module.exports = new Object({
     
     async execute(client, member) {
         // if (member.user.bot) return;
-        await member.fetch();
-        await client.users.fetch(member.id);
 
         const role = member.guild.roles.cache.get(client.config.luxcastaRole);
         if (!role) return;
@@ -42,7 +40,7 @@ module.exports = new Object({
         const wisdomButton = new ButtonBuilder()
             .setLabel('Wisdom of Lleud')
             .setStyle('Link')
-            .setLabel('<:al_wisdom:1334851144572211240>')
+            .setEmoji('<:al_wisdom:1334851144572211240>')
             .setURL('https://discord.com/channels/447069790150852609/838751745815216129');
         const section = new SectionBuilder()
             .addTextDisplayComponents(textHeader)
@@ -57,7 +55,7 @@ module.exports = new Object({
             flags: MessageFlags.IsComponentsV2,
             components: [container],
             files: [attachment],
-            allowedMentions: { parse: [] }
+            allowedMentions: { users: [member.id] }
         });
     }
 });
