@@ -16,7 +16,7 @@ module.exports = {
     async execute(client, interaction) {
         const link = interaction.options.getString("url");
 
-        await interaction.deferReply({ ephemeral: true });
+        await interaction.deferReply({ });
 
         const downloadApiUrl = `https://api.ferdev.my.id/downloader/allinone?link=${encodeURIComponent(link)}&apikey=${process.env.RES_API}`;
         
