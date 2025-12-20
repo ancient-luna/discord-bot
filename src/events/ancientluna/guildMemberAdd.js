@@ -7,15 +7,12 @@ module.exports = new Object({
     
     async execute(client, member) {
         // if (member.user.bot) return;
-
         const role = member.guild.roles.cache.get(client.config.luxcastaRole);
         if (!role) return;
         await member.roles.add(role).catch((err) => util.printLog('error', err));
-        
         const baseUsername = member.user.username;
         const memberUsername = baseUsername.length > 20 ? baseUsername.slice(0, 17) + '...' : baseUsername;
         const channel = member.guild.channels.cache.get(client.config.gatewayChannel);
-        
         const card = await new canvafy.WelcomeLeave()
             .setAvatar(member.user.displayAvatarURL({ size: 4096 }))
             .setAvatarBorder('#82AADC')
@@ -25,9 +22,8 @@ module.exports = new Object({
             .build();
         const cardBuffer = Buffer.from(card);
         const attachment = new AttachmentBuilder(cardBuffer, { name: `${member.user.id}.png` });
-
         const container = new ContainerBuilder()
-        const textMention = new TextDisplayBuilder().setContent(`-# Dear <@${member.user.id}> ,`);
+        const textMention = new TextDisplayBuilder().setContent(`-# <:ico_join:1374730865430495232> <@${member.user.id}> visits the sanctuary`);
         const textHeader = new TextDisplayBuilder().setContent(`# Welcome to [${member.guild.name}](https://discord.gg/Sbp2nt8QHe)`);
         const textDescription = new TextDisplayBuilder().setContent(`-# Understand our **wisdom of lleud** at ${member.guild.channels.cache.get(client.config.ruleChannel).toString()} as you make your way through this warm sanctuary`);
         const mediaGallery = new MediaGalleryBuilder()
@@ -45,12 +41,10 @@ module.exports = new Object({
         const section = new SectionBuilder()
             .addTextDisplayComponents(textHeader)
             .setButtonAccessory(wisdomButton)
-
         container.addTextDisplayComponents(textMention);
         container.addSectionComponents(section);
         container.addMediaGalleryComponents(mediaGallery);
         container.addTextDisplayComponents(textDescription);
-        
         return channel.send({
             flags: MessageFlags.IsComponentsV2,
             components: [container],
