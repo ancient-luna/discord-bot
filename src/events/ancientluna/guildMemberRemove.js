@@ -12,7 +12,7 @@ module.exports = new Object({
         const container = new ContainerBuilder()
         const textLeave = new TextDisplayBuilder().setContent(`<:ico_leave:1451833368236003378> **${member.displayName}** leaving the sanctuary`);
         const textAccount = new TextDisplayBuilder().setContent(`-# ID: ${member.user.id} [(relic)](${memberAvatar}) ${member.user.username}`);
-        container.addTextDisplayComponents(textLeave);
+        container.addTextDisplayComponents(textLeave, textAccount);
         return channel.send({ flags: MessageFlags.IsComponentsV2, components: [container] })
     }
 })
