@@ -329,7 +329,7 @@ async function initRadianceScheduler(client) {
             
             if (isSameDayGMT7(newestMessage.createdTimestamp, now)) {
                 messageForToday = newestMessage;
-                client.console.log(`Found valid radiance message for today (ID: ${newestMessage.id}).`, "scheduler");
+                client.console.log(`Found valid radiance message for today (ID: ${newestMessage.id})`, "scheduler");
             }
         }
 
