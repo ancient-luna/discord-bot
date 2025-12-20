@@ -16,7 +16,7 @@ module.exports = {
         try {
             const targetMember = interaction.message.mentions.members.first();
             if (!targetMember) {
-                return interaction.reply({ content: 'No user mentioned in the message.', flags: MessageFlags.Ephemeral });
+                return interaction.reply({ content: 'Only ashes remain...\n-# this person is gone and no longer listed on our wisdom of lleud', flags: MessageFlags.Ephemeral });
             }
 
             // Canvas and context setup
