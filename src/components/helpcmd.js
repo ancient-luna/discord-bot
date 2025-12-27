@@ -73,6 +73,7 @@ module.exports = {
         : await client.application.commands.fetch();
 
       for (const category of slashCategories) {
+        if (excludedFolders.includes(category)) continue;
         const categoryPath = join(slashCommandsDir, category);
         const commandFiles = readdirSync(categoryPath).filter((file) => file.endsWith(".js"));
 
