@@ -132,7 +132,7 @@ module.exports = {
             }
 
             await interaction.editReply({ 
-                content: `**Forwarding Complete**\n-# Sent: ${sent} Closed DMs: ${closed} Failed: ${failed} <:ic_repost:1334863701026541648>` 
+                content: `**Forwarding Complete**\n-# Sent: ${sent} Closed DMs: ${closed} Failed: ${failed}` 
             });
 
         } catch (error) {
