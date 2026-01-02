@@ -20,15 +20,6 @@ jobs:
         run: |
           echo "${{ secrets.SUDO_PASSWORD }}" | sudo -S DOCKER_BUILDKIT=1 docker build -t ancient-luna-bot .
 
-      - name: Debug Secret Propagation
-        env:
-          CHECK_SECRET: ${{ secrets.TEST }}
-        run: |
-          # Check if the secret passed through. 
-          # Note: The actual value will likely be masked as *** by GitHub in the logs.
-          # We check the length to verify it's not empty.
-          echo "${{ secrets.SUDO_PASSWORD }}" | sudo -S -E bash -c 'echo "Secret: $CHECK_SECRET | Length: ${#CHECK_SECRET}"'
-
       - name: Run Docker Compose
         env:
           TOKEN: ${{ secrets.TOKEN }}
