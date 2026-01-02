@@ -8,4 +8,6 @@ services:
     environment:
       - TOKEN
       - COMMAND_PREFIX
-      - TEST
+      - DOTENV_CONFIG_QUIET
+      - RES_API
+      - WEBHOOK_ALLIANCE
