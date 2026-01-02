@@ -1,0 +1,11 @@
+version: '3.8'
+
+services:
+  ancient-luna-bot:
+    image: ancient-luna-bot
+    container_name: ancient-luna-bot
+    restart: always
+    environment:
+      - TOKEN
+      - COMMAND_PREFIX
+      - TEST

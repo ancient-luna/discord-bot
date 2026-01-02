@@ -1,0 +1,46 @@
+name: Docker Build Workflow
+
+on:
+  push:
+    branches: [deploy]
+  pull_request:
+    branches: [deploy]
+
+jobs:
+  build:
+    runs-on: self-hosted
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+
+      - name: Build Docker image
+        run: |
+          echo "${{ secrets.SUDO_PASSWORD }}" | sudo -S DOCKER_BUILDKIT=1 docker build -t ancient-luna-bot .
+
+      - name: Debug Secret Propagation
+        env:
+          CHECK_SECRET: ${{ secrets.TEST }}
+        run: |
+          # Check if the secret passed through. 
+          # Note: The actual value will likely be masked as *** by GitHub in the logs.
+          # We check the length to verify it's not empty.
+          echo "${{ secrets.SUDO_PASSWORD }}" | sudo -S -E bash -c 'echo "Secret: $CHECK_SECRET | Length: ${#CHECK_SECRET}"'
+
+      - name: Run Docker Compose
+        env:
+          TOKEN: ${{ secrets.TOKEN }}
+          COMMAND_PREFIX: ${{ secrets.COMMAND_PREFIX }}
+          DOTENV_CONFIG_QUIET: ${{ secrets.DOTENV_CONFIG_QUIET }}
+          RES_API: ${{ secrets.RES_API }}
+          WEBHOOK_ALLIANCE: ${{ secrets.WEBHOOK_ALLIANCE }}
+        run: |
+          # Run the Docker Compose with branch-specific service
+          # -E preserves the environment variables so they are passed to the container
+          echo "${{ secrets.SUDO_PASSWORD }}" | sudo -S -E docker compose up -d
+
+      - name: Run Docker Image Prune
+        run: |
+          echo "${{ secrets.SUDO_PASSWORD }}" | sudo -S docker image prune -f
