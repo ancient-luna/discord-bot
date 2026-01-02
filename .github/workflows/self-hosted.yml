@@ -30,7 +30,7 @@ jobs:
         run: |
           # Run the Docker Compose with branch-specific service
           # -E preserves the environment variables so they are passed to the container
-          echo "${{ secrets.SUDO_PASSWORD }}" | sudo -S -E docker compose up -d
+          echo "${{ secrets.SUDO_PASSWORD }}" | sudo -S -E docker compose up -d --force-recreate
 
       - name: Run Docker Image Prune
         run: |
