@@ -2,10 +2,10 @@ const { syncMemberTagRoles } = require("../../handlers/syncTagRoles");
 
 module.exports = {
     name: "userUpdate",
-    
+
     async execute(client, oldUser, newUser) {
-        const ancientLunaServerId = client.config.ancientLunaServer;
-        const guild = client.guilds.cache.get(ancientLunaServerId);
+        const lunaServerId = client.config.lunaServer;
+        const guild = client.guilds.cache.get(lunaServerId);
         if (!guild) return;
 
         try {

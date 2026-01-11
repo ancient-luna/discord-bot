@@ -2,8 +2,8 @@ module.exports = {
     async syncMemberRoles(member) {
         const { client } = member;
         const server = member.guild;
-        
-        if (server.id !== client.config.ancientLunaServer) return;
+
+        if (server.id !== client.config.lunaServer) return;
 
         const luxcastaRole = client.config.luxcastaRole;
         if (!luxcastaRole) return;
@@ -11,7 +11,7 @@ module.exports = {
         if (member.user.bot) return;
 
         const roleCount = member.roles.cache.filter(role => role.id !== server.id).size;
-        
+
         if (roleCount === 0 && !member.roles.cache.has(luxcastaRole)) {
             try {
                 await member.roles.add(luxcastaRole);
@@ -22,18 +22,18 @@ module.exports = {
     },
 
     async syncAllRoles(client) {
-        const server = client.guilds.cache.get(client.config.ancientLunaServer);
+        const server = client.guilds.cache.get(client.config.lunaServer);
         if (!server) return;
 
         try {
             const members = await server.members.fetch();
             const total = members.size;
             let count = 0;
-            
+
             for (const [id, member] of members) {
                 await this.syncMemberRoles(member);
                 count++;
-                
+
                 if (count % 20 === 0 || count === total) {
                     if (count % 20 === 0 && count !== total) {
                         await new Promise(resolve => setTimeout(resolve, 1000));

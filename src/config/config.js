@@ -1,4 +1,8 @@
 module.exports = {
+    lunaServer: "1457941632052756634",
+    luneTagRole: "1459924462744113243",
+
+    //Ancient Luna
     ancestorRole: "590848319111299093",
     lunariaRole: "839170815932891197",
     luxcastaRole: "839210689917616218",
@@ -23,7 +27,6 @@ module.exports = {
 
     guildOfficerRole: "1235965537326993450",
 
-    ancientLunaServer: "447069790150852609",
     ancientLunaGuild: "1369521104548401265",
     ancientLunaAlliance: "1367757032081330228",
 

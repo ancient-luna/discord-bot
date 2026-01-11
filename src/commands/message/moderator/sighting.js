@@ -15,11 +15,11 @@ module.exports = new Object({
         dev: false,
     },
     player: { voice: false, active: false, dj: false, },
-    
+
     async execute(client, message, args) {
         const guild = message.guild;
         const serverId = guild.id;
-        if (serverId !== client.config.ancientLunaServer) return message.reply(`I think.. you've just lost, didn't you?\n-# this command belongs to the sanctuary`)
+        if (serverId !== client.config.lunaServer) return message.reply(`I think.. you've just lost, didn't you?\n-# this command belongs to the sanctuary`)
         const insighted = guild.members.cache.filter(member => !member.user.bot && member.roles.cache.filter(role => role.id !== serverId).size === 0);
         if (insighted.size > 0) {
             const mentionList = insighted.map(m => `<@${m.id}>`).join(", ");

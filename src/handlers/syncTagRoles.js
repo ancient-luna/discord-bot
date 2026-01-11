@@ -2,31 +2,31 @@ module.exports = {
     async syncMemberTagRoles(member, userProfile = null) {
         const { client } = member;
         const config = client.config;
-        const ancientLunaServerId = config.ancientLunaServer;
-        const nocturnaRole = config.nocturnaRole;
+        const lunaServerId = config.lunaServer;
+        const lunaTagRole = config.lunaTagRole;
 
-        if (!nocturnaRole) return;
+        if (!lunaTagRole) return;
 
         const user = userProfile || member.user;
-        
+
         if (!user.primaryGuild) return;
 
         const { identityGuildId, tag } = user.primaryGuild;
 
-        if (identityGuildId === ancientLunaServerId && tag === "LUNA") {
-            if (!member.roles.cache.has(nocturnaRole)) {
+        if (identityGuildId === lunaServerId && tag === "LUNA") {
+            if (!member.roles.cache.has(lunaTagRole)) {
                 try {
-                    await member.roles.add(nocturnaRole);
+                    await member.roles.add(lunaTagRole);
                 } catch (err) {
-                    client.console.log(`Failed to add nocturnaRole to ${user.tag}: ${err.message}`, "error");
+                    client.console.log(`Failed to add lunaTagRole to ${user.tag}: ${err.message}`, "error");
                 }
             }
         } else {
-            if (member.roles.cache.has(nocturnaRole)) {
+            if (member.roles.cache.has(lunaTagRole)) {
                 try {
-                    await member.roles.remove(nocturnaRole);
+                    await member.roles.remove(lunaTagRole);
                 } catch (err) {
-                    client.console.log(`Failed to remove nocturnaRole from ${user.tag}: ${err.message}`, "error");
+                    client.console.log(`Failed to remove lunaTagRole from ${user.tag}: ${err.message}`, "error");
                 }
             }
         }
@@ -34,16 +34,16 @@ module.exports = {
 
     async syncAllTagRoles(client) {
         const config = client.config;
-        const ancientLunaServerId = config.ancientLunaServer;
-        const nocturnaRole = config.nocturnaRole;
-        const guild = client.guilds.cache.get(ancientLunaServerId);
+        const lunaServerId = config.lunaServer;
+        const lunaTagRole = config.lunaTagRole;
+        const guild = client.guilds.cache.get(lunaServerId);
 
         if (!guild) {
-            client.console.log(`Ancient Luna Server (${ancientLunaServerId}) not found.`, "error");
+            client.console.log(`Ancient Luna Server (${lunaServerId}) not found.`, "error");
             return;
         }
 
-        if (!nocturnaRole) {
+        if (!lunaTagRole) {
             client.console.log("Nocturna Role ID not configured.", "error");
             return;
         }
@@ -52,26 +52,26 @@ module.exports = {
             const members = await guild.members.fetch();
             const total = members.size;
             let count = 0;
-            
+
             for (const [id, member] of members) {
                 if (member.user.bot) continue;
-                
+
                 try {
                     const user = await member.user.fetch(true);
-                    const hasTargetPrimaryGuild = user.primaryGuild && 
-                                                user.primaryGuild.identityGuildId === ancientLunaServerId &&
-                                                user.primaryGuild.tag === "LUNA";
-                    
-                    if (hasTargetPrimaryGuild && !member.roles.cache.has(nocturnaRole)) {
-                        await member.roles.add(nocturnaRole);
-                    } else if (!hasTargetPrimaryGuild && member.roles.cache.has(nocturnaRole)) {
-                        await member.roles.remove(nocturnaRole);
+                    const hasTargetPrimaryGuild = user.primaryGuild &&
+                        user.primaryGuild.identityGuildId === lunaServerId &&
+                        user.primaryGuild.tag === "LUNA";
+
+                    if (hasTargetPrimaryGuild && !member.roles.cache.has(lunaTagRole)) {
+                        await member.roles.add(lunaTagRole);
+                    } else if (!hasTargetPrimaryGuild && member.roles.cache.has(lunaTagRole)) {
+                        await member.roles.remove(lunaTagRole);
                     }
                 } catch (err) {
                 }
-                
+
                 count++;
-                
+
                 if (count % 20 === 0 || count === total) {
                     if (count % 20 === 0 && count !== total) {
                         await new Promise(resolve => setTimeout(resolve, 1000));
