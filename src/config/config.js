@@ -1,6 +1,6 @@
 module.exports = {
     lunaServer: "1457941632052756634",
-    luneTagRole: "1459924462744113243",
+    lunaTagRole: "1459924462744113243",
 
     //Ancient Luna
     ancestorRole: "590848319111299093",
