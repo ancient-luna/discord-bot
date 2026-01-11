@@ -1,4 +1,4 @@
-const { presenceHandler, reminderHandler, syncRolesHandler, syncTagRolesHandler, radianceScheduler } = require("../handlers");
+const { presenceHandler, reminderHandler, syncTagRolesHandler, radianceScheduler } = require("../handlers");
 require("dotenv").config();
 const express = require("express");
 const app = express();
@@ -6,7 +6,7 @@ const app = express();
 module.exports = new Object({
   name: "clientReady",
   once: true,
-  
+
   async execute(client) {
 
     if (client.config.PRESENCE.ENABLED) presenceHandler(client);
@@ -17,12 +17,12 @@ module.exports = new Object({
     const getCommands = client.slashCommands.map((x) => x.data.toJSON());
     // await client.application.commands.set([]); // deleting and pre-registering all commands
     await client.application.commands.set(getCommands);
-    
+
     client.console.log(`Logged in as ${client.user.tag}`, "client");
 
     reminderHandler(client);
     radianceScheduler(client);
-    await syncRolesHandler.syncAllRoles(client);
+
     await syncTagRolesHandler.syncAllTagRoles(client);
   },
 });

@@ -4,10 +4,10 @@ const util = require('../../utils/index');
 
 module.exports = new Object({
     name: "guildMemberAdd",
-    
+
     async execute(client, member) {
         // if (member.user.bot) return;
-        const role = member.guild.roles.cache.get(client.config.luxcastaRole);
+        // const role = member.guild.roles.cache.get(client.config.luxcastaRole);
         if (!role) return;
         await member.roles.add(role).catch((err) => util.printLog('error', err));
         const baseUsername = member.user.username;
@@ -16,9 +16,9 @@ module.exports = new Object({
         const card = await new canvafy.WelcomeLeave()
             .setAvatar(member.user.displayAvatarURL({ size: 4096 }))
             .setAvatarBorder('#82AADC')
-            .setTitle(memberUsername,'#82AADC')
+            .setTitle(memberUsername, '#82AADC')
             .setDescription('we ran as if to meet the moon')
-            .setBackground('image','https://ik.imagekit.io/al/welcomemsg.png')
+            .setBackground('image', 'https://ik.imagekit.io/al/welcomemsg.png')
             .build();
         const cardBuffer = Buffer.from(card);
         const attachment = new AttachmentBuilder(cardBuffer, { name: `${member.user.id}.png` });
@@ -31,7 +31,7 @@ module.exports = new Object({
                 type: 'image',
                 media: {
                     url: `attachment://${member.user.id}.png`
-                } 
+                }
             }]);
         const wisdomButton = new ButtonBuilder()
             .setLabel('Wisdom of Lleud')
