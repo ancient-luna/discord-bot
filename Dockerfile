@@ -15,7 +15,13 @@ RUN apk add --no-cache \
     giflib-dev \
     librsvg-dev \
     ffmpeg \
-    py3-setuptools
+    py3-setuptools \
+    font-noto \
+    font-noto-cjk \
+    font-noto-emoji \
+    ttf-dejavu \
+    ttf-freefont \
+    fontconfig
 
 WORKDIR /app
 
