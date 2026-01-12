@@ -12,9 +12,9 @@ module.exports = new Object({
     args: false,
     permissions: { client: [], user: [], dev: false, },
     player: { voice: false, active: false, dj: false, },
-    
+
     async execute(client, message, args) {
-        const lunariaID = '839170815932891197';
+        const lunariaID = client.config.lunariaRole;
         if (!message.member.roles.cache.has(lunariaID)) {
             return message.reply(`**No, you can't**. only the **LUNARIA** able to command me for this.`);
         }
