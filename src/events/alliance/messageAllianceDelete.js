@@ -6,7 +6,7 @@ const webhookClient = new WebhookClient({ url: process.env.WEBHOOK_ALLIANCE });
 module.exports = {
   name: "messageDelete",
   async execute(client, message) {
-    if (message.guild?.id !== client.config.ancientLunaAlliance) return;
+    if (message.guild?.id !== client.config.lunaServerAlliance) return;
     const webhookMessageId = await client.db.get(`mirror_${message.id}`);
     if (!webhookMessageId) return;
     try {

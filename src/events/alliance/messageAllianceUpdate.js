@@ -6,7 +6,7 @@ const webhookClient = new WebhookClient({ url: process.env.WEBHOOK_ALLIANCE });
 module.exports = {
   name: "messageUpdate",
   async execute(client, oldMessage, newMessage) {
-    if (newMessage.guild?.id !== client.config.ancientLunaAlliance) return;
+    if (newMessage.guild?.id !== client.config.lunaServerAlliance) return;
     if ((newMessage.flags?.bitfield ?? 0) & 64) return;
 
     const webhookMessageId = await client.db.get(`mirror_${newMessage.id}`);
@@ -35,10 +35,10 @@ module.exports = {
           body = `https://cdn.discordapp.com/emojis/${emojiMatches[0][1]}.${ext}?size=48`;
         } else {
           body = emojiMatches.map(m => {
-              const isAnimated = m[0].startsWith("<a:");
-              const ext = isAnimated ? "gif" : "png";
-              return `[☺](https://cdn.discordapp.com/emojis/${m[1]}.${ext}?size=48)`;
-            }).join(" ");
+            const isAnimated = m[0].startsWith("<a:");
+            const ext = isAnimated ? "gif" : "png";
+            return `[☺](https://cdn.discordapp.com/emojis/${m[1]}.${ext}?size=48)`;
+          }).join(" ");
         }
       } else {
         body = body.replace(emojiRegex, (match, id) => {

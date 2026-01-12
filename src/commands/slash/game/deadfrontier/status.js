@@ -1,26 +1,21 @@
-const { EmbedBuilder, ButtonBuilder, ActionRowBuilder, ButtonStyle } = require("discord.js");
+const { SlashCommandBuilder, EmbedBuilder, ButtonBuilder, ActionRowBuilder, ButtonStyle } = require("discord.js");
 const jsdom = require("jsdom");
 const axios = require('axios');
 
-module.exports = new Object({
-    name: "status",
-    description: "tracking player stats including weapons, location, and many",
-    category: "deadfrontier",
-    usage: `status <dfp userid>`,
+module.exports = {
+    data: new SlashCommandBuilder()
+        .setName("status")
+        .setDescription("tracking player stats including weapons, location, and many")
+        .addStringOption(option =>
+            option.setName('userid')
+                .setDescription('The Dead Frontier Profile ID')
+                .setRequired(true)),
     cooldown: 0,
-    aliases: [],
-    examples: [],
-    sub_commands: [],
-    args: false,
-    permissions: { client: [], user: [], dev: false, },
-    player: { voice: false, active: false, dj: false, },
-    
-    async execute(client, message, args) {
+    async execute(client, interaction) {
 
-        const survivorID = args.join(" ");
-        if (!survivorID) return message.channel.send("Do `!status` `id`");
+        const survivorID = interaction.options.getString('userid');
 
-        const loadingTxt = await message.reply(`Getting player status <a:u_load:1334900265953923085>`);
+        await interaction.reply({ content: `Getting player status <a:u_load:1334900265953923085>` });
 
         const timestamp = Date.now();
 
@@ -51,12 +46,12 @@ module.exports = new Object({
             let profession_level = stat['profession_level']
             let experience = stat['experience']
 
-            let weekly_ts = stat['weekly_ts']
-            let exp_since_death = stat['exp_since_death']
-
-            let daily_tpk = stat['daily_tpk']
-            let weekly_tpk = stat['weekly_tpk']
-            let pvp_last_hit = stat['pvp_last_hit']
+            // Unused variables commented out or removed? Kept matching original flow logic
+            // let weekly_ts = stat['weekly_ts']
+            // let exp_since_death = stat['exp_since_death']
+            // let daily_tpk = stat['daily_tpk']
+            // let weekly_tpk = stat['weekly_tpk']
+            // let pvp_last_hit = stat['pvp_last_hit']
 
             let cash = stat['cash']
             let bank = stat['bank']
@@ -88,15 +83,13 @@ module.exports = new Object({
             let prof_machine_guns = stat['prof_machine_guns']
             let prof_explosives = stat['prof_explosives']
 
-            let exp_boost = stat['exp_boost'].split("<\/i> ")
-            let dmg_boost = stat['dmg_boost'].split("<\/i> ")
-            let speed_boost = stat['speed_boost'].split("<\/i> ")
+            let exp_boost = stat['exp_boost'].split("</i> ")
+            let dmg_boost = stat['dmg_boost'].split("</i> ")
+            let speed_boost = stat['speed_boost'].split("</i> ")
 
-            let exp_boost_ex = stat['exp_boost_ex'].split("<\/i> ")
-            let dmg_boost_ex = stat['dmg_boost_ex'].split("<\/i> ")
-            let speed_boost_ex = stat['speed_boost_ex'].split("<\/i> ")
-
-            // let position = stat['gpscoords']
+            let exp_boost_ex = stat['exp_boost_ex'].split("</i> ")
+            let dmg_boost_ex = stat['dmg_boost_ex'].split("</i> ")
+            let speed_boost_ex = stat['speed_boost_ex'].split("</i> ")
 
             let implant_data = stat['implantslots'];
 
@@ -107,22 +100,6 @@ module.exports = new Object({
                 .setDescription(`**${profession_level}**\n-# ${experience}`)
                 .setImage(`https://www.dfprofiler.com/signaturereplicate.php?profile=${survivorID}&imgur=5q7hV6B`)
                 .setColor(client.config.embedColorTrans)
-
-            // const btnProfile = new ActionRowBuilder()
-            //     .addComponents(
-            //         new ButtonBuilder()
-            //             .setStyle(ButtonStyle.Link)
-            //             .setLabel("Dead Frontier Profile")
-            //             .setURL(`https://fairview.DEADFRONTIER.com/onlinezombiemmo/index.php?action=profile;u=${survivorID}`),
-            //         new ButtonBuilder()
-            //             .setStyle(ButtonStyle.Link)
-            //             .setLabel("Send Message")
-            //             .setURL(`https://fairview.DEADFRONTIER.com/onlinezombiemmo/index.php?action=pm;sa=send;u=${survivorID}`),
-            //         new ButtonBuilder()
-            //             .setStyle(ButtonStyle.Link)
-            //             .setLabel("Trade")
-            //             .setURL(`https://fairview.DEADFRONTIER.com/onlinezombiemmo/index.php?page=27&memto=${survivorID}`)
-            //     )
 
             const btnProfile = new ActionRowBuilder()
                 .addComponents(
@@ -143,10 +120,6 @@ module.exports = new Object({
 
                 let stat_endurance = stat['stat_endurance'].split(" ")
                 let stat_agility = stat['stat_agility'].split(" ")
-
-                // let noArmor = stat['armor']
-                // let stat_noEndurance = stat['stat_endurance']
-                // let stat_noAgility = stat['stat_agility']
 
                 if (implant_data.trim() !== "") {
                     const domImplant = new jsdom.JSDOM(implant_data);
@@ -186,7 +159,7 @@ module.exports = new Object({
                         .setColor(client.config.embedColorTrans)
                         .setTimestamp()
 
-                    loadingTxt.edit({
+                    await interaction.editReply({
                         content: '⁣',
                         embeds: [embedEvent, embed],
                         components: [btnProfile]
@@ -222,20 +195,20 @@ module.exports = new Object({
                         .setColor(client.config.embedColorTrans)
                         .setTimestamp()
 
-                    loadingTxt.edit({
+                    await interaction.editReply({
                         content: '⁣',
                         embeds: [embedEvent, embed],
                         components: [btnProfile]
                     });
                 }
             } catch (error) {
-                loadingTxt.edit({ content: `This player currently naked (please wear an armor)..\n**unable to send the status now**` })
+                await interaction.editReply({ content: `This player currently naked (please wear an armor)..\n**unable to send the status now**` })
             }
         } catch (error) {
             console.log(error)
-            loadingTxt.edit({
+            await interaction.editReply({
                 content: `Something wrong happened..\n**unable to send the status now**`
             });
         }
     }
-})
+}

@@ -1,25 +1,20 @@
-const { EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle } = require("discord.js");
+const { SlashCommandBuilder, EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle } = require("discord.js");
 const jsdom = require("jsdom");
 const axios = require('axios');
 
 module.exports = {
-    name: "record",
-    description: "tracking weekly CTS/CTL",
-    category: "deadfrontier",
-    usage: `record <dfp userid>`,
+    data: new SlashCommandBuilder()
+        .setName("record")
+        .setDescription("tracking weekly CTS/CTL")
+        .addStringOption(option =>
+            option.setName('userid')
+                .setDescription('The Dead Frontier Profile ID')
+                .setRequired(true)),
     cooldown: 0,
-    aliases: [],
-    examples: [],
-    sub_commands: [],
-    args: false,
-    permissions: { client: [], user: [], dev: false, },
-    player: { voice: false, active: false, dj: false, },
-    
-    async execute(client, message, args) {
-        const survivorID = args.join(" ");
-        if (!survivorID) return message.channel.send("Do `!record` `id`");
+    async execute(client, interaction) {
+        const survivorID = interaction.options.getString('userid');
 
-        const loadingTxt = await message.reply(`Getting player status <a:u_load:1334900265953923085>`);
+        await interaction.reply({ content: `Getting player status <a:u_load:1334900265953923085>` });
 
         const timestamp = Date.now();
 
@@ -83,14 +78,14 @@ module.exports = {
                         .setURL(`https://www.dfprofiler.com/signaturereplicate.php?profile=${survivorID}&imgur=5q7hV6B.png`)
                 );
 
-            loadingTxt.edit({
+            await interaction.editReply({
                 content: '⁣',
                 embeds: [embedRecord],
                 components: [btnProfile],
             });
         } catch (error) {
             console.error("Error:", error);
-            loadingTxt.edit({
+            await interaction.editReply({
                 content: `Something wrong happened..\n**unable to send the record now**`
             });
         }

@@ -6,7 +6,7 @@ const webhookClient = new WebhookClient({ url: process.env.WEBHOOK_ALLIANCE });
 module.exports = {
   name: "messageCreate",
   async execute(client, message) {
-    const allianceServerID = client.config.ancientLunaAlliance;
+    const allianceServerID = client.config.lunaServerAlliance;
     if (message.guild?.id !== allianceServerID) return;
     if ((message.flags?.bitfield ?? 0) & 64) return;
 
@@ -21,7 +21,7 @@ module.exports = {
     }
 
     const channelName = message.channel.name;
-    const member = await message.guild.members.fetch(message.author.id).catch(() => {});
+    const member = await message.guild.members.fetch(message.author.id).catch(() => { });
     const displayName = member?.displayName || message.author.username;
     const avatarUrl = message.author.displayAvatarURL({ extension: "png", dynamic: true, size: 512 });
     let body = message.content?.trim() || "";
@@ -53,7 +53,7 @@ module.exports = {
 
     if (message.stickers.size) {
       const sticker = message.stickers.first();
-      if ( sticker.format === 3 ) {
+      if (sticker.format === 3) {
         body = `-# is sending sticker ✨ ***${sticker.name}***`
       } else {
         body = `https://media.discordapp.net/stickers/${sticker.id}.png?size=160&passthrough=false`;

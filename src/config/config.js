@@ -1,5 +1,9 @@
 module.exports = {
     lunaServer: "1457941632052756634",
+    lunaServerAlliance: "1367757032081330228",
+
+    gatewayChannel: "839417251470901279",
+
     lunaTagRole: "1459924462744113243",
 
     //Ancient Luna
@@ -28,7 +32,6 @@ module.exports = {
     guildOfficerRole: "1235965537326993450",
 
     ancientLunaGuild: "1369521104548401265",
-    ancientLunaAlliance: "1367757032081330228",
 
     ruleChannel: "838751745815216129",
     generalChannel: "452842830776369152",
