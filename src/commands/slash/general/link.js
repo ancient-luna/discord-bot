@@ -16,10 +16,10 @@ module.exports = {
     async execute(client, interaction) {
         const link = interaction.options.getString("url");
 
-        await interaction.deferReply({ });
+        await interaction.deferReply({});
 
         const downloadApiUrl = `https://api.ferdev.my.id/downloader/allinone?link=${encodeURIComponent(link)}&apikey=${process.env.RES_API}`;
-        
+
         let res;
         try {
             res = await axios.get(downloadApiUrl, {
@@ -37,18 +37,18 @@ module.exports = {
         if (data.source === "youtube") {
             try {
                 let downloadOptions = '';
-                
+
                 const videoMedias = data.medias
-                    .filter(media => media.type === "video" && media.ext === "mp4")
+                    .filter(media => media.type === "video" && media.extension === "mp4")
                     .sort((a, b) => (b.bitrate || 0) - (a.bitrate || 0));
-                
+
                 const topVideos = videoMedias.slice(0, 2);
-                
+
                 const m4aAudios = data.medias
-                    .filter(media => media.type === "audio" && media.ext === "m4a")
+                    .filter(media => media.type === "audio" && media.extension === "m4a")
                     .sort((a, b) => (b.bitrate || 0) - (a.bitrate || 0));
                 const topM4a = m4aAudios.slice(0, 1);
-                
+
                 if (topVideos.length > 0) {
                     downloadOptions += '`Video`';
                     topVideos.forEach((media, index) => {
@@ -58,29 +58,33 @@ module.exports = {
                         downloadOptions += ` [${resolution}](${media.url})${separator}`;
                     });
                 }
-                
+
                 if (topM4a.length > 0) {
                     if (topVideos.length > 0) downloadOptions += '';
                     downloadOptions += '`Audio`';
                     const media = topM4a[0];
-                    const qualityLabel = media.quality || `${media.ext} (${Math.round((media.bitrate || 0) / 1000)}kbps)`;
+                    const qualityLabel = media.quality || `${media.extension} (${Math.round((media.bitrate || 0) / 1000)}kbps)`;
                     const cleanLabel = qualityLabel.replace(/\s*\(\d+kb\/s\)/, '').replace('audio only ', '');
                     downloadOptions += ` [${cleanLabel}](${media.url})`;
                 }
 
                 const ytContainer = new ContainerBuilder()
+                const videoIdMatch = data.url.match(/[?&]v=([^&]+)/);
+                const videoId = videoIdMatch ? videoIdMatch[1] : null;
+                const thumbnailUrl = videoId ? `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg` : data.thumbnail;
+
                 const ytThumbnail = new MediaGalleryBuilder()
                     .addItems([{
                         type: 'image',
                         media: {
-                            url: data.thumbnail
-                        } 
+                            url: thumbnailUrl
+                        }
                     }]);
                 const ytTitle = new TextDisplayBuilder().setContent(data.title);
-                const ytDownload = new TextDisplayBuilder().setContent(downloadOptions);
+                const ytDownload = new TextDisplayBuilder().setContent(downloadOptions || 'No options available');
                 const ytHow = new TextDisplayBuilder().setContent('-# <:ic_repost:1334863701026541648> click link to download');
                 ytContainer.addTextDisplayComponents(ytTitle, ytDownload);
-                    
+
                 return await interaction.editReply({
                     flags: MessageFlags.IsComponentsV2,
                     components: [ytThumbnail, ytContainer, ytHow]
@@ -105,7 +109,7 @@ module.exports = {
                 const title = `[${data.title}](${data.url})` || "Content";
                 const container = new ContainerBuilder();
                 const description = new TextDisplayBuilder().setContent(`-# <:ic_repost:1334863701026541648> ${validMedias.length} medias from ${title}`);
-                
+
                 container.addMediaGalleryComponents(gallery);
                 container.addTextDisplayComponents(description);
 
@@ -120,7 +124,7 @@ module.exports = {
         }
 
         const contentURL = data.medias?.find(media => media.type === "video" || media.type === "image")?.url;
-        
+
         if (!contentURL) return interaction.editReply({ content: `Failed to find the media URL. **Please check the link or try again.**` });
 
         let shortenedUrl = contentURL;
@@ -148,7 +152,7 @@ module.exports = {
 
         await interaction.editReply({
             content: description,
-            components: [linkButton]
+            // components: [linkButton]
         });
     },
 };
