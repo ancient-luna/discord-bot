@@ -1,4 +1,4 @@
-const { SlashCommandBuilder, AttachmentBuilder, ContainerBuilder, MediaGalleryBuilder, MessageFlags, TextDisplayBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle, } = require("discord.js");
+const { SlashCommandBuilder, AttachmentBuilder, ContainerBuilder, MediaGalleryBuilder, MessageFlags, TextDisplayBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle, SeparatorBuilder, SeparatorSpacingSize, SectionBuilder, } = require("discord.js");
 const axios = require("axios");
 const { createCanvas, loadImage } = require("canvas");
 
