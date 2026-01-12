@@ -2,9 +2,19 @@ module.exports = {
     lunaServer: "1457941632052756634",
     lunaServerAlliance: "1367757032081330228",
 
+    // AncientLuna: Channels
     gatewayChannel: "839417251470901279",
 
+    // AncientLuna: Roles
+    lunariaRole: "1457976161199063103",
     lunaTagRole: "1459924462744113243",
+
+    // DeadFrontier
+    dfBanditRole: "1459525384809877607",
+    dfDevilhoundRole: "1459525513851965591",
+    dfVolatileRole: "1459525580117512203",
+    dfOutpostRole: "1459525634664693922",
+    dfBehemothRole: "1459525700372660360",
 
     //Ancient Luna
     ancestorRole: "590848319111299093",
