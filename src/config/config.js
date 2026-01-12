@@ -18,7 +18,6 @@ module.exports = {
 
     //Ancient Luna
     ancestorRole: "590848319111299093",
-    lunariaRole: "839170815932891197",
     luxcastaRole: "839210689917616218",
     preMemberTriggerMessage: "I understand the wisdom of lleud and sure my call as light seeker",
     preMemberRole: "839210689917616218",
