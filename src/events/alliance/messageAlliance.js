@@ -10,7 +10,6 @@ module.exports = {
     if (message.guild?.id !== allianceServerID) return;
     if ((message.flags?.bitfield ?? 0) & 64) return;
 
-    // force refetch if the message is from a bot
     if (message.author.bot) {
       try {
         message = await message.channel.messages.fetch(message.id);

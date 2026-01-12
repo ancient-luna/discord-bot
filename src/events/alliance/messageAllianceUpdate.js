@@ -12,7 +12,6 @@ module.exports = {
     const webhookMessageId = await client.db.get(`mirror_${newMessage.id}`);
     if (!webhookMessageId) return;
 
-    // force refetch if the message is from a bot
     if (newMessage.author?.bot) {
       try {
         newMessage = await newMessage.channel.messages.fetch(newMessage.id);

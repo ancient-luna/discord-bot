@@ -7,19 +7,19 @@ const { createCanvas, loadImage } = require('canvas');
  */
 function getMillisecondsUntilMidnightGMT7() {
     const now = new Date();
-    
+
     // Convert current time to GMT+7
     const gmt7Offset = 7 * 60; // GMT+7 in minutes
     const localOffset = now.getTimezoneOffset(); // Local offset in minutes (negative for ahead of UTC)
     const gmt7Time = new Date(now.getTime() + (gmt7Offset + localOffset) * 60 * 1000);
-    
+
     // Calculate next midnight GMT+7
     const nextMidnight = new Date(gmt7Time);
     nextMidnight.setHours(24, 0, 0, 0); // Set to next midnight
-    
+
     // Convert back to local time
     const nextMidnightLocal = new Date(nextMidnight.getTime() - (gmt7Offset + localOffset) * 60 * 1000);
-    
+
     return nextMidnightLocal.getTime() - now.getTime();
 }
 
@@ -29,19 +29,19 @@ function getMillisecondsUntilMidnightGMT7() {
  */
 function getPreviousMidnightGMT7() {
     const now = new Date();
-    
+
     // Convert current time to GMT+7
     const gmt7Offset = 7 * 60; // GMT+7 in minutes
     const localOffset = now.getTimezoneOffset(); // Local offset in minutes (negative for ahead of UTC)
     const gmt7Time = new Date(now.getTime() + (gmt7Offset + localOffset) * 60 * 1000);
-    
+
     // Calculate previous midnight GMT+7
     const prevMidnight = new Date(gmt7Time);
     prevMidnight.setHours(0, 0, 0, 0); // Set to midnight
-    
+
     // Convert back to local time
     const prevMidnightLocal = new Date(prevMidnight.getTime() - (gmt7Offset + localOffset) * 60 * 1000);
-    
+
     return prevMidnightLocal.getTime();
 }
 
@@ -58,13 +58,13 @@ function isSameDayGMT7(timestamp1, timestamp2) {
     // Convert both to GMT+7
     const gmt7Offset = 7 * 60; // minutes
     const localOffset = d1.getTimezoneOffset();
-    
+
     const t1 = new Date(d1.getTime() + (gmt7Offset + localOffset) * 60 * 1000);
     const t2 = new Date(d2.getTime() + (gmt7Offset + localOffset) * 60 * 1000);
 
     return t1.getUTCFullYear() === t2.getUTCFullYear() &&
-           t1.getUTCMonth() === t2.getUTCMonth() &&
-           t1.getUTCDate() === t2.getUTCDate();
+        t1.getUTCMonth() === t2.getUTCMonth() &&
+        t1.getUTCDate() === t2.getUTCDate();
 }
 
 /**
@@ -75,7 +75,7 @@ async function sendRadianceMessage(client) {
     try {
         const channelId = client.config.luminanceChannel;
         const channel = await client.channels.fetch(channelId);
-        
+
         if (!channel) {
             client.console.log(`Luminance channel not found: ${channelId}`, "error");
             return;
@@ -92,10 +92,10 @@ async function sendRadianceMessage(client) {
         try {
             let deleted = false;
             const lastMessageId = await client.db.get("radiance_message_id");
-            
+
             if (lastMessageId) {
                 const previousMessage = await channel.messages.fetch(lastMessageId).catch(() => null);
-                
+
                 if (previousMessage) {
                     await previousMessage.delete();
                     await client.db.delete("radiance_message_id");
@@ -109,12 +109,12 @@ async function sendRadianceMessage(client) {
             if (!deleted) {
                 // Fallback: Scan recent messages if ID failed or wasn't found
                 const messages = await channel.messages.fetch({ limit: 100 });
-                const previousMessage = messages.find(msg => 
-                    msg.author.id === client.user.id && 
+                const previousMessage = messages.find(msg =>
+                    msg.author.id === client.user.id &&
                     (
                         msg.attachments.size > 0 ||
                         (msg.content && msg.content.includes('Gratitude from the Ancients')) ||
-                        (msg.components.length > 0 && msg.components.some(row => 
+                        (msg.components.length > 0 && msg.components.some(row =>
                             row.components.some(c => c.label === 'Testaments of the Seekers' || (c.data && c.data.label === 'Testaments of the Seekers'))
                         ))
                     )
@@ -132,9 +132,9 @@ async function sendRadianceMessage(client) {
         }
 
         const guild = channel.guild;
-        
+
         const roleIds = [
-            client.config.luminanceRole,
+            client.config.lunaBoosterRole,
             client.config.radianceRole
         ];
 
@@ -144,7 +144,7 @@ async function sendRadianceMessage(client) {
             const role = guild.roles.cache.get(roleId);
             if (role) {
                 const members = role.members.map(member => member).sort((a, b) => a.displayName.localeCompare(b.displayName));
-                if (roleId === client.config.luminanceRole) {
+                if (roleId === client.config.lunaBoosterRole) {
                     allMembers.luminance.push(...members);
                 } else if (roleId === client.config.radianceRole) {
                     allMembers.radiance.push(...members);
@@ -231,13 +231,13 @@ async function sendRadianceMessage(client) {
                     url: 'attachment://radiance.png'
                 }
             }]);
-        
+
         const mediaSign = new MediaGalleryBuilder()
             .addItems([{
                 type: 'image',
                 media: {
                     url: 'https://i.imgur.com/nLQReck.png'
-                } 
+                }
             }]);
 
         const supportButton = new ButtonBuilder()
@@ -283,7 +283,7 @@ async function sendRadianceMessage(client) {
  */
 function scheduleNextRadianceMessage(client) {
     const delay = getMillisecondsUntilMidnightGMT7();
-    
+
     setTimeout(async () => {
         await sendRadianceMessage(client);
         scheduleNextRadianceMessage(client);
@@ -309,10 +309,10 @@ async function initRadianceScheduler(client) {
 
         // Robust Scan: Check for ANY existing radiance message in the channel
         const messages = await channel.messages.fetch({ limit: 100 });
-        
+
         // Filter for Radiance messages
-        const radianceMessages = messages.filter(msg => 
-            msg.attachments.size > 0 || 
+        const radianceMessages = messages.filter(msg =>
+            msg.attachments.size > 0 ||
             (msg.content && msg.content.includes('Gratitude from the Ancients')) ||
             msg.components.length > 0 ||
             msg.embeds.length > 0
@@ -326,7 +326,7 @@ async function initRadianceScheduler(client) {
 
         if (sortedMessages.size > 0) {
             const newestMessage = sortedMessages.first();
-            
+
             if (isSameDayGMT7(newestMessage.createdTimestamp, now)) {
                 messageForToday = newestMessage;
                 client.console.log(`Found valid radiance message for today (ID: ${newestMessage.id})`, "scheduler");
@@ -335,7 +335,7 @@ async function initRadianceScheduler(client) {
 
         // Cleanup Logic
         const messagesToDelete = sortedMessages.filter(msg => msg.id !== messageForToday?.id);
-        
+
         if (messagesToDelete.size > 0) {
             client.console.log(`Deleting ${messagesToDelete.size} stale radiance messages...`, "scheduler");
             for (const msg of messagesToDelete.values()) {
@@ -354,9 +354,9 @@ async function initRadianceScheduler(client) {
         // Check DB as secondary source (if we didn't find one in channel but DB says we sent one today)
         const lastSentTime = await client.db.get("radiance_last_sent_time");
         if (lastSentTime && isSameDayGMT7(lastSentTime, now)) {
-             client.console.log('DB says radiance message already sent today (but not found in channel). Waiting for next schedule.', "scheduler");
-             scheduleNextRadianceMessage(client);
-             return;
+            client.console.log('DB says radiance message already sent today (but not found in channel). Waiting for next schedule.', "scheduler");
+            scheduleNextRadianceMessage(client);
+            return;
         }
 
         // Send new message

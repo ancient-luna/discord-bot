@@ -1,7 +1,6 @@
-const { EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle, AttachmentBuilder, MessageFlags } = require("discord.js");
+const { AttachmentBuilder, MessageFlags } = require("discord.js");
 const { createCanvas, loadImage, registerFont } = require("canvas");
 const fs = require("fs").promises;
-const { stripIndent } = require("common-tags");
 
 module.exports = {
     name: "fellowcard",
@@ -11,7 +10,7 @@ module.exports = {
         user: [],
         dev: false,
     },
-    
+
     execute: async (client, interaction) => {
         try {
             const targetMember = interaction.message.mentions.members.first();
@@ -19,15 +18,12 @@ module.exports = {
                 return interaction.reply({ content: 'Only ashes remain...\n-# this person is gone and no longer listed on our wisdom of lleud', flags: MessageFlags.Ephemeral });
             }
 
-            // Canvas and context setup
             const canvas = createCanvas(500, 800);
             const ctx = canvas.getContext("2d");
 
-            // Load fonts
             registerFont('src/assets/usercard/PearlAbyss.ttf', { family: 'PearlAbyss' });
             registerFont('src/assets/usercard/HelveticaBold.ttf', { family: 'HelveticaBold' });
 
-            // Define rounded rectangle function
             function roundRect(ctx, x, y, width, height, radius, fill, stroke) {
                 if (typeof stroke === 'undefined') {
                     stroke = true;
@@ -62,12 +58,10 @@ module.exports = {
                 }
             }
 
-            // Load the background image
             const backgroundImage = await fs.readFile('src/assets/usercard/signature.png');
             const image = await loadImage(backgroundImage);
             ctx.drawImage(image, 0, 0, 500, 800);
 
-            // Text settings and adjustments for display name
             let nameSize = 40;
             let fontSize = 33;
             let beginY = 95;
@@ -79,7 +73,6 @@ module.exports = {
             const displayName = targetMember.displayName.toUpperCase();
             let nameFits = false;
 
-            // Continuously check if the name fits within the canvas width
             while (!nameFits && nameSize > 10) {
                 ctx.font = `${nameSize}px "PearlAbyss"`;
                 let nameWidth = ctx.measureText(displayName).width;
@@ -94,7 +87,6 @@ module.exports = {
             ctx.fillStyle = "#00cdff";
             ctx.fillText(targetMember.displayName, 250, 87);
 
-            // Load avatar and draw it on canvas
             const avatar = await loadImage(targetMember.displayAvatarURL({ extension: "png", dynamic: true, size: 512 }));
             let avatarX = 310;
             let avatarY = 310;
@@ -114,13 +106,11 @@ module.exports = {
             avatarCtx.drawImage(avatar, 0, 0, avatarX, avatarY);
             ctx.drawImage(avatarCanvas, 100, 139);
 
-            // Role display setup
-            const limitRoles = ['590848319111299093', '839170815932891197', '620709364247822338', '888736428069105674', '839198215580811344'];
+            const limitRoles = [client.config.ancestorRole, client.config.lunariaRole, client.config.lunaBoosterRole, client.config.lunaTagRole, client.config.lunaMemberRole];
             const sortedRoles = targetMember.roles.cache
                 .filter(role => limitRoles?.includes(role.id) && role.name !== '@everyone')
                 .sort((a, b) => b.position - a.position);
 
-            // Check if sortedRoles is empty and set context to 'Ancient Luna'
             if (sortedRoles.size === 0) {
                 ctx.textAlign = "center";
                 ctx.fillStyle = "#6b7b88";
@@ -165,7 +155,6 @@ module.exports = {
                 })
             }
 
-            // Send image as attachment
             const fellowCard = new AttachmentBuilder(canvas.toBuffer(), { name: 'fellowcard.png' });
             await interaction.reply({
                 files: [fellowCard],

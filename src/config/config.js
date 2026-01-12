@@ -6,8 +6,11 @@ module.exports = {
     gatewayChannel: "839417251470901279",
 
     // AncientLuna: Roles
+    ancestorRole: "1460242587645640860",
     lunariaRole: "1457976161199063103",
     lunaTagRole: "1459924462744113243",
+    lunaBoosterRole: "1457985341385347185",
+    lunaMemberRole: "1457975737259790418",
 
     // DeadFrontier
     dfBanditRole: "1459525384809877607",
@@ -17,7 +20,6 @@ module.exports = {
     dfBehemothRole: "1459525700372660360",
 
     //Ancient Luna
-    ancestorRole: "590848319111299093",
     luxcastaRole: "839210689917616218",
     preMemberTriggerMessage: "I understand the wisdom of lleud and sure my call as light seeker",
     preMemberRole: "839210689917616218",
@@ -27,7 +29,6 @@ module.exports = {
     streamRole: "1221004976839589958",
 
     radianceRole: "888736428069105674",
-    luminanceRole: "620709364247822338",
     nocturnaRole: "1442603418924355605",
     ennoiaRole: "1369558642013110343",
     dalumiRole: "1369924194401390652",
@@ -74,7 +75,7 @@ module.exports = {
 
     color: '#4277e8',
     appID: '839380589508558910',
-    guildID: '447069790150852609',
+    guildID: '1457941632052756634',
 
     INTERACTIONS: {
         SLASH: true,

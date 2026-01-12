@@ -23,7 +23,7 @@ module.exports = {
         let loadingTxt = await message.channel.send({ flags: MessageFlags.IsComponentsV2, components: [loadingText] })
 
         const roleIds = [
-            client.config.luminanceRole, // luminance role
+            client.config.lunaBoosterRole, // luminance role
             client.config.radianceRole // radiance role
         ];
 
@@ -33,7 +33,7 @@ module.exports = {
             const role = message.guild.roles.cache.get(roleId);
             if (role) {
                 const members = role.members.map(member => member).sort((a, b) => a.displayName.localeCompare(b.displayName));
-                if (roleId === client.config.luminanceRole) {
+                if (roleId === client.config.lunaBoosterRole) {
                     allMembers.luminance.push(...members);
                 } else if (roleId === client.config.radianceRole) {
                     allMembers.radiance.push(...members);
@@ -119,14 +119,14 @@ module.exports = {
                     url: 'attachment://radiance.png'
                 }
             }]);
-        
+
         const mediaSign = new MediaGalleryBuilder()
             .addItems([{
                 type: 'image',
                 media: {
                     // url: 'https://i.imgur.com/nnF1JRE.png'
                     url: 'https://i.imgur.com/nLQReck.png'
-                } 
+                }
             }]);
 
         const supportButton = new ButtonBuilder()
