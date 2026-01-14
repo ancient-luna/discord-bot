@@ -104,13 +104,13 @@ module.exports = {
         const radiance = new AttachmentBuilder(canvas.toBuffer(), { name: 'radiance.png' });
 
         const container = new ContainerBuilder();
-        const textHeader = new TextDisplayBuilder().setContent('# Gratitude from the Ancients')
-        const separator = new SeparatorBuilder({ spacing: SeparatorSpacingSize.Large })
-        const textContent = new TextDisplayBuilder().setContent(`From the first breath of moonlight, a vow was made — and a sanctuary was born. What began as my spark now grows in your glow. Ancient Luna rises, not by my will alone, but through the quiet radiance you carry.`);
-        const textRadiance = new TextDisplayBuilder().setContent('### <:ancientluna_divinare:841754250949820416> <@&888736428069105674>\n-# *Guided by the Radiance: those who keep our light enduring*')
-        const textRadianceMentions = new TextDisplayBuilder().setContent(radianceMentions)
-        const textLuminance = new TextDisplayBuilder().setContent('### <:ancientluna_divinare_s:859034096192978965> <@&620709364247822338>\n-# *Honoring the Luminance: our sanctuary’s uplifted souls*')
-        const textLuminanceMentions = new TextDisplayBuilder().setContent(luminanceMentions)
+        const textHeader = new TextDisplayBuilder().setContent('# Gratitude from the Ancients');
+        const separator = new SeparatorBuilder({ spacing: SeparatorSpacingSize.Large });
+        const textContent = new TextDisplayBuilder().setContent(`By the first breath of moonlight, a vow was sealed, and a sanctuary took form. Now we gather once more, as what was begun stirs again, rising not by His will alone, but through the quiet luminance you carry`);
+        const textRadiance = new TextDisplayBuilder().setContent(`### <:ico_radiance:1334864373331787827> <@&${client.config.radianceRole}>\n-# *Guided by the Radiance: those who keep our light enduring*`);
+        const textRadianceMentions = new TextDisplayBuilder().setContent(radianceMentions);
+        const textLuminance = new TextDisplayBuilder().setContent(`### <:ancientluna_divinare_s:859034096192978965> <@&${client.config.lunaBoosterRole}>\n-# *Honoring the Luminance: our sanctuary's uplifted souls*`);
+        const textLuminanceMentions = new TextDisplayBuilder().setContent(luminanceMentions);
 
         const mediaSeeker = new MediaGalleryBuilder()
             .addItems([{
@@ -124,7 +124,6 @@ module.exports = {
             .addItems([{
                 type: 'image',
                 media: {
-                    // url: 'https://i.imgur.com/nnF1JRE.png'
                     url: 'https://i.imgur.com/nLQReck.png'
                 }
             }]);
@@ -132,7 +131,8 @@ module.exports = {
         const supportButton = new ButtonBuilder()
             .setLabel('Testaments of the Seekers')
             .setStyle('Link')
-            .setURL('https://discord.com/channels/447069790150852609/1171703846918168577');
+            .setEmoji('<:ico_radiance:1334864373331787827>')
+            .setURL('https://discord.com/channels/1457941632052756634/1457961136090517597');
 
         const sectionHeader = new SectionBuilder()
             .addTextDisplayComponents(textHeader)
@@ -141,9 +141,9 @@ module.exports = {
         container.addMediaGalleryComponents(mediaSeeker)
         container.addSectionComponents(sectionHeader)
         container.addTextDisplayComponents(textContent)
-        container.addSeparatorComponents(separator)
-        container.addTextDisplayComponents(textRadiance)
-        container.addTextDisplayComponents(textRadianceMentions)
+        // container.addSeparatorComponents(separator)
+        // container.addTextDisplayComponents(textRadiance)
+        // container.addTextDisplayComponents(textRadianceMentions)
         container.addSeparatorComponents(separator);
         container.addTextDisplayComponents(textLuminance)
         container.addTextDisplayComponents(textLuminanceMentions)
