@@ -134,8 +134,8 @@ module.exports = {
         const supportButton = new ButtonBuilder()
             .setLabel('Testaments of the Seekers')
             .setStyle('Link')
-            .setEmoji('<:ico_radiance:1334864373331787827>')
-            .setURL('https://discord.com/channels/1457941632052756634/1457961136090517597');
+            .setEmoji('<:ico_owner:1369186022558269561>')
+            .setURL('https://discord.com/channels/1457941632052756634/1459865586807869533');
 
         const sectionHeader = new SectionBuilder()
             .addTextDisplayComponents(textHeader)
