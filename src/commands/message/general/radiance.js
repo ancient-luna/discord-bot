@@ -3,10 +3,10 @@ const { createCanvas, loadImage } = require('canvas');
 const path = require('path');
 
 module.exports = {
-    name: "a",
+    name: "radiance",
     description: "current supporters and booster in the sanctuary",
     category: "general",
-    usage: `a`,
+    usage: `radiance`,
     cooldown: 0,
     aliases: [],
     examples: [],
@@ -65,7 +65,6 @@ module.exports = {
         ctx.fillStyle = gradient;
         ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-        // Load all images in parallel
         const images = await Promise.all(avatarUrls.map(url => loadImage(url)));
         images.sort(() => Math.random() - 0.5);
 
@@ -104,8 +103,6 @@ module.exports = {
         }
 
         const radiance = new AttachmentBuilder(canvas.toBuffer(), { name: 'radiance.png' });
-        const audioPath = path.join(__dirname, '../../../assets/under-the-ancient-moon.mp3');
-        const audio = new AttachmentBuilder(audioPath, { name: 'under-the-ancient-moon.mp3' });
 
         const luminanceEmoji = '<:lumi_1:1460867329943535657><:lumi_2:1460867321999659089><:lumi_13:1460867323815792671><:lumi_4:1460867325858414703><:lumi_5:1460867327947178141>';
 
