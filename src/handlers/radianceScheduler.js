@@ -216,7 +216,8 @@ async function sendRadianceMessage(client) {
         const supportButton = new ButtonBuilder()
             .setLabel('Testaments of the Seekers')
             .setStyle('Link')
-            .setURL('https://discord.com/channels/447069790150852609/1171703846918168577');
+            .setEmoji('<:ico_owner:1369186022558269561>')
+            .setURL('https://discord.com/channels/1457941632052756634/1459865586807869533');
 
         const sectionHeader = new SectionBuilder()
             .addTextDisplayComponents(textHeader)
