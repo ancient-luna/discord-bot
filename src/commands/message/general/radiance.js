@@ -1,11 +1,12 @@
 const { EmbedBuilder, AttachmentBuilder, ContainerBuilder, TextDisplayBuilder, MessageFlags, SeparatorBuilder, SeparatorSpacingSize, MediaGalleryBuilder, FileBuilder, ButtonBuilder, SectionBuilder } = require("discord.js");
 const { createCanvas, loadImage } = require('canvas');
+const path = require('path');
 
 module.exports = {
-    name: "radiance",
+    name: "a",
     description: "current supporters and booster in the sanctuary",
     category: "general",
-    usage: `radiance`,
+    usage: `a`,
     cooldown: 0,
     aliases: [],
     examples: [],
@@ -66,6 +67,7 @@ module.exports = {
 
         // Load all images in parallel
         const images = await Promise.all(avatarUrls.map(url => loadImage(url)));
+        images.sort(() => Math.random() - 0.5);
 
         let index = 0;
         for (let row = -1; row < rows; row++) {
@@ -102,6 +104,8 @@ module.exports = {
         }
 
         const radiance = new AttachmentBuilder(canvas.toBuffer(), { name: 'radiance.png' });
+        const audioPath = path.join(__dirname, '../../../assets/under-the-ancient-moon.mp3');
+        const audio = new AttachmentBuilder(audioPath, { name: 'under-the-ancient-moon.mp3' });
 
         const luminanceEmoji = '<:lumi_1:1460867329943535657><:lumi_2:1460867321999659089><:lumi_13:1460867323815792671><:lumi_4:1460867325858414703><:lumi_5:1460867327947178141>';
 
@@ -140,9 +144,9 @@ module.exports = {
             .addTextDisplayComponents(textHeader)
             .setButtonAccessory(supportButton)
 
-        container.addMediaGalleryComponents(mediaSeeker)
         container.addSectionComponents(sectionHeader)
         container.addTextDisplayComponents(textContent)
+        container.addMediaGalleryComponents(mediaSeeker)
         // container.addSeparatorComponents(separator)
         // container.addTextDisplayComponents(textRadiance)
         // container.addTextDisplayComponents(textRadianceMentions)
@@ -154,7 +158,7 @@ module.exports = {
         await loadingTxt.edit({
             flags: MessageFlags.IsComponentsV2,
             components: [container],
-            files: [radiance],
+            files: [radiance, audio],
             allowedMentions: { parse: [] },
         });
     }

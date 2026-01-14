@@ -1,8 +1,8 @@
-const { EmbedBuilder, ContainerBuilder, TextDisplayBuilder, MessageFlags } = require("discord.js");
+const { ContainerBuilder, TextDisplayBuilder, MessageFlags } = require("discord.js");
 
 module.exports = new Object({
     name: "guildMemberRemove",
-    
+
     async execute(client, member) {
         if (member.partial) await member.user.fetch();
         if (!member.guild) return;
