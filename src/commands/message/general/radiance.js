@@ -103,13 +103,15 @@ module.exports = {
 
         const radiance = new AttachmentBuilder(canvas.toBuffer(), { name: 'radiance.png' });
 
+        const luminanceEmoji = '<:lumi_1:1460867329943535657><:lumi_2:1460867321999659089><:lumi_13:1460867323815792671><:lumi_4:1460867325858414703><:lumi_5:1460867327947178141>';
+
         const container = new ContainerBuilder();
         const textHeader = new TextDisplayBuilder().setContent('# Gratitude from the Ancients');
         const separator = new SeparatorBuilder({ spacing: SeparatorSpacingSize.Large });
-        const textContent = new TextDisplayBuilder().setContent(`By the first breath of moonlight, a vow was sealed, and a sanctuary took form. Now we gather once more, as what was begun stirs again, rising not by His will alone, but through the quiet luminance you carry`);
+        const textContent = new TextDisplayBuilder().setContent(`-# By the first breath of moonlight, a vow was sealed, and a sanctuary took form. Now we gather once more, as what was begun stirs again, rising not by His will alone, but through the quiet luminance you carry`);
         const textRadiance = new TextDisplayBuilder().setContent(`### <:ico_radiance:1334864373331787827> <@&${client.config.radianceRole}>\n-# *Guided by the Radiance: those who keep our light enduring*`);
         const textRadianceMentions = new TextDisplayBuilder().setContent(radianceMentions);
-        const textLuminance = new TextDisplayBuilder().setContent(`### <:ancientluna_divinare_s:859034096192978965> <@&${client.config.lunaBoosterRole}>\n-# *Honoring the Luminance: our sanctuary's uplifted souls*`);
+        const textLuminance = new TextDisplayBuilder().setContent(`### ${luminanceEmoji}\n-# *Honoring the Luminance: our sanctuary's uplifted souls*`);
         const textLuminanceMentions = new TextDisplayBuilder().setContent(luminanceMentions);
 
         const mediaSeeker = new MediaGalleryBuilder()
