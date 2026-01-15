@@ -1,4 +1,4 @@
-const { SlashCommandBuilder, AttachmentBuilder, ContainerBuilder, MediaGalleryBuilder, MessageFlags, TextDisplayBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle, SeparatorBuilder, SeparatorSpacingSize, SectionBuilder, } = require("discord.js");
+const { AttachmentBuilder, ContainerBuilder, MediaGalleryBuilder, MessageFlags, TextDisplayBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle, SeparatorBuilder, SeparatorSpacingSize, SectionBuilder, } = require("discord.js");
 const axios = require("axios");
 const { createCanvas, loadImage } = require("canvas");
 
@@ -36,18 +36,32 @@ function wrapText(ctx, text, x, y, maxWidth, lineHeight) {
 }
 
 module.exports = {
-    data: new SlashCommandBuilder()
-        .setName("roblox")
-        .setDescription("giving roblox profile")
-        .addStringOption(option =>
-            option.setName('username')
-                .setDescription('Roblox Username')
-                .setRequired(true)),
+    name: "roblox",
+    description: "giving roblox profile",
+    category: "roblox",
+    usage: `roblox <username>`,
     cooldown: 5,
-    async execute(client, interaction) {
-        const username = interaction.options.getString('username');
+    aliases: [],
+    examples: [],
+    sub_commands: [],
+    args: true,
+    permissions: {
+        client: [],
+        user: [],
+        dev: false,
+    },
+    player: {
+        voice: false,
+        active: false,
+        dj: false,
+    },
 
-        await interaction.deferReply();
+    async execute(client, message, args) {
+        if (!args[0]) return message.reply("Please provide a Roblox Username.");
+        const username = args.join(" ");
+
+        const textEdit = new TextDisplayBuilder().setContent(`Getting ${username} profile <a:u_load:1334900265953923085>`)
+        const msg = await message.reply({ flags: MessageFlags.IsComponentsV2, components: [textEdit] });
 
         try {
             const userLookup = await axios.post(
@@ -60,7 +74,8 @@ module.exports = {
             );
 
             if (!userLookup.data.data || !userLookup.data.data.length) {
-                return interaction.editReply("**No such name in my book!** Who are you looking for?\n-# Roblox user not found.");
+                const textEdit = new TextDisplayBuilder().setContent("**No such name in my book!** Who are you looking for?\n-# Roblox user not found.")
+                return msg.edit({ flags: MessageFlags.IsComponentsV2, components: [textEdit] });
             }
 
             const basic = userLookup.data.data[0];
@@ -438,7 +453,7 @@ module.exports = {
             container.addSeparatorComponents(separator)
             container.addSectionComponents(section)
 
-            await interaction.editReply({
+            await msg.edit({
                 flags: MessageFlags.IsComponentsV2,
                 components: [container],
                 files: [attachment]
@@ -446,9 +461,8 @@ module.exports = {
 
         } catch (err) {
             console.error(err);
-            return interaction.editReply(
-                "**Under the moonlight!** I'm powerless,\n-# Something went wrong while generating the Roblox card"
-            );
+            const textEdit = new TextDisplayBuilder().setContent("**Under the moonlight!** I'm powerless,\n-# Something went wrong while generating the Roblox card");
+            return msg.edit({ flags: MessageFlags.IsComponentsV2, components: [textEdit] });
         }
     },
 };

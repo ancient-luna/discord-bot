@@ -1,21 +1,33 @@
-const { SlashCommandBuilder, EmbedBuilder, ButtonBuilder, ActionRowBuilder, ButtonStyle } = require("discord.js");
+const { EmbedBuilder, ButtonBuilder, ActionRowBuilder, ButtonStyle } = require("discord.js");
 const jsdom = require("jsdom");
 const axios = require('axios');
 
 module.exports = {
-    data: new SlashCommandBuilder()
-        .setName("status")
-        .setDescription("tracking player stats including weapons, location, and many")
-        .addStringOption(option =>
-            option.setName('userid')
-                .setDescription('The Dead Frontier Profile ID')
-                .setRequired(true)),
+    name: "status",
+    description: "tracking player stats including weapons, location, and many",
+    category: "deadfrontier",
+    usage: `status <userid>`,
     cooldown: 0,
-    async execute(client, interaction) {
+    aliases: [],
+    examples: [],
+    sub_commands: [],
+    args: true,
+    permissions: {
+        client: [],
+        user: [],
+        dev: false,
+    },
+    player: {
+        voice: false,
+        active: false,
+        dj: false,
+    },
 
-        const survivorID = interaction.options.getString('userid');
+    async execute(client, message, args) {
+        if (!args[0]) return message.reply("Please provide a Dead Frontier Profile ID.");
+        const survivorID = args[0];
 
-        await interaction.reply({ content: `Getting player status <a:u_load:1334900265953923085>` });
+        const msg = await message.reply({ content: `Getting player status <a:u_load:1334900265953923085>` });
 
         const timestamp = Date.now();
 
@@ -42,16 +54,8 @@ module.exports = {
             let nourishment = domNourishment.window.document.querySelector("div").textContent;
 
             let outpost = stat['outpost']
-
             let profession_level = stat['profession_level']
             let experience = stat['experience']
-
-            // Unused variables commented out or removed? Kept matching original flow logic
-            // let weekly_ts = stat['weekly_ts']
-            // let exp_since_death = stat['exp_since_death']
-            // let daily_tpk = stat['daily_tpk']
-            // let weekly_tpk = stat['weekly_tpk']
-            // let pvp_last_hit = stat['pvp_last_hit']
 
             let cash = stat['cash']
             let bank = stat['bank']
@@ -159,7 +163,7 @@ module.exports = {
                         .setColor(client.config.embedColorTrans)
                         .setTimestamp()
 
-                    await interaction.editReply({
+                    await msg.edit({
                         content: '⁣',
                         embeds: [embedEvent, embed],
                         components: [btnProfile]
@@ -195,18 +199,18 @@ module.exports = {
                         .setColor(client.config.embedColorTrans)
                         .setTimestamp()
 
-                    await interaction.editReply({
+                    await msg.edit({
                         content: '⁣',
                         embeds: [embedEvent, embed],
                         components: [btnProfile]
                     });
                 }
             } catch (error) {
-                await interaction.editReply({ content: `This player currently naked (please wear an armor)..\n**unable to send the status now**` })
+                await msg.edit({ content: `This player currently naked (please wear an armor)..\n**unable to send the status now**` })
             }
         } catch (error) {
             console.log(error)
-            await interaction.editReply({
+            await msg.edit({
                 content: `Something wrong happened..\n**unable to send the status now**`
             });
         }

@@ -1,16 +1,16 @@
-const { ButtonBuilder, ActionRowBuilder, ChannelType, ButtonStyle} = require("discord.js");
+const { ButtonBuilder, ActionRowBuilder, ChannelType, ButtonStyle } = require("discord.js");
 
 module.exports = new Object({
   name: "messageCreate",
-  
-  async execute(client, message) {  
+
+  async execute(client, message) {
     // Setup Role And Rules
     const text = client.config.preMemberTriggerMessage;
     function hasMixedCase(text) {
       return /[a-z]/.test(text) && /[A-Z]/.test(text);
     }
 
-    if (message.channel.id === client.config.ruleChannel || message.channel.id === client.config.confessionChannel) {
+    if (message.channel.id === client.config.ruleChannel) {
       if (
         message.content?.toLowerCase() === text.toLowerCase() &&
         message.member.roles.cache.has(client.config.preMemberRole)
@@ -44,9 +44,9 @@ module.exports = new Object({
       if (!message.author.bot) await message.delete().catch((e) => { });;
     }
 
-    if ( message.author.bot || message.webhookId || !message.guild || !message.channel ) return;
-    if ( message.channel.type == ChannelType.DM || message.channel.type == ChannelType.GuildForum ) return;
-    
+    if (message.author.bot || message.webhookId || !message.guild || !message.channel) return;
+    if (message.channel.type == ChannelType.DM || message.channel.type == ChannelType.GuildForum) return;
+
     if (message.partial) await message.fetch();
     if (!message.guild) return;
     if (message.author.bot) return;

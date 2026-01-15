@@ -2,7 +2,7 @@ const { ChannelType, AttachmentBuilder } = require("discord.js");
 
 module.exports = new Object({
   name: "messageCreate",
-  
+
   async execute(client, message) {
     const guildsID = '447069790150852609';
 
@@ -20,7 +20,7 @@ module.exports = new Object({
     const responses = {
       "bitch": { text: `-# **move**.. bihs, ${message.member.displayName}`, video: "src/assets/react/movebihs.mp4", chance: 0.2 },
       "queen": { text: `-# **move**.. bitch, ${message.member.displayName} *warcrying out all levatios*`, video: "src/assets/react/movebihs.mp4", chance: 0.2 },
-      "dae": { text: "-# dae — he who remains, beyond the reach of those who seek him", video: "src/assets/react/hewhoremains.mp4", chance: 0.5 },
+      "dae": { text: "-# dae — he who remains, beyond the reach of those who seek him", video: "src/assets/react/hewhoremains.mp4", chance: 0.1 },
       "pastaroni": { text: "# 𝒂𝒅𝒐𝒓𝒂𝒃𝒍𝒚 𝒔𝒘𝒆𝒆𝒕\n-# Hany (하니) for sweetness,\n-# Biskit (비스킷) for the best duo—together.", video: null, chance: 1 }
     };
 
