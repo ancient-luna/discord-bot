@@ -11,14 +11,14 @@ module.exports = new Object({
     args: false,
     permissions: { client: [], user: [], dev: false, },
     player: { voice: false, active: false, dj: false, },
-    
+
     async execute(client, message, args) {
-        
+
         const { guild } = message;
         const { ownerId, createdTimestamp } = guild;
         const serverDescription = guild.description || `This server doesn't have description`;
         const serverIcon = guild.iconURL();
-        const serverBanner = guild.bannerURL({ format: "png", size: 4096 });  
+        const serverBanner = guild.bannerURL({ format: "png", size: 4096 });
         const serverName = guild.name;
         const roles = guild.roles.cache.size;
         const emojis = guild.emojis.cache.size;
@@ -47,25 +47,25 @@ module.exports = new Object({
         });
 
         const serverInfo = new EmbedBuilder()
-            .setAuthor({ url: `https://discord.com/invite/Sbp2nt8QHe`, iconURL: serverIcon, name: serverName })
+            .setAuthor({ url: `https://discord.com/invite/MktSB4Kxgz`, iconURL: serverIcon, name: serverName })
             .setTitle(`𝑺𝒆𝒓𝒗𝒆𝒓 𝑰𝒏𝒇𝒐𝒓𝒎𝒂𝒕𝒊𝒐𝒏 ✦`)
             .setThumbnail(serverIcon)
             .addFields(
-                {name: `About`, value: `-# ${serverDescription}`, inline: false},
-                {name: `Date Created`, value: `<t:${parseInt(createdTimestamp/ 1000)}:R>`, inline: true},
-                {name: `Server Owner`, value: `<@${ownerUsername}> <:ico_owner:1369186022558269561>`, inline: true},
-                {name: `Boosters`, value: `${guild.premiumSubscriptionCount} <:ico_nitro:1369190458357452802>`, inline: true},
-                {name: `Category`, value: `${categoryChannels}`, inline: true},
-                {name: `Channels`, value: `${textChannels} <:ico_chat:1369210205321166858> ${voiceChannels} <:icon_headphone:1369186550599913473>`, inline: true},
-                {name: `Members`, value: `${memberCount} <:ico_member:1369189422846967818> ${botCount} <:ico_bot:1369189440647331870>`, inline: true},
-                {name: `Emojis`, value: `${emojis}`, inline: true},
-                {name: `Roles`, value: `${roles}`, inline: true},
-                {name: `Verification`, value: `${baseVerification}`, inline: true},
+                { name: `About`, value: `-# ${serverDescription}`, inline: false },
+                { name: `Date Created`, value: `<t:${parseInt(createdTimestamp / 1000)}:R>`, inline: true },
+                { name: `Server Owner`, value: `<@${ownerUsername}> <:ico_owner:1369186022558269561>`, inline: true },
+                { name: `Boosters`, value: `${guild.premiumSubscriptionCount} <:ico_nitro:1369190458357452802>`, inline: true },
+                { name: `Category`, value: `${categoryChannels}`, inline: true },
+                { name: `Channels`, value: `${textChannels} <:ico_chat:1369210205321166858> ${voiceChannels} <:icon_headphone:1369186550599913473>`, inline: true },
+                { name: `Members`, value: `${memberCount} <:ico_member:1369189422846967818> ${botCount} <:ico_bot:1369189440647331870>`, inline: true },
+                { name: `Emojis`, value: `${emojis}`, inline: true },
+                { name: `Roles`, value: `${roles}`, inline: true },
+                { name: `Verification`, value: `${baseVerification}`, inline: true },
             )
             .setColor(client.config.embedColorTrans)
             .setImage(serverBanner || null)
             .setTimestamp()
-            // .setFooter({ text: `Requested by ${message.member.displayName}` })
+        // .setFooter({ text: `Requested by ${message.member.displayName}` })
 
         await message.reply({ embeds: [serverInfo] });
 

@@ -16,7 +16,7 @@ module.exports = {
       new ButtonBuilder()
         .setLabel("Server")
         .setStyle(ButtonStyle.Link)
-        .setURL("https://discord.com/invite/Sbp2nt8QHe"),
+        .setURL("https://discord.com/invite/MktSB4Kxgz"),
       new ButtonBuilder()
         .setLabel("Support")
         .setStyle(ButtonStyle.Link)

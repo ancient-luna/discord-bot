@@ -19,7 +19,7 @@ module.exports = {
         await message.delete().catch((e) => { });
 
         const loadingText = new TextDisplayBuilder().setContent(`Listing the **Supporters** and the **Boosters** <a:u_load:1334900265953923085>`)
-        const loadingFail = new TextDisplayBuilder().setContent(`this command may stay only in [**AncientLuna**](https://discord.gg/Sbp2nt8QHe)`)
+        const loadingFail = new TextDisplayBuilder().setContent(`this command may stay only in [**AncientLuna**](https://discord.gg/MktSB4Kxgz)`)
 
         let loadingTxt = await message.channel.send({ flags: MessageFlags.IsComponentsV2, components: [loadingText] })
 

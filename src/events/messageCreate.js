@@ -2,7 +2,7 @@ const { ButtonStyle, PermissionsBitField, Collection, ContainerBuilder, TextDisp
 
 module.exports = {
   name: "messageCreate",
-  
+
   async execute(client, message) {
 
     const starIco = '<:ico_radiance:1334864373331787827>';
@@ -11,7 +11,7 @@ module.exports = {
     const prefix = process.env.COMMAND_PREFIX;
     const mention = new RegExp(`^<@!?${client.user.id}>( |)$`);
     const container = new ContainerBuilder();
-    const textPrefix = new TextDisplayBuilder().setContent(`Prefix is: \`${prefix}\`\n</help:1388449905483317310> to see what you seek for ${starIco}`);
+    const textPrefix = new TextDisplayBuilder().setContent(`Prefix is: \`${prefix}\`\n-# </help:1388449905483317310> to see what you seek for ${starIco}`);
     container.addTextDisplayComponents(textPrefix);
 
     if (message.content.match(mention)) {
@@ -19,7 +19,7 @@ module.exports = {
         return await message.reply({
           flags: MessageFlags.IsComponentsV2,
           components: [container],
-        }).catch(() => {});
+        }).catch(() => { });
       }
     }
     const escapeRegex = (str) => str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
@@ -34,13 +34,13 @@ module.exports = {
     // Auto Permission Return
     if (!message.guild.members.me.permissionsIn(message.channel).has(PermissionsBitField.Flags.SendMessages))
       return await message.author.send({
-          content: `I don't have \`SEND_MESSAGES\` permission in <#${message.channelId}> to execute this **\`${command.name}\`** command ${starIco}`, 
-      }).catch(() => {});
+        content: `I don't have \`SEND_MESSAGES\` permission in <#${message.channelId}> to execute this **\`${command.name}\`** command ${starIco}`,
+      }).catch(() => { });
     if (!message.guild.members.me.permissionsIn(message.channel).has(PermissionsBitField.Flags.ViewChannel)) return;
     if (!message.guild.members.me.permissionsIn(message.channel).has(PermissionsBitField.Flags.EmbedLinks))
       return await message.reply({
-          content: `I don't have \`EMBED_LINKS\` permission to execute this **\`${command.name}\`** command ${starIco}`,
-      }).catch(() => {});
+        content: `I don't have \`EMBED_LINKS\` permission to execute this **\`${command.name}\`** command ${starIco}`,
+      }).catch(() => { });
 
     // Permission for handler
     if (command.permissions) {
@@ -83,7 +83,7 @@ module.exports = {
 
     const cooldown = client.Cooldown.get(command.name);
     let cooldownAmount = command.cooldown && command.cooldown > 0 ? command.cooldown * 1000 : 3000;
-    if ( cooldown.has(message.author.id) && !(client.owners?.includes(message.author.id))) {
+    if (cooldown.has(message.author.id) && !(client.owners?.includes(message.author.id))) {
       let expiretime = cooldown.get(message.author.id);
       let timeleft = cooldownAmount - (Date.now() - expiretime);
 
@@ -110,13 +110,13 @@ module.exports = {
         .setButtonAccessory(button => button
           .setStyle(ButtonStyle.Link)
           .setLabel("Devs Contact")
-          .setURL("https://discord.com/invite/Sbp2nt8QHe")
+          .setURL("https://discord.com/invite/MktSB4Kxgz")
         );
       container.addSectionComponents(section);
       await message.reply({
         flags: MessageFlags.IsComponentsV2,
         components: [container],
-      }).catch(() => {});
+      }).catch(() => { });
       console.error(error);
     }
   },
