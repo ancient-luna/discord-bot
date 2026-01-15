@@ -1,4 +1,4 @@
-const { EmbedBuilder } = require("discord.js");
+const { ContainerBuilder, TextDisplayBuilder, MessageFlags } = require("discord.js");
 
 module.exports = {
     name: "dfbehemoth",
@@ -12,24 +12,22 @@ module.exports = {
     execute: async (client, interaction) => {
         const role = interaction.guild.roles.cache.get(client.config.dfBehemothRole);
         if (!role) return;
-
+        const container = new ContainerBuilder()
         if (interaction.member.roles.cache.has(role.id)) {
             await interaction.member.roles.remove(role);
-            const embed = new EmbedBuilder()
-                .setDescription(`<:srv_deny:1334881089205829674> <@&${role.id}> role **removed** <:al_levatio:1376685304005525585>`)
-                .setColor('Red');
+            const text = new TextDisplayBuilder().setContent(`<:srv_denied:1334885383636521050> <@&${role.id}> role **removed** <:al_levatio:1376685304005525585>`)
+            container.addTextDisplayComponents(text)
             await interaction.reply({
-                embeds: [embed],
-                ephemeral: true,
+                flags: [MessageFlags.IsComponentsV2, MessageFlags.Ephemeral],
+                components: [container],
             });
         } else {
             await interaction.member.roles.add(role);
-            const embed = new EmbedBuilder()
-                .setDescription(`<:srv_accept:1334881070449164378> <@&${role.id}> role **given** <:al_levatio:1376685304005525585>`)
-                .setColor('Green');
+            const text = new TextDisplayBuilder().setContent(`<:srv_accepted:1334885365676507188> <@&${role.id}> role **given** <:al_levatio:1376685304005525585>`)
+            container.addTextDisplayComponents(text)
             await interaction.reply({
-                embeds: [embed],
-                ephemeral: true,
+                flags: [MessageFlags.IsComponentsV2, MessageFlags.Ephemeral],
+                components: [container],
             });
         }
     },
