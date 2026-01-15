@@ -35,8 +35,8 @@ module.exports = new Object({
     const canvas = createCanvas(500, 800);
     const ctx = canvas.getContext("2d");
 
-    registerFont('src/assets/usercard/PearlAbyss.ttf', { family: 'PearlAbyss' });
-    registerFont('src/assets/usercard/HelveticaBold.ttf', { family: 'HelveticaBold' });
+    registerFont('src/assets/fonts/PaybAck.ttf', { family: 'PaybAck' });
+    registerFont('src/assets/fonts/HelveticaBold.ttf', { family: 'HelveticaBold' });
 
     function roundRect(ctx, x, y, width, height, radius, fill, stroke) {
       if (typeof stroke === 'undefined') {
@@ -90,11 +90,17 @@ module.exports = new Object({
         let endX = 480;
         let padding = 15;
 
-        let displayName = member.displayName.toUpperCase();
+        function stripSpecialChars(text) {
+          return text.replace(/[\u{1F600}-\u{1F64F}\u{1F300}-\u{1F5FF}\u{1F680}-\u{1F6FF}\u{1F700}-\u{1F77F}\u{1F780}-\u{1F7FF}\u{1F800}-\u{1F8FF}\u{1F900}-\u{1F9FF}\u{1FA00}-\u{1FA6F}\u{1FA70}-\u{1FAFF}\u{2600}-\u{26FF}\u{2700}-\u{27BF}\u{FE00}-\u{FE0F}\u{1F1E0}-\u{1F1FF}]/gu, '')
+            .replace(/[^\w\s.,!?'-]/g, '')
+            .trim();
+        }
+
+        let displayName = stripSpecialChars(member.displayName).toUpperCase();
         let nameFits = false;
 
         while (!nameFits && nameSize > 10) {
-          ctx.font = `${nameSize}px "PearlAbyss"`;
+          ctx.font = `${nameSize}px "PaybAck"`;
           let nameWidth = ctx.measureText(displayName).width;
           if (nameWidth <= 500 - 2 * padding) {
             nameFits = true;
@@ -105,7 +111,7 @@ module.exports = new Object({
 
         ctx.textAlign = "center";
         ctx.fillStyle = "#00cdff";
-        ctx.fillText(member.displayName, 250, 87);
+        ctx.fillText(displayName, 250, 87);
 
         const avatar = await loadImage(member.displayAvatarURL({ extension: "png", dynamic: true, size: 512 }));
         let avatarX = 310;
