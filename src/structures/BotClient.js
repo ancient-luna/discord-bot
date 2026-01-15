@@ -9,7 +9,6 @@ const {
   ButtonBuilder,
 } = require("discord.js");
 const Utils = require("../utils/Utils");
-const { DiscordTogether } = require("discord-together");
 const sqlite3 = require('sqlite3').verbose();
 const path = require('path');
 const fs = require('fs');
@@ -163,7 +162,6 @@ class BotClient extends Client {
     this.Aliases = new Collection();
     this.console = require("../utils/Console");
     this.util = new Utils(this);
-    this.discordTogether = new DiscordTogether(this);
     this.db = new SimpleDB();
     if (!this.token) this.token = process.env.TOKEN;
     
