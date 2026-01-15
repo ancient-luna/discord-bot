@@ -1,4 +1,4 @@
-const { ActionRowBuilder, ButtonBuilder, ButtonStyle, ContainerBuilder, SeparatorBuilder, SeparatorSpacingSize, MediaGalleryBuilder, MessageFlags } = require("discord.js");
+const { ActionRowBuilder, ButtonBuilder, ButtonStyle, ContainerBuilder, SeparatorBuilder, SeparatorSpacingSize, MediaGalleryBuilder, MessageFlags, TextDisplayBuilder } = require("discord.js");
 
 let isProcessing = false;
 
@@ -18,7 +18,7 @@ module.exports = {
                     url: 'https://i.imgur.com/8TdP6Kl.gif'
                 }
             }]);
-
+        const tips = new TextDisplayBuilder().setContent('-# <:al_levatio:1376685304005525585> Click on button to get the notifications')
         const button = new ActionRowBuilder().addComponents(
             new ButtonBuilder()
                 .setCustomId('btn-dfbehemoth')
@@ -42,6 +42,7 @@ module.exports = {
                 .setStyle(ButtonStyle.Danger)
         );
 
+        container.addTextDisplayComponents(tips);
         container.addMediaGalleryComponents(banner);
         container.addSeparatorComponents(separator);
         container.addActionRowComponents(button);
