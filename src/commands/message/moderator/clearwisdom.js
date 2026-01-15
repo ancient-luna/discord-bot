@@ -1,4 +1,3 @@
-const { EmbedBuilder } = require("discord.js");
 module.exports = new Object({
   name: "clearwisdom",
   description: "deleting some messages",
@@ -15,14 +14,12 @@ module.exports = new Object({
     dev: false,
   },
   player: { voice: false, active: false, dj: false, },
-  
+
   async execute(client, message, args) {
     if (args.length !== 1) return message.channel.send('Wrong usage. `!clearwisdom [1-100]`');
-
     const numberOfMessages = args[0];
     if (numberOfMessages > 100 || numberOfMessages < 0)
       return message.channel.send('Invalid number of messages. `!clearwisdom [1-100]`');
-
     await message.channel.bulkDelete(numberOfMessages).catch((e) => { });
   }
 });

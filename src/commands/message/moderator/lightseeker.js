@@ -15,10 +15,10 @@ module.exports = new Object({
         dev: false,
     },
     player: { voice: false, active: false, dj: false, },
-    
+
     async execute(client, message, args) {
         if (!message.member.roles.cache.has(client.config.lunariaRole)) {
-            return message.reply(`**No, you can't**. only the **LUNARIA** able to command me for this.`);
+            return message.reply(`**No, you can't**,\n-# Only the **LUNARIA** able to command me for this`);
         }
         let target = message.mentions.members.first();
         if (!target) return message.reply('please `mention a user`');
