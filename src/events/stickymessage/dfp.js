@@ -44,29 +44,20 @@ module.exports = {
         container.addSeparatorComponents(separator);
         container.addActionRowComponents(button);
 
-        // Manage Sticky Message
-        const stickyKey = `sticky_${alertChannelId}`;
-        const lastStickyId = await client.db.get(stickyKey);
-
-        if (lastStickyId) {
-            try {
-                const lastMessage = await message.channel.messages.fetch(lastStickyId).catch(() => null);
-                if (lastMessage) {
-                    await lastMessage.delete().catch(() => { });
-                }
-            } catch (error) {
-                // Determine if error needs logging
-            }
-        }
-
         try {
-            const sentMessage = await message.channel.send({
+            const recentMessages = await message.channel.messages.fetch({ limit: 20 });
+            const lastSticky = recentMessages.find(msg => msg.author.id === client.user.id);
+
+            if (lastSticky) {
+                await lastSticky.delete().catch(() => { });
+            }
+
+            await message.channel.send({
                 flags: MessageFlags.IsComponentsV2,
                 components: [container]
             });
-            await client.db.set(stickyKey, sentMessage.id);
         } catch (error) {
-            console.error("Failed to send sticky message:", error);
+            console.error("Failed to handle sticky message:", error);
         }
     }
 };
