@@ -1,3 +1,28 @@
-node_modules
+# Dependencies
+node_modules/
+
+# Environment variables
 .env
-package-lock.json
+.env.local
+.env.*.local
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+lerna-debug.log*
+
+# IDE/Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*.sublime-workspace
+*.sublime-project
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Cache
+.eslintcache
