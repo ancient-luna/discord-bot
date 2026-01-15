@@ -2,17 +2,20 @@ module.exports = {
     lunaServer: "1457941632052756634",
     lunaServerAlliance: "1367757032081330228",
 
-    // AncientLuna: Channels
-    gatewayChannel: "1460613603945353374",
-    luminanceChannel: "1457961136090517597",
-    guidelineChannel: "1460301156898308190",
-
     // AncientLuna: Roles
     ancestorRole: "1460242587645640860",
     lunariaRole: "1457976161199063103",
     lunaTagRole: "1459924462744113243",
     lunaBoosterRole: "1457985341385347185",
     lunaMemberRole: "1457975737259790418",
+
+    // AncientLuna: Channels
+    gatewayChannel: "1460613603945353374",
+    luminanceChannel: "1457961136090517597",
+    guidelineChannel: "1460301156898308190",
+
+    // AncientLuna: StickyNote Channels
+    dfAlertChannel: "1459524927777538109",
 
     // DeadFrontier
     dfBanditRole: "1459525384809877607",
