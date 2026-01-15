@@ -10,7 +10,7 @@ module.exports = {
         if (message.channel.id !== alertChannelId) return;
 
         const container = new ContainerBuilder();
-        const separator = new SeparatorBuilder({ spacing: SeparatorSpacingSize.Large });
+        const separator = new SeparatorBuilder({ spacing: SeparatorSpacingSize.Small });
         const banner = new MediaGalleryBuilder()
             .addItems([{
                 type: 'image',
