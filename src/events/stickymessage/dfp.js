@@ -1,5 +1,7 @@
 const { ActionRowBuilder, ButtonBuilder, ButtonStyle, ContainerBuilder, SeparatorBuilder, SeparatorSpacingSize, MediaGalleryBuilder, MessageFlags } = require("discord.js");
 
+let isProcessing = false;
+
 module.exports = {
     name: "messageCreate",
     async execute(client, message) {
@@ -44,20 +46,27 @@ module.exports = {
         container.addSeparatorComponents(separator);
         container.addActionRowComponents(button);
 
+        if (isProcessing) return;
+        isProcessing = true;
+
         try {
             const recentMessages = await message.channel.messages.fetch({ limit: 20 });
-            const lastSticky = recentMessages.find(msg => msg.author.id === client.user.id);
-
-            if (lastSticky) {
-                await lastSticky.delete().catch(() => { });
+            const botMessages = recentMessages.filter(msg => msg.author.id === client.user.id);
+            if (botMessages.size > 0) {
+                await message.channel.bulkDelete(botMessages).catch(async () => {
+                    for (const msg of botMessages.values()) {
+                        await msg.delete().catch(() => { });
+                    }
+                });
             }
-
             await message.channel.send({
                 flags: MessageFlags.IsComponentsV2,
                 components: [container]
             });
         } catch (error) {
             console.error("Failed to handle sticky message:", error);
+        } finally {
+            isProcessing = false;
         }
     }
 };
