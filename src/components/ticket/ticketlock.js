@@ -1,5 +1,4 @@
-const { EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle, PermissionsBitField, ChannelType, MessageFlags } = require("discord.js");
-const { stripIndent } = require("common-tags");
+const { ActionRowBuilder, ButtonBuilder, ButtonStyle, PermissionsBitField, MessageFlags } = require("discord.js");
 
 module.exports = {
   name: "ticketlock",
@@ -9,11 +8,11 @@ module.exports = {
     user: ['ManageMessages'],
     dev: false,
   },
-  
+
   execute: async (client, interaction) => {
-    if (!interaction.member.permissions.has(PermissionsBitField.Flags.ManageMessages)) return await interaction.reply({ content: `Only the **Ancestor** and **Elders** can lock this ticket`, flags: MessageFlags.Ephemeral })
-    
-    const lunariaID = '839170815932891197'
+    if (!interaction.member.permissions.has(PermissionsBitField.Flags.ManageMessages)) return await interaction.reply({ content: `Only the **Ancestor** and **Lunarians** can lock this ticket`, flags: MessageFlags.Ephemeral })
+
+    const lunariaID = client.config.lunariaRole;
     const ticketAuthorID = interaction.channel.topic;
 
     const ticketAuthorFlags = new PermissionsBitField([

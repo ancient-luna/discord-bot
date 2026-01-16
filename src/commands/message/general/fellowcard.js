@@ -1,4 +1,4 @@
-const { EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle, AttachmentBuilder, ContainerBuilder, TextDisplayBuilder, SeparatorBuilder, SeparatorSpacingSize, MediaGalleryBuilder, SectionBuilder, MessageFlags, ThumbnailBuilder } = require("discord.js");
+const { ButtonStyle, AttachmentBuilder, ContainerBuilder, TextDisplayBuilder, SeparatorBuilder, SeparatorSpacingSize, MediaGalleryBuilder, SectionBuilder, MessageFlags, ThumbnailBuilder } = require("discord.js");
 const fs = require("fs");
 const { createCanvas, loadImage, registerFont } = require("canvas");
 

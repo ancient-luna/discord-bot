@@ -1,4 +1,4 @@
-const { AttachmentBuilder, MessageFlags } = require("discord.js");
+const { MessageFlags } = require("discord.js");
 const { createCanvas, loadImage, registerFont } = require("canvas");
 const fs = require("fs").promises;
 

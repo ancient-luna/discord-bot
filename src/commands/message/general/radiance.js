@@ -155,7 +155,7 @@ module.exports = {
         await loadingTxt.edit({
             flags: MessageFlags.IsComponentsV2,
             components: [container],
-            files: [radiance, audio],
+            files: [radiance],
             allowedMentions: { parse: [] },
         });
     }

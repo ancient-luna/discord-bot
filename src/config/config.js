@@ -9,10 +9,14 @@ module.exports = {
     lunaBoosterRole: "1457985341385347185",
     lunaMemberRole: "1457975737259790418",
 
+    // AncientLuna: Category
+    ticketCategory: "1461556161147830312",
+
     // AncientLuna: Channels
     gatewayChannel: "1460613603945353374",
     luminanceChannel: "1457961136090517597",
     guidelineChannel: "1460301156898308190",
+    ticketChannel: "1461549743854321825",
 
     // AncientLuna: StickyNote Channels
     dfAlertChannel: "1459524927777538109",

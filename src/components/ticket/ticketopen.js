@@ -1,5 +1,4 @@
-const { EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle, PermissionsBitField, ChannelType, MessageFlags } = require("discord.js");
-const { stripIndent } = require("common-tags");
+const { ActionRowBuilder, ButtonBuilder, ButtonStyle, PermissionsBitField, ChannelType, MessageFlags, ContainerBuilder, TextDisplayBuilder } = require("discord.js");
 
 module.exports = {
   name: "ticketopen",
@@ -9,10 +8,10 @@ module.exports = {
     user: [],
     dev: false,
   },
-  
+
   execute: async (client, interaction) => {
-    const ticketCategory = '1010531564586811453'
-    const lunariaID = '839170815932891197'
+    const ticketCategory = client.config.ticketCategory;
+    const lunariaID = client.config.lunariaRole;
     const lunariaFlags = new PermissionsBitField([
       PermissionsBitField.Flags.ViewChannel,
       PermissionsBitField.Flags.SendMessages,
@@ -46,29 +45,27 @@ module.exports = {
       ],
     });
 
-    const mEmbed = new EmbedBuilder()
-      .setAuthor({ name: `✦ ${interaction.user.username}'s ticket ✦`, iconURL: interaction.user.displayAvatarURL({ dynamic: true }) })
-      .setDescription(`**Thank you for your application.**\nThe Ancestor and the Elders will be here as soon as possible! If they are still alive out there. Please take your time while waiting`)
-      .setFooter({ text: `note: Don't hesitate to mention them if need now ` })
-      .setColor(client.config.embedColorTrans)
+    const container = new ContainerBuilder()
+    const text = new TextDisplayBuilder().setContent(`# ${interaction.user.displayName}'s 𝖙𝖎𝖈𝖐𝖊𝖙 \nPlease write down your appeal and take your time while you wait <:ico_write:1334864388942856212>\n-# The Ancestor and the Lunarians will arrive as soon as possible, if they still live beyond the veil.`)
+    const buttons = new ActionRowBuilder().addComponents(
+      new ButtonBuilder()
+        .setCustomId("btn-ticketclose")
+        .setLabel("Save and Close")
+        .setStyle(ButtonStyle.Danger),
+      new ButtonBuilder()
+        .setCustomId("btn-ticketlock")
+        .setLabel("Lock")
+        .setStyle(ButtonStyle.Primary),
+      new ButtonBuilder()
+        .setCustomId("btn-ticketmention")
+        .setLabel("Mention Now")
+        .setStyle(ButtonStyle.Secondary)
+    )
 
-    const btnTicket = new ActionRowBuilder()
-      .addComponents(
-        new ButtonBuilder()
-          .setCustomId("btn-ticketclose")
-          .setLabel("Save and Close")
-          .setStyle(ButtonStyle.Danger),
-        new ButtonBuilder()
-          .setCustomId("btn-ticketlock")
-          .setLabel("Lock")
-          .setStyle(ButtonStyle.Primary),
-        new ButtonBuilder()
-          .setCustomId("btn-ticketmention")
-          .setLabel("Mention Now")
-          .setStyle(ButtonStyle.Secondary)
-      );
+    container.addTextDisplayComponents(text)
+    container.addActionRowComponents(buttons)
 
-    await openTicket.send({ embeds: [mEmbed], components: [btnTicket] })
+    await openTicket.send({ flags: MessageFlags.IsComponentsV2, components: [container] })
 
     await interaction.reply({
       content: `Your ticket opened in ${openTicket}`,
