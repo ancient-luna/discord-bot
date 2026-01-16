@@ -74,7 +74,7 @@ module.exports = {
       const attachment = new AttachmentBuilder(pdfBuffer, { name: `${interaction.channel.name}-transcript.pdf` });
 
       const container = new ContainerBuilder()
-      const text = new TextDisplayBuilder().setContent(`-# <:srv_attachment:1334881013943504980> **#${channelName}** (c) ${interaction.user.displayName}`)
+      const text = new TextDisplayBuilder().setContent(`-# <:srv_attachment:1334881013943504980> **#${channelName}** closed by ${interaction.user.displayName}`)
       const file = new FileBuilder().setURL(`attachment://${interaction.channel.name}-transcript.pdf`)
 
       container.addTextDisplayComponents(text)
