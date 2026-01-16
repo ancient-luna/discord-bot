@@ -81,7 +81,7 @@ module.exports = {
       });
     } catch (error) {
       console.error(error);
-      await interaction.editReply({ content: "Something went wrong while generating the transcript." });
+      await interaction.editReply({ content: `Something went wrong while generating the transcript.\n\`\`\`${error}\`\`\`` });
     }
 
     setTimeout(() => {

@@ -43,8 +43,7 @@ module.exports = {
     );
 
     const container = new ContainerBuilder()
-    // Extract existing text from the first component of the first action row/container
-    const existingText = interaction.message.components[0]?.components[0]?.text || "Ticket Controls";
+    const existingText = interaction.message.components[0]?.components[0]?.content || interaction.message.components[0]?.components[0]?.data?.content || "Ticket Controls";
     const text = new TextDisplayBuilder().setContent(existingText)
 
     if (isLocked) {
