@@ -21,7 +21,15 @@ RUN apk add --no-cache \
     font-noto-emoji \
     ttf-dejavu \
     ttf-freefont \
-    fontconfig
+    fontconfig \
+    chromium \
+    nss \
+    freetype \
+    harfbuzz \
+    ca-certificates
+
+ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true \
+    PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium-browser
 
 WORKDIR /app
 
