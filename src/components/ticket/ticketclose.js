@@ -21,39 +21,68 @@ module.exports = {
     const channel = interaction.channel;
     const channelName = channel.name;
 
-    const htmlTranscript = await discordTranscripts.createTranscript(channel, {
-      footerText: `Exported {number} message{s}.`,
-      poweredBy: false,
-      returnType: 'string'
-    });
+    await interaction.deferReply({ flags: MessageFlags.Ephemeral });
 
-    const browser = await puppeteer.launch({
-      headless: true,
-      args: ['--no-sandbox', '--disable-setuid-sandbox']
-    });
-    const page = await browser.newPage();
-    await page.setContent(htmlTranscript, { waitUntil: 'networkidle0' });
-    const pdfBuffer = await page.pdf({
-      format: 'A4',
-      printBackground: true,
-      margin: { top: '20px', bottom: '20px', left: '20px', right: '20px' }
-    });
-    await browser.close();
+    try {
+      const htmlTranscript = await discordTranscripts.createTranscript(channel, {
+        footerText: `Exported {number} message{s}.`,
+        poweredBy: false,
+        returnType: 'string'
+      });
 
-    const attachment = new AttachmentBuilder(pdfBuffer, { name: `${interaction.channel.name}-transcript.pdf` });
+      const browser = await puppeteer.launch({
+        headless: true,
+        args: ['--no-sandbox', '--disable-setuid-sandbox']
+      });
+      const page = await browser.newPage();
 
-    const container = new ContainerBuilder()
-    const text = new TextDisplayBuilder().setContent(`-# <:srv_attachment:1334881013943504980> Transcripted chat from **#${channelName}**`)
-    const file = new FileBuilder().setURL(`attachment://${interaction.channel.name}-transcript.pdf`)
+      await page.setViewport({ width: 1280, height: 800 });
+      await page.setContent(htmlTranscript, { waitUntil: 'networkidle0' });
 
-    container.addTextDisplayComponents(text)
-    container.addFileComponents(file)
+      const screenshot = await page.screenshot({ fullPage: true });
 
-    interaction.guild.channels.cache.get(client.config.ticketChannel).send({ flags: MessageFlags.IsComponentsV2, components: [container], files: [attachment] })
-    interaction.reply({
-      content: `Closing ticket in 5 seconds <a:u_load:1334900265953923085>`,
-      flags: MessageFlags.Ephemeral
-    });
+      const dimensions = await page.evaluate(() => {
+        return {
+          width: document.documentElement.scrollWidth,
+          height: document.documentElement.scrollHeight
+        };
+      });
+
+      const screenshotBase64 = screenshot.toString('base64');
+      await page.setContent(`
+        <body style="margin: 0; padding: 0;">
+            <img src="data:image/png;base64,${screenshotBase64}" style="width: 100%; display: block;">
+        </body>
+    `);
+
+      const pdfResult = await page.pdf({
+        width: `${dimensions.width}px`,
+        height: `${dimensions.height}px`,
+        printBackground: true,
+        pageRanges: '1'
+      });
+
+      await browser.close();
+
+      const pdfBuffer = Buffer.from(pdfResult);
+      const attachment = new AttachmentBuilder(pdfBuffer, { name: `${interaction.channel.name}-transcript.pdf` });
+
+      const container = new ContainerBuilder()
+      const text = new TextDisplayBuilder().setContent(`-# <:srv_attachment:1334881013943504980> Transcripted chat from **#${channelName}**`)
+      const file = new FileBuilder().setURL(`attachment://${interaction.channel.name}-transcript.pdf`)
+
+      container.addTextDisplayComponents(text)
+      container.addFileComponents(file)
+
+      await interaction.guild.channels.cache.get(client.config.ticketChannel).send({ flags: MessageFlags.IsComponentsV2, components: [container], files: [attachment] })
+
+      await interaction.editReply({
+        content: `Closing ticket in 5 seconds <a:u_load:1334900265953923085>`,
+      });
+    } catch (error) {
+      console.error(error);
+      await interaction.editReply({ content: "Something went wrong while generating the transcript." });
+    }
 
     setTimeout(() => {
       interaction.channel.delete().catch((e) => { });
