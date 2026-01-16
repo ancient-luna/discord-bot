@@ -1,5 +1,6 @@
-const { PermissionsBitField, MessageFlags, ContainerBuilder, TextDisplayBuilder, FileBuilder } = require("discord.js");
+const { PermissionsBitField, MessageFlags, ContainerBuilder, TextDisplayBuilder, FileBuilder, AttachmentBuilder } = require("discord.js");
 const discordTranscripts = require('discord-html-transcripts');
+const puppeteer = require('puppeteer');
 
 module.exports = {
   name: "ticketclose",
@@ -19,14 +20,31 @@ module.exports = {
 
     const channel = interaction.channel;
     const channelName = channel.name;
-    const attachment = await discordTranscripts.createTranscript(channel, {
-      filename: `${interaction.channel.name}-transcript.html`,
+
+    const htmlTranscript = await discordTranscripts.createTranscript(channel, {
       footerText: `Exported {number} message{s}.`,
       poweredBy: false,
+      returnType: 'string'
     });
+
+    const browser = await puppeteer.launch({
+      headless: true,
+      args: ['--no-sandbox', '--disable-setuid-sandbox']
+    });
+    const page = await browser.newPage();
+    await page.setContent(htmlTranscript, { waitUntil: 'networkidle0' });
+    const pdfBuffer = await page.pdf({
+      format: 'A4',
+      printBackground: true,
+      margin: { top: '20px', bottom: '20px', left: '20px', right: '20px' }
+    });
+    await browser.close();
+
+    const attachment = new AttachmentBuilder(pdfBuffer, { name: `${interaction.channel.name}-transcript.pdf` });
+
     const container = new ContainerBuilder()
     const text = new TextDisplayBuilder().setContent(`-# <:srv_attachment:1334881013943504980> Transcripted chat from **#${channelName}**`)
-    const file = new FileBuilder().setURL(`attachment://${interaction.channel.name}-transcript.html`)
+    const file = new FileBuilder().setURL(`attachment://${interaction.channel.name}-transcript.pdf`)
 
     container.addTextDisplayComponents(text)
     container.addFileComponents(file)
