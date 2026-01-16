@@ -1,4 +1,4 @@
-const { presenceHandler, reminderHandler, syncTagRolesHandler, radianceScheduler } = require("../handlers");
+const { presenceHandler, reminderHandler, syncTagRolesHandler, radianceScheduler, countingSync } = require("../handlers");
 require("dotenv").config();
 const express = require("express");
 const app = express();
@@ -24,5 +24,6 @@ module.exports = new Object({
     radianceScheduler(client);
 
     await syncTagRolesHandler.syncAllTagRoles(client);
+    await countingSync(client);
   },
 });

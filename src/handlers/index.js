@@ -4,4 +4,5 @@ module.exports = {
 
   syncTagRolesHandler: require("./syncTagRoles"),
   radianceScheduler: require("./radianceScheduler"),
+  countingSync: require("./countingSync"),
 };

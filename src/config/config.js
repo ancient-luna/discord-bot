@@ -8,6 +8,7 @@ module.exports = {
     lunaTagRole: "1459924462744113243",
     lunaBoosterRole: "1457985341385347185",
     lunaMemberRole: "1457975737259790418",
+    topCounter: "1461706904953688279",
 
     // AncientLuna: Category
     ticketCategory: "1461556161147830312",
@@ -17,6 +18,7 @@ module.exports = {
     luminanceChannel: "1457961136090517597",
     guidelineChannel: "1460301156898308190",
     ticketChannel: "1461549743854321825",
+    countingChannel: "1461705653218181312",
 
     // AncientLuna: StickyNote Channels
     dfAlertChannel: "1459524927777538109",
