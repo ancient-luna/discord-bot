@@ -1,4 +1,4 @@
-const { ActionRowBuilder, ButtonBuilder, ButtonStyle, PermissionsBitField, MessageFlags } = require("discord.js");
+const { ActionRowBuilder, ButtonBuilder, ButtonStyle, PermissionsBitField, MessageFlags, ContainerBuilder, TextDisplayBuilder } = require("discord.js");
 
 module.exports = {
   name: "ticketlock",
@@ -42,6 +42,11 @@ module.exports = {
       (overwrite) => overwrite.id === ticketAuthorID && !overwrite.allow.has(PermissionsBitField.Flags.ViewChannel)
     );
 
+    const container = new ContainerBuilder()
+    // Extract existing text from the first component of the first action row/container
+    const existingText = interaction.message.components[0]?.components[0]?.text || "Ticket Controls";
+    const text = new TextDisplayBuilder().setContent(existingText)
+
     if (isLocked) {
       await interaction.channel.edit({
         permissionOverwrites: [
@@ -60,24 +65,28 @@ module.exports = {
         ],
       });
 
+      const buttons = new ActionRowBuilder()
+        .addComponents(
+          new ButtonBuilder()
+            .setCustomId("btn-ticketclose")
+            .setLabel("Save and Close")
+            .setStyle(ButtonStyle.Danger),
+          new ButtonBuilder()
+            .setCustomId("btn-ticketlock")
+            .setLabel("Lock")
+            .setStyle(ButtonStyle.Secondary),
+          new ButtonBuilder()
+            .setCustomId("btn-ticketmention")
+            .setLabel("Mention Now")
+            .setStyle(ButtonStyle.Secondary)
+        )
+
+      container.addTextDisplayComponents(text)
+      container.addActionRowComponents(buttons)
+
       await interaction.update({
-        components: [
-          new ActionRowBuilder()
-            .addComponents(
-              new ButtonBuilder()
-                .setCustomId("btn-ticketclose")
-                .setLabel("Save and Close")
-                .setStyle(ButtonStyle.Danger),
-              new ButtonBuilder()
-                .setCustomId("btn-ticketlock")
-                .setLabel("Lock")
-                .setStyle(ButtonStyle.Primary),
-              new ButtonBuilder()
-                .setCustomId("btn-ticketmention")
-                .setLabel("Mention Now")
-                .setStyle(ButtonStyle.Secondary)
-            ),
-        ],
+        flags: MessageFlags.IsComponentsV2,
+        components: [container],
       });
 
       await interaction.followUp({
@@ -103,28 +112,28 @@ module.exports = {
         ],
       });
 
+      const buttons = new ActionRowBuilder()
+        .addComponents(
+          new ButtonBuilder()
+            .setCustomId("btn-ticketclose")
+            .setLabel("Save and Close")
+            .setStyle(ButtonStyle.Danger),
+          new ButtonBuilder()
+            .setCustomId("btn-ticketlock")
+            .setLabel("Unlock")
+            .setStyle(ButtonStyle.Secondary),
+          new ButtonBuilder()
+            .setCustomId("btn-ticketmention")
+            .setLabel("Mention Now")
+            .setStyle(ButtonStyle.Secondary)
+        )
+
+      container.addTextDisplayComponents(text)
+      container.addActionRowComponents(buttons)
+
       await interaction.update({
-        components: [
-          new ActionRowBuilder()
-            .addComponents(
-              new ButtonBuilder()
-                .setCustomId("btn-ticketclose")
-                .setLabel("Save and Close")
-                .setStyle(ButtonStyle.Danger)
-            )
-            .addComponents(
-              new ButtonBuilder()
-                .setCustomId("btn-ticketlock")
-                .setLabel("Unlock")
-                .setStyle(ButtonStyle.Primary)
-            )
-            .addComponents(
-              new ButtonBuilder()
-                .setCustomId("btn-ticketmention")
-                .setLabel("Mention Now")
-                .setStyle(ButtonStyle.Secondary)
-            ),
-        ],
+        flags: MessageFlags.IsComponentsV2,
+        components: [container],
       });
 
       await interaction.followUp({

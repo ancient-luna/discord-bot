@@ -55,7 +55,7 @@ module.exports = {
       new ButtonBuilder()
         .setCustomId("btn-ticketlock")
         .setLabel("Lock")
-        .setStyle(ButtonStyle.Primary),
+        .setStyle(ButtonStyle.Secondary),
       new ButtonBuilder()
         .setCustomId("btn-ticketmention")
         .setLabel("Mention Now")
