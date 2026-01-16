@@ -4,7 +4,7 @@ module.exports = new Object({
   name: "messageCreate",
 
   async execute(client, message) {
-    const guildsID = '447069790150852609';
+    const guildsID = client.config.lunaServer;
 
     if (message.author.bot || message.guild.id !== guildsID || message.channel.type === ChannelType.DM) return;
 
