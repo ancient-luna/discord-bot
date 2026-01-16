@@ -10,6 +10,8 @@ module.exports = {
   },
 
   execute: async (client, interaction) => {
+    await interaction.deferReply({ flags: MessageFlags.Ephemeral });
+
     const ticketCategory = client.config.ticketCategory;
     const lunariaID = client.config.lunariaRole;
     const lunariaFlags = new PermissionsBitField([
@@ -68,9 +70,8 @@ module.exports = {
 
     await openTicket.send({ flags: MessageFlags.IsComponentsV2, components: [container] })
 
-    await interaction.reply({
-      content: `Your ticket opened in ${openTicket}`,
-      flags: MessageFlags.Ephemeral
+    await interaction.editReply({
+      content: `Your ticket opened in ${openTicket}`
     });
   },
 };
