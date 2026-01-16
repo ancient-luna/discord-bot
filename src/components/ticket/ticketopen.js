@@ -45,8 +45,9 @@ module.exports = {
       ],
     });
 
+    const avatarURL = interaction.user.displayAvatarURL({ dynamic: true, size: 4096 })
     const container = new ContainerBuilder()
-    const text = new TextDisplayBuilder().setContent(`# ${interaction.user.displayName}'s 𝖙𝖎𝖈𝖐𝖊𝖙 \nPlease write down your appeal and take your time while you wait <:ico_write:1334864388942856212>\n-# The Ancestor and the Lunarians will arrive as soon as possible, if they still live beyond the veil.`)
+    const text = new TextDisplayBuilder().setContent(`# [${interaction.user.displayName}'s 𝖜𝖎𝖘𝖍𝖎𝖓𝖌 𝖙𝖎𝖈𝖐𝖊𝖙](${avatarURL})\nPlease write down your appeal and take your time while you wait\n-# The Ancestor and the Lunarians will arrive as soon as possible, if they still live beyond the veil.`)
     const buttons = new ActionRowBuilder().addComponents(
       new ButtonBuilder()
         .setCustomId("btn-ticketclose")
