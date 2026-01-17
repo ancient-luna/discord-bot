@@ -194,7 +194,7 @@ async function sendRadianceMessage(client) {
         const textContent = new TextDisplayBuilder().setContent(`-# By the first breath of moonlight, a vow was sealed, and a sanctuary took form. Now we gather once more, as what was begun stirs again, rising not by His will alone, but through the quiet luminance you carry`);
         // const textRadiance = new TextDisplayBuilder().setContent(`### <:ico_radiance:1334864373331787827> <@&${client.config.radianceRole}>\n-# *Guided by the Radiance: those who keep our light enduring*`);
         // const textRadianceMentions = new TextDisplayBuilder().setContent(radianceMentions);
-        const textLuminance = new TextDisplayBuilder().setContent(`-# *Honoring the ${luminanceEmoji} our sanctuary's uplifted souls*`);
+        const textLuminance = new TextDisplayBuilder().setContent(`Honoring the ${luminanceEmoji} our sanctuary's uplifted souls:`);
         const textLuminanceMentions = new TextDisplayBuilder().setContent(luminanceMentions);
         const textTimeUpdate = new TextDisplayBuilder().setContent(`-# <:ic_repost:1334863701026541648> *Updates every day at 00:00 (UTC+7)*`);
 
