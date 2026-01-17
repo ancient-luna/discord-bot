@@ -10,7 +10,6 @@ module.exports = {
         if (message.channel.id !== alertChannelId) return;
 
         const container = new ContainerBuilder();
-        const separator = new SeparatorBuilder({ spacing: SeparatorSpacingSize.Small });
         const banner = new MediaGalleryBuilder()
             .addItems([{
                 type: 'image',
@@ -44,7 +43,6 @@ module.exports = {
 
         container.addTextDisplayComponents(tips);
         container.addMediaGalleryComponents(banner);
-        container.addSeparatorComponents(separator);
         container.addActionRowComponents(button);
 
         if (isProcessing) return;
