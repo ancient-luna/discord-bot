@@ -9,47 +9,34 @@ module.exports = async (client) => {
         if (!channel || channel.type !== ChannelType.GuildText) return;
 
         const messages = await channel.messages.fetch({ limit: 100 });
-
-        let lastValidNumber = 0;
-        let lastValidUserId = null;
-        let messagesToDelete = [];
-        let foundValidStart = false;
+        const sortedMessages = [...messages.values()].sort((a, b) => a.createdTimestamp - b.createdTimestamp);
 
         let dbNumber = await client.db.get("counting_last_number") || 0;
         let dbUserId = await client.db.get("counting_last_user_id");
 
-        const sortedMessages = [...messages.values()].sort((a, b) => a.createdTimestamp - b.createdTimestamp);
-
-        for (const msg of sortedMessages) {
+        let latestValidMsg = null;
+        for (let i = sortedMessages.length - 1; i >= 0; i--) {
+            const msg = sortedMessages[i];
             if (msg.author.bot) continue;
 
             const content = msg.content.trim();
-            const number = parseInt(content);
-
-            if (/^\d+$/.test(content) && number === dbNumber + 1) {
-                dbNumber = number;
-                dbUserId = msg.author.id;
-                foundValidStart = true;
-            } else {
-                if (msg.deletable) {
-                    messagesToDelete.push(msg);
-                }
+            if (/^\d+$/.test(content)) {
+                latestValidMsg = msg;
+                break;
             }
         }
 
-        if (messagesToDelete.length > 0) {
-            if (messagesToDelete.length === 1) {
-                await messagesToDelete[0].delete().catch(() => { });
-            } else {
-                await channel.bulkDelete(messagesToDelete).catch(() => {
-                    messagesToDelete.forEach(m => m.delete().catch(() => { }));
-                });
-            }
-            client.console.log(`Cleaned up ${messagesToDelete.length} messy messages in counting channel.`, "info");
-        }
+        if (latestValidMsg) {
+            const latestNumber = parseInt(latestValidMsg.content.trim());
+            if (latestNumber > dbNumber) {
+                dbNumber = latestNumber;
+                dbUserId = latestValidMsg.author.id;
 
-        await client.db.set("counting_last_number", dbNumber);
-        await client.db.set("counting_last_user_id", dbUserId);
+                await client.db.set("counting_last_number", dbNumber);
+                await client.db.set("counting_last_user_id", dbUserId);
+                client.console.log(`Counting system synced to ${dbNumber} from message history.`);
+            }
+        }
 
         const roleId = client.config.topCounter;
         if (roleId && dbUserId) {
