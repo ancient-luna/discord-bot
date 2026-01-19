@@ -4,7 +4,7 @@ module.exports = new Object({
     name: "messageCreate",
 
     async execute(client, message) {
-        if (message.author.bot || message.channel.type === ChannelType.DM) return;
+        if (message.channel.type === ChannelType.DM) return;
         if (message.channel.id !== client.config.countingChannel) return;
 
         const content = message.content.trim();
