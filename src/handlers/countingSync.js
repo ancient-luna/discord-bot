@@ -28,13 +28,16 @@ module.exports = async (client) => {
 
         if (latestValidMsg) {
             const latestNumber = parseInt(latestValidMsg.content.trim());
-            if (latestNumber > dbNumber) {
+            // Ensure dbNumber is treated as int for comparison
+            dbNumber = parseInt(dbNumber) || 0;
+
+            if (latestNumber !== dbNumber || latestValidMsg.author.id !== dbUserId) {
                 dbNumber = latestNumber;
                 dbUserId = latestValidMsg.author.id;
 
                 await client.db.set("counting_last_number", dbNumber);
                 await client.db.set("counting_last_user_id", dbUserId);
-                client.console.log(`Counting system synced to ${dbNumber} from message history.`);
+                client.console.log(`Counting system FORCE synced to ${dbNumber} from message history.`);
             }
         }
 

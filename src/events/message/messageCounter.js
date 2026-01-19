@@ -16,7 +16,7 @@ module.exports = new Object({
 
         const number = parseInt(content);
 
-        let currentNumber = await client.db.get("counting_last_number") || 0;
+        let currentNumber = parseInt(await client.db.get("counting_last_number")) || 0;
         let lastUserId = await client.db.get("counting_last_user_id");
 
         if (number !== currentNumber + 1) {
