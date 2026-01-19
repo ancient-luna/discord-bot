@@ -16,16 +16,24 @@ module.exports = new Object({
 
         const number = parseInt(content);
 
-        let currentNumber = parseInt(await client.db.get("counting_last_number")) || 0;
-        let lastUserId = await client.db.get("counting_last_user_id");
+        const messages = await message.channel.messages.fetch({ limit: 2 });
+        const previousMessage = messages.filter(m => m.id !== message.id).first();
+
+        let currentNumber = 0;
+        let lastUserId = null;
+
+        if (previousMessage) {
+            const prevContent = previousMessage.content.trim();
+            if (/^\d+$/.test(prevContent)) {
+                currentNumber = parseInt(prevContent);
+                lastUserId = previousMessage.author.id;
+            }
+        }
 
         if (number !== currentNumber + 1) {
             if (message.deletable) await message.delete().catch(() => { });
             return;
         }
-
-        await client.db.set("counting_last_number", number);
-        await client.db.set("counting_last_user_id", message.author.id);
 
         const roleId = client.config.topCounter;
         if (!roleId) return;
