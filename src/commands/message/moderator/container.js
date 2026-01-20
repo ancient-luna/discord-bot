@@ -22,6 +22,11 @@ module.exports = new Object({
         // if (!text) return message.reply("You.. **you** need to write something for me,\n-# not even Ancestor can save you from this");
 
         const container = new ContainerBuilder()
+        const media = new MediaGalleryBuilder()
+            .addItems([{
+                type: "image",
+                media: { url: `https://i.imgur.com/fxyTbJl.png` }
+            }])
         const textDisplay = new TextDisplayBuilder().setContent('Questions or concerns about the LUNA+ community? Use Open Ticket for **server-related support only** (roles, access, features, rules, or technical issues). Your message will be seen only by the Lunarias, and handled quietly beneath the moon.')
         const separator = new SeparatorBuilder({ spacing: SeparatorSpacingSize.Large })
         const textFooter = new TextDisplayBuilder().setContent(`-# *The Commission Request option is currently unavailable, as the commission appeal system is still being prepared and will open soon.`)
@@ -37,6 +42,11 @@ module.exports = new Object({
                 .setDisabled(true),
         )
 
+        const medias = new MediaGalleryBuilder()
+            .addItems([{
+                type: "image",
+                media: { url: `https://i.imgur.com/rki3mVk.png` }
+            }])
         const textHeader = new TextDisplayBuilder().setContent('-# A space to discover your identity within the constellation.')
         const section = new SectionBuilder()
             .addTextDisplayComponents(textHeader)
@@ -86,6 +96,6 @@ module.exports = new Object({
             components.unshift(mediaGallery)
         }
 
-        return message.channel.send({ flags: MessageFlags.IsComponentsV2, components: components, allowedMentions: { parse: [] } })
+        return message.channel.send({ flags: MessageFlags.IsComponentsV2, components: [media, components], allowedMentions: { parse: [] } })
     }
 });
