@@ -23,7 +23,7 @@ module.exports = new Object({
 
         const container = new ContainerBuilder()
         const textDisplay = new TextDisplayBuilder().setContent(text)
-        const separator = new SeparatorBuilder({ spacing: SeparatorSpacingSize.Small })
+        const separator = new SeparatorBuilder({ spacing: SeparatorSpacingSize.Large })
         const textFooter = new TextDisplayBuilder().setContent(`-# *The Commission Request option is currently unavailable, as the commission appeal system is still being prepared and will open soon.`)
         const button = new ActionRowBuilder().addComponents(
             new ButtonBuilder()
@@ -38,7 +38,7 @@ module.exports = new Object({
         )
 
         const section = new SectionBuilder()
-            .addTextDisplayComponents(textDisplay)
+            .addTextDisplayComponents('-# A space to discover your identity within the constellation.')
             .setButtonAccessory(button => button
                 .setCustomId('btn-fellowcard')
                 .setStyle(ButtonStyle.Secondary)
@@ -48,6 +48,7 @@ module.exports = new Object({
                     id: '1334889120849330266'
                 })
             )
+        const textDisplays = new TextDisplayBuilder().setContent(text)
         const buttons = new ActionRowBuilder().addComponents(
             new ButtonBuilder()
                 .setCustomId('btn-tagguildpc')
@@ -60,11 +61,13 @@ module.exports = new Object({
         )
 
         container.addTextDisplayComponents(textDisplay)
-        container.addActionRowComponents(separator)
-        container.addActionRowComponents(textFooter)
+        container.addSeparatorComponents(separator)
+        container.addTextDisplayComponents(textFooter)
         container.addActionRowComponents(button)
 
         // container.addSectionComponents(section)
+        // container.addSeparatorComponents(separator)
+        // container.addTextDisplayComponents(textDisplays)
         // container.addActionRowComponents(buttons)
 
         const components = [container]
