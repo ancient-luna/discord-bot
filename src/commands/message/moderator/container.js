@@ -79,15 +79,15 @@ module.exports = new Object({
                 })
         )
 
-        container.addTextDisplayComponents(textDisplay)
-        container.addSeparatorComponents(separator)
-        container.addTextDisplayComponents(textFooter)
-        container.addActionRowComponents(button)
-
-        // container.addSectionComponents(section)
+        // container.addTextDisplayComponents(textDisplay)
         // container.addSeparatorComponents(separator)
-        // container.addTextDisplayComponents(textDisplays)
-        // container.addActionRowComponents(buttons)
+        // container.addTextDisplayComponents(textFooter)
+        // container.addActionRowComponents(button)
+
+        container.addSectionComponents(section)
+        container.addSeparatorComponents(separator)
+        container.addTextDisplayComponents(textDisplays)
+        container.addActionRowComponents(buttons)
 
         const components = [container]
         const attachment = message.attachments.first()
@@ -96,6 +96,6 @@ module.exports = new Object({
             components.unshift(mediaGallery)
         }
 
-        return message.channel.send({ flags: MessageFlags.IsComponentsV2, components: [media, components], allowedMentions: { parse: [] } })
+        return message.channel.send({ flags: MessageFlags.IsComponentsV2, components: [medias, components], allowedMentions: { parse: [] } })
     }
 });
