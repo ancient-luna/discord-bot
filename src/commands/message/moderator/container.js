@@ -37,8 +37,9 @@ module.exports = new Object({
                 .setDisabled(true),
         )
 
+        const textHeader = new TextDisplayBuilder().setContent('-# A space to discover your identity within the constellation.')
         const section = new SectionBuilder()
-            .addTextDisplayComponents('-# A space to discover your identity within the constellation.')
+            .addTextDisplayComponents(textHeader)
             .setButtonAccessory(button => button
                 .setCustomId('btn-fellowcard')
                 .setStyle(ButtonStyle.Secondary)
