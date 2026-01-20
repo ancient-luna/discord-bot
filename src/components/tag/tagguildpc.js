@@ -45,7 +45,6 @@ module.exports = {
     container.addSeparatorComponents(separator)
     container.addTextDisplayComponents(step3Text)
     container.addMediaGalleryComponents(step3)
-    container.addSeparatorComponents(separator)
     container.addTextDisplayComponents(textFooter)
     return interaction.reply({
       flags: [MessageFlags.IsComponentsV2, MessageFlags.Ephemeral],
