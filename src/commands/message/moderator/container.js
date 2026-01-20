@@ -45,7 +45,7 @@ module.exports = new Object({
         const medias = new MediaGalleryBuilder()
             .addItems([{
                 type: "image",
-                media: { url: `https://i.imgur.com/fxyTbJl.png` }
+                media: { url: `https://i.imgur.com/iPMaoDN.png` }
             }])
         const textHeader = new TextDisplayBuilder().setContent('-# A space to discover your identity within the constellation.')
         const section = new SectionBuilder()
