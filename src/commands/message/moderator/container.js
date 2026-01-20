@@ -1,4 +1,4 @@
-const { ContainerBuilder, TextDisplayBuilder, ActionRowBuilder, ButtonBuilder, MessageFlags, MediaGalleryBuilder, ButtonStyle, SectionBuilder } = require("discord.js");
+const { ContainerBuilder, TextDisplayBuilder, ActionRowBuilder, ButtonBuilder, MessageFlags, MediaGalleryBuilder, ButtonStyle, SectionBuilder, SeparatorBuilder, SeparatorSpacingSize } = require("discord.js");
 
 module.exports = new Object({
     name: "container",
@@ -23,6 +23,8 @@ module.exports = new Object({
 
         const container = new ContainerBuilder()
         const textDisplay = new TextDisplayBuilder().setContent(text)
+        const separator = new SeparatorBuilder({ spacing: SeparatorSpacingSize.Small })
+        const textFooter = new TextDisplayBuilder().setContent(`-# *The Commission Request option is currently unavailable, as the commission appeal system is still being prepared and will open soon.`)
         const button = new ActionRowBuilder().addComponents(
             new ButtonBuilder()
                 .setCustomId('btn-ticketopen')
@@ -57,11 +59,13 @@ module.exports = new Object({
                 .setStyle(ButtonStyle.Secondary)
         )
 
-        // container.addTextDisplayComponents(textDisplay)
-        // container.addActionRowComponents(button)
+        container.addTextDisplayComponents(textDisplay)
+        container.addActionRowComponents(separator)
+        container.addActionRowComponents(textFooter)
+        container.addActionRowComponents(button)
 
-        container.addSectionComponents(section)
-        container.addActionRowComponents(buttons)
+        // container.addSectionComponents(section)
+        // container.addActionRowComponents(buttons)
 
         const components = [container]
         const attachment = message.attachments.first()
