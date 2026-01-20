@@ -45,31 +45,39 @@ module.exports = new Object({
                 .setStyle(ButtonStyle.Secondary)
                 .setLabel(`See Your Fellow Card`)
                 .setEmoji({
-                    name: 'sc_verified',
-                    id: '1334889120849330266'
+                    name: 'luna_cool_glasses',
+                    id: '1461723408441151806'
                 })
             )
-        const textDisplays = new TextDisplayBuilder().setContent(text)
+        const textDisplays = new TextDisplayBuilder().setContent(`${text} <:ico_radiance:1334864373331787827>`)
         const buttons = new ActionRowBuilder().addComponents(
             new ButtonBuilder()
                 .setCustomId('btn-tagguildpc')
                 .setLabel('Tag Tutorial (Desktop)')
-                .setStyle(ButtonStyle.Secondary),
+                .setStyle(ButtonStyle.Secondary)
+                .setEmoji({
+                    name: 'ic_repost',
+                    id: '1334863701026541648'
+                }),
             new ButtonBuilder()
                 .setCustomId('btn-tagguildmobile')
                 .setLabel('Tag Tutorial (Mobile)')
                 .setStyle(ButtonStyle.Secondary)
+                .setEmoji({
+                    name: 'ic_repost',
+                    id: '1334863701026541648'
+                })
         )
 
-        // container.addTextDisplayComponents(textDisplay)
-        // container.addSeparatorComponents(separator)
-        // container.addTextDisplayComponents(textFooter)
-        // container.addActionRowComponents(button)
-
-        container.addSectionComponents(section)
+        container.addTextDisplayComponents(textDisplay)
         container.addSeparatorComponents(separator)
-        container.addTextDisplayComponents(textDisplays)
-        container.addActionRowComponents(buttons)
+        container.addTextDisplayComponents(textFooter)
+        container.addActionRowComponents(button)
+
+        // container.addSectionComponents(section)
+        // container.addSeparatorComponents(separator)
+        // container.addTextDisplayComponents(textDisplays)
+        // container.addActionRowComponents(buttons)
 
         const components = [container]
         const attachment = message.attachments.first()
