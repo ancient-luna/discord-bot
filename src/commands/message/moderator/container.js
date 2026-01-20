@@ -58,11 +58,11 @@ module.exports = new Object({
                 .setDisabled(true),
         )
 
-        container.addTextDisplayComponents(textDisplay)
-        container.addActionRowComponents(button)
+        // container.addTextDisplayComponents(textDisplay)
+        // container.addActionRowComponents(button)
 
-        // container.addSectionComponents(section)
-        // container.addActionRowComponents(buttons)
+        container.addSectionComponents(section)
+        container.addActionRowComponents(buttons)
 
         const components = [container]
         const attachment = message.attachments.first()
