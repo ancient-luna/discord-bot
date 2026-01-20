@@ -50,12 +50,11 @@ module.exports = new Object({
             new ButtonBuilder()
                 .setCustomId('btn-tagguildpc')
                 .setLabel('Tag Tutorial (Desktop)')
-                .setStyle(ButtonStyle.Primary),
+                .setStyle(ButtonStyle.Secondary),
             new ButtonBuilder()
                 .setCustomId('btn-tagguildmobile')
                 .setLabel('Tag Tutorial (Mobile)')
                 .setStyle(ButtonStyle.Secondary)
-                .setDisabled(true),
         )
 
         // container.addTextDisplayComponents(textDisplay)
@@ -71,6 +70,6 @@ module.exports = new Object({
             components.unshift(mediaGallery)
         }
 
-        return message.channel.send({ flags: MessageFlags.IsComponentsV2, components: components })
+        return message.channel.send({ flags: MessageFlags.IsComponentsV2, components: components, allowedMentions: { parse: [] } })
     }
 });
