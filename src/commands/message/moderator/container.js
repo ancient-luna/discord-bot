@@ -79,23 +79,23 @@ module.exports = new Object({
                 })
         )
 
-        // container.addTextDisplayComponents(textDisplay)
-        // container.addSeparatorComponents(separator)
-        // container.addTextDisplayComponents(textFooter)
-        // container.addActionRowComponents(button)
-
-        container.addSectionComponents(section)
+        container.addTextDisplayComponents(textDisplay)
         container.addSeparatorComponents(separator)
-        container.addTextDisplayComponents(textDisplays)
-        container.addActionRowComponents(buttons)
+        container.addTextDisplayComponents(textFooter)
+        container.addActionRowComponents(button)
 
-        const components = [container]
-        const attachment = message.attachments.first()
-        if (attachment) {
-            const mediaGallery = new MediaGalleryBuilder().addItems([{ type: 'image', media: { url: attachment.url } }])
-            components.unshift(mediaGallery)
-        }
+        // container.addSectionComponents(section)
+        // container.addSeparatorComponents(separator)
+        // container.addTextDisplayComponents(textDisplays)
+        // container.addActionRowComponents(buttons)
 
-        return message.channel.send({ flags: MessageFlags.IsComponentsV2, components: [medias, components], allowedMentions: { parse: [] } })
+        // const components = [container]
+        // const attachment = message.attachments.first()
+        // if (attachment) {
+        //     const mediaGallery = new MediaGalleryBuilder().addItems([{ type: 'image', media: { url: attachment.url } }])
+        //     components.unshift(mediaGallery)
+        // }
+
+        return message.channel.send({ flags: MessageFlags.IsComponentsV2, components: [media, container], allowedMentions: { parse: [] } })
     }
 });
