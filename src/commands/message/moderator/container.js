@@ -45,7 +45,7 @@ module.exports = new Object({
         const medias = new MediaGalleryBuilder()
             .addItems([{
                 type: "image",
-                media: { url: `https://i.imgur.com/rki3mVk.png` }
+                media: { url: `https://i.imgur.com/iPMaoDN.png` }
             }])
         const textHeader = new TextDisplayBuilder().setContent('-# A space to discover your identity within the constellation.')
         const section = new SectionBuilder()
@@ -79,15 +79,15 @@ module.exports = new Object({
                 })
         )
 
-        // container.addTextDisplayComponents(textDisplay)
-        // container.addSeparatorComponents(separator)
-        // container.addTextDisplayComponents(textFooter)
-        // container.addActionRowComponents(button)
-
-        container.addSectionComponents(section)
+        container.addTextDisplayComponents(textDisplay)
         container.addSeparatorComponents(separator)
-        container.addTextDisplayComponents(textDisplays)
-        container.addActionRowComponents(buttons)
+        container.addTextDisplayComponents(textFooter)
+        container.addActionRowComponents(button)
+
+        // container.addSectionComponents(section)
+        // container.addSeparatorComponents(separator)
+        // container.addTextDisplayComponents(textDisplays)
+        // container.addActionRowComponents(buttons)
 
         // const components = [container]
         // const attachment = message.attachments.first()
