@@ -1,4 +1,4 @@
-const { EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle } = require("discord.js");
+const { EmbedBuilder } = require("discord.js");
 module.exports = new Object({
     name: "ascended",
     description: "giving mentioned member roles",
@@ -15,11 +15,11 @@ module.exports = new Object({
         dev: false,
     },
     player: { voice: false, active: false, dj: false, },
-    
+
     async execute(client, message, args) {
         const role = message.mentions.roles.first();
         if (!role) return message.reply("Please mention a valid role!");
-        
+
         const members = await message.guild.members.fetch();
 
         let successCount = 0;

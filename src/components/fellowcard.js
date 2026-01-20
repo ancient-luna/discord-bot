@@ -13,7 +13,7 @@ module.exports = {
 
     execute: async (client, interaction) => {
         try {
-            const targetMember = interaction.message.mentions.members.first();
+            const targetMember = interaction.message.mentions.members.first() || interaction.member;
             if (!targetMember) {
                 return interaction.reply({ content: 'Only ashes remain...\n-# this person is gone and no longer listed on our wisdom of lleud', flags: MessageFlags.Ephemeral });
             }

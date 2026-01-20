@@ -1,4 +1,4 @@
-const { EmbedBuilder, ContainerBuilder, TextDisplayBuilder, MediaGalleryBuilder, MessageFlags, AttachmentBuilder } = require("discord.js");
+const { ContainerBuilder, TextDisplayBuilder, MediaGalleryBuilder, MessageFlags, AttachmentBuilder } = require("discord.js");
 const path = require("path");
 
 module.exports = new Object({

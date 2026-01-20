@@ -1,5 +1,4 @@
-const { EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle, MessageFlags } = require("discord.js");
-const { stripIndent } = require("common-tags");
+const { MessageFlags, ContainerBuilder, SeparatorBuilder, SeparatorSpacingSize, MediaGalleryBuilder, TextDisplayBuilder } = require("discord.js");
 
 module.exports = {
   name: "tagguildpc",
@@ -9,27 +8,48 @@ module.exports = {
     user: [],
     dev: false,
   },
-  
+
   execute: async (client, interaction) => {
-    const howTo1 = new EmbedBuilder()
-      .setTitle("Ⅰ. User Settings")
-      .setImage("https://i.imgur.com/Wgo5BJy.png")
-      .setColor("#3c3d4f")
-
-    const howTo2 = new EmbedBuilder()
-      .setTitle("Ⅱ. Profiles")
-      .setImage("https://i.imgur.com/2r3AMGs.png")
-      .setColor("#3c3d4f")
-
-    const howTo3 = new EmbedBuilder()
-      .setTitle("Ⅲ. Server Tag")
-      .setImage("https://i.imgur.com/IvK0tA5.png")
-      .setFooter({ text: '*scroll down until you see the server tag option' })
-      .setColor("#3c3d4f")
-      
+    const container = new ContainerBuilder()
+    const separator = new SeparatorBuilder({ spacing: SeparatorSpacingSize.Large })
+    const step1Text = new TextDisplayBuilder().setContent("Ⅰ. User Setting")
+    const step1 = new MediaGalleryBuilder()
+      .addItems([{
+        type: 'image',
+        media: {
+          url: 'https://i.imgur.com/M0CeXkQ.png'
+        }
+      }])
+    const step2Text = new TextDisplayBuilder().setContent("Ⅱ. Edit Profiles")
+    const step2 = new MediaGalleryBuilder()
+      .addItems([{
+        type: 'image',
+        media: {
+          url: 'https://i.imgur.com/S3iZqoP.png'
+        }
+      }])
+    const step3Text = new TextDisplayBuilder().setContent("Ⅲ. Server Tag")
+    const step3 = new MediaGalleryBuilder()
+      .addItems([{
+        type: 'image',
+        media: {
+          url: 'https://i.imgur.com/eOSTkeQ.png'
+        }
+      }])
+    const textFooter = new TextDisplayBuilder().setContent("-# *scroll down until you see the server tag option")
+    container.addTextDisplayComponents(step1Text)
+    container.addMediaGalleryComponents(step1)
+    container.addSeparatorComponents(separator)
+    container.addTextDisplayComponents(step2Text)
+    container.addMediaGalleryComponents(step2)
+    container.addSeparatorComponents(separator)
+    container.addTextDisplayComponents(step3Text)
+    container.addMediaGalleryComponents(step3)
+    container.addSeparatorComponents(separator)
+    container.addTextDisplayComponents(textFooter)
     return interaction.reply({
-      embeds: [howTo1, howTo2, howTo3],
-      flags: MessageFlags.Ephemeral,
+      flags: [MessageFlags.IsComponentsV2, MessageFlags.Ephemeral],
+      components: [container]
     });
   },
 };
