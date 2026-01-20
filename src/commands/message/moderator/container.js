@@ -45,8 +45,8 @@ module.exports = new Object({
                 .setStyle(ButtonStyle.Secondary)
                 .setLabel(`See Your Fellow Card`)
                 .setEmoji({
-                    name: 'luna_cool_glasses',
-                    id: '1461723408441151806'
+                    name: 'ancient_luna_plus',
+                    id: '1462981888883949680'
                 })
             )
         const textDisplays = new TextDisplayBuilder().setContent(`${text} <:ico_radiance:1334864373331787827>`)
