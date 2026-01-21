@@ -39,7 +39,7 @@ module.exports = {
         // });
 
         await interaction.editReply({
-            content: `${title}\n-# ${tag}${tagOST}\n\n${lyrics}\n_ _`,
+            content: `${title}\n-# ${tag} ${tagOST}\n\n${lyrics}\n_ _`,
             files: [attachment]
         })
     },
