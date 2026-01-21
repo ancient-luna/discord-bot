@@ -76,18 +76,26 @@ module.exports = new Object({
                 .setEmoji({
                     name: 'ic_repost',
                     id: '1334863701026541648'
-                })
+                }),
+            new ButtonBuilder()
+                .setCustomId('btn-ost')
+                .setLabel('LUNA+ OST')
+                .setStyle(ButtonStyle.Secondary)
+                .setEmoji({
+                    name: 'ic_audio',
+                    id: '1463443740692713505'
+                }),
         )
 
-        // container.addTextDisplayComponents(textDisplay)
-        // container.addSeparatorComponents(separator)
-        // container.addTextDisplayComponents(textFooter)
-        // container.addActionRowComponents(button)
-
-        container.addSectionComponents(section)
+        container.addTextDisplayComponents(textDisplay)
         container.addSeparatorComponents(separator)
-        container.addTextDisplayComponents(textDisplays)
-        container.addActionRowComponents(buttons)
+        container.addTextDisplayComponents(textFooter)
+        container.addActionRowComponents(button)
+
+        // container.addSectionComponents(section)
+        // container.addSeparatorComponents(separator)
+        // container.addTextDisplayComponents(textDisplays)
+        // container.addActionRowComponents(buttons)
 
         // const components = [container]
         // const attachment = message.attachments.first()
@@ -96,6 +104,6 @@ module.exports = new Object({
         //     components.unshift(mediaGallery)
         // }
 
-        return message.channel.send({ flags: MessageFlags.IsComponentsV2, components: [medias, container], allowedMentions: { parse: [] } })
+        return message.channel.send({ flags: MessageFlags.IsComponentsV2, components: [media, container], allowedMentions: { parse: [] } })
     }
 });
