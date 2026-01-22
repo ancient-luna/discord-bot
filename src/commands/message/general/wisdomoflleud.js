@@ -26,7 +26,7 @@ module.exports = new Object({
             new ButtonBuilder()
                 .setLabel("Support")
                 .setStyle(ButtonStyle.Link)
-                .setURL("https://ko-fi.com/daexx"),
+                .setURL("https://ko-fi.com/imdae"),
             new ButtonBuilder()
                 .setLabel("YouTube")
                 .setStyle(ButtonStyle.Link)
@@ -36,7 +36,7 @@ module.exports = new Object({
         const container = new ContainerBuilder()
         const separator = new SeparatorBuilder({ spacing: SeparatorSpacingSize.Large });
         // const headerImage = new MediaGalleryBuilder().addItems({ type: 'image', media: { url: 'https://i.imgur.com/c8QnpbX.gif' } });
-        const textDetail = new TextDisplayBuilder().setContent(`# 우리는 마치 달을 만난 것처럼 달렸다\nI'm a relic that was born by [@imsoondae](https://www.instagram.com/?/) to seek wisdom.\nBlessed by [@biglebomb](https://discordapp.com/users/306545868054593537) to be alive until now.`)
+        const textDetail = new TextDisplayBuilder().setContent(`# 우리는 마치 달을 만난 것처럼 달렸다\nI'm a relic, born from [@imsoondae](https://www.instagram.com/?/) in pursuit of wisdom\nSustained by [3.14 denies π](https://github.com/orgs/3-14-denies-Pi)'s blessings through the ages`)
         const textPrefix = new TextDisplayBuilder().setContent(`-# current command prefix is: \`!\``);
 
         // container.addMediaGalleryComponents(headerImage);
