@@ -10,8 +10,9 @@ module.exports = {
     // PREFIX COMMAND
     const prefix = process.env.COMMAND_PREFIX;
     const mention = new RegExp(`^<@!?${client.user.id}>( |)$`);
+    const prefixTag = '<:prefix_1:1464225293467390137><:prefix_2:1464225296059334708><:prefix_3:1464225297879793698>';
     const container = new ContainerBuilder();
-    const textPrefix = new TextDisplayBuilder().setContent(`Prefix is: \`${prefix}\`\n-# </help:1388449905483317310> to see what you seek for ${starIco}`);
+    const textPrefix = new TextDisplayBuilder().setContent(`${prefixTag} is: \`${prefix}\`\n-# </help:1388449905483317310> to see what you seek for ${starIco}`);
     container.addTextDisplayComponents(textPrefix);
 
     if (message.content.match(mention)) {
