@@ -195,7 +195,7 @@ module.exports = {
             container.addSectionComponents(sectionCard)
 
             await interaction.reply({
-                flags: MessageFlags.IsComponentsV2,
+                flags: [MessageFlags.IsComponentsV2, MessageFlags.Ephemeral],
                 components: [container],
                 files: [fellowCard],
                 allowedMentions: { parse: [] },
