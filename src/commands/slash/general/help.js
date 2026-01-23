@@ -33,7 +33,7 @@ module.exports = {
     const separator = new SeparatorBuilder({ spacing: SeparatorSpacingSize.Large });
     // const headerImage = new MediaGalleryBuilder().addItems({ type: 'image', media: { url: 'https://i.imgur.com/c8QnpbX.gif' } });
     const textHeader = new TextDisplayBuilder().setContent(`# 우리는 마치 달을 만난 것처럼 달렸다`)
-    const textDetail = new TextDisplayBuilder().setContent(`I'm a relic, born from [@imsoondae](https://www.instagram.com/?/)'s will in pursuit of wisdom\nSustained by [3.14 denies π](https://github.com/orgs/3-14-denies-Pi)'s blessings through the ages`)
+    const textDetail = new TextDisplayBuilder().setContent(`I'm a relic, born from [@imsoondae](https://www.instagram.com/?/)'s will in pursuit of wisdom\nSustained by [the elders](https://github.com/orgs/3-14-denies-Pi)'s blessings through the ages`)
     const textPrefix = new TextDisplayBuilder().setContent(`-# current command ${prefixTag} is: \`!\``);
 
     container.addTextDisplayComponents(textHeader);
