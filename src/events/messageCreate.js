@@ -1,4 +1,4 @@
-const { ButtonStyle, PermissionsBitField, Collection, ContainerBuilder, TextDisplayBuilder, MessageFlags, SectionBuilder } = require("discord.js");
+const { ButtonStyle, PermissionsBitField, Collection, ContainerBuilder, TextDisplayBuilder, MessageFlags, SectionBuilder, SeparatorBuilder, SeparatorSpacingSize } = require("discord.js");
 
 module.exports = {
   name: "messageCreate",
@@ -12,8 +12,10 @@ module.exports = {
     const mention = new RegExp(`^<@!?${client.user.id}>( |)$`);
     const prefixTag = '<:prefix_1:1464225293467390137><:prefix_2:1464225296059334708><:prefix_3:1464225297879793698>';
     const container = new ContainerBuilder();
-    const textPrefix = new TextDisplayBuilder().setContent(`-# ${prefixTag} is: \`${prefix}\`\n-# </help:1388449905483317310> to see what you seek for ${starIco}`);
+    const textPrefix = new TextDisplayBuilder().setContent(`-# ${prefixTag} is: \`${prefix}\``);
+    const textHelp = new TextDisplayBuilder().setContent(`-# </help:1388449905483317310> to see what you seek for ${starIco}`);
     container.addTextDisplayComponents(textPrefix);
+    container.addTextDisplayComponents(textHelp);
 
     if (message.content.match(mention)) {
       if (message.guild.members.me.permissionsIn(message.channel).has(PermissionsBitField.Flags.SendMessages)) {
