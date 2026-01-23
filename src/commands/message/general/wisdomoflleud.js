@@ -35,10 +35,12 @@ module.exports = new Object({
 
         const container = new ContainerBuilder()
         const separator = new SeparatorBuilder({ spacing: SeparatorSpacingSize.Large });
+        const textHeader = new TextDisplayBuilder().setContent(`# 우리는 마치 달을 만난 것처럼 달렸다`)
         // const headerImage = new MediaGalleryBuilder().addItems({ type: 'image', media: { url: 'https://i.imgur.com/c8QnpbX.gif' } });
-        const textDetail = new TextDisplayBuilder().setContent(`# 우리는 마치 달을 만난 것처럼 달렸다\nI'm a relic, born and forged by [@imsoondae](https://www.instagram.com/?/) in pursuit of wisdom\nSustained by [3.14 denies π](https://github.com/orgs/3-14-denies-Pi)'s blessings through the ages`)
+        const textDetail = new TextDisplayBuilder().setContent(`I'm a relic, born and forged from [@imsoondae](https://www.instagram.com/?/)'s will in pursuit of wisdom.\nSustained by [3.14 denies π](https://github.com/orgs/3-14-denies-Pi)'s blessings through the ages`)
         const textPrefix = new TextDisplayBuilder().setContent(`-# current command prefix is: \`!\``);
 
+        container.addTextDisplayComponents(textHeader);
         // container.addMediaGalleryComponents(headerImage);
         container.addTextDisplayComponents(textDetail);
         container.addTextDisplayComponents(textPrefix);
