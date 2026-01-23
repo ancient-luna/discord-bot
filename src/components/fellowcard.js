@@ -1,4 +1,4 @@
-const { MessageFlags, AttachmentBuilder } = require("discord.js");
+const { ButtonStyle, AttachmentBuilder, ContainerBuilder, TextDisplayBuilder, SeparatorBuilder, SeparatorSpacingSize, MediaGalleryBuilder, SectionBuilder, MessageFlags } = require("discord.js");
 const { createCanvas, loadImage, registerFont } = require("canvas");
 const fs = require("fs").promises;
 
@@ -162,9 +162,49 @@ module.exports = {
             }
 
             const fellowCard = new AttachmentBuilder(canvas.toBuffer(), { name: 'fellowcard.png' });
+
+            const fetchedMembers = await interaction.guild.members.fetch();
+            const joinPosition = Array.from(fetchedMembers
+                .sort((a, b) => a.joinedTimestamp - b.joinedTimestamp)
+                .keys())
+                .indexOf(targetMember.id) + 1;
+
+            const userJoinTime = parseInt(targetMember.joinedTimestamp / 1000);
+            const memberAvatar = targetMember.displayAvatarURL({ extension: 'png', size: 2048, dynamic: true });
+
+            const container = new ContainerBuilder();
+            const userHeader = new TextDisplayBuilder().setContent(`# 𝕱𝔢𝔩𝔩𝔬𝔴𝔠𝔞𝔯𝔡`);
+            const separator = new SeparatorBuilder({ spacing: SeparatorSpacingSize.Large });
+            const userCreation = new TextDisplayBuilder().setContent(`-# Member since <t:${userJoinTime}:D> <:sc_verified:1334889120849330266>`)
+            const userDetail = new TextDisplayBuilder().setContent(`${targetMember.user.username}\n-# Joined as ${addSuffix(joinPosition)}`);
+
+            const userCard = new MediaGalleryBuilder()
+                .addItems([{
+                    type: 'image',
+                    media: {
+                        url: 'attachment://fellowcard.png'
+                    }
+                }])
+
+            const sectionCard = new SectionBuilder()
+                .addTextDisplayComponents(userDetail)
+                .setButtonAccessory(button => button
+                    .setStyle(ButtonStyle.Link)
+                    .setURL(memberAvatar)
+                    .setLabel('See Avatar')
+                )
+
+            container.addTextDisplayComponents(userHeader)
+            container.addMediaGalleryComponents(userCard)
+            container.addTextDisplayComponents(userCreation)
+            container.addSeparatorComponents(separator)
+            container.addSectionComponents(sectionCard)
+
             await interaction.reply({
+                flags: MessageFlags.IsComponentsV2,
+                components: [container],
                 files: [fellowCard],
-                flags: MessageFlags.Ephemeral
+                allowedMentions: { parse: [] },
             });
         } catch (error) {
             console.error('Error:', error);
@@ -172,3 +212,15 @@ module.exports = {
         }
     },
 };
+
+function addSuffix(number) {
+    if (number % 100 >= 11 && number % 100 <= 13)
+        return number + "th";
+
+    switch (number % 10) {
+        case 1: return number + "st";
+        case 2: return number + "nd";
+        case 3: return number + "rd";
+    }
+    return number + "th";
+}
