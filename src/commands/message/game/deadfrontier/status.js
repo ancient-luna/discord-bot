@@ -24,7 +24,7 @@ module.exports = {
     },
 
     async execute(client, message, args) {
-        if (!args[0]) return message.reply("Please provide a Dead Frontier Profile ID.");
+        if (!args[0]) return message.reply("Yeah, sure.. anyway wheres the `userid`?");
         const survivorID = args[0];
 
         const msg = await message.reply({ content: `Getting player status <a:u_load:1334900265953923085>` });
