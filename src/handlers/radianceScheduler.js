@@ -135,10 +135,10 @@ async function sendRadianceMessage(client) {
         const canvas = createCanvas(1730, 441);
         const ctx = canvas.getContext('2d');
 
-        const cols = 15;
+        const cols = 16;
         const rows = 5;
-        const size = 150;
-        const margin = 10;
+        const size = 110;
+        const margin = 5;
         const radius = 16;
 
         const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
@@ -148,40 +148,71 @@ async function sendRadianceMessage(client) {
         ctx.fillRect(0, 0, canvas.width, canvas.height);
 
         const images = await Promise.all(avatarUrls.map(url => loadImage(url)));
-        images.sort(() => Math.random() - 0.5);
 
-        let index = 0;
-        for (let row = -1; row < rows; row++) {
-            for (let col = -1; col < cols; col++) {
-                if (index >= images.length) {
-                    index = 0;
-                }
-                const x = col * (size + margin);
-                const y = row * (size + margin);
-
-                const centerX = canvas.width / 2;
-                const centerY = canvas.height / 2;
-                const angle = Math.PI / 180 * 10;
-                const rotatedX = Math.cos(angle) * (x - centerX) - Math.sin(angle) * (y - centerY) + centerX;
-                const rotatedY = Math.sin(angle) * (x - centerX) + Math.cos(angle) * (y - centerY) + centerY;
-
-                ctx.save();
-                ctx.translate(rotatedX, rotatedY);
-                ctx.rotate(angle);
-                ctx.beginPath();
-                ctx.moveTo(-size / 2 + radius, -size / 2);
-                ctx.arcTo(size / 2, -size / 2, size / 2, size / 2, radius);
-                ctx.arcTo(size / 2, size / 2, -size / 2, size / 2, radius);
-                ctx.arcTo(-size / 2, size / 2, -size / 2, -size / 2, radius);
-                ctx.arcTo(-size / 2, -size / 2, size / 2, -size / 2, radius);
-                ctx.closePath();
-                ctx.clip();
-
-                ctx.drawImage(images[index], -size / 2, -size / 2, size, size);
-
-                ctx.restore();
-                index++;
+        const positions = [];
+        for (let row = -1; row <= rows; row++) {
+            for (let col = -1; col <= cols; col++) {
+                positions.push({ row, col });
             }
+        }
+
+        positions.sort(() => Math.random() - 0.5);
+
+        const totalWidth = cols * size + (cols - 1) * margin;
+        const totalHeight = rows * size + (rows - 1) * margin;
+        const startX = (canvas.width - totalWidth) / 2;
+        const startY = (canvas.height - totalHeight) / 2;
+
+        const gridRows = rows + 2;
+        const gridCols = cols + 2;
+        const grid = Array(gridRows).fill(null).map(() => Array(gridCols).fill(-1));
+        function canPlaceImage(row, col, imageIndex) {
+            const gridRow = row + 1;
+            const gridCol = col + 1;
+
+            if (gridCol > 0 && grid[gridRow][gridCol - 1] === imageIndex) return false;
+            if (gridCol < gridCols - 1 && grid[gridRow][gridCol + 1] === imageIndex) return false;
+            if (gridRow > 0 && grid[gridRow - 1][gridCol] === imageIndex) return false;
+            if (gridRow < gridRows - 1 && grid[gridRow + 1][gridCol] === imageIndex) return false;
+            return true;
+        }
+
+        for (let i = 0; i < positions.length; i++) {
+            const { row, col } = positions[i];
+
+            let imageIndex = i % images.length;
+            let attempts = 0;
+            while (!canPlaceImage(row, col, imageIndex) && attempts < images.length) {
+                imageIndex = (imageIndex + 1) % images.length;
+                attempts++;
+            }
+
+            grid[row + 1][col + 1] = imageIndex;
+
+            const x = startX + col * (size + margin);
+            const y = startY + row * (size + margin);
+
+            const centerX = canvas.width / 2;
+            const centerY = canvas.height / 2;
+            const angle = Math.PI / 180 * 10;
+            const rotatedX = Math.cos(angle) * (x - centerX) - Math.sin(angle) * (y - centerY) + centerX;
+            const rotatedY = Math.sin(angle) * (x - centerX) + Math.cos(angle) * (y - centerY) + centerY;
+
+            ctx.save();
+            ctx.translate(rotatedX + size / 2, rotatedY + size / 2);
+            ctx.rotate(angle);
+            ctx.beginPath();
+            ctx.moveTo(-size / 2 + radius, -size / 2);
+            ctx.arcTo(size / 2, -size / 2, size / 2, size / 2, radius);
+            ctx.arcTo(size / 2, size / 2, -size / 2, size / 2, radius);
+            ctx.arcTo(-size / 2, size / 2, -size / 2, -size / 2, radius);
+            ctx.arcTo(-size / 2, -size / 2, size / 2, -size / 2, radius);
+            ctx.closePath();
+            ctx.clip();
+
+            ctx.drawImage(images[imageIndex], -size / 2, -size / 2, size, size);
+
+            ctx.restore();
         }
 
         const radiance = new AttachmentBuilder(canvas.toBuffer(), { name: 'radiance.png' });
