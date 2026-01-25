@@ -19,6 +19,7 @@ module.exports = {
     guidelineChannel: "1460301156898308190",
     ticketChannel: "1461549743854321825",
     countingChannel: "1461705653218181312",
+    bumpChannel: "1464954919189479578",
 
     // AncientLuna: StickyNote Channels
     dfAlertChannel: "1459524927777538109",
