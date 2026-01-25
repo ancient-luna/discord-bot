@@ -3,16 +3,16 @@ const { createCanvas, loadImage } = require('canvas');
 const path = require('path');
 
 module.exports = {
-    name: "radiance",
+    name: "radiancea",
     description: "current supporters and booster in the sanctuary",
-    category: "general",
-    usage: `radiance`,
+    category: "moderator",
+    usage: `radiancea`,
     cooldown: 0,
     aliases: [],
     examples: [],
     sub_commands: [],
     args: false,
-    permissions: { client: [], user: [], dev: false, },
+    permissions: { client: [], user: ['ManageMessages'], dev: false, },
     player: { voice: false, active: false, dj: false, },
 
     async execute(client, message, args) {
@@ -46,7 +46,7 @@ module.exports = {
             return await loadingTxt.edit({ flags: MessageFlags.IsComponentsV2, components: [loadingFail] });
         }
 
-        const avatarUrls = [...allMembers.luminance, ...allMembers.radiance].map(member => member.displayAvatarURL({ extension: 'png', size: 128 }));
+        const avatarUrls = [...allMembers.luminance, ...allMembers.radiance].map(member => member.displayAvatarURL({ extension: 'png', size: 128, forceStatic: true }));
         const luminanceMentions = allMembers.luminance.map(member => `<@${member.id}>`).join(' ') || 'No members';
         const radianceMentions = allMembers.radiance.map(member => `<@${member.id}>`).join(' ') || 'No members';
 
