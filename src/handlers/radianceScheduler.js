@@ -128,7 +128,7 @@ async function sendRadianceMessage(client) {
             return;
         }
 
-        const avatarUrls = [...allMembers.luminance, ...allMembers.radiance].map(member => member.displayAvatarURL({ extension: 'png', size: 128 }));
+        const avatarUrls = [...allMembers.luminance, ...allMembers.radiance].map(member => member.displayAvatarURL({ extension: 'png', size: 128, forceStatic: true }));
         const luminanceMentions = allMembers.luminance.map(member => `<@${member.id}>`).join(' ') || 'No members';
         const radianceMentions = allMembers.radiance.map(member => `<@${member.id}>`).join(' ') || 'No members';
 

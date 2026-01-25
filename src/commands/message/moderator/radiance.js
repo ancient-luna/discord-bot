@@ -3,10 +3,10 @@ const { createCanvas, loadImage } = require('canvas');
 const path = require('path');
 
 module.exports = {
-    name: "radiancea",
+    name: "radiance",
     description: "current supporters and booster in the sanctuary",
     category: "moderator",
-    usage: `radiancea`,
+    usage: `radiance`,
     cooldown: 0,
     aliases: [],
     examples: [],
