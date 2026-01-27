@@ -19,7 +19,7 @@ module.exports = new Object({
             content: "the ~~wolf~~ peanut howls but the hawk tuahs...",
             files: [SRCtomato]
         });
-        await message.channel.send('# 𝒆𝒎𝒐𝒕𝒊𝒐𝒏𝒂𝒍 𝒅𝒂𝒎𝒂𝒈𝒆').then(msg => {
+        await message.channel.send('# 𝓹𝓮𝓪𝓷𝓾𝓽').then(msg => {
             // msg.react('<a:mm_spray:1369204415298408448>'),
             msg.react('💔')
         });
