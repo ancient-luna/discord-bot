@@ -220,7 +220,7 @@ async function sendRadianceMessage(client) {
         const luminanceEmoji = '<:lumi_1:1461957807749468190><:lumi_2:1461957809573986367><:lumi_3:1461957812006424781><:lumi_4:1461957814787510481><:lumi_5:1461957816939184160>';
 
         const container = new ContainerBuilder();
-        const textHeader = new TextDisplayBuilder().setContent('# 𝕲𝖗𝖆𝖙𝖎𝖙𝖚𝖉𝖊 𝖋𝖗𝖔𝖒 𝖙𝖍𝖊 𝕬𝖓𝖈𝖎𝖊𝖓𝖙𝖘');
+        const textHeader = new TextDisplayBuilder().setContent('# [𝕲𝖗𝖆𝖙𝖎𝖙𝖚𝖉𝖊 𝖋𝖗𝖔𝖒 𝖙𝖍𝖊 𝕬𝖓𝖈𝖎𝖊𝖓𝖙𝖘](https://discord.com/channels/1457941632052756634/1457976106656464916)');
         const separator = new SeparatorBuilder({ spacing: SeparatorSpacingSize.Large });
         const textContent = new TextDisplayBuilder().setContent(`-# By the first breath of moonlight, a vow was sealed, and a sanctuary took form. Now we gather once more, as what was begun stirs again, rising not by His will alone, but through the quiet luminance you carry`);
         // const textRadiance = new TextDisplayBuilder().setContent(`### <:ico_radiance:1334864373331787827> <@&${client.config.radianceRole}>\n-# *Guided by the Radiance: those who keep our light enduring*`);
