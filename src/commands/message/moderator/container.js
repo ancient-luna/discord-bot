@@ -29,7 +29,7 @@ module.exports = new Object({
             }])
         const textDisplay = new TextDisplayBuilder().setContent('Questions or concerns about the LUNA+ community? Use Open Ticket for **server-related support only** (roles, access, features, rules, or technical issues). Your message will be seen only by the Lunarias, and handled quietly beneath the moon.')
         const separator = new SeparatorBuilder({ spacing: SeparatorSpacingSize.Large })
-        const textFooter = new TextDisplayBuilder().setContent(`-# Includes the \`open commission\` tag appeal for <#1462415912916353241>`)
+        const textFooter = new TextDisplayBuilder().setContent(`-# This includes the \`open commission\` tag appeal for <#1462415912916353241>`)
         const button = new ActionRowBuilder().addComponents(
             new ButtonBuilder()
                 .setCustomId('btn-ticketopen')
@@ -46,35 +46,51 @@ module.exports = new Object({
         const section = new SectionBuilder()
             .addTextDisplayComponents(textHeader)
             .setButtonAccessory(button => button
-                .setCustomId('btn-fellowcard')
+                .setCustomId('btn-ost')
                 .setStyle(ButtonStyle.Secondary)
-                .setLabel(`See Your Fellow Card`)
+                .setLabel(`LUNA+ OST`)
                 .setEmoji({
-                    name: 'luna_cool_glasses',
-                    id: '1461723408441151806'
+                    name: 'ic_audio',
+                    id: '1463443740692713505'
                 })
             )
         const textDisplays = new TextDisplayBuilder().setContent(`Here, you can **generate your unique LUNA+ member card**, learn how to set the LUNA+ **server tag** on your profile across desktop and mobile, and unlock the special <@&1459924462744113243> role, automatically bestowed by <@839380589508558910> upon those who wear the tag. Choose a path below and let your presence shine among your fellow cards <:ico_radiance:1334864373331787827>`)
         const buttons = new ActionRowBuilder().addComponents(
             new ButtonBuilder()
-                .setCustomId('btn-ost')
-                .setLabel('LUNA+ OST')
+                .setCustomId('btn-tagguildpc')
+                .setLabel('Tag Tutorial (Desktop)')
                 .setStyle(ButtonStyle.Secondary)
                 .setEmoji({
-                    name: 'ic_audio',
-                    id: '1463443740692713505'
+                    name: 'ic_repost',
+                    id: '1334863701026541648'
+                }),
+            new ButtonBuilder()
+                .setCustomId('btn-tagguildmobile')
+                .setLabel('Tag Tutorial (Mobile)')
+                .setStyle(ButtonStyle.Secondary)
+                .setEmoji({
+                    name: 'ic_repost',
+                    id: '1334863701026541648'
+                }),
+            new ButtonBuilder()
+                .setCustomId('btn-fellowcard')
+                .setLabel('See Your Fellow Card')
+                .setStyle(ButtonStyle.Secondary)
+                .setEmoji({
+                    name: 'luna_cool_glasses',
+                    id: '1461723408441151806'
                 }),
         )
 
-        container.addTextDisplayComponents(textDisplay)
-        // container.addSeparatorComponents(separator)
-        container.addTextDisplayComponents(textFooter)
-        container.addActionRowComponents(button)
+        // container.addTextDisplayComponents(textDisplay)
+        // // container.addSeparatorComponents(separator)
+        // container.addTextDisplayComponents(textFooter)
+        // container.addActionRowComponents(button)
 
-        // container.addSectionComponents(section)
-        // container.addSeparatorComponents(separator)
-        // container.addTextDisplayComponents(textDisplays)
-        // container.addActionRowComponents(buttons)
+        container.addSectionComponents(section)
+        container.addSeparatorComponents(separator)
+        container.addTextDisplayComponents(textDisplays)
+        container.addActionRowComponents(buttons)
 
         // const components = [container]
         // const attachment = message.attachments.first()
@@ -83,6 +99,6 @@ module.exports = new Object({
         //     components.unshift(mediaGallery)
         // }
 
-        return message.channel.send({ flags: MessageFlags.IsComponentsV2, components: [media, container], allowedMentions: { parse: [] } })
+        return message.channel.send({ flags: MessageFlags.IsComponentsV2, components: [medias, container], allowedMentions: { parse: [] } })
     }
 });
