@@ -27,7 +27,7 @@ module.exports = new Object({
                 type: "image",
                 media: { url: `https://i.imgur.com/fxyTbJl.png` }
             }])
-        const textDisplay = new TextDisplayBuilder().setContent('**Questions, appeals, or concerns about the LUNA+ community?** Open a support ticket for *server-related support only* (roles, access, features, rules, or technical issues). You  r message will be seen only by the Lunarias, and handled quietly beneath the moon.')
+        const textDisplay = new TextDisplayBuilder().setContent('**Questions, appeals, or concerns about the LUNA+ community?**\nOpen a support ticket for *server-related support only* (roles, access, features, rules, or technical issues). Your message will be seen only by the Lunarias, and handled quietly beneath the moon.')
         const separator = new SeparatorBuilder({ spacing: SeparatorSpacingSize.Large })
         const textFooter = new TextDisplayBuilder().setContent(`-# This includes the \`open commission\` tag appeal in <#1462415912916353241>`)
         const button = new ActionRowBuilder().addComponents(
@@ -82,14 +82,14 @@ module.exports = new Object({
                 }),
         )
 
-        // container.addTextDisplayComponents(textDisplay)
-        // container.addTextDisplayComponents(textFooter)
-        // container.addActionRowComponents(button)
+        container.addTextDisplayComponents(textDisplay)
+        container.addTextDisplayComponents(textFooter)
+        container.addActionRowComponents(button)
 
-        container.addSectionComponents(section)
-        container.addSeparatorComponents(separator)
-        container.addTextDisplayComponents(textDisplays)
-        container.addActionRowComponents(buttons)
+        // container.addSectionComponents(section)
+        // container.addSeparatorComponents(separator)
+        // container.addTextDisplayComponents(textDisplays)
+        // container.addActionRowComponents(buttons)
 
         // const components = [container]
         // const attachment = message.attachments.first()
@@ -98,6 +98,6 @@ module.exports = new Object({
         //     components.unshift(mediaGallery)
         // }
 
-        return message.channel.send({ flags: MessageFlags.IsComponentsV2, components: [medias, container], allowedMentions: { parse: [] } })
+        return message.channel.send({ flags: MessageFlags.IsComponentsV2, components: [media, container], allowedMentions: { parse: [] } })
     }
 });
