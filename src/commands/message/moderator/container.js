@@ -1,10 +1,10 @@
 const { ContainerBuilder, TextDisplayBuilder, ActionRowBuilder, ButtonBuilder, MessageFlags, MediaGalleryBuilder, ButtonStyle, SectionBuilder, SeparatorBuilder, SeparatorSpacingSize, StringSelectMenuBuilder, StringSelectMenuOptionBuilder } = require("discord.js");
 
 module.exports = new Object({
-    name: "a",
+    name: "container",
     description: "making container",
     category: "moderator",
-    usage: `a`,
+    usage: `container`,
     cooldown: 0,
     aliases: [],
     examples: [],
@@ -83,14 +83,14 @@ module.exports = new Object({
                     name: 'ic_audio',
                     id: '1463443740692713505'
                 }),
-            // new ButtonBuilder()
-            //     .setCustomId('btn-fellowcard')
-            //     .setLabel('See 𝕱𝖊𝖑𝖑𝖔𝖜𝖈𝖆𝖗𝖉')
-            //     .setStyle(ButtonStyle.Secondary)
-            //     .setEmoji({
-            //         name: 'luna_cool_glasses',
-            //         id: '1461723408441151806'
-            //     }),
+            new ButtonBuilder()
+                .setCustomId('btn-fellowcard')
+                .setLabel('See 𝕱𝖊𝖑𝖑𝖔𝖜𝖈𝖆𝖗𝖉')
+                .setStyle(ButtonStyle.Secondary)
+                .setEmoji({
+                    name: 'luna_cool_glasses',
+                    id: '1461723408441151806'
+                }),
         )
         const selectMenu = new StringSelectMenuBuilder()
             .setCustomId('menu-tagguild')
