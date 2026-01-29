@@ -53,10 +53,10 @@ module.exports = new Object({
         await interaction.reply({ content: 'An error has occured', flags: MessageFlags.Ephemeral });
       }
     }
-    if (interaction.isButton()) {
+    if (interaction.isButton() || interaction.isStringSelectMenu()) {
       client.emit("ButtonInteraction", interaction);
     }
-    if (!interaction.isModalSubmit() && !interaction.isStringSelectMenu())
+    if (!interaction.isModalSubmit())
       return;
   },
 });
