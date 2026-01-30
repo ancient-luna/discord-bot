@@ -30,6 +30,11 @@ module.exports = new Object({
             }
         }
 
+        if (lastUserId && lastUserId === message.author.id) {
+            if (message.deletable) await message.delete().catch(() => { });
+            return;
+        }
+
         if (number !== currentNumber + 1) {
             if (message.deletable) await message.delete().catch(() => { });
             return;

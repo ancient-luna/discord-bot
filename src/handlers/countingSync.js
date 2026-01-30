@@ -13,9 +13,25 @@ module.exports = async (client) => {
 
         let lastValidUserId = null;
 
-        for (const msg of sortedMessages) {
+        for (let i = 0; i < sortedMessages.length; i++) {
+            const msg = sortedMessages[i];
             if (msg.author.bot) continue;
-            if (/^\d+$/.test(msg.content.trim())) {
+            const content = msg.content.trim();
+            if (!/^\d+$/.test(content)) continue;
+
+            let isTurnValid = true;
+            for (let j = i + 1; j < sortedMessages.length; j++) {
+                const prevMsg = sortedMessages[j];
+                if (prevMsg.author.bot) continue;
+                if (/^\d+$/.test(prevMsg.content.trim())) {
+                    if (prevMsg.author.id === msg.author.id) {
+                        isTurnValid = false;
+                    }
+                    break;
+                }
+            }
+
+            if (isTurnValid) {
                 lastValidUserId = msg.author.id;
                 break;
             }
