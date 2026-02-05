@@ -31,6 +31,10 @@ module.exports = {
     dfOutpostRole: "1459525634664693922",
     dfBehemothRole: "1459525700372660360",
 
+    // Celestune
+    celestuneServer: "1464957615871234195",
+    celestuneTagRole: "1468811679558275285",
+
     //Ancient Luna
     // luxcastaRole: "839210689917616218",
     // preMemberTriggerMessage: "I understand the wisdom of lleud and sure my call as light seeker",
