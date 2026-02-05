@@ -36,7 +36,7 @@ module.exports = {
 
         // Celestune Server Tag Sync
         if (guild.id === celestuneServerId && celestuneTagRole) {
-            if (identityGuildId === celestuneServerId) {
+            if (identityGuildId === celestuneServerId && tag === "TUNE") {
                 if (!member.roles.cache.has(celestuneTagRole)) {
                     try {
                         await member.roles.add(celestuneTagRole);
