@@ -33,7 +33,7 @@ COPY package*.json ./
 # Ensure we use a node-gyp version compatible with Python 3.12
 RUN npm install -g node-gyp
 
-RUN npm install
+RUN npm install --legacy-peer-deps
 
 COPY . .
 
