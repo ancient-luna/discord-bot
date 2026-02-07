@@ -11,6 +11,7 @@ module.exports = {
                 .setDescription("The URL of the content to show")
                 .setRequired(true)
         ),
+
     cooldown: 5,
 
     async execute(client, interaction) {

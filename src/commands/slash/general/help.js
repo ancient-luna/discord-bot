@@ -5,7 +5,7 @@ module.exports = {
     .setName("help")
     .setDescription("Whole Luna information that you might need to know"),
 
-  cooldown: 1, // in seconds
+  cooldown: 3,
 
   async execute(client, interaction) {
     const serverButton = new ActionRowBuilder().addComponents(

@@ -1,6 +1,4 @@
-/* eslint-disable */
 const dayjs = require('dayjs');
-
 module.exports.printLog = (type, message) => {
   let msg = '';
   switch (type) {

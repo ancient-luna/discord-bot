@@ -4,11 +4,11 @@ module.exports = {
     data: new SlashCommandBuilder()
         .setName('forward')
         .setDescription('Forward a message to all members with a specific role via DM')
-        .addStringOption(option => 
+        .addStringOption(option =>
             option.setName('messageid')
                 .setDescription('The ID of the message to forward')
                 .setRequired(true))
-        .addRoleOption(option => 
+        .addRoleOption(option =>
             option.setName('role')
                 .setDescription('The role to forward the message to')
                 .setRequired(true))
@@ -18,6 +18,8 @@ module.exports = {
                 .addChannelTypes(ChannelType.GuildText, ChannelType.GuildAnnouncement)
                 .setRequired(false))
         .setDefaultMemberPermissions(PermissionFlagsBits.ManageMessages),
+
+    cooldown: 3,
 
     async execute(client, interaction) {
         await interaction.deferReply({ flags: MessageFlags.Ephemeral });
@@ -43,7 +45,7 @@ module.exports = {
                     if (error.data && error.data.retry_after) {
                         const retryTime = error.data.retry_after * 1000 + 1000;
                         console.log(`Rate limited. Retrying member fetch in ${retryTime}ms <a:u_load:1334900265953923085>`);
-                        await interaction.editReply({ content: `Shush! It whispers... Rate limited by Discord\n-# Waiting ${Math.ceil(retryTime/1000)}s to fetch member list <a:u_load:1334900265953923085>` });
+                        await interaction.editReply({ content: `Shush! It whispers... Rate limited by Discord\n-# Waiting ${Math.ceil(retryTime / 1000)}s to fetch member list <a:u_load:1334900265953923085>` });
                         await new Promise(resolve => setTimeout(resolve, retryTime));
                         try {
                             await interaction.guild.members.fetch();
@@ -57,10 +59,10 @@ module.exports = {
                     }
                 }
             }
-            
+
             const targetRole = interaction.guild.roles.cache.get(role.id);
             if (!targetRole) {
-                 return interaction.editReply({ content: "Role not found in cache of lleud" });
+                return interaction.editReply({ content: "Role not found in cache of lleud" });
             }
 
             const members = targetRole.members.filter(m => !m.user.bot);
@@ -103,7 +105,7 @@ module.exports = {
             }
 
             if (components.length === 0) {
-                 return interaction.editReply({ content: "No history written, nothing to forward for the legacy <:ico_chat:1369210205321166858>" });
+                return interaction.editReply({ content: "No history written, nothing to forward for the legacy <:ico_chat:1369210205321166858>" });
             }
 
             let sent = 0;
@@ -131,8 +133,8 @@ module.exports = {
                 await new Promise(resolve => setTimeout(resolve, 1000));
             }
 
-            await interaction.editReply({ 
-                content: `**Forwarding Complete**\n-# Sent: ${sent} Closed DMs: ${closed} Failed: ${failed}` 
+            await interaction.editReply({
+                content: `**Forwarding Complete**\n-# Sent: ${sent} Closed DMs: ${closed} Failed: ${failed}`
             });
 
         } catch (error) {

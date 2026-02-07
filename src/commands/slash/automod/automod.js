@@ -6,32 +6,32 @@ module.exports = {
     .setDescription("Setup auto moderation rules")
     .setDefaultMemberPermissions(PermissionFlagsBits.Administrator)
     .addSubcommand((c) => c
-        .setName("spammessages").setDescription("Prevent spam messages")
+      .setName("spammessages").setDescription("Prevent spam messages")
     )
     .addSubcommand((c) => c
-        .setName("spammentions")
-        .setDescription("Prevent mention spam")
-        .addIntegerOption((o) => o
-            .setName("number")
-            .setDescription("Mention limit before triggering")
-            .setRequired(true)
-        )
+      .setName("spammentions")
+      .setDescription("Prevent mention spam")
+      .addIntegerOption((o) => o
+        .setName("number")
+        .setDescription("Mention limit before triggering")
+        .setRequired(true)
+      )
     )
     .addSubcommand((c) => c
-        .setName("keywords")
-        .setDescription("Block specific keywords")
-        .addStringOption((o) => o
-            .setName("word")
-            .setDescription("The keyword to block")
-            .setRequired(true)
-        )
+      .setName("keywords")
+      .setDescription("Block specific keywords")
+      .addStringOption((o) => o
+        .setName("word")
+        .setDescription("The keyword to block")
+        .setRequired(true)
+      )
     )
     .addSubcommand((c) => c
-        .setName("flaggedwords")
-        .setDescription("Block swears, slurs, and sexual content")
+      .setName("flaggedwords")
+      .setDescription("Block swears, slurs, and sexual content")
     ),
 
-  cooldown: 5,
+  cooldown: 3,
 
   async execute(client, interaction) {
     const sub = interaction.options.getSubcommand();
