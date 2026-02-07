@@ -219,7 +219,7 @@ module.exports = new Object({
           components: [container],
           files: [fellowCard],
           allowedMentions: { parse: [] },
-        }).then((msg) => { msg.react('ancientluna_divinare:841754250949820416') });
+        }).then((msg) => { msg.react(':ico_owner:1369186022558269561') });
       } catch (error) {
         console.error('Error:', error);
         await loadingTxt.edit({ flags: MessageFlags.IsComponentsV2, components: [textCardFail] });
