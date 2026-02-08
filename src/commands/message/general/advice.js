@@ -13,7 +13,7 @@ module.exports = new Object({
     args: false,
     permissions: { client: [], user: [], dev: false, },
     player: { voice: false, active: false, dj: false, },
-    
+
     async execute(client, message, args) {
         let loadingTxt = await message.channel.send({ content: 'typing advice <a:u_load:1334900265953923085>' });
 
@@ -38,7 +38,7 @@ module.exports = new Object({
                     .setCustomId('disabled_advice')
             )
 
-        let avatarUrl = user.displayAvatarURL({ extension: "jpg" }) || 'https://cdn.discordapp.com/attachments/1080219392337522718/1093224716875087892/twitter.png';
+        let avatarUrl = user.displayAvatarURL({ extension: "png" }) || 'https://cdn.discordapp.com/attachments/1080219392337522718/1093224716875087892/twitter.png';
 
         let canvas = `https://some-random-api.com/canvas/tweet?avatar=${avatarUrl}&displayname=${encodeURIComponent(user.displayName)}&username=${encodeURIComponent(user.user.username)}&comment=${encodeURIComponent(tweet.data.slip.advice)}&replies=${randomReplies}&retweets=${randomRetweets}&likes=${randomLikes}`;
 
