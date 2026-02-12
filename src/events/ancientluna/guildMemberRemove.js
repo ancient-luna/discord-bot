@@ -8,7 +8,7 @@ module.exports = new Object({
         if (!member.guild) return;
         // const channel = member.guild.channels.cache.get(client.config.gatewayChannel);
         // if (!channel) return console.log(`[x] ID: ${member.user.id} left from [${member.guild.id}] ${member.guild.name}`);
-        return console.log(`[x] ID: ${member.user.id} left from [${member.guild.id}] ${member.guild.name}`);
+        return console.log(`[x] ID: [${member.user.id}] ${member.displayName} SERVER: [${member.guild.id}] ${member.guild.name}`);
         // const memberAvatar = member.user.displayAvatarURL({ dynamic: true, size: 4096 });
         // const container = new ContainerBuilder()
         // const textLeave = new TextDisplayBuilder().setContent(`<:ico_leave:1451833368236003378> **${member.displayName}** leaving the sanctuary`);
