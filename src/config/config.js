@@ -25,6 +25,10 @@ module.exports = {
 
     // AncientLuna: StickyNote Channels
     dfAlertChannel: "1459524927777538109",
+    generalGiveawayChannel: "1459865586807869533",
+    hatoGiveawayChannel: "1463968784183464102",
+    dfGiveawayChannel: "1457979192892199012",
+    bdoGiveawayChannel: "1459896787371425884",
 
     // DeadFrontier
     dfBanditRole: "1459525384809877607",
