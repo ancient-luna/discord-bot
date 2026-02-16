@@ -39,12 +39,11 @@
     "dayjs": "^1.11.19",
     "discord-html-transcripts": "^3.3.0-next-5eed3d",
     "discord.js": "^14.25.1",
-    "dotenv": "^17.3.0",
+    "dotenv": "^17.3.1",
     "express": "^5.1.0",
-    "jsdom": "^28.0.0",
+    "jsdom": "^28.1.0",
     "mal-scraper": "^2.13.2",
     "ms": "^2.1.3",
-    "puppeteer": "^24.37.2",
     "sqlite3": "^5.1.7"
   },
   "devDependencies": {
