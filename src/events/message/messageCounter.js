@@ -40,7 +40,7 @@ module.exports = new Object({
             return;
         }
 
-        const roleId = client.config.topCounter;
+        const roleId = client.config.lunaCounterRole;
         if (!roleId) return;
 
         const guild = message.guild;

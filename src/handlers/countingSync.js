@@ -37,7 +37,7 @@ module.exports = async (client) => {
             }
         }
 
-        const roleId = client.config.topCounter;
+        const roleId = client.config.lunaCounterRole;
         if (roleId && lastValidUserId) {
             const guild = channel.guild;
             const role = guild.roles.cache.get(roleId);

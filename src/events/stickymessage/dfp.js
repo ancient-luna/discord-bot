@@ -22,23 +22,23 @@ module.exports = {
             new ButtonBuilder()
                 .setCustomId('btn-dfbehemoth')
                 .setLabel('Behemoth')
-                .setStyle(ButtonStyle.Danger),
+                .setStyle(ButtonStyle.Secondary),
             new ButtonBuilder()
                 .setCustomId('btn-dfdevil')
                 .setLabel('DH')
-                .setStyle(ButtonStyle.Danger),
+                .setStyle(ButtonStyle.Secondary),
             new ButtonBuilder()
                 .setCustomId('btn-dfvolatile')
                 .setLabel('VL')
-                .setStyle(ButtonStyle.Danger),
+                .setStyle(ButtonStyle.Secondary),
             new ButtonBuilder()
                 .setCustomId('btn-dfoutpost')
                 .setLabel('OAttack')
-                .setStyle(ButtonStyle.Danger),
+                .setStyle(ButtonStyle.Secondary),
             new ButtonBuilder()
                 .setCustomId('btn-dfbandit')
                 .setLabel('Bandit')
-                .setStyle(ButtonStyle.Danger)
+                .setStyle(ButtonStyle.Secondary)
         );
 
         container.addTextDisplayComponents(tips);

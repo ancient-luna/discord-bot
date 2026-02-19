@@ -8,7 +8,8 @@ module.exports = {
     lunaTagRole: "1459924462744113243",
     lunaBoosterRole: "1457985341385347185",
     lunaMemberRole: "1457975737259790418",
-    topCounter: "1461706904953688279",
+    lunaCounterRole: "1461706904953688279",
+    levatioRole: "1459895418258460755",
 
     // AncientLuna: Category
     ticketCategory: "1461556161147830312",
@@ -22,8 +23,10 @@ module.exports = {
     bumpChannel: "1464954919189479578",
     botCommonChannel: "1461684402399744041",
     botUncommonChannel: "1459866524805369998",
+    deadfrontierChannel: "1457979192892199012",
 
     // AncientLuna: StickyNote Channels
+    dfClanChannel: "1461250404640620586",
     dfAlertChannel: "1459524927777538109",
     // generalGiveawayChannel: "1459865586807869533",
     // hatoGiveawayChannel: "1463968784183464102",

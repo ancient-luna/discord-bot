@@ -1,4 +1,4 @@
-const { EmbedBuilder } = require("discord.js");
+const { EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle, MessageFlags, ContainerBuilder, TextDisplayBuilder, MediaGalleryBuilder } = require("discord.js");
 module.exports = new Object({
     name: "unlevatio",
     description: "removing mentioned member levatio role",
@@ -21,16 +21,16 @@ module.exports = new Object({
         let target = message.mentions.members.first();
         if (!target) return message.reply('Please mention them, the one who is about to lose theirs').catch(e => { });
 
-        let role = '1052973235710464040';
+        let role = client.config.levatioRole;
 
-        const addLD = new EmbedBuilder()
-            .setAuthor({ name: "ROLE REMOVED", iconURL: "https://i.imgur.com/aLkmV4I.png" })
-            .setDescription("Your **Levatio** role has been removed and no longer have access to clan only channels in **[Survivors Homeland](https://discord.com/channels/447069790150852609/860531645916774401)** category. If have any questions regarding this dont hesitate to reach and mention the Levatios in **[#meeting-hall](https://discord.com/channels/447069790150852609/860531645916774401)**")
-            .setTimestamp()
-            .setColor(client.config.embedColorTrans)
-            .setFooter({ text: "Ancient Luna Guild: We ran as if to meet the moon" })
+        const container = new ContainerBuilder()
+        const textHeader = new TextDisplayBuilder().setContent(`### <:al_levatio_rust:1474097326778744897> 𝕷𝖊𝖛𝖆𝖙𝖎𝖔 𝕽𝖔𝖑𝖊 𝕽𝖊𝖒𝖔𝖛𝖊𝖉`)
+        const textContent = new TextDisplayBuilder().setContent(`-# Your **Levatio** role has been removed and no longer have access to clan only channels in **Rune: Dead Frontier** category. If have any questions regarding this dont hesitate to reach and mention the Levatios in [\`#outpost\`](https://discord.com/channels/1457941632052756634/1457979192892199012)`)
 
-        await target.user.send({ embeds: [addLD] }).then(target.roles.remove(role)).catch((e) => { });
+        container.addTextDisplayComponents(textHeader)
+        container.addTextDisplayComponents(textContent)
+
+        await target.user.send({ flags: MessageFlags.IsComponentsV2, components: [container] }).then(target.roles.remove(role)).catch((e) => { });
 
         await message.react("✅").then(setTimeout(() => message.delete().catch((e) => { }), 5000)).catch((err) => {
             throw err;
