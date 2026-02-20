@@ -10,7 +10,7 @@ module.exports = {
         if (message.channel.id !== clanChannelID) return;
 
         const container = new ContainerBuilder();
-        const tips = new TextDisplayBuilder().setContent('-# <:al_levatio:1376685304005525585> Click on button to be part of the Levatio')
+        const tips = new TextDisplayBuilder().setContent('-# <:al_levatio:1376685304005525585> Be a part of the Levatio')
         const section = new SectionBuilder()
             .addTextDisplayComponents(tips)
             .setButtonAccessory(button => button
@@ -36,7 +36,7 @@ module.exports = {
             }
             await message.channel.send({
                 flags: MessageFlags.IsComponentsV2,
-                components: [container],
+                components: [section],
                 allowedMentions: { parse: [] }
             });
         } catch (error) {
