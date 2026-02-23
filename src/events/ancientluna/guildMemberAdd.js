@@ -14,6 +14,7 @@ module.exports = new Object({
         const baseUsername = member.user.username;
         const memberUsername = baseUsername.length > 20 ? baseUsername.slice(0, 17) + '...' : baseUsername;
         const channel = member.guild.channels.cache.get(client.config.gatewayChannel);
+        if (!channel) return;
 
         registerFont(path.join(__dirname, '../../assets/fonts/Bestie Seventy.ttf'), { family: 'Bestie Seventy' });
         registerFont(path.join(__dirname, '../../assets/fonts/Passport Regular.ttf'), { family: 'Passport Regular' });
