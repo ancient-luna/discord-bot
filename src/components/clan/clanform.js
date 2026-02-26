@@ -12,6 +12,13 @@ module.exports = {
     },
 
     execute: async (client, interaction, message) => {
+        const levatioRole = client.config.levatioRole;
+        if (interaction.member.roles.cache.has(levatioRole)) {
+            return interaction.reply({
+                content: `You are **already** a part of <@&${levatioRole}> <:al_levatio:1376685304005525585> now go back to <#${client.config.deadfrontierChannel}>`,
+                flags: MessageFlags.Ephemeral,
+            });
+        }
 
         const txtModal = new ModalBuilder()
             .setCustomId(`cForm-${interaction.user.id}`)
