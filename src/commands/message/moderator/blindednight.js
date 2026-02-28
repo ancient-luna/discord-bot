@@ -42,15 +42,15 @@ module.exports = new Object({
         let container = new ContainerBuilder()
         let textUser = new TextDisplayBuilder().setContent(`<:srv_denied:1334885383636521050> ${target.displayName} get \`BANNED\` from the sanctuary`)
         let textReason = new TextDisplayBuilder().setContent(`-# ${target.id} by <@${message.author.id}>\n**Reason:** *${reason}*`)
-        // let banHammer = new MediaGalleryBuilder()
-        //     .addItems([{
-        //         type: 'image',
-        //         media: {
-        //             url: 'attachment://banHammer.gif'
-        //         }
-        //     }]);
+        let banHammer = new MediaGalleryBuilder()
+            .addItems([{
+                type: 'image',
+                media: {
+                    url: 'attachment://banHammer.gif'
+                }
+            }]);
         container.addTextDisplayComponents(textUser)
-        // container.addMediaGalleryComponents(banHammer)
+        container.addMediaGalleryComponents(banHammer)
         container.addTextDisplayComponents(textReason)
 
         await message.guild.bans.create(target, {

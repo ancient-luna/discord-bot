@@ -40,26 +40,26 @@ module.exports = new Object({
         let reason = args.slice(1).join(" ");
         if (!reason) reason = "Oops, the kick-hammer already landed on them without a reason";
 
-        const banHammerPath = path.join(__dirname, '../../../assets/react/banhammer.gif');
-        const banHammerAttachment = new AttachmentBuilder(banHammerPath, { name: 'banHammer.gif' });
+        const sadMinionPath = path.join(__dirname, '../../../assets/react/sadminion.gif');
+        const sadMinionAttachment = new AttachmentBuilder(sadMinionPath, { name: 'sadMinion.gif' });
 
         let container = new ContainerBuilder()
         let textUser = new TextDisplayBuilder().setContent(`<:srv_denied:1334885383636521050> ${target.displayName} get \`KICKED\` from the sanctuary`)
         let textReason = new TextDisplayBuilder().setContent(`-# ${target.id} by <@${message.author.id}>\n**Reason:** *${reason}*`)
-        // let banHammer = new MediaGalleryBuilder()
-        //     .addItems([{
-        //         type: 'image',
-        //         media: {
-        //             url: 'attachment://banHammer.gif'
-        //         }
-        //     }]);
+        let sadMinion = new MediaGalleryBuilder()
+            .addItems([{
+                type: 'image',
+                media: {
+                    url: 'attachment://sadMinion.gif'
+                }
+            }]);
         container.addTextDisplayComponents(textUser)
-        // container.addMediaGalleryComponents(banHammer)
+        container.addMediaGalleryComponents(sadMinion)
         container.addTextDisplayComponents(textReason)
         message.guild.channels.cache.get(client.config.gatewayChannel).send({
             flags: MessageFlags.IsComponentsV2,
             components: [container],
-            files: [banHammerAttachment]
+            files: [sadMinionAttachment]
         });
         target.kick(args[0]);
         message.react("<:srv_accepted:1334885365676507188>");
