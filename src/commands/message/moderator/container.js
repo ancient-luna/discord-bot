@@ -61,7 +61,7 @@ module.exports = new Object({
                 type: "image",
                 media: { url: `https://i.imgur.com/iPMaoDN.png` }
             }])
-        const textHeader = new TextDisplayBuilder().setContent('-# A space to discover your identity within the constellation.\nHere, you can **generate your unique LUNA+ member card**')
+        const textHeader = new TextDisplayBuilder().setContent('-# A space to discover your identity within the constellation')
         const section2 = new SectionBuilder()
             .addTextDisplayComponents(textHeader)
             .setButtonAccessory(button => button
@@ -85,12 +85,8 @@ module.exports = new Object({
                 }),
             new ButtonBuilder()
                 .setCustomId('btn-fellowcard')
-                .setLabel('See 𝕱𝖊𝖑𝖑𝖔𝖜𝖈𝖆𝖗𝖉')
+                .setLabel('𝕱𝖊𝖑𝖑𝖔𝖜𝖈𝖆𝖗𝖉')
                 .setStyle(ButtonStyle.Secondary)
-                .setEmoji({
-                    name: 'luna_cool_glasses',
-                    id: '1461723408441151806'
-                }),
         )
         const selectMenu = new StringSelectMenuBuilder()
             .setCustomId('menu-tagguild')
@@ -114,13 +110,16 @@ module.exports = new Object({
                     }),
             );
         const button3 = new ActionRowBuilder().addComponents(selectMenu);
-        container2.addActionRowComponents(button2)
+        
         container2.addTextDisplayComponents(textHeader)
+        container2.addActionRowComponents(button2)
         // container2.addSectionComponents(section2)
-        container2.addSeparatorComponents(separator)
+        // container2.addSeparatorComponents(separator)
         container2.addTextDisplayComponents(textDisplay2)
         container2.addActionRowComponents(button3)
 
-        return message.channel.send({ flags: MessageFlags.IsComponentsV2, components: [media, container, media2, container2], allowedMentions: { parse: [] } })
+        message.channel.send({ flags: MessageFlags.IsComponentsV2, components: [media, container], allowedMentions: { parse: [] } })
+
+        return message.channel.send({ flags: MessageFlags.IsComponentsV2, components: [media2, container2], allowedMentions: { parse: [] } })
     }
 });
