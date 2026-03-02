@@ -85,8 +85,12 @@ module.exports = new Object({
                 }),
             new ButtonBuilder()
                 .setCustomId('btn-fellowcard')
-                .setLabel('𝕱𝖊𝖑𝖑𝖔𝖜𝖈𝖆𝖗𝖉')
+                .setLabel('Get your own unique member card')
                 .setStyle(ButtonStyle.Secondary)
+                .setEmoji({
+                    name: 'sc_verified',
+                    id: '1334889120849330266'
+                }),
         )
         const selectMenu = new StringSelectMenuBuilder()
             .setCustomId('menu-tagguild')
