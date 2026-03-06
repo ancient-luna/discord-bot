@@ -4,7 +4,7 @@ require("dotenv").config();
 
 module.exports = {
     data: new SlashCommandBuilder()
-        .setName("link")
+        .setName("download")
         .setDescription("Show and download content from any platforms")
         .addStringOption(option =>
             option.setName("url")
