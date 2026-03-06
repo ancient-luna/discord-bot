@@ -22,9 +22,6 @@ export default [
                 exports: 'readonly',
             },
         },
-        plugins: {
-            'import-x': importX,
-        },
         rules: {
             // Add your custom rules here
         },
