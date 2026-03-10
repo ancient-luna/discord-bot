@@ -5,7 +5,7 @@ module.exports = new Object({
     category: "blackdesert",
     usage: `acolyte <@user>`,
     cooldown: 0,
-    aliases: [],
+    aliases: ['bdo'],
     examples: [],
     sub_commands: [],
     args: false,

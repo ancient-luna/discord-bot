@@ -5,7 +5,7 @@ module.exports = new Object({
     category: "deadfrontier",
     usage: `unlevatio <@user>`,
     cooldown: 0,
-    aliases: [],
+    aliases: ['undf'],
     examples: [],
     sub_commands: [],
     args: false,

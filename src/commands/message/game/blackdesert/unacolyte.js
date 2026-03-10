@@ -5,7 +5,7 @@ module.exports = new Object({
     category: "blackdesert",
     usage: `unacolyte <@user>`,
     cooldown: 0,
-    aliases: [],
+    aliases: ['unbdo'],
     examples: [],
     sub_commands: [],
     args: false,

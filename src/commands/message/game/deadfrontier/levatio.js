@@ -6,7 +6,7 @@ module.exports = new Object({
     category: "deadfrontier",
     usage: `levatio <@user>`,
     cooldown: 0,
-    aliases: [],
+    aliases: ['df'],
     examples: [],
     sub_commands: [],
     args: false,
