@@ -32,7 +32,7 @@ module.exports = new Object({
 
         const container = new ContainerBuilder()
         const separator = new SeparatorBuilder({ spacing: SeparatorSpacingSize.Large })
-        const textHeader = new TextDisplayBuilder().setContent(`## <:al_levatio_rust:1474097326778744897> 𝕷𝖚𝖓𝖆 𝕷𝖊𝖛𝖆𝖙𝖎𝖔`)
+        const textHeader = new TextDisplayBuilder().setContent(`# 𝕷𝖚𝖓𝖆 𝕷𝖊𝖛𝖆𝖙𝖎𝖔`)
         const section = new SectionBuilder()
             .addTextDisplayComponents(textHeader)
             .setButtonAccessory(button => button

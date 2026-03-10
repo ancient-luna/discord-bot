@@ -47,7 +47,7 @@ module.exports = new Object({
         await message.delete().catch((e) => { });
 
         const container = new ContainerBuilder()
-        const textHeader = new TextDisplayBuilder().setContent('## <:al_mark_stamp:1470657558573219968> 𝕬𝖓𝖈𝖎𝖊𝖓𝖙 𝕷𝖚𝖓𝖆')
+        const textHeader = new TextDisplayBuilder().setContent('# 𝕬𝖓𝖈𝖎𝖊𝖓𝖙 𝕷𝖚𝖓𝖆')
         const section = new SectionBuilder()
             .addTextDisplayComponents(textHeader)
             .setButtonAccessory(button => button
