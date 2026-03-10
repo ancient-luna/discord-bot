@@ -10,6 +10,7 @@ module.exports = {
     lunaMemberRole: "1457975737259790418",
     lunaCounterRole: "1461706904953688279",
     levatioRole: "1459895418258460755",
+    acolyteRole: "1480477488944517213",
 
     // AncientLuna: Category
     ticketCategory: "1461556161147830312",
@@ -24,6 +25,7 @@ module.exports = {
     botCommonChannel: "1461684402399744041",
     botUncommonChannel: "1459866524805369998",
     deadfrontierChannel: "1457979192892199012",
+    blackdesertChannel: "1459896787371425884",
 
     // AncientLuna: StickyNote Channels
     dfClanChannel: "1461250404640620586",
