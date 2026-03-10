@@ -25,7 +25,7 @@ module.exports = new Object({
 
         const container = new ContainerBuilder()
         const textHeader = new TextDisplayBuilder().setContent(`## <:al_mark_stamp:1470657558573219968> That's it, ex-acolyte`)
-        const textContent = new TextDisplayBuilder().setContent(`-# Your **Lunar Acolyte** role has been removed and no longer have access to guild only channels in **Ecplise Boarder Hall** category. If have any questions regarding this don't hesitate to reach and mention the Lunarians in [\`#sanctum\`](https://discord.com/channels/1457941632052756634/1459896787371425884)`)
+        const textContent = new TextDisplayBuilder().setContent(`-# Your **Lunar Acolyte** role has been removed and no longer have access to guild only channels in **Rune: Black Desert Online** category. If have any questions regarding this don't hesitate to reach and mention the Lunarians in [\`#sanctum\`](https://discord.com/channels/1457941632052756634/1459896787371425884)`)
 
         container.addTextDisplayComponents(textHeader)
         container.addTextDisplayComponents(textContent)
