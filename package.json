@@ -48,13 +48,5 @@
   },
   "devDependencies": {
     "eslint": "^10.5.0"
-  },
-  "overrides": {
-    "discord.js": {
-      "undici": "^6.27.0"
-    },
-    "@discordjs/rest": {
-      "undici": "^6.27.0"
-    }
   }
 }
