@@ -1,5 +1,3 @@
-import importX from 'eslint-plugin-import-x';
-
 export default [
     {
         files: ['**/*.js'],
