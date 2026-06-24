@@ -32,7 +32,7 @@
   },
   "homepage": "https://github.com/Daeva/ancient-luna-bot#readme",
   "dependencies": {
-    "axios": "^1.18.0",
+    "axios": "^1.18.1",
     "canvafy": "^7.2.1",
     "canvas": "^3.2.3",
     "common-tags": "^1.8.2",
