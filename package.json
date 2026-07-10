@@ -38,7 +38,7 @@
     "common-tags": "^1.8.2",
     "dayjs": "^1.11.21",
     "discord-html-transcripts": "^3.3.0-next-5eed3d",
-    "discord.js": "^14.26.4",
+    "discord.js": "^14.26.5",
     "dotenv": "^17.4.2",
     "express": "^5.2.1",
     "jsdom": "^29.1.1",
